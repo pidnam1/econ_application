@@ -1,0 +1,86 @@
+{{ block title }}
+PART 2: ROUND {{ round }} ECONOMICS
+<style>
+    .card2 {
+      background-color: #FFBFC8;
+    }
+</style>
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>
+    In this round: &emsp; &emsp; Test Taker = see below &emsp; &emsp; Helper = You
+    </h5>
+  </div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+    <div class="row">
+      <div class="col-sm-7">
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
+        <p></p>
+        <p><b>
+          You have <u>10</u> possible hints to spread however you want to among these players.
+          How many hints would you be willing to give the following players in ECONOMICS?
+        </b></p>
+        {{ for field in formfields_random }}
+          {{ if field == 'econhints2_partner1'}}
+            {{ formfield 'econhints2_partner1' label=partner1_label}}
+          {{ endif }}
+          {{ if field == 'econhints2_partner2'}}
+            {{ formfield 'econhints2_partner2' label=partner2_label}}
+          {{ endif }}
+          {{ if field == 'econhints2_partner3'}}
+            {{ formfield 'econhints2_partner3' label=partner3_label}}
+          {{ endif }}
+          {{ if field == 'econhints2_partner4'}}
+            {{ formfield 'econhints2_partner4' label=partner4_label}}
+          {{ endif }}
+        {{ endfor }}
+      </div>
+      <div class="col-sm-5">
+        <style>
+            .card3 {
+              background-color: #ccffcc;
+            }
+        </style>
+        <div class="card3 rounded">
+          <div class="card-body">
+            <h5><u>Payment:</u></h5>
+            <b><p>If this round is implemented, you are paid Rs. 50 for every correct answer
+                that your partner gives.</p>
+            <p>The test taker answers 12 questions. For example, if your partner gets
+                all 12 correct, you will get Rs. 600. If they get 50% correct, you will get Rs. 300.</p></b>
+          </div>
+        </div>
+        <style>
+            .card1 {
+              background-color: #BFD7FF;
+            }
+        </style>
+        <div class="card1 rounded">
+          <div class="card-body">
+            <h5>Rules for this part</h5>
+            <ul>
+              <li>In this round, you will make decisions as a helper and be matched with different test-takers</li>
+              <ul>
+                <li><b>We will implement your decisions in the following parts should a certain
+                  match be realized during the experiment</b></li>
+                <li>Decisions made here will affect the number of hints available
+                to the test-taker in later parts.</li>
+                <li>For instance, if test-taker X is matched with you in one of his/her parts,
+                  the hints s/he receives may be determined by the choices you are about to
+                  make in this round.</li>
+                <li>You will see the number of hints the test-taker took for each subject as well
+                  as the questions for which they took a hint</li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{{ endblock }}

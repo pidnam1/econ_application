@@ -1,0 +1,62 @@
+{{ block title }}
+PRACTICE: Sports
+<style>
+    .card2 {
+      background-color: #FFBFC8;
+    }
+</style>
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>
+    In this part: &emsp; &emsp; Test Taker = You &emsp; &emsp; Helper = Computer
+    </h5>
+  </div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+    <div class="row">
+      <div class="col-sm-7">
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
+        {{ player.round_number }}.
+        {{ formfield 'crt_sports2' }}
+        <p>
+            You may ask for hints from here:
+        </p>
+        <button type="button" onclick="createHint()">Ask for Hint from Computer</button>
+        <script>
+          function createHint() {
+            alert('Hint: Oxen')
+            liveSend('clicked-button')
+          }
+        </script>
+        <p></p>
+        {{ formfield 'helpful_hint_sport2' }}
+        {{ formfield 'prob_sport2' }}
+      </div>
+      <div class="col-sm-5">
+        <style>
+            .card1 {
+              background-color: #BFD7FF;
+            }
+        </style>
+        <div class="card1 rounded">
+          <p></p>
+          <div class="card-body">
+            <h5>Rules for this part</h5>
+            <ul>
+              <li>Throughout this experiment, you will be tested on your knowledge of <b>economics,
+              cooking, and sports</b>. </li>
+              <li>Here are a few questions similar to the ones used in the experiment for you to practice and become familiar</li>
+              <li><u>This practice will not be counted towards your payment</u></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{{ endblock }}

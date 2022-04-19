@@ -1,0 +1,91 @@
+{{ block title }}
+PART {{ round }}: Sports
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>
+    In this part: &emsp; &emsp; Test Taker = You &emsp; &emsp; Helper = {{ partner }}
+    </h5>
+  </div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+    <div class="row">
+      <div class="col-sm-7">
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
+        {{ player.round_number }}.
+        {{ formfield 'crt_sports2_MP' }}
+        <p>
+            You may ask for hints from here:
+        </p>
+        <button type="button" onclick="createHint()">Ask for Hint from Helper</button>
+        <script>
+          function createHint() {
+            liveSend('clicked-button');
+            liveRecv(data);
+          }
+          function liveRecv(data) {
+            alert(data.message);
+          }
+        </script>
+        <p></p>
+        {{ formfield 'helpful_hint_sport2_MP' }}
+        {{ formfield 'prob_sport2_MP' }}
+      </div>
+      <div class="col-sm-5">
+        <style>
+            .card1 {
+              background-color: #BFD7FF;
+            }
+        </style>
+        <div class="card1 rounded">
+          <p></p>
+          <style>
+              .card2 {
+                background-color: #FFBFC8;
+              }
+          </style>
+          <div class="card2 rounded">
+            <div class="card-body">
+              <h6><b>Helper will see if you took a hint</b>
+                <p></p>
+                No penalty for using a hint
+                <p></p>
+                12 questions in total</h6>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5>Rules for this part</h5>
+            <ul>
+              <li>In the following pages, you will be tested on your knowledge of <b>economics,
+              cooking, and sports</b>. </li>
+              <ul>
+                <li>There will be 4 questions per subject.</li>
+              </ul>
+              <li>To help you answer the questions <b>the research team has provided <u>hints</u> on ALL 12 questions</b>.</li>
+              <ul>
+                <li>Hints are cues to help you answer the question.</li>
+                <li>There is <u>no penalty for using a hint</u>.</li>
+                <li>If you need a hint, you must request one click on the `Ask for Hint from Helper` button.</li>
+                <li>Your hints will come in the form of a pop-up.</li>
+                <li><b>If you request a hint, you are certain to get it.</b></li>
+                <li><u>The helper will see if you took a hint and the question for which you took the hint.</u></li>
+                <ul>
+                  <li><u>Helper will not be able to see anything else. Not your answer nor your screen</u></li>
+                </ul>
+              </ul>
+              <li><b>For each correct answer, you will receive 50 Rs.</b></li>
+              <ul>
+                <li>There is no penalty for incorrect answers.</li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{{ endblock }}

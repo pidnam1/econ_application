@@ -1,0 +1,33 @@
+{{ block title }}Results{{ endblock }}
+{{ block content }}
+
+See the below results of your actions as a Helper:
+
+{{ for p in my_previous_partners }}
+  <p></p>
+  <h3>{{ p.participant.label }}</h3>
+  <table class="table">
+      <tr>
+          <th>Subject</th>
+          <th>Hints Offered by You</th>
+          <th>Hints Used by Players</th>
+      </tr>
+      <tr>
+          <td>Economics</td>
+          <td>{{ p.participant.hints_given_econ }}</td>
+          <td>{{ p.participant.econ_hint_used }}</td>
+      </tr>
+      <tr>
+          <td>Cooking</td>
+          <td>{{ p.participant.hints_given_cook }}</td>
+          <td>{{ p.participant.cook_hint_used }}</td>
+      </tr>
+      <tr>
+          <td>Sports</td>
+          <td>{{ p.participant.hints_given_sport }}</td>
+          <td>{{ p.participant.sport_hint_used }}</td>
+      </tr>
+  </table>
+{{ endfor }}
+
+{{ endblock }}

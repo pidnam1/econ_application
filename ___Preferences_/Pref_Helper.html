@@ -1,0 +1,84 @@
+{{ block title }}Preferences for Helpers{{ endblock }}
+{{ block content }}
+
+<p>
+    <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+</p>
+<style>
+    .card1 {
+      background-color: #BFD7FF;
+    }
+</style>
+<div class="card1 rounded">
+  <div class="card-body">
+    <p><b>In this experiment, you will act as both a test-taker and a helper.</b></p>
+    <b>In some rounds, you will act as test taker and a helper will help you</b>
+    <b>In other rounds, you will act as test-taker and a computer will help you</b>
+    <p></p>
+    <u>Your role as the test-taker</u>
+    <ul>
+      <li>Answer all the questions on the test</li>
+    </ul>
+    <u>The role of the helper</u>
+    <ul>
+      <li>When you ask, your helper will supply you with hints
+      <li>Only use the hints we provide to them. </li>
+      <li>Not be allowed to talk to you </li>
+      <li>Not be allowed to create their own hints or give you any other information.</li>
+      <li><u>However, they <b>may decide how many hints in total to give you.</b></u></li>
+      <li><u>Helper will be <b>able to see if you take a hint.</b></u></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+    .card2 {
+      background-color: #FFF6BF;
+    }
+</style>
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>Can you please rank your classmates in terms of your <b>preference</b> to work with you
+    <b>as HELPERS?</b>
+    <p>DO NOT RANK YOURSELF</p></h5>
+  </div>
+</div>
+<p></p>
+
+<p></p>
+<div class="row">
+  <div class="col-sm-3" style="line-height: 25.5px">
+    <b>Classmates</b>
+      {{ for field in C.RANKINGS }}
+        <hr color="#FFFFFF">
+        {{ field }}
+        <br>
+        <br>
+        <br>
+        <br>
+      {{ endfor }}
+  </div>
+  <div class="col-sm-4">
+    <b>Preference for Helpers</b>
+    {{ for field in player.participant.form_fields_pref }}
+      <hr color="#FFFFFF">
+      {{ formfield field }}
+      <br>
+    {{ endfor }}
+  </div>
+  <div class="col-sm-5">
+    <b>Reason for Ranking</b>
+    {{ for field in form_fields_reas }}
+      <hr color="#FFFFFF">
+      {{ formfield field }}
+      <br>
+    {{ endfor }}
+  </div>
+</div>
+
+
+
+
+
+{{ endblock }}

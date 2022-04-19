@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/bootstrap5/css/bootstrap.min.css">
+  <script src="/static/otree/js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<h2>
+    Welcome
+</h2>
+<form method="get">
+    <h4>Please select your name.</h4>
+    <div class="mb-3 _formfield">
+      <label class="col-form-label" for="participant_label">
+      </label>
+      <div class="controls">
+        <select class="form-select" id="participant_label" name="participant_label" required>
+          <option value>------</option>
+          {% for label in labels %}
+              <option value="{{ label }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <br/>
+    {% if wrong_label %}
+    <p style="color: red">This participant label was not found; please try again.</p>
+    {% endif %}
+
+    <p>
+        <button class="otree-btn-next btn btn-primary">Next</button>
+    </p>
+
+</form>
+</body>
+</html>

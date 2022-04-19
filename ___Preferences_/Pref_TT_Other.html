@@ -1,0 +1,114 @@
+{{ block title }}Preferences for Test Takers - Specify Other{{ endblock }}
+{{ block content }}
+
+<p>
+    <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+</p>
+<style>
+    .card1 {
+      background-color: #BFD7FF;
+    }
+</style>
+<div class="card1 rounded">
+  <div class="card-body">
+    <p><b>In this experiment, you will act as both a test-taker and a helper.</b></p>
+    <b>In some rounds, you will act as helper by helping a test-taker</b>
+    <b>In other rounds, the computer will act as a helper</b>
+    <p></p>
+    <u>The role of the test-taker</u>
+    <ul>
+      <li>Answer all the questions on the test</li>
+    </ul>
+    <u>Your role as the helper</u>
+    <ul>
+      <li>When they ask, you will supply them with hints</li>
+      <li>Only use the hints we provide to you. </li>
+      <li>Not be allowed to talk to them </li>
+      <li>Not be allowed to create your own hints or give them any other information.</li>
+      <li><u>However, you <b>may decide how many hints in total to give them.</b></u></li>
+      <li><u>You will be <b>able to see if they take a hint.</b></u></li>
+    </ul>
+
+  </div>
+</div>
+
+<style>
+    .card2 {
+      background-color: #FFF6BF;
+    }
+</style>
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>In the last page you selected the following reasons as "Other". Please specify for each of the following players.</h5>
+  </div>
+</div>
+<p></p>
+
+<p></p>
+<div class="row">
+  <div class="col-sm-5">
+    <b>Classmates</b>
+      {{ for field in players_other }}
+        <p></p>
+        <p>{{ field }}</p>
+        <br>
+      {{ endfor }}
+  </div>
+  <div class="col-sm-7">
+    <b>Other(Please specify)</b>
+      {{ if player.f1_2_2 == "9. Other" }}
+        {{ formfield 'f1_3_2' }}
+      {{ endif }}
+      {{ if player.f2_2_2 == "9. Other" }}
+        {{ formfield 'f2_3_2' }}
+      {{ endif }}
+      {{ if player.f3_2_2 == "9. Other" }}
+        {{ formfield 'f3_3_2' }}
+      {{ endif }}
+      {{ if player.f4_2_2 == "9. Other" }}
+        {{ formfield 'f4_3_2' }}
+      {{ endif }}
+      {{ if player.f5_2_2 == "9. Other" }}
+        {{ formfield 'f5_3_2' }}
+      {{ endif }}
+      {{ if player.f6_2_2 == "9. Other" }}
+        {{ formfield 'f6_3_2' }}
+      {{ endif }}
+      {{ if player.f7_2_2 == "9. Other" }}
+        {{ formfield 'f7_3_2' }}
+      {{ endif }}
+      {{ if player.f8_2_2 == "9. Other" }}
+        {{ formfield 'f8_3_2' }}
+      {{ endif }}
+      {{ if player.f9_2_2 == "9. Other" }}
+        {{ formfield 'f9_3_2' }}
+      {{ endif }}
+      {{ if player.f10_2_2 == "9. Other" }}
+        {{ formfield 'f10_3_2' }}
+      {{ endif }}
+      {{ if player.f11_2_2 == "9. Other" }}
+        {{ formfield 'f11_3_2' }}
+      {{ endif }}
+      {{ if player.f12_2_2 == "9. Other" }}
+        {{ formfield 'f12_3_2' }}
+      {{ endif }}
+      {{ if player.f13_2_2 == "9. Other" }}
+        {{ formfield 'f13_3_2' }}
+      {{ endif }}
+      {{ if player.f14_2_2 == "9. Other" }}
+        {{ formfield 'f14_3_2' }}
+      {{ endif }}
+      {{ if player.f15_2_2 == "9. Other" }}
+        {{ formfield 'f15_3_2' }}
+      {{ endif }}
+      {{ if player.f16_2_2 == "9. Other" }}
+        {{ formfield 'f16_3_2' }}
+      {{ endif }}
+      {{ if player.f17_2_2 == "9. Other" }}
+        {{ formfield 'f17_3_2' }}
+      {{ endif }}
+  </div>
+</div>
+
+{{ endblock }}

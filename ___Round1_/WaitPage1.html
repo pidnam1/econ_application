@@ -1,0 +1,24 @@
+{{ block title }}
+Waiting
+{{ endblock }}
+{{ block content }}
+
+<progress></progress>
+<p>Waiting for players: <span id="wait_for_ids"></span></p>
+
+<script>
+    function liveRecv(data) {
+        console.log('data', data)
+        if (data.finished) {
+            document.getElementById("form").submit();
+        } else {
+            document.getElementById('wait_for_ids').innerText = data.not_arrived_yet;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        liveSend({});
+    });
+</script>
+
+{{ endblock }}

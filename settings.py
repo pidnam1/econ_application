@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
     dict(
         name='my_project',
         display_name = "Survey",
-        app_sequence = ['___Consent_','___Preferences_','___Round1_'],
+        app_sequence = ['___Consent_','___Preferences_','___Practice_','___Round0_','___Round1_','___Round2_','___Round3b_','___Round2_1','___Final_'],
         num_demo_participants=18
     ),
     dict(
@@ -61,7 +61,13 @@ SESSION_CONFIGS = [
         display_name = "Final",
         app_sequence=['___Final_'],
         num_demo_participants=21
-    )
+    ),
+    dict(
+        name='wait_page_timeout',
+        display_name="Timeout on a WaitPage (exit the experiment)",
+        num_demo_participants=2,
+        app_sequence=['wait_page_timeout'],
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -70,7 +76,7 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, use_browser_bots=False, doc=""
+    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
 )
 
 PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rounds2',

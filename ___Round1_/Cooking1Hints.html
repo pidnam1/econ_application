@@ -9,7 +9,7 @@ PART 2: ROUND {{ round }} COOKING
 <div class="card2 rounded">
   <div class="card-body">
     <h5>
-    In this round: &emsp; &emsp; Test Taker = see below &emsp; &emsp; Helper = You
+    In this round: &emsp; &emsp; Test-Taker = see below &emsp; &emsp; Helper = You
     </h5>
   </div>
 </div>
@@ -18,9 +18,6 @@ PART 2: ROUND {{ round }} COOKING
 
     <div class="row">
       <div class="col-sm-7">
-        <p>
-            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
-        </p>
         <p></p>
         <p><b>
           You have <u>10</u> possible hints to spread however you want to among these players.
@@ -40,6 +37,9 @@ PART 2: ROUND {{ round }} COOKING
             {{ formfield 'cookhints1_partner4' label=partner4_label}}
           {{ endif }}
         {{ endfor }}
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
       </div>
       <div class="col-sm-5">
         <style>
@@ -51,7 +51,7 @@ PART 2: ROUND {{ round }} COOKING
           <div class="card-body">
             <h5><u>Payment:</u></h5>
             <b><p>If this round is implemented, you are paid Rs. 300 for participating as a helper.</p>
-            <p>The test taker answers 12 questions. No matter how many they get correct, your payment remains Rs. 300.</p></b>
+            <p>The test-taker answers 12 questions. No matter how many they get correct, your payment remains Rs. 300.</p></b>
           </div>
         </div>
         <style>
@@ -63,17 +63,17 @@ PART 2: ROUND {{ round }} COOKING
           <div class="card-body">
             <h5>Rules for this part</h5>
             <ul>
-              <li>In this round, you will make decisions as a helper and be matched with different test-takers</li>
+              <li>In this round, you will make decisions as a helper and be matched with different test-takers.</li>
               <ul>
                 <li><b>We will implement your decisions in the following parts should a certain
-                  match be realized during the experiment</b></li>
+                  match be realized during the experiment.</b></li>
                 <li>Decisions made here will affect the number of hints available
                 to the test-taker in later parts.</li>
                 <li>For instance, if test-taker X is matched with you in one of his/her parts,
                   the hints s/he receives may be determined by the choices you are about to
                   make in this round.</li>
                 <li>You will see the number of hints the test-taker took for each subject as well
-                  as the questions for which they took a hint</li>
+                  as the questions for which they took a hint.</li>
               </ul>
             </ul>
           </div>

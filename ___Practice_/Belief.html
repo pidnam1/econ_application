@@ -1,31 +1,24 @@
 {{ block title }}
 PRACTICE
-<style>
-    .card2 {
-      background-color: #FFBFC8;
-    }
-</style>
-<p></p>
-<div class="card2 rounded">
-  <div class="card-body">
-    <h5>
-    In this part: &emsp; &emsp; Test Taker = You &emsp; &emsp; Helper = Computer
-    </h5>
-  </div>
-</div>
 {{ endblock }}
 {{ block content }}
 
     <div class="row">
       <div class="col-sm-7">
-        <p>
-            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
-        </p>
-        {{ player.round_number }}.
-        {{ formfield 'belief1' }}
-        <i><u>If you selected option (c) above, please raise your hand and ask an
-          enumerator to explain it again, before you move on.</u></i>
+         <p>In the previous questions, we were asking you the following follow-up question:</p>
+         <p>'Fill in the blank: I think my answer has a __% chance of being right. A randomly drawn computer should answer for me if its accuracy is greater than that.'</p>
+         <p>Now we will practice how to answer this question correctly.</p>
 
+        <p>EXAMPLE</p>
+        <i><p>If you write down that your answer has a 58% chance of being right
+        for this question, and the randomly-drawn computer is accurate 89% of the
+        time, what will happen?</p>
+        <p>a. Your answer will be submitted, since the computer drawn has an accuracy higher than your threshold</p>
+        <p><b>b. The computer\'s answer will be submitted, since the computer drawn has an accuracy higher that your threshold</b></p>
+        <p>c. I am not sure</p></i>
+
+        <b><p>The answer to the above question is (b) because the computer has higher "confidence" in its answer being correct than you do.</p></b>
+        
         <p></p>
 
         {{ formfield 'belief2' }}
@@ -33,10 +26,13 @@ PRACTICE
           enumerator to explain it again, before you move on.</u></i>
 
         <b><u>PLEASE DO NOT MOVE AHEAD IF YOU ARE NOT SURE ABOUT THE ABOVE. PLEASE
-          MOVE ON ONLY IF YOU HAVE COMPLETELY UNDERSTOOD THE ABOVE</u></b>
-
+          MOVE ON ONLY IF YOU HAVE COMPLETELY UNDERSTOOD THE ABOVE.</u></b>
+        <p></p>
         <b><u>IF YOU FEEL YOU DON'T FULLY UNDERSTAND HOW THIS WORKS ASK AN ENUMERATOR
           TO EXPLAIN IT AGAIN BEFORE YOU MOVE ON.</u></b>
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
       </div>
       <div class="col-sm-5">
         <style>
@@ -50,8 +46,8 @@ PRACTICE
             <ul>
               <li>Throughout this experiment, you will be tested on your knowledge of <b>economics,
               cooking, and sports</b>. </li>
-              <li>Here are a few questions similar to the ones used in the experiment for you to practice and become familiar</li>
-              <li><u>This practice will not be counted towards your payment</u></li>
+              <li>Here are a few questions similar to the ones used in the experiment for you to practice and become familiar.</li>
+              <li><u>Practice rounds are not be counted towards your payment.</u></li>
             </ul>
           </div>
         </div>

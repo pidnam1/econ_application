@@ -173,7 +173,7 @@ class Player(BasePlayer):
     #Section C
     tt_perception = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
-        label='Do you think the test takers never hesitated and always asked for hints when they felt the need?',
+        label='Do you think the test-takers never hesitated and always asked for hints when they felt the need?',
     )
     tt_perception_no = models.IntegerField(
         choices=[[1, 'If he or she asked too many times, they might have felt that I would think he or she is stupid'],
@@ -185,7 +185,7 @@ class Player(BasePlayer):
         label='How did you decide how many hints to give to the test-takers you were matched with?',
     )
     diff_why = models.IntegerField(
-        label='Did you make different choices when your payment depended on the performance of the test taker? Why or why not?',
+        label='Did you make different choices when your payment depended on the performance of the test-taker? Why or why not?',
     )
 
     #Section D

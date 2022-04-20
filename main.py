@@ -4,8 +4,6 @@ from starlette.responses import HTMLResponse, RedirectResponse
 from starlette.routing import Route
 from starlette.requests import Request
 from starlette.templating import Jinja2Templates
-from requests import session as requests_session
-from ws4py.client.threadedclient import WebSocketClient
 import requests  # pip3 install requests
 from pprint import pprint
 
@@ -22,7 +20,7 @@ count = 0
 
 print('labels:', labels)
 
-OTREE_SERVER = "http://localhost:8000"
+OTREE_SERVER = "http://otree-econ2.az.virginia.edu"
 ROOM_NAME = 'Pilot'
 
 

@@ -169,63 +169,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_econ3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_cook1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_sport2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -449,63 +470,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_econ3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_cook1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_sport2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -661,7 +703,7 @@ class Player(BasePlayer):
         After the September 11, 2001 attacks on the World Trade Center, the supply
         of downtown office space in Manhattan was dramatically reduced. Forecasters
         predicted that the equilibrium price would rise, but in fact the price fell.
-        What are some facters that could explain the fall in the equilibrium price,
+        What are some factors that could explain the fall in the equilibrium price,
         which the forecasters failed to take into account?''',
         widget=widgets.RadioSelect,
     )
@@ -728,63 +770,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_econ3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_cook1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_sport3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -998,63 +1061,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_econ3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_cook1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        label='''
+        Was this hint helpful?
+        ''',
+        widget=widgets.RadioSelect,
+    )
+    helpful_hint_sport1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -1772,7 +1856,7 @@ class Demographics(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 4800
 
 class Hints_MP(Page):
     form_model = 'player'
@@ -1835,7 +1919,7 @@ class Economics2_MP(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner4 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Change is not always a good thing. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1852,12 +1936,12 @@ class Economics3_MP(Page):
         return (player.round_number == participant.task_rounds2['Economics3_MP']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_economics3_MP','prob_econ3_MP']
+        return ['crt_economics3_MP','helpful_hint_econ3_MP','prob_econ3_MP']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner4 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: 3 out of 3. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1896,12 +1980,12 @@ class Cooking1_MP(Page):
         return (player.round_number == participant.task_rounds2['Cooking1_MP']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_cooking1_MP','prob_cook1_MP']
+        return ['crt_cooking1_MP','helpful_hint_cook1_MP','prob_cook1_MP']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.cook_hint_requests_partner4 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Could make you cry. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2005,12 +2089,12 @@ class Sports2_MP(Page):
         participant = player.participant
         return (player.round_number == participant.task_rounds2['Sports2_MP']) & (get_timeout_seconds1(player) > 0)
     def get_form_fields(player):
-        return ['crt_sports2_MP','prob_sport2_MP']
+        return ['crt_sports2_MP','helpful_hint_sport2_MP','prob_sport2_MP']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.sport_hint_requests_partner4 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Go kiwis. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2120,7 +2204,7 @@ class Economics2_MR(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner7 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2137,12 +2221,12 @@ class Economics3_MR(Page):
         return (player.round_number == participant.task_rounds2['Economics3_MR']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_economics3_MR','prob_econ3_MR']
+        return ['crt_economics3_MR','helpful_hint_econ3_MR','prob_econ3_MR']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner7 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: More, exactly, less. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2181,12 +2265,12 @@ class Cooking1_MR(Page):
         return (player.round_number == participant.task_rounds2['Cooking1_MR']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_cooking1_MR','prob_cook1_MR']
+        return ['crt_cooking1_MR','helpful_hint_cook1_MR','prob_cook1_MR']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.cook_hint_requests_partner7 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Burger patti. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2290,12 +2374,12 @@ class Sports2_MR(Page):
         participant = player.participant
         return (player.round_number == participant.task_rounds2['Sports2_MR']) & (get_timeout_seconds1(player) > 0)
     def get_form_fields(player):
-        return ['crt_sports2_MR','prob_sport2_MR']
+        return ['crt_sports2_MR','helpful_hint_sport2_MR','prob_sport2_MR']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.sport_hint_requests_partner7 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Rhymes with falafa. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2405,7 +2489,7 @@ class Economics2_WP(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner1 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Nothing is unambiguous. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2422,12 +2506,12 @@ class Economics3_WP(Page):
         return (player.round_number == participant.task_rounds2['Economics3_WP']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_economics3_WP','prob_econ3_WP']
+        return ['crt_economics3_WP','helpful_hint_econ3_WP','prob_econ3_WP']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner1 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Both consumer side. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2466,12 +2550,12 @@ class Cooking1_WP(Page):
         return (player.round_number == participant.task_rounds2['Cooking1_WP']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_cooking1_WP','prob_cook1_WP']
+        return ['crt_cooking1_WP','helpful_hint_cook1_WP','prob_cook1_WP']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.cook_hint_requests_partner1 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Green, red, yellow and black lentils. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2580,7 +2664,7 @@ class Sports2_WP(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.sport_hint_requests_partner1 += 1
-            return {player.id_in_group: dict(message = "Number of days in a week. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Number of days in a week. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2597,12 +2681,12 @@ class Sports3_WP(Page):
         return (player.round_number == participant.task_rounds2['Sports3_WP']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_sports3_WP','prob_sport3_WP']
+        return ['crt_sports3_WP','helpful_hint_sport3_WP','prob_sport3_WP']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.sport_hint_requests_partner1 += 1
-            return {player.id_in_group: dict(message = "Hint: Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: MY, MY, MY…. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2667,7 +2751,7 @@ class Economics1_WR(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner5 += 1
-            return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded divided by the percentage change in price. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Infinite. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2690,7 +2774,7 @@ class Economics2_WR(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner5 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint Percentage change in quantity demanded divided by the percentage change in price. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2707,12 +2791,12 @@ class Economics3_WR(Page):
         return (player.round_number == participant.task_rounds2['Economics3_WR']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_economics3_WR','prob_econ3_WR']
+        return ['crt_economics3_WR','helpful_hint_econ3_WR','prob_econ3_WR']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner5 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Only demand increases. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2751,12 +2835,12 @@ class Cooking1_WR(Page):
         return (player.round_number == participant.task_rounds2['Cooking1_WR']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_cooking1_WR','prob_cook1_WR']
+        return ['crt_cooking1_WR','helpful_hint_cook1_WR','prob_cook1_WR']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.cook_hint_requests_partner5 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Light a fire. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2839,12 +2923,12 @@ class Sports1_WR(Page):
         return (player.round_number == participant.task_rounds2['Sports1_WR']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_sports1_WR','prob_sport1_WR']
+        return ['crt_sports1_WR','helpful_hint_sport1_WR','prob_sport1_WR']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.sport_hint_requests_partner5 += 1
-            return {player.id_in_group: dict(message = "Hint is not available. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Never been to the Iberian Peninsula. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2865,7 +2949,7 @@ class Sports2_WR(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.sport_hint_requests_partner5 += 1
-            return {player.id_in_group: dict(message = "Paul Samuelson was a very famous economist. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Paul Samuelson was a very famous economist. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2931,15 +3015,8 @@ class Final(Page):
             int = list(range(0, len(upcoming_apps)))
         random.shuffle(int)
         for i in range(len(int)):
-            if ('___Round0b_' in upcoming_apps[int[i]]) and (player.participant.round0b_completed == 0):
-                player.participant.round0b_completed = 4
-                if (player.participant.round3b_completed != 0):
-                    player.participant.round0b_completed += 1
-                return upcoming_apps[int[i]]
-            elif ('___Round3b_' in upcoming_apps[int[i]]) and (player.participant.round3b_completed == 0):
+            if ('___Round3b_' in upcoming_apps[int[i]]) and (player.participant.round3b_completed == 0):
                 player.participant.round3b_completed = 4
-                if (player.participant.round0b_completed != 0):
-                    player.participant.round3b_completed += 1
                 return upcoming_apps[int[i]]
         return '___Final_'
 

@@ -18,9 +18,6 @@ PART {{ round }}
 
     <div class="row">
       <div class="col-sm-7">
-        <p>
-            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
-        </p>
         <p></p>
         <p><b>
           How many hints do you expect to ask from {{ partner }} in this part?
@@ -36,7 +33,9 @@ PART {{ round }}
         {{ for field in formfields_results }}
           {{ formfield field }}
         {{ endfor }}
-
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
       </div>
       <div class="col-sm-5">
         <style>
@@ -63,12 +62,11 @@ PART {{ round }}
           <div class="card-body">
             <h4>Rules for this part</h4>
             <ul>
-              <li>In the following pages, you will be tested on your knowledge of <b>economics,
-              cooking, and sports</b>. </li>
+              <li>In this part, you are tested in <b>economics, cooking, and sports</b>. </li>
               <ul>
-                <li>There will be 4 questions per subject.</li>
+                <li>There are 4 questions per subject.</li>
               </ul>
-              <li>To help you answer the questions <b>the research team has provided <u>hints</u> on ALL 12 questions</b>.</li>
+              <li><b>You have <u>hints</u> on ALL 12 questions</b>.</li>
               <ul>
                 <li>Hints are cues to help you answer the question.</li>
                 <li>There is <u>no penalty for using a hint</u>.</li>

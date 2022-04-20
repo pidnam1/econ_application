@@ -169,84 +169,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ3_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -470,84 +470,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ3_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -770,84 +770,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ3_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -1061,84 +1061,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ3_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -1856,7 +1856,7 @@ class Demographics(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 4800
 
 class Hints_MP(Page):
     form_model = 'player'

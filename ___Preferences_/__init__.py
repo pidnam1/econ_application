@@ -27,8 +27,8 @@ def make_field1(label):
 def make_field2(label):
     return models.StringField(
         choices=["1. A close friend", "2. Male", "3. Female", "4. Has a high GPA",
-        "5. Is older than me", "6. Is  younger than me", "7. Is from my ‘zaat’",
-        "8. Is not from my \‘zaat\’", "9. Other"],
+        "5. Is older than me", "6. Is  younger than me", "7. Is from my 'zaat'",
+        "8. Is not from my 'zaat'", "9. Other"],
         label=label, initial = "None"
     )
 

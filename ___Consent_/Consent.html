@@ -1,9 +1,6 @@
 {{ block title }}Consent Form {{ endblock }}
 {{ block content }}
 
-    <p>
-        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
-    </p>
     <p></p>
     <style>
         .card1 {
@@ -73,7 +70,7 @@
     finished please contact us at sa8ey@virginia.edu.</p>
 
     <p><b>Payment:</b> If you agree to participate in this study (both as a helper as well
-    as a test taker), we shall provide you with 100 PKR as participation fees. In
+    as a test-taker), we shall provide you with 100 PKR as participation fees. In
     the last survey, we will play a game during which you would have a chance to
     stake a share of the 100 PKR (from 0% to 100%) to be multiplied by 2.5x against
     a random draw.</p>
@@ -147,5 +144,8 @@
     I agree to participate in the research study described above.
     {{ formfield 'agree' }}
 
-
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+    
 {{ endblock }}

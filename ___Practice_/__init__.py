@@ -76,21 +76,21 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'Not applicable']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -139,19 +139,19 @@ class Player(BasePlayer):
         ''', min=0, max=100
     )
     results_econ = models.IntegerField(
-        choices=[0,1,2,3],
+        choices=[[0,"0/4 hints"],[1,"1/4 hints"],[2,"2/4 hints"],[3,"3/4 hints"]],
         label='''
         In Economics?''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cook = models.IntegerField(
-        choices=[0,1,2,3],
+        choices=[[0,"0/4 hints"],[1,"1/4 hints"],[2,"2/4 hints"],[3,"3/4 hints"]],
         label='''
         In Cooking?''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_sport = models.IntegerField(
-        choices=[0,1,2,3],
+        choices=[[0,"0/4 hints"],[1,"1/4 hints"],[2,"2/4 hints"],[3,"3/4 hints"]],
         label='''
         In Sports?''',
         widget=widgets.RadioSelectHorizontal,
@@ -159,19 +159,10 @@ class Player(BasePlayer):
     time_spent_econ = models.FloatField(min=0,max=1200,initial=0)
     time_spent_cook = models.FloatField(min=0,max=1200,initial=0)
     time_spent_sport = models.FloatField(min=0,max=1200,initial=0)
-    belief1 = models.IntegerField(
-        choices=[[1, 'Your answer will be submitted, since the computer drawn has an accuracy higher than your threshold'],
-        [2, 'The computer\'s answer will be submitted, since the computer drawn has an accuracy higher that your threshold'],
-        [3, 'I am not sure']],
-        label='''If you write down that your answer has a 58% chance of being right
-        for this question, and the randomly-drawn computer is accurate 89% of the
-        time, what will happen?''',
-        widget=widgets.RadioSelect
-    )
     belief2 = models.IntegerField(
-        choices=[[1, 'Your answer will be submitted, since the computer drawn has an accuracy lower than your threshold'],
-        [2, 'The computer\'s answer will be submitted, since the computer drawn has an accuracy lower that your threshold'],
-        [3, 'I am not sure']],
+        choices=[[1, 'a. Your answer will be submitted, since the computer drawn has an accuracy lower than your threshold'],
+        [2, 'b. The computer\'s answer will be submitted, since the computer drawn has an accuracy lower that your threshold'],
+        [3, 'c. I am not sure']],
         label='''If you write down that your answer has a 73% chance of being right
         for this question, and the randomly-drawn computer is accurate 42% of the
         time, what will happen?''',
@@ -323,14 +314,14 @@ class Sports2(Page):
 
 class Belief(Page):
     form_model = 'player'
-    form_fields = ['belief1','belief2']
+    form_fields = ['belief2']
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
         return player.round_number == 6
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(belief1=2, belief2=1)
+        solutions = dict(belief2=1)
 
         if values != solutions:
             return "Please ask an enumerator to explain before you move on"

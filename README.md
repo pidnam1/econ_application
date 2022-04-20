@@ -3,9 +3,9 @@ To clone, create an empty directory and cd into it, then use the command "git cl
 
 #### To push your changes to the repo, use the command "git add files", where files are the files you want to add, if you want to add all your files, do "git add ."
 
-Then, do "git commit -m Message", where "Message" is the commit message, like a description of what you are adding
+Then, do "git commit -m '<Message>'", where <Message> is the commit message, like a description of what you are adding
 
-Then do git push origin main, you should see your changes in the repo after you do this
+Then do "git push origin main", you should see your changes in the repo after you do this
 
 
 #### To pull the changes from the repository to your local computer, use the command "git pull", this should pull changes from the repository to your computer 

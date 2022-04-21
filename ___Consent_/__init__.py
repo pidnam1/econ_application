@@ -119,6 +119,12 @@ def change_labels(player: Player):
         if player.participant.label == current:
             player.participant.label = new
 
+def set_players(player: Player):
+    subsession = player.subsession
+    session = subsession.session
+    session.active_players = []
+    session.active_players.append(player.id_in_group)
+    session.count += 1
 
 class Consent(Page):
     form_model = 'player'
@@ -127,8 +133,6 @@ class Consent(Page):
     def before_next_page(player: Player, timeout_happened):
         player.participant.name = player.esig
         change_labels(player)
-        print(player.participant.gender)
-        print(player.participant.roll_no)
-        print(player.participant.count_participant)
+        set_players(player)
 
 page_sequence = [Consent]

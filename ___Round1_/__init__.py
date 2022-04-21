@@ -435,15 +435,6 @@ def initialize_variables(subsession: Subsession):
 
 
 def set_players(subsession: Subsession):
-    session = subsession.session
-    count_list = []
-    session.active_players = []
-    for p in subsession.get_players():
-        count_list.append(p.participant.count_participant)
-        if p.participant.count_participant != 0:
-            session.active_players.append(p.id_in_group)
-    session.count = max(count_list)
-
     upper = session.count + 1
     int = list(range(1, upper))
     random.shuffle(int)

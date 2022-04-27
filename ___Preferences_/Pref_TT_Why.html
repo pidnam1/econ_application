@@ -1,4 +1,4 @@
-{{ block title }}Preferences for Test-Takers - Specify Other{{ endblock }}
+{{ block title }}Preferences for Test-Takers{{ endblock }}
 {{ block content }}
 
 <style>
@@ -37,38 +37,32 @@
 <p></p>
 <div class="card2 rounded">
   <div class="card-body">
-    <h5>In the last page you selected the following reasons as "Other". Please specify for each of the following players.</h5>
+    <h5>Can you please rank your classmates in terms of who you would <b>like to help the most?</b>
+    <p>DO NOT RANK YOURSELF</p></h5>
   </div>
 </div>
 <p></p>
 
 <p></p>
 <div class="row">
-  <div class="col-sm-5">
+  <div class="col-sm-5" style="line-height: 25.5px">
     <b>Classmates</b>
-      {{ for field in players_other }}
-        <p></p>
-        <p>{{ field }}</p>
+      {{ for field in C.TOP5 }}
+        <hr color="#FFFFFF">
+        {{ field }}
+        <br>
+        <br>
+        <br>
         <br>
       {{ endfor }}
   </div>
   <div class="col-sm-7">
-    <b>Other(Please specify)</b>
-      {{ if player.f1_2_2 == "9. Other" }}
-        {{ formfield 'f1_3_2' }}
-      {{ endif }}
-      {{ if player.f2_2_2 == "9. Other" }}
-        {{ formfield 'f2_3_2' }}
-      {{ endif }}
-      {{ if player.f3_2_2 == "9. Other" }}
-        {{ formfield 'f3_3_2' }}
-      {{ endif }}
-      {{ if player.f4_2_2 == "9. Other" }}
-        {{ formfield 'f4_3_2' }}
-      {{ endif }}
-      {{ if player.f5_2_2 == "9. Other" }}
-        {{ formfield 'f5_3_2' }}
-      {{ endif }}
+    <b>Reason for Ranking</b>
+    {{ for field in form }}
+      <hr color="#FFFFFF">
+      {{ formfield field }}
+      <br>
+    {{ endfor }}
   </div>
 </div>
 

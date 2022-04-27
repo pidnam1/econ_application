@@ -45,7 +45,7 @@
 
 <p></p>
 <div class="row">
-  <div class="col-sm-3" style="line-height: 25.5px">
+  <div class="col-sm-5" style="line-height: 25.5px">
     <b>Classmates</b>
       {{ for field in C.RANKINGS }}
         <hr color="#FFFFFF">
@@ -56,17 +56,9 @@
         <br>
       {{ endfor }}
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-7">
     <b>Preference for Helpers</b>
     {{ for field in player.participant.form_fields_pref }}
-      <hr color="#FFFFFF">
-      {{ formfield field }}
-      <br>
-    {{ endfor }}
-  </div>
-  <div class="col-sm-5">
-    <b>Reason for Ranking</b>
-    {{ for field in form_fields_reas }}
       <hr color="#FFFFFF">
       {{ formfield field }}
       <br>

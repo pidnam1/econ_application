@@ -23,16 +23,16 @@ PART 2: ROUND {{ round }} SPORTS
           How well do you think that the following players will do in the SPORTS WITHOUT HINTS?
         </b></p>
         {{ for field in formfields_random }}
-          {{ if field == 'sportresults02_partner1'}}
+          {{ if field == 'sportresults02_partner1' && partnerm2 != 0 }}
             {{ formfield 'sportresults02_partner1' label=partner1_label}}
           {{ endif }}
-          {{ if field == 'sportresults02_partner2'}}
+          {{ if field == 'sportresults02_partner2' && partnerm4 != 0 }}
             {{ formfield 'sportresults02_partner2' label=partner2_label}}
           {{ endif }}
-          {{ if field == 'sportresults02_partner3'}}
+          {{ if field == 'sportresults02_partner3' && partnerf2 != 0 }}
             {{ formfield 'sportresults02_partner3' label=partner3_label}}
           {{ endif }}
-          {{ if field == 'sportresults02_partner4'}}
+          {{ if field == 'sportresults02_partner4' && partnerf4 != 0 }}
             {{ formfield 'sportresults02_partner4' label=partner4_label}}
           {{ endif }}
         {{ endfor }}

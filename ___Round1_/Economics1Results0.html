@@ -23,16 +23,16 @@ PART 2: ROUND {{ round }} ECONOMICS
           How well do you think that the following players will do in the ECONOMICS WITHOUT HINTS?
         </b></p>
         {{ for field in formfields_random }}
-          {{ if field == 'econresults01_partner1'}}
+          {{ if field == 'econresults01_partner1' && partnerm1 != 0 }}
             {{ formfield 'econresults01_partner1' label=partner1_label}}
           {{ endif }}
-          {{ if field == 'econresults01_partner2'}}
+          {{ if field == 'econresults01_partner2' && partnerm3 != 0 }}
             {{ formfield 'econresults01_partner2' label=partner2_label}}
           {{ endif }}
-          {{ if field == 'econresults01_partner3'}}
+          {{ if field == 'econresults01_partner3' && partnerf1 != 0 }}
             {{ formfield 'econresults01_partner3' label=partner3_label}}
           {{ endif }}
-          {{ if field == 'econresults01_partner4'}}
+          {{ if field == 'econresults01_partner4' && partnerf3 != 0 }}
             {{ formfield 'econresults01_partner4' label=partner4_label}}
           {{ endif }}
         {{ endfor }}

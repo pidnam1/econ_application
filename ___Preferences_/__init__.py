@@ -242,6 +242,8 @@ class Pref_TT(Page):
         group = player.group
         for name in name_list:
             for p in group.get_players():
+
+                ##subtly eliminates ones who did not show up from matching algorithm
                 if p.participant.label == name:
                     id_list.append(p.id_in_group)
                     if p.participant.gender == 0: #female

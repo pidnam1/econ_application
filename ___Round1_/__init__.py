@@ -277,7 +277,7 @@ def set_helpers_new(subsession: Subsession):
             helper = g.get_player_by_id(helper_id)
 
             ##females first
-            if helper.participant.gender == 0 and can_help_player_random(helper, p.participant.gender) and not is_helping(p, helper.id_in_group):
+            if helper.participant.gender == 0 and helper.id_in_group != player_id and can_help_player_random(helper, p.participant.gender) and not is_helping(p, helper.id_in_group):
                 add_test_taker(helper, p)
                 assign_helper(p, helper, "random")
                 count += 1
@@ -289,7 +289,7 @@ def set_helpers_new(subsession: Subsession):
             helper_id = helpers_randomfied[i]
             helper = g.get_player_by_id(helper_id)
 
-            if helper.participant.gender == 1 and can_help_player_random(helper, p.participant.gender) and not is_helping(p, helper.id_in_group):
+            if helper.participant.gender == 1 and helper.id_in_group != player_id and can_help_player_random(helper, p.participant.gender) and not is_helping(p, helper.id_in_group):
                 add_test_taker(helper, p)
                 assign_helper(p, helper, "random")
                 count += 1
@@ -318,10 +318,10 @@ def show_tests(subsession: Subsession):
         p = g.get_player_by_id(player_id)
         assert len(p.participant.female_tts) <= 4, "Player " + player_id + " is helping more than 4 females"
         assert len(p.participant.male_tts) <= 4, "Player " + player_id + " is helping more than 4 males"
-        assert len(p.participant.helpers_dict["pf"]) > 0, "Player " + str(player_id) + " does not have a preferred female helper"
-        assert len(p.participant.helpers_dict["pm"]) > 0, "Player " + str(player_id) + " does not have a preferred male helper"
-        assert len(p.participant.helpers_dict["rf"]) > 0, "Player " + str(player_id) + " does not have a random female helper"
-        assert len(p.participant.helpers_dict["rm"]) > 0, "Player " + str(player_id) + " does not have a random male helper"
+        assert len(p.participant.helpers_dict["pf"]) <= 2, "Player " + str(player_id) + " is helping more than 2 preferred female helpers"
+        assert len(p.participant.helpers_dict["pm"]) <= 2, "Player " + str(player_id) + " is helping more than 2 preferred male helpers"
+        assert len(p.participant.helpers_dict["rf"]) <= 2, "Player " + str(player_id) + " is helping more than 2 random female helpers"
+        assert len(p.participant.helpers_dict["rm"]) <= 2, "Player " + str(player_id) + " is helping more than 2 random male helpers"
 
     print("------------")
     print("\n")
@@ -344,19 +344,19 @@ def show_tests(subsession: Subsession):
 
 
     print("Players with 2 Preferred Female Helpers: ", stat_helper_dict["pf"].count(2))
-    print("Players with less than 2 Preferred Female Helpers: ", stat_helper_dict["pf"].count(1))
+    print("Players with less than 2 Preferred Female Helpers: ", stat_helper_dict["pf"].count(1) + stat_helper_dict["pf"].count(0))
     print("----------")
 
     print("Players with 2 Preferred Male Helpers: ", stat_helper_dict["pm"].count(2))
-    print("Players with less than 2 Preferred Male Helpers: ", stat_helper_dict["pm"].count(1))
+    print("Players with less than 2 Preferred Male Helpers: ", stat_helper_dict["pm"].count(1) + stat_helper_dict["pm"].count(0))
     print("----------")
 
     print("Players with 2 Random Female Helpers: ", stat_helper_dict["rf"].count(2))
-    print("Players with less than 2 Random Female Helpers: ", stat_helper_dict["rf"].count(1))
+    print("Players with less than 2 Random Female Helpers: ", stat_helper_dict["rf"].count(1) + stat_helper_dict["rf"].count(0))
     print("----------")
 
     print("Players with 2 Random Male Helpers: ", stat_helper_dict["rm"].count(2))
-    print("Players with less than 2 Random Male Helpers: ", stat_helper_dict["rm"].count(1))
+    print("Players with less than 2 Random Male Helpers: ", stat_helper_dict["rm"].count(1) + stat_helper_dict["rm"].count(0))
     print("----------")
 
     for i in range(0,5):

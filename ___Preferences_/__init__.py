@@ -136,31 +136,39 @@ class Pref_Helper(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         #SET THESE WHEN SETTING THE NAMES OF THE PLAYERS
+
+        #change this and the player names list in Consent's tests.py for testing
         name_list = [player.f1_1_1, player.f2_1_1, player.f3_1_1, player.f4_1_1,
         player.f5_1_1, player.f6_1_1, player.f7_1_1, player.f8_1_1, player.f9_1_1,
         player.f10_1_1, player.f11_1_1, player.f12_1_1, player.f13_1_1, player.f14_1_1,
         player.f15_1_1, player.f16_1_1, player.f17_1_1, player.f18_1_1, player.f19_1_1,
         player.f20_1_1]
+        # name_list = [player.f1_1_1, player.f2_1_1, player.f3_1_1, player.f4_1_1,
+        #               player.f5_1_1, player.f6_1_1, player.f7_1_1, player.f8_1_1, player.f9_1_1,
+        #               ]
         id_list = []
         id_list_female = []
         id_list_male = []
         group = player.group
         for name in name_list:
             for p in group.get_players():
+
                 if p.participant.label == name:
                     id_list.append(p.id_in_group)
                     if p.participant.gender == 0: #female
                         id_list_female.append(p.id_in_group)
                     else: #male
                         id_list_male.append(p.id_in_group)
-        player.participant.pref_helper = dict(zip(C.RANKINGS,id_list))
-        player.participant.pref_helper_female = dict()
-        player.participant.pref_helper_male = dict()
-        for key, value in player.participant.pref_helper.items():
+
+        print("id list", id_list)
+        player.participant.pref_helpers = id_list
+        player.participant.pref_female_helpers = []
+        player.participant.pref_male_helpers = []
+        for value in player.participant.pref_helpers:
             if value in id_list_female:
-                player.participant.pref_helper_female.update({key:value})
+                player.participant.pref_female_helpers.append(value)
             elif value in id_list_male:
-                player.participant.pref_helper_male.update({key:value})
+                player.participant.pref_male_helpers.append(value)
 
 class Pref_Helper_Why(Page):
     form_model = 'player'
@@ -243,7 +251,7 @@ class Pref_TT(Page):
         player.participant.pref_tt = dict(zip(C.RANKINGS,id_list))
         player.participant.pref_tt_female = dict()
         player.participant.pref_tt_male = dict()
-        for key, value in player.participant.pref_helper.items():
+        for key, value in player.participant.pref_tt.items():
             if value in id_list_female:
                 player.participant.pref_tt_female.update({key:value})
             elif value in id_list_male:

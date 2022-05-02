@@ -2,6 +2,7 @@ from otree.api import *
 import random
 
 
+
 class C(BaseConstants):
     NAME_IN_URL = '___Round1_'
     PLAYERS_PER_GROUP = None
@@ -20,343 +21,92 @@ class Group(BaseGroup):
     pass
 
 
+def make_field_one():
+    return models.StringField(
+        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+def make_field_two():
+    return models.StringField(
+        choices=[[0, '0'], [1, '1'],
+                 [2, '2'], [3, '3'], [4, '4']],
+        widget=widgets.RadioSelectHorizontal,
+    )
 class Player(BasePlayer):
-    econhints1_partner1 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econhints1_partner2 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econhints1_partner3 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econhints1_partner4 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econhints2_partner1 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econhints2_partner2 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econhints2_partner3 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econhints2_partner4 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookhints1_partner1 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookhints1_partner2 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookhints1_partner3 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookhints1_partner4 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookhints2_partner1 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookhints2_partner2 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookhints2_partner3 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookhints2_partner4 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sporthints1_partner1 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sporthints1_partner2 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sporthints1_partner3 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sporthints1_partner4 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sporthints2_partner1 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sporthints2_partner2 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sporthints2_partner3 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sporthints2_partner4 = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults1_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults1_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults1_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults1_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults2_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults2_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults2_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults2_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults1_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults1_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults1_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults1_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults2_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults2_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults2_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults2_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults1_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults1_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults1_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults1_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults2_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults2_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults2_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults2_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults01_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults01_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults01_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults01_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults02_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults02_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults02_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    econresults02_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults01_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults01_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults01_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults01_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults02_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults02_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults02_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    cookresults02_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults01_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults01_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults01_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults01_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults02_partner1 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults02_partner2 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults02_partner3 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    sportresults02_partner4 = models.StringField(
-        choices=[[0, '0'], [1, '1'],
-                 [2, '2'], [3, '3'], [4, '4']],
-        widget=widgets.RadioSelectHorizontal,
-    )
+    econhints1_partner1 = make_field_one()
+    econhints1_partner2 = make_field_one()
+    econhints1_partner3 = make_field_one()
+    econhints1_partner4 = make_field_one()
+    econhints2_partner1 = make_field_one()
+    econhints2_partner2 = make_field_one()
+    econhints2_partner3 = make_field_one()
+    econhints2_partner4 = make_field_one()
+    cookhints1_partner1 = make_field_one()
+    cookhints1_partner2 = make_field_one()
+    cookhints1_partner3 = make_field_one()
+    cookhints1_partner4 = make_field_one()
+    cookhints2_partner1 = make_field_one()
+    cookhints2_partner2 = make_field_one()
+    cookhints2_partner3 = make_field_one()
+    cookhints2_partner4 = make_field_one()
+    sporthints1_partner1 = make_field_one()
+    sporthints1_partner2 = make_field_one()
+    sporthints1_partner3 = make_field_one()
+    sporthints1_partner4 = make_field_one()
+    sporthints2_partner1 = make_field_one()
+    sporthints2_partner2 = make_field_one()
+    sporthints2_partner3 = make_field_one()
+    sporthints2_partner4 = make_field_one()
+    econresults1_partner1 = make_field_two()
+    econresults1_partner2 = make_field_two()
+    econresults1_partner3 = make_field_two()
+    econresults1_partner4 = make_field_two()
+    econresults2_partner1 = make_field_two()
+    econresults2_partner2 = make_field_two()
+    econresults2_partner3 = make_field_two()
+    econresults2_partner4 = make_field_two()
+    cookresults1_partner1 = make_field_two()
+    cookresults1_partner2 = make_field_two()
+    cookresults1_partner3 = make_field_two()
+    cookresults1_partner4 = make_field_two()
+    cookresults2_partner1 = make_field_two()
+    cookresults2_partner2 = make_field_two()
+    cookresults2_partner3 = make_field_two()
+    cookresults2_partner4 = make_field_two()
+    sportresults1_partner1 = make_field_two()
+    sportresults1_partner2 = make_field_two()
+    sportresults1_partner3 = make_field_two()
+    sportresults1_partner4 = make_field_two()
+    sportresults2_partner1 = make_field_two()
+    sportresults2_partner2 = make_field_two()
+    sportresults2_partner3 = make_field_two()
+    sportresults2_partner4 = make_field_two()
+    econresults01_partner1 = make_field_two()
+    econresults01_partner2 = make_field_two()
+    econresults01_partner3 = make_field_two()
+    econresults01_partner4 = make_field_two()
+    econresults02_partner1 = make_field_two()
+    econresults02_partner2 = make_field_two()
+    econresults02_partner3 = make_field_two()
+    econresults02_partner4 = make_field_two()
+    cookresults01_partner1 = make_field_two()
+    cookresults01_partner2 = make_field_two()
+    cookresults01_partner3 = make_field_two()
+    cookresults01_partner4 = make_field_two()
+    cookresults02_partner1 = make_field_two()
+    cookresults02_partner2 = make_field_two()
+    cookresults02_partner3 = make_field_two()
+    cookresults02_partner4 = make_field_two()
+    sportresults01_partner1 = make_field_two()
+    sportresults01_partner2 = make_field_two()
+    sportresults01_partner3 = make_field_two()
+    sportresults01_partner4 = make_field_two()
+    sportresults02_partner1 = make_field_two()
+    sportresults02_partner2 = make_field_two()
+    sportresults02_partner3 = make_field_two()
+    sportresults02_partner4 = make_field_two()
+
 
 
 # FUNCTIONS
@@ -399,43 +149,21 @@ def creating_session(subsession: Subsession):
 
 def initialize_variables(subsession: Subsession):
     for p in subsession.get_players():
-        p.participant.p_helping = dict(pftt1=0, pftt2=0, pmtt1=0, pmtt2=0, rftt1=0, rftt2=0, rmtt1=0, rmtt2=0)
+        p.participant.helpers_dict = dict(pf = [], pm = [], rf = [], rm = [])
+        ##p.participant.pref_helpers =[]
+        ##p.participant.pref_female_helpers = []
+        ##p.participant.pref_male_helpers = []
 
-        int = list(range(1, 21))
-        random.shuffle(int)
-        p.participant.pref_helper = {int[0]: 1, int[1]: 2, int[2]: 3, int[3]: 4, int[4]: 5,
-                                     int[5]: 6, int[6]: 7, int[7]: 8, int[8]: 9, int[9]: 10, int[10]: 11, int[11]: 12,
-                                     int[12]: 13, int[13]: 14, int[14]: 15, int[15]: 16, int[16]: 17, int[17]: 18,
-                                     int[18]: 19, int[19]: 20}
-        p.participant.pref_helper_female = {int[0]: 1, int[1]: 2, int[3]: 4, int[4]: 5,
-                                            int[7]: 8, int[10]: 11, int[11]: 12, int[12]: 13, int[13]: 14, int[14]: 15,
-                                            int[15]: 16}
-        p.participant.pref_helper_male = {int[2]: 3, int[5]: 6, int[6]: 7, int[8]: 9,
-                                          int[9]: 10, int[16]: 17, int[17]: 18, int[18]: 19, int[19]: 20}
-
-        p.participant.partner1 = 0
-        p.participant.partner2 = 0
-        p.participant.partner3 = 0
-        p.participant.partner4 = 0
-        p.participant.partner5 = 0
-        p.participant.partner6 = 0
-        p.participant.partner7 = 0
-        p.participant.partner8 = 0
-
-        p.participant.partnerf1 = 0
-        p.participant.partnerf2 = 0
-        p.participant.partnerf3 = 0
-        p.participant.partnerf4 = 0
-        p.participant.partnerm1 = 0
-        p.participant.partnerm2 = 0
-        p.participant.partnerm3 = 0
-        p.participant.partnerm4 = 0
-
+        p.participant.tts = []
+        p.participant.female_tts = []
+        p.participant.male_tts = []
+        p.participant.assigned_helpers = []
         p.participant.count_participant = 0
 
 
 def set_players(subsession: Subsession):
-    upper = session.count + 1
+    session = subsession.session
+    upper = session.vars["count"] + 1
     int = list(range(1, upper))
     random.shuffle(int)
     for g in subsession.get_groups():
@@ -444,6 +172,198 @@ def set_players(subsession: Subsession):
             for i in range(len(int)):
                 if p.id_in_group == i + 1:
                     p.participant.true_id = int[i]
+##### Functions for helper implementation, related to participants
+
+def is_helping(player: Player, id):
+    for i in player.participant.helpers_dict.values():
+        if id in i:
+            return True
+    return False
+
+def can_help_male(player:Player):
+    return len(player.participant.male_tts) < 4
+
+def can_help_female(player:Player):
+    return len(player.participant.female_tts) < 4
+
+def can_help_player_preferred(player:Player, gender):
+    if gender == 0:
+        return len(player.participant.female_tts) < 2
+    else:
+        return len(player.participant.male_tts) < 2
+def can_help_player_random(player:Player, gender):
+    if gender == 0:
+        return len(player.participant.female_tts) < 4
+    else:
+        return len(player.participant.male_tts) < 4
+
+def add_test_taker(helper:Player, test_taker:Player):
+    if test_taker.participant.gender == 0:
+        helper.participant.female_tts.append(test_taker.id_in_group)
+    else:
+        helper.participant.male_tts.append(test_taker.id_in_group)
+
+def assign_helper(player:Player, helper:Player, round):
+    if helper.participant.gender == 0 and round == "preferred":
+        player.participant.helpers_dict["pf"].append(helper.id_in_group)
+    elif helper.participant.gender == 0 and round == "random":
+        player.participant.helpers_dict["rf"].append(helper.id_in_group)
+    elif helper.participant.gender == 1 and round == "preferred":
+        player.participant.helpers_dict["pm"].append(helper.id_in_group)
+    else:
+        player.participant.helpers_dict["rm"].append(helper.id_in_group)
+
+def set_helpers_new(subsession: Subsession):
+    session = subsession.session
+    g = subsession.get_groups()[0]
+
+    #randomizing list
+    random_players = session.active_players
+    random.shuffle(random_players)
+
+    ###For debugging
+    testing_dict_female = {}
+    testing_dict_male = {}
+    for i in range(1,21):
+        testing_dict_female[i] = []
+        testing_dict_male[i] = []
+
+    #going through players
+    for player_id in random_players:
+        p = g.get_player_by_id(player_id)
+        print("----------")
+        print("Testing Player: ",  p.id_in_group, "Preferred Female List: ", p.participant.pref_female_helpers,"Preferred Male List: ", p.participant.pref_male_helpers)
+
+        ##getting two preferred women
+        count = 0
+        i = 0
+        while count < 2 and i < len(p.participant.pref_female_helpers):
+            helper_id = p.participant.pref_female_helpers[i]
+            helper = g.get_player_by_id(helper_id)
+
+            if can_help_player_preferred(helper, p.participant.gender) and not is_helping(p, helper.id_in_group):
+                add_test_taker(helper, p)
+                assign_helper(p, helper, "preferred")
+                count += 1
+                testing_dict_female[helper_id] = [len(helper.participant.female_tts), len(helper.participant.male_tts)]
+            i += 1
+
+        ##getting two preferred men
+        count = 0
+        i = 0
+        while count <  2 and i < len(p.participant.pref_male_helpers):
+            helper_id = p.participant.pref_male_helpers[i]
+            helper = g.get_player_by_id(helper_id)
+
+            if can_help_player_preferred(helper, p.participant.gender) and not is_helping(p, helper.id_in_group):
+                add_test_taker(helper, p)
+                assign_helper(p, helper, "preferred")
+                count += 1
+                testing_dict_male[helper_id] = [len(helper.participant.female_tts), len(helper.participant.male_tts)]
+            i += 1
+
+        print("After preferred assignment", p.participant.helpers_dict)
+
+    ####random section
+    helpers_randomfied = random_players
+    random.shuffle(helpers_randomfied)
+    for player_id in random_players:
+        p = g.get_player_by_id(player_id)
+        ##getting two random women
+        count = 0
+        i = 0
+        while count < 2 and i < len(helpers_randomfied):
+            helper_id = helpers_randomfied[i]
+            helper = g.get_player_by_id(helper_id)
+
+            ##females first
+            if helper.participant.gender == 0 and can_help_player_random(helper, p.participant.gender) and not is_helping(p, helper.id_in_group):
+                add_test_taker(helper, p)
+                assign_helper(p, helper, "random")
+                count += 1
+            i += 1
+        ##getting two random men
+        count = 0
+        i = 0
+        while count < 2 and i < len(helpers_randomfied):
+            helper_id = helpers_randomfied[i]
+            helper = g.get_player_by_id(helper_id)
+
+            if helper.participant.gender == 1 and can_help_player_random(helper, p.participant.gender) and not is_helping(p, helper.id_in_group):
+                add_test_taker(helper, p)
+                assign_helper(p, helper, "random")
+                count += 1
+            i += 1
+
+    ###testing after
+    for i in random_players:
+        p = g.get_player_by_id(i)
+        print("-----------")
+        print("For Player: ", i)
+        print("Helper dict: ", p.participant.helpers_dict)
+        print("Test Takers: ", "Female: ", p.participant.female_tts, "Male: ", p.participant.male_tts)
+
+
+    ####Test implementation
+    show_tests(subsession)
+
+def show_tests(subsession: Subsession):
+
+    ##Test section
+    session = subsession.session
+    players = session.active_players
+    g = subsession.get_groups()[0]
+
+    for player_id in players:
+        p = g.get_player_by_id(player_id)
+        assert len(p.participant.female_tts) <= 4, "Player " + player_id + " is helping more than 4 females"
+        assert len(p.participant.male_tts) <= 4, "Player " + player_id + " is helping more than 4 males"
+        assert len(p.participant.helpers_dict["pf"]) > 0, "Player " + str(player_id) + " does not have a preferred female helper"
+        assert len(p.participant.helpers_dict["pm"]) > 0, "Player " + str(player_id) + " does not have a preferred male helper"
+        assert len(p.participant.helpers_dict["rf"]) > 0, "Player " + str(player_id) + " does not have a random female helper"
+        assert len(p.participant.helpers_dict["rm"]) > 0, "Player " + str(player_id) + " does not have a random male helper"
+
+    print("------------")
+    print("\n")
+    print("\n")
+    print("All tests passed")
+    print("\n")
+    print("\n")
+    print("------------")
+
+    ##Stats
+    stat_helper_dict = dict(pf=[], pm=[], rf=[], rm=[])
+    female_tts = []
+    male_tts = []
+    for player_id in players:
+        p = g.get_player_by_id(player_id)
+        female_tts.append(len(p.participant.female_tts))
+        male_tts.append(len(p.participant.male_tts))
+        for i in stat_helper_dict:
+            stat_helper_dict[i].append(len(p.participant.helpers_dict[i]))
+
+
+    print("Players with 2 Preferred Female Helpers: ", stat_helper_dict["pf"].count(2))
+    print("Players with less than 2 Preferred Female Helpers: ", stat_helper_dict["pf"].count(1))
+    print("----------")
+
+    print("Players with 2 Preferred Male Helpers: ", stat_helper_dict["pm"].count(2))
+    print("Players with less than 2 Preferred Male Helpers: ", stat_helper_dict["pm"].count(1))
+    print("----------")
+
+    print("Players with 2 Random Female Helpers: ", stat_helper_dict["rf"].count(2))
+    print("Players with less than 2 Random Female Helpers: ", stat_helper_dict["rf"].count(1))
+    print("----------")
+
+    print("Players with 2 Random Male Helpers: ", stat_helper_dict["rm"].count(2))
+    print("Players with less than 2 Random Male Helpers: ", stat_helper_dict["rm"].count(1))
+    print("----------")
+
+    for i in range(0,5):
+        print("Players with " + str(i) + " Female Test Takers: ", female_tts.count(i))
+        print("Players with " + str(i) + " Male Test Takers: ", male_tts.count(i))
+        print("----------")
+
 
 
 def set_helpers(subsession: Subsession):
@@ -624,7 +544,7 @@ def set_exceptions(subsession: Subsession):
             p = g.get_player_by_id(player)
             if p.participant.gender == 0:  # female
                 if p.participant.partner1 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"] + 1
                     int1 = list(range(1, upper))
                     random.shuffle(int1)
                     for i in range(len(int1)):
@@ -643,7 +563,7 @@ def set_exceptions(subsession: Subsession):
                                 helper1.participant.p_helping['pftt2'] = p.id_in_group
                                 break
                 if p.participant.partner2 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int2 = list(range(1, upper))
                     random.shuffle(int2)
                     for j in range(len(int2)):
@@ -662,7 +582,7 @@ def set_exceptions(subsession: Subsession):
                                 helper2.participant.p_helping['pftt2'] = p.id_in_group
                                 break
                 if p.participant.partner3 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int3 = list(range(1, upper))
                     random.shuffle(int3)
                     for k in range(len(int3)):
@@ -681,7 +601,7 @@ def set_exceptions(subsession: Subsession):
                                 helper3.participant.p_helping['pftt2'] = p.id_in_group
                                 break
                 if p.participant.partner4 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int4 = list(range(1, upper))
                     random.shuffle(int4)
                     for l in range(len(int4)):
@@ -701,7 +621,7 @@ def set_exceptions(subsession: Subsession):
                                 break
             else:
                 if p.participant.partner1 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int1 = list(range(1, upper))
                     random.shuffle(int1)
                     for i in range(len(int1)):
@@ -720,7 +640,7 @@ def set_exceptions(subsession: Subsession):
                                 helper1.participant.p_helping['pmtt2'] = p.id_in_group
                                 break
                 if p.participant.partner2 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int2 = list(range(1, upper))
                     random.shuffle(int2)
                     for j in range(len(int2)):
@@ -739,7 +659,7 @@ def set_exceptions(subsession: Subsession):
                                 helper2.participant.p_helping['pmtt2'] = p.id_in_group
                                 break
                 if p.participant.partner3 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int3 = list(range(1, upper))
                     random.shuffle(int3)
                     for k in range(len(int3)):
@@ -758,7 +678,7 @@ def set_exceptions(subsession: Subsession):
                                 helper3.participant.p_helping['pmtt2'] = p.id_in_group
                                 break
                 if p.participant.partner4 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int4 = list(range(1, upper))
                     random.shuffle(int4)
                     for l in range(len(int4)):
@@ -786,7 +706,7 @@ def set_exceptions2(subsession: Subsession):
             p = g.get_player_by_id(player)
             if p.participant.gender == 0:  # female
                 if p.participant.partner1 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int1 = list(range(1, upper))
                     random.shuffle(int1)
                     for i in range(len(int1)):
@@ -830,7 +750,7 @@ def set_exceptions2(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner2 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int2 = list(range(1, upper))
                     random.shuffle(int2)
                     for j in range(len(int2)):
@@ -843,7 +763,7 @@ def set_exceptions2(subsession: Subsession):
                             helper2.participant.partnerf1 = p.id_in_group
                             p.participant.partner2 = helper2_id
                             helper2.participant.p_helping['pftt1'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int2_1 = list(range(1, upper))
                             random.shuffle(int2_1)
                             for j1 in range(len(int2_1)):
@@ -875,7 +795,7 @@ def set_exceptions2(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner3 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int3 = list(range(1, upper))
                     random.shuffle(int3)
                     for k in range(len(int3)):
@@ -888,7 +808,7 @@ def set_exceptions2(subsession: Subsession):
                             helper3.participant.partnerf1 = p.id_in_group
                             p.participant.partner3 = helper3_id
                             helper3.participant.p_helping['pftt1'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int3_1 = list(range(1, upper))
                             random.shuffle(int3_1)
                             for k1 in range(len(int3_1)):
@@ -920,7 +840,7 @@ def set_exceptions2(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner4 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int4 = list(range(1, upper))
                     random.shuffle(int4)
                     for l in range(len(int4)):
@@ -933,7 +853,7 @@ def set_exceptions2(subsession: Subsession):
                             helper4.participant.partnerf1 = p.id_in_group
                             p.participant.partner4 = helper4_id
                             helper4.participant.p_helping['pftt1'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int4_1 = list(range(1, upper))
                             random.shuffle(int4_1)
                             for l1 in range(len(int4_1)):
@@ -966,7 +886,7 @@ def set_exceptions2(subsession: Subsession):
                             break
             else:
                 if p.participant.partner1 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int1 = list(range(1, upper))
                     random.shuffle(int1)
                     for i in range(len(int1)):
@@ -979,7 +899,7 @@ def set_exceptions2(subsession: Subsession):
                             helper1.participant.partnerm1 = p.id_in_group
                             p.participant.partner1 = helper1_id
                             helper1.participant.p_helping['pmtt1'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int1_1 = list(range(1, upper))
                             random.shuffle(int1_1)
                             for i1 in range(len(int1_1)):
@@ -1011,7 +931,7 @@ def set_exceptions2(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner2 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int2 = list(range(1, upper))
                     random.shuffle(int2)
                     for j in range(len(int2)):
@@ -1024,7 +944,7 @@ def set_exceptions2(subsession: Subsession):
                             helper2.participant.partnerm1 = p.id_in_group
                             p.participant.partner2 = helper2_id
                             helper2.participant.p_helping['pmtt1'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int2_1 = list(range(1, upper))
                             random.shuffle(int2_1)
                             for j1 in range(len(int2_1)):
@@ -1056,7 +976,7 @@ def set_exceptions2(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner3 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int3 = list(range(1, upper))
                     random.shuffle(int3)
                     for k in range(len(int3)):
@@ -1069,7 +989,7 @@ def set_exceptions2(subsession: Subsession):
                             helper3.participant.partnerm1 = p.id_in_group
                             p.participant.partner3 = helper3_id
                             helper3.participant.p_helping['pmtt1'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int3_1 = list(range(1, upper))
                             random.shuffle(int3_1)
                             for k1 in range(len(int3_1)):
@@ -1101,7 +1021,7 @@ def set_exceptions2(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner4 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int4 = list(range(1, upper))
                     random.shuffle(int4)
                     for l in range(len(int4)):
@@ -1114,7 +1034,7 @@ def set_exceptions2(subsession: Subsession):
                             helper4.participant.partnerm1 = p.id_in_group
                             p.participant.partner4 = helper4_id
                             helper4.participant.p_helping['pmtt1'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int4_1 = list(range(1, upper))
                             random.shuffle(int4_1)
                             for l1 in range(len(int4_1)):
@@ -1155,7 +1075,7 @@ def set_randoms(subsession: Subsession):
         for player in session.active_players:
             p = g.get_player_by_id(player)
             if p.participant.gender == 0:  # female
-                upper = session.count + 1
+                upper = session.vars["count"]+ 1
                 int1 = list(range(1, upper))
                 random.shuffle(int1)
                 for i in range(len(int1)):
@@ -1233,7 +1153,7 @@ def set_randoms(subsession: Subsession):
                             helper8.participant.p_helping['rftt2'] = p.id_in_group
                             break
             else:  # male
-                upper = session.count + 1
+                upper = session.vars["count"]+ 1
                 int1 = list(range(1, upper))
                 random.shuffle(int1)
                 for i in range(len(int1)):
@@ -1320,7 +1240,7 @@ def set_exceptions_randoms(subsession: Subsession):
             p = g.get_player_by_id(player)
             if p.participant.gender == 0:  # female
                 if p.participant.partner5 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int1 = list(range(1, upper))
                     random.shuffle(int1)
                     for i in range(len(int1)):
@@ -1335,7 +1255,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             helper5.participant.partnerf4 = p.id_in_group
                             p.participant.partner5 = helper5_id
                             helper5.participant.p_helping['rftt2'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int1_1 = list(range(1, upper))
                             random.shuffle(int1_1)
                             for i1 in range(len(int1_1)):
@@ -1367,7 +1287,7 @@ def set_exceptions_randoms(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner6 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int2 = list(range(1, upper))
                     random.shuffle(int2)
                     for j in range(len(int2)):
@@ -1382,7 +1302,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             helper6.participant.partnerf4 = p.id_in_group
                             p.participant.partner6 = helper6_id
                             helper6.participant.p_helping['rftt2'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int2_1 = list(range(1, upper))
                             random.shuffle(int2_1)
                             for j1 in range(len(int2_1)):
@@ -1414,7 +1334,7 @@ def set_exceptions_randoms(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner7 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int3 = list(range(1, upper))
                     random.shuffle(int3)
                     for k in range(len(int3)):
@@ -1429,7 +1349,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             helper7.participant.partnerf4 = p.id_in_group
                             p.participant.partner7 = helper7_id
                             helper7.participant.p_helping['rftt2'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int3_1 = list(range(1, upper))
                             random.shuffle(int3_1)
                             for k1 in range(len(int3_1)):
@@ -1461,7 +1381,7 @@ def set_exceptions_randoms(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner8 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"] + 1
                     int4 = list(range(1, upper))
                     random.shuffle(int4)
                     for l in range(len(int4)):
@@ -1476,7 +1396,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             helper8.participant.partnerf4 = p.id_in_group
                             p.participant.partner8 = helper8_id
                             helper8.participant.p_helping['rftt2'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int4_1 = list(range(1, upper))
                             random.shuffle(int4_1)
                             for l1 in range(len(int4_1)):
@@ -1509,7 +1429,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             break
             else:
                 if p.participant.partner5 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"] + 1
                     int1 = list(range(1, upper))
                     random.shuffle(int1)
                     for i in range(len(int1)):
@@ -1524,7 +1444,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             helper5.participant.partnerm4 = p.id_in_group
                             p.participant.partner5 = helper5_id
                             helper5.participant.p_helping['rmtt2'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int1_1 = list(range(1, upper))
                             random.shuffle(int1_1)
                             for i1 in range(len(int1_1)):
@@ -1556,7 +1476,7 @@ def set_exceptions_randoms(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner6 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int2 = list(range(1, upper))
                     random.shuffle(int2)
                     for j in range(len(int2)):
@@ -1571,7 +1491,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             helper6.participant.partnerm4 = p.id_in_group
                             p.participant.partner6 = helper6_id
                             helper6.participant.p_helping['rmtt2'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int2_1 = list(range(1, upper))
                             random.shuffle(int2_1)
                             for j1 in range(len(int2_1)):
@@ -1603,7 +1523,7 @@ def set_exceptions_randoms(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner7 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int3 = list(range(1, upper))
                     random.shuffle(int3)
                     for k in range(len(int3)):
@@ -1618,7 +1538,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             helper7.participant.partnerm4 = p.id_in_group
                             p.participant.partner7 = helper7_id
                             helper7.participant.p_helping['rmtt2'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int3_1 = list(range(1, upper))
                             random.shuffle(int3_1)
                             for k1 in range(len(int3_1)):
@@ -1650,7 +1570,7 @@ def set_exceptions_randoms(subsession: Subsession):
                                     break
                             break
                 if p.participant.partner8 == 0:
-                    upper = session.count + 1
+                    upper = session.vars["count"]+ 1
                     int4 = list(range(1, upper))
                     random.shuffle(int4)
                     for l in range(len(int4)):
@@ -1665,7 +1585,7 @@ def set_exceptions_randoms(subsession: Subsession):
                             helper8.participant.partnerm4 = p.id_in_group
                             p.participant.partner8 = helper8_id
                             helper8.participant.p_helping['rmtt2'] = p.id_in_group
-                            upper = session.count + 1
+                            upper = session.vars["count"]+ 1
                             int4_1 = list(range(1, upper))
                             random.shuffle(int4_1)
                             for l1 in range(len(int4_1)):
@@ -1764,7 +1684,7 @@ class WaitPage1(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
         set_players(group.get_players()[0].subsession)
-        set_helpers(group.get_players()[0].subsession)
+        set_helpers_new(group.get_players()[0].subsession)
 # PAGES
 # class WaitPage1(Page):
 #     @staticmethod
@@ -1796,7 +1716,7 @@ class Demographics(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        set_helpers(player.subsession)
+        ##set_helpers_new(player.subsession)
         return dict()
 
     @staticmethod

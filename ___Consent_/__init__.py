@@ -121,10 +121,15 @@ def change_labels(player: Player):
 
 def set_players(player: Player):
     subsession = player.subsession
-    session = subsession.session
-    session.active_players = []
+    session = player.session
     session.active_players.append(player.id_in_group)
     session.count += 1
+    print(session.count)
+
+def creating_session(subsession: Subsession):
+    session = subsession.session
+    session.active_players = []
+    session.count = 0
 
 class Consent(Page):
     form_model = 'player'

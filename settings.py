@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
     dict(
         name='my_project',
         display_name = "Survey",
-        app_sequence = ['___Consent_','___Preferences_','___Practice_','___Round0_','___Round1_','___Round2_','___Round3b_','___Round2_1','___Final_'],
+        app_sequence = ['___Consent_','___Preferences_','___Round1_'],
         num_demo_participants=18
     ),
     dict(
@@ -62,12 +62,12 @@ SESSION_CONFIGS = [
         app_sequence=['___Final_'],
         num_demo_participants=21
     ),
-    dict(
-        name='wait_page_timeout',
-        display_name="Timeout on a WaitPage (exit the experiment)",
-        num_demo_participants=2,
-        app_sequence=['wait_page_timeout'],
-    ),
+    # dict(
+    #     name='wait_page_timeout',
+    #     display_name="Timeout on a WaitPage (exit the experiment)",
+    #     num_demo_participants=2,
+    #     app_sequence=['wait_page_timeout'],
+    # ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -76,7 +76,7 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=1.00, participation_fee=0.00, count=0, use_browser_bots=True,  doc=""
 )
 
 PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rounds2',
@@ -104,7 +104,10 @@ PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rou
 'partner2','partner3','partner4','partner5','partner6','partner7','partner8',
 'partnerf1','partnerf2','partnerf3', 'partnerf4','partnerm1','partnerm2','partnerm3',
 'partnerm4','name','gender','true_id','roll_no','count_participant','p_helping',
-'round2_completed','round3b_completed','form_fields_pref','form_fields_pref2']
+'round2_completed','round3b_completed','form_fields_pref','form_fields_pref2',
+
+
+                      "helpers_dict","pref_helpers", "pref_female_helpers", "pref_male_helpers","assigned_helpers", "tts", "female_tts", "male_tts"]
 SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids']
 
 # ISO-6310 code

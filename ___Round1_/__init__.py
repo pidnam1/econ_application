@@ -1813,6 +1813,8 @@ class Economics1Results(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm1 != 0:
             partnerm1 = g.get_player_by_id(player.participant.partnerm1)
             count+=1
@@ -1871,6 +1873,8 @@ class Economics1Results0(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm1 != 0:
             partnerm1 = g.get_player_by_id(player.participant.partnerm1)
             count+=1
@@ -1928,6 +1932,8 @@ class Cooking1Hints(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm1 != 0:
             partnerm1 = g.get_player_by_id(player.participant.partnerm1)
             count+=1
@@ -1984,6 +1990,8 @@ class Cooking1Results(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm1 != 0:
             partnerm1 = g.get_player_by_id(player.participant.partnerm1)
             count+=1

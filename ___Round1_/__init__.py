@@ -158,6 +158,25 @@ def initialize_variables(subsession: Subsession):
         p.participant.female_tts = []
         p.participant.male_tts = []
         p.participant.assigned_helpers = []
+
+        p.participant.partner1 = 0
+        p.participant.partner2 = 0
+        p.participant.partner3 = 0
+        p.participant.partner4 = 0
+        p.participant.partner5 = 0
+        p.participant.partner6 = 0
+        p.participant.partner7 = 0
+        p.participant.partner8 = 0
+
+        p.participant.partnerf1 = 0
+        p.participant.partnerf2 = 0
+        p.participant.partnerf3 = 0
+        p.participant.partnerf4 = 0
+        p.participant.partnerm1 = 0
+        p.participant.partnerm2 = 0
+        p.participant.partnerm3 = 0
+        p.participant.partnerm4 = 0
+
         p.participant.count_participant = 0
 
 
@@ -1669,6 +1688,24 @@ def set_hints_given(player: Player):
     player.participant.WR2hints_given_cook = player.cookhints2_partner4
     player.participant.WR2hints_given_sport = player.sporthints2_partner4
 
+def set_partners(player: Player):
+    player.participant.partner1 = player.participant.helpers_dict["pf"][0]
+    player.participant.partner2 = player.participant.helpers_dict["pf"][1]
+    player.participant.partner3 = player.participant.helpers_dict["pm"][0]
+    player.participant.partner4 = player.participant.helpers_dict["pm"][1]
+    player.participant.partner5 = player.participant.helpers_dict["rf"][0]
+    player.participant.partner6 = player.participant.helpers_dict["rf"][1]
+    player.participant.partner7 = player.participant.helpers_dict["rm"][0]
+    player.participant.partner8 = player.participant.helpers_dict["rm"][1]
+
+    player.participant.partnerf1 = player.participant.female_tts[0]
+    player.participant.partnerf2 = player.participant.female_tts[1]
+    player.participant.partnerf3 = player.participant.female_tts[2]
+    player.participant.partnerf4 = player.participant.female_tts[3]
+    player.participant.partnerm1 = player.participant.male_tts[0]
+    player.participant.partnerm2 = player.participant.male_tts[1]
+    player.participant.partnerm3 = player.participant.male_tts[2]
+    player.participant.partnerm4 = player.participant.male_tts[3]
 
 def get_timeout_seconds1(player: Player):
     participant = player.participant

@@ -159,38 +159,7 @@ def initialize_variables(subsession: Subsession):
         p.participant.male_tts = []
         p.participant.assigned_helpers = []
 
-        p.participant.partner1 = 0
-        p.participant.partner2 = 0
-        p.participant.partner3 = 0
-        p.participant.partner4 = 0
-        p.participant.partner5 = 0
-        p.participant.partner6 = 0
-        p.participant.partner7 = 0
-        p.participant.partner8 = 0
-
-        p.participant.partnerf1 = 0
-        p.participant.partnerf2 = 0
-        p.participant.partnerf3 = 0
-        p.participant.partnerf4 = 0
-        p.participant.partnerm1 = 0
-        p.participant.partnerm2 = 0
-        p.participant.partnerm3 = 0
-        p.participant.partnerm4 = 0
-
         p.participant.count_participant = 0
-
-
-def set_players(subsession: Subsession):
-    session = subsession.session
-    upper = session.vars["count"] + 1
-    int = list(range(1, upper))
-    random.shuffle(int)
-    for g in subsession.get_groups():
-        for player in session.active_players:
-            p = g.get_player_by_id(player)
-            for i in range(len(int)):
-                if p.id_in_group == i + 1:
-                    p.participant.true_id = int[i]
 ##### Functions for helper implementation, related to participants
 
 def is_helping(player: Player, id):
@@ -284,9 +253,11 @@ def set_helpers_new(subsession: Subsession):
         print("After preferred assignment", p.participant.helpers_dict)
 
     ####random section
-    helpers_randomfied = random_players
-    random.shuffle(helpers_randomfied)
+    ##random.shuffle(random_players)
+    helpers_randomfied = random_players.copy()
+
     for player_id in random_players:
+        random.shuffle(helpers_randomfied)
         p = g.get_player_by_id(player_id)
         ##getting two random women
         count = 0
@@ -337,10 +308,10 @@ def show_tests(subsession: Subsession):
         p = g.get_player_by_id(player_id)
         assert len(p.participant.female_tts) <= 4, "Player " + player_id + " is helping more than 4 females"
         assert len(p.participant.male_tts) <= 4, "Player " + player_id + " is helping more than 4 males"
-        assert len(p.participant.helpers_dict["pf"]) <= 2, "Player " + str(player_id) + " is helping more than 2 preferred female helpers"
-        assert len(p.participant.helpers_dict["pm"]) <= 2, "Player " + str(player_id) + " is helping more than 2 preferred male helpers"
-        assert len(p.participant.helpers_dict["rf"]) <= 2, "Player " + str(player_id) + " is helping more than 2 random female helpers"
-        assert len(p.participant.helpers_dict["rm"]) <= 2, "Player " + str(player_id) + " is helping more than 2 random male helpers"
+        assert len(p.participant.helpers_dict["pf"]) <= 2, "Player " + str(player_id) + " is being helped by more than 2 preferred female helpers"
+        assert len(p.participant.helpers_dict["pm"]) <= 2, "Player " + str(player_id) + " is being helped by more than 2 preferred male helpers"
+        assert len(p.participant.helpers_dict["rf"]) <= 2, "Player " + str(player_id) + " is being helped by more than 2 random female helpers"
+        assert len(p.participant.helpers_dict["rm"]) <= 2, "Player " + str(player_id) + " is being helped by more than 2 random male helpers"
 
     print("------------")
     print("\n")
@@ -382,1260 +353,6 @@ def show_tests(subsession: Subsession):
         print("Players with " + str(i) + " Female Test Takers: ", female_tts.count(i))
         print("Players with " + str(i) + " Male Test Takers: ", male_tts.count(i))
         print("----------")
-
-
-
-def set_helpers(subsession: Subsession):
-    session = subsession.session
-    for g in subsession.get_groups():
-        for player in session.active_players:
-            p = g.get_player_by_id(player)
-            for key in p.participant.pref_helper:
-                if p.participant.gender == 0:  # female
-                    if (key in p.participant.pref_helper_female) and (
-                            p.participant.pref_helper_female[key] != p.id_in_group) and (p.participant.partner1 == 0):
-                        helper1_id = p.participant.pref_helper_female[key]
-                        helper1 = g.get_player_by_id(helper1_id)
-                        if helper1.participant.p_helping['pftt1'] == 0:
-                            helper1.participant.partnerf1 = p.id_in_group
-                            p.participant.partner1 = helper1_id
-                            helper1.participant.p_helping['pftt1'] = p.id_in_group
-                        elif helper1.participant.p_helping['pftt2'] == 0:
-                            helper1.participant.partnerf2 = p.id_in_group
-                            p.participant.partner1 = helper1_id
-                            helper1.participant.p_helping['pftt2'] = p.id_in_group
-                    elif (key in p.participant.pref_helper_female) and (
-                            p.participant.pref_helper_female[key] != p.id_in_group) and (
-                            p.participant.pref_helper_female[key] != p.participant.partner1) and (
-                            p.participant.partner2 == 0):
-                        helper2_id = p.participant.pref_helper_female[key]
-                        helper2 = g.get_player_by_id(helper2_id)
-                        if helper2.participant.p_helping['pftt1'] == 0:
-                            helper2.participant.partnerf1 = p.id_in_group
-                            p.participant.partner2 = helper2_id
-                            helper2.participant.p_helping['pftt1'] = p.id_in_group
-                        elif helper2.participant.p_helping['pftt2'] == 0:
-                            helper2.participant.partnerf2 = p.id_in_group
-                            p.participant.partner2 = helper2_id
-                            helper2.participant.p_helping['pftt2'] = p.id_in_group
-                    elif (key in p.participant.pref_helper_male) and (p.participant.partner3 == 0):
-                        helper3_id = p.participant.pref_helper_male[key]
-                        helper3 = g.get_player_by_id(helper3_id)
-                        if helper3.participant.p_helping['pftt1'] == 0:
-                            helper3.participant.partnerf1 = p.id_in_group
-                            p.participant.partner3 = helper3_id
-                            helper3.participant.p_helping['pftt1'] = p.id_in_group
-                        elif helper3.participant.p_helping['pftt2'] == 0:
-                            helper3.participant.partnerf2 = p.id_in_group
-                            p.participant.partner3 = helper3_id
-                            helper3.participant.p_helping['pftt2'] = p.id_in_group
-                    elif (key in p.participant.pref_helper_male) and (
-                            p.participant.pref_helper_male[key] != p.participant.partner3) and (
-                            p.participant.partner4 == 0):
-                        helper4_id = p.participant.pref_helper_male[key]
-                        helper4 = g.get_player_by_id(helper4_id)
-                        if helper4.participant.p_helping['pftt1'] == 0:
-                            helper4.participant.partnerf1 = p.id_in_group
-                            p.participant.partner4 = helper4_id
-                            helper4.participant.p_helping['pftt1'] = p.id_in_group
-                        elif helper4.participant.p_helping['pftt2'] == 0:
-                            helper4.participant.partnerf2 = p.id_in_group
-                            p.participant.partner4 = helper4_id
-                            helper4.participant.p_helping['pftt2'] = p.id_in_group
-                else:  # male
-                    if (key in p.participant.pref_helper_female) and (p.participant.partner1 == 0):
-                        helper1_id = p.participant.pref_helper_female[key]
-                        helper1 = g.get_player_by_id(helper1_id)
-                        if helper1.participant.p_helping['pmtt1'] == 0:
-                            helper1.participant.partnerm1 = p.id_in_group
-                            p.participant.partner1 = helper1_id
-                            helper1.participant.p_helping['pmtt1'] = p.id_in_group
-                        elif helper1.participant.p_helping['pmtt2'] == 0:
-                            helper1.participant.partnerm2 = p.id_in_group
-                            p.participant.partner1 = helper1_id
-                            helper1.participant.p_helping['pmtt2'] = p.id_in_group
-                    elif (key in p.participant.pref_helper_female) and (
-                            p.participant.pref_helper_female[key] != p.participant.partner1) and (
-                            p.participant.partner2 == 0):
-                        helper2_id = p.participant.pref_helper_female[key]
-                        helper2 = g.get_player_by_id(helper2_id)
-                        if helper2.participant.p_helping['pmtt1'] == 0:
-                            helper2.participant.partnerm1 = p.id_in_group
-                            p.participant.partner2 = helper2_id
-                            helper2.participant.p_helping['pmtt1'] = p.id_in_group
-                        elif helper2.participant.p_helping['pmtt2'] == 0:
-                            helper2.participant.partnerm2 = p.id_in_group
-                            p.participant.partner2 = helper2_id
-                            helper2.participant.p_helping['pmtt2'] = p.id_in_group
-                    elif (key in p.participant.pref_helper_male) and (
-                            p.participant.pref_helper_male[key] != p.id_in_group) and (p.participant.partner3 == 0):
-                        helper3_id = p.participant.pref_helper_male[key]
-                        helper3 = g.get_player_by_id(helper3_id)
-                        if helper3.participant.p_helping['pmtt1'] == 0:
-                            helper3.participant.partnerm1 = p.id_in_group
-                            p.participant.partner3 = helper3_id
-                            helper3.participant.p_helping['pmtt1'] = p.id_in_group
-                        elif helper3.participant.p_helping['pmtt2'] == 0:
-                            helper3.participant.partnerm2 = p.id_in_group
-                            p.participant.partner3 = helper3_id
-                            helper3.participant.p_helping['pmtt2'] = p.id_in_group
-                    elif (key in p.participant.pref_helper_male) and (
-                            p.participant.pref_helper_male[key] != p.id_in_group) and (
-                            p.participant.pref_helper_male[key] != p.participant.partner3) and (
-                            p.participant.partner4 == 0):
-                        helper4_id = p.participant.pref_helper_male[key]
-                        helper4 = g.get_player_by_id(helper4_id)
-                        if helper4.participant.p_helping['pmtt1'] == 0:
-                            helper4.participant.partnerm1 = p.id_in_group
-                            p.participant.partner4 = helper4_id
-                            helper4.participant.p_helping['pmtt1'] = p.id_in_group
-                        elif helper4.participant.p_helping['pmtt2'] == 0:
-                            helper4.participant.partnerm2 = p.id_in_group
-                            p.participant.partner4 = helper4_id
-                            helper4.participant.p_helping['pmtt2'] = p.id_in_group
-            if (p.participant.partner1 == 0) | (p.participant.partner2 == 0) | (p.participant.partner3 == 0) | (
-                    p.participant.partner4 == 0):
-                set_exceptions(subsession)
-            if (p.participant.partner1 == 0) | (p.participant.partner2 == 0) | (p.participant.partner3 == 0) | (
-                    p.participant.partner4 == 0):
-                set_exceptions2(subsession)
-            set_randoms(subsession)
-            if (p.participant.partner5 == 0) | (p.participant.partner6 == 0) | (p.participant.partner7 == 0) | (
-                    p.participant.partner8 == 0):
-                set_exceptions_randoms(subsession)
-    session = subsession.session
-    for g in subsession.get_groups():
-        for player in session.active_players:
-            p = g.get_player_by_id(player)
-            print(p.participant.p_helping)
-            if (p.participant.partner1 == 0) | (p.participant.partner2 == 0) | (p.participant.partner3 == 0) | (
-                    p.participant.partner4 == 0):
-                print("something is wrong with exceptions")
-                print("partner1 = ")
-                print(p.participant.partner1)
-                print("partner2 = ")
-                print(p.participant.partner2)
-                print("partner3 = ")
-                print(p.participant.partner3)
-                print("partner4 = ")
-                print(p.participant.partner4)
-            if (p.participant.partner5 == 0) | (p.participant.partner6 == 0) | (p.participant.partner7 == 0) | (
-                    p.participant.partner8 == 0):
-                print(p.id_in_group)
-                print("something is wrong with randoms")
-                print("partner5 = ")
-                print(p.participant.partner5)
-                print("partner6 = ")
-                print(p.participant.partner6)
-                print("partner7 = ")
-                print(p.participant.partner7)
-                print("partner8 = ")
-                print(p.participant.partner8)
-            if (p.participant.partnerf1 == 0) | (p.participant.partnerf2 == 0) | (p.participant.partnerf3 == 0) | (
-                    p.participant.partnerf4 == 0):
-                print("something is wrong with female assignment")
-                print("partnerf1 = ")
-                print(p.participant.partnerf1)
-                print("partnerf2 = ")
-                print(p.participant.partnerf2)
-                print("partnerf3 = ")
-                print(p.participant.partnerf3)
-                print("partnerf4 = ")
-                print(p.participant.partnerf4)
-            if (p.participant.partnerm1 == 0) | (p.participant.partnerm2 == 0) | (p.participant.partnerm3 == 0) | (
-                    p.participant.partnerm4 == 0):
-                print("something is wrong with male assignment")
-                print("partnerm1 = ")
-                print(p.participant.partnerm1)
-                print("partnerm2 = ")
-                print(p.participant.partnerm2)
-                print("partnerm3 = ")
-                print(p.participant.partnerm3)
-                print("partnerm4 = ")
-                print(p.participant.partnerm4)
-
-
-def set_exceptions(subsession: Subsession):
-    # catch exceptions and make random if needed
-    session = subsession.session
-    for g in subsession.get_groups():
-        for player in session.active_players:
-            p = g.get_player_by_id(player)
-            if p.participant.gender == 0:  # female
-                if p.participant.partner1 == 0:
-                    upper = session.vars["count"] + 1
-                    int1 = list(range(1, upper))
-                    random.shuffle(int1)
-                    for i in range(len(int1)):
-                        if (int1[i] != p.id_in_group) and (int1[i] != p.participant.partner2) and (
-                                int1[i] != p.participant.partner3) and (int1[i] != p.participant.partner4):
-                            helper1_id = int1[i]
-                            helper1 = g.get_player_by_id(helper1_id)
-                            if helper1.participant.p_helping['pftt1'] == 0:
-                                helper1.participant.partnerf1 = p.id_in_group
-                                p.participant.partner1 = helper1_id
-                                helper1.participant.p_helping['pftt1'] = p.id_in_group
-                                break
-                            elif helper1.participant.p_helping['pftt2'] == 0:
-                                helper1.participant.partnerf2 = p.id_in_group
-                                p.participant.partner1 = helper1_id
-                                helper1.participant.p_helping['pftt2'] = p.id_in_group
-                                break
-                if p.participant.partner2 == 0:
-                    upper = session.vars["count"]+ 1
-                    int2 = list(range(1, upper))
-                    random.shuffle(int2)
-                    for j in range(len(int2)):
-                        if (int2[j] != p.id_in_group) and (int2[j] != p.participant.partner1) and (
-                                int2[j] != p.participant.partner3) and (int2[j] != p.participant.partner4):
-                            helper2_id = int2[j]
-                            helper2 = g.get_player_by_id(helper2_id)
-                            if helper2.participant.p_helping['pftt1'] == 0:
-                                helper2.participant.partnerf1 = p.id_in_group
-                                p.participant.partner2 = helper2_id
-                                helper2.participant.p_helping['pftt1'] = p.id_in_group
-                                break
-                            elif helper2.participant.p_helping['pftt2'] == 0:
-                                helper2.participant.partnerf2 = p.id_in_group
-                                p.participant.partner2 = helper2_id
-                                helper2.participant.p_helping['pftt2'] = p.id_in_group
-                                break
-                if p.participant.partner3 == 0:
-                    upper = session.vars["count"]+ 1
-                    int3 = list(range(1, upper))
-                    random.shuffle(int3)
-                    for k in range(len(int3)):
-                        if (int3[k] != p.id_in_group) and (int3[k] != p.participant.partner1) and (
-                                int3[k] != p.participant.partner2) and (int3[k] != p.participant.partner4):
-                            helper3_id = int3[k]
-                            helper3 = g.get_player_by_id(helper3_id)
-                            if helper3.participant.p_helping['pftt1'] == 0:
-                                helper3.participant.partnerf1 = p.id_in_group
-                                p.participant.partner3 = helper3_id
-                                helper3.participant.p_helping['pftt1'] = p.id_in_group
-                                break
-                            elif helper3.participant.p_helping['pftt2'] == 0:
-                                helper3.participant.partnerf2 = p.id_in_group
-                                p.participant.partner3 = helper3_id
-                                helper3.participant.p_helping['pftt2'] = p.id_in_group
-                                break
-                if p.participant.partner4 == 0:
-                    upper = session.vars["count"]+ 1
-                    int4 = list(range(1, upper))
-                    random.shuffle(int4)
-                    for l in range(len(int4)):
-                        if (int4[l] != p.id_in_group) and (int4[l] != p.participant.partner1) and (
-                                int4[l] != p.participant.partner2) and (int4[l] != p.participant.partner3):
-                            helper4_id = int4[l]
-                            helper4 = g.get_player_by_id(helper4_id)
-                            if helper4.participant.p_helping['pftt1'] == 0:
-                                helper4.participant.partnerf1 = p.id_in_group
-                                p.participant.partner4 = helper4_id
-                                helper4.participant.p_helping['pftt1'] = p.id_in_group
-                                break
-                            elif helper4.participant.p_helping['pftt2'] == 0:
-                                helper4.participant.partnerf2 = p.id_in_group
-                                p.participant.partner4 = helper4_id
-                                helper4.participant.p_helping['pftt2'] = p.id_in_group
-                                break
-            else:
-                if p.participant.partner1 == 0:
-                    upper = session.vars["count"]+ 1
-                    int1 = list(range(1, upper))
-                    random.shuffle(int1)
-                    for i in range(len(int1)):
-                        if (int1[i] != p.id_in_group) and (int1[i] != p.participant.partner2) and (
-                                int1[i] != p.participant.partner3) and (int1[i] != p.participant.partner4):
-                            helper1_id = int1[i]
-                            helper1 = g.get_player_by_id(helper1_id)
-                            if helper1.participant.p_helping['pmtt1'] == 0:
-                                helper1.participant.partnerm1 = p.id_in_group
-                                p.participant.partner1 = helper1_id
-                                helper1.participant.p_helping['pmtt1'] = p.id_in_group
-                                break
-                            elif helper1.participant.p_helping['pmtt2'] == 0:
-                                helper1.participant.partnerm2 = p.id_in_group
-                                p.participant.partner1 = helper1_id
-                                helper1.participant.p_helping['pmtt2'] = p.id_in_group
-                                break
-                if p.participant.partner2 == 0:
-                    upper = session.vars["count"]+ 1
-                    int2 = list(range(1, upper))
-                    random.shuffle(int2)
-                    for j in range(len(int2)):
-                        if (int2[j] != p.id_in_group) and (int2[j] != p.participant.partner1) and (
-                                int2[j] != p.participant.partner3) and (int2[j] != p.participant.partner4):
-                            helper2_id = int2[j]
-                            helper2 = g.get_player_by_id(helper2_id)
-                            if helper2.participant.p_helping['pmtt1'] == 0:
-                                helper2.participant.partnerm1 = p.id_in_group
-                                p.participant.partner2 = helper2_id
-                                helper2.participant.p_helping['pmtt1'] = p.id_in_group
-                                break
-                            elif helper2.participant.p_helping['pmtt2'] == 0:
-                                helper2.participant.partnerm2 = p.id_in_group
-                                p.participant.partner2 = helper2_id
-                                helper2.participant.p_helping['pmtt2'] = p.id_in_group
-                                break
-                if p.participant.partner3 == 0:
-                    upper = session.vars["count"]+ 1
-                    int3 = list(range(1, upper))
-                    random.shuffle(int3)
-                    for k in range(len(int3)):
-                        if (int3[k] != p.id_in_group) and (int3[k] != p.participant.partner1) and (
-                                int3[k] != p.participant.partner2) and (int3[k] != p.participant.partner4):
-                            helper3_id = int3[k]
-                            helper3 = g.get_player_by_id(helper3_id)
-                            if helper3.participant.p_helping['pmtt1'] == 0:
-                                helper3.participant.partnerm1 = p.id_in_group
-                                p.participant.partner3 = helper3_id
-                                helper3.participant.p_helping['pmtt1'] = p.id_in_group
-                                break
-                            elif helper3.participant.p_helping['pmtt2'] == 0:
-                                helper3.participant.partnerm2 = p.id_in_group
-                                p.participant.partner3 = helper3_id
-                                helper3.participant.p_helping['pmtt2'] = p.id_in_group
-                                break
-                if p.participant.partner4 == 0:
-                    upper = session.vars["count"]+ 1
-                    int4 = list(range(1, upper))
-                    random.shuffle(int4)
-                    for l in range(len(int4)):
-                        if (int4[l] != p.id_in_group) and (int4[l] != p.participant.partner1) and (
-                                int4[l] != p.participant.partner2) and (int4[l] != p.participant.partner3):
-                            helper4_id = int4[l]
-                            helper4 = g.get_player_by_id(helper4_id)
-                            if helper4.participant.p_helping['pmtt1'] == 0:
-                                helper4.participant.partnerm1 = p.id_in_group
-                                p.participant.partner4 = helper4_id
-                                helper4.participant.p_helping['pmtt1'] = p.id_in_group
-                                break
-                            elif helper4.participant.p_helping['pmtt2'] == 0:
-                                helper4.participant.partnerm2 = p.id_in_group
-                                p.participant.partner4 = helper4_id
-                                helper4.participant.p_helping['pmtt2'] = p.id_in_group
-                                break
-
-
-def set_exceptions2(subsession: Subsession):
-    # catch exceptions that go awol
-    session = subsession.session
-    for g in subsession.get_groups():
-        for player in session.active_players:
-            p = g.get_player_by_id(player)
-            if p.participant.gender == 0:  # female
-                if p.participant.partner1 == 0:
-                    upper = session.vars["count"]+ 1
-                    int1 = list(range(1, upper))
-                    random.shuffle(int1)
-                    for i in range(len(int1)):
-                        if (int1[i] != p.id_in_group) and (int1[i] != p.participant.partner2) and (
-                                int1[i] != p.participant.partner3) and (int1[i] != p.participant.partner4):
-                            helper1_id = int1[i]
-                            helper1 = g.get_player_by_id(helper1_id)
-                            old_player_id = helper1.participant.p_helping['pftt1']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper1.participant.partnerf1 = p.id_in_group
-                            p.participant.partner1 = helper1_id
-                            helper1.participant.p_helping['pftt1'] = p.id_in_group
-                            int1_1 = list(range(1, 19))
-                            random.shuffle(int1_1)
-                            for i1 in range(len(int1_1)):
-                                helper_new_id = int1_1[i1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['pftt1'] == 0:
-                                    helper_new.participant.partnerf1 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper1_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper1_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper1_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper1_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pftt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['pftt2'] == 0:
-                                    helper_new.participant.partnerf2 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper1_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper1_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper1_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper1_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pftt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner2 == 0:
-                    upper = session.vars["count"]+ 1
-                    int2 = list(range(1, upper))
-                    random.shuffle(int2)
-                    for j in range(len(int2)):
-                        if (int2[j] != p.id_in_group) and (int2[j] != p.participant.partner1) and (
-                                int2[j] != p.participant.partner3) and (int2[j] != p.participant.partner4):
-                            helper2_id = int2[j]
-                            helper2 = g.get_player_by_id(helper2_id)
-                            old_player_id = helper2.participant.p_helping['pftt1']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper2.participant.partnerf1 = p.id_in_group
-                            p.participant.partner2 = helper2_id
-                            helper2.participant.p_helping['pftt1'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int2_1 = list(range(1, upper))
-                            random.shuffle(int2_1)
-                            for j1 in range(len(int2_1)):
-                                helper_new_id = int2_1[j1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['pftt1'] == 0:
-                                    helper_new.participant.partnerf1 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper2_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper2_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper2_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper2_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pftt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['pftt2'] == 0:
-                                    helper_new.participant.partnerf2 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper2_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper2_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper2_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper2_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pftt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner3 == 0:
-                    upper = session.vars["count"]+ 1
-                    int3 = list(range(1, upper))
-                    random.shuffle(int3)
-                    for k in range(len(int3)):
-                        if (int3[k] != p.id_in_group) and (int3[k] != p.participant.partner1) and (
-                                int3[k] != p.participant.partner2) and (int3[k] != p.participant.partner4):
-                            helper3_id = int3[k]
-                            helper3 = g.get_player_by_id(helper3_id)
-                            old_player_id = helper3.participant.p_helping['pftt1']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper3.participant.partnerf1 = p.id_in_group
-                            p.participant.partner3 = helper3_id
-                            helper3.participant.p_helping['pftt1'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int3_1 = list(range(1, upper))
-                            random.shuffle(int3_1)
-                            for k1 in range(len(int3_1)):
-                                helper_new_id = int3_1[k1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['pftt1'] == 0:
-                                    helper_new.participant.partnerf1 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper3_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper3_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper3_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper3_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pftt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['pftt2'] == 0:
-                                    helper_new.participant.partnerf2 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper3_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper3_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper3_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper3_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pftt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner4 == 0:
-                    upper = session.vars["count"]+ 1
-                    int4 = list(range(1, upper))
-                    random.shuffle(int4)
-                    for l in range(len(int4)):
-                        if (int4[l] != p.id_in_group) and (int4[l] != p.participant.partner1) and (
-                                int4[l] != p.participant.partner2) and (int4[l] != p.participant.partner3):
-                            helper4_id = int4[l]
-                            helper4 = g.get_player_by_id(helper4_id)
-                            old_player_id = helper4.participant.p_helping['pftt1']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper4.participant.partnerf1 = p.id_in_group
-                            p.participant.partner4 = helper4_id
-                            helper4.participant.p_helping['pftt1'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int4_1 = list(range(1, upper))
-                            random.shuffle(int4_1)
-                            for l1 in range(len(int4_1)):
-                                helper_new_id = int4_1[l1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['pftt1'] == 0:
-                                    helper_new.participant.partnerf1 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper4_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper4_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper4_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper4_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pftt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['pftt2'] == 0:
-                                    helper_new.participant.partnerf2 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper4_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper4_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper4_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper4_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pftt2'] = old_player.id_in_group
-                                    break
-                            break
-            else:
-                if p.participant.partner1 == 0:
-                    upper = session.vars["count"]+ 1
-                    int1 = list(range(1, upper))
-                    random.shuffle(int1)
-                    for i in range(len(int1)):
-                        if (int1[i] != p.id_in_group) and (int1[i] != p.participant.partner2) and (
-                                int1[i] != p.participant.partner3) and (int1[i] != p.participant.partner4):
-                            helper1_id = int1[i]
-                            helper1 = g.get_player_by_id(helper1_id)
-                            old_player_id = helper1.participant.p_helping['pmtt1']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper1.participant.partnerm1 = p.id_in_group
-                            p.participant.partner1 = helper1_id
-                            helper1.participant.p_helping['pmtt1'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int1_1 = list(range(1, upper))
-                            random.shuffle(int1_1)
-                            for i1 in range(len(int1_1)):
-                                helper_new_id = int1_1[i1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['pmtt1'] == 0:
-                                    helper_new.participant.partnerm1 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper1_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper1_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper1_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper1_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pmtt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['pmtt2'] == 0:
-                                    helper_new.participant.partnerm2 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper1_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper1_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper1_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper1_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pmtt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner2 == 0:
-                    upper = session.vars["count"]+ 1
-                    int2 = list(range(1, upper))
-                    random.shuffle(int2)
-                    for j in range(len(int2)):
-                        if (int2[j] != p.id_in_group) and (int2[j] != p.participant.partner1) and (
-                                int2[j] != p.participant.partner3) and (int2[j] != p.participant.partner4):
-                            helper2_id = int2[j]
-                            helper2 = g.get_player_by_id(helper2_id)
-                            old_player_id = helper2.participant.p_helping['pmtt1']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper2.participant.partnerm1 = p.id_in_group
-                            p.participant.partner2 = helper2_id
-                            helper2.participant.p_helping['pmtt1'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int2_1 = list(range(1, upper))
-                            random.shuffle(int2_1)
-                            for j1 in range(len(int2_1)):
-                                helper_new_id = int2_1[j1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['pmtt1'] == 0:
-                                    helper_new.participant.partnerm1 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper2_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper2_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper2_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper2_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pmtt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['pmtt2'] == 0:
-                                    helper_new.participant.partnerm2 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper2_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper2_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper2_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper2_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pmtt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner3 == 0:
-                    upper = session.vars["count"]+ 1
-                    int3 = list(range(1, upper))
-                    random.shuffle(int3)
-                    for k in range(len(int3)):
-                        if (int3[k] != p.id_in_group) and (int3[k] != p.participant.partner1) and (
-                                int3[k] != p.participant.partner2) and (int3[k] != p.participant.partner4):
-                            helper3_id = int3[k]
-                            helper3 = g.get_player_by_id(helper3_id)
-                            old_player_id = helper3.participant.p_helping['pmtt1']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper3.participant.partnerm1 = p.id_in_group
-                            p.participant.partner3 = helper3_id
-                            helper3.participant.p_helping['pmtt1'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int3_1 = list(range(1, upper))
-                            random.shuffle(int3_1)
-                            for k1 in range(len(int3_1)):
-                                helper_new_id = int3_1[k1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['pmtt1'] == 0:
-                                    helper_new.participant.partnerm1 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper3_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper3_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper3_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper3_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pmtt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['pmtt2'] == 0:
-                                    helper_new.participant.partnerm2 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper3_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper3_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper3_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper3_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pmtt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner4 == 0:
-                    upper = session.vars["count"]+ 1
-                    int4 = list(range(1, upper))
-                    random.shuffle(int4)
-                    for l in range(len(int4)):
-                        if (int4[l] != p.id_in_group) and (int4[l] != p.participant.partner1) and (
-                                int4[l] != p.participant.partner2) and (int4[l] != p.participant.partner3):
-                            helper4_id = int4[l]
-                            helper4 = g.get_player_by_id(helper4_id)
-                            old_player_id = helper4.participant.p_helping['pmtt1']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper4.participant.partnerm1 = p.id_in_group
-                            p.participant.partner4 = helper4_id
-                            helper4.participant.p_helping['pmtt1'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int4_1 = list(range(1, upper))
-                            random.shuffle(int4_1)
-                            for l1 in range(len(int4_1)):
-                                helper_new_id = int4_1[l1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['pmtt1'] == 0:
-                                    helper_new.participant.partnerm1 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper4_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper4_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper4_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper4_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pmtt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['pmtt2'] == 0:
-                                    helper_new.participant.partnerm2 = old_player.id_in_group
-                                    if old_player.participant.partner1 == helper4_id:
-                                        old_player.participant.partner1 = helper_new_id
-                                    elif old_player.participant.partner2 == helper4_id:
-                                        old_player.participant.partner2 = helper_new_id
-                                    elif old_player.participant.partner3 == helper4_id:
-                                        old_player.participant.partner3 = helper_new_id
-                                    elif old_player.participant.partner4 == helper4_id:
-                                        old_player.participant.partner4 = helper_new_id
-                                    helper_new.participant.p_helping['pmtt2'] = old_player.id_in_group
-                                    break
-                            break
-
-
-# set all randoms
-# random helper2
-def set_randoms(subsession: Subsession):
-    session = subsession.session
-    for g in subsession.get_groups():
-        for player in session.active_players:
-            p = g.get_player_by_id(player)
-            if p.participant.gender == 0:  # female
-                upper = session.vars["count"]+ 1
-                int1 = list(range(1, upper))
-                random.shuffle(int1)
-                for i in range(len(int1)):
-                    if (p.participant.partner5 == 0) and (int1[i] != p.id_in_group) and (
-                            int1[i] != p.participant.partner1) and (int1[i] != p.participant.partner2) and (
-                            int1[i] != p.participant.partner3) and (int1[i] != p.participant.partner4):
-                        helper5_id = int1[i]
-                        helper5 = g.get_player_by_id(helper5_id)
-                        if helper5.participant.p_helping['rftt1'] == 0:
-                            helper5.participant.partnerf3 = p.id_in_group
-                            p.participant.partner5 = helper5_id
-                            helper5.participant.p_helping['rftt1'] = p.id_in_group
-                            break
-                        elif helper5.participant.p_helping['rftt2'] == 0:
-                            helper5.participant.partnerf4 = p.id_in_group
-                            p.participant.partner5 = helper5_id
-                            helper5.participant.p_helping['rftt2'] = p.id_in_group
-                            break
-                int2 = list(range(1, upper))
-                random.shuffle(int2)
-                for j in range(len(int2)):
-                    if (p.participant.partner6 == 0) and (int2[j] != p.id_in_group) and (
-                            int2[j] != p.participant.partner1) and (int2[j] != p.participant.partner2) and (
-                            int2[j] != p.participant.partner3) and (int2[j] != p.participant.partner4) and (
-                            int2[j] != p.participant.partner5):
-                        helper6_id = int2[j]
-                        helper6 = g.get_player_by_id(helper6_id)
-                        if helper6.participant.p_helping['rftt1'] == 0:
-                            helper6.participant.partnerf3 = p.id_in_group
-                            p.participant.partner6 = helper6_id
-                            helper6.participant.p_helping['rftt1'] = p.id_in_group
-                            break
-                        elif helper6.participant.p_helping['rftt2'] == 0:
-                            helper6.participant.partnerf4 = p.id_in_group
-                            p.participant.partner6 = helper6_id
-                            helper6.participant.p_helping['rftt2'] = p.id_in_group
-                            break
-                int3 = list(range(1, upper))
-                random.shuffle(int3)
-                for k in range(len(int3)):
-                    if (p.participant.partner7 == 0) and (int3[k] != p.id_in_group) and (
-                            int3[k] != p.participant.partner1) and (int3[k] != p.participant.partner2) and (
-                            int3[k] != p.participant.partner3) and (int3[k] != p.participant.partner4) and (
-                            int3[k] != p.participant.partner5) and (int3[k] != p.participant.partner6):
-                        helper7_id = int3[k]
-                        helper7 = g.get_player_by_id(helper7_id)
-                        if helper7.participant.p_helping['rftt1'] == 0:
-                            helper7.participant.partnerf3 = p.id_in_group
-                            p.participant.partner7 = helper7_id
-                            helper7.participant.p_helping['rftt1'] = p.id_in_group
-                            break
-                        elif helper7.participant.p_helping['rftt2'] == 0:
-                            helper7.participant.partnerf4 = p.id_in_group
-                            p.participant.partner7 = helper7_id
-                            helper7.participant.p_helping['rftt2'] = p.id_in_group
-                            break
-                int4 = list(range(1, upper))
-                random.shuffle(int4)
-                for l in range(len(int4)):
-                    if (p.participant.partner8 == 0) and (int4[l] != p.id_in_group) and (
-                            int4[l] != p.participant.partner1) and (int4[l] != p.participant.partner2) and (
-                            int4[l] != p.participant.partner3) and (int4[l] != p.participant.partner4) and (
-                            int4[l] != p.participant.partner5) and (int4[l] != p.participant.partner6) and (
-                            int4[l] != p.participant.partner7):
-                        helper8_id = int4[l]
-                        helper8 = g.get_player_by_id(helper8_id)
-                        if helper8.participant.p_helping['rftt1'] == 0:
-                            helper8.participant.partnerf3 = p.id_in_group
-                            p.participant.partner8 = helper8_id
-                            helper8.participant.p_helping['rftt1'] = p.id_in_group
-                            break
-                        elif helper8.participant.p_helping['rftt2'] == 0:
-                            helper8.participant.partnerf4 = p.id_in_group
-                            p.participant.partner8 = helper8_id
-                            helper8.participant.p_helping['rftt2'] = p.id_in_group
-                            break
-            else:  # male
-                upper = session.vars["count"]+ 1
-                int1 = list(range(1, upper))
-                random.shuffle(int1)
-                for i in range(len(int1)):
-                    if (p.participant.partner5 == 0) and (int1[i] != p.id_in_group) and (
-                            int1[i] != p.participant.partner1) and (int1[i] != p.participant.partner2) and (
-                            int1[i] != p.participant.partner3) and (int1[i] != p.participant.partner4):
-                        helper5_id = int1[i]
-                        helper5 = g.get_player_by_id(helper5_id)
-                        if helper5.participant.p_helping['rmtt1'] == 0:
-                            helper5.participant.partnerm3 = p.id_in_group
-                            p.participant.partner5 = helper5_id
-                            helper5.participant.p_helping['rmtt1'] = p.id_in_group
-                            break
-                        elif helper5.participant.p_helping['rmtt2'] == 0:
-                            helper5.participant.partnerm4 = p.id_in_group
-                            p.participant.partner5 = helper5_id
-                            helper5.participant.p_helping['rmtt2'] = p.id_in_group
-                            break
-                int2 = list(range(1, upper))
-                random.shuffle(int2)
-                for j in range(len(int2)):
-                    if (p.participant.partner6 == 0) and (int2[j] != p.id_in_group) and (
-                            int2[j] != p.participant.partner1) and (int2[j] != p.participant.partner2) and (
-                            int2[j] != p.participant.partner3) and (int2[j] != p.participant.partner4) and (
-                            int2[j] != p.participant.partner5):
-                        helper6_id = int2[j]
-                        helper6 = g.get_player_by_id(helper6_id)
-                        if helper6.participant.p_helping['rmtt1'] == 0:
-                            helper6.participant.partnerm3 = p.id_in_group
-                            p.participant.partner6 = helper6_id
-                            helper6.participant.p_helping['rmtt1'] = p.id_in_group
-                            break
-                        elif helper6.participant.p_helping['rmtt2'] == 0:
-                            helper6.participant.partnerm4 = p.id_in_group
-                            p.participant.partner6 = helper6_id
-                            helper6.participant.p_helping['rmtt2'] = p.id_in_group
-                            break
-                int3 = list(range(1, upper))
-                random.shuffle(int3)
-                for k in range(len(int3)):
-                    if (p.participant.partner7 == 0) and (int3[k] != p.id_in_group) and (
-                            int3[k] != p.participant.partner1) and (int3[k] != p.participant.partner2) and (
-                            int3[k] != p.participant.partner3) and (int3[k] != p.participant.partner4) and (
-                            int3[k] != p.participant.partner5) and (int3[k] != p.participant.partner6):
-                        helper7_id = int3[k]
-                        helper7 = g.get_player_by_id(helper7_id)
-                        if helper7.participant.p_helping['rmtt1'] == 0:
-                            helper7.participant.partnerm3 = p.id_in_group
-                            p.participant.partner7 = helper7_id
-                            helper7.participant.p_helping['rmtt1'] = p.id_in_group
-                            break
-                        elif helper7.participant.p_helping['rmtt2'] == 0:
-                            helper7.participant.partnerm4 = p.id_in_group
-                            p.participant.partner7 = helper7_id
-                            helper7.participant.p_helping['rmtt2'] = p.id_in_group
-                            break
-                int4 = list(range(1, upper))
-                random.shuffle(int4)
-                for l in range(len(int4)):
-                    if (p.participant.partner8 == 0) and (int4[l] != p.id_in_group) and (
-                            int4[l] != p.participant.partner1) and (int4[l] != p.participant.partner2) and (
-                            int4[l] != p.participant.partner3) and (int4[l] != p.participant.partner4) and (
-                            int4[l] != p.participant.partner5) and (int4[l] != p.participant.partner6) and (
-                            int4[l] != p.participant.partner7):
-                        helper8_id = int4[l]
-                        helper8 = g.get_player_by_id(helper8_id)
-                        if helper8.participant.p_helping['rmtt1'] == 0:
-                            helper8.participant.partnerm3 = p.id_in_group
-                            p.participant.partner8 = helper8_id
-                            helper8.participant.p_helping['rmtt1'] = p.id_in_group
-                            break
-                        elif helper8.participant.p_helping['rmtt2'] == 0:
-                            helper8.participant.partnerm4 = p.id_in_group
-                            p.participant.partner8 = helper8_id
-                            helper8.participant.p_helping['rmtt2'] = p.id_in_group
-                            break
-
-
-def set_exceptions_randoms(subsession: Subsession):
-    # catch randoms that go awol
-    session = subsession.session
-    for g in subsession.get_groups():
-        for player in session.active_players:
-            p = g.get_player_by_id(player)
-            if p.participant.gender == 0:  # female
-                if p.participant.partner5 == 0:
-                    upper = session.vars["count"]+ 1
-                    int1 = list(range(1, upper))
-                    random.shuffle(int1)
-                    for i in range(len(int1)):
-                        if (int1[i] != p.id_in_group) and (int1[i] != p.participant.partner1) and (
-                                int1[i] != p.participant.partner2) and (int1[i] != p.participant.partner3) and (
-                                int1[i] != p.participant.partner4) and (int1[i] != p.participant.partner6) and (
-                                int1[i] != p.participant.partner7) and (int1[i] != p.participant.partner8):
-                            helper5_id = int1[i]
-                            helper5 = g.get_player_by_id(helper5_id)
-                            old_player_id = helper5.participant.p_helping['rftt2']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper5.participant.partnerf4 = p.id_in_group
-                            p.participant.partner5 = helper5_id
-                            helper5.participant.p_helping['rftt2'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int1_1 = list(range(1, upper))
-                            random.shuffle(int1_1)
-                            for i1 in range(len(int1_1)):
-                                helper_new_id = int1_1[i1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['rftt1'] == 0:
-                                    helper_new.participant.partnerf3 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper5_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper5_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper5_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper5_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rftt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['rftt2'] == 0:
-                                    helper_new.participant.partnerf4 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper5_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper5_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper5_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper5_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rftt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner6 == 0:
-                    upper = session.vars["count"]+ 1
-                    int2 = list(range(1, upper))
-                    random.shuffle(int2)
-                    for j in range(len(int2)):
-                        if (int2[j] != p.id_in_group) and (int2[j] != p.participant.partner1) and (
-                                int2[j] != p.participant.partner2) and (int2[j] != p.participant.partner3) and (
-                                int2[j] != p.participant.partner4) and (int2[j] != p.participant.partner5) and (
-                                int2[j] != p.participant.partner7) and (int2[j] != p.participant.partner8):
-                            helper6_id = int2[j]
-                            helper6 = g.get_player_by_id(helper6_id)
-                            old_player_id = helper6.participant.p_helping['rftt2']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper6.participant.partnerf4 = p.id_in_group
-                            p.participant.partner6 = helper6_id
-                            helper6.participant.p_helping['rftt2'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int2_1 = list(range(1, upper))
-                            random.shuffle(int2_1)
-                            for j1 in range(len(int2_1)):
-                                helper_new_id = int2_1[j1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['rftt1'] == 0:
-                                    helper_new.participant.partnerf3 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper6_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper6_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper6_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper6_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rftt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['rftt2'] == 0:
-                                    helper_new.participant.partnerf4 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper6_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper6_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper6_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper6_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rftt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner7 == 0:
-                    upper = session.vars["count"]+ 1
-                    int3 = list(range(1, upper))
-                    random.shuffle(int3)
-                    for k in range(len(int3)):
-                        if (int3[k] != p.id_in_group) and (int3[k] != p.participant.partner1) and (
-                                int3[k] != p.participant.partner2) and (int3[k] != p.participant.partner3) and (
-                                int3[k] != p.participant.partner4) and (int3[k] != p.participant.partner5) and (
-                                int3[k] != p.participant.partner6) and (int3[k] != p.participant.partner8):
-                            helper7_id = int3[k]
-                            helper7 = g.get_player_by_id(helper7_id)
-                            old_player_id = helper7.participant.p_helping['rftt2']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper7.participant.partnerf4 = p.id_in_group
-                            p.participant.partner7 = helper7_id
-                            helper7.participant.p_helping['rftt2'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int3_1 = list(range(1, upper))
-                            random.shuffle(int3_1)
-                            for k1 in range(len(int3_1)):
-                                helper_new_id = int3_1[k1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['rftt1'] == 0:
-                                    helper_new.participant.partnerf3 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper7_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper7_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper7_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper7_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rftt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['rftt2'] == 0:
-                                    helper_new.participant.partnerf4 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper7_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper7_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper7_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper7_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rftt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner8 == 0:
-                    upper = session.vars["count"] + 1
-                    int4 = list(range(1, upper))
-                    random.shuffle(int4)
-                    for l in range(len(int4)):
-                        if (int4[l] != p.id_in_group) and (int4[l] != p.participant.partner1) and (
-                                int4[l] != p.participant.partner2) and (int4[l] != p.participant.partner3) and (
-                                int4[l] != p.participant.partner4) and (int4[l] != p.participant.partner5) and (
-                                int4[l] != p.participant.partner6) and (int4[l] != p.participant.partner7):
-                            helper8_id = int4[l]
-                            helper8 = g.get_player_by_id(helper8_id)
-                            old_player_id = helper8.participant.p_helping['rftt2']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper8.participant.partnerf4 = p.id_in_group
-                            p.participant.partner8 = helper8_id
-                            helper8.participant.p_helping['rftt2'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int4_1 = list(range(1, upper))
-                            random.shuffle(int4_1)
-                            for l1 in range(len(int4_1)):
-                                helper_new_id = int4_1[l1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['rftt1'] == 0:
-                                    helper_new.participant.partnerf3 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper8_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper8_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper8_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper8_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rftt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['rftt2'] == 0:
-                                    helper_new.participant.partnerf4 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper8_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper8_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper8_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper8_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rftt2'] = old_player.id_in_group
-                                    break
-                            break
-            else:
-                if p.participant.partner5 == 0:
-                    upper = session.vars["count"] + 1
-                    int1 = list(range(1, upper))
-                    random.shuffle(int1)
-                    for i in range(len(int1)):
-                        if (int1[i] != p.id_in_group) and (int1[i] != p.participant.partner1) and (
-                                int1[i] != p.participant.partner2) and (int1[i] != p.participant.partner3) and (
-                                int1[i] != p.participant.partner4) and (int1[i] != p.participant.partner6) and (
-                                int1[i] != p.participant.partner7) and (int1[i] != p.participant.partner8):
-                            helper5_id = int1[i]
-                            helper5 = g.get_player_by_id(helper5_id)
-                            old_player_id = helper5.participant.p_helping['rmtt2']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper5.participant.partnerm4 = p.id_in_group
-                            p.participant.partner5 = helper5_id
-                            helper5.participant.p_helping['rmtt2'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int1_1 = list(range(1, upper))
-                            random.shuffle(int1_1)
-                            for i1 in range(len(int1_1)):
-                                helper_new_id = int1_1[i1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['rmtt1'] == 0:
-                                    helper_new.participant.partnerm3 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper5_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper5_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper5_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper5_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rmtt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['rmtt2'] == 0:
-                                    helper_new.participant.partnerm4 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper5_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper5_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper5_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper5_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rmtt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner6 == 0:
-                    upper = session.vars["count"]+ 1
-                    int2 = list(range(1, upper))
-                    random.shuffle(int2)
-                    for j in range(len(int2)):
-                        if (int2[j] != p.id_in_group) and (int2[j] != p.participant.partner1) and (
-                                int2[j] != p.participant.partner2) and (int2[j] != p.participant.partner3) and (
-                                int2[j] != p.participant.partner4) and (int2[j] != p.participant.partner5) and (
-                                int2[j] != p.participant.partner7) and (int2[j] != p.participant.partner8):
-                            helper6_id = int2[j]
-                            helper6 = g.get_player_by_id(helper6_id)
-                            old_player_id = helper6.participant.p_helping['rmtt2']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper6.participant.partnerm4 = p.id_in_group
-                            p.participant.partner6 = helper6_id
-                            helper6.participant.p_helping['rmtt2'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int2_1 = list(range(1, upper))
-                            random.shuffle(int2_1)
-                            for j1 in range(len(int2_1)):
-                                helper_new_id = int2_1[j1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['rmtt1'] == 0:
-                                    helper_new.participant.partnerm3 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper6_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper6_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper6_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper6_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rmtt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['rmtt2'] == 0:
-                                    helper_new.participant.partnerm4 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper6_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper6_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper6_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper6_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rmtt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner7 == 0:
-                    upper = session.vars["count"]+ 1
-                    int3 = list(range(1, upper))
-                    random.shuffle(int3)
-                    for k in range(len(int3)):
-                        if (int3[k] != p.id_in_group) and (int3[k] != p.participant.partner1) and (
-                                int3[k] != p.participant.partner2) and (int3[k] != p.participant.partner3) and (
-                                int3[k] != p.participant.partner4) and (int3[k] != p.participant.partner5) and (
-                                int3[k] != p.participant.partner6) and (int3[k] != p.participant.partner8):
-                            helper7_id = int3[k]
-                            helper7 = g.get_player_by_id(helper7_id)
-                            old_player_id = helper7.participant.p_helping['rmtt2']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper7.participant.partnerm4 = p.id_in_group
-                            p.participant.partner7 = helper7_id
-                            helper7.participant.p_helping['rmtt2'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int3_1 = list(range(1, upper))
-                            random.shuffle(int3_1)
-                            for k1 in range(len(int3_1)):
-                                helper_new_id = int3_1[k1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['rmtt1'] == 0:
-                                    helper_new.participant.partnerm3 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper7_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper7_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper7_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper7_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rmtt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['rmtt2'] == 0:
-                                    helper_new.participant.partnerm4 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper7_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper7_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper7_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper7_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rmtt2'] = old_player.id_in_group
-                                    break
-                            break
-                if p.participant.partner8 == 0:
-                    upper = session.vars["count"]+ 1
-                    int4 = list(range(1, upper))
-                    random.shuffle(int4)
-                    for l in range(len(int4)):
-                        if (int4[l] != p.id_in_group) and (int4[l] != p.participant.partner1) and (
-                                int4[l] != p.participant.partner2) and (int4[l] != p.participant.partner3) and (
-                                int4[l] != p.participant.partner4) and (int4[l] != p.participant.partner5) and (
-                                int4[l] != p.participant.partner6) and (int4[l] != p.participant.partner7):
-                            helper8_id = int4[l]
-                            helper8 = g.get_player_by_id(helper8_id)
-                            old_player_id = helper8.participant.p_helping['rmtt2']
-                            old_player = g.get_player_by_id(old_player_id)
-                            helper8.participant.partnerm4 = p.id_in_group
-                            p.participant.partner8 = helper8_id
-                            helper8.participant.p_helping['rmtt2'] = p.id_in_group
-                            upper = session.vars["count"]+ 1
-                            int4_1 = list(range(1, upper))
-                            random.shuffle(int4_1)
-                            for l1 in range(len(int4_1)):
-                                helper_new_id = int4_1[l1]
-                                helper_new = g.get_player_by_id(helper_new_id)
-                                if helper_new.participant.p_helping['rmtt1'] == 0:
-                                    helper_new.participant.partnerm3 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper8_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper8_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper8_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper8_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rmtt1'] = old_player.id_in_group
-                                    break
-                                elif helper_new.participant.p_helping['rmtt2'] == 0:
-                                    helper_new.participant.partnerm4 = old_player.id_in_group
-                                    if old_player.participant.partner5 == helper8_id:
-                                        old_player.participant.partner5 = helper_new_id
-                                    elif old_player.participant.partner6 == helper8_id:
-                                        old_player.participant.partner6 = helper_new_id
-                                    elif old_player.participant.partner7 == helper8_id:
-                                        old_player.participant.partner7 = helper_new_id
-                                    elif old_player.participant.partner8 == helper8_id:
-                                        old_player.participant.partner8 = helper_new_id
-                                    helper_new.participant.p_helping['rmtt2'] = old_player.id_in_group
-                                    break
-                            break
-
 
 def set_hints_given(player: Player):
     player.participant.econ_hint_requests_partner1 = 0
@@ -1698,14 +415,14 @@ def set_partners(player: Player):
     player.participant.partner7 = player.participant.helpers_dict["rm"][0]
     player.participant.partner8 = player.participant.helpers_dict["rm"][1]
 
-    player.participant.partnerf1 = player.participant.female_tts[0]
-    player.participant.partnerf2 = player.participant.female_tts[1]
-    player.participant.partnerf3 = player.participant.female_tts[2]
-    player.participant.partnerf4 = player.participant.female_tts[3]
-    player.participant.partnerm1 = player.participant.male_tts[0]
-    player.participant.partnerm2 = player.participant.male_tts[1]
-    player.participant.partnerm3 = player.participant.male_tts[2]
-    player.participant.partnerm4 = player.participant.male_tts[3]
+    player.participant.partnerf1 = player.participant.female_tts[0] if 0 < len(player.participant.female_tts) else 0
+    player.participant.partnerf2 = player.participant.female_tts[1] if 1 < len(player.participant.female_tts) else 0
+    player.participant.partnerf3 = player.participant.female_tts[2] if 2 < len(player.participant.female_tts) else 0
+    player.participant.partnerf4 = player.participant.female_tts[3] if 3 < len(player.participant.female_tts) else 0
+    player.participant.partnerm1 = player.participant.male_tts[0]  if 0 < len(player.participant.male_tts) else 0
+    player.participant.partnerm2 = player.participant.male_tts[1] if 1 < len(player.participant.male_tts) else 0
+    player.participant.partnerm3 = player.participant.male_tts[2] if 2 < len(player.participant.male_tts) else 0
+    player.participant.partnerm4 = player.participant.male_tts[3] if 3 < len(player.participant.male_tts) else 0
 
 def get_timeout_seconds1(player: Player):
     participant = player.participant
@@ -1720,7 +437,6 @@ class WaitPage1(WaitPage):
 
     @staticmethod
     def after_all_players_arrive(group: Group):
-        set_players(group.get_players()[0].subsession)
         set_helpers_new(group.get_players()[0].subsession)
 # PAGES
 # class WaitPage1(Page):
@@ -1778,6 +494,43 @@ class Payment1Transition(Page):
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
+def vars_for_template(player: Player, formfields):
+    formfields_random = formfields
+    random.shuffle(formfields_random)
+    round = 0
+    if player.participant.task_rounds1['1'] == 1:
+        round = 1
+    else:
+        round = 2
+    g = player.group
+    count = 0
+    hints = 0
+    if player.participant.partnerm1 != 0:
+        partnerm1 = g.get_player_by_id(player.participant.partnerm1)
+        count+=1
+    elif player.participant.partnerm3 != 0:
+        partnerm3 = g.get_player_by_id(player.participant.partnerm3)
+        count+=1
+    elif player.participant.partnerf1 != 0:
+        partnerf1 = g.get_player_by_id(player.participant.partnerf1)
+        count+=1
+    elif player.participant.partnerf3 != 0:
+        partnerf3 = g.get_player_by_id(player.participant.partnerf3)
+        count+=1
+    if count == 1:
+        hints = 2
+    elif count == 2:
+        hints = 5
+    elif count == 3:
+        hints = 7
+    elif count == 4:
+        hints = 10
+    return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
+                partnerf1=partnerf1, partnerf3=partnerf3,
+                partner1_label='{}?'.format(partnerm1.participant.label),
+                partner2_label='{}?'.format(partnerm3.participant.label),
+                partner3_label='{}?'.format(partnerf1.participant.label),
+                partner4_label='{}?'.format(partnerf3.participant.label), formfields_random=formfields_random)
 
 class Economics1Hints(Page):
     form_model = 'player'
@@ -2087,6 +840,8 @@ class Cooking1Results0(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm1 != 0:
             partnerm1 = g.get_player_by_id(player.participant.partnerm1)
             count+=1
@@ -2145,6 +900,8 @@ class Sports1Hints(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm1 != 0:
             partnerm1 = g.get_player_by_id(player.participant.partnerm1)
             count+=1
@@ -2201,6 +958,8 @@ class Sports1Results(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm1 != 0:
             partnerm1 = g.get_player_by_id(player.participant.partnerm1)
             count+=1
@@ -2259,6 +1018,8 @@ class Sports1Results0(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm1 != 0:
             partnerm1 = g.get_player_by_id(player.participant.partnerm1)
             count+=1
@@ -2279,7 +1040,7 @@ class Sports1Results0(Page):
             hints = 7
         elif count == 4:
             hints = 10
-        return dict(round=round, hints=hints partnerm1=partnerm1, partnerm3=partnerm3,
+        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
                     partnerf1=partnerf1, partnerf3=partnerf3,
                     partner1_label='{}?[Out of 4 questions]'.format(partnerm1.participant.label),
                     partner2_label='{}?[Out of 4 questions]'.format(partnerm3.participant.label),
@@ -2337,6 +1098,8 @@ class Economics2Hints(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2393,6 +1156,8 @@ class Economics2Results(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2453,6 +1218,8 @@ class Economics2Results0(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2512,6 +1279,8 @@ class Cooking2Hints(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2570,6 +1339,8 @@ class Cooking2Results(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2630,6 +1401,8 @@ class Cooking2Results0(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2690,6 +1463,8 @@ class Sports2Hints(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2748,6 +1523,8 @@ class Sports2Results(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2808,6 +1585,8 @@ class Sports2Results0(Page):
         else:
             round = 2
         g = player.group
+        count = 0
+        hints = 0
         if player.participant.partnerm2 != 0:
             partnerm2 = g.get_player_by_id(player.participant.partnerm2)
             count+=1
@@ -2854,21 +1633,25 @@ class Sports2Results0(Page):
     timer_text = C.TIMER_TEXT
 
 
-class WaitPage2(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        session = player.session
-        session.arrived_ids.add(player.id_in_subsession)
-        not_arrived_yet = session.active_players - session.arrived_ids
-        if not_arrived_yet:
-            return {0: dict(not_arrived_yet=list(not_arrived_yet))}
-        return {0: dict(finished=True)}
+# class WaitPage2(Page):
+#     @staticmethod
+#     def live_method(player: Player, data):
+#         session = player.session
+#         session.arrived_ids.add(player.id_in_subsession)
+#         not_arrived_yet = session.active_players - session.arrived_ids
+#         if not_arrived_yet:
+#             return {0: dict(not_arrived_yet=list(not_arrived_yet))}
+#         return {0: dict(finished=True)}
+#
+#     @staticmethod
+#     def error_message(player: Player, values):
+#         session = player.session
+#         if session.arrived_ids != session.active_players:
+#             return "Page somehow proceeded before all players are ready"
+class WaitPage2(WaitPage):
+    title_text = "Waiting for all players to finish"
+    body_text = ""
 
-    @staticmethod
-    def error_message(player: Player, values):
-        session = player.session
-        if session.arrived_ids != session.active_players:
-            return "Page somehow proceeded before all players are ready"
 
 
 class Final(Page):

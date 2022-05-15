@@ -415,14 +415,22 @@ def set_partners(player: Player):
     player.participant.partner7 = player.participant.helpers_dict["rm"][0]
     player.participant.partner8 = player.participant.helpers_dict["rm"][1]
 
-    player.participant.partnerf1 = player.participant.female_tts[0] if 0 < len(player.participant.female_tts) else 0
-    player.participant.partnerf2 = player.participant.female_tts[1] if 1 < len(player.participant.female_tts) else 0
-    player.participant.partnerf3 = player.participant.female_tts[2] if 2 < len(player.participant.female_tts) else 0
-    player.participant.partnerf4 = player.participant.female_tts[3] if 3 < len(player.participant.female_tts) else 0
-    player.participant.partnerm1 = player.participant.male_tts[0]  if 0 < len(player.participant.male_tts) else 0
-    player.participant.partnerm2 = player.participant.male_tts[1] if 1 < len(player.participant.male_tts) else 0
-    player.participant.partnerm3 = player.participant.male_tts[2] if 2 < len(player.participant.male_tts) else 0
-    player.participant.partnerm4 = player.participant.male_tts[3] if 3 < len(player.participant.male_tts) else 0
+    intf1 = range(0,2)
+    random.shuffle(intf1)
+    intf2 = range(2,4)
+    random.shuffle(intf2)
+    player.participant.partnerf1 = player.participant.female_tts[intf1[0]] if 0 < len(player.participant.female_tts) else 0
+    player.participant.partnerf2 = player.participant.female_tts[intf1[1]] if 1 < len(player.participant.female_tts) else 0
+    player.participant.partnerf3 = player.participant.female_tts[intf2[0]] if 2 < len(player.participant.female_tts) else 0
+    player.participant.partnerf4 = player.participant.female_tts[intf2[1]] if 3 < len(player.participant.female_tts) else 0
+    intm1 = range(0,2)
+    random.shuffle(intm1)
+    intm2 = range(2,4)
+    random.shuffle(intm2)
+    player.participant.partnerm1 = player.participant.male_tts[intm1[0]]  if 0 < len(player.participant.male_tts) else 0
+    player.participant.partnerm2 = player.participant.male_tts[intm1[1]] if 1 < len(player.participant.male_tts) else 0
+    player.participant.partnerm3 = player.participant.male_tts[intm2[0]] if 2 < len(player.participant.male_tts) else 0
+    player.participant.partnerm4 = player.participant.male_tts[intm2[1]] if 3 < len(player.participant.male_tts) else 0
 
 def get_timeout_seconds1(player: Player):
     participant = player.participant

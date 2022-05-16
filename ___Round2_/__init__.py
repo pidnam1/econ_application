@@ -72,7 +72,7 @@ class Player(BasePlayer):
     )
     crt_economics1_MP = models.IntegerField(
         choices=[[1, 'an opportunity'], [2, 'equal to the money price of a good'],
-        [3, 'equal to the price of that good divided by the quanity demanded of the good'],
+        [3, 'equal to the price of that good divided by the quantity demanded of the good'],
         [4, 'what you get paid for babysitting your cousin']],
         label='''
         The relative price of a good is''',
@@ -746,7 +746,7 @@ class Player(BasePlayer):
     crt_sports1_WP = models.IntegerField(
         choices=[[1, 'True'], [2, 'False'], [3, 'Uncertain'], [4, 'Need more information']],
         label='''
-        Three of Australia\'s Test cricket captains were nicknamed Pugsly, Tubby,
+        Three of Australia\'s Test cricket captains were nicknamed Pugsley, Tubby,
         and Punter''',
         widget=widgets.RadioSelect,
     )
@@ -2774,7 +2774,7 @@ class Economics2_WR(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner5 += 1
-            return {player.id_in_group: dict(message = "Hint Percentage change in quantity demanded divided by the percentage change in price. Your helper will be notified that you requested a hint.")}
+            return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded divided by the percentage change in price. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 

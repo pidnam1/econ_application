@@ -295,7 +295,7 @@ def set_helpers_new(subsession: Subsession):
 
 
     ####Test implementation
-    show_tests(subsession)
+    #show_tests(subsession)
 
 def show_tests(subsession: Subsession):
 
@@ -406,31 +406,59 @@ def set_hints_given(player: Player):
     player.participant.WR2hints_given_sport = player.sporthints2_partner4
 
 def set_partners(player: Player):
-    player.participant.partner1 = player.participant.helpers_dict["pf"][0]
-    player.participant.partner2 = player.participant.helpers_dict["pf"][1]
-    player.participant.partner3 = player.participant.helpers_dict["pm"][0]
-    player.participant.partner4 = player.participant.helpers_dict["pm"][1]
-    player.participant.partner5 = player.participant.helpers_dict["rf"][0]
-    player.participant.partner6 = player.participant.helpers_dict["rf"][1]
-    player.participant.partner7 = player.participant.helpers_dict["rm"][0]
-    player.participant.partner8 = player.participant.helpers_dict["rm"][1]
+    player.participant.partner1 = player.participant.helpers_dict["pf"][0] if 0 < len(player.participant.helpers_dict["pf"]) else 0
+    player.participant.partner2 = player.participant.helpers_dict["pf"][1] if 1 < len(player.participant.helpers_dict["pf"]) else 0
+    player.participant.partner3 = player.participant.helpers_dict["pm"][0] if 0 < len(player.participant.helpers_dict["pm"]) else 0
+    player.participant.partner4 = player.participant.helpers_dict["pm"][1] if 1 < len(player.participant.helpers_dict["pm"]) else 0
+    player.participant.partner5 = player.participant.helpers_dict["rf"][0] if 0 < len(player.participant.helpers_dict["rf"]) else 0
+    player.participant.partner6 = player.participant.helpers_dict["rf"][1] if 1 < len(player.participant.helpers_dict["rf"]) else 0
+    player.participant.partner7 = player.participant.helpers_dict["rm"][0] if 0 < len(player.participant.helpers_dict["rm"]) else 0
+    player.participant.partner8 = player.participant.helpers_dict["rm"][1] if 1 < len(player.participant.helpers_dict["rm"]) else 0
 
-    intf1 = range(0,2)
+    intf1 = list(range(0,2))
     random.shuffle(intf1)
-    intf2 = range(2,4)
+    intf2 = list(range(2,4))
     random.shuffle(intf2)
-    player.participant.partnerf1 = player.participant.female_tts[intf1[0]] if 0 < len(player.participant.female_tts) else 0
-    player.participant.partnerf2 = player.participant.female_tts[intf1[1]] if 1 < len(player.participant.female_tts) else 0
-    player.participant.partnerf3 = player.participant.female_tts[intf2[0]] if 2 < len(player.participant.female_tts) else 0
-    player.participant.partnerf4 = player.participant.female_tts[intf2[1]] if 3 < len(player.participant.female_tts) else 0
-    intm1 = range(0,2)
+    if 1 < len(player.participant.female_tts):
+        player.participant.partnerf1 = player.participant.female_tts[intf1[0]]
+        player.participant.partnerf2 = player.participant.female_tts[intf1[1]]
+    elif 0 < len(player.participant.female_tts):
+        player.participant.partnerf1 = player.participant.female_tts[0]
+        player.participant.partnerf2 = 0
+    else:
+        player.participant.partnerf1 = 0
+        player.participant.partnerf2 = 0
+    if 3 < len(player.participant.female_tts):
+        player.participant.partnerf3 = player.participant.female_tts[intf2[0]]
+        player.participant.partnerf4 = player.participant.female_tts[intf2[1]]
+    elif 2 < len(player.participant.female_tts):
+        player.participant.partnerf3 = player.participant.female_tts[2]
+        player.participant.partnerf4 = 0
+    else:
+        player.participant.partnerf3 = 0
+        player.participant.partnerf4 = 0
+    intm1 = list(range(0,2))
     random.shuffle(intm1)
-    intm2 = range(2,4)
+    intm2 = list(range(2,4))
     random.shuffle(intm2)
-    player.participant.partnerm1 = player.participant.male_tts[intm1[0]]  if 0 < len(player.participant.male_tts) else 0
-    player.participant.partnerm2 = player.participant.male_tts[intm1[1]] if 1 < len(player.participant.male_tts) else 0
-    player.participant.partnerm3 = player.participant.male_tts[intm2[0]] if 2 < len(player.participant.male_tts) else 0
-    player.participant.partnerm4 = player.participant.male_tts[intm2[1]] if 3 < len(player.participant.male_tts) else 0
+    if 1 < len(player.participant.male_tts):
+        player.participant.partnerm1 = player.participant.male_tts[intm1[0]]
+        player.participant.partnerm2 = player.participant.male_tts[intm1[1]]
+    elif 0 < len(player.participant.male_tts):
+        player.participant.partnerm1 = player.participant.male_tts[0]
+        player.participant.partnerm2 = 0
+    else:
+        player.participant.partnerm1 = 0
+        player.participant.partnerm2 = 0
+    if 3 < len(player.participant.male_tts):
+        player.participant.partnerm3 = player.participant.male_tts[intm2[0]]
+        player.participant.partnerm4 = player.participant.male_tts[intm2[1]]
+    elif 2 < len(player.participant.male_tts):
+        player.participant.partnerm3 = player.participant.male_tts[2]
+        player.participant.partnerm4 = 0
+    else:
+        player.participant.partnerm3 = 0
+        player.participant.partnerm4 = 0
 
 def get_timeout_seconds1(player: Player):
     participant = player.participant
@@ -478,6 +506,7 @@ class Demographics(Page):
     @staticmethod
     def vars_for_template(player: Player):
         ##set_helpers_new(player.subsession)
+        set_partners(player)
         return dict()
 
     @staticmethod
@@ -502,28 +531,39 @@ class Payment1Transition(Page):
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-def vars_for_template(player: Player, formfields):
-    formfields_random = formfields
+def vars_for_template1(player: Player, formfields):
+    final = {}
+    formfields_random = formfields.copy()
     random.shuffle(formfields_random)
+    final.update(dict(formfields_random=formfields_random))
     round = 0
     if player.participant.task_rounds1['1'] == 1:
         round = 1
     else:
         round = 2
+    final.update(dict(round=round))
     g = player.group
     count = 0
     hints = 0
+    partnerm1 = 0
+    partnerm3 = 0
+    partnerf1 = 0
+    partnerf3 = 0
     if player.participant.partnerm1 != 0:
         partnerm1 = g.get_player_by_id(player.participant.partnerm1)
+        final.update(dict(partner1_label='{}?'.format(partnerm1.participant.label)))
         count+=1
     elif player.participant.partnerm3 != 0:
         partnerm3 = g.get_player_by_id(player.participant.partnerm3)
+        final.update(dict(partner2_label='{}?'.format(partnerm3.participant.label)))
         count+=1
     elif player.participant.partnerf1 != 0:
         partnerf1 = g.get_player_by_id(player.participant.partnerf1)
+        final.update(dict(partner3_label='{}?'.format(partnerf1.participant.label)))
         count+=1
     elif player.participant.partnerf3 != 0:
         partnerf3 = g.get_player_by_id(player.participant.partnerf3)
+        final.update(dict(partner4_label='{}?'.format(partnerf3.participant.label)))
         count+=1
     if count == 1:
         hints = 2
@@ -533,12 +573,53 @@ def vars_for_template(player: Player, formfields):
         hints = 7
     elif count == 4:
         hints = 10
-    return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                partnerf1=partnerf1, partnerf3=partnerf3,
-                partner1_label='{}?'.format(partnerm1.participant.label),
-                partner2_label='{}?'.format(partnerm3.participant.label),
-                partner3_label='{}?'.format(partnerf1.participant.label),
-                partner4_label='{}?'.format(partnerf3.participant.label), formfields_random=formfields_random)
+    final.update(dict(hints=hints, partnerm1=partnerm1, partnerm3=partnerm3, partnerf1=partnerf1, partnerf3=partnerf3))
+    return final
+
+def vars_for_template2(player: Player, formfields):
+    final = {}
+    formfields_random = formfields.copy()
+    random.shuffle(formfields_random)
+    final.update(dict(formfields_random=formfields_random))
+    round = 0
+    if player.participant.task_rounds1['1'] == 1:
+        round = 1
+    else:
+        round = 2
+    final.update(dict(round=round))
+    g = player.group
+    count = 0
+    hints = 0
+    partnerm2 = 0
+    partnerm4 = 0
+    partnerf2 = 0
+    partnerf4 = 0
+    if player.participant.partnerm2 != 0:
+        partnerm2 = g.get_player_by_id(player.participant.partnerm2)
+        final.update(dict(partner1_label='{}?'.format(partnerm2.participant.label)))
+        count+=1
+    elif player.participant.partnerm4 != 0:
+        partnerm4 = g.get_player_by_id(player.participant.partnerm4)
+        final.update(dict(partner2_label='{}?'.format(partnerm4.participant.label)))
+        count+=1
+    elif player.participant.partnerf2 != 0:
+        partnerf2 = g.get_player_by_id(player.participant.partnerf2)
+        final.update(dict(partner3_label='{}?'.format(partnerf2.participant.label)))
+        count+=1
+    elif player.participant.partnerf4 != 0:
+        partnerf4 = g.get_player_by_id(player.participant.partnerf4)
+        final.update(dict(partner4_label='{}?'.format(partnerf4.participant.label)))
+        count+=1
+    if count == 1:
+        hints = 2
+    elif count == 2:
+        hints = 5
+    elif count == 3:
+        hints = 7
+    elif count == 4:
+        hints = 10
+    final.update(dict(hints=hints, partnerm2=partnerm2, partnerm4=partnerm4, partnerf2=partnerf2, partnerf4=partnerf4))
+    return final
 
 class Economics1Hints(Page):
     form_model = 'player'
@@ -546,41 +627,8 @@ class Economics1Hints(Page):
     @staticmethod
     def vars_for_template(player: Player):
         formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?'.format(partnerm1.participant.label),
-                    partner2_label='{}?'.format(partnerm3.participant.label),
-                    partner3_label='{}?'.format(partnerf1.participant.label),
-                    partner4_label='{}?'.format(partnerf3.participant.label), formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -604,42 +652,8 @@ class Economics1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults1_partner1', 'econresults1_partner2', 'econresults1_partner3',
                              'econresults1_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm1.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm3.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf1.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf3.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -664,42 +678,8 @@ class Economics1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults01_partner1', 'econresults01_partner2', 'econresults01_partner3',
                              'econresults01_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm1.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm3.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf1.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf3.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -723,41 +703,8 @@ class Cooking1Hints(Page):
     @staticmethod
     def vars_for_template(player: Player):
         formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?'.format(partnerm1.participant.label),
-                    partner2_label='{}?'.format(partnerm3.participant.label),
-                    partner3_label='{}?'.format(partnerf1.participant.label),
-                    partner4_label='{}?'.format(partnerf3.participant.label), formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -781,42 +728,8 @@ class Cooking1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults1_partner1', 'cookresults1_partner2', 'cookresults1_partner3',
                              'cookresults1_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm1.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm3.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf1.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf3.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -841,42 +754,8 @@ class Cooking1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults01_partner1', 'cookresults01_partner2', 'cookresults01_partner3',
                              'cookresults01_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm1.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm3.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf1.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf3.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -901,41 +780,8 @@ class Sports1Hints(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
                              'sporthints1_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?'.format(partnerm1.participant.label),
-                    partner2_label='{}?'.format(partnerm3.participant.label),
-                    partner3_label='{}?'.format(partnerf1.participant.label),
-                    partner4_label='{}?'.format(partnerf3.participant.label), formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -959,42 +805,8 @@ class Sports1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults1_partner1', 'sportresults1_partner2', 'sportresults1_partner3',
                              'sportresults1_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm1.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm3.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf1.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf3.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1019,42 +831,8 @@ class Sports1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults01_partner1', 'sportresults01_partner2', 'sportresults01_partner3',
                              'sportresults01_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['1'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm1 != 0:
-            partnerm1 = g.get_player_by_id(player.participant.partnerm1)
-            count+=1
-        elif player.participant.partnerm3 != 0:
-            partnerm3 = g.get_player_by_id(player.participant.partnerm3)
-            count+=1
-        elif player.participant.partnerf1 != 0:
-            partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-            count+=1
-        elif player.participant.partnerf3 != 0:
-            partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm1=partnerm1, partnerm3=partnerm3,
-                    partnerf1=partnerf1, partnerf3=partnerf3,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm1.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm3.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf1.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf3.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template1(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1099,41 +877,8 @@ class Economics2Hints(Page):
     @staticmethod
     def vars_for_template(player: Player):
         formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?'.format(partnerm2.participant.label),
-                    partner2_label='{}?'.format(partnerm4.participant.label),
-                    partner3_label='{}?'.format(partnerf2.participant.label),
-                    partner4_label='{}?'.format(partnerf4.participant.label), formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1157,42 +902,8 @@ class Economics2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults2_partner1', 'econresults2_partner2', 'econresults2_partner3',
                              'econresults2_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm2.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm4.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf2.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf4.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1219,42 +930,8 @@ class Economics2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults02_partner1', 'econresults02_partner2', 'econresults02_partner3',
                              'econresults02_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm2.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm4.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf2.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf4.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1280,41 +957,8 @@ class Cooking2Hints(Page):
     @staticmethod
     def vars_for_template(player: Player):
         formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?'.format(partnerm2.participant.label),
-                    partner2_label='{}?'.format(partnerm4.participant.label),
-                    partner3_label='{}?'.format(partnerf2.participant.label),
-                    partner4_label='{}?'.format(partnerf4.participant.label), formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1340,42 +984,8 @@ class Cooking2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults2_partner1', 'cookresults2_partner2', 'cookresults2_partner3',
                              'cookresults2_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm2.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm4.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf2.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf4.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1402,42 +1012,8 @@ class Cooking2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults02_partner1', 'cookresults02_partner2', 'cookresults02_partner3',
                              'cookresults02_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm2.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm4.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf2.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf4.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1464,41 +1040,8 @@ class Sports2Hints(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
                              'sporthints2_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?'.format(partnerm2.participant.label),
-                    partner2_label='{}?'.format(partnerm4.participant.label),
-                    partner3_label='{}?'.format(partnerf2.participant.label),
-                    partner4_label='{}?'.format(partnerf4.participant.label), formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1524,42 +1067,8 @@ class Sports2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults2_partner1', 'sportresults2_partner2', 'sportresults2_partner3',
                              'sportresults2_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm2.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm4.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf2.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf4.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1586,42 +1095,8 @@ class Sports2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults02_partner1', 'sportresults02_partner2', 'sportresults02_partner3',
                              'sportresults02_partner4']
-        random.shuffle(formfields_random)
-        round = 0
-        if player.participant.task_rounds1['2'] == 1:
-            round = 1
-        else:
-            round = 2
-        g = player.group
-        count = 0
-        hints = 0
-        if player.participant.partnerm2 != 0:
-            partnerm2 = g.get_player_by_id(player.participant.partnerm2)
-            count+=1
-        elif player.participant.partnerm4 != 0:
-            partnerm4 = g.get_player_by_id(player.participant.partnerm4)
-            count+=1
-        elif player.participant.partnerf2 != 0:
-            partnerf2 = g.get_player_by_id(player.participant.partnerf2)
-            count+=1
-        elif player.participant.partnerf4 != 0:
-            partnerf4 = g.get_player_by_id(player.participant.partnerf4)
-            count+=1
-        if count == 1:
-            hints = 2
-        elif count == 2:
-            hints = 5
-        elif count == 3:
-            hints = 7
-        elif count == 4:
-            hints = 10
-        return dict(round=round, hints=hints, partnerm2=partnerm2, partnerm4=partnerm4,
-                    partnerf2=partnerf2, partnerf4=partnerf4,
-                    partner1_label='{}?[Out of 4 questions]'.format(partnerm2.participant.label),
-                    partner2_label='{}?[Out of 4 questions]'.format(partnerm4.participant.label),
-                    partner3_label='{}?[Out of 4 questions]'.format(partnerf2.participant.label),
-                    partner4_label='{}?[Out of 4 questions]'.format(partnerf4.participant.label),
-                    formfields_random=formfields_random)
+        final = vars_for_template2(player, formfields_random)
+        return final
 
     @staticmethod
     def is_displayed(player: Player):

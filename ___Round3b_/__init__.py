@@ -760,7 +760,7 @@ class Player(BasePlayer):
         [2, 'less elastic than in the short run'],
         [3, 'perfectly elastic'], [4, 'perfectly inelastic']],
         label='''
-        In the long run, new firms can ender an industry and so the supply elasticity
+        In the long run, new firms can enter an industry and so the supply elasticity
         tends to be''',
         widget=widgets.RadioSelect,
     )
@@ -1099,7 +1099,7 @@ class Player(BasePlayer):
         [3, 'decreases in membership fees for country clubs with golf facilities'],
         [4, 'more stringent professional requirements on the quality of golf balls requiring producers to use more expensive raw materials']],
         label='''
-        We observer that both the price of and quantity sold of golf balls are rising
+        We observe that both the price of and quantity sold of golf balls are rising
         over time. This is due to:''',
         widget=widgets.RadioSelect,
     )

@@ -8,7 +8,7 @@ class PlayerBot(Bot):
 
     def play_round(self):
         #original_genders_list = [0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1]
-        genders_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0]
+        genders_list = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
         ###change for diff tests
         PLAYERS = ['Shan Aman Rana', 'Alexia Delfino', 'Shamyla Chaudry', 'Ahsan Pasha',
                    'Shanzay Tariq', 'Izzah Kashif', 'Rohma Nasim', 'Hamna Tariq', 'Essa Kurd', 'Hammad Qayyum',

@@ -4,4 +4,4 @@ import time
 import random
 class PlayerBot(Bot):
     def play_round(self):
-        pass
+        yield Demographics

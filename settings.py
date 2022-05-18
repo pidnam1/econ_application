@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
     dict(
         name='my_project',
         display_name = "Survey",
-        app_sequence = ['___Consent_','___Preferences_','___Round1_','___Round2_','___Round3b_'],
+        app_sequence = ['___Consent_','___Preferences_','___Round1_'],
         num_demo_participants=18
     ),
     dict(
@@ -105,9 +105,7 @@ PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rou
 'partnerf1','partnerf2','partnerf3', 'partnerf4','partnerm1','partnerm2','partnerm3',
 'partnerm4','name','gender','true_id','roll_no','count_participant','p_helping',
 'round2_completed','round3b_completed','form_fields_pref','form_fields_pref2',
-
-
-                      "helpers_dict","pref_helpers", "pref_female_helpers", "pref_male_helpers","assigned_helpers", "tts", "female_tts", "male_tts"]
+"helpers_dict","pref_helpers", "pref_female_helpers", "pref_male_helpers","assigned_helpers", "tts", "female_tts", "male_tts"]
 SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids']
 
 # ISO-6310 code

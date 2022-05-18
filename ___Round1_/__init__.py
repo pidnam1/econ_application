@@ -472,6 +472,11 @@ class WaitPage1(WaitPage):
     body_text = ""
 
     @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return player.round_number == 1
+
+    @staticmethod
     def after_all_players_arrive(group: Group):
         set_helpers_new(group.get_players()[0].subsession)
 # PAGES
@@ -526,16 +531,19 @@ class Payment1Transition(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        return dict(round=player.round_number)
+        round = 0
+        if player.participant.task_rounds1['1'] == 1:
+            round = 1
+        else:
+            round = 2
+        return dict(round=round)
 
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
 def vars_for_template1(player: Player, formfields):
     final = {}
-    formfields_random = formfields.copy()
-    random.shuffle(formfields_random)
-    final.update(dict(formfields_random=formfields_random))
+    formfields_random = []
     round = 0
     if player.participant.task_rounds1['1'] == 1:
         round = 1
@@ -552,18 +560,22 @@ def vars_for_template1(player: Player, formfields):
     if player.participant.partnerm1 != 0:
         partnerm1 = g.get_player_by_id(player.participant.partnerm1)
         final.update(dict(partner1_label='{}?'.format(partnerm1.participant.label)))
+        formfields_random.append(formfields[0])
         count+=1
     elif player.participant.partnerm3 != 0:
         partnerm3 = g.get_player_by_id(player.participant.partnerm3)
         final.update(dict(partner2_label='{}?'.format(partnerm3.participant.label)))
+        formfields_random.append(formfields[1])
         count+=1
     elif player.participant.partnerf1 != 0:
         partnerf1 = g.get_player_by_id(player.participant.partnerf1)
         final.update(dict(partner3_label='{}?'.format(partnerf1.participant.label)))
+        formfields_random.append(formfields[2])
         count+=1
     elif player.participant.partnerf3 != 0:
         partnerf3 = g.get_player_by_id(player.participant.partnerf3)
         final.update(dict(partner4_label='{}?'.format(partnerf3.participant.label)))
+        formfields_random.append(formfields[3])
         count+=1
     if count == 1:
         hints = 2
@@ -574,15 +586,15 @@ def vars_for_template1(player: Player, formfields):
     elif count == 4:
         hints = 10
     final.update(dict(hints=hints, partnerm1=partnerm1, partnerm3=partnerm3, partnerf1=partnerf1, partnerf3=partnerf3))
+    random.shuffle(formfields_random)
+    final.update(dict(formfields_random=formfields_random))
     return final
 
 def vars_for_template2(player: Player, formfields):
     final = {}
-    formfields_random = formfields.copy()
-    random.shuffle(formfields_random)
-    final.update(dict(formfields_random=formfields_random))
+    formfields_random = []
     round = 0
-    if player.participant.task_rounds1['1'] == 1:
+    if player.participant.task_rounds1['2'] == 1:
         round = 1
     else:
         round = 2
@@ -597,18 +609,22 @@ def vars_for_template2(player: Player, formfields):
     if player.participant.partnerm2 != 0:
         partnerm2 = g.get_player_by_id(player.participant.partnerm2)
         final.update(dict(partner1_label='{}?'.format(partnerm2.participant.label)))
+        formfields_random.append(formfields[0])
         count+=1
     elif player.participant.partnerm4 != 0:
         partnerm4 = g.get_player_by_id(player.participant.partnerm4)
         final.update(dict(partner2_label='{}?'.format(partnerm4.participant.label)))
+        formfields_random.append(formfields[1])
         count+=1
     elif player.participant.partnerf2 != 0:
         partnerf2 = g.get_player_by_id(player.participant.partnerf2)
         final.update(dict(partner3_label='{}?'.format(partnerf2.participant.label)))
+        formfields_random.append(formfields[2])
         count+=1
     elif player.participant.partnerf4 != 0:
         partnerf4 = g.get_player_by_id(player.participant.partnerf4)
         final.update(dict(partner4_label='{}?'.format(partnerf4.participant.label)))
+        formfields_random.append(formfields[3])
         count+=1
     if count == 1:
         hints = 2
@@ -619,6 +635,8 @@ def vars_for_template2(player: Player, formfields):
     elif count == 4:
         hints = 10
     final.update(dict(hints=hints, partnerm2=partnerm2, partnerm4=partnerm4, partnerf2=partnerf2, partnerf4=partnerf4))
+    random.shuffle(formfields_random)
+    final.update(dict(formfields_random=formfields_random))
     return final
 
 class Economics1Hints(Page):
@@ -1160,8 +1178,8 @@ class Final(Page):
                 return upcoming_apps[int[i]]
 
 
-page_sequence = [WaitPage1, Demographics, Economics1Hints, Economics1Results,
+page_sequence = [WaitPage1, Demographics, Payment1Transition, Economics1Hints, Economics1Results,
                  Economics1Results0, Cooking1Hints, Cooking1Results, Cooking1Results0, Sports1Hints,
-                 Sports1Results, Sports1Results0, Economics2Hints, Economics2Results, Economics2Results0,
+                 Sports1Results, Sports1Results0, Payment2Transition, Economics2Hints, Economics2Results, Economics2Results0,
                  Cooking2Hints, Cooking2Results, Cooking2Results0, Sports2Hints, Sports2Results,
                  Sports2Results0, WaitPage2, Final]

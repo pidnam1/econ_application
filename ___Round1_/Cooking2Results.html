@@ -24,7 +24,7 @@ PART 2: ROUND {{ round }} COOKING
         </b></p>
         {{ for field in formfields_random }}
           {{ if field == 'cookresults2_partner1' && partnerm2 != 0 }}
-            {{ formfield 'cookresults2_partner2' label=partner2_label}}
+            {{ formfield 'cookresults2_partner1' label=partner1_label}}
           {{ endif }}
           {{ if field == 'cookresults2_partner2' && partnerm4 != 0 }}
             {{ formfield 'cookresults2_partner2' label=partner2_label}}

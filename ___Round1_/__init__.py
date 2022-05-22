@@ -295,7 +295,7 @@ def set_helpers_new(subsession: Subsession):
 
 
     ####Test implementation
-    #show_tests(subsession)
+    show_tests(subsession)
 
 def show_tests(subsession: Subsession):
 

@@ -8,7 +8,15 @@ class PlayerBot(Bot):
 
     def play_round(self):
         #original_genders_list = [0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1]
-        genders_list = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+        men = 5
+        women = 5
+        genders_list = []
+        for i in range(women):
+            genders_list.append(0)
+        for i in range(men):
+            genders_list.append(1)
+        random.shuffle(genders_list)
+
         ###change for diff tests
         PLAYERS = ['Shan Aman Rana', 'Alexia Delfino', 'Shamyla Chaudry', 'Ahsan Pasha',
                    'Shanzay Tariq', 'Izzah Kashif', 'Rohma Nasim', 'Hamna Tariq', 'Essa Kurd', 'Hammad Qayyum',

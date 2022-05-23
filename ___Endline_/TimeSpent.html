@@ -1,0 +1,19 @@
+{{ block title }}SECTION A{{ endblock }}
+{{ block content }}
+
+    <b><p>In a typical day (24-hour period) how much time do you spend on the following activities:</p></b>
+
+    <table class="table">
+        {{ for field in form }}
+            <tr>
+                <td>{{ field.label }}</td>
+                <td>{{ field }}</td>
+            </tr>
+        {{ endfor }}
+    </table>
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

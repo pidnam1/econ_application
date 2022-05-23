@@ -1,0 +1,30 @@
+{{ block title }}SECTION E{{ endblock }}
+{{ block content }}
+
+    <b><p>How well do the following statements describe your personality?</p>
+    <p>I see myself as someone who ... </p></b>
+
+    <table class="table">
+            <tr>
+              <th></th>
+              <th>Strongly Agree</th>
+              <th>Agree</th>
+              <th>Neutral</th>
+              <th>Disagree</th>
+              <th>Strongly Disagree</th>
+            </tr>
+        {{ for field in form }}
+            <tr>
+                <th>{{ field.label }}</th>
+                {{ for choice in field }}
+                    <td>{{ choice }}</td>
+                {{ endfor }}
+            </tr>
+        {{ endfor }}
+    </table>
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

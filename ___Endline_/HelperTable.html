@@ -1,0 +1,101 @@
+{{ block title }}SECTION B{{ endblock }}
+{{ block content }}
+
+    <b><p>Can you please rank helpers that you worked with today between one and five depending on the ease with which you could ask them for hints (1=easiest to ask; 5=hardest to ask)?</p></b>
+
+    <div class="row">
+      <div class="col-sm-8">
+        <table class="table">
+            <tr>
+                <th>No.</th>
+                <th>Roll Number (if known)</th>
+                <th>Full name of the student who helped you (First name, Surname)</th>
+                <th>Ranking (1=easiest to ask; 5=hardest to ask)</th>
+                <th><p>Reason for ranking (Give as many as applicable)</p></th>
+            </tr>
+            <tr>
+                <td>1</td>
+                {{ for field in helper1 }}
+                <td>{{ formfield field }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td>2</td>
+                {{ for field in helper2 }}
+                <td>{{ formfield field }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td>3</td>
+                {{ for field in helper3 }}
+                <td>{{ formfield field }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td>4</td>
+                {{ for field in helper4 }}
+                <td>{{ formfield field }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td>5</td>
+                {{ for field in helper5 }}
+                <td>{{ formfield field }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td>6</td>
+                {{ for field in helper6 }}
+                <td>{{ formfield field }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td>7</td>
+                {{ for field in helper7 }}
+                <td>{{ formfield field }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td>8</td>
+                {{ for field in helper8 }}
+                <td>{{ formfield field }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+      </div>
+      <div class="col-sm-4">
+        <style>
+            .card1 {
+              background-color: #BFD7FF;
+            }
+        </style>
+        <div class="card1 rounded">
+          <p></p>
+          <div class="card-body">
+            <b><p>Possible Reasons for ranking</p></b>
+            <ol>
+              <li>I could ask without worry that helper will think I don’t know much</li>
+              <li>I couldn’t ask as I felt worried that helper will think I don’t know much</li>
+              <li>Was male</li>
+              <li>Was female</li>
+              <li>A close friend</li>
+              <li>Not a close friend</li>
+              <li>Has a high GPA</li>
+              <li>Has a low GPA</li>
+              <li>Was older than me</li>
+              <li>Was younger than me</li>
+              <li>Is from my zaat</li>
+              <li>Is not from my zaat</li>
+              <li>Others (please specify)</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

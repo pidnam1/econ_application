@@ -1,0 +1,28 @@
+{{ block title }}SECTION D{{ endblock }}
+{{ block content }}
+
+    <b><p>For each of the categories tested above, tell us whether you think men or women, on average,
+    know more about it. Indicate your answer in the table below.</p></b>
+
+    <table class="table">
+            <tr>
+              <th></th>
+              <th>Women know more</th>
+              <th>No gender difference</th>
+              <th>Men know more</th>
+            </tr>
+        {{ for field in form }}
+            <tr>
+                <th>{{ field.label }}</th>
+                {{ for choice in field }}
+                    <td>{{ choice }}</td>
+                {{ endfor }}
+            </tr>
+        {{ endfor }}
+    </table>
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

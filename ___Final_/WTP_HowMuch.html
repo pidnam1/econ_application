@@ -1,0 +1,29 @@
+{{ block title }}FINAL{{ endblock }}
+{{ block content }}
+
+    <p>You have chosen helper {{ player.wtp_who }}</p>
+
+    <p>Now you have to decide how much to pay to avoid that s/he finds out about your hints.</p>
+    <p>You can pay any amount between 0 and 10 $.</p>
+
+    <p>Once you decide how much to pay, we will randomly draw a number between 0 and 10.</p>
+    <ul>
+      <li>If the number drawn is equal or higher than the price you decided to pay,
+      we will still communicate your hints to the helper you selected and you won’t need to pay anything.</li>
+      <li>If the number drawn is lower than the price you decided to pay,
+      we won’t communicate your hints to the helper you selected and the price will be deducted from your final payment. </li>
+    </ul>
+
+    <p>Let’s make an example. Let’s say you want to pay 5. If the number randomly drawn
+    by the computer is higher than or equal to 5, we will communicate your hints to the
+    helper and you won’t need to pay anything. If the number randomly drawn by the computer
+    is lower than 5, we won’t communicate your hints to the helper and 5 will be deducted from your final payment. </p>
+
+    <p>Now it’s your turn to decide:</p>
+    {{ formfields }}
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next - draw random number</button>
+    </p>
+
+{{ endblock }}

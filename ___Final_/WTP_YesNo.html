@@ -1,0 +1,24 @@
+{{ block title }}FINAL{{ endblock }}
+{{ block content }}
+
+    <p>Thank you for completing the activities as a test-taker!</p>
+
+    <p>In some of the previous rounds, you were matched with the following helpers: </p>
+    <ul>
+      <li><p>{{ partner4 }}</p></li>
+      <li><p>{{ partner7 }}</p></li>
+      <li><p>{{ partner1 }}</p></li>
+      <li><p>{{ partner5 }}</p></li>
+    </ul>
+
+    <p>We are about to communicate to each helper the number of hints that you asked for in each subject round in which you were paired together.</p>
+    <p>Would you like to stop us from giving this information to one of the helpers?</p>
+    <p>We give you the chance to pay some amount of money NOT to communicate to one of the helpers whether you took some hints.</p>
+    {{ formfields }}
+    <p></p>
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

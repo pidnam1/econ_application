@@ -3,13 +3,10 @@ from . import *
 
 
 class PlayerBot(Bot):
-
-
-
     def play_round(self):
         #original_genders_list = [0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1]
-        men = 5
-        women = 5
+        men = 4
+        women = 4
         genders_list = []
         for i in range(women):
             genders_list.append(0)

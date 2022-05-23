@@ -1170,7 +1170,8 @@ class Final(Page):
         int = list(range(0, 3))
         random.shuffle(int)
         for i in range(len(int)):
-            if ('___Round2_' in upcoming_apps[int[i]]) and (player.participant.round2_completed == 0):
+            if ('___Round2_' in
+                [int[i]]) and (player.participant.round2_completed == 0):
                 player.participant.round2_completed = 3
                 return upcoming_apps[int[i]]
             elif ('___Round3b_' in upcoming_apps[int[i]]) and (player.participant.round3b_completed == 0):

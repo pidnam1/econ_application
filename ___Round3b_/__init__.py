@@ -2143,7 +2143,7 @@ class Hints_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2157,7 +2157,7 @@ class Hints_MP(Page):
         formfields_expect = ['expect_hints_economics_MP', 'expect_hints_cooking_MP', 'expect_hints_sports_MP']
         random.shuffle(formfields_expect)
         g = player.group
-        partner = g.get_player_by_id(player.participant.partner6)
+        partner = g.get_player_by_id(player.participant.partner3)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
 
 class ExpectationWR_MP(Page):
@@ -2165,7 +2165,7 @@ class ExpectationWR_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -2194,7 +2194,7 @@ class ExpectationMR_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -2227,7 +2227,7 @@ class Economics1_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics1_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics1_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics1_MP','helpful_hint_econ1_MP','prob_econ1_MP']
@@ -2255,7 +2255,7 @@ class Economics2_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics2_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics2_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics2_MP','helpful_hint_econ2_MP','prob_econ2_MP']
@@ -2283,7 +2283,7 @@ class Economics3_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics3_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics3_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics3_MP','helpful_hint_econ3_MP','prob_econ3_MP']
@@ -2311,7 +2311,7 @@ class Economics4_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics4_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics4_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics4_MP','helpful_hint_econ4_MP','prob_econ4_MP']
@@ -2339,7 +2339,7 @@ class Cooking1_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking1_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking1_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking1_MP','helpful_hint_cook1_MP','prob_cook1_MP']
@@ -2367,7 +2367,7 @@ class Cooking2_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking2_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking2_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking2_MP','helpful_hint_cook2_MP','prob_cook2_MP']
@@ -2395,7 +2395,7 @@ class Cooking3_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking3_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking3_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking3_MP','helpful_hint_cook3_MP','prob_cook3_MP']
@@ -2423,7 +2423,7 @@ class Cooking4_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking4_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking4_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking4_MP','helpful_hint_cook4_MP','prob_cook4_MP']
@@ -2451,7 +2451,7 @@ class Sports1_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports1_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports1_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports1_MP','helpful_hint_sport1_MP','prob_sport1_MP']
@@ -2479,7 +2479,7 @@ class Sports2_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports2_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports2_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports2_MP','helpful_hint_sport2_MP','prob_sport2_MP']
@@ -2507,7 +2507,7 @@ class Sports3_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports3_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports3_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports3_MP','helpful_hint_sport3_MP','prob_sport3_MP']
@@ -2535,7 +2535,7 @@ class Sports4_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports4_MP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports4_MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports4_MP','helpful_hint_sport4_MP','prob_sport4_MP']
@@ -2560,7 +2560,7 @@ class Hints_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2582,7 +2582,7 @@ class ExpectationWR_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -2611,7 +2611,7 @@ class ExpectationMR_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -2644,7 +2644,7 @@ class Economics1_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics1_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics1_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics1_MR','helpful_hint_econ1_MR','prob_econ1_MR']
@@ -2672,7 +2672,7 @@ class Economics2_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics2_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics2_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics2_MR','helpful_hint_econ2_MR','prob_econ2_MR']
@@ -2700,7 +2700,7 @@ class Economics3_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics3_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics3_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics3_MR','helpful_hint_econ3_MR','prob_econ3_MR']
@@ -2728,7 +2728,7 @@ class Economics4_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics4_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics4_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics4_MR','helpful_hint_econ4_MR','prob_econ4_MR']
@@ -2756,7 +2756,7 @@ class Cooking1_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking1_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking1_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking1_MR','helpful_hint_cook1_MR','prob_cook1_MR']
@@ -2784,7 +2784,7 @@ class Cooking2_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking2_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking2_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking2_MR','helpful_hint_cook2_MR','prob_cook2_MR']
@@ -2812,7 +2812,7 @@ class Cooking3_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking3_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking3_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking3_MR','helpful_hint_cook3_MR','prob_cook3_MR']
@@ -2840,7 +2840,7 @@ class Cooking4_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking4_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking4_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking4_MR','helpful_hint_cook4_MR','prob_cook4_MR']
@@ -2868,7 +2868,7 @@ class Sports1_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports1_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports1_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports1_MR','helpful_hint_sport1_MR','prob_sport1_MR']
@@ -2896,7 +2896,7 @@ class Sports2_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports2_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports2_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports2_MR','helpful_hint_sport2_MR','prob_sport2_MR']
@@ -2924,7 +2924,7 @@ class Sports3_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports3_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports3_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports3_MR','helpful_hint_sport3_MR','prob_sport3_MR']
@@ -2952,7 +2952,7 @@ class Sports4_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports4_MR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports4_MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports4_MR','helpful_hint_sport4_MR','prob_sport4_MR']
@@ -2977,7 +2977,7 @@ class Hints_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2999,7 +2999,7 @@ class ExpectationWR_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -3028,7 +3028,7 @@ class ExpectationMR_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -3061,7 +3061,7 @@ class Economics1_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics1_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics1_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics1_WP','helpful_hint_econ1_WP','prob_econ1_WP']
@@ -3089,7 +3089,7 @@ class Economics2_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics2_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics2_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics2_WP','helpful_hint_econ2_WP','prob_econ2_WP']
@@ -3117,7 +3117,7 @@ class Economics3_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics3_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics3_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics3_WP','helpful_hint_econ3_WP','prob_econ3_WP']
@@ -3145,7 +3145,7 @@ class Economics4_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics4_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics4_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics4_WP','helpful_hint_econ4_WP','prob_econ4_WP']
@@ -3173,7 +3173,7 @@ class Cooking1_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking1_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking1_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking1_WP','helpful_hint_cook1_WP','prob_cook1_WP']
@@ -3201,7 +3201,7 @@ class Cooking2_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking2_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking2_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking2_WP','helpful_hint_cook2_WP','prob_cook2_WP']
@@ -3229,7 +3229,7 @@ class Cooking3_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking3_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking3_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking3_WP','helpful_hint_cook3_WP','prob_cook3_WP']
@@ -3257,7 +3257,7 @@ class Cooking4_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking4_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking4_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking4_WP','helpful_hint_cook4_WP','prob_cook4_WP']
@@ -3285,7 +3285,7 @@ class Sports1_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports1_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports1_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports1_WP','helpful_hint_sport1_WP','prob_sport1_WP']
@@ -3313,7 +3313,7 @@ class Sports2_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports2_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports2_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports2_WP','helpful_hint_sport2_WP','prob_sport2_WP']
@@ -3341,7 +3341,7 @@ class Sports3_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports3_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports3_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports3_WP','helpful_hint_sport3_WP','prob_sport3_WP']
@@ -3369,7 +3369,7 @@ class Sports4_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports4_WP']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports4_WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports4_WP','helpful_hint_sport4_WP','prob_sport4_WP']
@@ -3394,7 +3394,7 @@ class Hints_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -3416,7 +3416,7 @@ class ExpectationWR_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -3445,7 +3445,7 @@ class ExpectationMR_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -3478,7 +3478,7 @@ class Economics1_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics1_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics1_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics1_WR','helpful_hint_econ1_WR','prob_econ1_WR']
@@ -3506,7 +3506,7 @@ class Economics2_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics2_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics2_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics2_WR','helpful_hint_econ2_WR','prob_econ2_WR']
@@ -3534,7 +3534,7 @@ class Economics3_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics3_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics3_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics3_WR','helpful_hint_econ3_WR','prob_econ3_WR']
@@ -3562,7 +3562,7 @@ class Economics4_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Economics4_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Economics4_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics4_WR','helpful_hint_econ4_WR','prob_econ4_WR']
@@ -3590,7 +3590,7 @@ class Cooking1_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking1_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking1_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking1_WR','helpful_hint_cook1_WR','prob_cook1_WR']
@@ -3618,7 +3618,7 @@ class Cooking2_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking2_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking2_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking2_WR','helpful_hint_cook2_WR','prob_cook2_WR']
@@ -3646,7 +3646,7 @@ class Cooking3_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking3_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking3_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking3_WR','helpful_hint_cook3_WR','prob_cook3_WR']
@@ -3674,7 +3674,7 @@ class Cooking4_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Cooking4_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Cooking4_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking4_WR','helpful_hint_cook4_WR','prob_cook4_WR']
@@ -3702,7 +3702,7 @@ class Sports1_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports1_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports1_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports1_WR','helpful_hint_sport1_WR','prob_sport1_WR']
@@ -3730,7 +3730,7 @@ class Sports2_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports2_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports2_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports2_WR','helpful_hint_sport2_WR','prob_sport2_WR']
@@ -3758,7 +3758,7 @@ class Sports3_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports3_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports3_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports3_WR','helpful_hint_sport3_WR','prob_sport3_WR']
@@ -3786,7 +3786,7 @@ class Sports4_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['Sports4_WR']) & (get_timeout_seconds1(player) > 0)
+        return (player.round_number == participant.task_rounds3b['Sports4_WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports4_WR','helpful_hint_sport4_WR','prob_sport4_WR']

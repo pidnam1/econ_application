@@ -1,0 +1,30 @@
+{{ block title }}SECTION E{{ endblock }}
+{{ block content }}
+
+    <b><p>Here are a number of statements that may or may not apply to you.</p>
+    <p>There are no right or wrong answers, so just answer honestly, considering how you compare to most people.</p></b>
+
+    <table class="table">
+            <tr>
+              <th></th>
+              <th>Strongly Agree</th>
+              <th>Agree</th>
+              <th>Neutral</th>
+              <th>Disagree</th>
+              <th>Strongly Disagree</th>
+            </tr>
+        {{ for field in form }}
+            <tr>
+                <th>{{ field.label }}</th>
+                {{ for choice in field }}
+                    <td>{{ choice }}</td>
+                {{ endfor }}
+            </tr>
+        {{ endfor }}
+    </table>
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

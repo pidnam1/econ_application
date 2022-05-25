@@ -1,0 +1,20 @@
+{{ block title }}SECTION A{{ endblock }}
+{{ block content }}
+
+    <b><p>Which picture best describes your relationship with students <i>outside your class</i> at your current university?</p></b>
+    {{ for image in image_data2 }}
+        <label style="text-align: center">
+            <img src="{{ static image.path }}" width="200px">
+            <br>
+            <input type="radio" name="img_choice" value="{{ image.name }}" class="persist">
+        </label>
+    {{ endfor }}
+    {{ formfield_errors 'school_relationship_image' }}
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+    <script src="{{ static 'persist-raw.js' }}"></script>
+
+{{ endblock }}

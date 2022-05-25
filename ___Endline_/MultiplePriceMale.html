@@ -1,0 +1,33 @@
+{{ block title }}SECTION F{{ endblock }}
+{{ block content }}
+
+    <p>We will now ask you to choose repeatedly between two options, A and B.</p>
+    <p>Think back to your experience as a test-taker: you should reply to a question, and you are asking for a hint at a cost.</p>
+    <ul>
+      <li>In option A, you take the hint privately, this means that nobody will see that you took a hint.</li>
+      <li>In option B, you take the hint in front of a helper. This means that the helper will know whether you took the hint or not.</li>
+    </ul>
+    <p>In either option, the hint is exactly the same and you decided to take the hint (there is no option of NOT taking the hint).</p>
+    <p>Which option would you choose?</p>
+
+    <b>FOR THE FOLLOWING CHOICES, YOU ARE MATCHED WITH: {{ mr }}</b>
+    <table class="table">
+        <tr>
+          <th>Option A</th>
+          <th>Option B</th>
+        </tr>
+        {{ for field in form }}
+            <tr>
+                {{ for choice in field }}
+                    <td>{{ choice.label }}
+                    {{ choice }}</td>
+                {{ endfor }}
+            </tr>
+        {{ endfor }}
+    </table>
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

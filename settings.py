@@ -110,7 +110,7 @@ PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rou
 'partner2','partner3','partner4','partner5','partner6','partner7','partner8',
 'partnerf1','partnerf2','partnerf3', 'partnerf4','partnerm1','partnerm2','partnerm3',
 'partnerm4','name','gender','true_id','roll_no','count_participant','p_helping',
-'round2_completed','round3b_completed','form_fields_pref','form_fields_pref2','random',
+'round2_completed','round3b_completed','form_fields_pref','form_fields_pref2','random','exclude',
 "helpers_dict","pref_helpers", "pref_female_helpers", "pref_male_helpers","assigned_helpers", "tts", "female_tts", "male_tts"]
 SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids']
 

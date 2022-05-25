@@ -419,46 +419,29 @@ def set_partners(player: Player):
     random.shuffle(intf1)
     intf2 = list(range(2,4))
     random.shuffle(intf2)
-    if 1 < len(player.participant.female_tts):
-        player.participant.partnerf1 = player.participant.female_tts[intf1[0]]
-        player.participant.partnerf2 = player.participant.female_tts[intf1[1]]
-    elif 0 < len(player.participant.female_tts):
-        player.participant.partnerf1 = player.participant.female_tts[0]
-        player.participant.partnerf2 = 0
-    else:
-        player.participant.partnerf1 = 0
-        player.participant.partnerf2 = 0
-    if 3 < len(player.participant.female_tts):
-        player.participant.partnerf3 = player.participant.female_tts[intf2[0]]
-        player.participant.partnerf4 = player.participant.female_tts[intf2[1]]
-    elif 2 < len(player.participant.female_tts):
-        player.participant.partnerf3 = player.participant.female_tts[2]
-        player.participant.partnerf4 = 0
-    else:
-        player.participant.partnerf3 = 0
-        player.participant.partnerf4 = 0
-    intm1 = list(range(0,2))
-    random.shuffle(intm1)
-    intm2 = list(range(2,4))
-    random.shuffle(intm2)
-    if 1 < len(player.participant.male_tts):
-        player.participant.partnerm1 = player.participant.male_tts[intm1[0]]
-        player.participant.partnerm2 = player.participant.male_tts[intm1[1]]
-    elif 0 < len(player.participant.male_tts):
-        player.participant.partnerm1 = player.participant.male_tts[0]
-        player.participant.partnerm2 = 0
-    else:
-        player.participant.partnerm1 = 0
-        player.participant.partnerm2 = 0
-    if 3 < len(player.participant.male_tts):
-        player.participant.partnerm3 = player.participant.male_tts[intm2[0]]
-        player.participant.partnerm4 = player.participant.male_tts[intm2[1]]
-    elif 2 < len(player.participant.male_tts):
-        player.participant.partnerm3 = player.participant.male_tts[2]
-        player.participant.partnerm4 = 0
-    else:
-        player.participant.partnerm3 = 0
-        player.participant.partnerm4 = 0
+
+    arr = player.participant.female_tts[0:2]
+    random.shuffle(arr)
+    player.participant.partnerf1 = arr[0] if 0 < len(arr) else 0
+    player.participant.partnerf2 = arr[1] if 1 < len(arr) else 0
+
+    arr1 = player.participant.female_tts[2:4]
+    random.shuffle(arr1)
+    player.participant.partnerf3 = arr1[0] if 0 < len(arr1) else 0
+    player.participant.partnerf4 = arr1[1] if 1 < len(arr1) else 0
+
+    arr2 = player.participant.male_tts[0:2]
+    random.shuffle(arr2)
+    player.participant.partnerm1 = arr2[0] if 0 < len(arr2) else 0
+    player.participant.partnerm2 = arr2[1] if 1 < len(arr2) else 0
+
+    arr3 = player.participant.male_tts[2:4]
+    random.shuffle(arr3)
+    player.participant.partnerm3 = arr3[0] if 0 < len(arr3) else 0
+    player.participant.partnerm4 = arr3[1] if 1 < len(arr3) else 0
+
+    ##we want to be at least 1 preferred and 1 random for both helper rounds
+    ## randomize over p m and f, and then r m and f
 
 def get_timeout_seconds1(player: Player):
     participant = player.participant
@@ -557,22 +540,23 @@ def vars_for_template1(player: Player, formfields):
     partnerm3 = 0
     partnerf1 = 0
     partnerf3 = 0
+    print("testing:", player.participant.partnerm1, player.participant.partnerm2, player.participant.partnerm3, player.participant.partnerm4, player.participant.partnerf1, player.participant.partnerf2, player.participant.partnerf3, player.participant.partnerf4, )
     if player.participant.partnerm1 != 0:
         partnerm1 = g.get_player_by_id(player.participant.partnerm1)
         final.update(dict(partner1_label='{}?'.format(partnerm1.participant.label)))
         formfields_random.append(formfields[0])
         count+=1
-    elif player.participant.partnerm3 != 0:
+    if player.participant.partnerm3 != 0:
         partnerm3 = g.get_player_by_id(player.participant.partnerm3)
         final.update(dict(partner2_label='{}?'.format(partnerm3.participant.label)))
         formfields_random.append(formfields[1])
         count+=1
-    elif player.participant.partnerf1 != 0:
+    if player.participant.partnerf1 != 0:
         partnerf1 = g.get_player_by_id(player.participant.partnerf1)
         final.update(dict(partner3_label='{}?'.format(partnerf1.participant.label)))
         formfields_random.append(formfields[2])
         count+=1
-    elif player.participant.partnerf3 != 0:
+    if player.participant.partnerf3 != 0:
         partnerf3 = g.get_player_by_id(player.participant.partnerf3)
         final.update(dict(partner4_label='{}?'.format(partnerf3.participant.label)))
         formfields_random.append(formfields[3])
@@ -588,6 +572,7 @@ def vars_for_template1(player: Player, formfields):
     final.update(dict(hints=hints, partnerm1=partnerm1, partnerm3=partnerm3, partnerf1=partnerf1, partnerf3=partnerf3))
     random.shuffle(formfields_random)
     final.update(dict(formfields_random=formfields_random))
+    print(final)
     return final
 
 def vars_for_template2(player: Player, formfields):
@@ -611,17 +596,17 @@ def vars_for_template2(player: Player, formfields):
         final.update(dict(partner1_label='{}?'.format(partnerm2.participant.label)))
         formfields_random.append(formfields[0])
         count+=1
-    elif player.participant.partnerm4 != 0:
+    if player.participant.partnerm4 != 0:
         partnerm4 = g.get_player_by_id(player.participant.partnerm4)
         final.update(dict(partner2_label='{}?'.format(partnerm4.participant.label)))
         formfields_random.append(formfields[1])
         count+=1
-    elif player.participant.partnerf2 != 0:
+    if player.participant.partnerf2 != 0:
         partnerf2 = g.get_player_by_id(player.participant.partnerf2)
         final.update(dict(partner3_label='{}?'.format(partnerf2.participant.label)))
         formfields_random.append(formfields[2])
         count+=1
-    elif player.participant.partnerf4 != 0:
+    if player.participant.partnerf4 != 0:
         partnerf4 = g.get_player_by_id(player.participant.partnerf4)
         final.update(dict(partner4_label='{}?'.format(partnerf4.participant.label)))
         formfields_random.append(formfields[3])
@@ -1162,21 +1147,23 @@ class Final(Page):
     def is_displayed(player: Player):
         participant = player.participant
         return player.round_number == 9
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.round2_completed = 3
 
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
         player.participant.round2_completed = 0
         player.participant.round3b_completed = 0
-        int = list(range(0, 3))
-        random.shuffle(int)
-        for i in range(len(int)):
-            if ('___Round2_' in
-                [int[i]]) and (player.participant.round2_completed == 0):
-                player.participant.round2_completed = 3
-                return upcoming_apps[int[i]]
-            elif ('___Round3b_' in upcoming_apps[int[i]]) and (player.participant.round3b_completed == 0):
-                player.participant.round3b_completed = 3
-                return upcoming_apps[int[i]]
+        arr = list(range(0, 2))
+        random.shuffle(arr)
+        print(arr[0])
+        if arr[0] == 0:
+            player.participant.round2_completed = 3
+            return upcoming_apps[arr[0]]
+        if arr[0] == 1:
+            player.participant.round3b_completed = 3
+            return upcoming_apps[arr[0]]
+
 
 
 page_sequence = [WaitPage1, Demographics, Payment1Transition, Economics1Hints, Economics1Results,

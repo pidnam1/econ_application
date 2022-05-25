@@ -1,13 +1,12 @@
 from otree.api import Currency as c, currency_range, expect, Bot
 from . import *
+import time
 import random
 class PlayerBot(Bot):
     def play_round(self):
-        time.sleep(10)
         yield Demographics
 
 
-        time.sleep(10)
         hint_mp_form = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP', 'results_economics_MP', 'results_cooking_MP', 'results_sports_MP']
         zero = [0 for i in range(6)]
 

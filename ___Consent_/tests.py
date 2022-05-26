@@ -5,14 +5,7 @@ from . import *
 class PlayerBot(Bot):
     def play_round(self):
         #original_genders_list = [0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1]
-        men = 4
-        women = 4
-        genders_list = []
-        for i in range(women):
-            genders_list.append(0)
-        for i in range(men):
-            genders_list.append(1)
-        random.shuffle(genders_list)
+        genders_list = [1, 0, 0, 1, 0, 1, 0, 1]
 
         ###change for diff tests
         PLAYERS = ['Shan Aman Rana', 'Alexia Delfino', 'Shamyla Chaudry', 'Ahsan Pasha',

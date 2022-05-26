@@ -1153,16 +1153,17 @@ class Final(Page):
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
         player.participant.round2_completed = 0
-        player.participant.round3b_completed = 0
-        arr = list(range(0, 2))
-        random.shuffle(arr)
-        print(arr[0])
-        if arr[0] == 0:
-            player.participant.round2_completed = 3
-            return upcoming_apps[arr[0]]
-        if arr[0] == 1:
-            player.participant.round3b_completed = 3
-            return upcoming_apps[arr[0]]
+        return upcoming_apps[0]
+        # player.participant.round3b_completed = 0
+        # arr = list(range(0, 2))
+        # random.shuffle(arr)
+        # print(upcoming_apps[arr[0]])
+        # if arr[0] == 0:
+        #     player.participant.round2_completed = 3
+        #     return upcoming_apps[arr[0]]
+        # if arr[0] == 1:
+        #     player.participant.round3b_completed = 3
+        #     return upcoming_apps[arr[0]]
 
 
 

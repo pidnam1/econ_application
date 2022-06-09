@@ -1,12 +1,10 @@
 {{ block title }}FINAL{{ endblock }}
 {{ block content }}
 
-    <p>You have chosen helper {{ player.wtp_who }}</p>
+    <p>Now you have to decide how much to pay to avoid that each helper finds out about your hints.</p>
+    <p>You can pay any amount between 0 and 200 Rs. for all helpers.</p>
 
-    <p>Now you have to decide how much to pay to avoid that s/he finds out about your hints.</p>
-    <p>You can pay any amount between 0 and 10 $.</p>
-
-    <p>Once you decide how much to pay, we will randomly draw a number between 0 and 10.</p>
+    <p>Once you decide how much to pay, we will randomly draw a number between 0 and 200.</p>
     <ul>
       <li>If the number drawn is equal or higher than the price you decided to pay,
       we will still communicate your hints to the helper you selected and you won’t need to pay anything.</li>
@@ -20,7 +18,19 @@
     is lower than 5, we won’t communicate your hints to the helper and 5 will be deducted from your final payment. </p>
 
     <p>Now it’s your turn to decide:</p>
-    {{ formfields }}
+    <table class="table">
+        <tr>
+            <th>Helper Chosen</th>
+            <th>I would like to pay ____ Rs. NOT to communicate the hints I took to helper</th>
+        </tr>
+        <tr>
+        {{ for l in labels }}
+        <tr>
+          <td>{{ l.label }}</td>
+          <td>{{ formfield l.name }}<td>
+        </tr>
+        {{ endfor }}
+    </table>
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next - draw random number</button>

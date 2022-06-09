@@ -27,10 +27,14 @@ def make_field_likert(label):
         widget=widgets.RadioSelectHorizontal,
     )
 
-def make_field_multiple_price(seen):
+def make_field_multiple_price():
     return models.IntegerField(
-        choices=[[1, 'Not seen by helper: Cost 5'], [2, seen]],
-        widget=widgets.RadioSelect,
+        choices=[[1, 'Option A'], [2, 'Option B']],
+    )
+
+def make_field_wtp():
+    return models.IntegerField(
+        choices=[1,2,3],label='',
     )
 
 def make_image_data(image_names):
@@ -230,22 +234,6 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     #MAKE ANY FORMFIELDS NEEDED FOR HELPER TABLE
-    helper_roll1 = models.IntegerField(label='')
-    helper_roll2 = models.IntegerField(label='')
-    helper_roll3 = models.IntegerField(label='')
-    helper_roll4 = models.IntegerField(label='')
-    helper_roll5 = models.IntegerField(label='')
-    helper_roll6 = models.IntegerField(label='')
-    helper_roll7 = models.IntegerField(label='')
-    helper_roll8 = models.IntegerField(label='')
-    helper_name1 = models.StringField(label='')
-    helper_name2 = models.StringField(label='')
-    helper_name3 = models.StringField(label='')
-    helper_name4 = models.StringField(label='')
-    helper_name5 = models.StringField(label='')
-    helper_name6 = models.StringField(label='')
-    helper_name7 = models.StringField(label='')
-    helper_name8 = models.StringField(label='')
     helper_ranking1 = models.StringField(label='')
     helper_ranking2 = models.StringField(label='')
     helper_ranking3 = models.StringField(label='')
@@ -303,10 +291,10 @@ class Player(BasePlayer):
     )
 
     amount_notgame = models.IntegerField(
-        label='Out of Rs.100, amount NOT to be used in the game'
+        label='Out of Rs.300, amount NOT to be used in the game'
     )
     amount_game = models.IntegerField(
-        label='Out of Rs. 100, amount to be used in the game'
+        label='Out of Rs.300, amount to be used in the game'
     )
     gender = models.StringField(
         choices=[['Male', 'Male'], ['Female', 'Female']],
@@ -452,12 +440,12 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     altruism = models.IntegerField(
-        label='Imagine the following situation: Today you unexpectedly received 1,000 Euro. How much of this amount would you donate to a good cause? (Values between 0 and 1000 are allowed.)',
+        label='Imagine the following situation: Today you unexpectedly received 1,000 Rs. How much of this amount would you donate to a good cause? (Values between 0 and 1000 are allowed.)',
         min = 0, max = 1000,
     )
     positive_reciprocity = models.IntegerField(
         choices=[[0, 'No present'], [1, 'The present worth 5'], [2, 'The present worth 10'], [3, 'The present worth 15'], [4, 'The present worth 20'], [5, 'The present worth 25'], [6,'The present worth 30']],
-        label='Please think about what you would do in the following situation. You are in an area you are not familiar with, and you realize you lost your way. You ask a stranger for directions. The stranger offers to take you to your destination. Helping you costs the stranger about 20 Euro in total. However, the stranger says he or she does not want any money from you. You have six presents with you. The cheapest present costs 5 Euro, the most expensive one costs 30 Euro. Do you give one of the presents to the stranger as a “thank-you”- gift? If so, which present do you give to the stranger?',
+        label='Please think about what you would do in the following situation. You are in an area you are not familiar with, and you realize you lost your way. You ask a stranger for directions. The stranger offers to take you to your destination. Helping you costs the stranger about 20 Rs in total. However, the stranger says he or she does not want any money from you. You have six presents with you. The cheapest present costs 5 Rs, the most expensive one costs 30 Rs. Do you give one of the presents to the stranger as a “thank-you”- gift? If so, which present do you give to the stranger?',
         widget=widgets.RadioSelect,
     )
     negative_reciprocity_self = models.IntegerField(
@@ -527,21 +515,34 @@ class Player(BasePlayer):
     setbacks_challenge = make_field_likert('I have overcome setbacks to conquer an important challenge.')
 
     #Section F
-    f_5_1 = make_field_multiple_price('Seen by helper: Cost 1')
-    f_5_2 = make_field_multiple_price('Seen by helper: Cost 2')
-    f_5_3 = make_field_multiple_price('Seen by helper: Cost 3')
-    f_5_4 = make_field_multiple_price('Seen by helper: Cost 4')
-    f_5_5 = make_field_multiple_price('Seen by helper: Cost 5')
-    f_5_6 = make_field_multiple_price('Seen by helper: Cost 6')
-    f_5_7 = make_field_multiple_price('Seen by helper: Cost 7')
+    f_5_1 = make_field_multiple_price()
+    f_5_2 = make_field_multiple_price()
+    f_5_3 = make_field_multiple_price()
+    f_5_4 = make_field_multiple_price()
+    f_5_5 = make_field_multiple_price()
+    f_5_6 = make_field_multiple_price()
+    f_5_7 = make_field_multiple_price()
 
-    m_5_1 = make_field_multiple_price('Seen by helper: Cost 1')
-    m_5_2 = make_field_multiple_price('Seen by helper: Cost 2')
-    m_5_3 = make_field_multiple_price('Seen by helper: Cost 3')
-    m_5_4 = make_field_multiple_price('Seen by helper: Cost 4')
-    m_5_5 = make_field_multiple_price('Seen by helper: Cost 5')
-    m_5_6 = make_field_multiple_price('Seen by helper: Cost 6')
-    m_5_7 = make_field_multiple_price('Seen by helper: Cost 7')
+    m_5_1 = make_field_multiple_price()
+    m_5_2 = make_field_multiple_price()
+    m_5_3 = make_field_multiple_price()
+    m_5_4 = make_field_multiple_price()
+    m_5_5 = make_field_multiple_price()
+    m_5_6 = make_field_multiple_price()
+    m_5_7 = make_field_multiple_price()
+
+    wtp_econ1 = make_field_wtp()
+    wtp_cook1 = make_field_wtp()
+    wtp_sport1 = make_field_wtp()
+    wtp_econ2 = make_field_wtp()
+    wtp_cook2 = make_field_wtp()
+    wtp_sport2 = make_field_wtp()
+    wtp_econ3 = make_field_wtp()
+    wtp_cook3 = make_field_wtp()
+    wtp_sport3 = make_field_wtp()
+    wtp_econ4 = make_field_wtp()
+    wtp_cook4 = make_field_wtp()
+    wtp_sport4 = make_field_wtp()
 
 
 # PAGES
@@ -642,18 +643,70 @@ class ExpFeedbackNo(Page):
 
 class HelperTable(Page):
     form_model = 'player'
-    form_fields = ['helper_roll1','helper_roll2','helper_roll3','helper_roll4','helper_roll5','helper_roll6','helper_roll7','helper_roll8','helper_name1','helper_name2','helper_name3','helper_name4','helper_name5','helper_name6','helper_name7','helper_name8','helper_ranking1','helper_ranking2','helper_ranking3','helper_ranking4','helper_ranking5','helper_ranking6','helper_ranking7','helper_ranking8','helper_reason1','helper_reason2','helper_reason3','helper_reason4','helper_reason5','helper_reason6','helper_reason7','helper_reason8']
+    form_fields = ['helper_ranking1','helper_ranking2','helper_ranking3','helper_ranking4','helper_ranking5','helper_ranking6','helper_ranking7','helper_ranking8','helper_reason1','helper_reason2','helper_reason3','helper_reason4','helper_reason5','helper_reason6','helper_reason7','helper_reason8']
     @staticmethod
     def vars_for_template(player: Player):
-        helper1 = ['helper_roll1','helper_name1','helper_ranking1','helper_reason1']
-        helper2 = ['helper_roll2','helper_name2','helper_ranking2','helper_reason2']
-        helper3 = ['helper_roll3','helper_name3','helper_ranking3','helper_reason3']
-        helper4 = ['helper_roll4','helper_name4','helper_ranking4','helper_reason4']
-        helper5 = ['helper_roll5','helper_name5','helper_ranking5','helper_reason5']
-        helper6 = ['helper_roll6','helper_name6','helper_ranking6','helper_reason6']
-        helper7 = ['helper_roll7','helper_name7','helper_ranking7','helper_reason7']
-        helper8 = ['helper_roll8','helper_name8','helper_ranking8','helper_reason8']
-        return dict(helper1=helper1,helper2=helper2,helper3=helper3,helper4=helper4,helper5=helper5,helper6=helper6,helper7=helper7,helper8=helper8)
+        set_partners(player)
+        g = player.group
+        partner1 = g.get_player_by_id(player.participant.partner4)
+        partner2 = g.get_player_by_id(player.participant.partner7)
+        partner3 = g.get_player_by_id(player.participant.partner1)
+        partner4 = g.get_player_by_id(player.participant.partner5)
+        partner5 = g.get_player_by_id(player.participant.partner3)
+        partner6 = g.get_player_by_id(player.participant.partner8)
+        partner7 = g.get_player_by_id(player.participant.partner2)
+        partner8 = g.get_player_by_id(player.participant.partner6)
+        helper1 = ['helper_ranking1','helper_reason1']
+        helper2 = ['helper_ranking2','helper_reason2']
+        helper3 = ['helper_ranking3','helper_reason3']
+        helper4 = ['helper_ranking4','helper_reason4']
+        helper5 = ['helper_ranking5','helper_reason5']
+        helper6 = ['helper_ranking6','helper_reason6']
+        helper7 = ['helper_ranking7','helper_reason7']
+        helper8 = ['helper_ranking8','helper_reason8']
+        return dict(helper1=helper1,helper2=helper2,helper3=helper3,helper4=helper4,helper5=helper5,helper6=helper6,helper7=helper7,helper8=helper8,partner1=partner1.participant.label,partner2=partner2.participant.label,partner3=partner3.participant.label,partner4=partner4.participant.label,partner5=partner5.participant.label,partner6=partner6.participant.label,partner7=partner7.participant.label,partner8=partner8.participant.label)
+
+class MultiplePriceFemale(Page):
+    form_model = 'player'
+    form_fields = ['f_5_1','f_5_2','f_5_3','f_5_4','f_5_5','f_5_6','f_5_7']
+    @staticmethod
+    def vars_for_template(player:Player):
+        g = player.group
+        int = list(range(1, 19))
+        random.shuffle(int)
+        for key in int:
+            if (key in player.participant.pref_helper_female):
+                wr_id = player.participant.pref_helper_female[key]
+                wr = g.get_player_by_id(wr_id)
+                break
+        return dict(wr=wr.participant.label)
+
+class MultiplePriceMale(Page):
+    form_model = 'player'
+    form_fields = ['m_5_1','m_5_2','m_5_3','m_5_4','m_5_5','m_5_6','m_5_7']
+    @staticmethod
+    def vars_for_template(player:Player):
+        g = player.group
+        int = list(range(1, 19))
+        random.shuffle(int)
+        for key in int:
+            if (key in player.participant.pref_helper_male):
+                mr_id = player.participant.pref_helper_male[key]
+                mr = g.get_player_by_id(mr_id)
+                break
+        return dict(mr=mr.participant.label)
+
+class WTP_Subject(Page):
+    form_model = 'player'
+    form_fields = ['wtp_econ1','wtp_cook1','wtp_sport1','wtp_econ2','wtp_cook2','wtp_sport2','wtp_econ3','wtp_cook3','wtp_sport3','wtp_econ4','wtp_cook4','wtp_sport4']
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner4 = g.get_player_by_id(player.participant.partner4)
+        partner7 = g.get_player_by_id(player.participant.partner7)
+        partner1 = g.get_player_by_id(player.participant.partner1)
+        partner5 = g.get_player_by_id(player.participant.partner5)
+        return dict(partner4=partner4.participant.label,partner7=partner7.participant.label,partner1=partner1.participant.label,partner5=partner5.participant.label,fields1=['wtp_econ1','wtp_cook1','wtp_sport1'],fields2=['wtp_econ2','wtp_cook2','wtp_sport2'],fields3=['wtp_econ3','wtp_cook3','wtp_sport3'],fields4=['wtp_econ4','wtp_cook4','wtp_sport4'])
 
 
 #Section C
@@ -685,8 +738,8 @@ class AmountGame(Page):
     @staticmethod
     def error_message(player: Player, values):
         allvalues = sum(values.values())
-        if allvalues != 100:
-            return "Ensure that values add to 100 Rs."
+        if allvalues != 300:
+            return "Ensure that values add to 300 Rs."
 
 class BasicInfo(Page):
     form_model = 'player'
@@ -744,41 +797,9 @@ class PersonalityStatementTable(Page):
     form_fields = ['setbacks_encourage','change_goals','focus_months','new_distracts','hardwork','finish','change_interests','diligent','obsess_shortterm','setbacks_challenge']
 
 
-#Section F
-class MultiplePriceFemale(Page):
-    form_model = 'player'
-    form_fields = ['f_5_1','f_5_2','f_5_3','f_5_4','f_5_5','f_5_6','f_5_7']
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        wr = g.get_player_by_id(10)
-        int = list(range(1, 19))
-        random.shuffle(int)
-        # for key in int:
-        #     if (key in player.participant.pref_helper_female):
-        #         wr_id = player.participant.pref_helper_female[key]
-        #         wr = g.get_player_by_id(wr_id)
-        #         break
-        return dict(wr=wr.participant.label)
-
-class MultiplePriceMale(Page):
-    form_model = 'player'
-    form_fields = ['m_5_1','m_5_2','m_5_3','m_5_4','m_5_5','m_5_6','m_5_7']
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        mr = g.get_player_by_id(11)
-        int = list(range(1, 19))
-        random.shuffle(int)
-        # for key in int:
-        #     if (key in player.participant.pref_helper_male):
-        #         mr_id = player.participant.pref_helper_male[key]
-        #         mr = g.get_player_by_id(mr_id)
-        #         break
-        return dict(mr=mr.participant.label)
-
 
 page_sequence = [AcademicInfo, AcademicInfoOther, TimeSpent, FriendsTable, ClassRelations1,
-ClassRelations2, ClassRelations3, ExpFeedback, ExpFeedbackNo, HelperTable, ExpDecisions,
-ExpDecisionsNo, GenderTable, AmountGame, BasicInfo, BasicInfoOther, Ethics1, Ethics2, Ethics3,
-Personality, PersonalityTraitsTable, PersonalityStatementTable, MultiplePriceFemale, MultiplePriceMale]
+ClassRelations2, ClassRelations3, ExpFeedback, ExpFeedbackNo, HelperTable, MultiplePriceFemale,
+MultiplePriceMale, WTP_Subject, ExpDecisions, ExpDecisionsNo, GenderTable, AmountGame,
+BasicInfo, BasicInfoOther, Ethics1, Ethics2, Ethics3, Personality, PersonalityTraitsTable,
+PersonalityStatementTable]

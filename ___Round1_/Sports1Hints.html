@@ -20,20 +20,20 @@ PART 2: ROUND {{ round }} SPORTS
       <div class="col-sm-7">
         <p></p>
         <p><b>
-          You have a maximum of <u>{{ hints }}</u> possible hints to spread however you want to among these players. You do not have to give out all {{ hints }} hints.
+          You have <u>10</u> possible hints to spread however you want to among these players.
           How many hints would you be willing to give the following players in SPORTS?
         </b></p>
         {{ for field in formfields_random }}
-          {{ if field == 'sporthints1_partner1' && partnerm1 != 0 }}
+          {{ if field == 'sporthints1_partner1'}}
             {{ formfield 'sporthints1_partner1' label=partner1_label}}
           {{ endif }}
-          {{ if field == 'sporthints1_partner2' && partnerm3 != 0 }}
+          {{ if field == 'sporthints1_partner2'}}
             {{ formfield 'sporthints1_partner2' label=partner2_label}}
           {{ endif }}
-          {{ if field == 'sporthints1_partner3' && partnerf1 != 0 }}
+          {{ if field == 'sporthints1_partner3'}}
             {{ formfield 'sporthints1_partner3' label=partner3_label}}
           {{ endif }}
-          {{ if field == 'sporthints1_partner4' && partnerf3 != 0 }}
+          {{ if field == 'sporthints1_partner4'}}
             {{ formfield 'sporthints1_partner4' label=partner4_label}}
           {{ endif }}
         {{ endfor }}
@@ -50,8 +50,8 @@ PART 2: ROUND {{ round }} SPORTS
         <div class="card3 rounded">
           <div class="card-body">
             <h5><u>Payment:</u></h5>
-            <b><p>If this round is implemented, you are paid Rs. 300 for participating as a helper.</p>
-            <p>The test-taker answers 12 questions. No matter how many they get correct, your payment remains Rs. 300.</p></b>
+            <b><p>If this round is implemented, you are paid Rs. 450 for participating as a helper.</p>
+            <p>The test-taker answers 12 questions. No matter how many they get correct, your payment remains Rs. 450.</p></b>
           </div>
         </div>
         <style>

@@ -1,7 +1,14 @@
 {{ block title }}FINAL{{ endblock }}
 {{ block content }}
 
-    {{ formfields }}
+    <p>Please choose the helper that you don't want to find out about your hints.</p>
+      {{ for field in labels }}
+      <label>
+          <input type="checkbox" name="{{ field.name }}" value="1">
+          {{ field.label }}
+          {{ formfield_errors field.name }}
+      </label><br>
+      {{ endfor }}
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

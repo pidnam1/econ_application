@@ -23,16 +23,16 @@ PART 2: ROUND {{ round }} COOKING
           How well do you think that the following players will do in the COOKING WITH HINTS?
         </b></p>
         {{ for field in formfields_random }}
-          {{ if field == 'cookresults1_partner1' && partnerm1 != 0 }}
+          {{ if field == 'cookresults1_partner1'}}
             {{ formfield 'cookresults1_partner1' label=partner1_label}}
           {{ endif }}
-          {{ if field == 'cookresults1_partner2' && partnerm3 != 0 }}
+          {{ if field == 'cookresults1_partner2'}}
             {{ formfield 'cookresults1_partner2' label=partner2_label}}
           {{ endif }}
-          {{ if field == 'cookresults1_partner3' && partnerf1 != 0 }}
+          {{ if field == 'cookresults1_partner3'}}
             {{ formfield 'cookresults1_partner3' label=partner3_label}}
           {{ endif }}
-          {{ if field == 'cookresults1_partner4' && partnerf3 != 0 }}
+          {{ if field == 'cookresults1_partner4'}}
             {{ formfield 'cookresults1_partner4' label=partner4_label}}
           {{ endif }}
         {{ endfor }}
@@ -49,8 +49,8 @@ PART 2: ROUND {{ round }} COOKING
         <div class="card3 rounded">
           <div class="card-body">
             <h5><u>Payment:</u></h5>
-            <b><p>If this round is implemented, you are paid Rs. 300 for participating as a helper.</p>
-            <p>The test-taker answers 12 questions. No matter how many they get correct, your payment remains Rs. 300.</p></b>
+            <b><p>If this round is implemented, you are paid Rs. 450 for participating as a helper.</p>
+            <p>The test-taker answers 12 questions. No matter how many they get correct, your payment remains Rs. 450.</p></b>
           </div>
         </div>
         <style>

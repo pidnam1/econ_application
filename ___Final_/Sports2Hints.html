@@ -1,0 +1,44 @@
+{{ block title }}
+FINAL: SPORTS
+<style>
+    .card2 {
+      background-color: #FFBFC8;
+    }
+</style>
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>
+    In this round: &emsp; &emsp; Test-Taker = see below &emsp; &emsp; Helper = You
+    </h5>
+  </div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+    <p></p>
+    IF THIS ACTIVITY WERE TO BE REPEATED IN THE FUTURE, WE WOULD LIKE TO KNOW YOUR PREFERENCES OVER HINT ALLOCATION BELOW
+    <p><b>
+      You have a maximum of <u>{{ hints }}</u> possible hints to spread however you want to among these players. You do not have to give out all {{ hints }} hints.
+      How many hints would you be willing to give the following players in SPORTS?
+    </b></p>
+    {{ for field in formfields_random }}
+      {{ if field == 'sporthints2_partner1' && partnerm2 != 0 }}
+        {{ formfield 'sporthints2_partner1' label=partner1_label}}
+      {{ endif }}
+      {{ if field == 'sporthints2_partner2' && partnerm4 != 0 }}
+        {{ formfield 'sporthints2_partner2' label=partner2_label}}
+      {{ endif }}
+      {{ if field == 'sporthints2_partner3' && partnerf2 != 0 }}
+        {{ formfield 'sporthints2_partner3' label=partner3_label}}
+      {{ endif }}
+      {{ if field == 'sporthints2_partner4' && partnerf4 != 0 }}
+        {{ formfield 'sporthints2_partner4' label=partner4_label}}
+      {{ endif }}
+    {{ endfor }}
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+
+{{ endblock }}

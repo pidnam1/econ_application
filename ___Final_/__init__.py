@@ -4,7 +4,10 @@ import random
 class C(BaseConstants):
     NAME_IN_URL = '___Final_'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 1
+    NUM_ROUNDS = 9
+    TASKS = ['1', '2']
+    SUB1TASKS = ['Econ1', 'Cook1', 'Sport1']
+    SUB2TASKS = ['Econ2', 'Cook2', 'Sport2']
 
 class Subsession(BaseSubsession):
     pass
@@ -12,30 +15,146 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     pass
 
-class Player(BasePlayer):
-    wtp = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No']],
-        label='Would you be willing to use part of your payment to do so?',
-        widget=widgets.RadioSelect,
-    )
-    wtp_who = models.StringField(
-        label='Please choose the helper that you don\'t want to find out about your hints.',
-        widget=widgets.RadioSelect,
-    )
-    wtp_howmuch =  models.IntegerField(
-        choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10']],
-        label='I would like to pay ____ $ NOT to communicate the hints I took to helper Y.',
+def make_field_one():
+    return models.StringField(
+        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         widget=widgets.RadioSelectHorizontal,
     )
 
-def wtp_who_choices(player):
-    g = player.group
-    partner4 = g.get_player_by_id(player.participant.partner4)
-    partner7 = g.get_player_by_id(player.participant.partner7)
-    partner1 = g.get_player_by_id(player.participant.partner1)
-    partner5 = g.get_player_by_id(player.participant.partner5)
-    choices = [partner4.participant.label,partner7.participant.label,partner1.participant.label,partner5.participant.label]
-    return choices
+class Player(BasePlayer):
+    wtp = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']], initial = 0,
+        label='Would you be willing to use part of your payment to do so?',
+        widget=widgets.RadioSelect,
+    )
+    partner4 = models.BooleanField(blank=True)
+    partner7 = models.BooleanField(blank=True)
+    partner1 = models.BooleanField(blank=True)
+    partner5 = models.BooleanField(blank=True)
+    wtp_howmuch1 =  models.IntegerField(
+        label='', initial=0,
+        min=0, max=200,
+    )
+    wtp_howmuch2 =  models.IntegerField(
+        label='', initial=0,
+        min=0, max=200,
+    )
+    wtp_howmuch3 =  models.IntegerField(
+        label='', initial=0,
+        min=0, max=200,
+    )
+    wtp_howmuch4 =  models.IntegerField(
+        label='', initial=0,
+        min=0, max=200,
+    )
+    econhints1_partner1 = make_field_one()
+    econhints1_partner2 = make_field_one()
+    econhints1_partner3 = make_field_one()
+    econhints1_partner4 = make_field_one()
+    econhints2_partner1 = make_field_one()
+    econhints2_partner2 = make_field_one()
+    econhints2_partner3 = make_field_one()
+    econhints2_partner4 = make_field_one()
+    cookhints1_partner1 = make_field_one()
+    cookhints1_partner2 = make_field_one()
+    cookhints1_partner3 = make_field_one()
+    cookhints1_partner4 = make_field_one()
+    cookhints2_partner1 = make_field_one()
+    cookhints2_partner2 = make_field_one()
+    cookhints2_partner3 = make_field_one()
+    cookhints2_partner4 = make_field_one()
+    sporthints1_partner1 = make_field_one()
+    sporthints1_partner2 = make_field_one()
+    sporthints1_partner3 = make_field_one()
+    sporthints1_partner4 = make_field_one()
+    sporthints2_partner1 = make_field_one()
+    sporthints2_partner2 = make_field_one()
+    sporthints2_partner3 = make_field_one()
+    sporthints2_partner4 = make_field_one()
+
+# FUNCTIONS
+def creating_session(subsession: Subsession):
+    session = subsession.session
+
+    if subsession.round_number == 1:
+        for p in subsession.get_players():
+            p.participant.exclude = False
+            p.participant.partner_exclude = []
+            p.participant.MP1hints_given_econ = 1
+            p.participant.MP1hints_given_cook = 2
+            p.participant.MP1hints_given_sport = 3
+            p.participant.MR1hints_given_econ = 2
+            p.participant.MR1hints_given_cook = 1
+            p.participant.MR1hints_given_sport = 3
+            p.participant.WP1hints_given_econ = 1
+            p.participant.WP1hints_given_cook = 3
+            p.participant.WP1hints_given_sport = 2
+            p.participant.WR1hints_given_econ = 2
+            p.participant.WR1hints_given_cook = 3
+            p.participant.WR1hints_given_sport = 1
+            p.participant.MP2hints_given_econ = 1
+            p.participant.MP2hints_given_cook = 2
+            p.participant.MP2hints_given_sport = 3
+            p.participant.MR2hints_given_econ = 2
+            p.participant.MR2hints_given_cook = 1
+            p.participant.MR2hints_given_sport = 3
+            p.participant.WP2hints_given_econ = 1
+            p.participant.WP2hints_given_cook = 3
+            p.participant.WP2hints_given_sport = 2
+            p.participant.WR2hints_given_econ = 2
+            p.participant.WR2hints_given_cook = 3
+            p.participant.WR2hints_given_sport = 1
+            p.participant.econ_hint_requests_partner1 = 3
+            p.participant.cook_hint_requests_partner1 = 1
+            p.participant.sport_hint_requests_partner1 = 2
+            p.participant.econ_hint_used_partner2 = 1
+            p.participant.cook_hint_used_partner2 = 2
+            p.participant.sport_hint_used_partner2 = 3
+            p.participant.econ_hint_used_partner3 = 2
+            p.participant.cook_hint_used_partner3 = 1
+            p.participant.sport_hint_used_partner3 = 3
+            p.participant.econ_hint_requests_partner4 = 2
+            p.participant.cook_hint_requests_partner4 = 3
+            p.participant.sport_hint_requests_partner4 = 1
+            p.participant.econ_hint_requests_partner5 = 3
+            p.participant.cook_hint_requests_partner5 = 2
+            p.participant.sport_hint_requests_partner5 = 1
+            p.participant.econ_hint_used_partner6 = 1
+            p.participant.cook_hint_used_partner6 = 3
+            p.participant.sport_hint_used_partner6 = 2
+            p.participant.econ_hint_requests_partner7 = 0
+            p.participant.cook_hint_requests_partner7 = 3
+            p.participant.sport_hint_requests_partner7 = 1
+            p.participant.econ_hint_used_partner8 = 2
+            p.participant.cook_hint_used_partner8 = 0
+            p.participant.sport_hint_used_partner8 = 1
+            round_numbers = list(range(1, 3))
+            random.shuffle(round_numbers)
+            task_round = dict(zip(C.TASKS, round_numbers))
+            sub_round_number1 = list(range(2, 5))
+            random.shuffle(sub_round_number1)
+            sub_round_number2 = list(range(6, 9))
+            random.shuffle(sub_round_number2)
+            round_number_1 = task_round['1']
+            p.participant.task_rounds1 = dict()
+            if round_number_1 == 1:
+                p.participant.task_rounds1.update({'1': 1})
+                task_rounds_1_1 = dict(zip(C.SUB1TASKS, sub_round_number1))
+                p.participant.task_rounds1.update(task_rounds_1_1)
+            elif round_number_1 == 2:
+                p.participant.task_rounds1.update({'1': 5})
+                task_rounds_1_2 = dict(zip(C.SUB1TASKS, sub_round_number2))
+                p.participant.task_rounds1.update(task_rounds_1_2)
+
+            round_number_2 = task_round['2']
+            if round_number_2 == 1:
+                p.participant.task_rounds1.update({'2': 1})
+                task_rounds_2_1 = dict(zip(C.SUB2TASKS, sub_round_number1))
+                p.participant.task_rounds1.update(task_rounds_2_1)
+            elif round_number_2 == 2:
+                p.participant.task_rounds1.update({'2': 5})
+                task_rounds_2_2 = dict(zip(C.SUB2TASKS, sub_round_number2))
+                p.participant.task_rounds1.update(task_rounds_2_2)
 
 def set_helped(player: Player):
     g = player.group
@@ -49,10 +168,9 @@ def set_helped(player: Player):
     g.get_player_by_id(player.participant.partnerf4)]
     for partner in my_previous_helped:
         if partner.participant.exclude == True:
-            if partner.participant.partner_exclude == player.id_in_group:
+            if player.id_in_group in partner.participant.partner_exclude:
                 thislist.remove(partner)
-        else:
-            continue
+    return my_previous_helped
 
 def set_hints_given(player:Player,partner):
     if partner.id_in_group == player.participant.partnerm1:
@@ -138,15 +256,38 @@ def set_hints_used(player:Player,partner):
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner8
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
 
+def set_partners(player: Player):
+    g = player.group
+    player.participant.partner1 = 2
+    player.participant.partner2 = 3
+    player.participant.partner3 = 4
+    player.participant.partner4 = 5
+    player.participant.partner5 = 6
+    player.participant.partner6 = 7
+    player.participant.partner7 = 8
+    player.participant.partner8 = 9
+    player.participant.partnerm1 = 2
+    player.participant.partnerm2 = 3
+    player.participant.partnerm3 = 4
+    player.participant.partnerm4 = 5
+    player.participant.partnerf1 = 6
+    player.participant.partnerf2 = 7
+    player.participant.partnerf3 = 8
+    player.participant.partnerf4 = 9
+
 
 # PAGES
 class WTP_YesNo(Page):
     form_model = 'player'
     form_fields = ['wtp']
     @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return player.round_number == 1
+    @staticmethod
     def vars_for_template(player: Player):
+        set_partners(player)
         g = player.group
-        ##only grab if they have partner, otherwise just skip it
         partner4 = g.get_player_by_id(player.participant.partner4)
         partner7 = g.get_player_by_id(player.participant.partner7)
         partner1 = g.get_player_by_id(player.participant.partner1)
@@ -155,52 +296,185 @@ class WTP_YesNo(Page):
 
 class WTP_Who(Page):
     form_model = 'player'
-    form_fields = ['wtp_who']
+    form_fields = ['partner4','partner7','partner1','partner5']
     @staticmethod
     def is_displayed(player: Player):
-        return player.wtp == 1
+        return player.wtp == 1 and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner4 = g.get_player_by_id(player.participant.partner4)
+        partner7 = g.get_player_by_id(player.participant.partner7)
+        partner1 = g.get_player_by_id(player.participant.partner1)
+        partner5 = g.get_player_by_id(player.participant.partner5)
+        labels = [
+            dict(name='partner4', label=partner4.participant.label),
+            dict(name='partner7', label=partner7.participant.label),
+            dict(name='partner1', label=partner1.participant.label),
+            dict(name='partner5', label=partner5.participant.label),
+        ]
+        return dict(labels=labels)
 
 class WTP_HowMuch(Page):
     form_model = 'player'
-    form_fields = ['wtp_howmuch']
     @staticmethod
     def is_displayed(player: Player):
-        return player.wtp == 1
+        return player.wtp == 1 and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        labels = []
+        master = {}
+        g = player.group
+        if player.field_maybe_none('partner4') != None:
+            partner4 = g.get_player_by_id(player.participant.partner4)
+            master.update(dict(partner4=partner4))
+            labels.append(dict(name='wtp_howmuch1', label=partner4.participant.label))
+        if player.field_maybe_none('partner7') != None:
+            partner7 = g.get_player_by_id(player.participant.partner7)
+            master.update(dict(partner7=partner7))
+            labels.append(dict(name='wtp_howmuch2', label=partner7.participant.label))
+        if player.field_maybe_none('partner1') != None:
+            partner1 = g.get_player_by_id(player.participant.partner1)
+            master.update(dict(partner1=partner1))
+            labels.append(dict(name='wtp_howmuch3', label=partner1.participant.label))
+        if player.field_maybe_none('partner5') != None:
+            partner5 = g.get_player_by_id(player.participant.partner5)
+            master.update(dict(partner5=partner5))
+            labels.append(dict(name='wtp_howmuch4', label=partner5.participant.label))
+        master.update(dict(labels=labels))
+        return master
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = []
+        if player.field_maybe_none('partner4') != None:
+            formfields.append('wtp_howmuch1')
+        if player.field_maybe_none('partner7') != None:
+            formfields.append('wtp_howmuch2')
+        if player.field_maybe_none('partner1') != None:
+            formfields.append('wtp_howmuch3')
+        if player.field_maybe_none('partner5') != None:
+            formfields.append('wtp_howmuch4')
+        return formfields
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        num = list(range(1,11))
+        num = list(range(1,201))
         random.shuffle(num)
         random1 = num.copy()
-        player.participant.random = random1[0]
+        player.participant.random1 = random1[0]
+        player.participant.random2 = random1[1]
+        player.participant.random3 = random1[2]
+        player.participant.random4 = random1[3]
 
-#
-class WTP_Results1(Page):
+class WTP_Results1_1(Page):
     form_model = 'player'
     @staticmethod
     def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.participant.random < player.wtp_howmuch)
+        return (player.wtp == 1) and (player.field_maybe_none('partner4') != None) and (player.participant.random1 < player.wtp_howmuch1) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner4 = g.get_player_by_id(player.participant.partner4)
+        return dict(partner4=partner4.participant.label)
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.exclude = True
-        if player.wtp_who == 0:
-            player.participant.partner_exclude = player.participant.partner4
-        elif player.wtp_who == 1:
-            player.participant.partner_exclude = player.participant.partner7
-        elif player.wtp_who == 2:
-            player.participant.partner_exclude = player.participant.partner1
-        elif player.wtp_who == 3:
-            player.participant.partner_exclude = player.participant.partner5
+        player.participant.partner_exclude.append(player.participant.partner4)
 
-
-##make sure this works for no partner as well
-class WTP_Results2(Page):
+class WTP_Results2_1(Page):
     form_model = 'player'
     @staticmethod
     def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.participant.random >= player.wtp_howmuch)
+        return (player.wtp == 1) and (player.field_maybe_none('partner4') != None) and (player.participant.random1 >= player.wtp_howmuch1) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner4 = g.get_player_by_id(player.participant.partner4)
+        return dict(partner4=partner4.participant.label)
+
+class WTP_Results1_2(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner7') != None) and (player.participant.random2 < player.wtp_howmuch2) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner7 = g.get_player_by_id(player.participant.partner7)
+        return dict(partner7=partner7.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner7)
+
+class WTP_Results2_2(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner7') != None) and (player.participant.random2 >= player.wtp_howmuch2) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner7 = g.get_player_by_id(player.participant.partner7)
+        return dict(partner7=partner7.participant.label)
+
+class WTP_Results1_3(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner1') != None) and (player.participant.random3 < player.wtp_howmuch3) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner1 = g.get_player_by_id(player.participant.partner1)
+        return dict(partner1=partner1.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner1)
+
+class WTP_Results2_3(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner1') != None) and (player.participant.random3 >= player.wtp_howmuch3) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner1 = g.get_player_by_id(player.participant.partner1)
+        return dict(partner1=partner1.participant.label)
+
+class WTP_Results1_4(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner5') != None) and (player.participant.random4 < player.wtp_howmuch4) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner5 = g.get_player_by_id(player.participant.partner5)
+        return dict(partner5=partner5.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner5)
+
+class WTP_Results2_4(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner5') != None) and (player.participant.random4 >= player.wtp_howmuch4) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner5 = g.get_player_by_id(player.participant.partner5)
+        return dict(partner5=partner5.participant.label)
 
 class FinalTable(Page):
     form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return player.round_number == 1
     @staticmethod
     def vars_for_template(player: Player):
         my_previous_helped = set_helped(player)
@@ -208,4 +482,208 @@ class FinalTable(Page):
         hints_used = [set_hints_used(player,partner) for partner in my_previous_helped]
         return dict(my_previous_partners=my_previous_helped,hints_given=hints_given,hints_used=hints_used)
 
-page_sequence = [WTP_YesNo, WTP_Who, WTP_HowMuch, WTP_Results1, WTP_Results2, FinalTable]
+def vars_for_template1(player: Player, formfields):
+    final = {}
+    formfields_random = formfields.copy()
+    g = player.group
+    count = 0
+    hints = 0
+    partnerm1 = 0
+    partnerm3 = 0
+    partnerf1 = 0
+    partnerf3 = 0
+    if player.participant.partnerm1 != 0:
+        partnerm1 = g.get_player_by_id(player.participant.partnerm1)
+        final.update(dict(partner1_label='{}?'.format(partnerm1.participant.label)))
+        count+=1
+    if player.participant.partnerm3 != 0:
+        partnerm3 = g.get_player_by_id(player.participant.partnerm3)
+        final.update(dict(partner2_label='{}?'.format(partnerm3.participant.label)))
+        count+=1
+    if player.participant.partnerf1 != 0:
+        partnerf1 = g.get_player_by_id(player.participant.partnerf1)
+        final.update(dict(partner3_label='{}?'.format(partnerf1.participant.label)))
+        count+=1
+    if player.participant.partnerf3 != 0:
+        partnerf3 = g.get_player_by_id(player.participant.partnerf3)
+        final.update(dict(partner4_label='{}?'.format(partnerf3.participant.label)))
+        count+=1
+    if count == 1:
+        hints = 2
+    elif count == 2:
+        hints = 5
+    elif count == 3:
+        hints = 7
+    elif count == 4:
+        hints = 10
+    final.update(dict(hints=hints, partnerm1=partnerm1, partnerm3=partnerm3, partnerf1=partnerf1, partnerf3=partnerf3))
+    random.shuffle(formfields_random)
+    final.update(dict(formfields_random=formfields_random))
+    return final
+
+def vars_for_template2(player: Player, formfields):
+    final = {}
+    formfields_random = formfields.copy()
+    g = player.group
+    count = 0
+    hints = 0
+    partnerm2 = 0
+    partnerm4 = 0
+    partnerf2 = 0
+    partnerf4 = 0
+    if player.participant.partnerm2 != 0:
+        partnerm2 = g.get_player_by_id(player.participant.partnerm2)
+        final.update(dict(partner1_label='{}?'.format(partnerm2.participant.label)))
+        count+=1
+    if player.participant.partnerm4 != 0:
+        partnerm4 = g.get_player_by_id(player.participant.partnerm4)
+        final.update(dict(partner2_label='{}?'.format(partnerm4.participant.label)))
+        count+=1
+    if player.participant.partnerf2 != 0:
+        partnerf2 = g.get_player_by_id(player.participant.partnerf2)
+        final.update(dict(partner3_label='{}?'.format(partnerf2.participant.label)))
+        count+=1
+    if player.participant.partnerf4 != 0:
+        partnerf4 = g.get_player_by_id(player.participant.partnerf4)
+        final.update(dict(partner4_label='{}?'.format(partnerf4.participant.label)))
+        count+=1
+    if count == 1:
+        hints = 2
+    elif count == 2:
+        hints = 5
+    elif count == 3:
+        hints = 7
+    elif count == 4:
+        hints = 10
+    final.update(dict(hints=hints, partnerm2=partnerm2, partnerm4=partnerm4, partnerf2=partnerf2, partnerf4=partnerf4))
+    random.shuffle(formfields_random)
+    final.update(dict(formfields_random=formfields_random))
+    return final
+
+class Economics1Hints(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        final = vars_for_template1(player, formfields_random)
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds1['Econ1'])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        return formfields
+
+class Cooking1Hints(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        final = vars_for_template1(player, formfields_random)
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds1['Cook1'])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        return formfields
+
+class Sports1Hints(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
+                             'sporthints1_partner4']
+        final = vars_for_template1(player, formfields_random)
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds1['Sport1'])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3', 'sporthints1_partner4']
+        return formfields
+
+class Economics2Hints(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        final = vars_for_template2(player, formfields_random)
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds1['Econ2'])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        return formfields
+
+class Cooking2Hints(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
+        final = vars_for_template2(player, formfields_random)
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds1['Cook2'])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        import random
+        formfields = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
+        random.shuffle(formfields)
+        return formfields
+
+
+class Sports2Hints(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
+                             'sporthints2_partner4']
+        final = vars_for_template2(player, formfields_random)
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds1['Sport2'])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        import random
+        formfields = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3', 'sporthints2_partner4']
+        random.shuffle(formfields)
+        return formfields
+
+
+
+page_sequence = [WTP_YesNo, WTP_Who, WTP_HowMuch, WTP_Results1_1, WTP_Results2_1,
+WTP_Results1_2, WTP_Results2_2, WTP_Results1_3, WTP_Results2_3, WTP_Results1_4,
+WTP_Results2_4, FinalTable, Economics1Hints, Economics2Hints, Cooking1Hints, Cooking2Hints,
+Sports1Hints, Sports2Hints]

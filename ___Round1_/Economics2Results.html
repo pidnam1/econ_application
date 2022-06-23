@@ -23,16 +23,16 @@ PART 2: ROUND {{ round }} ECONOMICS
           How well do you think that the following players will do in the ECONOMICS WITH HINTS?
         </b></p>
         {{ for field in formfields_random }}
-          {{ if field == 'econresults2_partner1' && partnerm2 != 0 }}
+          {{ if field == 'econresults2_partner1'}}
             {{ formfield 'econresults2_partner1' label=partner1_label}}
           {{ endif }}
-          {{ if field == 'econresults2_partner2' && partnerm4 != 0 }}
+          {{ if field == 'econresults2_partner2'}}
             {{ formfield 'econresults2_partner2' label=partner2_label}}
           {{ endif }}
-          {{ if field == 'econresults2_partner3' && partnerf2 != 0 }}
+          {{ if field == 'econresults2_partner3'}}
             {{ formfield 'econresults2_partner3' label=partner3_label}}
           {{ endif }}
-          {{ if field == 'econresults2_partner4' && partnerf4 != 0 }}
+          {{ if field == 'econresults2_partner4'}}
             {{ formfield 'econresults2_partner4' label=partner4_label}}
           {{ endif }}
         {{ endfor }}
@@ -49,10 +49,10 @@ PART 2: ROUND {{ round }} ECONOMICS
         <div class="card3 rounded">
           <div class="card-body">
             <h5><u>Payment:</u></h5>
-            <b><p>If this round is implemented, you are paid Rs. 50 for every correct answer
+            <b><p>If this round is implemented, you are paid Rs. 75 for every correct answer
                 that your partner gives.</p>
             <p>The test-taker answers 12 questions. For example, if your partner gets
-                all 12 correct, you will get Rs. 600. If they get 50% correct, you will get Rs. 300.</p></b>
+                all 12 correct, you will get Rs. 900. If they get 50% correct, you will get Rs. 450.</p></b>
           </div>
         </div>
         <style>

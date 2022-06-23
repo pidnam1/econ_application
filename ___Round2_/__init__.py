@@ -1238,8 +1238,12 @@ def creating_session(subsession: Subsession):
         # subsession.set_group_matrix(new_structure)
         for p in subsession.get_players():
             round_numbers = list(range(1, 5))
+
+            #randomizes which order people will do the main C.TASKS in
             random.shuffle(round_numbers)
             task_round = dict(zip(C.TASKS, round_numbers))
+
+            #randomizes the order someone doing the MP tasks will do them in
             sub_round_number1 = list(range(2, 5))
             random.shuffle(sub_round_number1)
             sub_round_number2 = list(range(6, 9))
@@ -1281,16 +1285,23 @@ def creating_session(subsession: Subsession):
             sub_round_number4_3 = list(range(49, 53))
             random.shuffle(sub_round_number4_3)
 
-
+            #Keeps track of which tasks people have finished. Key = "MP, MR, WP...", Value = 1 if finished
             p.participant.task_rounds2 = dict()
 
             #MALE PREFERRED
             MP_round_number = task_round['MP']
             if MP_round_number == 1:
+                #marks complete this MP task
+                p.participant.task_rounds2.update({'MP': 1})
+
+                #Determines the order in which the MP tasks will be done, by the random numbers generated earlier
                 task_rounds_MP1 = dict(zip(C.TASKS_MP, sub_round_number1))
-                p.participant.task_rounds2.update({'MP':1})
                 econ_round_number = task_rounds_MP1['Economics_MP']
+
+                #this section determines which order we will do the sub rounds: ie econ first, cooking second, sports third. Etc.
                 if econ_round_number == 2:
+
+                    #assigns the order you do this specific task to a random order
                     task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_1))
                     p.participant.task_rounds2.update(task_rounds_econ1)
                 elif econ_round_number == 3:
@@ -2115,7 +2126,7 @@ class Sports3_MP(Page):
         return ['crt_sports3_MP','helpful_hint_sport3_MP','prob_sport3_MP']
     @staticmethod
     def live_method(player: Player, data):
-        if data == 'clicked-button':
+        if data == 'clicked-button' and sport_hint_requests_partner4:
             player.participant.sport_hint_requests_partner4 += 1
             return {player.id_in_group: dict(message = "Hint: Surname rhymes with Sabbath. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2434,7 +2445,7 @@ class Hints_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds2['WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner1 != 0)
+        return (player.round_number == participant.task_rounds2['WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random

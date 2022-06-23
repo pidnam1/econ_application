@@ -5,11 +5,8 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    LABELS = ['Shan_Aman Rana','Alexia_Delfino','Shamyla_Chaudry','Ahsan_Pasha',
-    'Shanzay_Tariq','Izzah_Kashif','Rohma_Nasim','Hamna_Tariq','Essa_Kurd','Hammad_Qayyum',
-    'Muhammad_Pervaiz','Ayesha_Hassan','Faizan_Aziz','Assad_Mustafa','Maheen_Alvi',
-    'Hasan_Akmal','Tamoor_Salman','Khawaja_Kashif','Haris_Zahid','Khadija_Aslam',
-    'Hamza_Riaz']
+    genders_list = [1, 0, 0, 1, 1, 0]
+    LABELS = ['Shan_Aman_Rana','Alexia_Delfino','Shamyla_Chaudry','Ahsan_Pasha', 'Shanzay_Tariq','Izzah_Kashif']
 
 class Subsession(BaseSubsession):
     pass
@@ -25,17 +22,11 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect)
     roll = models.StringField(label='Please type your rollnumber')
 
-def creating_session(subsession):
-    for player, label in zip(subsession.get_players(), C.LABELS):
-        player.participant.label = label
 def change_labels(player: Player):
     labels = ['Shan Aman Rana','Alexia Delfino','Shamyla Chaudry','Ahsan Pasha',
-    'Shanzay Tariq','Izzah Kashif','Rohma Nasim','Hamna Tariq','Essa Kurd','Hammad Qayyum',
-    'Muhammad Pervaiz','Ayesha Hassan','Faizan Aziz','Assad Mustafa','Maheen Alvi',
-    'Hasan Akmal','Tamoor Salman','Khawaja Kashif','Haris Zahid','Khadija Aslam',
-    'Hamza Riaz']
+    'Shanzay Tariq','Izzah Kashif']
     for current, new in zip(C.LABELS, labels):
-        if player.participant.label == current:
+        if player.participant.label == current.lstrip():
             player.participant.label = new
 
 def set_players(player: Player):
@@ -50,13 +41,23 @@ def creating_session(subsession: Subsession):
     session.active_players = []
     session.count = 0
 
+    for player, label in zip(subsession.get_players(), C.LABELS):
+        player.participant.label = label
+
 class Consent(Page):
     form_model = 'player'
     form_fields = ['roll', 'esig', 'agree']
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.name = player.esig
+        player.participant.gender = C.genders_list[int(player.roll) - 1]
+        player.participant.roll_no = int(player.roll)
+        player.participant.count_participant = int(player.roll)
         change_labels(player)
         set_players(player)
 
-page_sequence = [Consent]
+class WaitPage1(WaitPage):
+    title_text = "Waiting for all players to finish"
+    body_text = ""
+
+page_sequence = [Consent, WaitPage1]

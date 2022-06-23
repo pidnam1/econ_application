@@ -5,12 +5,14 @@ class C(BaseConstants):
     NAME_IN_URL = '___Preferences_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
+    # PLAYERS = ['Shan Aman Rana','Alexia Delfino','Shamyla Chaudry','Ahsan Pasha',
+    # 'Shanzay Tariq','Izzah Kashif','Rohma Nasim','Hamna Tariq','Essa Kurd','Hammad Qayyum',
+    # 'Muhammad Pervaiz','Ayesha Hassan','Faizan Aziz','Assad Mustafa','Maheen Alvi',
+    # 'Hasan Akmal','Tamoor Salman','Khawaja Kashif','Haris Zahid','Khadija Aslam',
+    # 'Hamza Riaz']
     PLAYERS = ['Shan Aman Rana','Alexia Delfino','Shamyla Chaudry','Ahsan Pasha',
-    'Shanzay Tariq','Izzah Kashif','Rohma Nasim','Hamna Tariq','Essa Kurd','Hammad Qayyum',
-    'Muhammad Pervaiz','Ayesha Hassan','Faizan Aziz','Assad Mustafa','Maheen Alvi',
-    'Hasan Akmal','Tamoor Salman','Khawaja Kashif','Haris Zahid','Khadija Aslam',
-    'Hamza Riaz']
-    RANKINGS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    'Shanzay Tariq','Izzah Kashif']
+    RANKINGS = [1,2,3,4,5]
     TOP5 = [1,2,3,4,5]
 
 class Subsession(BaseSubsession):
@@ -113,16 +115,12 @@ class Pref_Helper(Page):
     form_model = 'player'
     @staticmethod
     def get_form_fields(player: Player):
-        form_fields = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1','f6_1_1','f7_1_1',
-        'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
-        'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1']
+        form_fields = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1']
         return form_fields
     @staticmethod
     def vars_for_template(player: Player):
-        form_fields = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1','f6_1_1','f7_1_1',
-        'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
-        'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1']
-        player.participant.form_fields_pref = form_fields[:]
+        form_fields = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1']
+        player.participant.form_fields_pref = form_fields[:8]
         return
     @staticmethod
     def error_message(player: Player, values):
@@ -138,21 +136,21 @@ class Pref_Helper(Page):
         #SET THESE WHEN SETTING THE NAMES OF THE PLAYERS
 
         #change this and the player names list in Consent's tests.py for testing
-        name_list = [player.f1_1_1, player.f2_1_1, player.f3_1_1, player.f4_1_1,
-        player.f5_1_1, player.f6_1_1, player.f7_1_1, player.f8_1_1, player.f9_1_1,
-        player.f10_1_1, player.f11_1_1, player.f12_1_1, player.f13_1_1, player.f14_1_1,
-        player.f15_1_1, player.f16_1_1, player.f17_1_1, player.f18_1_1, player.f19_1_1,
-        player.f20_1_1]
         # name_list = [player.f1_1_1, player.f2_1_1, player.f3_1_1, player.f4_1_1,
-        #               player.f5_1_1, player.f6_1_1, player.f7_1_1, player.f8_1_1, player.f9_1_1,
-        #               ]
+        # player.f5_1_1, player.f6_1_1, player.f7_1_1, player.f8_1_1, player.f9_1_1,
+        # player.f10_1_1, player.f11_1_1, player.f12_1_1, player.f13_1_1, player.f14_1_1,
+        # player.f15_1_1, player.f16_1_1, player.f17_1_1, player.f18_1_1, player.f19_1_1,
+        # player.f20_1_1]
+        name_list = [player.f1_1_1, player.f2_1_1, player.f3_1_1, player.f4_1_1,
+                      player.f5_1_1, player.f6_1_1
+                      ]
         id_list = []
         id_list_female = []
         id_list_male = []
         group = player.group
         for name in name_list:
             for p in group.get_players():
-
+                print(p.participant.label, name)
                 if p.participant.label == name:
                     id_list.append(p.id_in_group)
                     if p.participant.gender == 0: #female
@@ -209,16 +207,12 @@ class Pref_TT(Page):
     form_model = 'player'
     @staticmethod
     def get_form_fields(player: Player):
-        form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
-        'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
-        'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2']
+        form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2']
         return form_fields
     @staticmethod
     def vars_for_template(player: Player):
-        form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
-        'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
-        'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2']
-        player.participant.form_fields_pref2 = form_fields[:20]
+        form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2']
+        player.participant.form_fields_pref2 = form_fields[:8]
         return
     @staticmethod
     def error_message(player: Player, values):
@@ -231,11 +225,12 @@ class Pref_TT(Page):
             return "DO NOT SELECT YOUR OWN NAME"
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        name_list = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2,
-        player.f5_1_2, player.f6_1_2, player.f7_1_2, player.f8_1_2, player.f9_1_2,
-        player.f10_1_2, player.f11_1_2, player.f12_1_2, player.f13_1_2, player.f14_1_2,
-        player.f15_1_2, player.f16_1_2, player.f17_1_2, player.f18_1_2, player.f19_1_2,
-        player.f20_1_2]
+        # name_list = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2,
+        # player.f5_1_2, player.f6_1_2, player.f7_1_2, player.f8_1_2, player.f9_1_2,
+        # player.f10_1_2, player.f11_1_2, player.f12_1_2, player.f13_1_2, player.f14_1_2,
+        # player.f15_1_2, player.f16_1_2, player.f17_1_2, player.f18_1_2, player.f19_1_2,
+        # player.f20_1_2]
+        name_list = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2, player.f5_1_2]
         id_list = []
         id_list_female = []
         id_list_male = []

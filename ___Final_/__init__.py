@@ -138,16 +138,6 @@ def set_hints_used(player:Player,partner):
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner8
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
 
-def set_partners(player: Player):
-    g = player.group
-    player.participant.partner1 = 2
-    player.participant.partner2 = 3
-    player.participant.partner3 = 4
-    player.participant.partner4 = 5
-    player.participant.partner5 = 6
-    player.participant.partner6 = 7
-    player.participant.partner7 = 8
-    player.participant.partner8 = 9
 
 # PAGES
 class WTP_YesNo(Page):
@@ -155,8 +145,8 @@ class WTP_YesNo(Page):
     form_fields = ['wtp']
     @staticmethod
     def vars_for_template(player: Player):
-        set_partners(player)
         g = player.group
+        ##only grab if they have partner, otherwise just skip it
         partner4 = g.get_player_by_id(player.participant.partner4)
         partner7 = g.get_player_by_id(player.participant.partner7)
         partner1 = g.get_player_by_id(player.participant.partner1)
@@ -183,6 +173,7 @@ class WTP_HowMuch(Page):
         random1 = num.copy()
         player.participant.random = random1[0]
 
+#
 class WTP_Results1(Page):
     form_model = 'player'
     @staticmethod
@@ -200,6 +191,8 @@ class WTP_Results1(Page):
         elif player.wtp_who == 3:
             player.participant.partner_exclude = player.participant.partner5
 
+
+##make sure this works for no partner as well
 class WTP_Results2(Page):
     form_model = 'player'
     @staticmethod

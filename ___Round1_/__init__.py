@@ -25,6 +25,7 @@ def make_field_one():
     return models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         widget=widgets.RadioSelectHorizontal,
+        blank=True
     )
 
 def make_field_two():
@@ -32,6 +33,7 @@ def make_field_two():
         choices=[[0, '0'], [1, '1'],
                  [2, '2'], [3, '3'], [4, '4']],
         widget=widgets.RadioSelectHorizontal,
+        blank=True
     )
 class Player(BasePlayer):
     econhints1_partner1 = make_field_one()
@@ -355,6 +357,7 @@ def show_tests(subsession: Subsession):
         print("----------")
 
 def set_hints_given(player: Player):
+    print("in set_hints_given now")
     player.participant.econ_hint_requests_partner1 = 0
     player.participant.econ_hint_requests_partner2 = 0
     player.participant.econ_hint_requests_partner3 = 0
@@ -380,30 +383,30 @@ def set_hints_given(player: Player):
     player.participant.sport_hint_requests_partner7 = 0
     player.participant.sport_hint_requests_partner8 = 0
 
-    player.participant.MP1hints_given_econ = player.econhints1_partner1
-    player.participant.MP1hints_given_cook = player.cookhints1_partner1
-    player.participant.MP1hints_given_sport = player.sporthints1_partner1
-    player.participant.MR1hints_given_econ = player.econhints1_partner2
-    player.participant.MR1hints_given_cook = player.cookhints1_partner2
-    player.participant.MR1hints_given_sport = player.sporthints1_partner2
-    player.participant.WP1hints_given_econ = player.econhints1_partner3
-    player.participant.WP1hints_given_cook = player.cookhints1_partner3
-    player.participant.WP1hints_given_sport = player.sporthints1_partner3
-    player.participant.WR1hints_given_econ = player.econhints1_partner4
-    player.participant.WR1hints_given_cook = player.cookhints1_partner4
-    player.participant.WR1hints_given_sport = player.sporthints1_partner4
-    player.participant.MP2hints_given_econ = player.econhints2_partner1
-    player.participant.MP2hints_given_cook = player.cookhints2_partner1
-    player.participant.MP2hints_given_sport = player.sporthints2_partner1
-    player.participant.MR2hints_given_econ = player.econhints2_partner2
-    player.participant.MR2hints_given_cook = player.cookhints2_partner2
-    player.participant.MR2hints_given_sport = player.sporthints2_partner2
-    player.participant.WP2hints_given_econ = player.econhints2_partner3
-    player.participant.WP2hints_given_cook = player.cookhints2_partner3
-    player.participant.WP2hints_given_sport = player.sporthints2_partner3
-    player.participant.WR2hints_given_econ = player.econhints2_partner4
-    player.participant.WR2hints_given_cook = player.cookhints2_partner4
-    player.participant.WR2hints_given_sport = player.sporthints2_partner4
+    player.participant.MP1hints_given_econ = player.field_maybe_none('econhints1_partner1')
+    player.participant.MP1hints_given_cook = player.field_maybe_none("cookhints1_partner1")
+    player.participant.MP1hints_given_sport = player.field_maybe_none('sporthints1_partner1')
+    player.participant.MR1hints_given_econ = player.field_maybe_none('econhints1_partner2')
+    player.participant.MR1hints_given_cook = player.field_maybe_none('cookhints1_partner2')
+    player.participant.MR1hints_given_sport = player.field_maybe_none('sporthints1_partner2')
+    player.participant.WP1hints_given_econ = player.field_maybe_none('econhints1_partner3')
+    player.participant.WP1hints_given_cook = player.field_maybe_none('cookhints1_partner3')
+    player.participant.WP1hints_given_sport = player.field_maybe_none('sporthints1_partner3')
+    player.participant.WR1hints_given_econ = player.field_maybe_none('econhints1_partner4')
+    player.participant.WR1hints_given_cook = player.field_maybe_none('cookhints1_partner4')
+    player.participant.WR1hints_given_sport = player.field_maybe_none('sporthints1_partner4')
+    player.participant.MP2hints_given_econ = player.field_maybe_none('econhints2_partner1')
+    player.participant.MP2hints_given_cook = player.field_maybe_none('cookhints2_partner1')
+    player.participant.MP2hints_given_sport = player.field_maybe_none('sporthints2_partner1')
+    player.participant.MR2hints_given_econ = player.field_maybe_none('econhints2_partner2')
+    player.participant.MR2hints_given_cook = player.field_maybe_none('cookhints2_partner2')
+    player.participant.MR2hints_given_sport = player.field_maybe_none('sporthints2_partner2')
+    player.participant.WP2hints_given_econ = player.field_maybe_none('econhints2_partner3')
+    player.participant.WP2hints_given_cook = player.field_maybe_none('cookhints2_partner3')
+    player.participant.WP2hints_given_sport = player.field_maybe_none('sporthints2_partner3')
+    player.participant.WR2hints_given_econ = player.field_maybe_none('econhints2_partner4')
+    player.participant.WR2hints_given_cook = player.field_maybe_none('cookhints2_partner4')
+    player.participant.WR2hints_given_sport = player.field_maybe_none('sporthints2_partner4')
 
 def set_partners(player: Player):
     player.participant.partner1 = player.participant.helpers_dict["pf"][0] if 0 < len(player.participant.helpers_dict["pf"]) else 0
@@ -462,6 +465,7 @@ class WaitPage1(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
         set_helpers_new(group.get_players()[0].subsession)
+
 # PAGES
 # class WaitPage1(Page):
 #     @staticmethod
@@ -643,7 +647,10 @@ class Economics1Hints(Page):
         formfields = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
+
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -669,7 +676,9 @@ class Economics1Results(Page):
                       'econresults1_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -695,7 +704,9 @@ class Economics1Results0(Page):
                       'econresults01_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -719,7 +730,9 @@ class Cooking1Hints(Page):
         formfields = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -745,7 +758,9 @@ class Cooking1Results(Page):
                       'cookresults1_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -771,7 +786,9 @@ class Cooking1Results0(Page):
                       'cookresults01_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -796,7 +813,9 @@ class Sports1Hints(Page):
         formfields = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3', 'sporthints1_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -822,7 +841,9 @@ class Sports1Results(Page):
                       'sportresults1_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -848,7 +869,9 @@ class Sports1Results0(Page):
                       'sportresults01_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -893,7 +916,9 @@ class Economics2Hints(Page):
         formfields = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -921,7 +946,9 @@ class Economics2Results(Page):
         random.shuffle(formfields)
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -949,7 +976,9 @@ class Economics2Results0(Page):
         random.shuffle(formfields)
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -975,7 +1004,9 @@ class Cooking2Hints(Page):
         random.shuffle(formfields)
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1003,7 +1034,9 @@ class Cooking2Results(Page):
         random.shuffle(formfields)
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1031,7 +1064,9 @@ class Cooking2Results0(Page):
         random.shuffle(formfields)
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1058,7 +1093,9 @@ class Sports2Hints(Page):
         random.shuffle(formfields)
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1086,7 +1123,9 @@ class Sports2Results(Page):
         random.shuffle(formfields)
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1114,7 +1153,9 @@ class Sports2Results0(Page):
         random.shuffle(formfields)
         return formfields
 
-    set_hints_given(Player)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1152,18 +1193,16 @@ class Final(Page):
 
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
-        player.participant.round2_completed = 0
-        return upcoming_apps[0]
-        # player.participant.round3b_completed = 0
-        # arr = list(range(0, 2))
-        # random.shuffle(arr)
-        # print(upcoming_apps[arr[0]])
-        # if arr[0] == 0:
-        #     player.participant.round2_completed = 3
-        #     return upcoming_apps[arr[0]]
-        # if arr[0] == 1:
-        #     player.participant.round3b_completed = 3
-        #     return upcoming_apps[arr[0]]
+        player.participant.round3b_completed = 0
+        arr = list(range(0, 2))
+        random.shuffle(arr)
+        print(upcoming_apps[arr[0]])
+        if arr[0] == 0:
+            player.participant.round2_completed = 3
+            return upcoming_apps[arr[0]]
+        if arr[0] == 1:
+            player.participant.round3b_completed = 3
+            return upcoming_apps[arr[0]]
 
 
 

@@ -384,7 +384,7 @@ def set_hints_given(player: Player):
     player.participant.sport_hint_requests_partner8 = 0
 
     player.participant.MP1hints_given_econ = player.field_maybe_none('econhints1_partner1')
-    player.participant.MP1hints_given_cook = player.field_maybe_none("cookhints1_partner1")
+    player.participant.MP1hints_given_cook = player.field_maybe_none('cookhints1_partner1')
     player.participant.MP1hints_given_sport = player.field_maybe_none('sporthints1_partner1')
     player.participant.MR1hints_given_econ = player.field_maybe_none('econhints1_partner2')
     player.participant.MR1hints_given_cook = player.field_maybe_none('cookhints1_partner2')

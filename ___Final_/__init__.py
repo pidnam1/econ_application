@@ -80,54 +80,6 @@ def creating_session(subsession: Subsession):
         for p in subsession.get_players():
             p.participant.exclude = False
             p.participant.partner_exclude = []
-            p.participant.MP1hints_given_econ = 1
-            p.participant.MP1hints_given_cook = 2
-            p.participant.MP1hints_given_sport = 3
-            p.participant.MR1hints_given_econ = 2
-            p.participant.MR1hints_given_cook = 1
-            p.participant.MR1hints_given_sport = 3
-            p.participant.WP1hints_given_econ = 1
-            p.participant.WP1hints_given_cook = 3
-            p.participant.WP1hints_given_sport = 2
-            p.participant.WR1hints_given_econ = 2
-            p.participant.WR1hints_given_cook = 3
-            p.participant.WR1hints_given_sport = 1
-            p.participant.MP2hints_given_econ = 1
-            p.participant.MP2hints_given_cook = 2
-            p.participant.MP2hints_given_sport = 3
-            p.participant.MR2hints_given_econ = 2
-            p.participant.MR2hints_given_cook = 1
-            p.participant.MR2hints_given_sport = 3
-            p.participant.WP2hints_given_econ = 1
-            p.participant.WP2hints_given_cook = 3
-            p.participant.WP2hints_given_sport = 2
-            p.participant.WR2hints_given_econ = 2
-            p.participant.WR2hints_given_cook = 3
-            p.participant.WR2hints_given_sport = 1
-            p.participant.econ_hint_requests_partner1 = 3
-            p.participant.cook_hint_requests_partner1 = 1
-            p.participant.sport_hint_requests_partner1 = 2
-            p.participant.econ_hint_used_partner2 = 1
-            p.participant.cook_hint_used_partner2 = 2
-            p.participant.sport_hint_used_partner2 = 3
-            p.participant.econ_hint_used_partner3 = 2
-            p.participant.cook_hint_used_partner3 = 1
-            p.participant.sport_hint_used_partner3 = 3
-            p.participant.econ_hint_requests_partner4 = 2
-            p.participant.cook_hint_requests_partner4 = 3
-            p.participant.sport_hint_requests_partner4 = 1
-            p.participant.econ_hint_requests_partner5 = 3
-            p.participant.cook_hint_requests_partner5 = 2
-            p.participant.sport_hint_requests_partner5 = 1
-            p.participant.econ_hint_used_partner6 = 1
-            p.participant.cook_hint_used_partner6 = 3
-            p.participant.sport_hint_used_partner6 = 2
-            p.participant.econ_hint_requests_partner7 = 0
-            p.participant.cook_hint_requests_partner7 = 3
-            p.participant.sport_hint_requests_partner7 = 1
-            p.participant.econ_hint_used_partner8 = 2
-            p.participant.cook_hint_used_partner8 = 0
-            p.participant.sport_hint_used_partner8 = 1
             round_numbers = list(range(1, 3))
             random.shuffle(round_numbers)
             task_round = dict(zip(C.TASKS, round_numbers))
@@ -256,24 +208,6 @@ def set_hints_used(player:Player,partner):
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner8
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
 
-def set_partners(player: Player):
-    g = player.group
-    player.participant.partner1 = 2
-    player.participant.partner2 = 3
-    player.participant.partner3 = 4
-    player.participant.partner4 = 5
-    player.participant.partner5 = 6
-    player.participant.partner6 = 7
-    player.participant.partner7 = 8
-    player.participant.partner8 = 9
-    player.participant.partnerm1 = 2
-    player.participant.partnerm2 = 3
-    player.participant.partnerm3 = 4
-    player.participant.partnerm4 = 5
-    player.participant.partnerf1 = 6
-    player.participant.partnerf2 = 7
-    player.participant.partnerf3 = 8
-    player.participant.partnerf4 = 9
 
 
 # PAGES
@@ -286,7 +220,6 @@ class WTP_YesNo(Page):
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player: Player):
-        set_partners(player)
         g = player.group
         partner4 = g.get_player_by_id(player.participant.partner4)
         partner7 = g.get_player_by_id(player.participant.partner7)

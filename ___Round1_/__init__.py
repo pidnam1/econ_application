@@ -162,30 +162,55 @@ def initialize_variables(subsession: Subsession):
         p.participant.assigned_helpers = []
 
         p.participant.count_participant = 0
-        player.participant.econ_hint_requests_partner1 = 0
-        player.participant.econ_hint_requests_partner2 = 0
-        player.participant.econ_hint_requests_partner3 = 0
-        player.participant.econ_hint_requests_partner4 = 0
-        player.participant.econ_hint_requests_partner5 = 0
-        player.participant.econ_hint_requests_partner6 = 0
-        player.participant.econ_hint_requests_partner7 = 0
-        player.participant.econ_hint_requests_partner8 = 0
-        player.participant.cook_hint_requests_partner1 = 0
-        player.participant.cook_hint_requests_partner2 = 0
-        player.participant.cook_hint_requests_partner3 = 0
-        player.participant.cook_hint_requests_partner4 = 0
-        player.participant.cook_hint_requests_partner5 = 0
-        player.participant.cook_hint_requests_partner6 = 0
-        player.participant.cook_hint_requests_partner7 = 0
-        player.participant.cook_hint_requests_partner8 = 0
-        player.participant.sport_hint_requests_partner1 = 0
-        player.participant.sport_hint_requests_partner2 = 0
-        player.participant.sport_hint_requests_partner3 = 0
-        player.participant.sport_hint_requests_partner4 = 0
-        player.participant.sport_hint_requests_partner5 = 0
-        player.participant.sport_hint_requests_partner6 = 0
-        player.participant.sport_hint_requests_partner7 = 0
-        player.participant.sport_hint_requests_partner8 = 0
+        p.participant.econ_hint_requests_partner1 = 0
+        p.participant.econ_hint_requests_partner2 = 0
+        p.participant.econ_hint_requests_partner3 = 0
+        p.participant.econ_hint_requests_partner4 = 0
+        p.participant.econ_hint_requests_partner5 = 0
+        p.participant.econ_hint_requests_partner6 = 0
+        p.participant.econ_hint_requests_partner7 = 0
+        p.participant.econ_hint_requests_partner8 = 0
+        p.participant.cook_hint_requests_partner1 = 0
+        p.participant.cook_hint_requests_partner2 = 0
+        p.participant.cook_hint_requests_partner3 = 0
+        p.participant.cook_hint_requests_partner4 = 0
+        p.participant.cook_hint_requests_partner5 = 0
+        p.participant.cook_hint_requests_partner6 = 0
+        p.participant.cook_hint_requests_partner7 = 0
+        p.participant.cook_hint_requests_partner8 = 0
+        p.participant.sport_hint_requests_partner1 = 0
+        p.participant.sport_hint_requests_partner2 = 0
+        p.participant.sport_hint_requests_partner3 = 0
+        p.participant.sport_hint_requests_partner4 = 0
+        p.participant.sport_hint_requests_partner5 = 0
+        p.participant.sport_hint_requests_partner6 = 0
+        p.participant.sport_hint_requests_partner7 = 0
+        p.participant.sport_hint_requests_partner8 = 0
+
+        p.participant.econ_hint_used_partner1 = 0
+        p.participant.econ_hint_used_partner2 = 0
+        p.participant.econ_hint_used_partner3 = 0
+        p.participant.econ_hint_used_partner4 = 0
+        p.participant.econ_hint_used_partner5 = 0
+        p.participant.econ_hint_used_partner6 = 0
+        p.participant.econ_hint_used_partner7 = 0
+        p.participant.econ_hint_used_partner8 = 0
+        p.participant.cook_hint_used_partner1 = 0
+        p.participant.cook_hint_used_partner2 = 0
+        p.participant.cook_hint_used_partner3 = 0
+        p.participant.cook_hint_used_partner4 = 0
+        p.participant.cook_hint_used_partner5 = 0
+        p.participant.cook_hint_used_partner6 = 0
+        p.participant.cook_hint_used_partner7 = 0
+        p.participant.cook_hint_used_partner8 = 0
+        p.participant.sport_hint_used_partner1 = 0
+        p.participant.sport_hint_used_partner2 = 0
+        p.participant.sport_hint_used_partner3 = 0
+        p.participant.sport_hint_used_partner4 = 0
+        p.participant.sport_hint_used_partner5 = 0
+        p.participant.sport_hint_used_partner6 = 0
+        p.participant.sport_hint_used_partner7 = 0
+        p.participant.sport_hint_used_partner8 = 0
 ##### Functions for helper implementation, related to participants
 
 def is_helping(player: Player, id):
@@ -465,26 +490,6 @@ class WaitPage1(WaitPage):
     def after_all_players_arrive(group: Group):
         set_helpers_new(group.get_players()[0].subsession)
 
-# PAGES
-# class WaitPage1(Page):
-#     @staticmethod
-#     def live_method(player: Player, data):
-#         set_players(player.subsession)
-#         session = player.session
-#         for p in session.active_players:
-#             session.wait_for_ids.add(p)
-#         session.arrived_ids.add(player.id_in_subsession)
-#         not_arrived_yet = session.wait_for_ids - session.arrived_ids
-#         print("Not arrived", not_arrived_yet)
-#         if not_arrived_yet:
-#             return {0: dict(not_arrived_yet=not_arrived_yet)}
-#         return {0: dict(finished=True)}
-#
-#     @staticmethod
-#     def error_message(player: Player, values):
-#         session = player.session
-#         if session.arrived_ids != session.wait_for_ids:
-#             return "Page somehow proceeded before all players are ready"
 
 class Demographics(Page):
     form_model = 'player'
@@ -576,7 +581,7 @@ def vars_for_template1(player: Player, formfields):
     random.shuffle(formfields_random)
     final.update(dict(formfields_random=formfields_random))
     print(final)
-    return final
+    return [final, hints]
 
 def vars_for_template2(player: Player, formfields):
     final = {}
@@ -625,7 +630,7 @@ def vars_for_template2(player: Player, formfields):
     final.update(dict(hints=hints, partnerm2=partnerm2, partnerm4=partnerm4, partnerf2=partnerf2, partnerf4=partnerf4))
     random.shuffle(formfields_random)
     final.update(dict(formfields_random=formfields_random))
-    return final
+    return [final, hints]
 
 class Economics1Hints(Page):
     form_model = 'player'
@@ -633,7 +638,9 @@ class Economics1Hints(Page):
     @staticmethod
     def vars_for_template(player: Player):
         formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -648,8 +655,14 @@ class Economics1Hints(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        allvalues = sum(values.values())
-        if allvalues != hints:
+        formfields = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        hints = vars_for_template1(player, formfields)[1]
+        desired_array = []
+        for i in values.values():
+            if i != None:
+                desired_array.append(int(i))
+        allvalues = sum(desired_array)
+        if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
     get_timeout_seconds = get_timeout_seconds1
@@ -663,7 +676,9 @@ class Economics1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults1_partner1', 'econresults1_partner2', 'econresults1_partner3',
                              'econresults1_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -688,7 +703,9 @@ class Economics1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults01_partner1', 'econresults01_partner2', 'econresults01_partner3',
                              'econresults01_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -712,7 +729,9 @@ class Cooking1Hints(Page):
     @staticmethod
     def vars_for_template(player: Player):
         formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -727,8 +746,14 @@ class Cooking1Hints(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        allvalues = sum(values.values())
-        if allvalues != hints:
+        formfields = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        hints = vars_for_template1(player, formfields)[1]
+        desired_array = []
+        for i in values.values():
+            if i != None:
+                desired_array.append(int(i))
+        allvalues = sum(desired_array)
+        if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
     get_timeout_seconds = get_timeout_seconds1
@@ -742,7 +767,9 @@ class Cooking1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults1_partner1', 'cookresults1_partner2', 'cookresults1_partner3',
                              'cookresults1_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -767,7 +794,9 @@ class Cooking1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults01_partner1', 'cookresults01_partner2', 'cookresults01_partner3',
                              'cookresults01_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -792,7 +821,9 @@ class Sports1Hints(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
                              'sporthints1_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -807,8 +838,15 @@ class Sports1Hints(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        allvalues = sum(values.values())
-        if allvalues != hints:
+        formfields = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
+                             'sporthints1_partner4']
+        hints = vars_for_template1(player, formfields)[1]
+        desired_array = []
+        for i in values.values():
+            if i != None:
+                desired_array.append(int(i))
+        allvalues = sum(desired_array)
+        if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
     get_timeout_seconds = get_timeout_seconds1
@@ -822,7 +860,9 @@ class Sports1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults1_partner1', 'sportresults1_partner2', 'sportresults1_partner3',
                              'sportresults1_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -847,7 +887,9 @@ class Sports1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults01_partner1', 'sportresults01_partner2', 'sportresults01_partner3',
                              'sportresults01_partner4']
-        final = vars_for_template1(player, formfields_random)
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -892,7 +934,9 @@ class Economics2Hints(Page):
     @staticmethod
     def vars_for_template(player: Player):
         formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -907,8 +951,14 @@ class Economics2Hints(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        allvalues = sum(values.values())
-        if allvalues != hints:
+        formfields = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        hints = vars_for_template2(player, formfields)[1]
+        desired_array = []
+        for i in values.values():
+            if i != None:
+                desired_array.append(int(i))
+        allvalues = sum(desired_array)
+        if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
     get_timeout_seconds = get_timeout_seconds1
@@ -922,7 +972,9 @@ class Economics2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults2_partner1', 'econresults2_partner2', 'econresults2_partner3',
                              'econresults2_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -949,7 +1001,9 @@ class Economics2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults02_partner1', 'econresults02_partner2', 'econresults02_partner3',
                              'econresults02_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -975,7 +1029,9 @@ class Cooking2Hints(Page):
     @staticmethod
     def vars_for_template(player: Player):
         formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -992,8 +1048,14 @@ class Cooking2Hints(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        allvalues = sum(values.values())
-        if allvalues != hints:
+        formfields = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
+        hints = vars_for_template2(player, formfields)[1]
+        desired_array = []
+        for i in values.values():
+            if i != None:
+                desired_array.append(int(i))
+        allvalues = sum(desired_array)
+        if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
     get_timeout_seconds = get_timeout_seconds1
@@ -1007,7 +1069,9 @@ class Cooking2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults2_partner1', 'cookresults2_partner2', 'cookresults2_partner3',
                              'cookresults2_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -1034,7 +1098,9 @@ class Cooking2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults02_partner1', 'cookresults02_partner2', 'cookresults02_partner3',
                              'cookresults02_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -1061,7 +1127,9 @@ class Sports2Hints(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
                              'sporthints2_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -1078,8 +1146,15 @@ class Sports2Hints(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        allvalues = sum(values.values())
-        if allvalues != hints:
+        formfields = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
+                             'sporthints2_partner4']
+        hints = vars_for_template2(player, formfields)[1]
+        desired_array = []
+        for i in values.values():
+            if i != None:
+                desired_array.append(int(i))
+        allvalues = sum(desired_array)
+        if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
     get_timeout_seconds = get_timeout_seconds1
@@ -1093,7 +1168,9 @@ class Sports2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults2_partner1', 'sportresults2_partner2', 'sportresults2_partner3',
                              'sportresults2_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -1120,7 +1197,9 @@ class Sports2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults02_partner1', 'sportresults02_partner2', 'sportresults02_partner3',
                              'sportresults02_partner4']
-        final = vars_for_template2(player, formfields_random)
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
         return final
 
     @staticmethod
@@ -1139,22 +1218,6 @@ class Sports2Results0(Page):
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-
-# class WaitPage2(Page):
-#     @staticmethod
-#     def live_method(player: Player, data):
-#         session = player.session
-#         session.arrived_ids.add(player.id_in_subsession)
-#         not_arrived_yet = session.active_players - session.arrived_ids
-#         if not_arrived_yet:
-#             return {0: dict(not_arrived_yet=list(not_arrived_yet))}
-#         return {0: dict(finished=True)}
-#
-#     @staticmethod
-#     def error_message(player: Player, values):
-#         session = player.session
-#         if session.arrived_ids != session.active_players:
-#             return "Page somehow proceeded before all players are ready"
 class WaitPage2(WaitPage):
     title_text = "Waiting for all players to finish"
     body_text = ""

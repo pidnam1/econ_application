@@ -225,7 +225,16 @@ class WTP_YesNo(Page):
         partner7 = g.get_player_by_id(player.participant.partner7)
         partner1 = g.get_player_by_id(player.participant.partner1)
         partner5 = g.get_player_by_id(player.participant.partner5)
-        return dict(partner4=partner4.participant.label, partner7=partner7.participant.label, partner1=partner1.participant.label, partner5=partner5.participant.label)
+
+        arr = [player.participant.partner4, player.participant.partner7, player.participant.partner1, player.participant.partner5]
+        string_arr = ['partner4', 'partner7', 'partner1', 'partner5']
+        input = {}
+        for i, j in zip(arr, string_arr):
+            if i != 0:
+                input[j] = g.get_player_by_id(i)
+
+
+        return input
 
 class WTP_Who(Page):
     form_model = 'player'

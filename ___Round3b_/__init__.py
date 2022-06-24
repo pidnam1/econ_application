@@ -1417,77 +1417,6 @@ class Player(BasePlayer):
 
 # FUNCTIONS
 def creating_session(subsession: Subsession):
-    # #DELETE BEFORE STARTING
-    # for p in subsession.get_players():
-    #     p.participant.round3b_completed = 0
-    #     p.participant.hints_given_econ = 3
-    #     p.participant.hints_given_cook = 3
-    #     p.participant.hints_given_sport = 3
-    #     p.participant.MP1hints_given_econ = 1
-    #     p.participant.MP1hints_given_cook = 2
-    #     p.participant.MP1hints_given_sport = 3
-    #     p.participant.MP2hints_given_econ = 4
-    #     p.participant.MP2hints_given_cook = 5
-    #     p.participant.MP2hints_given_sport = 6
-    #     p.participant.MR1hints_given_econ = 7
-    #     p.participant.MR1hints_given_cook = 8
-    #     p.participant.MR1hints_given_sport = 9
-    #     p.participant.MR2hints_given_econ = 10
-    #     p.participant.MR2hints_given_cook = 11
-    #     p.participant.MR2hints_given_sport = 12
-    #     p.participant.WP1hints_given_econ = 13
-    #     p.participant.WP1hints_given_cook = 14
-    #     p.participant.WP1hints_given_sport = 15
-    #     p.participant.WP2hints_given_econ = 16
-    #     p.participant.WP2hints_given_cook = 17
-    #     p.participant.WP2hints_given_sport = 18
-    #     p.participant.WR1hints_given_econ = 19
-    #     p.participant.WR1hints_given_cook = 20
-    #     p.participant.WR1hints_given_sport = 21
-    #     p.participant.WR2hints_given_econ = 22
-    #     p.participant.WR2hints_given_cook = 23
-    #     p.participant.WR2hints_given_sport = 24
-    #     p.participant.partner1 = 1
-    #     p.participant.partner2 = 2
-    #     p.participant.partner3 = 3
-    #     p.participant.partner4 = 4
-    #     p.participant.partner5 = 5
-    #     p.participant.partner6 = 6
-    #     p.participant.partner7 = 7
-    #     p.participant.partner8 = 8
-    #     p.participant.partnerm1 = 1
-    #     p.participant.partnerm2 = 2
-    #     p.participant.partnerm3 = 3
-    #     p.participant.partnerm4 = 4
-    #     p.participant.partnerf1 = 5
-    #     p.participant.partnerf2 = 6
-    #     p.participant.partnerf3 = 7
-    #     p.participant.partnerf4 = 8
-    #     p.participant.econ_hint_requests_partner1 = 0
-    #     p.participant.econ_hint_requests_partner2 = 0
-    #     p.participant.econ_hint_requests_partner3 = 0
-    #     p.participant.econ_hint_requests_partner4 = 0
-    #     p.participant.econ_hint_requests_partner5 = 0
-    #     p.participant.econ_hint_requests_partner6 = 0
-    #     p.participant.econ_hint_requests_partner7 = 0
-    #     p.participant.econ_hint_requests_partner8 = 0
-    #     p.participant.cook_hint_requests_partner1 = 0
-    #     p.participant.cook_hint_requests_partner2 = 0
-    #     p.participant.cook_hint_requests_partner3 = 0
-    #     p.participant.cook_hint_requests_partner4 = 0
-    #     p.participant.cook_hint_requests_partner5 = 0
-    #     p.participant.cook_hint_requests_partner6 = 0
-    #     p.participant.cook_hint_requests_partner7 = 0
-    #     p.participant.cook_hint_requests_partner8 = 0
-    #     p.participant.sport_hint_requests_partner1 = 0
-    #     p.participant.sport_hint_requests_partner2 = 0
-    #     p.participant.sport_hint_requests_partner3 = 0
-    #     p.participant.sport_hint_requests_partner4 = 0
-    #     p.participant.sport_hint_requests_partner5 = 0
-    #     p.participant.sport_hint_requests_partner6 = 0
-    #     p.participant.sport_hint_requests_partner7 = 0
-    #     p.participant.sport_hint_requests_partner8 = 0
-    # #END DELETE
 
     if subsession.round_number == 1:
         # new_structure = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]] #Change this to whatever is randomization (because you want specific people...)
@@ -2146,7 +2075,6 @@ class Hints_MP(Page):
         return (player.round_number == participant.task_rounds3b['MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        import random
         formfields = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP','results_economics_MP', 'results_cooking_MP', 'results_sports_MP','expect_hints_economics_MP', 'expect_hints_cooking_MP', 'expect_hints_sports_MP']
         return formfields
     def vars_for_template(player: Player):

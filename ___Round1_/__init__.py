@@ -162,6 +162,30 @@ def initialize_variables(subsession: Subsession):
         p.participant.assigned_helpers = []
 
         p.participant.count_participant = 0
+        player.participant.econ_hint_requests_partner1 = 0
+        player.participant.econ_hint_requests_partner2 = 0
+        player.participant.econ_hint_requests_partner3 = 0
+        player.participant.econ_hint_requests_partner4 = 0
+        player.participant.econ_hint_requests_partner5 = 0
+        player.participant.econ_hint_requests_partner6 = 0
+        player.participant.econ_hint_requests_partner7 = 0
+        player.participant.econ_hint_requests_partner8 = 0
+        player.participant.cook_hint_requests_partner1 = 0
+        player.participant.cook_hint_requests_partner2 = 0
+        player.participant.cook_hint_requests_partner3 = 0
+        player.participant.cook_hint_requests_partner4 = 0
+        player.participant.cook_hint_requests_partner5 = 0
+        player.participant.cook_hint_requests_partner6 = 0
+        player.participant.cook_hint_requests_partner7 = 0
+        player.participant.cook_hint_requests_partner8 = 0
+        player.participant.sport_hint_requests_partner1 = 0
+        player.participant.sport_hint_requests_partner2 = 0
+        player.participant.sport_hint_requests_partner3 = 0
+        player.participant.sport_hint_requests_partner4 = 0
+        player.participant.sport_hint_requests_partner5 = 0
+        player.participant.sport_hint_requests_partner6 = 0
+        player.participant.sport_hint_requests_partner7 = 0
+        player.participant.sport_hint_requests_partner8 = 0
 ##### Functions for helper implementation, related to participants
 
 def is_helping(player: Player, id):
@@ -358,31 +382,6 @@ def show_tests(subsession: Subsession):
 
 def set_hints_given(player: Player):
     print("in set_hints_given now")
-    player.participant.econ_hint_requests_partner1 = 0
-    player.participant.econ_hint_requests_partner2 = 0
-    player.participant.econ_hint_requests_partner3 = 0
-    player.participant.econ_hint_requests_partner4 = 0
-    player.participant.econ_hint_requests_partner5 = 0
-    player.participant.econ_hint_requests_partner6 = 0
-    player.participant.econ_hint_requests_partner7 = 0
-    player.participant.econ_hint_requests_partner8 = 0
-    player.participant.cook_hint_requests_partner1 = 0
-    player.participant.cook_hint_requests_partner2 = 0
-    player.participant.cook_hint_requests_partner3 = 0
-    player.participant.cook_hint_requests_partner4 = 0
-    player.participant.cook_hint_requests_partner5 = 0
-    player.participant.cook_hint_requests_partner6 = 0
-    player.participant.cook_hint_requests_partner7 = 0
-    player.participant.cook_hint_requests_partner8 = 0
-    player.participant.econ_hint_requests_partner1 = 0
-    player.participant.sport_hint_requests_partner2 = 0
-    player.participant.sport_hint_requests_partner3 = 0
-    player.participant.sport_hint_requests_partner4 = 0
-    player.participant.sport_hint_requests_partner5 = 0
-    player.participant.sport_hint_requests_partner6 = 0
-    player.participant.sport_hint_requests_partner7 = 0
-    player.participant.sport_hint_requests_partner8 = 0
-
     player.participant.MP1hints_given_econ = player.field_maybe_none('econhints1_partner1')
     player.participant.MP1hints_given_cook = player.field_maybe_none('cookhints1_partner1')
     player.participant.MP1hints_given_sport = player.field_maybe_none('sporthints1_partner1')
@@ -648,8 +647,10 @@ class Economics1Hints(Page):
         return formfields
 
     @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
+    def error_message(player: Player, values):
+        allvalues = sum(values.values())
+        if allvalues != hints:
+            return "Ensure that values add to the allowed number of hints"
 
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
@@ -676,9 +677,6 @@ class Economics1Results(Page):
                       'econresults1_partner4']
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -704,9 +702,6 @@ class Economics1Results0(Page):
                       'econresults01_partner4']
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -731,8 +726,11 @@ class Cooking1Hints(Page):
         return formfields
 
     @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
+    def error_message(player: Player, values):
+        allvalues = sum(values.values())
+        if allvalues != hints:
+            return "Ensure that values add to the allowed number of hints"
+
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -758,9 +756,6 @@ class Cooking1Results(Page):
                       'cookresults1_partner4']
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -786,9 +781,6 @@ class Cooking1Results0(Page):
                       'cookresults01_partner4']
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -814,8 +806,11 @@ class Sports1Hints(Page):
         return formfields
 
     @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
+    def error_message(player: Player, values):
+        allvalues = sum(values.values())
+        if allvalues != hints:
+            return "Ensure that values add to the allowed number of hints"
+
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -841,9 +836,6 @@ class Sports1Results(Page):
                       'sportresults1_partner4']
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -869,9 +861,6 @@ class Sports1Results0(Page):
                       'sportresults01_partner4']
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -917,8 +906,11 @@ class Economics2Hints(Page):
         return formfields
 
     @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
+    def error_message(player: Player, values):
+        allvalues = sum(values.values())
+        if allvalues != hints:
+            return "Ensure that values add to the allowed number of hints"
+
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -946,9 +938,6 @@ class Economics2Results(Page):
         random.shuffle(formfields)
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -976,9 +965,6 @@ class Economics2Results0(Page):
         random.shuffle(formfields)
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1005,8 +991,11 @@ class Cooking2Hints(Page):
         return formfields
 
     @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
+    def error_message(player: Player, values):
+        allvalues = sum(values.values())
+        if allvalues != hints:
+            return "Ensure that values add to the allowed number of hints"
+
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1034,9 +1023,6 @@ class Cooking2Results(Page):
         random.shuffle(formfields)
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1064,9 +1050,6 @@ class Cooking2Results0(Page):
         random.shuffle(formfields)
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1094,8 +1077,11 @@ class Sports2Hints(Page):
         return formfields
 
     @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
+    def error_message(player: Player, values):
+        allvalues = sum(values.values())
+        if allvalues != hints:
+            return "Ensure that values add to the allowed number of hints"
+
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1123,9 +1109,6 @@ class Sports2Results(Page):
         random.shuffle(formfields)
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1153,9 +1136,6 @@ class Sports2Results0(Page):
         random.shuffle(formfields)
         return formfields
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        set_hints_given(player)
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1190,6 +1170,7 @@ class Final(Page):
         return player.round_number == 9
     def before_next_page(player: Player, timeout_happened):
         player.participant.round2_completed = 3
+        set_hints_given(player)
 
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):

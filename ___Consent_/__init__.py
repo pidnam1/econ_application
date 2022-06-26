@@ -5,7 +5,7 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    genders_list = [1, 0, 0, 1, 1, 0]
+    GENDERS_LIST = [1, 0, 0, 1, 1, 0]
     LABELS = ['Shan_Aman_Rana','Alexia_Delfino','Shamyla_Chaudry','Ahsan_Pasha', 'Shanzay_Tariq','Izzah_Kashif']
 
 class Subsession(BaseSubsession):
@@ -50,9 +50,9 @@ class Consent(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.name = player.esig
-        player.participant.gender = C.genders_list[int(player.roll) - 1]
+        player.participant.gender = C.GENDERS_LIST[int(player.id_in_group) - 1]
         player.participant.roll_no = int(player.roll)
-        player.participant.count_participant = int(player.roll)
+        player.participant.count_participant = int(player.id_in_group)
         change_labels(player)
         set_players(player)
 

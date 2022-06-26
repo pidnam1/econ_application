@@ -646,7 +646,7 @@ class HelperTable(Page):
     form_fields = ['helper_ranking1','helper_ranking2','helper_ranking3','helper_ranking4','helper_ranking5','helper_ranking6','helper_ranking7','helper_ranking8','helper_reason1','helper_reason2','helper_reason3','helper_reason4','helper_reason5','helper_reason6','helper_reason7','helper_reason8']
     @staticmethod
     def vars_for_template(player: Player):
-        set_partners(player)
+
         g = player.group
         partner1 = g.get_player_by_id(player.participant.partner4)
         partner2 = g.get_player_by_id(player.participant.partner7)
@@ -702,11 +702,18 @@ class WTP_Subject(Page):
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
-        partner4 = g.get_player_by_id(player.participant.partner4)
-        partner7 = g.get_player_by_id(player.participant.partner7)
-        partner1 = g.get_player_by_id(player.participant.partner1)
-        partner5 = g.get_player_by_id(player.participant.partner5)
-        return dict(partner4=partner4.participant.label,partner7=partner7.participant.label,partner1=partner1.participant.label,partner5=partner5.participant.label,fields1=['wtp_econ1','wtp_cook1','wtp_sport1'],fields2=['wtp_econ2','wtp_cook2','wtp_sport2'],fields3=['wtp_econ3','wtp_cook3','wtp_sport3'],fields4=['wtp_econ4','wtp_cook4','wtp_sport4'])
+        arr = [player.participant.partner4, player.participant.partner7, player.participant.partner1,
+               player.participant.partner5]
+        string_arr = ['partner4', 'partner7', 'partner1', 'partner5']
+        input = {}
+        for i, j in zip(arr, string_arr):
+            if i != 0:
+                input[j] = g.get_player_by_id(i).label
+        input["field1"] = ['wtp_econ1', 'wtp_cook1', 'wtp_sport1']
+        input["field2"] = ['wtp_econ2', 'wtp_cook2', 'wtp_sport2']
+        input["field3"] = ['wtp_econ3', 'wtp_cook3', 'wtp_sport3']
+        input["field4"] = ['wtp_econ4', 'wtp_cook4', 'wtp_sport4']
+        return input
 
 
 #Section C

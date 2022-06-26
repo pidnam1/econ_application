@@ -221,17 +221,12 @@ class WTP_YesNo(Page):
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
-        partner4 = g.get_player_by_id(player.participant.partner4)
-        partner7 = g.get_player_by_id(player.participant.partner7)
-        partner1 = g.get_player_by_id(player.participant.partner1)
-        partner5 = g.get_player_by_id(player.participant.partner5)
-
         arr = [player.participant.partner4, player.participant.partner7, player.participant.partner1, player.participant.partner5]
         string_arr = ['partner4', 'partner7', 'partner1', 'partner5']
         input = {}
         for i, j in zip(arr, string_arr):
             if i != 0:
-                input[j] = g.get_player_by_id(i)
+                input[j] = g.get_player_by_id(i).label
 
 
         return input
@@ -245,16 +240,13 @@ class WTP_Who(Page):
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
-        partner4 = g.get_player_by_id(player.participant.partner4)
-        partner7 = g.get_player_by_id(player.participant.partner7)
-        partner1 = g.get_player_by_id(player.participant.partner1)
-        partner5 = g.get_player_by_id(player.participant.partner5)
-        labels = [
-            dict(name='partner4', label=partner4.participant.label),
-            dict(name='partner7', label=partner7.participant.label),
-            dict(name='partner1', label=partner1.participant.label),
-            dict(name='partner5', label=partner5.participant.label),
-        ]
+        arr = [player.participant.partner4, player.participant.partner7, player.participant.partner1,
+               player.participant.partner5]
+        string_arr = ['partner4', 'partner7', 'partner1', 'partner5']
+        labels = {}
+        for i, j in zip(arr, string_arr):
+            if i != 0:
+                labels[j] = g.get_player_by_id(i).label
         return dict(labels=labels)
 
 class WTP_HowMuch(Page):

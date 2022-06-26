@@ -407,30 +407,36 @@ def show_tests(subsession: Subsession):
 
 def set_hints_given(player: Player):
     print("in set_hints_given now")
-    player.participant.MP1hints_given_econ = player.field_maybe_none('econhints1_partner1')
-    player.participant.MP1hints_given_cook = player.field_maybe_none('cookhints1_partner1')
-    player.participant.MP1hints_given_sport = player.field_maybe_none('sporthints1_partner1')
-    player.participant.MR1hints_given_econ = player.field_maybe_none('econhints1_partner2')
-    player.participant.MR1hints_given_cook = player.field_maybe_none('cookhints1_partner2')
-    player.participant.MR1hints_given_sport = player.field_maybe_none('sporthints1_partner2')
-    player.participant.WP1hints_given_econ = player.field_maybe_none('econhints1_partner3')
-    player.participant.WP1hints_given_cook = player.field_maybe_none('cookhints1_partner3')
-    player.participant.WP1hints_given_sport = player.field_maybe_none('sporthints1_partner3')
-    player.participant.WR1hints_given_econ = player.field_maybe_none('econhints1_partner4')
-    player.participant.WR1hints_given_cook = player.field_maybe_none('cookhints1_partner4')
-    player.participant.WR1hints_given_sport = player.field_maybe_none('sporthints1_partner4')
-    player.participant.MP2hints_given_econ = player.field_maybe_none('econhints2_partner1')
-    player.participant.MP2hints_given_cook = player.field_maybe_none('cookhints2_partner1')
-    player.participant.MP2hints_given_sport = player.field_maybe_none('sporthints2_partner1')
-    player.participant.MR2hints_given_econ = player.field_maybe_none('econhints2_partner2')
-    player.participant.MR2hints_given_cook = player.field_maybe_none('cookhints2_partner2')
-    player.participant.MR2hints_given_sport = player.field_maybe_none('sporthints2_partner2')
-    player.participant.WP2hints_given_econ = player.field_maybe_none('econhints2_partner3')
-    player.participant.WP2hints_given_cook = player.field_maybe_none('cookhints2_partner3')
-    player.participant.WP2hints_given_sport = player.field_maybe_none('sporthints2_partner3')
-    player.participant.WR2hints_given_econ = player.field_maybe_none('econhints2_partner4')
-    player.participant.WR2hints_given_cook = player.field_maybe_none('cookhints2_partner4')
-    player.participant.WR2hints_given_sport = player.field_maybe_none('sporthints2_partner4')
+    if player.round_number == player.participant.task_rounds1['Econ1']:
+        player.participant.MP1hints_given_econ = player.field_maybe_none('econhints1_partner1')
+        player.participant.MR1hints_given_econ = player.field_maybe_none('econhints1_partner2')
+        player.participant.WP1hints_given_econ = player.field_maybe_none('econhints1_partner3')
+        player.participant.WR1hints_given_econ = player.field_maybe_none('econhints1_partner4')
+    elif player.round_number == player.participant.task_rounds1['Cook1']:
+        player.participant.MP1hints_given_cook = player.field_maybe_none('cookhints1_partner1')
+        player.participant.MR1hints_given_cook = player.field_maybe_none('cookhints1_partner2')
+        player.participant.WP1hints_given_cook = player.field_maybe_none('cookhints1_partner3')
+        player.participant.WR1hints_given_cook = player.field_maybe_none('cookhints1_partner4')
+    elif player.round_number == player.participant.task_rounds1['Sport1']:
+        player.participant.MP1hints_given_sport = player.field_maybe_none('sporthints1_partner1')
+        player.participant.MR1hints_given_sport = player.field_maybe_none('sporthints1_partner2')
+        player.participant.WP1hints_given_sport = player.field_maybe_none('sporthints1_partner3')
+        player.participant.WR1hints_given_sport = player.field_maybe_none('sporthints1_partner4')
+    elif player.round_number == player.participant.task_rounds1['Econ2']:
+        player.participant.MP2hints_given_econ = player.field_maybe_none('econhints2_partner1')
+        player.participant.MR2hints_given_econ = player.field_maybe_none('econhints2_partner2')
+        player.participant.WP2hints_given_econ = player.field_maybe_none('econhints2_partner3')
+        player.participant.WR2hints_given_econ = player.field_maybe_none('econhints2_partner4')
+    elif player.round_number == player.participant.task_rounds1['Cook2']:
+        player.participant.MP2hints_given_cook = player.field_maybe_none('cookhints2_partner1')
+        player.participant.MR2hints_given_cook = player.field_maybe_none('cookhints2_partner2')
+        player.participant.WP2hints_given_cook = player.field_maybe_none('cookhints2_partner3')
+        player.participant.WR2hints_given_cook = player.field_maybe_none('cookhints2_partner4')
+    elif player.round_number == player.participant.task_rounds1['Sport2']:
+        player.participant.MP2hints_given_sport = player.field_maybe_none('sporthints2_partner1')
+        player.participant.MR2hints_given_sport = player.field_maybe_none('sporthints2_partner2')
+        player.participant.WP2hints_given_sport = player.field_maybe_none('sporthints2_partner3')
+        player.participant.WR2hints_given_sport = player.field_maybe_none('sporthints2_partner4')
 
 def set_partners(player: Player):
     player.participant.partner1 = player.participant.helpers_dict["pf"][0] if 0 < len(player.participant.helpers_dict["pf"]) else 0
@@ -644,6 +650,10 @@ class Economics1Hints(Page):
         return final
 
     @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
+
+    @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
         return (player.round_number == participant.task_rounds1['Econ1']) and (get_timeout_seconds1(player) > 0)
@@ -733,6 +743,10 @@ class Cooking1Hints(Page):
         hints = vars_for_template1(player, formfields_random)[1]
         final["hints"] = hints
         return final
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
 
     @staticmethod
     def is_displayed(player: Player):
@@ -825,6 +839,10 @@ class Sports1Hints(Page):
         hints = vars_for_template1(player, formfields_random)[1]
         final["hints"] = hints
         return final
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
 
     @staticmethod
     def is_displayed(player: Player):
@@ -940,6 +958,10 @@ class Economics2Hints(Page):
         return final
 
     @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
+
+    @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
         return (player.round_number == participant.task_rounds1['Econ2']) and (get_timeout_seconds1(player) > 0)
@@ -1033,6 +1055,10 @@ class Cooking2Hints(Page):
         hints = vars_for_template2(player, formfields_random)[1]
         final["hints"] = hints
         return final
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1131,6 +1157,10 @@ class Sports2Hints(Page):
         hints = vars_for_template2(player, formfields_random)[1]
         final["hints"] = hints
         return final
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        set_hints_given(player)
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1233,7 +1263,6 @@ class Final(Page):
         return player.round_number == 9
     def before_next_page(player: Player, timeout_happened):
         player.participant.round2_completed = 3
-        set_hints_given(player)
 
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):

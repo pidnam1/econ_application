@@ -6,7 +6,6 @@ import random
 class C(BaseConstants):
     NAME_IN_URL = '___Round2_1'
     PLAYERS_PER_GROUP = None
-    TASKS = ['MP','MR','WP','WR']
     TASKS_MP = ['Economics_MP', 'Cooking_MP', 'Sports_MP']
     ECONSUBTASKS_MP = ['Economics1_MP', 'Economics2_MP', 'Economics3_MP', 'Economics4_MP']
     COOKSUBTASKS_MP = ['Cooking1_MP', 'Cooking2_MP', 'Cooking3_MP', 'Cooking4_MP']
@@ -1232,14 +1231,24 @@ class Player(BasePlayer):
 
 
 # FUNCTIONS
-def creating_session(subsession: Subsession):
+def random_rounds(subsession: Subsession):
     if subsession.round_number == 1:
-        # new_structure = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]] #Change this to whatever is randomization (because you want specific people...)
-        # subsession.set_group_matrix(new_structure)
         for p in subsession.get_players():
+            #randomizes which order people will do the main C.TASKS in
+            tasks = ['MP','MR','WP','WR']
             round_numbers = list(range(1, 5))
-            random.shuffle(round_numbers)
-            task_round = dict(zip(C.TASKS, round_numbers))
+            random.shuffle(tasks)
+            if p.participant.partner4 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('MP')))
+            if p.participant.partner7 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('MR')))
+            if p.participant.partner1 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('WP')))
+            if p.participant.partner5 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('WR')))
+            task_round = dict(zip(tasks, round_numbers))
+
+            #randomizes the order someone doing the MP tasks will do them in
             sub_round_number1 = list(range(2, 5))
             random.shuffle(sub_round_number1)
             sub_round_number2 = list(range(6, 9))
@@ -1281,16 +1290,23 @@ def creating_session(subsession: Subsession):
             sub_round_number4_3 = list(range(49, 53))
             random.shuffle(sub_round_number4_3)
 
-
+            #Keeps track of which tasks people have finished. Key = "MP, MR, WP...", Value = 1 if finished
             p.participant.task_rounds2 = dict()
 
             #MALE PREFERRED
             MP_round_number = task_round['MP']
             if MP_round_number == 1:
+                #marks complete this MP task
+                p.participant.task_rounds2.update({'MP': 1})
+
+                #Determines the order in which the MP tasks will be done, by the random numbers generated earlier
                 task_rounds_MP1 = dict(zip(C.TASKS_MP, sub_round_number1))
-                p.participant.task_rounds2.update({'MP':1})
                 econ_round_number = task_rounds_MP1['Economics_MP']
+
+                #this section determines which order we will do the sub rounds: ie econ first, cooking second, sports third. Etc.
                 if econ_round_number == 2:
+
+                    #assigns the order you do this specific task to a random order
                     task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_1))
                     p.participant.task_rounds2.update(task_rounds_econ1)
                 elif econ_round_number == 3:
@@ -1849,6 +1865,7 @@ class Demographics(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        random_rounds(player.subsession)
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player:Player):
@@ -2115,7 +2132,7 @@ class Sports3_MP(Page):
         return ['crt_sports3_MP','helpful_hint_sport3_MP','prob_sport3_MP']
     @staticmethod
     def live_method(player: Player, data):
-        if data == 'clicked-button':
+        if data == 'clicked-button' and sport_hint_requests_partner4:
             player.participant.sport_hint_requests_partner4 += 1
             return {player.id_in_group: dict(message = "Hint: Surname rhymes with Sabbath. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2434,7 +2451,7 @@ class Hints_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds2['WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner1 != 0)
+        return (player.round_number == participant.task_rounds2['WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random

@@ -6,7 +6,6 @@ import random
 class C(BaseConstants):
     NAME_IN_URL = '___Round3b_'
     PLAYERS_PER_GROUP = None
-    TASKS = ['MP','MR','WP','WR']
     TASKS_MP = ['Economics_MP', 'Cooking_MP', 'Sports_MP']
     ECONSUBTASKS_MP = ['Economics1_MP', 'Economics2_MP', 'Economics3_MP', 'Economics4_MP']
     COOKSUBTASKS_MP = ['Cooking1_MP', 'Cooking2_MP', 'Cooking3_MP', 'Cooking4_MP']
@@ -1416,17 +1415,25 @@ class Player(BasePlayer):
 
 
 # FUNCTIONS
-def creating_session(subsession: Subsession):
+def random_rounds(subsession: Subsession):
 
     if subsession.round_number == 1:
-        # new_structure = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]] #Change this to whatever is randomization (because you want specific people...)
-        # subsession.set_group_matrix(new_structure)
         for p in subsession.get_players():
             p.participant.task_rounds3b = dict()
 
+            tasks = ['MP','MR','WP','WR']
             round_numbers = list(range(1, 5))
-            random.shuffle(round_numbers)
-            task_round = dict(zip(C.TASKS, round_numbers))
+            random.shuffle(tasks)
+            if p.participant.partner3 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('MP')))
+            if p.participant.partner8 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('MR')))
+            if p.participant.partner2 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('WP')))
+            if p.participant.partner6 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('WR')))
+            task_round = dict(zip(tasks, round_numbers))
+
             sub_round_number1 = list(range(2, 5))
             random.shuffle(sub_round_number1)
             sub_round_number2 = list(range(6, 9))
@@ -2057,6 +2064,7 @@ class Demographics(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        random_rounds(player.subsession)
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player:Player):
@@ -2097,16 +2105,16 @@ class ExpectationWR_MP(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
+        partner = g.get_player_by_id(player.participant.partner3)
         wr = 0
         length = len(g.get_players())
-        int = list(range(1, length))
+        int = list(range(1, length+1))
         random.shuffle(int)
         for key in int:
             curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player.participant.gender == 0:
+            if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
                 wr = curr_player
                 break
-        partner = g.get_player_by_id(player.participant.partner3)
         return dict(partner=partner.participant.label, round_number = player.round_number - 1, wr=wr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
@@ -2127,16 +2135,16 @@ class ExpectationMR_MP(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
+        partner = g.get_player_by_id(player.participant.partner3)
         mr = 0
         length = len(g.get_players())
-        int = list(range(1, length))
+        int = list(range(1, length+1))
         random.shuffle(int)
         for key in int:
             curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player.participant.gender == 1:
+            if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        partner = g.get_player_by_id(player.participant.partner3)
         return dict(partner=partner.participant.label, round_number = player.round_number - 1, mr=mr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
@@ -2516,16 +2524,16 @@ class ExpectationWR_MR(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
+        partner = g.get_player_by_id(player.participant.partner8)
         wr = 0
         length = len(g.get_players())
-        int = list(range(1, length))
+        int = list(range(1, length+1))
         random.shuffle(int)
         for key in int:
             curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player.participant.gender == 0:
+            if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
                 wr = curr_player
                 break
-        partner = g.get_player_by_id(player.participant.partner8)
         return dict(partner=partner.participant.label, round_number = player.round_number - 1, wr=wr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
@@ -2546,16 +2554,16 @@ class ExpectationMR_MR(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
+        partner = g.get_player_by_id(player.participant.partner8)
         mr = 0
         length = len(g.get_players())
-        int = list(range(1, length))
+        int = list(range(1, length+1))
         random.shuffle(int)
         for key in int:
             curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player.participant.gender == 1:
+            if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        partner = g.get_player_by_id(player.participant.partner8)
         return dict(partner=partner.participant.label, round_number = player.round_number - 1, mr=mr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
@@ -2935,16 +2943,16 @@ class ExpectationWR_WP(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
+        partner = g.get_player_by_id(player.participant.partner2)
         wr = 0
         length = len(g.get_players())
-        int = list(range(1, length))
+        int = list(range(1, length+1))
         random.shuffle(int)
         for key in int:
             curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player.participant.gender == 0:
+            if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
                 wr = curr_player
                 break
-        partner = g.get_player_by_id(player.participant.partner2)
         return dict(partner=partner.participant.label, round_number = player.round_number - 1, wr=wr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
@@ -2965,16 +2973,16 @@ class ExpectationMR_WP(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
+        partner = g.get_player_by_id(player.participant.partner2)
         mr = 0
         length = len(g.get_players())
-        int = list(range(1, length))
+        int = list(range(1, length+1))
         random.shuffle(int)
         for key in int:
             curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player.participant.gender == 1:
+            if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        partner = g.get_player_by_id(player.participant.partner2)
         return dict(partner=partner.participant.label, round_number = player.round_number - 1, mr=mr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
@@ -3354,13 +3362,14 @@ class ExpectationWR_WR(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
+        partner = g.get_player_by_id(player.participant.partner6)
         wr = 0
         length = len(g.get_players())
-        int = list(range(1, length))
+        int = list(range(1, length+1))
         random.shuffle(int)
         for key in int:
             curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player.participant.gender == 0:
+            if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
                 wr = curr_player
                 break
         partner = g.get_player_by_id(player.participant.partner6)
@@ -3384,16 +3393,16 @@ class ExpectationMR_WR(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
+        partner = g.get_player_by_id(player.participant.partner6)
         mr = 0
         length = len(g.get_players())
-        int = list(range(1, length))
+        int = list(range(1, length+1))
         random.shuffle(int)
         for key in int:
             curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player.participant.gender == 1:
+            if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        partner = g.get_player_by_id(player.participant.partner6)
         return dict(partner=partner.participant.label, round_number = player.round_number - 1, mr=mr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):

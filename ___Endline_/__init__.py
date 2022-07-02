@@ -35,13 +35,14 @@ def make_field_multiple_price():
 def make_field_wtp():
     return models.IntegerField(
         choices=[1,2,3],label='',
+        blank=True
     )
 
 def make_image_data(image_names):
     return [dict(name=name, path='{}'.format(name)) for name in image_names]
 
 class Player(BasePlayer):
-    dob = models.StringField(label='1. What is your date of birth?')
+    dob = models.StringField(label='1. What is your date of birth? (Please list as YYYY/MM/DD)')
     high_edu = models.IntegerField(
         choices=[[0, 'Matric'], [1, 'FA/FSc'], [2, 'BA/BSc.'], [99, 'Other (specify on the next page)']],
         label='2. Before the current degree that you are studying, what was the highest qualification that you attained?',
@@ -234,22 +235,22 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     #MAKE ANY FORMFIELDS NEEDED FOR HELPER TABLE
-    helper_ranking1 = models.StringField(label='')
-    helper_ranking2 = models.StringField(label='')
-    helper_ranking3 = models.StringField(label='')
-    helper_ranking4 = models.StringField(label='')
-    helper_ranking5 = models.StringField(label='')
-    helper_ranking6 = models.StringField(label='')
-    helper_ranking7 = models.StringField(label='')
-    helper_ranking8 = models.StringField(label='')
-    helper_reason1 = models.IntegerField(label='')
-    helper_reason2 = models.IntegerField(label='')
-    helper_reason3 = models.IntegerField(label='')
-    helper_reason4 = models.IntegerField(label='')
-    helper_reason5 = models.IntegerField(label='')
-    helper_reason6 = models.IntegerField(label='')
-    helper_reason7 = models.IntegerField(label='')
-    helper_reason8 = models.IntegerField(label='')
+    helper_ranking1 = models.StringField(label='',blank=True)
+    helper_ranking2 = models.StringField(label='',blank=True)
+    helper_ranking3 = models.StringField(label='',blank=True)
+    helper_ranking4 = models.StringField(label='',blank=True)
+    helper_ranking5 = models.StringField(label='',blank=True)
+    helper_ranking6 = models.StringField(label='',blank=True)
+    helper_ranking7 = models.StringField(label='',blank=True)
+    helper_ranking8 = models.StringField(label='',blank=True)
+    helper_reason1 = models.IntegerField(label='',blank=True)
+    helper_reason2 = models.IntegerField(label='',blank=True)
+    helper_reason3 = models.IntegerField(label='',blank=True)
+    helper_reason4 = models.IntegerField(label='',blank=True)
+    helper_reason5 = models.IntegerField(label='',blank=True)
+    helper_reason6 = models.IntegerField(label='',blank=True)
+    helper_reason7 = models.IntegerField(label='',blank=True)
+    helper_reason8 = models.IntegerField(label='',blank=True)
 
 
     #Section C
@@ -265,10 +266,10 @@ class Player(BasePlayer):
         label='You selected \'No\'. Please specify. What do you think was the main reason that they did not ask for hints from helpers?',
         widget=widgets.RadioSelect,
     )
-    decide_hints = models.IntegerField(
+    decide_hints = models.StringField(
         label='How did you decide how many hints to give to the test-takers you were matched with?',
     )
-    diff_why = models.IntegerField(
+    diff_why = models.StringField(
         label='Did you make different choices when your payment depended on the performance of the test-taker? Why or why not?',
     )
 
@@ -646,25 +647,65 @@ class HelperTable(Page):
     form_fields = ['helper_ranking1','helper_ranking2','helper_ranking3','helper_ranking4','helper_ranking5','helper_ranking6','helper_ranking7','helper_ranking8','helper_reason1','helper_reason2','helper_reason3','helper_reason4','helper_reason5','helper_reason6','helper_reason7','helper_reason8']
     @staticmethod
     def vars_for_template(player: Player):
-
         g = player.group
-        partner1 = g.get_player_by_id(player.participant.partner4)
-        partner2 = g.get_player_by_id(player.participant.partner7)
-        partner3 = g.get_player_by_id(player.participant.partner1)
-        partner4 = g.get_player_by_id(player.participant.partner5)
-        partner5 = g.get_player_by_id(player.participant.partner3)
-        partner6 = g.get_player_by_id(player.participant.partner8)
-        partner7 = g.get_player_by_id(player.participant.partner2)
-        partner8 = g.get_player_by_id(player.participant.partner6)
-        helper1 = ['helper_ranking1','helper_reason1']
-        helper2 = ['helper_ranking2','helper_reason2']
-        helper3 = ['helper_ranking3','helper_reason3']
-        helper4 = ['helper_ranking4','helper_reason4']
-        helper5 = ['helper_ranking5','helper_reason5']
-        helper6 = ['helper_ranking6','helper_reason6']
-        helper7 = ['helper_ranking7','helper_reason7']
-        helper8 = ['helper_ranking8','helper_reason8']
-        return dict(helper1=helper1,helper2=helper2,helper3=helper3,helper4=helper4,helper5=helper5,helper6=helper6,helper7=helper7,helper8=helper8,partner1=partner1.participant.label,partner2=partner2.participant.label,partner3=partner3.participant.label,partner4=partner4.participant.label,partner5=partner5.participant.label,partner6=partner6.participant.label,partner7=partner7.participant.label,partner8=partner8.participant.label)
+        final = {}
+        helper1 = []
+        helper2 = []
+        helper3 = []
+        helper4 = []
+        helper5 = []
+        helper6 = []
+        helper7 = []
+        helper8 = []
+        if player.participant.partner4 != 0:
+            partner4 = g.get_player_by_id(player.participant.partner4)
+            final.update(dict(partner1=partner4.participant.label))
+            helper1.append('helper_ranking1')
+            helper1.append('helper_reason1')
+        if player.participant.partner7 != 0:
+            partner7 = g.get_player_by_id(player.participant.partner7)
+            final.update(dict(partner2=partner7.participant.label))
+            helper2.append('helper_ranking2')
+            helper2.append('helper_reason2')
+        if player.participant.partner1 != 0:
+            partner1 = g.get_player_by_id(player.participant.partner1)
+            final.update(dict(partner3=partner1.participant.label))
+            helper3.append('helper_ranking3')
+            helper3.append('helper_reason3')
+        if player.participant.partner5 != 0:
+            partner5 = g.get_player_by_id(player.participant.partner5)
+            final.update(dict(partner4=partner5.participant.label))
+            helper4.append('helper_ranking4')
+            helper4.append('helper_reason4')
+        if player.participant.partner3 != 0:
+            partner3 = g.get_player_by_id(player.participant.partner3)
+            final.update(dict(partner5=partner3.participant.label))
+            helper5.append('helper_ranking5')
+            helper5.append('helper_reason5')
+        if player.participant.partner8 != 0:
+            partner8 = g.get_player_by_id(player.participant.partner8)
+            final.update(dict(partner6=partner8.participant.label))
+            helper6.append('helper_ranking6')
+            helper6.append('helper_reason6')
+        if player.participant.partner2 != 0:
+            partner2 = g.get_player_by_id(player.participant.partner2)
+            final.update(dict(partner7=partner2.participant.label))
+            helper7.append('helper_ranking7')
+            helper7.append('helper_reason7')
+        if player.participant.partner6 != 0:
+            partner6 = g.get_player_by_id(player.participant.partner6)
+            final.update(dict(partner8=partner6.participant.label))
+            helper8.append('helper_ranking8')
+            helper8.append('helper_reason8')
+        final.update(dict(helper1=helper1))
+        final.update(dict(helper2=helper2))
+        final.update(dict(helper3=helper3))
+        final.update(dict(helper4=helper4))
+        final.update(dict(helper5=helper5))
+        final.update(dict(helper6=helper6))
+        final.update(dict(helper7=helper7))
+        final.update(dict(helper8=helper8))
+        return final
 
 class MultiplePriceFemale(Page):
     form_model = 'player'
@@ -672,12 +713,14 @@ class MultiplePriceFemale(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
-        int = list(range(1, 19))
+        wr = 0
+        length = len(g.get_players())
+        int = list(range(1, length))
         random.shuffle(int)
         for key in int:
-            if (key in player.participant.pref_helper_female):
-                wr_id = player.participant.pref_helper_female[key]
-                wr = g.get_player_by_id(wr_id)
+            curr_player = g.get_player_by_id(key)
+            if curr_player != player and curr_player.participant.gender == 0:
+                wr = curr_player
                 break
         return dict(wr=wr.participant.label)
 
@@ -687,12 +730,14 @@ class MultiplePriceMale(Page):
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
-        int = list(range(1, 19))
+        mr = 0
+        length = len(g.get_players())
+        int = list(range(1, length))
         random.shuffle(int)
         for key in int:
-            if (key in player.participant.pref_helper_male):
-                mr_id = player.participant.pref_helper_male[key]
-                mr = g.get_player_by_id(mr_id)
+            curr_player = g.get_player_by_id(key)
+            if curr_player != player and curr_player.participant.gender == 1:
+                mr = curr_player
                 break
         return dict(mr=mr.participant.label)
 
@@ -705,15 +750,20 @@ class WTP_Subject(Page):
         arr = [player.participant.partner4, player.participant.partner7, player.participant.partner1,
                player.participant.partner5]
         string_arr = ['partner4', 'partner7', 'partner1', 'partner5']
-        input = {}
+        final = {}
+        input = []
         for i, j in zip(arr, string_arr):
             if i != 0:
-                input[j] = g.get_player_by_id(i).label
-        input["field1"] = ['wtp_econ1', 'wtp_cook1', 'wtp_sport1']
-        input["field2"] = ['wtp_econ2', 'wtp_cook2', 'wtp_sport2']
-        input["field3"] = ['wtp_econ3', 'wtp_cook3', 'wtp_sport3']
-        input["field4"] = ['wtp_econ4', 'wtp_cook4', 'wtp_sport4']
-        return input
+                if j == string_arr[0]:
+                    input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ1', 'wtp_cook1', 'wtp_sport1']))
+                if j == string_arr[1]:
+                    input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ2', 'wtp_cook2', 'wtp_sport2']))
+                if j == string_arr[2]:
+                    input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ3', 'wtp_cook3', 'wtp_sport3']))
+                if j == string_arr[3]:
+                    input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ4', 'wtp_cook4', 'wtp_sport4']))
+        final.update(input=input)
+        return final
 
 
 #Section C
@@ -803,10 +853,11 @@ class PersonalityStatementTable(Page):
     form_model = 'player'
     form_fields = ['setbacks_encourage','change_goals','focus_months','new_distracts','hardwork','finish','change_interests','diligent','obsess_shortterm','setbacks_challenge']
 
-
+class Congratulations(Page):
+    form_model = 'player'
 
 page_sequence = [AcademicInfo, AcademicInfoOther, TimeSpent, FriendsTable, ClassRelations1,
 ClassRelations2, ClassRelations3, ExpFeedback, ExpFeedbackNo, HelperTable, MultiplePriceFemale,
 MultiplePriceMale, WTP_Subject, ExpDecisions, ExpDecisionsNo, GenderTable, AmountGame,
 BasicInfo, BasicInfoOther, Ethics1, Ethics2, Ethics3, Personality, PersonalityTraitsTable,
-PersonalityStatementTable]
+PersonalityStatementTable, Congratulations]

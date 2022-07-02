@@ -1252,6 +1252,10 @@ class WaitPage2(WaitPage):
     title_text = "Waiting for all players to finish"
     body_text = ""
 
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return player.round_number == 9
 
 
 class Final(Page):

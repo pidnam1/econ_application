@@ -5,10 +5,9 @@
 
     <p>In some of the previous rounds, you were matched with the following helpers: </p>
     <ul>
-      <li><p>{{ partner4 }}</p></li>
-      <li><p>{{ partner7 }}</p></li>
-      <li><p>{{ partner1 }}</p></li>
-      <li><p>{{ partner5 }}</p></li>
+      {{ for partner in input }}
+      <li><p>{{ partner }}</p></li>
+      {{ endfor }}
     </ul>
 
     <p>We are about to communicate to each helper the number of hints that you asked for in each subject round in which you were paired together.</p>

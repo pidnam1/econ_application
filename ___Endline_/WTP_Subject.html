@@ -7,40 +7,19 @@
 
     <table class="table">
         <tr>
-          <th>No.</th>
           <th>Helper</th>
           <th>Economics?</th>
           <th>Cooking?</th>
           <th>Sports?</th>
         </tr>
+        {{ for partner in input }}
         <tr>
-          <th>1.</th>
-          <th>{{ partner4 }}</th>
-          {{ for field in fields1 }}
-            <td>{{ formfield field }}</td>
-          {{ endfor }}
+          <th>{{ partner.label }}</th>
+            {{ for field in partner.fields }}
+              <td>{{ formfield field }}</td>
+            {{ endfor }}
         </tr>
-        <tr>
-          <th>2.</th>
-          <th>{{ partner7 }}</th>
-          {{ for field in fields2 }}
-            <td>{{ formfield field }}</td>
-          {{ endfor }}
-        </tr>
-        <tr>
-          <th>3.</th>
-          <th>{{ partner1 }}</th>
-          {{ for field in fields3 }}
-            <td>{{ formfield field }}</td>
-          {{ endfor }}
-        </tr>
-        <tr>
-          <th>4.</th>
-          <th>{{ partner5 }}</th>
-          {{ for field in fields4 }}
-            <td>{{ formfield field }}</td>
-          {{ endfor }}
-        </tr>
+        {{ endfor }}
     </table>
 
     <p></p>

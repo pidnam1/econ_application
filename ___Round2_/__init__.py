@@ -6,7 +6,6 @@ import random
 class C(BaseConstants):
     NAME_IN_URL = '___Round2_'
     PLAYERS_PER_GROUP = None
-    TASKS = ['MP','MR','WP','WR']
     TASKS_MP = ['Economics_MP', 'Cooking_MP', 'Sports_MP']
     ECONSUBTASKS_MP = ['Economics1_MP', 'Economics2_MP', 'Economics3_MP', 'Economics4_MP']
     COOKSUBTASKS_MP = ['Cooking1_MP', 'Cooking2_MP', 'Cooking3_MP', 'Cooking4_MP']
@@ -1232,16 +1231,22 @@ class Player(BasePlayer):
 
 
 # FUNCTIONS
-def creating_session(subsession: Subsession):
+def random_rounds(subsession: Subsession):
     if subsession.round_number == 1:
-        # new_structure = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]] #Change this to whatever is randomization (because you want specific people...)
-        # subsession.set_group_matrix(new_structure)
         for p in subsession.get_players():
-            round_numbers = list(range(1, 5))
-
             #randomizes which order people will do the main C.TASKS in
-            random.shuffle(round_numbers)
-            task_round = dict(zip(C.TASKS, round_numbers))
+            tasks = ['MP','MR','WP','WR']
+            round_numbers = list(range(1, 5))
+            random.shuffle(tasks)
+            if p.participant.partner4 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('MP')))
+            if p.participant.partner7 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('MR')))
+            if p.participant.partner1 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('WP')))
+            if p.participant.partner5 == 0:
+                tasks.insert(4, tasks.pop(tasks.index('WR')))
+            task_round = dict(zip(tasks, round_numbers))
 
             #randomizes the order someone doing the MP tasks will do them in
             sub_round_number1 = list(range(2, 5))
@@ -1860,6 +1865,7 @@ class Demographics(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        random_rounds(player.subsession)
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player:Player):

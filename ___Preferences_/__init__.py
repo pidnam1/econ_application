@@ -37,7 +37,7 @@ def make_field2(label):
 
 def make_field3(label):
     return models.StringField(
-        label=label, blank=True, initial = 0,
+        label=label, blank=True,
     )
 
 class Player(BasePlayer):
@@ -173,8 +173,8 @@ class Pref_Helper_Why(Page):
     form_fields = ['f1_2_1','f2_2_1','f3_2_1','f4_2_1','f5_2_1']
     @staticmethod
     def vars_for_template(player: Player):
-        player_why = [player.f1_1_1, player.f2_1_1, player.f3_1_1, player.f4_1_1,
-        player.f5_1_1]
+        player_why = ["1." + player.f1_1_1, "2." + player.f2_1_1, "3." + player.f3_1_1,
+        "4." + player.f4_1_1, "5." + player.f5_1_1]
         return dict(player_why = player_why)
 
 class Pref_Helper_Other(Page):
@@ -259,8 +259,8 @@ class Pref_TT_Why(Page):
     form_fields = ['f1_2_2','f2_2_2','f3_2_2','f4_2_2','f5_2_2']
     @staticmethod
     def vars_for_template(player: Player):
-        player_why = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2,
-        player.f5_1_2]
+        player_why = ["1." + player.f1_1_2, "2." + player.f2_1_2, "3." + player.f3_1_2,
+        "4." + player.f4_1_2, "5." + player.f5_1_2]
         return dict(player_why = player_why)
 
 class Pref_TT_Other(Page):

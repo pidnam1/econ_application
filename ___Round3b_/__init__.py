@@ -3761,16 +3761,9 @@ class Final(Page):
         return dict(round=player.participant.round3b_completed)
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
-        player.participant.round3b_completed = 1
-        if len(upcoming_apps) >= 3:
-            int = list(range(0, 3))
-        else:
-            int = list(range(0, len(upcoming_apps)))
-        random.shuffle(int)
-        for i in range(len(int)):
-            if ('___Round2_' in upcoming_apps[int[i]]) and (player.participant.round2_completed == 0):
-                player.participant.round2_completed = 4
-                return upcoming_apps[int[i]]
+        if (player.participant.round2_completed == 0):
+            player.participant.round2_completed = 4
+            return '___Round2_1'
         return '___Final_'
 
 

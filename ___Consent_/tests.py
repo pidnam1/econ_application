@@ -5,11 +5,17 @@ from . import *
 class PlayerBot(Bot):
     def play_round(self):
         #original_genders_list = [0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1]
-        genders_list = [1, 0, 0, 1, 0, 1, 0, 1, 1]
+        genders_list = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
         ###change for diff tests
-        PLAYERS = ['Shan Aman Rana', 'Alexia Delfino', 'Shamyla Chaudry', 'Ahsan Pasha',
-                   'Shanzay Tariq', 'Izzah Kashif', 'Rohma Nasim', 'Hamna Tariq', 'Essa Kurd']
+        PLAYERS = ['Shan Aman Rana','Alexia Delfino','Shamyla Chaudry','Ahsan Pasha',
+        'Shanzay Tariq','Izzah Kashif','Rohma Nasim','Hamna Tariq','Essa Kurd','Hammad Qayyum',
+        'Muhammad Pervaiz','Ayesha Hassan','Faizan Aziz','Assad Mustafa','Maheen Alvi',
+        'Hasan Akmal','Tamoor Salman','Khawaja Kashif','Haris Zahid','Khadija Aslam',
+        'Hamza Riaz','Alice','Bob','Coleman','Demond', 'Emily','Fariz','Grace','Heather',
+        'Ivan','Jake','Kyle','Liam','Michael','Nina','Oliver','Penelope','Quinn','Richard',
+        'Sam','Thomas','Ursula','Vinnie','Wade','Yu','Zhang','Alex','Barry','Carol','Don',
+        'Enrique','Fred','Jenny','Howard','Inez','Kate','Lane','Maddie','Nate','Ajax']
         x = {}
         id = self.player.id_in_group - 1
         x["roll"] = id + 1

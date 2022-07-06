@@ -302,8 +302,8 @@ class Player(BasePlayer):
         label='1. What is your gender?',
         widget=widgets.RadioSelect,
     )
-    caste = models.StringField(
-        choices=[['Jatt', 'Jatt'], ['Rajput', 'Rajput'], ['Arain', 'Arain'], [99, 'Other (specify on the next page)']],
+    caste = models.IntegerField(
+        choices=[[0, 'Jatt'], [1, 'Rajput'], [2, 'Arain'], [99, 'Other (specify on the next page)']],
         label='2. What is your caste?',
         widget=widgets.RadioSelect,
     )

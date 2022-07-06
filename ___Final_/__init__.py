@@ -131,10 +131,13 @@ def set_helped(player: Player):
     for partner in my_previous_helped:
         if partner.participant.exclude == True:
             if player.id_in_group in partner.participant.partner_exclude:
-                thislist.remove(partner)
+                my_previous_helped.remove(partner)
     return my_previous_helped
 
 def set_hints_given(player:Player,partner):
+    partner.participant.hints_given_econ = 0
+    partner.participant.hints_given_cook = 0
+    partner.participant.hints_given_sport = 0
     if partner.id_in_group == player.participant.partnerm1:
         partner.participant.hints_given_econ = player.participant.MP1hints_given_econ
         partner.participant.hints_given_cook = player.participant.MP1hints_given_cook
@@ -177,6 +180,9 @@ def set_hints_given(player:Player,partner):
         return [partner.participant.hints_given_econ,partner.participant.hints_given_cook,partner.participant.hints_given_sport]
 
 def set_hints_used(player:Player,partner):
+    partner.participant.econ_hint_used = 0
+    partner.participant.cook_hint_used = 0
+    partner.participant.sport_hint_used = 0
     if partner.id_in_group == player.participant.partner1:
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner1
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner1

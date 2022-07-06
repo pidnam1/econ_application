@@ -5,7 +5,7 @@ import random
 class PlayerBot(Bot):
 
     def play_round(self):
-        zero = [0, 1, 2, 3]
+        zero = [0 for i in range(4)]
         random.shuffle(zero)
         if self.player.round_number == 1:
             yield Demographics

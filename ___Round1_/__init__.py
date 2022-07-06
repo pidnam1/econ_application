@@ -589,6 +589,57 @@ def vars_for_template1(player: Player, formfields):
     print(final)
     return [final, hints]
 
+def vars_for_template1_1(player: Player, formfields):
+    final = {}
+    formfields_random = []
+    round = 0
+    if player.participant.task_rounds1['1'] == 1:
+        round = 1
+    else:
+        round = 2
+    final.update(dict(round=round))
+    g = player.group
+    count = 0
+    hints = 0
+    partnerm1 = 0
+    partnerm3 = 0
+    partnerf1 = 0
+    partnerf3 = 0
+    print("testing:", player.participant.partnerm1, player.participant.partnerm2, player.participant.partnerm3, player.participant.partnerm4, player.participant.partnerf1, player.participant.partnerf2, player.participant.partnerf3, player.participant.partnerf4, )
+    if player.participant.partnerm1 != 0:
+        partnerm1 = g.get_player_by_id(player.participant.partnerm1)
+        final.update(dict(partner1_label='{}?[Out of 4 questions]'.format(partnerm1.participant.label)))
+        formfields_random.append(formfields[0])
+        count+=1
+    if player.participant.partnerm3 != 0:
+        partnerm3 = g.get_player_by_id(player.participant.partnerm3)
+        final.update(dict(partner2_label='{}?[Out of 4 questions]'.format(partnerm3.participant.label)))
+        formfields_random.append(formfields[1])
+        count+=1
+    if player.participant.partnerf1 != 0:
+        partnerf1 = g.get_player_by_id(player.participant.partnerf1)
+        final.update(dict(partner3_label='{}[Out of 4 questions]?'.format(partnerf1.participant.label)))
+        formfields_random.append(formfields[2])
+        count+=1
+    if player.participant.partnerf3 != 0:
+        partnerf3 = g.get_player_by_id(player.participant.partnerf3)
+        final.update(dict(partner4_label='{}[Out of 4 questions]?'.format(partnerf3.participant.label)))
+        formfields_random.append(formfields[3])
+        count+=1
+    if count == 1:
+        hints = 2
+    elif count == 2:
+        hints = 5
+    elif count == 3:
+        hints = 7
+    elif count == 4:
+        hints = 10
+    final.update(dict(hints=hints, partnerm1=partnerm1, partnerm3=partnerm3, partnerf1=partnerf1, partnerf3=partnerf3))
+    random.shuffle(formfields_random)
+    final.update(dict(formfields_random=formfields_random))
+    print(final)
+    return [final, hints]
+
 def vars_for_template2(player: Player, formfields):
     final = {}
     formfields_random = []
@@ -623,6 +674,55 @@ def vars_for_template2(player: Player, formfields):
     if player.participant.partnerf4 != 0:
         partnerf4 = g.get_player_by_id(player.participant.partnerf4)
         final.update(dict(partner4_label='{}?'.format(partnerf4.participant.label)))
+        formfields_random.append(formfields[3])
+        count+=1
+    if count == 1:
+        hints = 2
+    elif count == 2:
+        hints = 5
+    elif count == 3:
+        hints = 7
+    elif count == 4:
+        hints = 10
+    final.update(dict(hints=hints, partnerm2=partnerm2, partnerm4=partnerm4, partnerf2=partnerf2, partnerf4=partnerf4))
+    random.shuffle(formfields_random)
+    final.update(dict(formfields_random=formfields_random))
+    return [final, hints]
+
+def vars_for_template2_1(player: Player, formfields):
+    final = {}
+    formfields_random = []
+    round = 0
+    if player.participant.task_rounds1['2'] == 1:
+        round = 1
+    else:
+        round = 2
+    final.update(dict(round=round))
+    g = player.group
+    count = 0
+    hints = 0
+    partnerm2 = 0
+    partnerm4 = 0
+    partnerf2 = 0
+    partnerf4 = 0
+    if player.participant.partnerm2 != 0:
+        partnerm2 = g.get_player_by_id(player.participant.partnerm2)
+        final.update(dict(partner1_label='{}?[Out of 4 questions]'.format(partnerm2.participant.label)))
+        formfields_random.append(formfields[0])
+        count+=1
+    if player.participant.partnerm4 != 0:
+        partnerm4 = g.get_player_by_id(player.participant.partnerm4)
+        final.update(dict(partner2_label='{}?[Out of 4 questions]'.format(partnerm4.participant.label)))
+        formfields_random.append(formfields[1])
+        count+=1
+    if player.participant.partnerf2 != 0:
+        partnerf2 = g.get_player_by_id(player.participant.partnerf2)
+        final.update(dict(partner3_label='{}?[Out of 4 questions]'.format(partnerf2.participant.label)))
+        formfields_random.append(formfields[2])
+        count+=1
+    if player.participant.partnerf4 != 0:
+        partnerf4 = g.get_player_by_id(player.participant.partnerf4)
+        final.update(dict(partner4_label='{}?[Out of 4 questions]'.format(partnerf4.participant.label)))
         formfields_random.append(formfields[3])
         count+=1
     if count == 1:
@@ -686,8 +786,8 @@ class Economics1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults1_partner1', 'econresults1_partner2', 'econresults1_partner3',
                              'econresults1_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
+        final = vars_for_template1_1(player, formfields_random)[0]
+        hints = vars_for_template1_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -713,8 +813,8 @@ class Economics1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults01_partner1', 'econresults01_partner2', 'econresults01_partner3',
                              'econresults01_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
+        final = vars_for_template1_1(player, formfields_random)[0]
+        hints = vars_for_template1_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -781,8 +881,8 @@ class Cooking1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults1_partner1', 'cookresults1_partner2', 'cookresults1_partner3',
                              'cookresults1_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
+        final = vars_for_template1_1(player, formfields_random)[0]
+        hints = vars_for_template1_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -808,8 +908,8 @@ class Cooking1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults01_partner1', 'cookresults01_partner2', 'cookresults01_partner3',
                              'cookresults01_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
+        final = vars_for_template1_1(player, formfields_random)[0]
+        hints = vars_for_template1_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -878,8 +978,8 @@ class Sports1Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults1_partner1', 'sportresults1_partner2', 'sportresults1_partner3',
                              'sportresults1_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
+        final = vars_for_template1_1(player, formfields_random)[0]
+        hints = vars_for_template1_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -905,8 +1005,8 @@ class Sports1Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults01_partner1', 'sportresults01_partner2', 'sportresults01_partner3',
                              'sportresults01_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
+        final = vars_for_template1_1(player, formfields_random)[0]
+        hints = vars_for_template1_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -994,8 +1094,8 @@ class Economics2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults2_partner1', 'econresults2_partner2', 'econresults2_partner3',
                              'econresults2_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
+        final = vars_for_template2_1(player, formfields_random)[0]
+        hints = vars_for_template2_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -1023,8 +1123,8 @@ class Economics2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['econresults02_partner1', 'econresults02_partner2', 'econresults02_partner3',
                              'econresults02_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
+        final = vars_for_template2_1(player, formfields_random)[0]
+        hints = vars_for_template2_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -1095,8 +1195,8 @@ class Cooking2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults2_partner1', 'cookresults2_partner2', 'cookresults2_partner3',
                              'cookresults2_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
+        final = vars_for_template2_1(player, formfields_random)[0]
+        hints = vars_for_template2_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -1124,8 +1224,8 @@ class Cooking2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['cookresults02_partner1', 'cookresults02_partner2', 'cookresults02_partner3',
                              'cookresults02_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
+        final = vars_for_template2_1(player, formfields_random)[0]
+        hints = vars_for_template2_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -1198,8 +1298,8 @@ class Sports2Results(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults2_partner1', 'sportresults2_partner2', 'sportresults2_partner3',
                              'sportresults2_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
+        final = vars_for_template2_1(player, formfields_random)[0]
+        hints = vars_for_template2_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -1227,8 +1327,8 @@ class Sports2Results0(Page):
     def vars_for_template(player: Player):
         formfields_random = ['sportresults02_partner1', 'sportresults02_partner2', 'sportresults02_partner3',
                              'sportresults02_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
+        final = vars_for_template2_1(player, formfields_random)[0]
+        hints = vars_for_template2_1(player, formfields_random)[1]
         final["hints"] = hints
         return final
 
@@ -1265,11 +1365,9 @@ class Final(Page):
     def is_displayed(player: Player):
         participant = player.participant
         return player.round_number == 9
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.round2_completed = 3
-
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
+        player.participant.round2_completed = 0
         player.participant.round3b_completed = 0
         arr = list(range(0, 2))
         random.shuffle(arr)

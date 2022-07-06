@@ -1869,7 +1869,6 @@ class Demographics(Page):
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player:Player):
-        player.participant.round2_completed = 3
         return dict(round=player.participant.round2_completed)
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
@@ -2132,7 +2131,7 @@ class Sports3_MP(Page):
         return ['crt_sports3_MP','helpful_hint_sport3_MP','prob_sport3_MP']
     @staticmethod
     def live_method(player: Player, data):
-        if data == 'clicked-button' and sport_hint_requests_partner4:
+        if data == 'clicked-button':
             player.participant.sport_hint_requests_partner4 += 1
             return {player.id_in_group: dict(message = "Hint: Surname rhymes with Sabbath. Your helper will be notified that you requested a hint.")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3024,20 +3023,8 @@ class Final(Page):
         return player.round_number == 48
     @staticmethod
     def vars_for_template(player:Player):
+        player.participant.round3b_completed = 4
         return dict(round=player.participant.round2_completed)
-    @staticmethod
-    def app_after_this_page(player: Player, upcoming_apps):
-        player.participant.round2_completed = 1
-        if len(upcoming_apps) >= 3:
-            int = list(range(0, 3))
-        else:
-            int = list(range(0, len(upcoming_apps)))
-        random.shuffle(int)
-        for i in range(len(int)):
-            if ('___Round3b_' in upcoming_apps[int[i]]) and (player.participant.round3b_completed == 0):
-                player.participant.round3b_completed = 4
-                return upcoming_apps[int[i]]
-        return '___Final_'
 
 
 page_sequence = [Demographics, Hints_MP, Economics1_MP, Economics2_MP, Economics3_MP,

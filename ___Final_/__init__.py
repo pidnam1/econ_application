@@ -419,7 +419,7 @@ class WTP_Results2_4(Page):
         partner5 = g.get_player_by_id(player.participant.partner5)
         return dict(partner5=partner5.participant.label)
 
-class WaitPage(WaitPage):
+class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
     body_text = ""
 
@@ -726,5 +726,5 @@ class Sports2Hints(Page):
 
 page_sequence = [WTP_YesNo, WTP_Who, WTP_HowMuch, WTP_Results1_1, WTP_Results2_1,
 WTP_Results1_2, WTP_Results2_2, WTP_Results1_3, WTP_Results2_3, WTP_Results1_4,
-WTP_Results2_4, WaitPage, FinalTable, Economics1Hints, Economics2Hints, Cooking1Hints, Cooking2Hints,
+WTP_Results2_4, WaitPage1, FinalTable, Economics1Hints, Economics2Hints, Cooking1Hints, Cooking2Hints,
 Sports1Hints, Sports2Hints]

@@ -5,69 +5,69 @@ SESSION_CONFIGS = [
     dict(
         name='my_project',
         display_name = "Survey",
-        app_sequence = ['___Consent_','___Preferences_','___Round1_','___Round2_','___Round3b_','___Round2_1','___Final_','___Endline_'],
+        app_sequence = ['___Consent_','___Preferences_','___Practice_','___Round0_','___Round1_','___Round2_','___Round3b_','___Round2_1','___Final_','___Endline_'],
         num_demo_participants=18
     ),
-    dict(
-        name='Tester',
-        display_name = "Tester",
-        app_sequence=['___Consent_','___Preferences_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name="___Consent_",
-        display_name = "Consent",
-        app_sequence = ['___Consent_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name="___Preferences_",
-        display_name = "Preferences",
-        app_sequence = ['___Preferences_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name='___Practice_',
-        display_name = "Practice",
-        app_sequence=['___Practice_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name='___Round0_',
-        display_name = "Round 0",
-        app_sequence=['___Round0_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name='___Round1_',
-        display_name = "Round 1",
-        app_sequence=['___Round1_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name='___Round2_',
-        display_name = "Round 2",
-        app_sequence=['___Round2_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name='___Round3b_',
-        display_name = "Round 3B",
-        app_sequence=['___Round3b_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name="___Final_",
-        display_name = "Final",
-        app_sequence=['___Final_'],
-        num_demo_participants=21
-    ),
-    dict(
-        name="___Endline_",
-        display_name = "Endline",
-        app_sequence=['___Endline_'],
-        num_demo_participants=21
-    ),
+    # dict(
+    #     name='Tester',
+    #     display_name = "Tester",
+    #     app_sequence=['___Consent_','___Preferences_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name="___Consent_",
+    #     display_name = "Consent",
+    #     app_sequence = ['___Consent_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name="___Preferences_",
+    #     display_name = "Preferences",
+    #     app_sequence = ['___Preferences_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name='___Practice_',
+    #     display_name = "Practice",
+    #     app_sequence=['___Practice_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name='___Round0_',
+    #     display_name = "Round 0",
+    #     app_sequence=['___Round0_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name='___Round1_',
+    #     display_name = "Round 1",
+    #     app_sequence=['___Round1_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name='___Round2_',
+    #     display_name = "Round 2",
+    #     app_sequence=['___Round2_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name='___Round3b_',
+    #     display_name = "Round 3B",
+    #     app_sequence=['___Round3b_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name="___Final_",
+    #     display_name = "Final",
+    #     app_sequence=['___Final_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
+    #     name="___Endline_",
+    #     display_name = "Endline",
+    #     app_sequence=['___Endline_'],
+    #     num_demo_participants=21
+    # ),
     # dict(
     #     name='wait_page_timeout',
     #     display_name="Timeout on a WaitPage (exit the experiment)",

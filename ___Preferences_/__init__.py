@@ -264,8 +264,8 @@ class Pref_TT_Why(Page):
     form_fields = ['f1_2_2','f2_2_2','f3_2_2','f4_2_2','f5_2_2']
     @staticmethod
     def vars_for_template(player: Player):
-        player_why = ["1." + player.f1_1_2, "2." + player.f2_1_2, "3." + player.f3_1_2,
-        "4." + player.f4_1_2, "5." + player.f5_1_2]
+        player_why = ["1. " + player.f1_1_2, "2. " + player.f2_1_2, "3. " + player.f3_1_2,
+        "4. " + player.f4_1_2, "5. " + player.f5_1_2]
         return dict(player_why = player_why)
 
 class Pref_TT_Other(Page):

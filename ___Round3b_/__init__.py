@@ -22,7 +22,7 @@ class C(BaseConstants):
     ECONSUBTASKS_WR = ['Economics1_WR', 'Economics2_WR', 'Economics3_WR', 'Economics4_WR']
     COOKSUBTASKS_WR = ['Cooking1_WR', 'Cooking2_WR', 'Cooking3_WR', 'Cooking4_WR']
     SPORTSUBTASKS_WR = ['Sports1_WR', 'Sports2_WR', 'Sports3_WR', 'Sports4_WR']
-    NUM_ROUNDS = 52
+    NUM_ROUNDS = 53
     TIMER_TEXT = "Time to complete this section:"
 
 
@@ -2075,6 +2075,18 @@ class Demographics(Page):
         participant.expiry = time.time() + 4800
 
 #MALE PREFERRED
+class Transition_MP(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds3b['MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner3)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round3b_completed)
+
 class Hints_MP(Page):
     form_model = 'player'
     @staticmethod
@@ -2493,6 +2505,18 @@ class Sports4_MP(Page):
     timer_text = C.TIMER_TEXT
 
 #MALE RANDOM
+class Transition_MR(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds3b['MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner8)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round3b_completed)
+
 class Hints_MR(Page):
     form_model = 'player'
     @staticmethod
@@ -2912,6 +2936,18 @@ class Sports4_MR(Page):
     timer_text = C.TIMER_TEXT
 
 #WOMAN PREFERRED
+class Transition_WP(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds3b['WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner2)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round3b_completed)
+
 class Hints_WP(Page):
     form_model = 'player'
     @staticmethod
@@ -3331,6 +3367,18 @@ class Sports4_WP(Page):
     timer_text = C.TIMER_TEXT
 
 #WOMAN RANDOM
+class Transition_WR(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds3b['WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner6)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round3b_completed)
+
 class Hints_WR(Page):
     form_model = 'player'
     @staticmethod
@@ -3581,7 +3629,7 @@ class Cooking2_WR(Page):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
-()
+
 class Cooking3_WR(Page):
     form_model = 'player'
     def vars_for_template(player: Player):
@@ -3755,7 +3803,7 @@ class Final(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == 49
+        return player.round_number == 53
     @staticmethod
     def vars_for_template(player:Player):
         return dict(round=player.participant.round3b_completed)

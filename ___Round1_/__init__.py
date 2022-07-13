@@ -618,12 +618,12 @@ def vars_for_template1_1(player: Player, formfields):
         count+=1
     if player.participant.partnerf1 != 0:
         partnerf1 = g.get_player_by_id(player.participant.partnerf1)
-        final.update(dict(partner3_label='{}[Out of 4 questions]?'.format(partnerf1.participant.label)))
+        final.update(dict(partner3_label='{}?[Out of 4 questions]'.format(partnerf1.participant.label)))
         formfields_random.append(formfields[2])
         count+=1
     if player.participant.partnerf3 != 0:
         partnerf3 = g.get_player_by_id(player.participant.partnerf3)
-        final.update(dict(partner4_label='{}[Out of 4 questions]?'.format(partnerf3.participant.label)))
+        final.update(dict(partner4_label='{}?[Out of 4 questions]'.format(partnerf3.participant.label)))
         formfields_random.append(formfields[3])
         count+=1
     if count == 1:

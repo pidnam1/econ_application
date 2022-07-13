@@ -22,7 +22,7 @@ class C(BaseConstants):
     ECONSUBTASKS_WR = ['Economics1_WR', 'Economics2_WR', 'Economics3_WR', 'Economics4_WR']
     COOKSUBTASKS_WR = ['Cooking1_WR', 'Cooking2_WR', 'Cooking3_WR', 'Cooking4_WR']
     SPORTSUBTASKS_WR = ['Sports1_WR', 'Sports2_WR', 'Sports3_WR', 'Sports4_WR']
-    NUM_ROUNDS = 52
+    NUM_ROUNDS = 53
     TIMER_TEXT = "Time to complete this section:"
 
 
@@ -1875,6 +1875,18 @@ class Demographics(Page):
         import time
         participant.expiry = time.time() + 4800
 
+class Transition_MP(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds2['MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner4 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner4)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round2_completed)
+
 class Hints_MP(Page):
     form_model = 'player'
     @staticmethod
@@ -2161,6 +2173,18 @@ class Sports4_MP(Page):
 
 
 #MALE RANDOM
+class Transition_MR(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds2['MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner7 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner7)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round2_completed)
+
 class Hints_MR(Page):
     form_model = 'player'
     @staticmethod
@@ -2445,6 +2469,18 @@ class Sports4_MR(Page):
     timer_text = C.TIMER_TEXT
 
 #WOMAN PREFERRED
+class Transition_WP(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds2['WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner1 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner1)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round2_completed)
+
 class Hints_WP(Page):
     form_model = 'player'
     @staticmethod
@@ -2731,6 +2767,18 @@ class Sports4_WP(Page):
     timer_text = C.TIMER_TEXT
 
 #WOMAN RANDOM
+class Transition_WR(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds2['WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner5 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner5)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round2_completed)
+
 class Hints_WR(Page):
     form_model = 'player'
     @staticmethod
@@ -3020,19 +3068,19 @@ class Final(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == 48
+        return player.round_number == 53
     @staticmethod
     def vars_for_template(player:Player):
         player.participant.round3b_completed = 4
         return dict(round=player.participant.round2_completed)
 
 
-page_sequence = [Demographics, Hints_MP, Economics1_MP, Economics2_MP, Economics3_MP,
-Economics4_MP, Cooking1_MP, Cooking2_MP, Cooking3_MP, Cooking4_MP, Sports1_MP,
-Sports2_MP, Sports3_MP, Sports4_MP, Hints_MR, Economics1_MR, Economics2_MR,
-Economics3_MR, Economics4_MR, Cooking1_MR, Cooking2_MR, Cooking3_MR, Cooking4_MR,
-Sports1_MR, Sports2_MR, Sports3_MR, Sports4_MR, Hints_WP, Economics1_WP, Economics2_WP,
-Economics3_WP, Economics4_WP, Cooking1_WP, Cooking2_WP, Cooking3_WP, Cooking4_WP,
-Sports1_WP, Sports2_WP, Sports3_WP, Sports4_WP, Hints_WR, Economics1_WR, Economics2_WR,
-Economics3_WR, Economics4_WR, Cooking1_WR, Cooking2_WR, Cooking3_WR, Cooking4_WR,
-Sports1_WR, Sports2_WR, Sports3_WR, Sports4_WR, Final]
+page_sequence = [Demographics, Transition_MP, Hints_MP, Economics1_MP, Economics2_MP,
+Economics3_MP, Economics4_MP, Cooking1_MP, Cooking2_MP, Cooking3_MP, Cooking4_MP,
+Sports1_MP, Sports2_MP, Sports3_MP, Sports4_MP, Transition_MR, Hints_MR, Economics1_MR,
+Economics2_MR, Economics3_MR, Economics4_MR, Cooking1_MR, Cooking2_MR, Cooking3_MR,
+Cooking4_MR, Sports1_MR, Sports2_MR, Sports3_MR, Sports4_MR, Transition_WP, Hints_WP,
+Economics1_WP, Economics2_WP, Economics3_WP, Economics4_WP, Cooking1_WP, Cooking2_WP,
+Cooking3_WP, Cooking4_WP, Sports1_WP, Sports2_WP, Sports3_WP, Sports4_WP, Transition_WR,
+Hints_WR, Economics1_WR, Economics2_WR, Economics3_WR, Economics4_WR, Cooking1_WR,
+Cooking2_WR, Cooking3_WR, Cooking4_WR, Sports1_WR, Sports2_WR, Sports3_WR, Sports4_WR, Final]

@@ -20,10 +20,17 @@ def make_field_time_spent(label):
     return models.IntegerField(
         label=label, initial = 0, min=0, max=24,
     )
-def make_field_likert(label):
+
+def make_field_likert1(label):
     return models.IntegerField(
         choices=[[1, 'Strongly Agree'], [2, 'Agree'], [3, 'Neutral'], [4, 'Disagree'], [5, 'Strongly Disagree']],
         label=label,
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+def make_field_likert2():
+    return models.IntegerField(
+        choices=[[1, 'Strongly Agree'], [2, 'Agree'], [3, 'Neutral'], [4, 'Disagree'], [5, 'Strongly Disagree']],
         widget=widgets.RadioSelectHorizontal,
     )
 
@@ -42,69 +49,45 @@ def make_image_data(image_names):
     return [dict(name=name, path='{}'.format(name)) for name in image_names]
 
 class Player(BasePlayer):
-    dob = models.StringField(label='1. What is your date of birth? (Please list as YYYY/MM/DD)')
+    dob = models.StringField()
     high_edu = models.IntegerField(
         choices=[[0, 'Matric'], [1, 'FA/FSc'], [2, 'BA/BSc.'], [99, 'Other (specify on the next page)']],
-        label='2. Before the current degree that you are studying, what was the highest qualification that you attained?',
         widget=widgets.RadioSelect,
     )
-    high_edu_other = models.StringField(
-        label='2. You selected \'Other\'. Please specify. Before the current degree that you are studying, what was the highest qualification that you attained?',
-    )
+    high_edu_other = models.StringField()
     subject_prior = models.IntegerField(
         choices=[[0, 'Economics'], [1, 'Law'], [2, 'MBBS'], [3, 'Commerce'], [4, 'Public Administration'], [99, 'Other (specify on the next page)']],
-        label='3. What was your subject before you began at your current university?',
         widget=widgets.RadioSelect,
     )
-    subject_prior_other = models.StringField(
-        label='3. You selected \'Other\'. Please specify. What was your subject before you began at your current university?',
-    )
-    high_edu_school = models.StringField(
-        label='4. Please state the name of your school/college from where you got the highest qualification',
-    )
-    rank_prior = models.StringField(
-        label='5. Can you recall your rank in the last qualification you had?',
-    )
+    subject_prior_other = models.StringField()
+    high_edu_school = models.StringField()
+    rank_prior = models.StringField()
     extra_curric = models.IntegerField(
         choices=[[0, 'Drama'], [1, 'Team sports (For example, cricket, football are played in a team and so would count as team sports)'],
         [2, 'Individual Sports (For example, rock climbing is done individually and so something like rock climbing would be individual sports)'],
         [3, 'Music'], [4, 'Dance'], [5, 'Debates'], [6, 'Home economics'], [7, 'Painting'], [8, 'Chess'], [99, 'Other (specify on the next page)']],
-        label='6. Can you list the main extra-curricular activities that you are involved in?',
         widget=widgets.RadioSelect,
     )
-    extra_curric_other = models.StringField(
-        label='6. You selected \'Other\'. Please specify. Can you list the main extra-curricular activities that you are involved in?',
-    )
+    extra_curric_other = models.StringField()
     degree_aspire = models.IntegerField(
         choices=[[0, 'MBA'], [1, 'Masters in Public Administration'], [2, 'Masters in Commerce'], [3, 'Masters in Economics'], [4, 'Masters in Finance'],
         [5, 'Masters in Human Resources'], [6, 'PhD in Business Administration'], [7, 'PhD in Public Administration'], [8, 'PhD in Commerce'],
         [9, 'PhD in Economics'], [10, 'PhD in Finance'], [11, 'PhD in Human Resources'], [99, 'Other (specify on the next page)']],
-        label='7. What is the maximum degree that you aspire to achieve?',
         widget=widgets.RadioSelect,
     )
-    degree_aspire_other = models.StringField(
-        label='7. You selected \'Other\'. Please specify. What is the maximum degree that you aspire to achieve?',
-    )
+    degree_aspire_other = models.StringField()
     pref_occu = models.IntegerField(
         choices=[[0, 'Government job through CSS'], [1, 'Government job through PMS'], [2, 'Private job in a bank'],
         [3, 'Private job in a multi-national'], [99, 'Other (specify on the next page)']],
-        label='8. List the main occupations that you would be interested in choosing for a career.',
         widget=widgets.RadioSelect,
     )
-    pref_occu_other = models.StringField(
-        label='8. You selected \'Other\'. Please specify. List the main occupations that you would be interested in choosing for a career.',
-    )
-    why_pref_occu = models.StringField(
-        label='9. Why this occupation?',
-    )
+    pref_occu_other = models.StringField()
+    why_pref_occu = models.StringField()
     study_abroad = models.IntegerField(
         choices=[[0, 'Yes'], [1, 'No']],
-        label='10. Have you ever studied abroad?',
         widget=widgets.RadioSelect,
     )
-    study_abroad_yes = models.StringField(
-        label='10. You selected \'Yes\'. Please specify. Where have you studied abroad?',
-    )
+    study_abroad_yes = models.StringField()
     cook_time = make_field_time_spent('Cooking food')
     study_time = make_field_time_spent('Studying for your degree')
     sport_time = make_field_time_spent('Sports')
@@ -126,15 +109,10 @@ class Player(BasePlayer):
     other_time = make_field_time_spent('Other (please specify)')
     friend_count = models.IntegerField(
         choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7, '7'],  [99, 'Other (specify on the next page)']],
-        label='11. How many total friends do you have with whom you are in touch at least once a week?',
         widget=widgets.RadioSelect,
     )
-    friend_count_other = models.StringField(
-        label='11. You selected \'Other\'. Please specify. How many total friends do you have with whom you are in touch at least once a week?',
-    )
-    friend_uni = models.IntegerField(
-        label='12. Out of those above how many are in your current university?',
-    )
+    friend_count_other = models.StringField()
+    friend_uni = models.IntegerField()
     #MAKE ANY FORMFIELDS NEEDED FOR FRIEND TABLE
     friend_roll1 = models.IntegerField(label='', blank=True)
     friend_roll2 = models.IntegerField(label='', blank=True)
@@ -181,57 +159,47 @@ class Player(BasePlayer):
     school_relationship_image = models.StringField(blank=True)
     know_rank = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
-        label='In general, would you say students know the academic rank of others in a class?',
         widget=widgets.RadioSelect,
     )
     know_gpa = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
-        label='In general, would you say students know the GPA of others in a class?',
         widget=widgets.RadioSelect,
     )
 
     #Section B
     subjects_like = models.IntegerField(
         choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
-        label='Which of the categories tested did you like the most?',
         widget=widgets.RadioSelect,
     )
     subjects_dislike = models.IntegerField(
         choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
-        label='Which of the categories tested did you like the least?',
         widget=widgets.RadioSelect,
     )
     subjects_correct = models.IntegerField(
         choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
-        label='For which of the categories tested you think you have given most correct answers?',
         widget=widgets.RadioSelect,
     )
     subjects_incorrect = models.IntegerField(
         choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
-        label='For which of the categories tested you think you have given least correct answers?',
         widget=widgets.RadioSelect,
     )
     hints_always_helper = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
-        label='Did you always ask for hints from helpers when you felt the need?',
         widget=widgets.RadioSelect,
     )
     hints_always_helper_no = models.IntegerField(
         choices=[[1, 'If I asked too many times, I felt that the helper would think I don\'t know much'],
         [2, 'If I asked too many times, I felt that others in the room (not helpers) would think I don\'t know much'],
         [3, 'I did not think a hint would help'], [4, 'I ran out of time']],
-        label='You selected \'No\'. Please specify. What was the main reason that you did not ask for hints from helpers?',
         widget=widgets.RadioSelect,
     )
     hints_always = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
-        label='In the round when you were not working with a helper but were looking for your own hints, did you always use the hints for answers, whenever you felt the need for it?',
         widget=widgets.RadioSelect,
     )
     hints_always_no = models.IntegerField(
         choices=[[1, 'If I pressed too many times, I felt that I might come across as someone who doesn\'t know much'],
         [2, 'I did not think a hint would help'], [3, 'I ran out of time']],
-        label='You selected \'No\'. Please specify. What was the reason that you did not press the "Ask for hint" button?',
         widget=widgets.RadioSelect,
     )
     #MAKE ANY FORMFIELDS NEEDED FOR HELPER TABLE
@@ -256,22 +224,16 @@ class Player(BasePlayer):
     #Section C
     tt_perception = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
-        label='Do you think the test-takers never hesitated and always asked for hints when they felt the need?',
         widget=widgets.RadioSelect,
     )
     tt_perception_no = models.IntegerField(
         choices=[[1, 'If he or she asked too many times, they might have felt that I would think he or she is stupid'],
         [2, 'If he or she asked too many times, they might have felt that others in the room (not me) would think he or she is stupid'],
         [3, 'He or she did not think a hint would help'], [4, 'He or she ran out of time'], [5, 'He or she wasn\'t a close friend']],
-        label='You selected \'No\'. Please specify. What do you think was the main reason that they did not ask for hints from helpers?',
         widget=widgets.RadioSelect,
     )
-    decide_hints = models.StringField(
-        label='How did you decide how many hints to give to the test-takers you were matched with?',
-    )
-    diff_why = models.StringField(
-        label='Did you make different choices when your payment depended on the performance of the test-taker? Why or why not?',
-    )
+    decide_hints = models.StringField()
+    diff_why = models.StringField()
 
     #Section D
     #MAKE ANY FORMFIELDS NEEDED FOR GENDER TABLE
@@ -299,221 +261,174 @@ class Player(BasePlayer):
     )
     gender = models.StringField(
         choices=[['Male', 'Male'], ['Female', 'Female']],
-        label='1. What is your gender?',
         widget=widgets.RadioSelect,
     )
     caste = models.IntegerField(
         choices=[[0, 'Jatt'], [1, 'Rajput'], [2, 'Arain'], [99, 'Other (specify on the next page)']],
-        label='2. What is your caste?',
         widget=widgets.RadioSelect,
     )
-    caste_other = models.StringField(
-        label='2. You selected \'Other\'. Please specify. What is your caste?',
-    )
-    religion = models.StringField(
-        label='3. What is your religion?',
-    )
+    caste_other = models.StringField()
+    religion = models.StringField()
     marital_status = models.IntegerField(
         choices=[[0, 'Married in monogamy (single wife)'], [1, 'Married in polygamy (multiple wives)'], [2, 'Unmarried'],
         [3,'Divorced'], [4, 'Separated'], [99, 'Other (specify on the next page)']],
-        label='4. What is your marital status?',
         widget=widgets.RadioSelect,
     )
-    marital_status_other = models.StringField(
-        label='4. You selected \'Other\'. Please specify. What is your marital status?',
-    )
+    marital_status_other = models.StringField()
     children = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
-        label='5. Do you have children?',
         widget=widgets.RadioSelect,
     )
-    children_yes = models.StringField(
-        label='5. You selected \'Yes\' to \'Do you have children?\'. Please specify. How old are your children?',
-    )
+    children_yes = models.StringField()
     lang = models.IntegerField(
         choices=[[0, 'English'], [1, 'Urdu'], [2, 'Punjabi'], [3,'Pushto'], [4, 'Sindhi'], [99, 'Other/Multiple (specify on the next page)']],
-        label='6. What language do you normally speak at home?',
         widget=widgets.RadioSelect,
     )
-    lang_other = models.StringField(
-        label='6. You selected \'Other/Multiple\'. Please specify. What language(s) do you normally speak at home?',
-    )
+    lang_other = models.StringField()
     father_occu = models.IntegerField(
         choices=[[1, 'Doctor'], [2, 'Works in a factory'], [3, 'Works in a shop'], [4,'Engineer'], [5, 'Lawyer'],
         [6,'Owns a shop'], [7,'\'Kissan\''], [8, 'Private business'], [9,'Government job'], [99, 'Other (specify on the next page)']],
-        label='7. What does your father do?',
         widget=widgets.RadioSelect,
     )
-    father_occu_other = models.StringField(
-        label='7. You selected \'Other\'. Please specify. What does your father do?',
-    )
+    father_occu_other = models.StringField()
     mother_occu = models.IntegerField(
         choices=[[0,'House-wife'], [1, 'Doctor'], [2, 'Works in a factory'], [3, 'Works in a shop'], [4,'Engineer'], [5, 'Lawyer'],
         [6,'Owns a shop'], [7,'\'Kissan\''], [8, 'Private business'], [9,'Government job'], [99, 'Other (specify on the next page)']],
-        label='8. What does your mother do?',
         widget=widgets.RadioSelect,
     )
-    mother_occu_other = models.StringField(
-        label='8. You selected \'Other\'. Please specify. What does your mother do?',
-    )
-    in_house = models.IntegerField(
-        label='9. How many people live in your house?'
-    )
+    mother_occu_other = models.StringField()
+    in_house = models.IntegerField()
     origin = models.IntegerField(
         choices=[[0, 'Lahore'], [1, 'Faisalabad'], [2, 'Sialkot'], [3,'Gujranwala'], [4, 'Attock'], [5,'Bahawalpur'], [6,'Bahawalnagar'],
         [7, 'Sheikhupura'], [8,'Kasur'], [9,'Rawalpindi'], [10, 'Sialkot'], [99, 'Other (specify on the next page)']],
-        label='10. Where are you originally from?',
         widget=widgets.RadioSelect,
     )
-    origin_other = models.StringField(
-        label='10. You selected \'Other\'. Please specify. Where are you originally from?',
-    )
+    origin_other = models.StringField()
     monthly_income = models.IntegerField(
         choices=[[0, 'Less than Rs. 10,000 per month'], [1, 'Rs.10,000 to less than Rs. 20,0000 per month'], [2, 'Rs.20,000 to less than Rs. 30,0000 per month'],
         [3,'Rs.30,000 to less than Rs. 40,0000 per month'], [4, 'Rs.40,000 to less than Rs. 50,0000 per month'], [5,'Rs.50,000 to less than Rs. 60,0000 per month'],
         [6,'Rs.60,000 to less than Rs. 70,0000 per month'], [7, 'Rs.70,000 to less than Rs. 80,0000 per month'], [8,'Rs.80,000 to less than Rs. 90,0000 per month'],
         [9,'Rs.90,000 to less than Rs. 100,0000 per month'], [10, 'Greater than Rs. 100,000 per month']],
-        label='11. In what bracket does your families\' total monthly income fall?',
         widget=widgets.RadioSelect,
     )
 
     #Section D Part 2
     lost_wallet_personal = models.IntegerField(
         choices=[[1, '1   Very Unlikely'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very likely']],
-        label='Imagine that you lost your wallet close to your house. This had Rs. 500 and was found by someone who lives close to you and KNOWS YOU PERSONALLY. The wallet has a document that identifies you. How likely do you find that this person gives you the wallet back with the money in it?',
         widget=widgets.RadioSelectHorizontal,
     )
     lost_wallet_impersonal = models.IntegerField(
         choices=[[1, '1   Very Unlikely'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very likely']],
-        label='Imagine that you lost your wallet close to your house. This had Rs. 500 and was found by someone who lives close to you but who DOESN’T KNOW YOU PERSONALLY. The wallet has a document that identifies you. How likely do you find that this person gives you the wallet back with the money in it?',
         widget=widgets.RadioSelectHorizontal,
     )
-    scarcity = make_field_likert('When jobs are scarce, men should have more right to a job than women.')
-    women_money = make_field_likert('If a woman earns more money than her husband, it\'s almost certain to cause problems.')
-    women_independence = make_field_likert('Having a job is the best way for a woman to be an independent person.')
-    parental_pride = make_field_likert('One of my main goals in life has been to make my parents proud.')
-    children_suffer = make_field_likert('When a mother works for pay, the children suffer.')
-    men_politicians = make_field_likert('On the whole, men make better political leaders than women do.')
-    uni_gender = make_field_likert('A university education is more important for a boy than for a girl.')
-    busi_gender = make_field_likert('On the whole, men make better business executives than women do.')
-    house_fulfill = make_field_likert('Being a housewife is just as fulfilling as working for pay.')
-    family_customs = make_field_likert('To follow customs handed down by one’s family is very important.')
+    scarcity = make_field_likert2()
+    women_money = make_field_likert2()
+    women_independence = make_field_likert2()
+    parental_pride = make_field_likert2()
+    children_suffer = make_field_likert2()
+    men_politicians = make_field_likert2()
+    uni_gender = make_field_likert2()
+    busi_gender = make_field_likert2()
+    house_fulfill = make_field_likert2()
+    family_customs = make_field_likert2()
     free_choice = models.IntegerField(
         choices=[[1, '1   No choice at all'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   A great deal of choice']],
-        label='Some people feel they have completely free choice and control over their lives, while other people feel that what they do has no real effect on what happens to them. Please use this scale where 1 means "no choice at all" and 10 means "a great deal of choice" to indicate how much freedom of choice and control you feel you have over the way your life turns out.',
         widget=widgets.RadioSelectHorizontal,
     )
     justify_divorce = models.IntegerField(
         choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        label='Divorce',
         widget=widgets.RadioSelectHorizontal,
     )
     justify_lying = models.IntegerField(
         choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        label='Lying',
         widget=widgets.RadioSelectHorizontal,
     )
     justify_beatwife = models.IntegerField(
         choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        label='For a man to beat his wife',
         widget=widgets.RadioSelectHorizontal,
     )
     justify_beatchild = models.IntegerField(
         choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        label='Parents beating children',
         widget=widgets.RadioSelectHorizontal,
     )
     justify_violence = models.IntegerField(
         choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        label='Violence against other people',
         widget=widgets.RadioSelectHorizontal,
     )
 
     #Section E
     patience = models.IntegerField(
         choices=[[1, '1   Completely Unwilling'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very Willing']],
-        label='How willing are you to give up something that is beneficial for you today in order to benefit more from that in the future?',
         widget=widgets.RadioSelectHorizontal,
     )
     risk_aversion = models.IntegerField(
         choices=[[1, '1   Completely Unwilling'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very Willing']],
-        label='Please tell me, in general, how willing or unwilling you are to take risks.',
         widget=widgets.RadioSelectHorizontal,
     )
     altruism = models.IntegerField(
-        label='Imagine the following situation: Today you unexpectedly received 1,000 Rs. How much of this amount would you donate to a good cause? (Values between 0 and 1000 are allowed.)',
         min = 0, max = 1000,
     )
     positive_reciprocity = models.IntegerField(
         choices=[[0, 'No present'], [1, 'The present worth 5'], [2, 'The present worth 10'], [3, 'The present worth 15'], [4, 'The present worth 20'], [5, 'The present worth 25'], [6,'The present worth 30']],
-        label='Please think about what you would do in the following situation. You are in an area you are not familiar with, and you realize you lost your way. You ask a stranger for directions. The stranger offers to take you to your destination. Helping you costs the stranger about 20 Rs in total. However, the stranger says he or she does not want any money from you. You have six presents with you. The cheapest present costs 5 Rs, the most expensive one costs 30 Rs. Do you give one of the presents to the stranger as a “thank-you”- gift? If so, which present do you give to the stranger?',
         widget=widgets.RadioSelect,
     )
     negative_reciprocity_self = models.IntegerField(
         choices=[[1, '1   Completely Unwilling'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very Willing']],
-        label='How willing are you to punish someone who treats YOU unfairly, even if there may be costs for you?',
         widget=widgets.RadioSelectHorizontal,
     )
     negative_reciprocity_others = models.IntegerField(
         choices=[[1, '1   Completely Unwilling'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very Willing']],
-        label='How willing are you to punish someone who treats OTHERS unfairly, even if there may be costs for you?',
         widget=widgets.RadioSelectHorizontal,
     )
     competitiveness = models.IntegerField(
         choices=[[1, '1   Not at all'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Extremely']],
-        label='How competitive do you consider yourself to be?',
         widget=widgets.RadioSelectHorizontal,
     )
-    social_skills_feelings = make_field_likert('I pick up the subtle signals of feelings from another person.')
-    social_skills_reactions = make_field_likert('I am astute at reading people’s reactions.')
+    social_skills_feelings = make_field_likert2()
+    social_skills_reactions = make_field_likert2()
     generalized_trust = models.IntegerField(
         choices=[[1, 'Most people can be trusted'], [2, 'Can\'t be too careful']],
-        label='Generally speaking, which one of these statements do you most agree with?',
         widget=widgets.RadioSelect,
     )
     best_intentions = models.IntegerField(
         choices=[[1, '1   Not at all'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Extremely']],
-        label='How well does the following statement describe you as a person? As long as I am not convinced otherwise, I assume that people have only the best intentions.',
         widget=widgets.RadioSelectHorizontal,
     )
     trust_first_meet = models.IntegerField(
         choices=[[1, 'Do not trust at all'], [2, 'Do not trust very much'], [3, 'Trust somewhat'], [4, 'Trust completely']],
-        label='How much do you trust people you meet for the first time?',
         widget=widgets.RadioSelectHorizontal,
     )
     trust_women = models.IntegerField(
         choices=[[1, 'Do not trust at all'], [2, 'Do not trust very much'], [3, 'Trust somewhat'], [4, 'Trust completely']],
-        label='How much do you trust women?',
         widget=widgets.RadioSelectHorizontal,
     )
     trust_men = models.IntegerField(
         choices=[[1, 'Do not trust at all'], [2, 'Do not trust very much'], [3, 'Trust somewhat'], [4, 'Trust completely']],
-        label='How much do you trust men?',
         widget=widgets.RadioSelectHorizontal,
     )
     #PERSONALITY TRAITS TABLE
-    reserved = make_field_likert('... is reserved')
-    trust = make_field_likert('... is generally trusting')
-    lazy = make_field_likert('... tends to be lazy')
-    relaxed = make_field_likert('... is relaxed, handles stress well')
-    artistic = make_field_likert('... has few artistic interests')
-    outgoing = make_field_likert('... is outgoing, sociable')
-    fault_others = make_field_likert('... tends to find fault with others')
-    thorough = make_field_likert('... does a thorough job')
-    nervous = make_field_likert('... gets nervous easily')
-    imagination = make_field_likert('... has an active imagination')
+    reserved = make_field_likert1('... is reserved')
+    trust = make_field_likert1('... is generally trusting')
+    lazy = make_field_likert1('... tends to be lazy')
+    relaxed = make_field_likert1('... is relaxed, handles stress well')
+    artistic = make_field_likert1('... has few artistic interests')
+    outgoing = make_field_likert1('... is outgoing, sociable')
+    fault_others = make_field_likert1('... tends to find fault with others')
+    thorough = make_field_likert1('... does a thorough job')
+    nervous = make_field_likert1('... gets nervous easily')
+    imagination = make_field_likert1('... has an active imagination')
 
     #PERSONALITY STATEMENT TABLE
-    setbacks_encourage = make_field_likert('Setbacks don’t discourage me. I don’t give up easily.')
-    change_goals = make_field_likert('I often set a goal but later choose to pursue a different one.')
-    focus_months = make_field_likert('I have difficulty maintaining my focus on projects that take more than a few months to complete.')
-    new_distracts = make_field_likert('New ideas and projects sometimes distract me from previous ones.')
-    hardwork = make_field_likert('I am a hard worker.')
-    finish = make_field_likert('I finish whatever I begin.')
-    change_interests = make_field_likert('My interests change from year to year.')
-    diligent = make_field_likert('I am diligent. I never give up.')
-    obsess_shortterm = make_field_likert('I have been obsessed with a certain idea or project for a short time but later lost interest.')
-    setbacks_challenge = make_field_likert('I have overcome setbacks to conquer an important challenge.')
+    setbacks_encourage = make_field_likert1('Setbacks don’t discourage me. I don’t give up easily.')
+    change_goals = make_field_likert1('I often set a goal but later choose to pursue a different one.')
+    focus_months = make_field_likert1('I have difficulty maintaining my focus on projects that take more than a few months to complete.')
+    new_distracts = make_field_likert1('New ideas and projects sometimes distract me from previous ones.')
+    hardwork = make_field_likert1('I am a hard worker.')
+    finish = make_field_likert1('I finish whatever I begin.')
+    change_interests = make_field_likert1('My interests change from year to year.')
+    diligent = make_field_likert1('I am diligent. I never give up.')
+    obsess_shortterm = make_field_likert1('I have been obsessed with a certain idea or project for a short time but later lost interest.')
+    setbacks_challenge = make_field_likert1('I have overcome setbacks to conquer an important challenge.')
 
     #Section F
     f_5_1 = make_field_multiple_price()
@@ -837,7 +752,6 @@ class Ethics2(Page):
 class Ethics3(Page):
     form_model = 'player'
     form_fields = ['justify_divorce','justify_lying','justify_beatwife','justify_beatchild','justify_violence']
-
 
 
 #Section E

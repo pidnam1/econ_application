@@ -3,8 +3,31 @@
 
     <b><p>Please indicate for each of the following actions whether you think it can always be justified, never be justified, or something in between. Please choose one.</p></b>
 
-    {{ formfields }}
-
+    <p><b>Divorce</b></p>
+    {{ form.justify_divorce }}
+    {{ formfield_errors 'justify_divorce' }}
+    <p></p>
+        
+    <p><b>Lying</b></p>
+    {{ form.justify_lying }}
+    {{ formfield_errors 'justify_lying' }}
+    <p></p>
+        
+    <p><b>For a man to beat his wife</b></p>
+    {{ form.justify_beatwife }}
+    {{ formfield_errors 'justify_beatwife' }}
+    <p></p>
+        
+    <p><b>Parents beating children</b></p>
+    {{ form.justify_beatchild }}
+    {{ formfield_errors 'justify_beatchild' }}
+    <p></p>
+        
+    <p><b>Violence against other people</b></p>
+    {{ form.justify_violence }}
+    {{ formfield_errors 'justify_violence' }}
+    <p></p>
+        
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
     </p>

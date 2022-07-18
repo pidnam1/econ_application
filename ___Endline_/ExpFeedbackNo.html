@@ -3,7 +3,19 @@
 
     <b><p>On the previous page, you selected 'no' for one of the following questions. Please clarify your response.</p></b>
 
-    {{ formfields }}
+    {{ if player.hints_always_helper == 2 }}
+      <p><b>You selected 'No'. Please specify. What was the main reason that you did not ask for hints from helpers?</b></p>
+      {{ form.hints_always_helper_no }}
+      {{ formfield_errors 'hints_always_helper_no' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.hints_always == 2 }}
+      <p><b>You selected 'No'. Please specify. What was the reason that you did not press the "Ask for hint" button?</b></p>
+      {{ form.hints_always_no }}
+      {{ formfield_errors 'hints_always_no' }}
+      <p></p>
+    {{ endif }}
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

@@ -1,7 +1,30 @@
 {{ block title }}SECTION D{{ endblock }}
 {{ block content }}
 
-    {{ formfields }}
+    <p><b>Imagine that you lost your wallet close to your house. This had Rs. 500
+      and was found by someone who lives close to you and KNOWS YOU PERSONALLY.
+      The wallet has a document that identifies you. How likely do you find that
+      this person gives you the wallet back with the money in it?</b></p>
+    {{ form.lost_wallet_personal }}
+    {{ formfield_errors 'lost_wallet_personal' }}
+    <p></p>
+
+    <p><b>Imagine that you lost your wallet close to your house. This had Rs. 500
+      and was found by someone who lives close to you but who DOESN’T KNOW YOU
+      PERSONALLY. The wallet has a document that identifies you. How likely do you
+      find that this person gives you the wallet back with the money in it?</b></p>
+    {{ form.lost_wallet_impersonal }}
+    {{ formfield_errors 'lost_wallet_impersonal' }}
+    <p></p>
+
+    <p><b>Some people feel they have completely free choice and control over their
+      lives, while other people feel that what they do has no real effect on what
+      happens to them. Please use this scale where 1 means "no choice at all" and
+      10 means "a great deal of choice" to indicate how much freedom of choice and
+      control you feel you have over the way your life turns out.</b></p>
+    {{ form.free_choice }}
+    {{ formfield_errors 'free_choice' }}
+    <p></p>
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

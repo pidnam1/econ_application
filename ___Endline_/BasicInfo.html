@@ -3,7 +3,60 @@
 
     <b><p>Now we will ask you for personal information.</p></b>
 
-    {{ formfields }}
+    <p><b>1. What is your gender?</b></p>
+    {{ form.gender }}
+    {{ formfield_errors 'gender' }}
+    <p></p>
+
+    <p><b>2. What is your caste?</b></p>
+    {{ form.caste }}
+    {{ formfield_errors 'caste' }}
+    <p></p>
+
+    <p><b>3. What is your religion?</b></p>
+    {{ form.religion }}
+    {{ formfield_errors 'religion' }}
+    <p></p>
+
+    <p><b>4. What is your marital status?</b></p>
+    {{ form.marital_status }}
+    {{ formfield_errors 'marital_status' }}
+    <p></p>
+
+    <p><b>5. Do you have children?</b></p>
+    {{ form.children }}
+    {{ formfield_errors 'children' }}
+    <p></p>
+
+    <p><b>6. What language do you normally speak at home?</b></p>
+    {{ form.lang }}
+    {{ formfield_errors 'lang' }}
+    <p></p>
+
+    <p><b>7. What does your father do?</b></p>
+    {{ form.father_occu }}
+    {{ formfield_errors 'father_occu' }}
+    <p></p>
+
+    <p><b>8. What does your mother do?</b></p>
+    {{ form.mother_occu }}
+    {{ formfield_errors 'mother_occu' }}
+    <p></p>
+
+    <p><b>9. How many people live in your house?</b></p>
+    {{ form.in_house }}
+    {{ formfield_errors 'in_house' }}
+    <p></p>
+
+    <p><b>10. Where are you originally from?</b></p>
+    {{ form.origin }}
+    {{ formfield_errors 'origin' }}
+    <p></p>
+
+    <p><b>11. In what bracket does your families' total monthly income fall?</b></p>
+    {{ form.monthly_income }}
+    {{ formfield_errors 'monthly_income' }}
+    <p></p>
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

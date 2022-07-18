@@ -20,7 +20,7 @@ PART {{ round }}
       <div class="col-sm-7">
         <p></p>
         <p><b>
-          How many hints do you expect to ask from {{ partner }} in this part?
+          How many hints do you expect to ASK from {{ partner }} in this part?
         </b></p>
         {{ for field in formfields_hints }}
           {{ formfield field }}
@@ -52,15 +52,29 @@ PART {{ round }}
           </style>
           <div class="card2 rounded">
             <div class="card-body">
-              <h6>Helper will see if you took a hint
+              <h6>You will always get a hint if you ask, but helper will see if you took the hint
               <p></p>
               No penalty for using a hint
               <p></p>
               12 questions in total</h6>
             </div>
           </div>
-          <div class="card-body">
-            <h4>Rules for this part</h4>
+          <style>
+              .card4 {
+                background-color: #ccffcc;
+              }
+          </style>
+          <div class="card4 rounded">
+            <div class="card-body">
+              <h5><u>Payment</u></h5>
+              <b> = Rs. 75 per correct answer</b>
+            </div>
+          </div>
+          <label for="check" class="togButton"><h6><u>Click here to see rules</u></h6></label>
+          <input type="checkbox" class="togCheck" id="check"/>
+          <div class="togContent">
+            <br>
+            <h5>Rules for this part</h5>
             <ul>
               <li>In this part, you are tested in <b>economics, cooking, and sports</b>. </li>
               <ul>
@@ -78,15 +92,27 @@ PART {{ round }}
                   <li><u>Helper will not be able to see anything else. Not your answer nor your screen</u></li>
                 </ul>
               </ul>
-              <li><b>For each correct answer, you will receive 75 Rs.</b></li>
-              <ul>
-                <li>There is no penalty for incorrect answers.</li>
-              </ul>
             </ul>
+            <br>
           </div>
         </div>
       </div>
     </div>
+    <style>
+        .togCheck { display: none; }
+
+        .togContent {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 1s;
+        }
+        .togCheck:checked + .togContent {
+        max-height: 100vh; /* any insanely large number if a lot of contents */
+        opacity: 1;
+        visibility: visible;
+        }
+    </style>
 
 
-  {{ endblock }}
+{{ endblock }}

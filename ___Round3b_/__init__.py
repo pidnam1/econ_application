@@ -204,84 +204,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ3_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_MP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -548,84 +548,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ3_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_MR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -898,84 +898,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ3_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_WP = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -1239,84 +1239,84 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ3_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport2_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4_WR = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint'], [-2, 'Helper did not release hint']],
         label='''
         Was this hint helpful?
         ''',
@@ -2058,6 +2058,18 @@ def get_timeout_seconds1(player: Player):
 
     return participant.expiry - time.time()
 
+def vars_for_template1(player: Player): #defining round number
+    if player.round_number <= 14:
+        round_number = player.round_number - 1
+    elif (player.round_number >= 15) and (player.round_number < 27):
+        round_number = player.round_number - 14
+    elif (player.round_number >= 28) and (player.round_number < 40):
+        round_number = player.round_number - 27
+    elif (player.round_number >= 41) and (player.round_number < 53):
+        round_number = player.round_number - 40
+    return round_number
+
+
 # PAGES
 class Demographics(Page):
     form_model = 'player'
@@ -2069,10 +2081,10 @@ class Demographics(Page):
     @staticmethod
     def vars_for_template(player:Player):
         return dict(round=player.participant.round3b_completed)
-    def before_next_page(player: Player, timeout_happened):
-        participant = player.participant
-        import time
-        participant.expiry = time.time() + 4800
+    # def before_next_page(player: Player, timeout_happened):
+    #     participant = player.participant
+    #     import time
+    #     participant.expiry = time.time() + 4800
 
 #MALE PREFERRED
 class Transition_MP(Page):
@@ -2080,7 +2092,7 @@ class Transition_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MP']) & (get_timeout_seconds1(player) > 0) & (participant.partner3 != 0)
+        return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
@@ -2092,7 +2104,7 @@ class Hints_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner3 != 0)
+        return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         formfields = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP','results_economics_MP', 'results_cooking_MP', 'results_sports_MP','expect_hints_economics_MP', 'expect_hints_cooking_MP', 'expect_hints_sports_MP']
@@ -2107,6 +2119,10 @@ class Hints_MP(Page):
         g = player.group
         partner = g.get_player_by_id(player.participant.partner3)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
+    def before_next_page(player: Player, timeout_happened):
+        participant = player.participant
+        import time
+        participant.expiry = time.time() + 1200
 
 class ExpectationWR_MP(Page):
     form_model = 'player'
@@ -2127,7 +2143,7 @@ class ExpectationWR_MP(Page):
             if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
                 wr = curr_player
                 break
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, wr=wr.participant.label, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2157,7 +2173,7 @@ class ExpectationMR_MP(Page):
             if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, mr=mr.participant.label, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2173,7 +2189,7 @@ class Economics1_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2190,7 +2206,7 @@ class Economics1_MP(Page):
             player.participant.econ_hint_requests_partner3 += 1
             if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: Increased in supply. Your helper has been notified.")}
+                return {player.id_in_group: dict(message = "Hint: Increased in supply.")}
             elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2201,7 +2217,7 @@ class Economics2_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2218,7 +2234,7 @@ class Economics2_MP(Page):
             player.participant.econ_hint_requests_partner3 += 1
             if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: He shouted, \"Is this a normal one?\". Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: He shouted, \"Is this a normal one?\".")}
             elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2229,7 +2245,7 @@ class Economics3_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2246,7 +2262,7 @@ class Economics3_MP(Page):
             player.participant.econ_hint_requests_partner3 += 1
             if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: No influence. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: No influence.")}
             elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2257,7 +2273,7 @@ class Economics4_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2274,7 +2290,7 @@ class Economics4_MP(Page):
             player.participant.econ_hint_requests_partner3 += 1
             if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: Factories have decided to pay workers higher incomes. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Factories have decided to pay workers higher incomes.")}
             elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2285,7 +2301,7 @@ class Cooking1_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2302,7 +2318,7 @@ class Cooking1_MP(Page):
             player.participant.cook_hint_requests_partner3 += 1
             if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: Yellow and white. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Yellow and white.")}
             elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2313,7 +2329,7 @@ class Cooking2_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2330,7 +2346,7 @@ class Cooking2_MP(Page):
             player.participant.cook_hint_requests_partner3 += 1
             if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: Maximum moisture. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Maximum moisture.")}
             elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2341,7 +2357,7 @@ class Cooking3_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2358,7 +2374,7 @@ class Cooking3_MP(Page):
             player.participant.cook_hint_requests_partner3 += 1
             if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: Everyone looked at the camera and said \"CHEEESE\". Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Everyone looked at the camera and said \"CHEEESE\".")}
             elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2369,7 +2385,7 @@ class Cooking4_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2386,7 +2402,7 @@ class Cooking4_MP(Page):
             player.participant.cook_hint_requests_partner3 += 1
             if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: Less than 2. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Less than 2.")}
             elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2397,7 +2413,7 @@ class Sports1_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2414,7 +2430,7 @@ class Sports1_MP(Page):
             player.participant.sport_hint_requests_partner3 += 1
             if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: London and neighbor of Australia. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: London and neighbor of Australia.")}
             elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2425,7 +2441,7 @@ class Sports2_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2442,7 +2458,7 @@ class Sports2_MP(Page):
             player.participant.sport_hint_requests_partner3 += 1
             if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: South West. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: South West.")}
             elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2453,7 +2469,7 @@ class Sports3_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2470,7 +2486,7 @@ class Sports3_MP(Page):
             player.participant.sport_hint_requests_partner3 += 1
             if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: Ayub Khan. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Ayub Khan.")}
             elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2481,7 +2497,7 @@ class Sports4_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2498,7 +2514,7 @@ class Sports4_MP(Page):
             player.participant.sport_hint_requests_partner3 += 1
             if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner3 += 1
-                return {player.id_in_group: dict(message = "Hint: Green ball. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Green ball.")}
             elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2510,7 +2526,7 @@ class Transition_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MR']) & (get_timeout_seconds1(player) > 0) & (participant.partner8 != 0)
+        return (player.round_number == participant.task_rounds3b['MR']) and (participant.partner8 != 0)
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
@@ -2522,7 +2538,7 @@ class Hints_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner8 != 0)
+        return (player.round_number == participant.task_rounds3b['MR']) and (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2538,6 +2554,10 @@ class Hints_MR(Page):
         g = player.group
         partner = g.get_player_by_id(player.participant.partner8)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
+    def before_next_page(player: Player, timeout_happened):
+        participant = player.participant
+        import time
+        participant.expiry = time.time() + 1200
 
 class ExpectationWR_MR(Page):
     form_model = 'player'
@@ -2558,7 +2578,7 @@ class ExpectationWR_MR(Page):
             if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
                 wr = curr_player
                 break
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, wr=wr.participant.label, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2588,7 +2608,7 @@ class ExpectationMR_MR(Page):
             if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, mr=mr.participant.label, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2604,7 +2624,7 @@ class Economics1_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2621,7 +2641,7 @@ class Economics1_MR(Page):
             player.participant.econ_hint_requests_partner8 += 1
             if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: Demand and supply. Your helper has been notified.")}
+                return {player.id_in_group: dict(message = "Hint: Demand and supply.")}
             elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2632,7 +2652,7 @@ class Economics2_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2649,7 +2669,7 @@ class Economics2_MR(Page):
             player.participant.econ_hint_requests_partner8 += 1
             if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: Demand and supply. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Demand and supply.")}
             elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2660,7 +2680,7 @@ class Economics3_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2677,7 +2697,7 @@ class Economics3_MR(Page):
             player.participant.econ_hint_requests_partner8 += 1
             if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: 5 - 3 = ?. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: 5 - 3 = ?.")}
             elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2688,7 +2708,7 @@ class Economics4_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2705,7 +2725,7 @@ class Economics4_MR(Page):
             player.participant.econ_hint_requests_partner8 += 1
             if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: A few. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: A few.")}
             elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2716,7 +2736,7 @@ class Cooking1_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2733,7 +2753,7 @@ class Cooking1_MR(Page):
             player.participant.cook_hint_requests_partner8 += 1
             if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: Citric acid. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Citric acid.")}
             elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2744,7 +2764,7 @@ class Cooking2_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2761,7 +2781,7 @@ class Cooking2_MR(Page):
             player.participant.cook_hint_requests_partner8 += 1
             if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: Maize related product. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Maize related product.")}
             elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2772,7 +2792,7 @@ class Cooking3_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2789,7 +2809,7 @@ class Cooking3_MR(Page):
             player.participant.cook_hint_requests_partner8 += 1
             if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: Extracted with olives. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Extracted with olives.")}
             elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2800,7 +2820,7 @@ class Cooking4_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2817,7 +2837,7 @@ class Cooking4_MR(Page):
             player.participant.cook_hint_requests_partner8 += 1
             if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: Rhymes with pear. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Rhymes with pear.")}
             elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2828,7 +2848,7 @@ class Sports1_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2845,7 +2865,7 @@ class Sports1_MR(Page):
             player.participant.sport_hint_requests_partner8 += 1
             if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: It was Allama Iqbal\'s birth year. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: It was Allama Iqbal\'s birth year.")}
             elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2856,7 +2876,7 @@ class Sports2_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2873,7 +2893,7 @@ class Sports2_MR(Page):
             player.participant.sport_hint_requests_partner8 += 1
             if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: We love orange. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: We love orange.")}
             elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2884,7 +2904,7 @@ class Sports3_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2901,7 +2921,7 @@ class Sports3_MR(Page):
             player.participant.sport_hint_requests_partner8 += 1
             if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: Greater than 5. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Greater than 5.")}
             elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2912,7 +2932,7 @@ class Sports4_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -2929,7 +2949,7 @@ class Sports4_MR(Page):
             player.participant.sport_hint_requests_partner8 += 1
             if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner8 += 1
-                return {player.id_in_group: dict(message = "Hint: Christopher. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Christopher.")}
             elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -2941,7 +2961,7 @@ class Transition_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WP']) & (get_timeout_seconds1(player) > 0) & (participant.partner2 != 0)
+        return (player.round_number == participant.task_rounds3b['WP']) and (participant.partner2 != 0)
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
@@ -2953,7 +2973,7 @@ class Hints_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner2 != 0)
+        return (player.round_number == participant.task_rounds3b['WP']) and (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -2969,6 +2989,10 @@ class Hints_WP(Page):
         g = player.group
         partner = g.get_player_by_id(player.participant.partner2)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
+    def before_next_page(player: Player, timeout_happened):
+        participant = player.participant
+        import time
+        participant.expiry = time.time() + 1200
 
 class ExpectationWR_WP(Page):
     form_model = 'player'
@@ -2989,7 +3013,7 @@ class ExpectationWR_WP(Page):
             if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
                 wr = curr_player
                 break
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, wr=wr.participant.label, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -3019,7 +3043,7 @@ class ExpectationMR_WP(Page):
             if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, mr=mr.participant.label, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -3035,7 +3059,7 @@ class Economics1_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3052,7 +3076,7 @@ class Economics1_WP(Page):
             player.participant.econ_hint_requests_partner2 += 1
             if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: Ratio of dog owners to cat owners. Your helper has been notified.")}
+                return {player.id_in_group: dict(message = "Hint: Ratio of dog owners to cat owners.")}
             elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3063,7 +3087,7 @@ class Economics2_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3080,7 +3104,7 @@ class Economics2_WP(Page):
             player.participant.econ_hint_requests_partner2 += 1
             if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: Long-run > short-run. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Long-run > short-run.")}
             elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3091,7 +3115,7 @@ class Economics3_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3108,7 +3132,7 @@ class Economics3_WP(Page):
             player.participant.econ_hint_requests_partner2 += 1
             if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: More is better. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: More is better.")}
             elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3119,7 +3143,7 @@ class Economics4_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3136,7 +3160,7 @@ class Economics4_WP(Page):
             player.participant.econ_hint_requests_partner2 += 1
             if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: Supply shifts left and demand shifts right. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Supply shifts left and demand shifts right.")}
             elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3147,7 +3171,7 @@ class Cooking1_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3164,7 +3188,7 @@ class Cooking1_WP(Page):
             player.participant.cook_hint_requests_partner2 += 1
             if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: Timing. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Timing.")}
             elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3175,7 +3199,7 @@ class Cooking2_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3192,7 +3216,7 @@ class Cooking2_WP(Page):
             player.participant.cook_hint_requests_partner2 += 1
             if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: KFC fried chicken and french fries. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: KFC fried chicken and french fries.")}
             elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3203,7 +3227,7 @@ class Cooking3_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3220,7 +3244,7 @@ class Cooking3_WP(Page):
             player.participant.cook_hint_requests_partner2 += 1
             if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: Multiple of nine. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Multiple of nine.")}
             elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3231,7 +3255,7 @@ class Cooking4_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3248,7 +3272,7 @@ class Cooking4_WP(Page):
             player.participant.cook_hint_requests_partner2 += 1
             if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: Soak it. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Soak it.")}
             elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3259,7 +3283,7 @@ class Sports1_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3276,7 +3300,7 @@ class Sports1_WP(Page):
             player.participant.sport_hint_requests_partner2 += 1
             if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: Sharara. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Sharara.")}
             elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3287,7 +3311,7 @@ class Sports2_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3304,7 +3328,7 @@ class Sports2_WP(Page):
             player.participant.sport_hint_requests_partner2 += 1
             if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: An ash tree. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: An ash tree.")}
             elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3315,7 +3339,7 @@ class Sports3_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3332,7 +3356,7 @@ class Sports3_WP(Page):
             player.participant.sport_hint_requests_partner2 += 1
             if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: During Great Depression. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: During Great Depression.")}
             elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3343,7 +3367,7 @@ class Sports4_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3360,7 +3384,7 @@ class Sports4_WP(Page):
             player.participant.sport_hint_requests_partner2 += 1
             if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner2 += 1
-                return {player.id_in_group: dict(message = "Hint: There is no true lord. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: There is no true lord.")}
             elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3372,7 +3396,7 @@ class Transition_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WR']) & (get_timeout_seconds1(player) > 0) & (participant.partner6 != 0)
+        return (player.round_number == participant.task_rounds3b['WR']) and (participant.partner6 != 0)
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
@@ -3384,7 +3408,7 @@ class Hints_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner6 != 0)
+        return (player.round_number == participant.task_rounds3b['WR']) and (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -3400,6 +3424,10 @@ class Hints_WR(Page):
         g = player.group
         partner = g.get_player_by_id(player.participant.partner6)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
+    def before_next_page(player: Player, timeout_happened):
+        participant = player.participant
+        import time
+        participant.expiry = time.time() + 1200
 
 class ExpectationWR_WR(Page):
     form_model = 'player'
@@ -3421,7 +3449,7 @@ class ExpectationWR_WR(Page):
                 wr = curr_player
                 break
         partner = g.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, wr=wr.participant.label, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -3451,7 +3479,7 @@ class ExpectationMR_WR(Page):
             if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, mr=mr.participant.label, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
     @staticmethod
     def get_form_fields(player: Player):
         import random
@@ -3467,7 +3495,7 @@ class Economics1_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3484,7 +3512,7 @@ class Economics1_WR(Page):
             player.participant.econ_hint_requests_partner6 += 1
             if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Labor as a cost of production. Your helper has been notified.")}
+                return {player.id_in_group: dict(message = "Hint: Labor as a cost of production.")}
             elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3495,7 +3523,7 @@ class Economics2_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3512,7 +3540,7 @@ class Economics2_WR(Page):
             player.participant.econ_hint_requests_partner6 += 1
             if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Quantity demanded > quantity supplied. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Quantity demanded > quantity supplied.")}
             elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3523,7 +3551,7 @@ class Economics3_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3540,7 +3568,7 @@ class Economics3_WR(Page):
             player.participant.econ_hint_requests_partner6 += 1
             if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Consumer is king. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Consumer is king.")}
             elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3551,7 +3579,7 @@ class Economics4_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3568,7 +3596,7 @@ class Economics4_WR(Page):
             player.participant.econ_hint_requests_partner6 += 1
             if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
                 player.participant.econ_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Easy to join. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Easy to join.")}
             elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3579,7 +3607,7 @@ class Cooking1_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3596,7 +3624,7 @@ class Cooking1_WR(Page):
             player.participant.cook_hint_requests_partner6 += 1
             if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Get low. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Get low.")}
             elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3607,7 +3635,7 @@ class Cooking2_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3624,7 +3652,7 @@ class Cooking2_WR(Page):
             player.participant.cook_hint_requests_partner6 += 1
             if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: BRRRRRR. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: BRRRRRR.")}
             elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3635,7 +3663,7 @@ class Cooking3_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3652,7 +3680,7 @@ class Cooking3_WR(Page):
             player.participant.cook_hint_requests_partner6 += 1
             if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Mist or fog. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Mist or fog.")}
             elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3663,7 +3691,7 @@ class Cooking4_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3680,7 +3708,7 @@ class Cooking4_WR(Page):
             player.participant.cook_hint_requests_partner6 += 1
             if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
                 player.participant.cook_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Qeema. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Qeema.")}
             elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3691,7 +3719,7 @@ class Sports1_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3708,7 +3736,7 @@ class Sports1_WR(Page):
             player.participant.sport_hint_requests_partner6 += 1
             if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Pakistan gained independence in 1947. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Pakistan gained independence in 1947.")}
             elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3719,7 +3747,7 @@ class Sports2_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3736,7 +3764,7 @@ class Sports2_WR(Page):
             player.participant.sport_hint_requests_partner6 += 1
             if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Eclipse. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Eclipse.")}
             elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3747,7 +3775,7 @@ class Sports3_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3764,7 +3792,7 @@ class Sports3_WR(Page):
             player.participant.sport_hint_requests_partner6 += 1
             if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Death year of Fatima Jinnah. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Death year of Fatima Jinnah.")}
             elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
@@ -3775,7 +3803,7 @@ class Sports4_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = player.round_number - 1, round=player.participant.round3b_completed)
+        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
@@ -3792,18 +3820,18 @@ class Sports4_WR(Page):
             player.participant.sport_hint_requests_partner6 += 1
             if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
                 player.participant.sport_hint_used_partner6 += 1
-                return {player.id_in_group: dict(message = "Hint: Soon after WWI. Your helper will be notified that you requested a hint.")}
+                return {player.id_in_group: dict(message = "Hint: Soon after WWI.")}
             elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Final(Page):
+class Final_Part3(Page):
     form_model = 'player'
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == 53
+        return (player.round_number == 53) and (player.participant.round2_completed == 0)
     @staticmethod
     def vars_for_template(player:Player):
         return dict(round=player.participant.round3b_completed)
@@ -3814,15 +3842,30 @@ class Final(Page):
             return '___Round2_1'
         return '___Final_'
 
+class Final_Part4(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == 53) and (player.participant.round2_completed != 0)
+    @staticmethod
+    def vars_for_template(player:Player):
+        return dict(round=player.participant.round3b_completed)
+    @staticmethod
+    def app_after_this_page(player: Player, upcoming_apps):
+        if (player.participant.round2_completed == 0):
+            player.participant.round2_completed = 4
+            return '___Round2_1'
+        return '___Final_'
 
-page_sequence = [Demographics, Hints_MP, ExpectationWR_MP, ExpectationMR_MP,
+page_sequence = [Demographics, Transition_MP, Hints_MP, ExpectationWR_MP, ExpectationMR_MP,
 Economics1_MP, Economics2_MP, Economics3_MP, Economics4_MP, Cooking1_MP, Cooking2_MP,
-Cooking3_MP, Cooking4_MP, Sports1_MP, Sports2_MP, Sports3_MP, Sports4_MP, Hints_MR,
-ExpectationWR_MR, ExpectationMR_MR, Economics1_MR, Economics2_MR, Economics3_MR,
+Cooking3_MP, Cooking4_MP, Sports1_MP, Sports2_MP, Sports3_MP, Sports4_MP, Transition_MR,
+Hints_MR, ExpectationWR_MR, ExpectationMR_MR, Economics1_MR, Economics2_MR, Economics3_MR,
 Economics4_MR, Cooking1_MR, Cooking2_MR, Cooking3_MR, Cooking4_MR, Sports1_MR,
-Sports2_MR, Sports3_MR, Sports4_MR, Hints_WP, ExpectationWR_WP, ExpectationMR_WP,
+Sports2_MR, Sports3_MR, Sports4_MR, Transition_WP, Hints_WP, ExpectationWR_WP, ExpectationMR_WP,
 Economics1_WP, Economics2_WP, Economics3_WP, Economics4_WP, Cooking1_WP, Cooking2_WP,
-Cooking3_WP, Cooking4_WP, Sports1_WP, Sports2_WP, Sports3_WP, Sports4_WP, Hints_WR,
-ExpectationWR_WR, ExpectationMR_WR, Economics1_WR, Economics2_WR, Economics3_WR,
+Cooking3_WP, Cooking4_WP, Sports1_WP, Sports2_WP, Sports3_WP, Sports4_WP, Transition_WR,
+Hints_WR, ExpectationWR_WR, ExpectationMR_WR, Economics1_WR, Economics2_WR, Economics3_WR,
 Economics4_WR, Cooking1_WR, Cooking2_WR, Cooking3_WR, Cooking4_WR, Sports1_WR,
-Sports2_WR, Sports3_WR, Sports4_WR, Final]
+Sports2_WR, Sports3_WR, Sports4_WR, Final_Part3, Final_Part4]

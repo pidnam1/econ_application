@@ -1,7 +1,15 @@
 {{ block title }}SECTION A{{ endblock }}
 {{ block content }}
 
-    {{ formfields }}
+    <p><b>In general, would you say students know the academic rank of others in a class?</b></p>
+    {{ form.know_rank }}
+    {{ formfield_errors 'know_rank' }}
+    <p></p>
+
+    <p><b>In general, would you say students know the GPA of others in a class?</b></p>
+    {{ form.know_gpa }}
+    {{ formfield_errors 'know_gpa' }}
+    <p></p>
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

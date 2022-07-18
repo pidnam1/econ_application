@@ -3,8 +3,36 @@
 
     <b><p>Now we will ask you some questions on your experience today as a TEST-TAKER</p></b>
 
-    {{ formfields }}
-
+    <p><b>Which of the categories tested did you like the most?</b></p>
+    {{ form.subjects_like }}
+    {{ formfield_errors 'subjects_like' }}
+    <p></p>
+        
+    <p><b>Which of the categories tested did you like the least?</b></p>
+    {{ form.subjects_dislike }}
+    {{ formfield_errors 'subjects_dislike' }}
+    <p></p>
+        
+    <p><b>For which of the categories tested you think you have given most correct answers?</b></p>
+    {{ form.subjects_correct }}
+    {{ formfield_errors 'subjects_correct' }}
+    <p></p>
+        
+    <p><b>For which of the categories tested you think you have given least correct answers?</b></p>
+    {{ form.subjects_incorrect }}
+    {{ formfield_errors 'subjects_incorrect' }}
+    <p></p>
+        
+    <p><b>Did you always ask for hints from helpers when you felt the need?</b></p>
+    {{ form.hints_always_helper }}
+    {{ formfield_errors 'hints_always_helper' }}
+    <p></p>
+        
+    <p><b>In the round when you were not working with a helper but were looking for your own hints, did you always use the hints for answers, whenever you felt the need for it?</b></p>
+    {{ form.hints_always }}
+    {{ formfield_errors 'hints_always' }}
+    <p></p>
+        
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
     </p>

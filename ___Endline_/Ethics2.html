@@ -3,7 +3,55 @@
 
     <b><p>Do you agree, disagree or neither agree nor disagree with the following statements? Please choose one.</p></b>
 
-    {{ formfields }}
+    <p><b>When jobs are scarce, men should have more right to a job than women.</b></p>
+    {{ form.scarcity }}
+    {{ formfield_errors 'scarcity' }}
+    <p></p>
+
+    <p><b>If a woman earns more money than her husband, it's almost certain to cause problems.</b></p>
+    {{ form.women_money }}
+    {{ formfield_errors 'women_money' }}
+    <p></p>
+
+    <p><b>Having a job is the best way for a woman to be an independent person.</b></p>
+    {{ form.women_independence }}
+    {{ formfield_errors 'woman_independence' }}
+    <p></p>
+
+    <p><b>One of my main goals in life has been to make my parents proud.</b></p>
+    {{ form.parental_pride }}
+    {{ formfield_errors 'parental_pride' }}
+    <p></p>
+
+    <p><b>When a mother works for pay, the children suffer.</b></p>
+    {{ form.children_suffer }}
+    {{ formfield_errors 'children_suffer' }}
+    <p></p>
+
+    <p><b>On the whole, men make better political leaders than women do</b></p>
+    {{ form.men_politicians }}
+    {{ formfield_errors 'men_politicians' }}
+    <p></p>
+
+    <p><b>A university education is more important for a boy than for a girl.</b></p>
+    {{ form.uni_gender }}
+    {{ formfield_errors 'uni_gender' }}
+    <p></p>
+
+    <p><b>On the whole, men make better business executives than women do.</b></p>
+    {{ form.busi_gender }}
+    {{ formfield_errors 'busi_gender' }}
+    <p></p>
+
+    <p><b>Being a housewife is just as fulfilling as working for pay.</b></p>
+    {{ form.house_fulfill }}
+    {{ formfield_errors 'house_fulfill' }}
+    <p></p>
+
+    <p><b>To follow customs handed down by one’s family is very important.</b></p>
+    {{ form.family_customs }}
+    {{ formfield_errors 'family_customs' }}
+    <p></p>
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

@@ -59,7 +59,10 @@ PART 2: ROUND {{ round }} ECONOMICS
             }
         </style>
         <div class="card1 rounded">
-          <div class="card-body">
+          <label for="check" class="togButton"><h6><u>Click here to see rules</u></h6></label>
+          <input type="checkbox" class="togCheck" id="check"/>
+          <div class="togContent">
+            <br>
             <h5>Rules for this part</h5>
             <ul>
               <li>In this round, you will make decisions as a helper and be matched with different test-takers.</li>
@@ -75,9 +78,25 @@ PART 2: ROUND {{ round }} ECONOMICS
                   as the questions for which they took a hint.</li>
               </ul>
             </ul>
+            <br>
           </div>
         </div>
       </div>
     </div>
+    <style>
+        .togCheck { display: none; }
+
+        .togContent {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 1s;
+        }
+        .togCheck:checked + .togContent {
+        max-height: 100vh; /* any insanely large number if a lot of contents */
+        opacity: 1;
+        visibility: visible;
+        }
+    </style>
 
 {{ endblock }}

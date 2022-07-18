@@ -3,7 +3,54 @@
 
     <b><p>On the previous page, you selected 'other' for one of the following questions. Please clarify your response.</p></b>
 
-    {{ formfields }}
+    {{ if player.caste == 99 }}
+      <p><b>2. You selected 'Other'. Please specify. What is your caste?</b></p>
+      {{ form.caste_other }}
+      {{ formfield_errors 'caste_other' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.marital_status == 99 }}
+      <p><b>4. You selected 'Other'. Please specify. What is your marital status?</b></p>
+      {{ form.marital_status_other }}
+      {{ formfield_errors 'marital_status_other' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.children == 1 }}
+      <p><b>5. You selected 'Yes' to 'Do you have children?'. Please specify. How old are your children?</b></p>
+      {{ form.children_yes }}
+      {{ formfield_errors 'children_yes' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.lang == 99 }}
+      <p><b>6. You selected 'Other/Multiple'. Please specify. What language(s) do you normally speak at home?</b></p>
+      {{ form.degree_aspire_other }}
+      {{ formfield_errors 'degree_aspire_other' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.father_occu == 99 }}
+      <p><b>7. You selected 'Other'. Please specify. What does your father do?</b></p>
+      {{ form.father_occu_other }}
+      {{ formfield_errors 'father_occu_other' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.mother_occu == 99 }}
+      <p><b>8. You selected 'Other'. Please specify. What does your mother do?</b></p>
+      {{ form.mother_occu }}
+      {{ formfield_errors 'mother_occu' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.origin == 99 }}
+      <p><b>10. You selected 'Other'. Please specify. Where are you originally from?</b></p>
+      {{ form.origin_other }}
+      {{ formfield_errors 'origin_other' }}
+      <p></p>
+    {{ endif }}
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

@@ -1,0 +1,61 @@
+{{ block title }}
+PRACTICE
+{{ endblock }}
+{{ block content }}
+
+    <div class="row">
+      <div class="col-sm-7">
+        {{ formfield 'belief2' }}
+        <i><u>If you selected option (c) above, please raise your hand and ask an
+          enumerator to explain it again, before you move on.</u></i>
+
+        <b><u>PLEASE DO NOT MOVE AHEAD IF YOU ARE NOT SURE ABOUT THE ABOVE. PLEASE
+          MOVE ON ONLY IF YOU HAVE COMPLETELY UNDERSTOOD THE ABOVE.</u></b>
+        <p></p>
+        <b><u>IF YOU FEEL YOU DON'T FULLY UNDERSTAND HOW THIS WORKS ASK AN ENUMERATOR
+          TO EXPLAIN IT AGAIN BEFORE YOU MOVE ON.</u></b>
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
+      </div>
+      <div class="col-sm-5">
+        <style>
+            .card1 {
+              background-color: #BFD7FF;
+            }
+        </style>
+        <div class="card1 rounded">
+          <label for="check" class="togButton"><h6><u>Click here to see rules</u></h6></label>
+          <input type="checkbox" class="togCheck" id="check"/>
+          <div class="togContent">
+            <br>
+            <h5>Rules for this part</h5>
+            <ul>
+              <li>Throughout this experiment, you will be tested on your knowledge of <b>economics,
+              cooking, and sports</b>. </li>
+              <li>Here are a few questions similar to the ones used in the experiment for you to practice and become familiar.</li>
+              <li><u>Practice rounds are NOT counted towards your payment.</u></li>
+            </ul>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      .togCheck { display: none; }
+
+      .togContent {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 1s;
+      }
+      .togCheck:checked + .togContent {
+        max-height: 100vh; /* any insanely large number if a lot of contents */
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+
+
+{{ endblock }}

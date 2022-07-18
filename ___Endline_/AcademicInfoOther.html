@@ -3,7 +3,55 @@
 
     <b><p>On the previous page, you selected 'other' or 'yes' for one or more of the following questions. Please clarify your response.</p></b>
 
-    {{ formfields }}
+    {{ if player.high_edu == 99 }}
+      <p><b>2. You selected 'Other'. Please specify. Before the current degree that you are studying, what was the highest qualification that you attained?</b></p>
+      {{ form.high_edu_other }}
+      {{ formfield_errors 'high_edu_other' }}
+      <p></p>
+
+    {{ endif }}
+
+    {{ if player.subject_prior == 99 }}
+      <p><b>3. You selected 'Other'. Please specify. What was your subject before you began at your current university?</b></p>
+      {{ form.subject_prior_other }}
+      {{ formfield_errors 'subject_prior_other' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.extra_curric == 99 }}
+      <p><b>6. You selected 'Other'. Please specify. Can you list the main extra-curricular activities that you are involved in?</b></p>
+      {{ form.extra_curric_other }}
+      {{ formfield_errors 'extra_curric_other' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.degree_aspire == 99 }}
+      <p><b>7. You selected 'Other'. Please specify. What is the maximum degree that you aspire to achieve?</b></p>
+      {{ form.degree_aspire_other }}
+      {{ formfield_errors 'degree_aspire_other' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.pref_occu == 99 }}
+      <p><b>8. You selected 'Other'. Please specify. List the main occupations that you would be interested in choosing for a career.</b></p>
+      {{ form.pref_occu_other }}
+      {{ formfield_errors 'pref_occu_other' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.study_abroad == 0 }}
+      <p><b>10. You selected 'Yes'. Please specify. Where have you studied abroad?</b></p>
+      {{ form.study_abroad_yes }}
+      {{ formfield_errors 'study_abroad_yes' }}
+      <p></p>
+    {{ endif }}
+
+    {{ if player.friend_count == 99 }}
+      <p><b>11. You selected 'Other'. Please specify. How many total friends do you have with whom you are in touch at least once a week?</b></p>
+      {{ form.friend_count_other }}
+      {{ formfield_errors 'friend_count_other' }}
+      <p></p>
+    {{ endif }}
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

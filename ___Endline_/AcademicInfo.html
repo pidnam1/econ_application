@@ -5,7 +5,65 @@
     <p>In the following pages, we will ask you a series of questions about your current academic
     and personal standings. Please be as honest as possible.</p></b>
 
-    {{ formfields }}
+    <p><b>1. What is your date of birth? (Please list as YYYY/MM/DD)</b></p>
+    {{ form.dob }}
+    {{ formfield_errors 'dob' }}
+    <p></p>
+
+    <p><b>2. Before the current degree that you are studying, what was the highest qualification that you attained?</b></p>
+    {{ form.high_edu }}
+    {{ formfield_errors 'high_edu' }}
+    <p></p>
+
+    <p><b>3. What was your subject before you began at your current university?</b></p>
+    {{ form.subject_prior }}
+    {{ formfield_errors 'subject_prior' }}
+    <p></p>
+
+    <p><b>4. Please state the name of your school/college from where you got the highest qualification</b></p>
+    {{ form.high_edu_school }}
+    {{ formfield_errors 'high_edu_school' }}
+    <p></p>
+
+    <p><b>5. Can you recall your rank in the last qualification you had?</b></p>
+    {{ form.rank_prior }}
+    {{ formfield_errors 'rank_prior' }}
+    <p></p>
+
+    <p><b>6. Can you list the main extra-curricular activities that you are involved in?</b></p>
+    {{ form.extra_curric }}
+    {{ formfield_errors 'extra_curric' }}
+    <p></p>
+
+    <p><b>7. What is the maximum degree that you aspire to achieve?</b></p>
+    {{ form.degree_aspire }}
+    {{ formfield_errors 'degree_aspire' }}
+    <p></p>
+
+    <p><b>8. List the main occupations that you would be interested in choosing for a career.</b></p>
+    {{ form.pref_occu }}
+    {{ formfield_errors 'pref_occu' }}
+    <p></p>
+
+    <p><b>9. Why this occupation?</b></p>
+    {{ form.why_pref_occu }}
+    {{ formfield_errors 'why_pref_occu' }}
+    <p></p>
+
+    <p><b>10. Have you ever studied abroad?</b></p>
+    {{ form.study_abroad }}
+    {{ formfield_errors 'study_abroad' }}
+    <p></p>
+
+    <p><b>11. How many total friends do you have with whom you are in touch at least once a week?</b></p>
+    {{ form.friend_count }}
+    {{ formfield_errors 'friend_count' }}
+    <p></p>
+
+    <p><b>12. Out of those above how many are in your current university?</b></p>
+    {{ form.friend_uni }}
+    {{ formfield_errors 'friend_uni' }}
+    <p></p>
 
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>

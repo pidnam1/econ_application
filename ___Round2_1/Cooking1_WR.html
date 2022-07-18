@@ -20,13 +20,20 @@ PART {{ round }}: Cooking
             You may ask for hints from here:
         </p>
         <button type="button" onclick="createHint()">Ask for Hint from Helper</button>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.all.min.js"></script>
         <script>
           function createHint() {
             liveSend('clicked-button');
             liveRecv(data);
           }
           function liveRecv(data) {
-            alert(data.message);
+            Swal.fire({
+              position: 'top',
+              html:
+                data.message+'<hr>'+
+                '<h5>Your helper will be notified that you requested a hint.</h5>',
+            })
           }
         </script>
         <p></p>
@@ -51,14 +58,28 @@ PART {{ round }}: Cooking
           </style>
           <div class="card2 rounded">
             <div class="card-body">
-              <h6><b>Helper will see if you took a hint</b>
+              <h6><b>You will always get a hint if you ask, but helper will see if you took the hint</b>
                 <p></p>
                 No penalty for using a hint
                 <p></p>
                 12 questions in total</h6>
             </div>
           </div>
-          <div class="card-body">
+          <style>
+              .card3 {
+                background-color: #ccffcc;
+              }
+          </style>
+          <div class="card3 rounded">
+            <div class="card-body">
+              <h5><u>Payment</u></h5>
+              <b> = Rs. 75 per correct answer</b>
+            </div>
+          </div>
+          <label for="check" class="togButton"><h6><u>Click here to see rules</u></h6></label>
+          <input type="checkbox" class="togCheck" id="check"/>
+          <div class="togContent">
+            <br>
             <h5>Rules for this part</h5>
             <ul>
               <li>In this part, you are tested in <b>economics, cooking, and sports</b>. </li>
@@ -77,15 +98,27 @@ PART {{ round }}: Cooking
                   <li><u>Helper will not be able to see anything else. Not your answer nor your screen</u></li>
                 </ul>
               </ul>
-              <li><b>For each correct answer, you will receive 75 Rs.</b></li>
-              <ul>
-                <li>There is no penalty for incorrect answers.</li>
-              </ul>
             </ul>
+            <br>
           </div>
         </div>
       </div>
     </div>
+    <style>
+        .togCheck { display: none; }
+
+        .togContent {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 1s;
+        }
+        .togCheck:checked + .togContent {
+        max-height: 100vh; /* any insanely large number if a lot of contents */
+        opacity: 1;
+        visibility: visible;
+        }
+    </style>
 
 
 {{ endblock }}

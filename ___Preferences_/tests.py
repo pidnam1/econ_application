@@ -3,14 +3,17 @@ from . import *
 import random
 class PlayerBot(Bot):
     def play_round(self):
-        PLAYERS = ['Shan Aman Rana','Alexia Delfino','Shamyla Chaudry','Ahsan Pasha',
-                'Shanzay Tariq','Izzah Kashif','Rohma Nasim','Hamna Tariq','Essa Kurd','Hammad Qayyum',
-                'Muhammad Pervaiz','Ayesha Hassan','Faizan Aziz','Assad Mustafa','Maheen Alvi',
-                'Hasan Akmal','Tamoor Salman','Khawaja Kashif','Haris Zahid','Khadija Aslam',
-                'Hamza Riaz','Alice','Bob','Coleman','Demond', 'Emily','Fariz','Grace','Heather',
-                'Ivan','Jake','Kyle','Liam','Michael','Nina','Oliver','Penelope','Quinn','Richard',
-                'Sam','Thomas','Ursula','Vinnie','Wade','Yu','Zhang','Alex','Barry','Carol','Don',
-                'Enrique','Fred','Jenny','Howard','Inez','Kate','Lane','Maddie','Nate','Ajax']
+        PLAYERS = ['Ramsha Azhar','Muhammad Saood','Abdullah Mir','Azqa','Mubeen Ahmad',
+        'Momina Azam','Salem Hamad','Daniyal Mansur','Syeda Laiba Bukhari','Ahmed Mujtaba',
+        'Fatima Rana','Abdullah Shahzad','Zainab Kamran','Neha Jameel','Hassan Masood',
+        'Muhammad Hamza','Laraib Naeem','Maham Ali','Amna Imran','Muhammad Samran Sohail',
+        'Rabia Riaz','Amna Noor','Farriha','Muhammad Taahaa Imtiaz','Sarah Asif Khan',
+        'Mohammad Sheheryar Khan','Saad Munir','Muhammad Usman','Ayra Arshad',
+        'Muhammad Swaleh Shaheen Rafi','Muhammad Wahab Malik','Muhammad Anas Khan',
+        'Rai Sarib Hayat Khan','Muhammad Salman Bin Hamid','Abdul Moeed','Haad Mahmood',
+        'Ameera Amir','Alishba Arshad Legari','Areeb Khan','Hamnah Kamran','Khadija Kamran',
+        'Fatima Khan','Tabish Shahid','Shahmeer','Aniq Kamran Butt','Rubab Aslam Mian',
+        'Lalarukh Schkoh','Rida Fatima']
         #reason_choices = ["1. A close friend", "2. Male", "3. Female", "4. Has a high GPA",
          #          "5. Is older than me", "6. Is  younger than me", "7. Is from my ‘zaat’",
         #           "8. Is not from my \‘zaat\’", "9. Other"]

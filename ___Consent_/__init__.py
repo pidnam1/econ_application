@@ -5,15 +5,18 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    LABELS = ['Shan_Aman_Rana','Alexia_Delfino','Shamyla_Chaudry','Ahsan_Pasha',
-    'Shanzay_Tariq','Izzah_Kashif','Rohma_Nasim','Hamna_Tariq','Essa_Kurd','Hammad_Qayyum',
-    'Muhammad_Pervaiz','Ayesha_Hassan','Faizan_Aziz','Assad_Mustafa','Maheen_Alvi',
-    'Hasan_Akmal','Tamoor_Salman','Khawaja_Kashif','Haris_Zahid','Khadija_Aslam',
-    'Hamza_Riaz','Alice','Bob','Coleman','Demond', 'Emily','Fariz','Grace','Heather',
-    'Ivan','Jake','Kyle','Liam','Michael','Nina','Oliver','Penelope','Quinn','Richard',
-    'Sam','Thomas','Ursula','Vinnie','Wade','Yu','Zhang','Alex','Barry','Carol','Don',
-    'Enrique','Fred','Jenny','Howard','Inez','Kate','Lane','Maddie','Nate','Ajax']
+    GENDERS_LIST = [0,1,1,0,1,0,1,1,0,1,0,1,0,0,1,1,0,0,0,1,0,0,0,1,0,1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,0,0,0,]
+    LABELS = ['Ramsha_Azhar','Muhammad_Saood','Abdullah_Mir','Azqa','Mubeen_Ahmad',
+    'Momina_Azam','Salem_Hamad','Daniyal_Mansur','Syeda_Laiba_Bukhari','Ahmed_Mujtaba',
+    'Fatima_Rana','Abdullah_Shahzad','Zainab_Kamran','Neha_Jameel','Hassan_Masood',
+    'Muhammad_Hamza','Laraib_Naeem','Maham_Ali','Amna_Imran','Muhammad_Samran_Sohail',
+    'Rabia_Riaz','Amna_Noor','Farriha','Muhammad_Taahaa_Imtiaz','Sarah_Asif_Khan',
+    'Mohammad_Sheheryar_Khan','Saad_Munir','Muhammad_Usman','Ayra_Arshad',
+    'Muhammad_Swaleh_Shaheen_Rafi','Muhammad_Wahab_Malik','Muhammad_Anas_Khan',
+    'Rai_Sarib_Hayat_Khan','Muhammad_Salman_Bin_Hamid','Abdul_Moeed','Haad_Mahmood',
+    'Ameera_Amir','Alishba_Arshad_Legari','Areeb_Khan','Hamnah_Kamran','Khadija_Kamran',
+    'Fatima_Khan','Tabish_Shahid','Shahmeer','Aniq_Kamran_Butt','Rubab_Aslam_Mian',
+    'Lalarukh_Schkoh','Rida_Fatima']
 
 class Subsession(BaseSubsession):
     pass
@@ -30,14 +33,17 @@ class Player(BasePlayer):
     roll = models.StringField(label='Please type your rollnumber')
 
 def change_labels(player: Player):
-    labels = ['Shan Aman Rana','Alexia Delfino','Shamyla Chaudry','Ahsan Pasha',
-    'Shanzay Tariq','Izzah Kashif','Rohma Nasim','Hamna Tariq','Essa Kurd','Hammad Qayyum',
-    'Muhammad Pervaiz','Ayesha Hassan','Faizan Aziz','Assad Mustafa','Maheen Alvi',
-    'Hasan Akmal','Tamoor Salman','Khawaja Kashif','Haris Zahid','Khadija Aslam',
-    'Hamza Riaz','Alice','Bob','Coleman','Demond', 'Emily','Fariz','Grace','Heather',
-    'Ivan','Jake','Kyle','Liam','Michael','Nina','Oliver','Penelope','Quinn','Richard',
-    'Sam','Thomas','Ursula','Vinnie','Wade','Yu','Zhang','Alex','Barry','Carol','Don',
-    'Enrique','Fred','Jenny','Howard','Inez','Kate','Lane','Maddie','Nate','Ajax']
+    labels = ['Ramsha Azhar','Muhammad Saood','Abdullah Mir','Azqa','Mubeen Ahmad',
+    'Momina Azam','Salem Hamad','Daniyal Mansur','Syeda Laiba Bukhari','Ahmed Mujtaba',
+    'Fatima Rana','Abdullah Shahzad','Zainab Kamran','Neha Jameel','Hassan Masood',
+    'Muhammad Hamza','Laraib Naeem','Maham Ali','Amna Imran','Muhammad Samran Sohail',
+    'Rabia Riaz','Amna Noor','Farriha','Muhammad Taahaa Imtiaz','Sarah Asif Khan',
+    'Mohammad Sheheryar Khan','Saad Munir','Muhammad Usman','Ayra Arshad',
+    'Muhammad Swaleh Shaheen Rafi','Muhammad Wahab Malik','Muhammad Anas Khan',
+    'Rai Sarib Hayat Khan','Muhammad Salman Bin Hamid','Abdul Moeed','Haad Mahmood',
+    'Ameera Amir','Alishba Arshad Legari','Areeb Khan','Hamnah Kamran','Khadija Kamran',
+    'Fatima Khan','Tabish Shahid','Shahmeer','Aniq Kamran Butt','Rubab Aslam Mian',
+    'Lalarukh Schkoh','Rida Fatima']
     for current, new in zip(C.LABELS, labels):
         if player.participant.label == current.lstrip():
             player.participant.label = new

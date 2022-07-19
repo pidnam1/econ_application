@@ -156,7 +156,7 @@ class Player(BasePlayer):
         choices=[[1, 'Friday'], [2, 'Monday'], [3, 'Sunday'], [4, 'Tuesday']],
         label='''
         The final of the Wimbledon Gentlemen\'s Singles event is always played on
-        what day of the week''',
+        what day of the week?''',
         widget=widgets.RadioSelect,
     )
     crt_sports4 = models.IntegerField(
@@ -166,63 +166,63 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ1 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ2 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_econ4 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook1 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook3 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_cook4 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport1 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport3 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
         widget=widgets.RadioSelect,
     )
     helpful_hint_sport4 = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No'], [-1, 'I did not take a hint']],
+        choices=[[1, 'Yes'], [0, 'No']],
         label='''
         Was this hint helpful?
         ''',
@@ -413,11 +413,25 @@ class Economics1(Page):
         return (player.round_number == participant.task_rounds0['Economics1']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_economics1','helpful_hint_econ1','prob_econ1']
+        return ['crt_economics1','prob_econ1']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: I can substitute you")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Economics1_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Economics1']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_econ1']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -429,11 +443,25 @@ class Economics2(Page):
         return (player.round_number == participant.task_rounds0['Economics2']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_economics2','helpful_hint_econ2','prob_econ2']
+        return ['crt_economics2','prob_econ2']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Price of a related good")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Economics2_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Economics2']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_econ2']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -457,11 +485,25 @@ class Economics4(Page):
         return (player.round_number == participant.task_rounds0['Economics4']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_economics4','helpful_hint_econ4','prob_econ4']
+        return ['crt_economics4','prob_econ4']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Elasticity greater than 1")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Economics4_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Economics4']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_econ4']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -473,11 +515,25 @@ class Cooking1(Page):
         return (player.round_number == participant.task_rounds0['Cooking1']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_cooking1','helpful_hint_cook1','prob_cook1']
+        return ['crt_cooking1','prob_cook1']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: To boil")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Cooking1_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Cooking1']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_cook1']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -501,11 +557,25 @@ class Cooking3(Page):
         return (player.round_number == participant.task_rounds0['Cooking3']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_cooking3','helpful_hint_cook3','prob_cook3']
+        return ['crt_cooking3','prob_cook3']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Empty")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Cooking3_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Cooking3']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_cook3']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -517,11 +587,25 @@ class Cooking4(Page):
         return (player.round_number == participant.task_rounds0['Cooking4']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_cooking4','helpful_hint_cook4','prob_cook4']
+        return ['crt_cooking4','prob_cook4']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Transparent")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Cooking4_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Cooking4']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_cook4']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -533,11 +617,25 @@ class Sports1(Page):
         return (player.round_number == participant.task_rounds0['Sports1']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_sports1','helpful_hint_sport1','prob_sport1']
+        return ['crt_sports1','prob_sport1']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: I bought a box of sweets")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Sports1_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Sports1']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_sport1']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -561,11 +659,25 @@ class Sports3(Page):
         return (player.round_number == participant.task_rounds0['Sports3']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_sports3','helpful_hint_sport3','prob_sport3']
+        return ['crt_sports3','prob_sport3']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Church day")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Sports3_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Sports3']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_sport3']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -577,11 +689,25 @@ class Sports4(Page):
         return (player.round_number == participant.task_rounds0['Sports4']) and (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
-        return ['crt_sports4','helpful_hint_sport4','prob_sport4']
+        return ['crt_sports4','prob_sport4']
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
+            player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Out")}
+    get_timeout_seconds = get_timeout_seconds1
+    timer_text = C.TIMER_TEXT
+
+class Sports4_Hint(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds0['Sports4']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+    @staticmethod
+    def get_form_fields(player):
+        player.participant.prev_hint = 0
+        return ['helpful_hint_sport4']
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -593,6 +719,7 @@ class Final(Page):
         return player.round_number == 12
 
 
-page_sequence = [Demographics, Transition, Hints, Economics1, Economics2, Economics3,
-Economics4, Cooking1, Cooking2, Cooking3, Cooking4, Sports1, Sports2, Sports3,
-Sports4, Final]
+page_sequence = [Demographics, Transition, Hints, Economics1, Economics1_Hint,
+Economics2, Economics2_Hint, Economics3, Economics4, Economics4_Hint, Cooking1,
+Cooking1_Hint, Cooking2, Cooking3, Cooking3_Hint, Cooking4, Cooking4_Hint, Sports1,
+Sports1_Hint, Sports2, Sports3, Sports3_Hint, Sports4, Sports4_Hint, Final]

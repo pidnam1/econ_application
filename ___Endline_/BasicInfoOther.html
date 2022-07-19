@@ -26,8 +26,8 @@
 
     {{ if player.lang == 99 }}
       <p><b>6. You selected 'Other/Multiple'. Please specify. What language(s) do you normally speak at home?</b></p>
-      {{ form.degree_aspire_other }}
-      {{ formfield_errors 'degree_aspire_other' }}
+      {{ form.lang_other }}
+      {{ formfield_errors 'lang_other' }}
       <p></p>
     {{ endif }}
 
@@ -40,8 +40,8 @@
 
     {{ if player.mother_occu == 99 }}
       <p><b>8. You selected 'Other'. Please specify. What does your mother do?</b></p>
-      {{ form.mother_occu }}
-      {{ formfield_errors 'mother_occu' }}
+      {{ form.mother_occu_other }}
+      {{ formfield_errors 'mother_occu_other' }}
       <p></p>
     {{ endif }}
 

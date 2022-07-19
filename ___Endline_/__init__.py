@@ -111,7 +111,7 @@ class Player(BasePlayer):
         choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7, '7'],  [99, 'Other (specify on the next page)']],
         widget=widgets.RadioSelect,
     )
-    friend_count_other = models.StringField()
+    friend_count_other = models.IntegerField()
     friend_uni = models.IntegerField()
     #MAKE ANY FORMFIELDS NEEDED FOR FRIEND TABLE
     friend_roll1 = models.IntegerField(label='', blank=True)
@@ -203,22 +203,22 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     #MAKE ANY FORMFIELDS NEEDED FOR HELPER TABLE
-    helper_ranking1 = models.StringField(label='',blank=True)
-    helper_ranking2 = models.StringField(label='',blank=True)
-    helper_ranking3 = models.StringField(label='',blank=True)
-    helper_ranking4 = models.StringField(label='',blank=True)
-    helper_ranking5 = models.StringField(label='',blank=True)
-    helper_ranking6 = models.StringField(label='',blank=True)
-    helper_ranking7 = models.StringField(label='',blank=True)
-    helper_ranking8 = models.StringField(label='',blank=True)
-    helper_reason1 = models.IntegerField(label='',blank=True)
-    helper_reason2 = models.IntegerField(label='',blank=True)
-    helper_reason3 = models.IntegerField(label='',blank=True)
-    helper_reason4 = models.IntegerField(label='',blank=True)
-    helper_reason5 = models.IntegerField(label='',blank=True)
-    helper_reason6 = models.IntegerField(label='',blank=True)
-    helper_reason7 = models.IntegerField(label='',blank=True)
-    helper_reason8 = models.IntegerField(label='',blank=True)
+    helper_ranking1 = models.IntegerField(label='',blank=True, min=0, max=5)
+    helper_ranking2 = models.IntegerField(label='',blank=True, min=0, max=5)
+    helper_ranking3 = models.IntegerField(label='',blank=True, min=0, max=5)
+    helper_ranking4 = models.IntegerField(label='',blank=True, min=0, max=5)
+    helper_ranking5 = models.IntegerField(label='',blank=True, min=0, max=5)
+    helper_ranking6 = models.IntegerField(label='',blank=True, min=0, max=5)
+    helper_ranking7 = models.IntegerField(label='',blank=True, min=0, max=5)
+    helper_ranking8 = models.IntegerField(label='',blank=True, min=0, max=5)
+    helper_reason1 = models.StringField(label='',blank=True)
+    helper_reason2 = models.StringField(label='',blank=True)
+    helper_reason3 = models.StringField(label='',blank=True)
+    helper_reason4 = models.StringField(label='',blank=True)
+    helper_reason5 = models.StringField(label='',blank=True)
+    helper_reason6 = models.StringField(label='',blank=True)
+    helper_reason7 = models.StringField(label='',blank=True)
+    helper_reason8 = models.StringField(label='',blank=True)
 
 
     #Section C
@@ -254,10 +254,10 @@ class Player(BasePlayer):
     )
 
     amount_notgame = models.IntegerField(
-        label='Out of Rs.300, amount NOT to be used in the game'
+        label='Out of Rs.300, amount NOT to be used in the game', min=0, max=300,
     )
     amount_game = models.IntegerField(
-        label='Out of Rs.300, amount to be used in the game'
+        label='Out of Rs.300, amount to be used in the game', min=0, max=300,
     )
     gender = models.StringField(
         choices=[['Male', 'Male'], ['Female', 'Female']],
@@ -637,7 +637,7 @@ class MultiplePriceFemale(Page):
             if curr_player != player and curr_player.participant.gender == 0:
                 wr = curr_player
                 break
-        return dict(wr=wr.participant.label)
+        return dict(wr=wr.participant.label.upper())
 
 class MultiplePriceMale(Page):
     form_model = 'player'
@@ -654,7 +654,7 @@ class MultiplePriceMale(Page):
             if curr_player != player and curr_player.participant.gender == 1:
                 mr = curr_player
                 break
-        return dict(mr=mr.participant.label)
+        return dict(mr=mr.participant.label.upper())
 
 class WTP_Subject(Page):
     form_model = 'player'

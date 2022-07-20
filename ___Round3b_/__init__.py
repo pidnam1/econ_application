@@ -2080,6 +2080,7 @@ class Demographics(Page):
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player:Player):
+        player.participant.prev_hint = 0
         return dict(round=player.participant.round3b_completed)
     # def before_next_page(player: Player, timeout_happened):
     #     participant = player.participant

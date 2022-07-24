@@ -105,14 +105,14 @@ PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rou
 'econ_hint_used_partner8','cook_hint_used_partner2','cook_hint_used_partner3',
 'cook_hint_used_partner6','cook_hint_used_partner8','sport_hint_used_partner2',
 'sport_hint_used_partner3','sport_hint_used_partner6','sport_hint_used_partner8',
-'econ_hint_used','cook_hint_used','sport_hint_used','pref_helper','pref_tt',
-'pref_helper_male','pref_helper_female','pref_tt_male','pref_tt_female', 'partner1',
-'partner2','partner3','partner4','partner5','partner6','partner7','partner8',
-'partnerf1','partnerf2','partnerf3', 'partnerf4','partnerm1','partnerm2','partnerm3',
-'partnerm4','name','gender','true_id','roll_no','count_participant','p_helping',
-'round2_completed','round3b_completed','form_fields_pref','form_fields_pref2',
-'random','random1','random2','random3','random4','exclude','partner_exclude','prev_hint',
-"helpers_dict","pref_helpers", "pref_female_helpers", "pref_male_helpers","assigned_helpers", "tts", "female_tts", "male_tts"]
+'econ_hint_used','cook_hint_used','sport_hint_used','partner1','partner2','partner3',
+'partner4','partner5','partner6','partner7','partner8','partnerf1','partnerf2',
+'partnerf3', 'partnerf4','partnerm1','partnerm2','partnerm3','partnerm4','name',
+'gender','roll_no','count_participant','round2_completed','round3b_completed',
+'form_fields_pref','form_fields_pref2','random','random1','random2','random3',
+'random4','exclude','partner_exclude','prev_hint','mismatch_econ','mismatch_cook',
+'mismatch_sport','pref_tt','pref_tt_male','pref_tt_female',"helpers_dict","pref_helpers",
+"pref_female_helpers", "pref_male_helpers","assigned_helpers", "tts", "female_tts", "male_tts"]
 SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids']
 
 # ISO-6310 code

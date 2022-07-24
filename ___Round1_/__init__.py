@@ -1350,7 +1350,7 @@ class Sports2Results0(Page):
 
 class WaitPage2(WaitPage):
     title_text = "Waiting for all players to finish"
-    body_text = ""
+    body_text = "It may take time to load the next page, please do not do anything."
 
     @staticmethod
     def is_displayed(player: Player):

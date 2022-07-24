@@ -224,6 +224,30 @@ def set_hints_used(player:Player,partner):
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner8
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
 
+def set_mismatch(player:Player,partner):
+    partner.participant.mismatch_econ = 0
+    partner.participant.mismatch_cook = 0
+    partner.participant.mismatch_sport = 0
+    mismatch_econ = int(partner.participant.hints_given_econ) - int(partner.participant.econ_hint_used)
+    mismatch_cook = int(partner.participant.hints_given_econ) - int(partner.participant.econ_hint_used)
+    mismatch_sport = int(partner.participant.hints_given_econ) - int(partner.participant.econ_hint_used)
+
+    if mismatch_econ > 0:
+        partner.participant.mismatch_econ = "+" + str(mismatch_econ)
+    elif mismatch_econ <= 0:
+        partner.participant.mismatch_econ = mismatch_econ
+
+    if mismatch_cook > 0:
+        partner.participant.mismatch_cook = "+" + str(mismatch_cook)
+    elif mismatch_cook <= 0:
+        partner.participant.mismatch_cook = mismatch_cook
+
+    if mismatch_sport > 0:
+        partner.participant.mismatch_sport = "+" + str(mismatch_sport)
+    elif mismatch_sport <= 0:
+        partner.participant.mismatch_sport = mismatch_sport
+
+    return [partner.participant.mismatch_econ,partner.participant.mismatch_cook,partner.participant.mismatch_sport]
 
 
 # PAGES
@@ -439,7 +463,8 @@ class FinalTable(Page):
         my_previous_helped = set_helped(player)
         hints_given = [set_hints_given(player,partner) for partner in my_previous_helped]
         hints_used = [set_hints_used(player,partner) for partner in my_previous_helped]
-        return dict(my_previous_partners=my_previous_helped,hints_given=hints_given,hints_used=hints_used)
+        mismatch = [set_mismatch(player,partner) for partner in my_previous_helped]
+        return dict(my_previous_partners=my_previous_helped,hints_given=hints_given,hints_used=hints_used,mismatch=mismatch)
 
 def vars_for_template1(player: Player, formfields):
     final = {}

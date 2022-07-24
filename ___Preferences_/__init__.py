@@ -15,7 +15,9 @@ class C(BaseConstants):
     'Rai Sarib Hayat Khan','Muhammad Salman Bin Hamid','Abdul Moeed','Haad Mahmood',
     'Ameera Amir','Alishba Arshad Legari','Areeb Khan','Hamnah Kamran','Khadija Kamran',
     'Fatima Khan','Tabish Shahid','Shahmeer','Aniq Kamran Butt','Rubab Aslam Mian',
-    'Lalarukh Schkoh','Rida Fatima']
+    'Lalarukh Schkoh','Rida Fatima','Muhammad Muaz','Momin','Muhammad Abdullah Khawaja',
+    'Muhammad Ahmad','Hoor Shmail','Muhammad Shariq Pervez','Mustafa Abubakar','Ayesha Ashfaq',
+    'Shaheer Bin Ateeq','Muhammad Raza Khan','Khadija Tariq','Maham Rehman','Faizan Ali','Sarmad Imtiaz']
     RANKINGS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     TOP5 = [1,2,3,4,5]
 

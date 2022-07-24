@@ -5,7 +5,7 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [0,1,1,0,1,0,1,1,0,1,0,1,0,0,1,1,0,0,0,1,0,0,0,1,0,1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,0,0,0,]
+    GENDERS_LIST = [0,1,1,0,1,0,1,1,0,1,0,1,0,0,1,1,0,0,0,1,0,0,0,1,0,1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,1,0,1,1,0,1,1,0,0,1,1,]
     LABELS = ['Ramsha_Azhar','Muhammad_Saood','Abdullah_Mir','Azqa','Mubeen_Ahmad',
     'Momina_Azam','Salem_Hamad','Daniyal_Mansur','Syeda_Laiba_Bukhari','Ahmed_Mujtaba',
     'Fatima_Rana','Abdullah_Shahzad','Zainab_Kamran','Neha_Jameel','Hassan_Masood',
@@ -16,7 +16,9 @@ class C(BaseConstants):
     'Rai_Sarib_Hayat_Khan','Muhammad_Salman_Bin_Hamid','Abdul_Moeed','Haad_Mahmood',
     'Ameera_Amir','Alishba_Arshad_Legari','Areeb_Khan','Hamnah_Kamran','Khadija_Kamran',
     'Fatima_Khan','Tabish_Shahid','Shahmeer','Aniq_Kamran_Butt','Rubab_Aslam_Mian',
-    'Lalarukh_Schkoh','Rida_Fatima']
+    'Lalarukh_Schkoh','Rida_Fatima','Muhammad_Muaz','Momin','Muhammad_Abdullah_Khawaja',
+    'Muhammad_Ahmad','Hoor_Shmail','Muhammad_Shariq_Pervez','Mustafa_Abubakar','Ayesha_Ashfaq',
+    'Shaheer_Bin_Ateeq','Muhammad_Raza_Khan','Khadija_Tariq','Maham_Rehman','Faizan_Ali','Sarmad_Imtiaz']
 
 class Subsession(BaseSubsession):
     pass
@@ -43,10 +45,18 @@ def change_labels(player: Player):
     'Rai Sarib Hayat Khan','Muhammad Salman Bin Hamid','Abdul Moeed','Haad Mahmood',
     'Ameera Amir','Alishba Arshad Legari','Areeb Khan','Hamnah Kamran','Khadija Kamran',
     'Fatima Khan','Tabish Shahid','Shahmeer','Aniq Kamran Butt','Rubab Aslam Mian',
-    'Lalarukh Schkoh','Rida Fatima']
+    'Lalarukh Schkoh','Rida Fatima','Muhammad Muaz','Momin','Muhammad Abdullah Khawaja',
+    'Muhammad Ahmad','Hoor Shmail','Muhammad Shariq Pervez','Mustafa Abubakar','Ayesha Ashfaq',
+    'Shaheer Bin Ateeq','Muhammad Raza Khan','Khadija Tariq','Maham Rehman','Faizan Ali','Sarmad Imtiaz']
     for current, new in zip(C.LABELS, labels):
         if player.participant.label == current.lstrip():
             player.participant.label = new
+
+def set_gender(player: Player):
+    subsession = player.subsession
+    people = dict(zip(C.LABELS,C.GENDERS_LIST))
+    for label in people.keys():
+        player.participant.gender = people[player.participant.label]
 
 def set_players(player: Player):
     subsession = player.subsession
@@ -69,9 +79,9 @@ class Consent(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.name = player.esig
-        player.participant.gender = C.GENDERS_LIST[int(player.id_in_group) - 1]
-        player.participant.roll_no = int(player.roll)
+        player.participant.roll_no = player.roll
         player.participant.count_participant = int(player.id_in_group)
+        set_gender(player)
         change_labels(player)
         set_players(player)
 

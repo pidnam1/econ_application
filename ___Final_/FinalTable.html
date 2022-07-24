@@ -10,22 +10,26 @@ See the below results of your actions as a Helper:
       <tr>
           <th>Subject</th>
           <th>Hints Offered by You</th>
-          <th>Hints Used by Players</th>
+          <th>Hints Requested by Player</th>
+          <th>Hint Mismatch</th>
       </tr>
       <tr>
           <td>Economics</td>
           <td>{{ p.participant.hints_given_econ }}</td>
           <td>{{ p.participant.econ_hint_used }}</td>
+          <td>{{ p.participant.mismatch_econ }}</td>
       </tr>
       <tr>
           <td>Cooking</td>
           <td>{{ p.participant.hints_given_cook }}</td>
           <td>{{ p.participant.cook_hint_used }}</td>
+          <td>{{ p.participant.mismatch_cook }}</td>
       </tr>
       <tr>
           <td>Sports</td>
           <td>{{ p.participant.hints_given_sport }}</td>
           <td>{{ p.participant.sport_hint_used }}</td>
+          <td>{{ p.participant.mismatch_sport }}</td>
       </tr>
   </table>
 {{ endfor }}

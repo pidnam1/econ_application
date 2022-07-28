@@ -15,35 +15,8 @@ PART {{ round }}: Cooking
       <div class="col-sm-7">
         {{ round_number }}.
         {{ formfield 'crt_cooking1_MP' }}
-        <p>
-            You may ask for hints from here:
-        </p>
-        <button type="button" onclick="createHint()">Ask for Hint from Helper</button>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="sweetalert2.all.min.js"></script>
-        <script>
-          function createHint() {
-            liveSend('clicked-button');
-            liveRecv(data);
-          }
-          function liveRecv(data) {
-            if (data.message == "Hint is available, but the helper has not released it") {
-              Swal.fire({
-                position: 'top',
-                html:
-                  '<h5>'+data.message+'</h5>',
-              })
-            }
-            if (data.message != "Hint is available, but the helper has not released it") {
-              Swal.fire({
-                position: 'top',
-                html:
-                  data.message+'<hr>'+
-                  '<h5>Your helper will be notified that you requested a hint.</h5>',
-              })
-            }
-          }
-        </script>
+        <p></p>
+        HINT NOT AVAILABLE
         <p></p>
         {{ formfield 'prob_cook1_MP' }}
         <p>
@@ -95,7 +68,7 @@ PART {{ round }}: Cooking
               <ul>
                 <li>There are 4 questions per subject.</li>
               </ul>
-              <li><b>You have <u>hints</u> on ALL 12 questions</b>.</li>
+              <li><b>You have <u>hints</u> on 3 questions out of 4 in each subject</b>.</li>
               <ul>
                 <li>Hints are cues to help you answer the question.</li>
                 <li>There is <u>no penalty for using a hint</u>.</li>

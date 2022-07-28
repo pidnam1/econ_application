@@ -717,6 +717,30 @@ class Final(Page):
     def is_displayed(player: Player):
         participant = player.participant
         return player.round_number == 12
+    # @staticmethod
+    # def before_next_page(player: Player):
+    #     player.participant.payoff_tt = {}
+    #     player.participant.payoff_helped = {}
+    #     player.participant.payoff_help = {}
+    #
+    #     responses = [player.crt_economics1, player.crt_economics2, player.crt_economics3,
+    #     player.crt_economics4, player.crt_cooking1, player.crt_cooking2, player.crt_cooking3,
+    #     player.crt_cooking4, player.crt_sports1, player.crt_sports2, player.crt_sports3,
+    #     player.crt_sports4]
+    #
+    #     solutions = dict(crt_economics1=3, crt_economics2=3, crt_economics3=4,
+    #     crt_economics4=3, crt_cooking1=3, crt_cooking2=1, crt_cooking3=4, crt_cooking4=2,
+    #     crt_sports1=3, crt_sports2=3, crt_sports3=3, crt_sports4=2)
+    #
+    #     payoff = 0
+    #     i=0
+    #     for value in solutions.values():
+    #         if response[i] == value:
+    #             payoff += 75
+    #         i+=1
+    #
+    #     player.participant.payoff_tt.update({"Round0": payoff})
+
 
 
 page_sequence = [Demographics, Transition, Hints, Economics1, Economics1_Hint,

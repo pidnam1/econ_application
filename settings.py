@@ -26,12 +26,12 @@ SESSION_CONFIGS = [
     #     app_sequence = ['___Preferences_'],
     #     num_demo_participants=21
     # ),
-    dict(
-        name='___Practice_',
-        display_name = "Practice",
-        app_sequence=['___Practice_'],
-        num_demo_participants=21
-    ),
+    # dict(
+    #     name='___Practice_',
+    #     display_name = "Practice",
+    #     app_sequence=['___Practice_'],
+    #     num_demo_participants=21
+    # ),
     # dict(
     #     name='___Round0_',
     #     display_name = "Round 0",
@@ -56,12 +56,12 @@ SESSION_CONFIGS = [
     #     app_sequence=['___Round3b_'],
     #     num_demo_participants=21
     # ),
-    # dict(
-    #     name="___Final_",
-    #     display_name = "Final",
-    #     app_sequence=['___Final_'],
-    #     num_demo_participants=21
-    # ),
+    dict(
+        name="___Final_",
+        display_name = "Final",
+        app_sequence=['___Final_'],
+        num_demo_participants=21
+    ),
     # dict(
     #     name="___Endline_",
     #     display_name = "Endline",
@@ -110,9 +110,11 @@ PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rou
 'partnerf3', 'partnerf4','partnerm1','partnerm2','partnerm3','partnerm4','name',
 'gender','roll_no','count_participant','round2_completed','round3b_completed',
 'form_fields_pref','form_fields_pref2','random','random1','random2','random3',
-'random4','exclude','partner_exclude','prev_hint','mismatch_econ','mismatch_cook',
-'mismatch_sport','pref_tt','pref_tt_male','pref_tt_female',"helpers_dict","pref_helpers",
-"pref_female_helpers", "pref_male_helpers","assigned_helpers", "tts", "female_tts", "male_tts"]
+'random4','random5','random6','random7','random8','exclude','partner_exclude',
+'prev_hint','mismatch_econ','mismatch_cook','mismatch_sport','pref_tt','pref_tt_male',
+'pref_tt_female',"helpers_dict","pref_helpers","pref_female_helpers", "pref_male_helpers",
+"assigned_helpers", "tts", "female_tts", "male_tts",'payoff_tt','payoff_helped',
+'payoff_help','wtp_payment']
 SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids']
 
 # ISO-6310 code
@@ -131,8 +133,13 @@ ROOMS = [
 #    ),
 #    dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
     dict(
-        name='Pilot',
-        display_name="Pilot Room",
+        name='Pilot_1',
+        display_name="Pilot Room 1",
+        participant_label_file='_rooms/labels.txt',
+    ),
+    dict(
+        name='Pilot_2',
+        display_name="Pilot Room 2",
         participant_label_file='_rooms/labels.txt',
     )
 ]

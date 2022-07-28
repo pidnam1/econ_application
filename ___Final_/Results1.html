@@ -1,0 +1,13 @@
+{{ block title }}FINAL{{ endblock }}
+{{ block content }}
+
+    <p>Given the results of the random draws, your final price to pay will be {{ payment }} and the hints you took will not be communicated to the following helpers:</p>
+    {{ for helper in helpers_exclude }}
+      {{ helper }}
+    {{ endfor }}
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

@@ -5,19 +5,26 @@ class C(BaseConstants):
     NAME_IN_URL = '___Preferences_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    PLAYERS = ['Ramsha Azhar','Muhammad Saood','Abdullah Mir','Azqa','Mubeen Ahmad',
-    'Momina Azam','Salem Hamad','Daniyal Mansur','Syeda Laiba Bukhari','Ahmed Mujtaba',
-    'Fatima Rana','Abdullah Shahzad','Zainab Kamran','Neha Jameel','Hassan Masood',
-    'Muhammad Hamza','Laraib Naeem','Maham Ali','Amna Imran','Muhammad Samran Sohail',
-    'Rabia Riaz','Amna Noor','Farriha','Muhammad Taahaa Imtiaz','Sarah Asif Khan',
-    'Mohammad Sheheryar Khan','Saad Munir','Muhammad Usman','Ayra Arshad',
-    'Muhammad Swaleh Shaheen Rafi','Muhammad Wahab Malik','Muhammad Anas Khan',
-    'Rai Sarib Hayat Khan','Muhammad Salman Bin Hamid','Abdul Moeed','Haad Mahmood',
-    'Ameera Amir','Alishba Arshad Legari','Areeb Khan','Hamnah Kamran','Khadija Kamran',
-    'Fatima Khan','Tabish Shahid','Shahmeer','Aniq Kamran Butt','Rubab Aslam Mian',
-    'Lalarukh Schkoh','Rida Fatima','Muhammad Muaz','Momin','Muhammad Abdullah Khawaja',
-    'Muhammad Ahmad','Hoor Shmail','Muhammad Shariq Pervez','Mustafa Abubakar','Ayesha Ashfaq',
-    'Shaheer Bin Ateeq','Muhammad Raza Khan','Khadija Tariq','Maham Rehman','Faizan Ali','Sarmad Imtiaz']
+    PLAYERS = ['Abdul Mateen Khan','Abdullah Bin Umar','Abdullah Irfan','Abdullah Saeed Mirza',
+    'Ali Imran','Alishba Sajjad','Anushey Rehman','Arslan Asif','Asad Kashif','Ather Saeed',
+    'Bisma Nadeem','Fahmeen Javed','Fatima Sheiklh','Haadi Mashood','Hamza Shafqat',
+    'Hamza Umar','Humayd Haider','Junaid Mir','Layba Mazhar','Maryam Toor','Meeran Khan',
+    'Mohad Rehan','Momin Ahsan','Muhammad Aayan Siddiq','Muhammad Ahsan','Muhammad Aneeq Tahir',
+    'Muhammad Hur Abbas','Muhammad Mahad Tanveer','Muhammad Numan','Muhammad Salman',
+    'Muhammad Sher Dil','Muhammad Sufian Masoom','Muhammad Umer Farooq','Muhammad Usama Haroon',
+    'Muhammad Usman Javed','Muqadas Fatima','Mustafa Abubaker','Nabiha Omar Qazi',
+    'Rida Faisal','Sahibzada Raza Hassan Khan','Shahzada Muhammad Rohaan','Uzair Zubair',
+    'Zain Faisal','Zurain Fatima','Abdul Wasay','Abdullah Arshad','Abdullah Kashif Bhatti',
+    'Abu Sufian','Ahmad Farhan','Ahmed Wasif Bashir','Ali Ahmed Danish','Aman Faisal',
+    'Arslan Qadeer','Ayesha Ashfaq','Farriha Tahir Malik','Fatima Sarwar','Fatima Mumtaz',
+    'Fatima Rana','Fiza Yasir','Hassan Javaid','Hassan Raza Bhatti','Hira Mukhtar',
+    'Hussain Naveed Tarar','Ibrahim Akram Cheema','Maham Fateh','Mehar Tariq Siraj',
+    'Minahil Waqar','Mohammad Awais Bakhshi','Mohammad Hanzala','Muhammad Alim Tahir',
+    'Muhammad Aliyan Khan','Muhammad Anas Nadeem','Muhammad Bilal Tariq','Muhammad Hassaan Bin Shoaib',
+    'Muhammad Ibrahim Chaudhry','Muhammad Munimureshi','Muhammad Naeem Baig','Muhammad Rahim Azeem',
+    'Muhammad Raza Khan','Muhammad Talha Mehmood','Mustafa Saeed','Nouman Aslam',
+    'Sameen Sohail','Talha Manzoor','Umar Imran','Zahb Anjum Butt','Zainab Kamran',
+    'Zam Zam Habib','Zain Aziz Khawaja','Musa Tariq','Alishba Zahid']
     RANKINGS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     TOP5 = [1,2,3,4,5]
 

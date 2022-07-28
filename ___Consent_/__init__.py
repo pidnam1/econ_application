@@ -5,20 +5,47 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [0,1,1,0,1,0,1,1,0,1,0,1,0,0,1,1,0,0,0,1,0,0,0,1,0,1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,1,0,1,1,0,1,1,0,0,1,1,]
-    LABELS = ['Ramsha_Azhar','Muhammad_Saood','Abdullah_Mir','Azqa','Mubeen_Ahmad',
-    'Momina_Azam','Salem_Hamad','Daniyal_Mansur','Syeda_Laiba_Bukhari','Ahmed_Mujtaba',
-    'Fatima_Rana','Abdullah_Shahzad','Zainab_Kamran','Neha_Jameel','Hassan_Masood',
-    'Muhammad_Hamza','Laraib_Naeem','Maham_Ali','Amna_Imran','Muhammad_Samran_Sohail',
-    'Rabia_Riaz','Amna_Noor','Farriha','Muhammad_Taahaa_Imtiaz','Sarah_Asif_Khan',
-    'Mohammad_Sheheryar_Khan','Saad_Munir','Muhammad_Usman','Ayra_Arshad',
-    'Muhammad_Swaleh_Shaheen_Rafi','Muhammad_Wahab_Malik','Muhammad_Anas_Khan',
-    'Rai_Sarib_Hayat_Khan','Muhammad_Salman_Bin_Hamid','Abdul_Moeed','Haad_Mahmood',
-    'Ameera_Amir','Alishba_Arshad_Legari','Areeb_Khan','Hamnah_Kamran','Khadija_Kamran',
-    'Fatima_Khan','Tabish_Shahid','Shahmeer','Aniq_Kamran_Butt','Rubab_Aslam_Mian',
-    'Lalarukh_Schkoh','Rida_Fatima','Muhammad_Muaz','Momin','Muhammad_Abdullah_Khawaja',
-    'Muhammad_Ahmad','Hoor_Shmail','Muhammad_Shariq_Pervez','Mustafa_Abubakar','Ayesha_Ashfaq',
-    'Shaheer_Bin_Ateeq','Muhammad_Raza_Khan','Khadija_Tariq','Maham_Rehman','Faizan_Ali','Sarmad_Imtiaz']
+    GENDERS_LIST = [1,1,1,1,1,0,0,1,1,1,0,0,0,1,1,1,0,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,0,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0,]
+    LABELS = ['Abdul_Mateen_Khan','Abdullah_Bin_Umar','Abdullah_Irfan','Abdullah_Saeed_Mirza',
+    'Ali_Imran','Alishba_Sajjad','Anushey_Rehman','Arslan_Asif','Asad_Kashif','Ather_Saeed',
+    'Bisma_Nadeem','Fahmeen_Javed','Fatima_Sheiklh','Haadi_Mashood','Hamza_Shafqat',
+    'Hamza_Umar','Humayd_Haider','Junaid_Mir','Layba_Mazhar','Maryam_Toor','Meeran_Khan',
+    'Mohad_Rehan','Momin_Ahsan','Muhammad_Aayan_Siddiq','Muhammad_Ahsan','Muhammad_Aneeq_Tahir',
+    'Muhammad_Hur_Abbas','Muhammad_Mahad_Tanveer','Muhammad_Numan','Muhammad_Salman',
+    'Muhammad_Sher_Dil','Muhammad_Sufian_Masoom','Muhammad_Umer_Farooq','Muhammad_Usama_Haroon',
+    'Muhammad_Usman_Javed','Muqadas_Fatima','Mustafa_Abubaker','Nabiha_Omar_Qazi',
+    'Rida_Faisal','Sahibzada_Raza_Hassan_Khan','Shahzada_Muhammad_Rohaan','Uzair_Zubair',
+    'Zain_Faisal','Zurain_Fatima','Abdul_Wasay','Abdullah_Arshad','Abdullah_Kashif_Bhatti',
+    'Abu_Sufian','Ahmad_Farhan','Ahmed_Wasif_Bashir','Ali_Ahmed_Danish','Aman_Faisal',
+    'Arslan_Qadeer','Ayesha_Ashfaq','Farriha_Tahir_Malik','Fatima_Sarwar','Fatima_Mumtaz',
+    'Fatima_Rana','Fiza_Yasir','Hassan_Javaid','Hassan_Raza_Bhatti','Hira_Mukhtar',
+    'Hussain_Naveed_Tarar','Ibrahim_Akram_Cheema','Maham_Fateh','Mehar_Tariq_Siraj',
+    'Minahil_Waqar','Mohammad_Awais_Bakhshi','Mohammad_Hanzala','Muhammad_Alim_Tahir',
+    'Muhammad_Aliyan_Khan','Muhammad_Anas_Nadeem','Muhammad_Bilal_Tariq','Muhammad_Hassaan_Bin_Shoaib',
+    'Muhammad_Ibrahim_Chaudhry','Muhammad_Munimureshi','Muhammad_Naeem_Baig','Muhammad_Rahim_Azeem',
+    'Muhammad_Raza_Khan','Muhammad_Talha_Mehmood','Mustafa_Saeed','Nouman_Aslam',
+    'Sameen_Sohail','Talha_Manzoor','Umar_Imran','Zahb_Anjum_Butt','Zainab_Kamran',
+    'Zam_Zam_Habib','Zain_Aziz_Khawaja','Musa_Tariq','Alishba_Zahid']
+    PLAYERS = ['Abdul Mateen Khan','Abdullah Bin Umar','Abdullah Irfan','Abdullah Saeed Mirza',
+    'Ali Imran','Alishba Sajjad','Anushey Rehman','Arslan Asif','Asad Kashif','Ather Saeed',
+    'Bisma Nadeem','Fahmeen Javed','Fatima Sheiklh','Haadi Mashood','Hamza Shafqat',
+    'Hamza Umar','Humayd Haider','Junaid Mir','Layba Mazhar','Maryam Toor','Meeran Khan',
+    'Mohad Rehan','Momin Ahsan','Muhammad Aayan Siddiq','Muhammad Ahsan','Muhammad Aneeq Tahir',
+    'Muhammad Hur Abbas','Muhammad Mahad Tanveer','Muhammad Numan','Muhammad Salman',
+    'Muhammad Sher Dil','Muhammad Sufian Masoom','Muhammad Umer Farooq','Muhammad Usama Haroon',
+    'Muhammad Usman Javed','Muqadas Fatima','Mustafa Abubaker','Nabiha Omar Qazi',
+    'Rida Faisal','Sahibzada Raza Hassan Khan','Shahzada Muhammad Rohaan','Uzair Zubair',
+    'Zain Faisal','Zurain Fatima','Abdul Wasay','Abdullah Arshad','Abdullah Kashif Bhatti',
+    'Abu Sufian','Ahmad Farhan','Ahmed Wasif Bashir','Ali Ahmed Danish','Aman Faisal',
+    'Arslan Qadeer','Ayesha Ashfaq','Farriha Tahir Malik','Fatima Sarwar','Fatima Mumtaz',
+    'Fatima Rana','Fiza Yasir','Hassan Javaid','Hassan Raza Bhatti','Hira Mukhtar',
+    'Hussain Naveed Tarar','Ibrahim Akram Cheema','Maham Fateh','Mehar Tariq Siraj',
+    'Minahil Waqar','Mohammad Awais Bakhshi','Mohammad Hanzala','Muhammad Alim Tahir',
+    'Muhammad Aliyan Khan','Muhammad Anas Nadeem','Muhammad Bilal Tariq','Muhammad Hassaan Bin Shoaib',
+    'Muhammad Ibrahim Chaudhry','Muhammad Munimureshi','Muhammad Naeem Baig','Muhammad Rahim Azeem',
+    'Muhammad Raza Khan','Muhammad Talha Mehmood','Mustafa Saeed','Nouman Aslam',
+    'Sameen Sohail','Talha Manzoor','Umar Imran','Zahb Anjum Butt','Zainab Kamran',
+    'Zam Zam Habib','Zain Aziz Khawaja','Musa Tariq','Alishba Zahid']
 
 class Subsession(BaseSubsession):
     pass
@@ -35,26 +62,13 @@ class Player(BasePlayer):
     roll = models.StringField(label='Please type your rollnumber')
 
 def change_labels(player: Player):
-    labels = ['Ramsha Azhar','Muhammad Saood','Abdullah Mir','Azqa','Mubeen Ahmad',
-    'Momina Azam','Salem Hamad','Daniyal Mansur','Syeda Laiba Bukhari','Ahmed Mujtaba',
-    'Fatima Rana','Abdullah Shahzad','Zainab Kamran','Neha Jameel','Hassan Masood',
-    'Muhammad Hamza','Laraib Naeem','Maham Ali','Amna Imran','Muhammad Samran Sohail',
-    'Rabia Riaz','Amna Noor','Farriha','Muhammad Taahaa Imtiaz','Sarah Asif Khan',
-    'Mohammad Sheheryar Khan','Saad Munir','Muhammad Usman','Ayra Arshad',
-    'Muhammad Swaleh Shaheen Rafi','Muhammad Wahab Malik','Muhammad Anas Khan',
-    'Rai Sarib Hayat Khan','Muhammad Salman Bin Hamid','Abdul Moeed','Haad Mahmood',
-    'Ameera Amir','Alishba Arshad Legari','Areeb Khan','Hamnah Kamran','Khadija Kamran',
-    'Fatima Khan','Tabish Shahid','Shahmeer','Aniq Kamran Butt','Rubab Aslam Mian',
-    'Lalarukh Schkoh','Rida Fatima','Muhammad Muaz','Momin','Muhammad Abdullah Khawaja',
-    'Muhammad Ahmad','Hoor Shmail','Muhammad Shariq Pervez','Mustafa Abubakar','Ayesha Ashfaq',
-    'Shaheer Bin Ateeq','Muhammad Raza Khan','Khadija Tariq','Maham Rehman','Faizan Ali','Sarmad Imtiaz']
-    for current, new in zip(C.LABELS, labels):
+    for current, new in zip(C.LABELS, C.PLAYERS):
         if player.participant.label == current.lstrip():
             player.participant.label = new
 
 def set_gender(player: Player):
     subsession = player.subsession
-    people = dict(zip(C.LABELS,C.GENDERS_LIST))
+    people = dict(zip(C.PLAYERS,C.GENDERS_LIST))
     for label in people.keys():
         player.participant.gender = people[player.participant.label]
 
@@ -81,8 +95,8 @@ class Consent(Page):
         player.participant.name = player.esig
         player.participant.roll_no = player.roll
         player.participant.count_participant = int(player.id_in_group)
-        set_gender(player)
         change_labels(player)
+        set_gender(player)
         set_players(player)
 
 class WaitPage1(WaitPage):

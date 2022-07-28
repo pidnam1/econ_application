@@ -6,7 +6,10 @@ class C(BaseConstants):
     NAME_IN_URL = '___Endline_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-
+    WTP = [dict(name='wtp_econ1'),dict(name='wtp_cook1'),dict(name='wtp_sport1'),
+    dict(name='wtp_econ2'),dict(name='wtp_cook2'),dict(name='wtp_sport2'),dict(name='wtp_econ3'),
+    dict(name='wtp_cook3'),dict(name='wtp_sport3'),dict(name='wtp_econ4'),dict(name='wtp_cook4'),
+    dict(name='wtp_sport4')]
 
 class Subsession(BaseSubsession):
     pass
@@ -114,7 +117,7 @@ class Player(BasePlayer):
     friend_count_other = models.IntegerField()
     friend_uni = models.IntegerField()
     #MAKE ANY FORMFIELDS NEEDED FOR FRIEND TABLE
-    friend_roll1 = models.IntegerField(label='', blank=True)
+    friend_roll1 = models.IntegerField(label='')
     friend_roll2 = models.IntegerField(label='', blank=True)
     friend_roll3 = models.IntegerField(label='', blank=True)
     friend_roll4 = models.IntegerField(label='', blank=True)
@@ -124,7 +127,7 @@ class Player(BasePlayer):
     friend_roll8 = models.IntegerField(label='', blank=True)
     friend_roll9 = models.IntegerField(label='', blank=True)
     friend_roll10 = models.IntegerField(label='', blank=True)
-    friend_name1 = models.StringField(label='', blank=True)
+    friend_name1 = models.StringField(label='')
     friend_name2 = models.StringField(label='', blank=True)
     friend_name3 = models.StringField(label='', blank=True)
     friend_name4 = models.StringField(label='', blank=True)
@@ -134,7 +137,7 @@ class Player(BasePlayer):
     friend_name8 = models.StringField(label='', blank=True)
     friend_name9 = models.StringField(label='', blank=True)
     friend_name10 = models.StringField(label='', blank=True)
-    friend_section1 = models.StringField(label='', blank=True)
+    friend_section1 = models.StringField(label='')
     friend_section2 = models.StringField(label='', blank=True)
     friend_section3 = models.StringField(label='', blank=True)
     friend_section4 = models.StringField(label='', blank=True)
@@ -144,7 +147,7 @@ class Player(BasePlayer):
     friend_section8 = models.StringField(label='', blank=True)
     friend_section9 = models.StringField(label='', blank=True)
     friend_section10 = models.StringField(label='', blank=True)
-    friend_years1 = models.IntegerField(label='', blank=True)
+    friend_years1 = models.IntegerField(label='')
     friend_years2 = models.IntegerField(label='', blank=True)
     friend_years3 = models.IntegerField(label='', blank=True)
     friend_years4 = models.IntegerField(label='', blank=True)
@@ -254,10 +257,10 @@ class Player(BasePlayer):
     )
 
     amount_notgame = models.IntegerField(
-        label='Out of Rs.300, amount NOT to be used in the game', min=0, max=300,
+        label='Out of Rs.100, amount NOT to be used in the game', min=0, max=100,
     )
     amount_game = models.IntegerField(
-        label='Out of Rs.300, amount to be used in the game', min=0, max=300,
+        label='Out of Rs.100, amount to be used in the game', min=0, max=100,
     )
     gender = models.StringField(
         choices=[['Male', 'Male'], ['Female', 'Female']],
@@ -656,29 +659,48 @@ class MultiplePriceMale(Page):
                 break
         return dict(mr=mr.participant.label.upper())
 
+def vars_for_template1(player: Player):
+    g = player.group
+    arr = [player.participant.partner4, player.participant.partner7, player.participant.partner1,
+           player.participant.partner5]
+    string_arr = ['partner4', 'partner7', 'partner1', 'partner5']
+    final = {}
+    input = []
+    count = 0
+    for i, j in zip(arr, string_arr):
+        if i != 0:
+            if j == string_arr[0]:
+                input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ1', 'wtp_cook1', 'wtp_sport1']))
+                count+=1
+            if j == string_arr[1]:
+                input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ2', 'wtp_cook2', 'wtp_sport2']))
+                count+=1
+            if j == string_arr[2]:
+                input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ3', 'wtp_cook3', 'wtp_sport3']))
+                count+=1
+            if j == string_arr[3]:
+                input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ4', 'wtp_cook4', 'wtp_sport4']))
+                count+=1
+    final.update(input=input, count=count)
+    return final
+
 class WTP_Subject(Page):
     form_model = 'player'
     form_fields = ['wtp_econ1','wtp_cook1','wtp_sport1','wtp_econ2','wtp_cook2','wtp_sport2','wtp_econ3','wtp_cook3','wtp_sport3','wtp_econ4','wtp_cook4','wtp_sport4']
     @staticmethod
     def vars_for_template(player: Player):
-        g = player.group
-        arr = [player.participant.partner4, player.participant.partner7, player.participant.partner1,
-               player.participant.partner5]
-        string_arr = ['partner4', 'partner7', 'partner1', 'partner5']
-        final = {}
-        input = []
-        for i, j in zip(arr, string_arr):
-            if i != 0:
-                if j == string_arr[0]:
-                    input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ1', 'wtp_cook1', 'wtp_sport1']))
-                if j == string_arr[1]:
-                    input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ2', 'wtp_cook2', 'wtp_sport2']))
-                if j == string_arr[2]:
-                    input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ3', 'wtp_cook3', 'wtp_sport3']))
-                if j == string_arr[3]:
-                    input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ4', 'wtp_cook4', 'wtp_sport4']))
-        final.update(input=input)
+        final = vars_for_template1(player)
         return final
+    @staticmethod
+    def error_message(player: Player, values):
+        num_selected = 0
+        for field in C.WTP:
+            if values[field['name']]:
+                num_selected += 1
+        final = vars_for_template1(player)
+        count = final["count"]
+        if num_selected < 2*count:
+            return "Please properly fill out rankings"
 
 
 #Section C
@@ -710,8 +732,8 @@ class AmountGame(Page):
     @staticmethod
     def error_message(player: Player, values):
         allvalues = sum(values.values())
-        if allvalues != 300:
-            return "Ensure that values add to 300 Rs."
+        if allvalues != 100:
+            return "Ensure that values add to 100 Rs."
 
 class BasicInfo(Page):
     form_model = 'player'

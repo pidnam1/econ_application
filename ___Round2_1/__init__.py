@@ -2018,32 +2018,32 @@ class Economics3_MP(Page):
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics3_MP','prob_econ3_MP']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner4 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: 3 out of 3.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.econ_hint_requests_partner4 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: 3 out of 3.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Economics3_MP_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner4)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Economics3_MP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_econ3_MP']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Economics3_MP_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner4)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Economics3_MP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_econ3_MP']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Economics4_MP(Page):
     form_model = 'player'
@@ -2094,43 +2094,38 @@ class Cooking1_MP(Page):
         partner = group.get_player_by_id(player.participant.partner4)
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
     @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner4)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
         return (player.round_number == participant.task_rounds2['Cooking1_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking1_MP','prob_cook1_MP']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner4 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Could make you cry.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.cook_hint_requests_partner4 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Could make you cry.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Cooking1_MP_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner4)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Cooking1_MP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_cook1_MP']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Cooking1_MP_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner4)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Cooking1_MP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_cook1_MP']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Cooking2_MP(Page):
     form_model = 'player'
@@ -2309,32 +2304,32 @@ class Sports2_MP(Page):
         return (player.round_number == participant.task_rounds2['Sports2_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     def get_form_fields(player):
         return ['crt_sports2_MP','prob_sport2_MP']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner4 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Go kiwis.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.sport_hint_requests_partner4 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Go kiwis.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Sports2_MP_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner4)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Sports2_MP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_sport2_MP']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Sports2_MP_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner4)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Sports2_MP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_sport2_MP']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Sports3_MP(Page):
     form_model = 'player'
@@ -2551,32 +2546,32 @@ class Economics3_MR(Page):
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics3_MR','prob_econ3_MR']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner7 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: More, exactly, less.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.econ_hint_requests_partner7 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: More, exactly, less.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Economics3_MR_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner7)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Economics3_MR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_econ3_MR']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Economics3_MR_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner7)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Economics3_MR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_econ3_MR']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Economics4_MR(Page):
     form_model = 'player'
@@ -2633,32 +2628,32 @@ class Cooking1_MR(Page):
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking1_MR','prob_cook1_MR']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner7 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Burger patti.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.cook_hint_requests_partner7 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Burger patti.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Cooking1_MR_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner7)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Cooking1_MR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_cook1_MR']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Cooking1_MR_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner7)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Cooking1_MR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_cook1_MR']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Cooking2_MR(Page):
     form_model = 'player'
@@ -2837,32 +2832,32 @@ class Sports2_MR(Page):
         return (player.round_number == participant.task_rounds2['Sports2_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     def get_form_fields(player):
         return ['crt_sports2_MR','prob_sport2_MR']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner7 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Rhymes with falafa.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.sport_hint_requests_partner7 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Rhymes with falafa.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Sports2_MR_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner7)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Sports2_MR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_sport2_MR']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Sports2_MR_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner7)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Sports2_MR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_sport2_MR']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Sports3_MR(Page):
     form_model = 'player'
@@ -3080,32 +3075,32 @@ class Economics3_WP(Page):
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics3_WP','prob_econ3_WP']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner1 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Both consumer side.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.econ_hint_requests_partner1 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Both consumer side.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Economics3_WP_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner1)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Economics3_WP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_econ3_WP']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Economics3_WP_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner1)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Economics3_WP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_econ3_WP']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Economics4_WP(Page):
     form_model = 'player'
@@ -3162,32 +3157,32 @@ class Cooking1_WP(Page):
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking1_WP','prob_cook1_WP']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner1 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Green, red, yellow and black lentils.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.cook_hint_requests_partner1 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Green, red, yellow and black lentils.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Cooking1_WP_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner1)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Cooking1_WP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_cook1_WP']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Cooking1_WP_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner1)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Cooking1_WP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_cook1_WP']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Cooking2_WP(Page):
     form_model = 'player'
@@ -3366,32 +3361,32 @@ class Sports2_WP(Page):
         return (player.round_number == participant.task_rounds2['Sports2_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     def get_form_fields(player):
         return ['crt_sports2_WP','prob_sport2_WP']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner1 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Number of days in a week.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.sport_hint_requests_partner1 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Number of days in a week.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Sports2_WP_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner1)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Sports2_WP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_sport2_WP']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Sports2_WP_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner1)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Sports2_WP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_sport2_WP']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Sports3_WP(Page):
     form_model = 'player'
@@ -3609,32 +3604,32 @@ class Economics3_WR(Page):
     @staticmethod
     def get_form_fields(player):
         return ['crt_economics3_WR','prob_econ3_WR']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner5 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Only demand increases.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.econ_hint_requests_partner5 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Only demand increases.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Economics3_WR_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner5)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Economics3_WR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_econ3_WR']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Economics3_WR_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner5)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Economics3_WR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_econ3_WR']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Economics4_WR(Page):
     form_model = 'player'
@@ -3691,32 +3686,32 @@ class Cooking1_WR(Page):
     @staticmethod
     def get_form_fields(player):
         return ['crt_cooking1_WR','prob_cook1_WR']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner5 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Light a fire.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.cook_hint_requests_partner5 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Light a fire.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Cooking1_WR_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner5)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Cooking1_WR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_cook1_WR']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Cooking1_WR_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner5)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Cooking1_WR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_cook1_WR']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Cooking2_WR(Page):
     form_model = 'player'
@@ -3895,32 +3890,32 @@ class Sports2_WR(Page):
         return (player.round_number == participant.task_rounds2['Sports2_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     def get_form_fields(player):
         return ['crt_sports2_WR','prob_sport2_WR']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner5 += 1
-            player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Paul Samuelson was a very famous economist.")}
+    # @staticmethod
+    # def live_method(player: Player, data):
+    #     if data == 'clicked-button':
+    #         player.participant.sport_hint_requests_partner5 += 1
+    #         player.participant.prev_hint = 1
+    #         return {player.id_in_group: dict(message = "Hint: Paul Samuelson was a very famous economist.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-class Sports2_WR_Hint(Page):
-    form_model = 'player'
-    @staticmethod
-    def vars_for_template(player: Player):
-        group = player.group
-        partner = group.get_player_by_id(player.participant.partner5)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds2['Sports2_WR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
-    @staticmethod
-    def get_form_fields(player):
-        player.participant.prev_hint = 0
-        return ['helpful_hint_sport2_WR']
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class Sports2_WR_Hint(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         group = player.group
+#         partner = group.get_player_by_id(player.participant.partner5)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round2_completed)
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds2['Sports2_WR']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
+#     @staticmethod
+#     def get_form_fields(player):
+#         player.participant.prev_hint = 0
+#         return ['helpful_hint_sport2_WR']
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 class Sports3_WR(Page):
     form_model = 'player'
@@ -4013,23 +4008,87 @@ class Final(Page):
     @staticmethod
     def vars_for_template(player:Player):
         return dict(round=player.participant.round2_completed)
+    # @staticmethod
+    # def before_next_page(player: Player):
+    #     responses_MP = [player.crt_economics1_MP, player.crt_economics2_MP, player.crt_economics3_MP,
+    #     player.crt_economics4_MP, player.crt_cooking1_MP, player.crt_cooking2_MP, player.crt_cooking3_MP,
+    #     player.crt_cooking4_MP, player.crt_sports1_MP, player.crt_sports2_MP, player.crt_sports3_MP,
+    #     player.crt_sports4_MP]
+    #     responses_MR = [player.crt_economics1_MR, player.crt_economics2_MR, player.crt_economics3_MR,
+    #     player.crt_economics4_MR, player.crt_cooking1_MR, player.crt_cooking2_MR, player.crt_cooking3_MR,
+    #     player.crt_cooking4_MR, player.crt_sports1_MR, player.crt_sports2_MR, player.crt_sports3_MR,
+    #     player.crt_sports4_MR]
+    #     responses_WP = [player.crt_economics1_WP, player.crt_economics2_WP, player.crt_economics3_WP,
+    #     player.crt_economics4_WP, player.crt_cooking1_WP, player.crt_cooking2_WP, player.crt_cooking3_WP,
+    #     player.crt_cooking4_WP, player.crt_sports1_WP, player.crt_sports2_WP, player.crt_sports3_WP,
+    #     player.crt_sports4_WP]
+    #     responses_WR = [player.crt_economics1_WR, player.crt_economics2_WR, player.crt_economics3_WR,
+    #     player.crt_economics4_WR, player.crt_cooking1_WR, player.crt_cooking2_WR, player.crt_cooking3_WR,
+    #     player.crt_cooking4_WR, player.crt_sports1_WR, player.crt_sports2_WR, player.crt_sports3_WR,
+    #     player.crt_sports4_WR]
+    #
+    #     solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=3, crt_economics3_MP=4,
+    #     crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=4,
+    #     crt_cooking4_MP=1, crt_sports1_MP=1, crt_sports2_MP=3, crt_sports3_MP=4,
+    #     crt_sports4_MP=2)
+    #     solutions_MR = dict(crt_economics1_MR=4, crt_economics2_MR=3, crt_economics3_MR=4,
+    #     crt_economics4_MR=1, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
+    #     crt_cooking4_MR=1, crt_sports1_MR=1, crt_sports2_MR=2, crt_sports3_MR=3,
+    #     crt_sports4_MR=4)
+    #     solutions_WP = dict(crt_economics1_WP=1, crt_economics2_WP=4, crt_economics3_WP=3,
+    #     crt_economics4_WP=2, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
+    #     crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
+    #     crt_sports4_WP=1)
+    #     solutions_WR = dict(crt_economics1_WR=1, crt_economics2_WR=1, crt_economics3_WR=3,
+    #     crt_economics4_WR=4, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
+    #     crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
+    #     crt_sports4_WR=3)
+    #
+    #     payoff_MP = 0
+    #     i=0
+    #     for value in solutions_MP.values():
+    #         if responses_MP[i] == value:
+    #             payoff_MP += 75
+    #         i+=1
+    #
+    #     payoff_MR = 0
+    #     j=0
+    #     for value in solutions_MR.values():
+    #         if responses_MR[j] == value:
+    #             payoff_MR += 75
+    #         j+=1
+    #
+    #     payoff_WP = 0
+    #     k=0
+    #     for value in solutions_WP.values():
+    #         if responses_WP[k] == value:
+    #             payoff_WP += 75
+    #         k+=1
+    #
+    #     payoff_WR = 0
+    #     l=0
+    #     for value in solutions_WR.values():
+    #         if responses_WR[l] == value:
+    #             payoff_WR += 75
+    #         l+=1
+    #
+    #     player.participant.payoff_tt.update({"Round2_MP": payoff_MP, "Round2_MR": payoff_MR, "Round2_WP": payoff_WP, "Round2_WR": payoff_WR})
+    #     player.participant.payoff_helped.update({player.participant.partner4: payoff_MP, player.participant.partner7: payoff_MR, player.participant.partner1: payoff_WP, player.participant.partner5: payoff_WR})
 
 page_sequence = [Demographics, Transition_MP, Hints_MP, Economics1_MP, Economics1_MP_Hint,
-Economics2_MP, Economics2_MP_Hint, Economics3_MP, Economics3_MP_Hint, Economics4_MP,
-Economics4_MP_Hint, Cooking1_MP, Cooking1_MP_Hint, Cooking2_MP, Cooking2_MP_Hint,
-Cooking3_MP, Cooking3_MP_Hint, Cooking4_MP, Cooking4_MP_Hint, Sports1_MP, Sports1_MP_Hint,
-Sports2_MP, Sports2_MP_Hint, Sports3_MP, Sports3_MP_Hint, Sports4_MP, Sports4_MP_Hint,
-Transition_MR, Hints_MR, Economics1_MR, Economics1_MR_Hint, Economics2_MR, Economics2_MR_Hint,
-Economics3_MR, Economics3_MR_Hint, Economics4_MR, Economics4_MR_Hint, Cooking1_MR,
-Cooking1_MR_Hint, Cooking2_MR, Cooking2_MR_Hint, Cooking3_MR, Cooking3_MR_Hint,
-Cooking4_MR, Cooking4_MR_Hint, Sports1_MR, Sports1_MR_Hint, Sports2_MR, Sports2_MR_Hint,
-Sports3_MR, Sports3_MR_Hint, Sports4_MR, Sports4_MR_Hint, Transition_WP, Hints_WP,
-Economics1_WP, Economics1_WP_Hint, Economics2_WP, Economics2_WP_Hint, Economics3_WP,
-Economics3_WP_Hint, Economics4_WP, Economics4_WP_Hint, Cooking1_WP, Cooking1_WP_Hint,
+Economics2_MP, Economics2_MP_Hint, Economics3_MP, Economics4_MP, Economics4_MP_Hint,
+Cooking1_MP, Cooking2_MP, Cooking2_MP_Hint,Cooking3_MP, Cooking3_MP_Hint, Cooking4_MP,
+Cooking4_MP_Hint, Sports1_MP, Sports1_MP_Hint, Sports2_MP, Sports3_MP, Sports3_MP_Hint,
+Sports4_MP, Sports4_MP_Hint, Transition_MR, Hints_MR, Economics1_MR, Economics1_MR_Hint,
+Economics2_MR, Economics2_MR_Hint, Economics3_MR, Economics4_MR, Economics4_MR_Hint, Cooking1_MR,
+Cooking2_MR, Cooking2_MR_Hint, Cooking3_MR, Cooking3_MR_Hint, Cooking4_MR, Cooking4_MR_Hint,
+Sports1_MR, Sports1_MR_Hint, Sports2_MR, Sports3_MR, Sports3_MR_Hint, Sports4_MR,
+Sports4_MR_Hint, Transition_WP, Hints_WP, Economics1_WP, Economics1_WP_Hint, Economics2_WP,
+Economics2_WP_Hint, Economics3_WP, Economics4_WP, Economics4_WP_Hint, Cooking1_WP,
 Cooking2_WP, Cooking2_WP_Hint, Cooking3_WP, Cooking3_WP_Hint, Cooking4_WP, Cooking4_WP_Hint,
-Sports1_WP, Sports1_WP_Hint, Sports2_WP, Sports2_WP_Hint, Sports3_WP, Sports3_WP_Hint,
-Sports4_WP, Sports4_WP_Hint, Transition_WR, Hints_WR, Economics1_WR, Economics1_WR_Hint,
-Economics2_WR, Economics2_WR_Hint, Economics3_WR, Economics3_WR_Hint, Economics4_WR,
-Economics4_WR_Hint, Cooking1_WR, Cooking1_WR_Hint, Cooking2_WR, Cooking2_WR_Hint,
-Cooking3_WR, Cooking3_WR_Hint, Cooking4_WR, Cooking4_WR_Hint, Sports1_WR, Sports1_WR_Hint,
-Sports2_WR, Sports2_WR_Hint, Sports3_WR, Sports3_WR_Hint, Sports4_WR, Sports4_WR_Hint, Final]
+Sports1_WP, Sports1_WP_Hint, Sports2_WP, Sports3_WP, Sports3_WP_Hint, Sports4_WP,
+Sports4_WP_Hint, Transition_WR, Hints_WR, Economics1_WR, Economics1_WR_Hint, Economics2_WR,
+Economics2_WR_Hint, Economics3_WR, Economics4_WR, Economics4_WR_Hint, Cooking1_WR,
+Cooking2_WR, Cooking2_WR_Hint, Cooking3_WR, Cooking3_WR_Hint, Cooking4_WR, Cooking4_WR_Hint,
+Sports1_WR, Sports1_WR_Hint, Sports2_WR, Sports3_WR, Sports3_WR_Hint, Sports4_WR,
+Sports4_WR_Hint, Final]

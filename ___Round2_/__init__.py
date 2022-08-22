@@ -1882,10 +1882,11 @@ class Demographics(Page):
     def vars_for_template(player:Player):
         player.participant.prev_hint = 0
         return dict(round=player.participant.round2_completed)
-    # def before_next_page(player: Player, timeout_happened):
-    #     participant = player.participant
-    #     import time
-    #     participant.expiry = time.time() + 4800
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP = dict()
+        player.participant.responses_2_MR = dict()
+        player.participant.responses_2_WP = dict()
+        player.participant.responses_2_WR = dict()
 
 class Transition_MP(Page):
     form_model = 'player'
@@ -1918,6 +1919,18 @@ class Hints_MP(Page):
         g = player.group
         partner = g.get_player_by_id(player.participant.partner4)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round2_completed)
+
+class Transition_MP0(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds2['MP']) and (participant.partner4 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner4)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round2_completed)
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
@@ -1943,6 +1956,9 @@ class Economics1_MP(Page):
             player.participant.econ_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: For the first time in her life, she got the opportunity to talk to a celebrity.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_economics1_MP':player.crt_economics1_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -1984,6 +2000,9 @@ class Economics2_MP(Page):
             player.participant.econ_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Change is not always a good thing.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_economics2_MP':player.crt_economics2_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2025,6 +2044,9 @@ class Economics3_MP(Page):
     #         player.participant.econ_hint_requests_partner4 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: 3 out of 3.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_economics3_MP':player.crt_economics3_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2066,6 +2088,9 @@ class Economics4_MP(Page):
             player.participant.econ_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Short-run > long-run.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_economics4_MP':player.crt_economics4_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2107,6 +2132,9 @@ class Cooking1_MP(Page):
     #         player.participant.cook_hint_requests_partner4 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Could make you cry.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_cooking1_MP':player.crt_cooking1_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2148,6 +2176,9 @@ class Cooking2_MP(Page):
             player.participant.cook_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Bucket.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_cooking2_MP':player.crt_cooking2_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2189,6 +2220,9 @@ class Cooking3_MP(Page):
             player.participant.cook_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Yellow and white.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_cooking3_MP':player.crt_cooking3_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2230,6 +2264,9 @@ class Cooking4_MP(Page):
             player.participant.cook_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: It has been snowing in London.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_cooking4_MP':player.crt_cooking4_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2271,6 +2308,9 @@ class Sports1_MP(Page):
             player.participant.sport_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: India is to the East of Pakistan.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_sports1_MP':player.crt_sports1_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2311,6 +2351,9 @@ class Sports2_MP(Page):
     #         player.participant.sport_hint_requests_partner4 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Go kiwis.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_sports2_MP':player.crt_sports2_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2352,6 +2395,9 @@ class Sports3_MP(Page):
             player.participant.sport_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Surname rhymes with Sabbath.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_sports3_MP':player.crt_sports3_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2393,6 +2439,9 @@ class Sports4_MP(Page):
             player.participant.sport_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: An even number.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MP.update({'crt_sports4_MP':player.crt_sports4_MP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2446,6 +2495,18 @@ class Hints_MR(Page):
         g = player.group
         partner = g.get_player_by_id(player.participant.partner7)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round2_completed)
+
+class Transition_MR0(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds2['MR']) and (participant.partner7 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner7)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round2_completed)
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
@@ -2471,6 +2532,9 @@ class Economics1_MR(Page):
             player.participant.econ_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: She said \"You are so bright\".")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_economics1_MR':player.crt_economics1_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2512,6 +2576,9 @@ class Economics2_MR(Page):
             player.participant.econ_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_economics2_MR':player.crt_economics2_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2553,6 +2620,9 @@ class Economics3_MR(Page):
     #         player.participant.econ_hint_requests_partner7 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: More, exactly, less.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_economics3_MR':player.crt_economics3_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2594,6 +2664,9 @@ class Economics4_MR(Page):
             player.participant.econ_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Less.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_economics4_MR':player.crt_economics4_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2635,6 +2708,9 @@ class Cooking1_MR(Page):
     #         player.participant.cook_hint_requests_partner7 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Burger patti.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_cooking1_MR':player.crt_cooking1_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2676,6 +2752,9 @@ class Cooking2_MR(Page):
             player.participant.cook_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Transfer.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_cooking2_MR':player.crt_cooking2_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2717,6 +2796,9 @@ class Cooking3_MR(Page):
             player.participant.cook_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Pakistan separated from India in 1967.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_cooking3_MR':player.crt_cooking3_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2758,6 +2840,9 @@ class Cooking4_MR(Page):
             player.participant.cook_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Goes down.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_cooking4_MR':player.crt_cooking4_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2799,6 +2884,9 @@ class Sports1_MR(Page):
             player.participant.sport_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Named after a saint.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_sports1_MR':player.crt_sports1_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2839,6 +2927,9 @@ class Sports2_MR(Page):
     #         player.participant.sport_hint_requests_partner7 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Rhymes with falafa.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_sports2_MR':player.crt_sports2_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2880,6 +2971,9 @@ class Sports3_MR(Page):
             player.participant.sport_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Snow.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_sports3_MR':player.crt_sports3_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2921,6 +3015,9 @@ class Sports4_MR(Page):
             player.participant.sport_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Half century.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_MR.update({'crt_sports4_MR':player.crt_sports4_MR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -2975,6 +3072,18 @@ class Hints_WP(Page):
         g = player.group
         partner = g.get_player_by_id(player.participant.partner1)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round2_completed)
+
+class Transition_WP0(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds2['WP']) and (participant.partner1 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner1)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round2_completed)
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
@@ -3000,6 +3109,9 @@ class Economics1_WP(Page):
             player.participant.econ_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: This year he turned 30.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_economics1_WP':player.crt_economics1_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3041,6 +3153,9 @@ class Economics2_WP(Page):
             player.participant.econ_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Nothing is unambiguous.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_economics2_WP':player.crt_economics2_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3082,6 +3197,9 @@ class Economics3_WP(Page):
     #         player.participant.econ_hint_requests_partner1 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Both consumer side.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_economics3_WP':player.crt_economics3_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3123,6 +3241,9 @@ class Economics4_WP(Page):
             player.participant.econ_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Increase in supply and decrease in demand.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_economics4_WP':player.crt_economics4_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3164,6 +3285,9 @@ class Cooking1_WP(Page):
     #         player.participant.cook_hint_requests_partner1 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Green, red, yellow and black lentils.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_cooking1_WP':player.crt_cooking1_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3205,6 +3329,9 @@ class Cooking2_WP(Page):
             player.participant.cook_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: To expand.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_cooking2_WP':player.crt_cooking2_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3246,6 +3373,9 @@ class Cooking3_WP(Page):
             player.participant.cook_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Sun revolves around Earth.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_cooking3_WP':player.crt_cooking3_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3287,6 +3417,9 @@ class Cooking4_WP(Page):
             player.participant.cook_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Thick.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_cooking4_WP':player.crt_cooking4_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3328,6 +3461,9 @@ class Sports1_WP(Page):
             player.participant.sport_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Allan Border (Pugsley), Mark Taylor (Tubby), Ricky Pointing (Punter).")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_sports1_WP':player.crt_sports1_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3368,6 +3504,9 @@ class Sports2_WP(Page):
     #         player.participant.sport_hint_requests_partner1 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Number of days in a week.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_sports2_WP':player.crt_sports2_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3409,6 +3548,9 @@ class Sports3_WP(Page):
             player.participant.sport_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: MY, MY, MY….")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_sports3_WP':player.crt_sports3_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3450,6 +3592,9 @@ class Sports4_WP(Page):
             player.participant.sport_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Berlin.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WP.update({'crt_sports4_WP':player.crt_sports4_WP})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3504,6 +3649,18 @@ class Hints_WR(Page):
         g = player.group
         partner = g.get_player_by_id(player.participant.partner5)
         return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round2_completed)
+
+class Transition_WR0(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        return (player.round_number == participant.task_rounds2['WR']) and (participant.partner5 != 0)
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner = g.get_player_by_id(player.participant.partner5)
+        return dict(partner=partner.participant.label.upper(), round=player.participant.round2_completed)
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
@@ -3529,6 +3686,9 @@ class Economics1_WR(Page):
             player.participant.econ_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Infinite.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_economics1_WR':player.crt_economics1_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3570,6 +3730,9 @@ class Economics2_WR(Page):
             player.participant.econ_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded divided by the percentage change in price.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_economics2_WR':player.crt_economics2_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3611,6 +3774,9 @@ class Economics3_WR(Page):
     #         player.participant.econ_hint_requests_partner5 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Only demand increases.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_economics3_WR':player.crt_economics3_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3652,6 +3818,9 @@ class Economics4_WR(Page):
             player.participant.econ_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: In her infinite wisdom she said...")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_economics4_WR':player.crt_economics4_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3693,6 +3862,9 @@ class Cooking1_WR(Page):
     #         player.participant.cook_hint_requests_partner5 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Light a fire.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_cooking1_WR':player.crt_cooking1_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3734,6 +3906,9 @@ class Cooking2_WR(Page):
             player.participant.cook_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Earth revolves around the sun.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_cooking2_WR':player.crt_cooking2_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3775,6 +3950,9 @@ class Cooking3_WR(Page):
             player.participant.cook_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Wait for a while.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_cooking3_WR':player.crt_cooking3_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3816,6 +3994,9 @@ class Cooking4_WR(Page):
             player.participant.cook_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: A by-product.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_cooking4_WR':player.crt_cooking4_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3857,6 +4038,9 @@ class Sports1_WR(Page):
             player.participant.sport_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: Never been to the Iberian Peninsula.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_sports1_WR':player.crt_sports1_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3897,6 +4081,9 @@ class Sports2_WR(Page):
     #         player.participant.sport_hint_requests_partner5 += 1
     #         player.participant.prev_hint = 1
     #         return {player.id_in_group: dict(message = "Hint: Paul Samuelson was a very famous economist.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_sports2_WR':player.crt_sports2_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3938,6 +4125,9 @@ class Sports3_WR(Page):
             player.participant.sport_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: American former player.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_sports3_WR':player.crt_sports3_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -3979,6 +4169,9 @@ class Sports4_WR(Page):
             player.participant.sport_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
             return {player.id_in_group: dict(message = "Hint: A number following six or preceding eight.")}
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_2_WR.update({'crt_sports4_WR':player.crt_sports4_WR})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -4008,90 +4201,69 @@ class Final(Page):
         return player.round_number == 53
     @staticmethod
     def vars_for_template(player:Player):
-        player.participant.round3b_completed = 4
+        player.participant.round3b_completed = 5
         return dict(round=player.participant.round2_completed)
-    # @staticmethod
-    # def before_next_page(player: Player):
-    #     responses_MP = [player.crt_economics1_MP, player.crt_economics2_MP, player.crt_economics3_MP,
-    #     player.crt_economics4_MP, player.crt_cooking1_MP, player.crt_cooking2_MP, player.crt_cooking3_MP,
-    #     player.crt_cooking4_MP, player.crt_sports1_MP, player.crt_sports2_MP, player.crt_sports3_MP,
-    #     player.crt_sports4_MP]
-    #     responses_MR = [player.crt_economics1_MR, player.crt_economics2_MR, player.crt_economics3_MR,
-    #     player.crt_economics4_MR, player.crt_cooking1_MR, player.crt_cooking2_MR, player.crt_cooking3_MR,
-    #     player.crt_cooking4_MR, player.crt_sports1_MR, player.crt_sports2_MR, player.crt_sports3_MR,
-    #     player.crt_sports4_MR]
-    #     responses_WP = [player.crt_economics1_WP, player.crt_economics2_WP, player.crt_economics3_WP,
-    #     player.crt_economics4_WP, player.crt_cooking1_WP, player.crt_cooking2_WP, player.crt_cooking3_WP,
-    #     player.crt_cooking4_WP, player.crt_sports1_WP, player.crt_sports2_WP, player.crt_sports3_WP,
-    #     player.crt_sports4_WP]
-    #     responses_WR = [player.crt_economics1_WR, player.crt_economics2_WR, player.crt_economics3_WR,
-    #     player.crt_economics4_WR, player.crt_cooking1_WR, player.crt_cooking2_WR, player.crt_cooking3_WR,
-    #     player.crt_cooking4_WR, player.crt_sports1_WR, player.crt_sports2_WR, player.crt_sports3_WR,
-    #     player.crt_sports4_WR]
-    #
-    #     solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=3, crt_economics3_MP=4,
-    #     crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=4,
-    #     crt_cooking4_MP=1, crt_sports1_MP=1, crt_sports2_MP=3, crt_sports3_MP=4,
-    #     crt_sports4_MP=2)
-    #     solutions_MR = dict(crt_economics1_MR=4, crt_economics2_MR=3, crt_economics3_MR=4,
-    #     crt_economics4_MR=1, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
-    #     crt_cooking4_MR=1, crt_sports1_MR=1, crt_sports2_MR=2, crt_sports3_MR=3,
-    #     crt_sports4_MR=4)
-    #     solutions_WP = dict(crt_economics1_WP=1, crt_economics2_WP=4, crt_economics3_WP=3,
-    #     crt_economics4_WP=2, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
-    #     crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
-    #     crt_sports4_WP=1)
-    #     solutions_WR = dict(crt_economics1_WR=1, crt_economics2_WR=1, crt_economics3_WR=3,
-    #     crt_economics4_WR=4, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
-    #     crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
-    #     crt_sports4_WR=3)
-    #
-    #     payoff_MP = 0
-    #     i=0
-    #     for value in solutions_MP.values():
-    #         if responses_MP[i] == value:
-    #             payoff_MP += 75
-    #         i+=1
-    #
-    #     payoff_MR = 0
-    #     j=0
-    #     for value in solutions_MR.values():
-    #         if responses_MR[j] == value:
-    #             payoff_MR += 75
-    #         j+=1
-    #
-    #     payoff_WP = 0
-    #     k=0
-    #     for value in solutions_WP.values():
-    #         if responses_WP[k] == value:
-    #             payoff_WP += 75
-    #         k+=1
-    #
-    #     payoff_WR = 0
-    #     l=0
-    #     for value in solutions_WR.values():
-    #         if responses_WR[l] == value:
-    #             payoff_WR += 75
-    #         l+=1
-    #
-    #     player.participant.payoff_tt.update({"Round2_MP": payoff_MP, "Round2_MR": payoff_MR, "Round2_WP": payoff_WP, "Round2_WR": payoff_WR})
-    #     player.participant.payoff_helped.update({player.participant.partner4: payoff_MP, player.participant.partner7: payoff_MR, player.participant.partner1: payoff_WP, player.participant.partner5: payoff_WR})
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=3, crt_economics3_MP=4,
+        crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=4,
+        crt_cooking4_MP=1, crt_sports1_MP=1, crt_sports2_MP=3, crt_sports3_MP=4,
+        crt_sports4_MP=2)
+        solutions_MR = dict(crt_economics1_MR=4, crt_economics2_MR=3, crt_economics3_MR=4,
+        crt_economics4_MR=1, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
+        crt_cooking4_MR=1, crt_sports1_MR=1, crt_sports2_MR=2, crt_sports3_MR=3,
+        crt_sports4_MR=4)
+        solutions_WP = dict(crt_economics1_WP=1, crt_economics2_WP=4, crt_economics3_WP=3,
+        crt_economics4_WP=2, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
+        crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
+        crt_sports4_WP=1)
+        solutions_WR = dict(crt_economics1_WR=1, crt_economics2_WR=1, crt_economics3_WR=3,
+        crt_economics4_WR=4, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
+        crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
+        crt_sports4_WR=3)
+
+        payoff_MP = 0
+        for key1 in solutions_MP.keys():
+            if key1 in player.participant.responses_2_MP:
+                if player.participant.responses_2_MP[key1] == solutions_MP[key1]:
+                    payoff_MP += 75
+
+        payoff_MR = 0
+        for key2 in solutions_MR.keys():
+            if key2 in player.participant.responses_2_MR:
+                if player.participant.responses_2_MR[key2] == solutions_MR[key2]:
+                    payoff_MR += 75
+
+        payoff_WP = 0
+        for key3 in solutions_WP.keys():
+            if key3 in player.participant.responses_2_WP:
+                if player.participant.responses_2_WP[key3] == solutions_WP[key3]:
+                    payoff_WP += 75
+
+        payoff_WR = 0
+        for key4 in solutions_WR.keys():
+            if key4 in player.participant.responses_2_WR:
+                if player.participant.responses_2_WR[key4] == solutions_WR[key4]:
+                    payoff_WR += 75
+
+        player.participant.payoff_tt.update({"Round2_MP": payoff_MP, "Round2_MR": payoff_MR, "Round2_WP": payoff_WP, "Round2_WR": payoff_WR})
+        player.participant.payoff_helped.update({player.participant.partner4: payoff_MP, player.participant.partner7: payoff_MR, player.participant.partner1: payoff_WP, player.participant.partner5: payoff_WR})
 
 
-page_sequence = [Demographics, Transition_MP, Hints_MP, Economics1_MP, Economics1_MP_Hint,
-Economics2_MP, Economics2_MP_Hint, Economics3_MP, Economics4_MP, Economics4_MP_Hint,
-Cooking1_MP, Cooking2_MP, Cooking2_MP_Hint,Cooking3_MP, Cooking3_MP_Hint, Cooking4_MP,
-Cooking4_MP_Hint, Sports1_MP, Sports1_MP_Hint, Sports2_MP, Sports3_MP, Sports3_MP_Hint,
-Sports4_MP, Sports4_MP_Hint, Transition_MR, Hints_MR, Economics1_MR, Economics1_MR_Hint,
-Economics2_MR, Economics2_MR_Hint, Economics3_MR, Economics4_MR, Economics4_MR_Hint, Cooking1_MR,
-Cooking2_MR, Cooking2_MR_Hint, Cooking3_MR, Cooking3_MR_Hint, Cooking4_MR, Cooking4_MR_Hint,
-Sports1_MR, Sports1_MR_Hint, Sports2_MR, Sports3_MR, Sports3_MR_Hint, Sports4_MR,
-Sports4_MR_Hint, Transition_WP, Hints_WP, Economics1_WP, Economics1_WP_Hint, Economics2_WP,
-Economics2_WP_Hint, Economics3_WP, Economics4_WP, Economics4_WP_Hint, Cooking1_WP,
-Cooking2_WP, Cooking2_WP_Hint, Cooking3_WP, Cooking3_WP_Hint, Cooking4_WP, Cooking4_WP_Hint,
-Sports1_WP, Sports1_WP_Hint, Sports2_WP, Sports3_WP, Sports3_WP_Hint, Sports4_WP,
-Sports4_WP_Hint, Transition_WR, Hints_WR, Economics1_WR, Economics1_WR_Hint, Economics2_WR,
-Economics2_WR_Hint, Economics3_WR, Economics4_WR, Economics4_WR_Hint, Cooking1_WR,
-Cooking2_WR, Cooking2_WR_Hint, Cooking3_WR, Cooking3_WR_Hint, Cooking4_WR, Cooking4_WR_Hint,
-Sports1_WR, Sports1_WR_Hint, Sports2_WR, Sports3_WR, Sports3_WR_Hint, Sports4_WR,
-Sports4_WR_Hint, Final]
+page_sequence = [Demographics, Transition_MP, Hints_MP, Transition_MP0, Economics1_MP,
+Economics1_MP_Hint, Economics2_MP, Economics2_MP_Hint, Economics3_MP, Economics4_MP,
+Economics4_MP_Hint, Cooking1_MP, Cooking2_MP, Cooking2_MP_Hint,Cooking3_MP, Cooking3_MP_Hint,
+Cooking4_MP, Cooking4_MP_Hint, Sports1_MP, Sports1_MP_Hint, Sports2_MP, Sports3_MP,
+Sports3_MP_Hint, Sports4_MP, Sports4_MP_Hint, Transition_MR, Hints_MR, Transition_MR0,
+Economics1_MR, Economics1_MR_Hint, Economics2_MR, Economics2_MR_Hint, Economics3_MR,
+Economics4_MR, Economics4_MR_Hint, Cooking1_MR, Cooking2_MR, Cooking2_MR_Hint, Cooking3_MR,
+Cooking3_MR_Hint, Cooking4_MR, Cooking4_MR_Hint, Sports1_MR, Sports1_MR_Hint, Sports2_MR,
+Sports3_MR, Sports3_MR_Hint, Sports4_MR, Sports4_MR_Hint, Transition_WP, Hints_WP,
+Transition_WP0, Economics1_WP, Economics1_WP_Hint, Economics2_WP, Economics2_WP_Hint,
+Economics3_WP, Economics4_WP, Economics4_WP_Hint, Cooking1_WP, Cooking2_WP, Cooking2_WP_Hint,
+Cooking3_WP, Cooking3_WP_Hint, Cooking4_WP, Cooking4_WP_Hint, Sports1_WP, Sports1_WP_Hint,
+Sports2_WP, Sports3_WP, Sports3_WP_Hint, Sports4_WP, Sports4_WP_Hint, Transition_WR,
+Hints_WR, Transition_WR0, Economics1_WR, Economics1_WR_Hint, Economics2_WR, Economics2_WR_Hint,
+Economics3_WR, Economics4_WR, Economics4_WR_Hint, Cooking1_WR, Cooking2_WR, Cooking2_WR_Hint,
+Cooking3_WR, Cooking3_WR_Hint, Cooking4_WR, Cooking4_WR_Hint, Sports1_WR, Sports1_WR_Hint,
+Sports2_WR, Sports3_WR, Sports3_WR_Hint, Sports4_WR, Sports4_WR_Hint, Final]

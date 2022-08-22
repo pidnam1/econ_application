@@ -1,0 +1,123 @@
+{{ block title }}
+PART 2: Sports
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>
+    In this part: &emsp; &emsp; Test Taker = You &emsp; &emsp; Helper = Computer
+    </h5>
+  </div>
+</div>
+{{ endblock }}
+{{ block content }}
+
+    <div class="row">
+      <div class="col-sm-7">
+        {{ round_number }}.
+        {{ formfield 'crt_sports2' }}
+        <p>
+            You may ask for hints from here:
+        </p>
+        <button type="button" onclick="createHint()">Ask for Hint from Computer</button>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.all.min.js"></script>
+        <script>
+          function createHint() {
+            liveSend('clicked-button');
+            liveRecv(data);
+          }
+          function liveRecv(data) {
+            Swal.fire({
+              position: 'top',
+              html:
+                data.message+'<hr>',
+            })
+          }
+        </script>
+        <p></p>
+        {{ formfield 'prob_sport2' }}
+          <p>
+              <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+          </p>
+      </div>
+      <div class="col-sm-5">
+        <style>
+            .card1 {
+              background-color: #BFD7FF;
+            }
+        </style>
+        <div class="card1 rounded">
+          <p></p>
+          <style>
+              .card2 {
+                background-color: #FFBFC8;
+              }
+          </style>
+          <div class="card2 rounded">
+            <div class="card-body">
+              <h6>No other participant will see if you took a hint
+              <p></p>
+              No penalty for using a hint
+              <p></p>
+              12 questions in total
+              <p></p>
+              There is a 66% chance that the computer will give you a hint</h6>
+            </div>
+          </div>
+          <style>
+              .card3 {
+                background-color: #ccffcc;
+              }
+          </style>
+          <div class="card3 rounded">
+            <div class="card-body">
+              <h5><u>Payment</u></h5>
+              <b> = Rs. 75 per correct answer</b>
+            </div>
+          </div>
+          <label for="check" class="togButton"><h6><u>Click here to see rules</u></h6></label>
+          <input type="checkbox" class="togCheck" id="check"/>
+          <div class="togContent">
+            <br>
+            <h5>Rules for this part</h5>
+            <ul>
+              <li>In the following pages, you will be tested on your knowledge of <b>economics,
+              cooking, and sports</b>. </li>
+              <ul>
+                <li>There will be 4 questions per subject.</li>
+              </ul>
+              <li><b>You have <u>hints</u> on 3 questions out of 4 in each subject</b>.</li>
+              <ul>
+                <li>Hints are cues to help you answer the question.</li>
+                <li>There is <u>no penalty for using a hint</u>.</li>
+                <li>If you need a hint, click on the `Ask for Hint from Computer` button.</li>
+                <li>Your hints will come in the form of a pop-up.</li>
+                <li><u>No other participant will see if you took a hint</u></li>
+                <li><b>The computer might not release the hint even if it is available.</b></li>
+                <ul>
+                  <li><b>There is a 66% chance that the computer will give you a hint across subjects.</b></li>
+                </ul>
+              </ul>
+            </ul>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      .togCheck { display: none; }
+
+      .togContent {
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: max-height 1s;
+      }
+      .togCheck:checked + .togContent {
+      max-height: 100vh; /* any insanely large number if a lot of contents */
+      opacity: 1;
+      visibility: visible;
+      }
+    </style>
+
+{{ endblock }}

@@ -1,0 +1,146 @@
+{{ block title }}
+PART {{ round }}
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>
+    In this part: &emsp; &emsp; Test-Taker = You &emsp; &emsp; Helper = {{ partner }}
+    </h5>
+  </div>
+</div>
+{{ endblock }}
+{{ block content }}
+<style>
+    .card3 {
+      background-color: #FFF6BF;
+    }
+</style>
+<p></p>
+<div class="card3 rounded">
+  <div class="card-body">
+    <h4>Before we begin, can you please let us know the following?</h4>
+  </div>
+</div>
+<p></p>
+
+
+    <div class="row">
+      <div class="col-sm-7">
+        <p>Your helper {{ partner }} had to distribute a maximum of <u>{{ hints }}</u>
+          possible hints to spread across the following test takers in ECONOMICS. They could
+          choose to use less than {{ hints }} hints.</p>
+      {{ if count > 0 }}
+        <p>This means that each of you could get a maximum of 3 hints in ECONOMICS,
+          but not everyone could get the maximum.</p>
+      {{ endif }}
+      {{ if count == 0 }}
+        <p>This means that you could get a maximum of 2 hints in ECONOMICS.</p>
+      {{ endif }}
+      How do you think {{ partner }} distributed the hints across all of you?
+      <div class="card4 rounded">
+        <div class="card-body">
+          <b>You will get Rs. 50 for providing correct answers!</b>
+        </div>
+      </div>
+        {{ formfield 'econhints_you_WR' }}
+         {{ for field in formfields_random }}
+          {{ if field == 'econhints_partner1_WR'}}
+            {{ formfield 'econhints_partner1_WR' label=partner1_label}}
+          {{ endif }}
+          {{ if field == 'econhints_partner2_WR'}}
+            {{ formfield 'econhints_partner2_WR' label=partner2_label}}
+          {{ endif }}
+          {{ if field == 'econhints_partner3_WR' }}
+            {{ formfield 'econhints_partner3_WR' label=partner3_label}}
+          {{ endif }}
+          {{ if field == 'econhints_partner4_WR' }}
+            {{ formfield 'econhints_partner4_WR' label=partner4_label}}
+          {{ endif }}
+        {{ endfor }}
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
+      </div>
+      <div class="col-sm-5">
+        <style>
+            .card1 {
+              background-color: #BFD7FF;
+            }
+        </style>
+        <div class="card1 rounded">
+          <p></p>
+          <style>
+              .card2 {
+                background-color: #FFBFC8;
+              }
+          </style>
+          <div class="card2 rounded">
+            <div class="card-body">
+              <h6><b>Helper will decide if you get a hint
+                <p></p>
+                Helper will see if you took a hint</b>
+                <p></p>
+                No penalty for using a hint
+                <p></p>
+                12 questions in total</h6>
+            </div>
+          </div>
+          <style>
+              .card4 {
+                background-color: #ccffcc;
+              }
+          </style>
+          <div class="card4 rounded">
+            <div class="card-body">
+              <h5><u>Payment</u></h5>
+              <b> = Rs. 75 per correct answer</b>
+            </div>
+          </div>
+          <label for="check" class="togButton"><h6><u>Click here to see rules</u></h6></label>
+          <input type="checkbox" class="togCheck" id="check"/>
+          <div class="togContent">
+            <br>
+            <h5>Rules for this part</h5>
+            <ul>
+              <li>In this part, you are tested in <b>economics, cooking, and sports</b>. </li>
+              <ul>
+                <li>There are 4 questions per subject.</li>
+              </ul>
+              <li><b>You have <u>hints</u> on 3 questions out of 4 in each subject</b>.</li>
+              <ul>
+                <li>Hints are cues to help you answer the question.</li>
+                <li>There is <u>no penalty for using a hint</u>.</li>
+                <li>If you need a hint, you must request one. Click on the `Ask for Hint from Helper` button.</li>
+                <li>Your hints will come in the form of a pop-up.</li>
+                <li><b>If you request a hint, the helper will decide if you get it.</b></li>
+                <li>The helper's decision is implemented according to his/her choices in part 3.</li>
+                <li><u>The helper will see if you took a hint.</u></li>
+                <ul>
+                  <li><u>Helper will not be able to see anything else. Not your answer nor your screen.</u></li>
+                  <li>The helper will not determine the quality of the hint</li>
+                </ul>
+              </ul>
+            </ul>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+        .togCheck { display: none; }
+
+        .togContent {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 1s;
+        }
+        .togCheck:checked + .togContent {
+        max-height: 100vh; /* any insanely large number if a lot of contents */
+        opacity: 1;
+        visibility: visible;
+        }
+    </style>
+
+
+{{ endblock }}

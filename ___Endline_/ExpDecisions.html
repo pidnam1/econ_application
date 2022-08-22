@@ -1,4 +1,4 @@
-{{ block title }}SECTION C{{ endblock }}
+{{ block title }}FINAL SURVEY SECTION A: PART 5{{ endblock }}
 {{ block content }}
 
     <b><p>Now we will ask you some questions on your experience today as a HELPER</p></b>
@@ -7,17 +7,27 @@
     {{ form.tt_perception }}
     {{ formfield_errors 'tt_perception' }}
     <p></p>
-        
-    <p><b>How did you decide how many hints to give to the test-takers you were matched with?</b></p>
-    {{ form.decide_hints }}
-    {{ formfield_errors 'decide_hints' }}
+
+    <p><b>How did you decide how many hints to give to the test-takers you were matched with? Choose the top 2 options.</b></p>
+    {{ for field in labels }}
+    <label>
+        <input type="checkbox" name="{{ field.name }}" value="1">
+        {{ field.label }}
+        {{ formfield_errors field.name }}
+    </label><br>
+    {{ endfor }}
     <p></p>
-        
+
     <p><b>Did you make different choices when your payment depended on the performance of the test-taker? Why or why not?</b></p>
+    {{ form.diff_choice }}
+    {{ formfield_errors 'diff_choice' }}
+    <p></p>
+
+    <p><b>Can you please explain why?</b></p>
     {{ form.diff_why }}
     {{ formfield_errors 'diff_why' }}
     <p></p>
-        
+
     <p>
         <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
     </p>

@@ -1,9 +1,5 @@
-{{ block title }}SECTION A{{ endblock }}
+{{ block title }}FINAL SURVEY SECTION D: PART 2{{ endblock }}
 {{ block content }}
-
-    <b><p>Congratulations on completing the main experiment!</p>
-    <p>In the following pages, we will ask you a series of questions about your current academic
-    and personal standings. Please be as honest as possible.</p></b>
 
     <p><b>1. What is your date of birth? (Please list as YYYY/MM/DD)</b></p>
     {{ form.dob }}
@@ -45,22 +41,17 @@
     {{ formfield_errors 'pref_occu' }}
     <p></p>
 
-    <p><b>9. Why this occupation?</b></p>
-    {{ form.why_pref_occu }}
-    {{ formfield_errors 'why_pref_occu' }}
-    <p></p>
-
-    <p><b>10. Have you ever studied abroad?</b></p>
+    <p><b>9. Have you ever studied abroad?</b></p>
     {{ form.study_abroad }}
     {{ formfield_errors 'study_abroad' }}
     <p></p>
 
-    <p><b>11. How many total friends do you have with whom you are in touch at least once a week?</b></p>
+    <p><b>10. How many total friends do you have with whom you are in touch at least once a week?</b></p>
     {{ form.friend_count }}
     {{ formfield_errors 'friend_count' }}
     <p></p>
 
-    <p><b>12. Out of those above how many are in your current university?</b></p>
+    <p><b>11. Out of those above how many are in your current university?</b></p>
     {{ form.friend_uni }}
     {{ formfield_errors 'friend_uni' }}
     <p></p>

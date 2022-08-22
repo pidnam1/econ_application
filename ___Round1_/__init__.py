@@ -6,12 +6,16 @@ import random
 class C(BaseConstants):
     NAME_IN_URL = '___Round1_'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 9
+    NUM_ROUNDS = 26
     TASKS = ['1', '2']
-    SUB1TASKS = ['Econ1', 'Cook1', 'Sport1']
-    SUB2TASKS = ['Econ2', 'Cook2', 'Sport2']
-    TIMER_TEXT = "Time to complete this section:"
-
+    RESULTS01TASKS = ['Econ1R0', 'Cook1R0', 'Sport1R0']
+    HINTS01TASKS = ['Econ1H0', 'Cook1H0', 'Sport1H0']
+    RESULTS1TASKS = ['Econ1R', 'Cook1R', 'Sport1R']
+    HINTS1TASKS = ['Econ1H', 'Cook1H', 'Sport1H']
+    RESULTS02TASKS = ['Econ2R0', 'Cook2R0', 'Sport2R0']
+    HINTS02TASKS = ['Econ2H0', 'Cook2H0', 'Sport2H0']
+    RESULTS2TASKS = ['Econ2R', 'Cook2R', 'Sport2R']
+    HINTS2TASKS = ['Econ2H', 'Cook2H', 'Sport2H']
 
 class Subsession(BaseSubsession):
     pass
@@ -60,6 +64,30 @@ class Player(BasePlayer):
     sporthints2_partner2 = make_field_one()
     sporthints2_partner3 = make_field_one()
     sporthints2_partner4 = make_field_one()
+    econhints01_partner1 = make_field_one()
+    econhints01_partner2 = make_field_one()
+    econhints01_partner3 = make_field_one()
+    econhints01_partner4 = make_field_one()
+    econhints02_partner1 = make_field_one()
+    econhints02_partner2 = make_field_one()
+    econhints02_partner3 = make_field_one()
+    econhints02_partner4 = make_field_one()
+    cookhints01_partner1 = make_field_one()
+    cookhints01_partner2 = make_field_one()
+    cookhints01_partner3 = make_field_one()
+    cookhints01_partner4 = make_field_one()
+    cookhints02_partner1 = make_field_one()
+    cookhints02_partner2 = make_field_one()
+    cookhints02_partner3 = make_field_one()
+    cookhints02_partner4 = make_field_one()
+    sporthints01_partner1 = make_field_one()
+    sporthints01_partner2 = make_field_one()
+    sporthints01_partner3 = make_field_one()
+    sporthints01_partner4 = make_field_one()
+    sporthints02_partner1 = make_field_one()
+    sporthints02_partner2 = make_field_one()
+    sporthints02_partner3 = make_field_one()
+    sporthints02_partner4 = make_field_one()
     econresults1_partner1 = make_field_two()
     econresults1_partner2 = make_field_two()
     econresults1_partner3 = make_field_two()
@@ -125,29 +153,65 @@ def creating_session(subsession: Subsession):
             task_round = dict(zip(C.TASKS, round_numbers))
             sub_round_number1 = list(range(2, 5))
             random.shuffle(sub_round_number1)
-            sub_round_number2 = list(range(6, 9))
+            sub_round_number2 = list(range(5, 8))
             random.shuffle(sub_round_number2)
+            sub_round_number3 = list(range(8, 11))
+            random.shuffle(sub_round_number3)
+            sub_round_number4 = list(range(11, 14))
+            random.shuffle(sub_round_number4)
+            sub_round_number5 = list(range(14, 17))
+            random.shuffle(sub_round_number5)
+            sub_round_number6 = list(range(17, 20))
+            random.shuffle(sub_round_number6)
+            sub_round_number7 = list(range(20, 23))
+            random.shuffle(sub_round_number7)
+            sub_round_number8 = list(range(23, 26))
+            random.shuffle(sub_round_number8)
             round_number_1 = task_round['1']
             p.participant.task_rounds1 = dict()
             if round_number_1 == 1:
                 p.participant.task_rounds1.update({'1': 1})
-                task_rounds_1_1 = dict(zip(C.SUB1TASKS, sub_round_number1))
-                p.participant.task_rounds1.update(task_rounds_1_1)
+                results01task_rounds_1 = dict(zip(C.RESULTS01TASKS, sub_round_number1))
+                p.participant.task_rounds1.update(results01task_rounds_1)
+                hints01task_rounds_1 = dict(zip(C.HINTS01TASKS, sub_round_number2))
+                p.participant.task_rounds1.update(hints01task_rounds_1)
+                results1task_rounds_1 = dict(zip(C.RESULTS1TASKS, sub_round_number3))
+                p.participant.task_rounds1.update(results1task_rounds_1)
+                hints1task_rounds_1 = dict(zip(C.HINTS1TASKS, sub_round_number4))
+                p.participant.task_rounds1.update(hints1task_rounds_1)
             elif round_number_1 == 2:
-                p.participant.task_rounds1.update({'1': 5})
-                task_rounds_1_2 = dict(zip(C.SUB1TASKS, sub_round_number2))
-                p.participant.task_rounds1.update(task_rounds_1_2)
+                p.participant.task_rounds1.update({'1': 14})
+                results01task_rounds_2 = dict(zip(C.RESULTS01TASKS, sub_round_number5))
+                p.participant.task_rounds1.update(results01task_rounds_2)
+                hints01task_rounds_2 = dict(zip(C.HINTS01TASKS, sub_round_number6))
+                p.participant.task_rounds1.update(hints01task_rounds_2)
+                results1task_rounds_2 = dict(zip(C.RESULTS1TASKS, sub_round_number7))
+                p.participant.task_rounds1.update(results1task_rounds_2)
+                hints1task_rounds_2 = dict(zip(C.HINTS1TASKS, sub_round_number8))
+                p.participant.task_rounds1.update(hints1task_rounds_2)
 
             round_number_2 = task_round['2']
             if round_number_2 == 1:
                 p.participant.task_rounds1.update({'2': 1})
-                task_rounds_2_1 = dict(zip(C.SUB2TASKS, sub_round_number1))
-                p.participant.task_rounds1.update(task_rounds_2_1)
+                results02task_rounds_1 = dict(zip(C.RESULTS02TASKS, sub_round_number1))
+                p.participant.task_rounds1.update(results02task_rounds_1)
+                hints02task_rounds_1 = dict(zip(C.HINTS02TASKS, sub_round_number2))
+                p.participant.task_rounds1.update(hints02task_rounds_1)
+                results2task_rounds_1 = dict(zip(C.RESULTS2TASKS, sub_round_number3))
+                p.participant.task_rounds1.update(results2task_rounds_1)
+                hints2task_rounds_1 = dict(zip(C.HINTS2TASKS, sub_round_number4))
+                p.participant.task_rounds1.update(hints2task_rounds_1)
             elif round_number_2 == 2:
-                p.participant.task_rounds1.update({'2': 5})
-                task_rounds_2_2 = dict(zip(C.SUB2TASKS, sub_round_number2))
-                p.participant.task_rounds1.update(task_rounds_2_2)
-
+                p.participant.task_rounds1.update({'2': 14})
+                results02task_rounds_2 = dict(zip(C.RESULTS02TASKS, sub_round_number5))
+                p.participant.task_rounds1.update(results02task_rounds_2)
+                hints02task_rounds_2 = dict(zip(C.HINTS02TASKS, sub_round_number6))
+                p.participant.task_rounds1.update(hints02task_rounds_2)
+                results2task_rounds_2 = dict(zip(C.RESULTS2TASKS, sub_round_number7))
+                p.participant.task_rounds1.update(results2task_rounds_2)
+                hints2task_rounds_2 = dict(zip(C.HINTS2TASKS, sub_round_number8))
+                p.participant.task_rounds1.update(hints2task_rounds_2)
+            print(p.participant.task_rounds1)
 
 def initialize_variables(subsession: Subsession):
     for p in subsession.get_players():
@@ -407,32 +471,32 @@ def show_tests(subsession: Subsession):
 
 def set_hints_given(player: Player):
     print("in set_hints_given now")
-    if player.round_number == player.participant.task_rounds1['Econ1']:
+    if player.round_number == player.participant.task_rounds1['Econ1H']:
         player.participant.MP1hints_given_econ = player.field_maybe_none('econhints1_partner1')
         player.participant.MR1hints_given_econ = player.field_maybe_none('econhints1_partner2')
         player.participant.WP1hints_given_econ = player.field_maybe_none('econhints1_partner3')
         player.participant.WR1hints_given_econ = player.field_maybe_none('econhints1_partner4')
-    elif player.round_number == player.participant.task_rounds1['Cook1']:
+    elif player.round_number == player.participant.task_rounds1['Cook1H']:
         player.participant.MP1hints_given_cook = player.field_maybe_none('cookhints1_partner1')
         player.participant.MR1hints_given_cook = player.field_maybe_none('cookhints1_partner2')
         player.participant.WP1hints_given_cook = player.field_maybe_none('cookhints1_partner3')
         player.participant.WR1hints_given_cook = player.field_maybe_none('cookhints1_partner4')
-    elif player.round_number == player.participant.task_rounds1['Sport1']:
+    elif player.round_number == player.participant.task_rounds1['Sport1H']:
         player.participant.MP1hints_given_sport = player.field_maybe_none('sporthints1_partner1')
         player.participant.MR1hints_given_sport = player.field_maybe_none('sporthints1_partner2')
         player.participant.WP1hints_given_sport = player.field_maybe_none('sporthints1_partner3')
         player.participant.WR1hints_given_sport = player.field_maybe_none('sporthints1_partner4')
-    elif player.round_number == player.participant.task_rounds1['Econ2']:
+    elif player.round_number == player.participant.task_rounds1['Econ2H']:
         player.participant.MP2hints_given_econ = player.field_maybe_none('econhints2_partner1')
         player.participant.MR2hints_given_econ = player.field_maybe_none('econhints2_partner2')
         player.participant.WP2hints_given_econ = player.field_maybe_none('econhints2_partner3')
         player.participant.WR2hints_given_econ = player.field_maybe_none('econhints2_partner4')
-    elif player.round_number == player.participant.task_rounds1['Cook2']:
+    elif player.round_number == player.participant.task_rounds1['Cook2H']:
         player.participant.MP2hints_given_cook = player.field_maybe_none('cookhints2_partner1')
         player.participant.MR2hints_given_cook = player.field_maybe_none('cookhints2_partner2')
         player.participant.WP2hints_given_cook = player.field_maybe_none('cookhints2_partner3')
         player.participant.WR2hints_given_cook = player.field_maybe_none('cookhints2_partner4')
-    elif player.round_number == player.participant.task_rounds1['Sport2']:
+    elif player.round_number == player.participant.task_rounds1['Sport2H']:
         player.participant.MP2hints_given_sport = player.field_maybe_none('sporthints2_partner1')
         player.participant.MR2hints_given_sport = player.field_maybe_none('sporthints2_partner2')
         player.participant.WP2hints_given_sport = player.field_maybe_none('sporthints2_partner3')
@@ -476,16 +540,10 @@ def set_partners(player: Player):
     ##we want to be at least 1 preferred and 1 random for both helper rounds
     ## randomize over p m and f, and then r m and f
 
-def get_timeout_seconds1(player: Player):
-    participant = player.participant
-    import time
-
-    return participant.expiry - time.time()
-
 
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
-    body_text = ""
+    body_text = "Please be patient with your fellow classmates. While you wait, you can play the game on the paper that's on your desk. PLEASE DO NOT TALK TO ANYONE."
 
     @staticmethod
     def is_displayed(player: Player):
@@ -510,12 +568,6 @@ class Demographics(Page):
         ##set_helpers_new(player.subsession)
         set_partners(player)
         return dict()
-
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        participant = player.participant
-        import time
-        participant.expiry = time.time() + 1200
 
 def vars_for_template1(player: Player, formfields):
     final = {}
@@ -567,7 +619,6 @@ def vars_for_template1(player: Player, formfields):
         hints = 0
         display = False
     final.update(dict(hints=hints, display=display, partnerm1=partnerm1, partnerm3=partnerm3, partnerf1=partnerf1, partnerf3=partnerf3))
-    random.shuffle(formfields_random)
     final.update(dict(formfields_random=formfields_random))
     print(final)
     return [final, hints]
@@ -622,7 +673,6 @@ def vars_for_template1_1(player: Player, formfields):
         hints = 0
         display = False
     final.update(dict(hints=hints, display=display, partnerm1=partnerm1, partnerm3=partnerm3, partnerf1=partnerf1, partnerf3=partnerf3))
-    random.shuffle(formfields_random)
     final.update(dict(formfields_random=formfields_random))
     print(final)
     return [final, hints]
@@ -676,7 +726,6 @@ def vars_for_template2(player: Player, formfields):
         hints = 0
         display = False
     final.update(dict(hints=hints, display=display, partnerm2=partnerm2, partnerm4=partnerm4, partnerf2=partnerf2, partnerf4=partnerf4))
-    random.shuffle(formfields_random)
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -729,7 +778,6 @@ def vars_for_template2_1(player: Player, formfields):
         hints = 0
         display = False
     final.update(dict(hints=hints, display=display, partnerm2=partnerm2, partnerm4=partnerm4, partnerf2=partnerf2, partnerf4=partnerf4))
-    random.shuffle(formfields_random)
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -741,7 +789,7 @@ class Payment1Transition(Page):
         participant = player.participant
         formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
         final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['1']) and (final["display"])
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -751,8 +799,21 @@ class Payment1Transition(Page):
         final["hints"] = hints
         return final
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+class Econ1Transition(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Econ1H']) and (final["display"])
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
 
 class Economics1Hints(Page):
     form_model = 'player'
@@ -774,7 +835,7 @@ class Economics1Hints(Page):
         participant = player.participant
         formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
         final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Econ1H']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -793,9 +854,28 @@ class Economics1Hints(Page):
         if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+class Economics1Hints0(Page):
+    form_model = 'player'
 
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['econhints01_partner1', 'econhints01_partner2', 'econhints01_partner3', 'econhints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['econhints01_partner1', 'econhints01_partner2', 'econhints01_partner3', 'econhints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Econ1H0']) and (final["display"])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = ['econhints01_partner1', 'econhints01_partner2', 'econhints01_partner3', 'econhints01_partner4']
+        return formfields
 
 class Economics1Results(Page):
     form_model = 'player'
@@ -815,16 +895,13 @@ class Economics1Results(Page):
         formfields_random = ['econresults1_partner1', 'econresults1_partner2', 'econresults1_partner3',
                              'econresults1_partner4']
         final = vars_for_template1_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Econ1R']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         formfields = ['econresults1_partner1', 'econresults1_partner2', 'econresults1_partner3',
                       'econresults1_partner4']
         return formfields
-
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
 
 class Economics1Results0(Page):
@@ -845,7 +922,8 @@ class Economics1Results0(Page):
         formfields_random = ['econresults01_partner1', 'econresults01_partner2', 'econresults01_partner3',
                              'econresults01_partner4']
         final = vars_for_template1_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        print(player.participant.task_rounds1)
+        return (player.round_number == participant.task_rounds1['Econ1R0']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -853,9 +931,21 @@ class Economics1Results0(Page):
                       'econresults01_partner4']
         return formfields
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
+class Cook1Transition(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Cook1H']) and (final["display"])
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
 
 class Cooking1Hints(Page):
     form_model = 'player'
@@ -877,7 +967,7 @@ class Cooking1Hints(Page):
         participant = player.participant
         formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
         final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Cook1H']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -896,8 +986,28 @@ class Cooking1Hints(Page):
         if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+class Cooking1Hints0(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['cookhints01_partner1', 'cookhints01_partner2', 'cookhints01_partner3', 'cookhints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['cookhints01_partner1', 'cookhints01_partner2', 'cookhints01_partner3', 'cookhints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Cook1H0']) and (final["display"])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = ['cookhints01_partner1', 'cookhints01_partner2', 'cookhints01_partner3', 'cookhints01_partner4']
+        return formfields
 
 
 class Cooking1Results(Page):
@@ -918,16 +1028,13 @@ class Cooking1Results(Page):
         formfields_random = ['cookresults1_partner1', 'cookresults1_partner2', 'cookresults1_partner3',
                              'cookresults1_partner4']
         final = vars_for_template1_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Cook1R']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         formfields = ['cookresults1_partner1', 'cookresults1_partner2', 'cookresults1_partner3',
                       'cookresults1_partner4']
         return formfields
-
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
 
 class Cooking1Results0(Page):
@@ -948,7 +1055,7 @@ class Cooking1Results0(Page):
         formfields_random = ['cookresults01_partner1', 'cookresults01_partner2', 'cookresults01_partner3',
                              'cookresults01_partner4']
         final = vars_for_template1_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Cook1R0']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -956,9 +1063,23 @@ class Cooking1Results0(Page):
                       'cookresults01_partner4']
         return formfields
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
+class Sport1Transition(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
+                             'sporthints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Sport1H']) and (final["display"])
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
+                             'sporthints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
 
 class Sports1Hints(Page):
     form_model = 'player'
@@ -982,7 +1103,7 @@ class Sports1Hints(Page):
         formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
                              'sporthints1_partner4']
         final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Sport1H']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -1002,9 +1123,30 @@ class Sports1Hints(Page):
         if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+class Sports1Hints0(Page):
+    form_model = 'player'
 
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['sporthints01_partner1', 'sporthints01_partner2', 'sporthints01_partner3',
+                             'sporthints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        hints = vars_for_template1(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['sporthints01_partner1', 'sporthints01_partner2', 'sporthints01_partner3',
+                             'sporthints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Sport1H0']) and (final["display"])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = ['sporthints01_partner1', 'sporthints01_partner2', 'sporthints01_partner3', 'sporthints01_partner4']
+        return formfields
 
 class Sports1Results(Page):
     form_model = 'player'
@@ -1024,16 +1166,13 @@ class Sports1Results(Page):
         formfields_random = ['sportresults1_partner1', 'sportresults1_partner2', 'sportresults1_partner3',
                              'sportresults1_partner4']
         final = vars_for_template1_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Sport1R']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         formfields = ['sportresults1_partner1', 'sportresults1_partner2', 'sportresults1_partner3',
                       'sportresults1_partner4']
         return formfields
-
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
 
 class Sports1Results0(Page):
@@ -1054,16 +1193,13 @@ class Sports1Results0(Page):
         formfields_random = ['sportresults01_partner1', 'sportresults01_partner2', 'sportresults01_partner3',
                              'sportresults01_partner4']
         final = vars_for_template1_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport1']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Sport1R0']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         formfields = ['sportresults01_partner1', 'sportresults01_partner2', 'sportresults01_partner3',
                       'sportresults01_partner4']
         return formfields
-
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
 
 class Payment2Transition(Page):
@@ -1074,7 +1210,7 @@ class Payment2Transition(Page):
         participant = player.participant
         formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
         final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['2']) and (final["display"])
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -1084,9 +1220,21 @@ class Payment2Transition(Page):
         final["hints"] = hints
         return final
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
+class Econ2Transition(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Econ2H']) and (final["display"])
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
 
 class Economics2Hints(Page):
     form_model = 'player'
@@ -1108,7 +1256,7 @@ class Economics2Hints(Page):
         participant = player.participant
         formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
         final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Econ2H']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -1127,9 +1275,28 @@ class Economics2Hints(Page):
         if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+class Economics2Hints0(Page):
+    form_model = 'player'
 
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['econhints02_partner1', 'econhints02_partner2', 'econhints02_partner3', 'econhints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['econhints02_partner1', 'econhints02_partner2', 'econhints02_partner3', 'econhints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Econ2H0']) and (final["display"])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = ['econhints02_partner1', 'econhints02_partner2', 'econhints02_partner3', 'econhints02_partner4']
+        return formfields
 
 class Economics2Results(Page):
     form_model = 'player'
@@ -1149,18 +1316,14 @@ class Economics2Results(Page):
         formfields_random = ['econresults2_partner1', 'econresults2_partner2', 'econresults2_partner3',
                              'econresults2_partner4']
         final = vars_for_template2_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Econ2R']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         import random
         formfields = ['econresults2_partner1', 'econresults2_partner2', 'econresults2_partner3',
                       'econresults2_partner4']
-        random.shuffle(formfields)
         return formfields
-
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
 
 class Economics2Results0(Page):
@@ -1181,19 +1344,30 @@ class Economics2Results0(Page):
         formfields_random = ['econresults02_partner1', 'econresults02_partner2', 'econresults02_partner3',
                              'econresults02_partner4']
         final = vars_for_template2_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Econ2R0']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         import random
         formfields = ['econresults02_partner1', 'econresults02_partner2', 'econresults02_partner3',
                       'econresults02_partner4']
-        random.shuffle(formfields)
         return formfields
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
+class Cook2Transition(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Cook2H']) and (final["display"])
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
 
 class Cooking2Hints(Page):
     form_model = 'player'
@@ -1215,13 +1389,12 @@ class Cooking2Hints(Page):
         participant = player.participant
         formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
         final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Cook2H']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         import random
         formfields = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
-        random.shuffle(formfields)
         return formfields
 
     @staticmethod
@@ -1236,9 +1409,30 @@ class Cooking2Hints(Page):
         if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
+class Cooking2Hints0(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['cookhints02_partner1', 'cookhints02_partner2', 'cookhints02_partner3', 'cookhints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['cookhints02_partner1', 'cookhints02_partner2', 'cookhints02_partner3', 'cookhints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Cook2H0']) and (final["display"])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        import random
+        formfields = ['cookhints02_partner1', 'cookhints02_partner2', 'cookhints02_partner3', 'cookhints02_partner4']
+        return formfields
 
 class Cooking2Results(Page):
     form_model = 'player'
@@ -1258,18 +1452,14 @@ class Cooking2Results(Page):
         formfields_random = ['cookresults2_partner1', 'cookresults2_partner2', 'cookresults2_partner3',
                              'cookresults2_partner4']
         final = vars_for_template2_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Cook2R']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         import random
         formfields = ['cookresults2_partner1', 'cookresults2_partner2', 'cookresults2_partner3',
                       'cookresults2_partner4']
-        random.shuffle(formfields)
         return formfields
-
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
 
 class Cooking2Results0(Page):
@@ -1290,19 +1480,32 @@ class Cooking2Results0(Page):
         formfields_random = ['cookresults02_partner1', 'cookresults02_partner2', 'cookresults02_partner3',
                              'cookresults02_partner4']
         final = vars_for_template2_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Cook2R0']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         import random
         formfields = ['cookresults02_partner1', 'cookresults02_partner2', 'cookresults02_partner3',
                       'cookresults02_partner4']
-        random.shuffle(formfields)
         return formfields
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
+class Sport2Transition(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
+                             'sporthints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Sport2H']) and (final["display"])
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
+                             'sporthints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
 
 class Sports2Hints(Page):
     form_model = 'player'
@@ -1326,13 +1529,11 @@ class Sports2Hints(Page):
         formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
                              'sporthints2_partner4']
         final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Sport2H']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
         formfields = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3', 'sporthints2_partner4']
-        random.shuffle(formfields)
         return formfields
 
     @staticmethod
@@ -1348,8 +1549,31 @@ class Sports2Hints(Page):
         if allvalues > hints:
             return "Ensure that values add to the allowed number of hints"
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+class Sports2Hints0(Page):
+    form_model = 'player'
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        formfields_random = ['sporthints02_partner1', 'sporthints02_partner2', 'sporthints02_partner3',
+                             'sporthints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        hints = vars_for_template2(player, formfields_random)[1]
+        final["hints"] = hints
+        return final
+
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        formfields_random = ['sporthints02_partner1', 'sporthints02_partner2', 'sporthints02_partner3',
+                             'sporthints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        return (player.round_number == participant.task_rounds1['Sport2H0']) and (final["display"])
+
+    @staticmethod
+    def get_form_fields(player: Player):
+        import random
+        formfields = ['sporthints02_partner1', 'sporthints02_partner2', 'sporthints02_partner3', 'sporthints02_partner4']
+        return formfields
 
 
 class Sports2Results(Page):
@@ -1370,18 +1594,14 @@ class Sports2Results(Page):
         formfields_random = ['sportresults2_partner1', 'sportresults2_partner2', 'sportresults2_partner3',
                              'sportresults2_partner4']
         final = vars_for_template2_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Sport2R']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         import random
         formfields = ['sportresults2_partner1', 'sportresults2_partner2', 'sportresults2_partner3',
                       'sportresults2_partner4']
-        random.shuffle(formfields)
         return formfields
-
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
 
 class Sports2Results0(Page):
@@ -1402,27 +1622,24 @@ class Sports2Results0(Page):
         formfields_random = ['sportresults02_partner1', 'sportresults02_partner2', 'sportresults02_partner3',
                              'sportresults02_partner4']
         final = vars_for_template2_1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport2']) and (get_timeout_seconds1(player) > 0) and (final["display"])
+        return (player.round_number == participant.task_rounds1['Sport2R0']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
         import random
         formfields = ['sportresults02_partner1', 'sportresults02_partner2', 'sportresults02_partner3',
                       'sportresults02_partner4']
-        random.shuffle(formfields)
         return formfields
 
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
 
 class WaitPage2(WaitPage):
     title_text = "Waiting for all players to finish"
-    body_text = "It may take time to load the next page, please do not do anything."
+    body_text = "It may take time to load the next page, please do not do anything. Please be patient with your fellow classmates. While you wait, you can play the game on the paper that's on your desk. PLEASE DO NOT TALK TO ANYONE."
 
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == 9
+        return player.round_number == 26
 
 
 class Final(Page):
@@ -1431,7 +1648,7 @@ class Final(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == 9
+        return player.round_number == 26
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
         player.participant.round2_completed = 0
@@ -1440,19 +1657,21 @@ class Final(Page):
         random.shuffle(arr)
         # print(upcoming_apps[arr[0]])
         if arr[0] == 0:
-            player.participant.round2_completed = 3
+            player.participant.round2_completed = 4
             return '___Round2_'
         if arr[0] == 1:
-            player.participant.round3b_completed = 3
-            return '___Round3b'
-    # @staticmethod
-    # def before_next_page(player: Player, timeout_happened):
-    #     player.participant.payoff_help.update({"partnerm1": 450, "partnerm3":450, "partnerf1":450, "partnerf3":450})
+            player.participant.round3b_completed = 4
+            return '___Round3b_'
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.payoff_help.update({"partnerm1":450, "partnerm3":450, "partnerf1":450, "partnerf3":450})
 
 
 
-page_sequence = [WaitPage1, Demographics, Payment1Transition, Economics1Hints, Economics1Results,
-                 Economics1Results0, Cooking1Hints, Cooking1Results, Cooking1Results0, Sports1Hints,
-                 Sports1Results, Sports1Results0, Payment2Transition, Economics2Hints, Economics2Results, Economics2Results0,
-                 Cooking2Hints, Cooking2Results, Cooking2Results0, Sports2Hints, Sports2Results,
-                 Sports2Results0, WaitPage2, Final]
+page_sequence = [WaitPage1, Demographics, Payment1Transition, Economics1Results0,
+Economics1Hints0, Economics1Results, Econ1Transition, Economics1Hints, Cooking1Results0,
+Cooking1Hints0, Cooking1Results, Cook1Transition, Cooking1Hints, Sports1Results0,
+Sports1Hints0, Sports1Results, Sport1Transition, Sports1Hints, Payment2Transition,
+Economics2Results0, Economics2Hints0, Economics2Results, Econ2Transition, Economics2Hints,
+Cooking2Results0, Cooking2Hints0, Cooking2Results, Cook2Transition, Cooking2Hints,
+Sports2Results0, Sports2Hints0, Sports2Results, Sport2Transition, Sports2Hints, WaitPage2, Final]

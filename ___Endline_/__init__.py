@@ -10,6 +10,36 @@ class C(BaseConstants):
     dict(name='wtp_econ2'),dict(name='wtp_cook2'),dict(name='wtp_sport2'),dict(name='wtp_econ3'),
     dict(name='wtp_cook3'),dict(name='wtp_sport3'),dict(name='wtp_econ4'),dict(name='wtp_cook4'),
     dict(name='wtp_sport4')]
+    DECIDE_HINTS_CHOICES=[
+        dict(name='decide_hints_1', label='I gave more to my friends'),
+        dict(name='decide_hints_2', label='I gave more to people who I thought would know less in the given subject'),
+        dict(name='decide_hints_3', label='I gave more to people who have a low GPA in the class'),
+        dict(name='decide_hints_4', label='I tried to give the same number to all'),
+        dict(name='decide_hints_5', label='Other'),
+    ]
+    CERTAIN_HINTS_ALWAYS_HELPER=[
+        dict(name='certain_hints_always_helper_1', label='I was worried they would think I don’t know much in general'),
+        dict(name='certain_hints_always_helper_2', label='I was worried they would think I don’t know much in a subject I should know about'),
+        dict(name='certain_hints_always_helper_3', label='I was worried that I would not understand the hint and I will feel bad about myself'),
+        dict(name='certain_hints_always_helper_4', label='I didn’t want to waste time'),
+        dict(name='certain_hints_always_helper_5', label='Other'),
+    ]
+    UNCERTAIN_HINTS_ALWAYS_HELPER=[
+        dict(name='uncertain_hints_always_helper_1', label='I would feel rejected if they didn’t give me the hint'),
+        dict(name='uncertain_hints_always_helper_2', label='I was sure the person would not give me the hint'),
+        dict(name='uncertain_hints_always_helper_3', label='I was worried they would think I don’t know much in general'),
+        dict(name='uncertain_hints_always_helper_4', label='I was worried they would think I don’t know much in a subject I should know about'),
+        dict(name='uncertain_hints_always_helper_5', label='I was worried that I would not understand the hint and I will feel bad about myself'),
+        dict(name='uncertain_hints_always_helper_6', label='I didn’t want to waste time'),
+        dict(name='uncertain_hints_always_helper_7', label='Other'),
+    ]
+    HINTS_ALWAYS_COMP=[
+        dict(name='hints_always_comp_1', label='I would feel rejected if the computer didn’t give me the hint'),
+        dict(name='hints_always_comp_2', label='I was sure the computer would not give me the hint'),
+        dict(name='hints_always_comp_3', label='I was worried that I would not understand the hint and I will feel bad about myself'),
+        dict(name='hints_always_comp_4', label='I didn’t want to waste time'),
+        dict(name='hints_always_comp_5', label='Other'),
+    ]
 
 class Subsession(BaseSubsession):
     pass
@@ -85,31 +115,22 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     pref_occu_other = models.StringField()
-    why_pref_occu = models.StringField()
     study_abroad = models.IntegerField(
         choices=[[0, 'Yes'], [1, 'No']],
         widget=widgets.RadioSelect,
     )
     study_abroad_yes = models.StringField()
-    cook_time = make_field_time_spent('Cooking food')
-    study_time = make_field_time_spent('Studying for your degree')
+    chores_time = make_field_time_spent('Household chores including cleaning, ironing, washing clothes')
+    care_time = make_field_time_spent('Caring for others (children, elderly)')
+    cook_time = make_field_time_spent('Cooking')
+    study_alone_time = make_field_time_spent('Studying alone')
+    study_friend_time = make_field_time_spent('Studying with friends')
     sport_time = make_field_time_spent('Sports')
-    clean_time = make_field_time_spent('Cleaning the house')
-    dish_time = make_field_time_spent('Washing dishes')
-    iron_time = make_field_time_spent('Ironing clothes')
-    laundry_time = make_field_time_spent('Washing clothes')
-    care_time = make_field_time_spent('Physically taking care of family members (e.g. children, grandparents, parents etc.)')
-    eat_time = make_field_time_spent('Eating')
-    tv_time = make_field_time_spent('Watching TV')
-    phone_time = make_field_time_spent('Talking on phone with friends')
-    socialmedia_time = make_field_time_spent('On social media')
-    news_time = make_field_time_spent('Reading newspapers')
-    read_time = make_field_time_spent('Reading for fun')
-    social_time = make_field_time_spent('Being out with friends for fun')
+    social_time = make_field_time_spent('Spending time with friends for fun (talking on phone, meeting up)')
     sleep_time = make_field_time_spent('Sleeping')
-    smoke_time = make_field_time_spent('Smoking')
-    nothing_time = make_field_time_spent('Doing nothing at all')
-    other_time = make_field_time_spent('Other (please specify)')
+    news_time = make_field_time_spent('Reading newspapers or online news')
+    socialmedia_time = make_field_time_spent('On social media')
+    other_time = make_field_time_spent('Other')
     friend_count = models.IntegerField(
         choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7, '7'],  [99, 'Other (specify on the next page)']],
         widget=widgets.RadioSelect,
@@ -117,46 +138,21 @@ class Player(BasePlayer):
     friend_count_other = models.IntegerField()
     friend_uni = models.IntegerField()
     #MAKE ANY FORMFIELDS NEEDED FOR FRIEND TABLE
-    friend_roll1 = models.IntegerField(label='')
-    friend_roll2 = models.IntegerField(label='', blank=True)
-    friend_roll3 = models.IntegerField(label='', blank=True)
-    friend_roll4 = models.IntegerField(label='', blank=True)
-    friend_roll5 = models.IntegerField(label='', blank=True)
-    friend_roll6 = models.IntegerField(label='', blank=True)
-    friend_roll7 = models.IntegerField(label='', blank=True)
-    friend_roll8 = models.IntegerField(label='', blank=True)
-    friend_roll9 = models.IntegerField(label='', blank=True)
-    friend_roll10 = models.IntegerField(label='', blank=True)
     friend_name1 = models.StringField(label='')
     friend_name2 = models.StringField(label='', blank=True)
     friend_name3 = models.StringField(label='', blank=True)
     friend_name4 = models.StringField(label='', blank=True)
     friend_name5 = models.StringField(label='', blank=True)
-    friend_name6 = models.StringField(label='', blank=True)
-    friend_name7 = models.StringField(label='', blank=True)
-    friend_name8 = models.StringField(label='', blank=True)
-    friend_name9 = models.StringField(label='', blank=True)
-    friend_name10 = models.StringField(label='', blank=True)
     friend_section1 = models.StringField(label='')
     friend_section2 = models.StringField(label='', blank=True)
     friend_section3 = models.StringField(label='', blank=True)
     friend_section4 = models.StringField(label='', blank=True)
     friend_section5 = models.StringField(label='', blank=True)
-    friend_section6 = models.StringField(label='', blank=True)
-    friend_section7 = models.StringField(label='', blank=True)
-    friend_section8 = models.StringField(label='', blank=True)
-    friend_section9 = models.StringField(label='', blank=True)
-    friend_section10 = models.StringField(label='', blank=True)
     friend_years1 = models.IntegerField(label='')
     friend_years2 = models.IntegerField(label='', blank=True)
     friend_years3 = models.IntegerField(label='', blank=True)
     friend_years4 = models.IntegerField(label='', blank=True)
     friend_years5 = models.IntegerField(label='', blank=True)
-    friend_years6 = models.IntegerField(label='', blank=True)
-    friend_years7 = models.IntegerField(label='', blank=True)
-    friend_years8 = models.IntegerField(label='', blank=True)
-    friend_years9 = models.IntegerField(label='', blank=True)
-    friend_years10 = models.IntegerField(label='', blank=True)
 
     class_relationship_image = models.StringField(blank=True)
     school_relationship_image = models.StringField(blank=True)
@@ -186,25 +182,36 @@ class Player(BasePlayer):
         choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
-    hints_always_helper = models.IntegerField(
+    certain_hints_always_helper = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
         widget=widgets.RadioSelect,
     )
-    hints_always_helper_no = models.IntegerField(
-        choices=[[1, 'If I asked too many times, I felt that the helper would think I don\'t know much'],
-        [2, 'If I asked too many times, I felt that others in the room (not helpers) would think I don\'t know much'],
-        [3, 'I did not think a hint would help'], [4, 'I ran out of time']],
-        widget=widgets.RadioSelect,
-    )
-    hints_always = models.IntegerField(
+    certain_hints_always_helper_1 = models.BooleanField(blank=True)
+    certain_hints_always_helper_2 = models.BooleanField(blank=True)
+    certain_hints_always_helper_3 = models.BooleanField(blank=True)
+    certain_hints_always_helper_4 = models.BooleanField(blank=True)
+    certain_hints_always_helper_5 = models.BooleanField(blank=True)
+    uncertain_hints_always_helper = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
         widget=widgets.RadioSelect,
     )
-    hints_always_no = models.IntegerField(
-        choices=[[1, 'If I pressed too many times, I felt that I might come across as someone who doesn\'t know much'],
-        [2, 'I did not think a hint would help'], [3, 'I ran out of time']],
+    uncertain_hints_always_helper_1 = models.BooleanField(blank=True)
+    uncertain_hints_always_helper_2 = models.BooleanField(blank=True)
+    uncertain_hints_always_helper_3 = models.BooleanField(blank=True)
+    uncertain_hints_always_helper_4 = models.BooleanField(blank=True)
+    uncertain_hints_always_helper_5 = models.BooleanField(blank=True)
+    uncertain_hints_always_helper_6 = models.BooleanField(blank=True)
+    uncertain_hints_always_helper_7 = models.BooleanField(blank=True)
+    hints_always_comp = models.IntegerField(
+        choices=[[1, 'Yes'], [2, 'No']],
         widget=widgets.RadioSelect,
     )
+    hints_always_comp_1 = models.BooleanField(blank=True)
+    hints_always_comp_2 = models.BooleanField(blank=True)
+    hints_always_comp_3 = models.BooleanField(blank=True)
+    hints_always_comp_4 = models.BooleanField(blank=True)
+    hints_always_comp_5 = models.BooleanField(blank=True)
+
     #MAKE ANY FORMFIELDS NEEDED FOR HELPER TABLE
     helper_ranking1 = models.IntegerField(label='',blank=True, min=0, max=5)
     helper_ranking2 = models.IntegerField(label='',blank=True, min=0, max=5)
@@ -235,7 +242,15 @@ class Player(BasePlayer):
         [3, 'He or she did not think a hint would help'], [4, 'He or she ran out of time'], [5, 'He or she wasn\'t a close friend']],
         widget=widgets.RadioSelect,
     )
-    decide_hints = models.StringField()
+    decide_hints_1 = models.BooleanField(blank=True)
+    decide_hints_2 = models.BooleanField(blank=True)
+    decide_hints_3 = models.BooleanField(blank=True)
+    decide_hints_4 = models.BooleanField(blank=True)
+    decide_hints_5 = models.BooleanField(blank=True)
+    diff_choice = models.IntegerField(
+        choices=[[1, 'Yes'], [2, 'No']],
+        widget=widgets.RadioSelect,
+    )
     diff_why = models.StringField()
 
     #Section D
@@ -300,7 +315,6 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     mother_occu_other = models.StringField()
-    in_house = models.IntegerField()
     origin = models.IntegerField(
         choices=[[0, 'Lahore'], [1, 'Faisalabad'], [2, 'Sialkot'], [3,'Gujranwala'], [4, 'Attock'], [5,'Bahawalpur'], [6,'Bahawalnagar'],
         [7, 'Sheikhupura'], [8,'Kasur'], [9,'Rawalpindi'], [10, 'Sialkot'], [99, 'Other (specify on the next page)']],
@@ -316,11 +330,19 @@ class Player(BasePlayer):
     )
 
     #Section D Part 2
-    lost_wallet_personal = models.IntegerField(
+    lost_wallet_personal_woman = models.IntegerField(
         choices=[[1, '1   Very Unlikely'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very likely']],
         widget=widgets.RadioSelectHorizontal,
     )
-    lost_wallet_impersonal = models.IntegerField(
+    lost_wallet_personal_man = models.IntegerField(
+        choices=[[1, '1   Very Unlikely'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very likely']],
+        widget=widgets.RadioSelectHorizontal,
+    )
+    lost_wallet_impersonal_woman = models.IntegerField(
+        choices=[[1, '1   Very Unlikely'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very likely']],
+        widget=widgets.RadioSelectHorizontal,
+    )
+    lost_wallet_impersonal_man = models.IntegerField(
         choices=[[1, '1   Very Unlikely'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very likely']],
         widget=widgets.RadioSelectHorizontal,
     )
@@ -334,10 +356,6 @@ class Player(BasePlayer):
     busi_gender = make_field_likert2()
     house_fulfill = make_field_likert2()
     family_customs = make_field_likert2()
-    free_choice = models.IntegerField(
-        choices=[[1, '1   No choice at all'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   A great deal of choice']],
-        widget=widgets.RadioSelectHorizontal,
-    )
     justify_divorce = models.IntegerField(
         choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
         widget=widgets.RadioSelectHorizontal,
@@ -466,100 +484,6 @@ class Player(BasePlayer):
 
 # PAGES
 #Section A
-class AcademicInfo(Page):
-    form_model = 'player'
-    form_fields = ['dob','high_edu','subject_prior','high_edu_school','rank_prior','extra_curric','degree_aspire','pref_occu','why_pref_occu','study_abroad','friend_count','friend_uni']
-
-class AcademicInfoOther(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.high_edu == 99) or (player.subject_prior == 99) or (player.extra_curric == 99) or (player.degree_aspire == 99) or (player.pref_occu == 99) or (player.study_abroad == 0) or (player.friend_count == 99)
-    @staticmethod
-    def get_form_fields(player: Player):
-        formfields = []
-        if player.high_edu == 99:
-            formfields.append('high_edu_other')
-        if player.subject_prior == 99:
-            formfields.append('subject_prior_other')
-        if player.extra_curric == 99:
-            formfields.append('extra_curric_other')
-        if player.degree_aspire == 99:
-            formfields.append('degree_aspire_other')
-        if player.pref_occu == 99:
-            formfields.append('pref_occu_other')
-        if player.study_abroad == 0:
-            formfields.append('study_abroad_yes')
-        if player.friend_count == 99:
-            formfields.append('friend_count_other')
-        return formfields
-
-class TimeSpent(Page):
-    form_model = 'player'
-    form_fields = ['cook_time','study_time','sport_time','clean_time','dish_time','iron_time','laundry_time','care_time','eat_time','tv_time','phone_time','socialmedia_time','news_time','read_time','social_time','sleep_time','smoke_time','nothing_time','other_time']
-    @staticmethod
-    def error_message(player: Player, values):
-        allvalues = sum(values.values())
-        if allvalues != 24:
-            return "Ensure that all values add to 24 hours"
-
-class FriendsTable(Page):
-    form_model = 'player'
-    form_fields = ['friend_roll1','friend_roll2','friend_roll3','friend_roll4','friend_roll5','friend_roll6','friend_roll7','friend_roll8','friend_roll9','friend_roll10','friend_name1','friend_name2','friend_name3','friend_name4','friend_name5','friend_name6','friend_name7','friend_name8','friend_name9','friend_name10','friend_section1','friend_section2','friend_section3','friend_section4','friend_section5','friend_section6','friend_section7','friend_section8','friend_section9','friend_section10','friend_years1','friend_years2','friend_years3','friend_years4','friend_years5','friend_years6','friend_years7','friend_years8','friend_years9','friend_years10']
-    @staticmethod
-    def vars_for_template(player: Player):
-        friend1 = ['friend_roll1','friend_name1','friend_section1','friend_years1']
-        friend2 = ['friend_roll2','friend_name2','friend_section2','friend_years2']
-        friend3 = ['friend_roll3','friend_name3','friend_section3','friend_years3']
-        friend4 = ['friend_roll4','friend_name4','friend_section4','friend_years4']
-        friend5 = ['friend_roll5','friend_name5','friend_section5','friend_years5']
-        friend6 = ['friend_roll6','friend_name6','friend_section6','friend_years6']
-        friend7 = ['friend_roll7','friend_name7','friend_section7','friend_years7']
-        friend8 = ['friend_roll8','friend_name8','friend_section8','friend_years8']
-        friend9 = ['friend_roll9','friend_name9','friend_section9','friend_years9']
-        friend10 = ['friend_roll10','friend_name10','friend_section10','friend_years10']
-        return dict(friend1=friend1,friend2=friend2,friend3=friend3,friend4=friend4,friend5=friend5,friend6=friend6,friend7=friend7,friend8=friend8,friend9=friend9,friend10=friend10)
-
-class ClassRelations1(Page):
-    form_model = 'player'
-    form_fields = ['class_relationship_image']
-    @staticmethod
-    def vars_for_template(player: Player):
-        image_names1 = ['ClassRelations1_1.jpg','ClassRelations2_1.jpg','ClassRelations3_1.jpg','ClassRelations4_1.jpg','ClassRelations5_1.jpg','ClassRelations6_1.jpg','ClassRelations7_1.jpg']
-        return dict(image_data1=make_image_data(image_names1))
-
-class ClassRelations2(Page):
-    form_model = 'player'
-    form_fields = ['school_relationship_image']
-    @staticmethod
-    def vars_for_template(player: Player):
-        image_names2 = ['ClassRelations1_2.jpg','ClassRelations2_2.jpg','ClassRelations3_2.jpg','ClassRelations4_2.jpg','ClassRelations5_2.jpg','ClassRelations6_2.jpg','ClassRelations7_2.jpg']
-        return dict(image_data2=make_image_data(image_names2))
-
-class ClassRelations3(Page):
-    form_model = 'player'
-    form_fields = ['know_rank','know_gpa']
-
-
-#Section B
-class ExpFeedback(Page):
-    form_model = 'player'
-    form_fields = ['subjects_like','subjects_dislike','subjects_correct','subjects_incorrect','hints_always_helper','hints_always']
-
-class ExpFeedbackNo(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.hints_always_helper == 2) or (player.hints_always == 2)
-    @staticmethod
-    def get_form_fields(player: Player):
-        formfields = []
-        if player.hints_always_helper == 2:
-            formfields.append('hints_always_helper_no')
-        if player.hints_always == 2:
-            formfields.append('hints_always_no')
-        return formfields
-
 class HelperTable(Page):
     form_model = 'player'
     form_fields = ['helper_ranking1','helper_ranking2','helper_ranking3','helper_ranking4','helper_ranking5','helper_ranking6','helper_ranking7','helper_ranking8','helper_reason1','helper_reason2','helper_reason3','helper_reason4','helper_reason5','helper_reason6','helper_reason7','helper_reason8']
@@ -702,11 +626,118 @@ class WTP_Subject(Page):
         if num_selected < 2*count:
             return "Please properly fill out rankings"
 
+class ExpFeedback(Page):
+    form_model = 'player'
+    form_fields = ['subjects_like','subjects_dislike','subjects_correct','subjects_incorrect','certain_hints_always_helper','uncertain_hints_always_helper','hints_always_comp']
 
-#Section C
+class ExpFeedbackNo1(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.certain_hints_always_helper == 2)
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = []
+        if player.certain_hints_always_helper == 2:
+            formfields.append('certain_hints_always_helper_1')
+            formfields.append('certain_hints_always_helper_2')
+            formfields.append('certain_hints_always_helper_3')
+            formfields.append('certain_hints_always_helper_4')
+            formfields.append('certain_hints_always_helper_5')
+        return formfields
+    @staticmethod
+    def vars_for_template(player: Player):
+        return dict(labels1=C.CERTAIN_HINTS_ALWAYS_HELPER)
+    @staticmethod
+    def error_message(player: Player, values):
+        if player.certain_hints_always_helper == 2:
+            num_selected1 = 0
+            for partner in C.CERTAIN_HINTS_ALWAYS_HELPER:
+                if values[partner['name']]:
+                    num_selected1 += 1
+            if num_selected1 < 2:
+                return "Please select 2"
+            elif num_selected1 > 2:
+                return "You may not select more than 2"
+
+class ExpFeedbackNo2(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.uncertain_hints_always_helper == 2)
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = []
+        if player.uncertain_hints_always_helper == 2:
+            formfields.append('uncertain_hints_always_helper_1')
+            formfields.append('uncertain_hints_always_helper_2')
+            formfields.append('uncertain_hints_always_helper_3')
+            formfields.append('uncertain_hints_always_helper_4')
+            formfields.append('uncertain_hints_always_helper_5')
+            formfields.append('uncertain_hints_always_helper_6')
+            formfields.append('uncertain_hints_always_helper_7')
+        return formfields
+    @staticmethod
+    def vars_for_template(player: Player):
+        return dict(labels2=C.UNCERTAIN_HINTS_ALWAYS_HELPER)
+    @staticmethod
+    def error_message(player: Player, values):
+        if player.uncertain_hints_always_helper == 2:
+            num_selected2 = 0
+            for partner in C.UNCERTAIN_HINTS_ALWAYS_HELPER:
+                if values[partner['name']]:
+                    num_selected2 += 1
+            if num_selected2 < 2:
+                return "Please select 2"
+            elif num_selected2 > 2:
+                return "You may not select more than 2"
+
+class ExpFeedbackNo3(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.hints_always_comp == 2)
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = []
+        if player.hints_always_comp == 2:
+            formfields.append('hints_always_comp_1')
+            formfields.append('hints_always_comp_2')
+            formfields.append('hints_always_comp_3')
+            formfields.append('hints_always_comp_4')
+            formfields.append('hints_always_comp_5')
+        return formfields
+    @staticmethod
+    def vars_for_template(player: Player):
+        return dict(labels3=C.HINTS_ALWAYS_COMP)
+    @staticmethod
+    def error_message(player: Player, values):
+        if player.hints_always_comp == 2:
+            num_selected3 = 0
+            for partner in C.HINTS_ALWAYS_COMP:
+                if values[partner['name']]:
+                    num_selected3 += 1
+            if num_selected3 < 2:
+                return "Please select 2"
+            elif num_selected3 > 2:
+                return "You may not select more than 2"
+
 class ExpDecisions(Page):
     form_model = 'player'
-    form_fields = ['tt_perception','decide_hints','diff_why']
+    form_fields = ['tt_perception','decide_hints_1','decide_hints_2','decide_hints_3','decide_hints_4','decide_hints_5','diff_choice','diff_why']
+    @staticmethod
+    def vars_for_template(player: Player):
+        return dict(labels=C.DECIDE_HINTS_CHOICES)
+    @staticmethod
+    def error_message(player: Player, values):
+        num_selected = 0
+        for choice in C.DECIDE_HINTS_CHOICES:
+            if values[choice['name']]:
+                num_selected += 1
+        if num_selected < 2:
+            return "Please select 2"
+        elif num_selected > 2:
+            return "You may not select more than 2"
 
 class ExpDecisionsNo(Page):
     form_model = 'player'
@@ -720,12 +751,11 @@ class ExpDecisionsNo(Page):
             formfields.append('tt_perception_no')
         return formfields
 
-
-#Section D
 class GenderTable(Page):
     form_model = 'player'
     form_fields = ['gender_sports','gender_economics','gender_cooking']
 
+#Section B
 class AmountGame(Page):
     form_model = 'player'
     form_fields = ['amount_notgame','amount_game']
@@ -734,10 +764,24 @@ class AmountGame(Page):
         allvalues = sum(values.values())
         if allvalues != 100:
             return "Ensure that values add to 100 Rs."
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.game_payoff = player.amount_notgame
+        num = [1,2]
+        random.shuffle(num)
+        if num[0] == 1:
+            player.participant.game_payoff += (player.amount_game * 3)
+
+class AmountGameResults(Page):
+    form_model = 'player'
+    @staticmethod
+    def vars_for_template(player: Player):
+        game_payoff = player.participant.game_payoff
+        return dict(game_payoff=game_payoff)
 
 class BasicInfo(Page):
     form_model = 'player'
-    form_fields = ['gender','caste','religion','marital_status','children','lang','father_occu','mother_occu','in_house','origin','monthly_income']
+    form_fields = ['gender','caste','religion','marital_status','children','lang','father_occu','mother_occu','origin','monthly_income']
 
 class BasicInfoOther(Page):
     form_model = 'player'
@@ -763,9 +807,78 @@ class BasicInfoOther(Page):
             formfields.append('origin_other')
         return formfields
 
+class AcademicInfo(Page):
+    form_model = 'player'
+    form_fields = ['dob','high_edu','subject_prior','high_edu_school','rank_prior','extra_curric','degree_aspire','pref_occu','study_abroad','friend_count','friend_uni']
+
+class AcademicInfoOther(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.high_edu == 99) or (player.subject_prior == 99) or (player.extra_curric == 99) or (player.degree_aspire == 99) or (player.pref_occu == 99) or (player.study_abroad == 0) or (player.friend_count == 99)
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = []
+        if player.high_edu == 99:
+            formfields.append('high_edu_other')
+        if player.subject_prior == 99:
+            formfields.append('subject_prior_other')
+        if player.extra_curric == 99:
+            formfields.append('extra_curric_other')
+        if player.degree_aspire == 99:
+            formfields.append('degree_aspire_other')
+        if player.pref_occu == 99:
+            formfields.append('pref_occu_other')
+        if player.study_abroad == 0:
+            formfields.append('study_abroad_yes')
+        if player.friend_count == 99:
+            formfields.append('friend_count_other')
+        return formfields
+
+class TimeSpent(Page):
+    form_model = 'player'
+    form_fields = ['chores_time','care_time','cook_time','study_alone_time','study_friend_time','sport_time','social_time','sleep_time','news_time','socialmedia_time','other_time']
+    @staticmethod
+    def error_message(player: Player, values):
+        allvalues = sum(values.values())
+        if allvalues != 24:
+            return "Ensure that all values add to 24 hours"
+
+class FriendsTable(Page):
+    form_model = 'player'
+    form_fields = ['friend_name1','friend_name2','friend_name3','friend_name4','friend_name5','friend_section1','friend_section2','friend_section3','friend_section4','friend_section5','friend_years1','friend_years2','friend_years3','friend_years4','friend_years5']
+    @staticmethod
+    def vars_for_template(player: Player):
+        friend1 = ['friend_name1','friend_section1','friend_years1']
+        friend2 = ['friend_name2','friend_section2','friend_years2']
+        friend3 = ['friend_name3','friend_section3','friend_years3']
+        friend4 = ['friend_name4','friend_section4','friend_years4']
+        friend5 = ['friend_name5','friend_section5','friend_years5']
+        return dict(friend1=friend1,friend2=friend2,friend3=friend3,friend4=friend4,friend5=friend5)
+
+class ClassRelations1(Page):
+    form_model = 'player'
+    form_fields = ['class_relationship_image']
+    @staticmethod
+    def vars_for_template(player: Player):
+        image_names1 = ['ClassRelations1_1.jpg','ClassRelations2_1.jpg','ClassRelations3_1.jpg','ClassRelations4_1.jpg','ClassRelations5_1.jpg','ClassRelations6_1.jpg','ClassRelations7_1.jpg']
+        return dict(image_data1=make_image_data(image_names1))
+
+class ClassRelations2(Page):
+    form_model = 'player'
+    form_fields = ['school_relationship_image']
+    @staticmethod
+    def vars_for_template(player: Player):
+        image_names2 = ['ClassRelations1_2.jpg','ClassRelations2_2.jpg','ClassRelations3_2.jpg','ClassRelations4_2.jpg','ClassRelations5_2.jpg','ClassRelations6_2.jpg','ClassRelations7_2.jpg']
+        return dict(image_data2=make_image_data(image_names2))
+
+class ClassRelations3(Page):
+    form_model = 'player'
+    form_fields = ['know_rank','know_gpa']
+
 class Ethics1(Page):
     form_model = 'player'
-    form_fields = ['lost_wallet_personal','lost_wallet_impersonal','free_choice']
+    form_fields = ['lost_wallet_personal_woman','lost_wallet_personal_man','lost_wallet_impersonal_woman','lost_wallet_impersonal_man','positive_reciprocity']
 
 class Ethics2(Page):
     form_model = 'player'
@@ -775,25 +888,48 @@ class Ethics3(Page):
     form_model = 'player'
     form_fields = ['justify_divorce','justify_lying','justify_beatwife','justify_beatchild','justify_violence']
 
-
-#Section E
 class Personality(Page):
     form_model = 'player'
-    form_fields = ['patience','risk_aversion','negative_reciprocity_self','negative_reciprocity_others','competitiveness','best_intentions','social_skills_feelings','social_skills_reactions','trust_first_meet','trust_women','trust_men','generalized_trust','altruism','positive_reciprocity']
+    form_fields = ['patience','risk_aversion','negative_reciprocity_self','negative_reciprocity_others','competitiveness','best_intentions','social_skills_feelings','social_skills_reactions','trust_first_meet','trust_women','trust_men','generalized_trust','altruism']
 
 class PersonalityTraitsTable(Page):
     form_model = 'player'
     form_fields = ['reserved','trust','lazy','relaxed','artistic','outgoing','fault_others','thorough','nervous','imagination']
 
-class PersonalityStatementTable(Page):
-    form_model = 'player'
-    form_fields = ['setbacks_encourage','change_goals','focus_months','new_distracts','hardwork','finish','change_interests','diligent','obsess_shortterm','setbacks_challenge']
-
 class Congratulations(Page):
     form_model = 'player'
 
-page_sequence = [AcademicInfo, AcademicInfoOther, TimeSpent, FriendsTable, ClassRelations1,
-ClassRelations2, ClassRelations3, ExpFeedback, ExpFeedbackNo, HelperTable, MultiplePriceFemale,
-MultiplePriceMale, WTP_Subject, ExpDecisions, ExpDecisionsNo, GenderTable, AmountGame,
-BasicInfo, BasicInfoOther, Ethics1, Ethics2, Ethics3, Personality, PersonalityTraitsTable,
-PersonalityStatementTable, Congratulations]
+class Payment(Page):
+    @staticmethod
+    def vars_for_template(player: Player):
+        player.participant.total_payment = 300
+
+        testing_pay = list(player.participant.payoff_tt.values())
+        random.shuffle(testing_pay)
+        player.participant.total_payment += testing_pay[0]
+        testing_pay0 = testing_pay[0]
+
+        #add all helpers
+        helping_pay = list(player.participant.payoff_help.values())
+        random.shuffle(helping_pay)
+        player.participant.total_payment += helping_pay[0]
+        helping_pay0 = helping_pay[0]
+
+        #subtract wtp_payment
+        wtp_pay0 = 0-player.participant.wtp_payment
+        player.participant.total_payment += wtp_pay0
+
+        #add amount game
+        player.participant.total_payment += player.participant.game_payoff
+
+        #add bonus payoff
+        player.participant.total_payment += player.participant.guess_bonus_payoff
+        return dict(testing_pay0=testing_pay0, helping_pay0=helping_pay0, guess_bonus_pay0=player.participant.guess_bonus_payoff, wtp_pay0=0-player.participant.wtp_payment, amount_game_pay0=player.participant.game_payoff, total_payment0=player.participant.total_payment)
+
+
+page_sequence = [HelperTable, MultiplePriceFemale, MultiplePriceMale, WTP_Subject,
+ExpFeedback, ExpFeedbackNo1, ExpFeedbackNo2, ExpFeedbackNo3, ExpDecisions, ExpDecisionsNo,
+AmountGame, AmountGameResults, GenderTable, ClassRelations1, ClassRelations2, Ethics1,
+Ethics2, Ethics3, Personality, PersonalityTraitsTable, BasicInfo, BasicInfoOther,
+AcademicInfo, AcademicInfoOther, TimeSpent, FriendsTable, ClassRelations3, Congratulations,
+Payment]

@@ -5,27 +5,13 @@ class C(BaseConstants):
     NAME_IN_URL = '___Preferences_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    PLAYERS = ['Abdul Mateen Khan','Abdullah Bin Umar','Abdullah Irfan','Abdullah Saeed Mirza',
-    'Ali Imran','Alishba Sajjad','Anushey Rehman','Arslan Asif','Asad Kashif','Ather Saeed',
-    'Bisma Nadeem','Fahmeen Javed','Fatima Sheiklh','Haadi Mashood','Hamza Shafqat',
-    'Hamza Umar','Humayd Haider','Junaid Mir','Layba Mazhar','Maryam Toor','Meeran Khan',
-    'Mohad Rehan','Momin Ahsan','Muhammad Aayan Siddiq','Muhammad Ahsan','Muhammad Aneeq Tahir',
-    'Muhammad Hur Abbas','Muhammad Mahad Tanveer','Muhammad Numan','Muhammad Salman',
-    'Muhammad Sher Dil','Muhammad Sufian Masoom','Muhammad Umer Farooq','Muhammad Usama Haroon',
-    'Muhammad Usman Javed','Muqadas Fatima','Mustafa Abubaker','Nabiha Omar Qazi',
-    'Rida Faisal','Sahibzada Raza Hassan Khan','Shahzada Muhammad Rohaan','Uzair Zubair',
-    'Zain Faisal','Zurain Fatima','Abdul Wasay','Abdullah Arshad','Abdullah Kashif Bhatti',
-    'Abu Sufian','Ahmad Farhan','Ahmed Wasif Bashir','Ali Ahmed Danish','Aman Faisal',
-    'Arslan Qadeer','Ayesha Ashfaq','Farriha Tahir Malik','Fatima Sarwar','Fatima Mumtaz',
-    'Fatima Rana','Fiza Yasir','Hassan Javaid','Hassan Raza Bhatti','Hira Mukhtar',
-    'Hussain Naveed Tarar','Ibrahim Akram Cheema','Maham Fateh','Mehar Tariq Siraj',
-    'Minahil Waqar','Mohammad Awais Bakhshi','Mohammad Hanzala','Muhammad Alim Tahir',
-    'Muhammad Aliyan Khan','Muhammad Anas Nadeem','Muhammad Bilal Tariq','Muhammad Hassaan Bin Shoaib',
-    'Muhammad Ibrahim Chaudhry','Muhammad Munimureshi','Muhammad Naeem Baig','Muhammad Rahim Azeem',
-    'Muhammad Raza Khan','Muhammad Talha Mehmood','Mustafa Saeed','Nouman Aslam',
-    'Sameen Sohail','Talha Manzoor','Umar Imran','Zahb Anjum Butt','Zainab Kamran',
-    'Zam Zam Habib','Zain Aziz Khawaja','Musa Tariq','Alishba Zahid']
-    RANKINGS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    PLAYERS = ['Muhammad Kashif Khan','Zain U Din','Shahar Bano','Areesha Zahra Abbasi','Sami-ullah',
+    'Amna Bibi','Tuba Naeem','Moazzam Asadullah','Muhammad Musa Sulehria','Noor ul Huda Awan']
+    # 'Safi Ullah Khan','Muhammad Yousaf Khan','Abdul Nasir Khan','Arooj Khalid',
+    # 'Zarak Naseer Baloch','Jannat Rashid','Shahid Ullah Khan','Saif Ur Rehman Kukuria',
+    # 'Ali Hasnain','Muhammad Talha Wattoo','Shumaila Javaid','Rumaiza Mazhar','Gul E Zahra Abbasi',
+    # 'Naveed Khan','Mahjabeen Sughra','Areesha Sohail','Hassan Umer','Ali Waqas',
+    RANKINGS = [1,2,3,4,5,6,7,8,9,'No rank']
     TOP5 = [1,2,3,4,5]
 
 class Subsession(BaseSubsession):
@@ -36,8 +22,8 @@ class Group(BaseGroup):
 
 def make_field1(label):
     return models.StringField(
-        choices=C.PLAYERS,
-        label=label, initial = 0,
+        choices=C.RANKINGS,
+        label=label, initial = "No rank",
     )
 
 def make_field2(label):
@@ -129,40 +115,53 @@ class Pref_Helper(Page):
     @staticmethod
     def get_form_fields(player: Player):
         form_fields = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1','f6_1_1','f7_1_1',
-        'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
-        'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1']
+        'f8_1_1','f9_1_1']
         return form_fields
     @staticmethod
     def vars_for_template(player: Player):
+        g = player.group
         form_fields = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1','f6_1_1','f7_1_1',
-        'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
-        'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1']
-        player.participant.form_fields_pref = form_fields[:20]
-        return
+        'f8_1_1','f9_1_1']
+        player.participant.form_fields_pref = form_fields[:]
+        #randomizing list
+        session = player.session
+        random_players = session.active_players
+        random.shuffle(random_players)
+        player.participant.players = []
+        for current_player in random_players:
+            if current_player != player.id_in_group:
+                c = g.get_player_by_id(current_player)
+                player.participant.players.append(c.participant.label)
+        return dict(players=player.participant.players)
     @staticmethod
     def error_message(player: Player, values):
         choices = []
         for field in player.participant.form_fields_pref:
             choices += [values[field]]
-        if len(set(choices)) != len(choices):
-            return "You cannot choose the same person for two ranks"
-        if player.participant.label in choices:
-            return "DO NOT SELECT YOUR OWN NAME"
+        if len(set(choices)) != 9:
+            return "You must choose exactly 10 ranks. You cannot choose the same person for two ranks."
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         #SET THESE WHEN SETTING THE NAMES OF THE PLAYERS
 
         #change this and the player names list in Consent's tests.py for testing
-        name_list = [player.f1_1_1, player.f2_1_1, player.f3_1_1, player.f4_1_1,
-        player.f5_1_1, player.f6_1_1, player.f7_1_1, player.f8_1_1, player.f9_1_1,
-        player.f10_1_1, player.f11_1_1, player.f12_1_1, player.f13_1_1, player.f14_1_1,
-        player.f15_1_1, player.f16_1_1, player.f17_1_1, player.f18_1_1, player.f19_1_1,
-        player.f20_1_1]
+        rank_list = [player.f1_1_1, player.f2_1_1, player.f3_1_1, player.f4_1_1,
+        player.f5_1_1, player.f5_1_1, player.f6_1_1, player.f7_1_1, player.f8_1_1,
+        player.f9_1_1]
+        player.participant.name_list = []
+        ranking_order = dict(zip(rank_list, player.participant.players))
+        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
+        sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
+        for rank in sorted_ranking_order.keys():
+            if rank == 'No rank':
+                sorted_ranking_order1.pop(rank)
+        player.participant.name_list = list(sorted_ranking_order1.values())
+
         id_list = []
         id_list_female = []
         id_list_male = []
         group = player.group
-        for name in name_list:
+        for name in player.participant.name_list:
             for p in group.get_players():
                 print(p.participant.label, name)
                 if p.participant.label == name:
@@ -187,8 +186,8 @@ class Pref_Helper_Why(Page):
     form_fields = ['f1_2_1','f2_2_1','f3_2_1','f4_2_1','f5_2_1']
     @staticmethod
     def vars_for_template(player: Player):
-        player_why = ["1. " + player.f1_1_1, "2. " + player.f2_1_1, "3. " + player.f3_1_1,
-        "4. " + player.f4_1_1, "5. " + player.f5_1_1]
+        player_why = ["1. " + player.participant.name_list[0], "2. " + player.participant.name_list[1], "3. " + player.participant.name_list[2],
+        "4. " + player.participant.name_list[3], "5. " + player.participant.name_list[4]]
         return dict(player_why = player_why)
 
 class Pref_Helper_Other(Page):
@@ -198,19 +197,19 @@ class Pref_Helper_Other(Page):
     def vars_for_template(player: Player):
         players_other = []
         if player.f1_2_1 == "9. Other":
-            player1 = [player.f1_1_1]
+            player1 = [player.participant.name_list[0]]
             players_other = players_other + player1
         if player.f2_2_1 == "9. Other":
-            player2 = [player.f2_1_1]
+            player2 = [player.participant.name_list[1]]
             players_other = players_other + player2
         if player.f3_2_1 == "9. Other":
-            player3 = [player.f3_1_1]
+            player3 = [player.participant.name_list[2]]
             players_other = players_other + player3
         if player.f4_2_1 == "9. Other":
-            player4 = [player.f4_1_1]
+            player4 = [player.participant.name_list[3]]
             players_other = players_other + player4
         if player.f5_2_1 == "9. Other":
-            player5 = [player.f5_1_1]
+            player5 = [player.participant.name_list[4]]
             players_other = players_other + player5
         return dict(players_other = players_other)
     @staticmethod
@@ -222,37 +221,40 @@ class Pref_TT(Page):
     @staticmethod
     def get_form_fields(player: Player):
         form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
-        'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
-        'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2']
+        'f8_1_2','f9_1_2']
         return form_fields
     @staticmethod
     def vars_for_template(player: Player):
+        g = player.group
         form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
-        'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
-        'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2']
-        player.participant.form_fields_pref2 = form_fields[:20]
-        return
+        'f8_1_2','f9_1_2']
+        player.participant.form_fields_pref2 = form_fields[:]
+        return dict(players=player.participant.players)
     @staticmethod
     def error_message(player: Player, values):
         choices = []
         for field in player.participant.form_fields_pref2:
             choices += [values[field]]
-        if len(set(choices)) != len(choices):
-            return "You cannot choose the same person for two ranks"
-        if player.participant.label in choices:
-            return "DO NOT SELECT YOUR OWN NAME"
+        if len(set(choices)) != 9:
+            return "You must choose exactly 10 ranks. You cannot choose the same person for two ranks."
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        name_list = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2,
-        player.f5_1_2, player.f6_1_2, player.f7_1_2, player.f8_1_2, player.f9_1_2,
-        player.f10_1_2, player.f11_1_2, player.f12_1_2, player.f13_1_2, player.f14_1_2,
-        player.f15_1_2, player.f16_1_2, player.f17_1_2, player.f18_1_2, player.f19_1_2,
-        player.f20_1_2]
+        rank_list = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2,
+        player.f5_1_2, player.f6_1_2, player.f7_1_2, player.f8_1_2, player.f9_1_2]
+        player.participant.name_list1 = []
+        ranking_order = dict(zip(rank_list, player.participant.players))
+        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
+        sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
+        for rank in sorted_ranking_order.keys():
+            if rank == 'No rank':
+                sorted_ranking_order1.pop(rank)
+        player.participant.name_list1 = list(sorted_ranking_order1.values())
+
         id_list = []
         id_list_female = []
         id_list_male = []
         group = player.group
-        for name in name_list:
+        for name in player.participant.name_list1:
             for p in group.get_players():
 
                 ##subtly eliminates ones who did not show up from matching algorithm
@@ -276,8 +278,8 @@ class Pref_TT_Why(Page):
     form_fields = ['f1_2_2','f2_2_2','f3_2_2','f4_2_2','f5_2_2']
     @staticmethod
     def vars_for_template(player: Player):
-        player_why = ["1. " + player.f1_1_2, "2. " + player.f2_1_2, "3. " + player.f3_1_2,
-        "4. " + player.f4_1_2, "5. " + player.f5_1_2]
+        player_why = ["1. " + player.participant.name_list1[0], "2. " + player.participant.name_list1[1], "3. " + player.participant.name_list1[2],
+        "4. " + player.participant.name_list1[3], "5. " + player.participant.name_list1[4]]
         return dict(player_why = player_why)
 
 class Pref_TT_Other(Page):
@@ -287,19 +289,19 @@ class Pref_TT_Other(Page):
     def vars_for_template(player: Player):
         players_other = []
         if player.f1_2_2 == "9. Other":
-            player1 = [player.f1_1_2]
+            player1 = [player.participant.name_list1[0]]
             players_other = players_other + player1
         if player.f2_2_2 == "9. Other":
-            player2 = [player.f2_1_2]
+            player2 = [player.participant.name_list1[1]]
             players_other = players_other + player2
         if player.f3_2_2 == "9. Other":
-            player3 = [player.f3_1_2]
+            player3 = [player.participant.name_list1[2]]
             players_other = players_other + player3
         if player.f4_2_2 == "9. Other":
-            player4 = [player.f4_1_2]
+            player4 = [player.participant.name_list1[3]]
             players_other = players_other + player4
         if player.f5_2_2 == "9. Other":
-            player5 = [player.f5_1_2]
+            player5 = [player.participant.name_list1[4]]
             players_other = players_other + player5
         return dict(players_other = players_other)
     @staticmethod

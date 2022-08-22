@@ -1,12 +1,11 @@
-{{ block title }}SECTION A{{ endblock }}
+{{ block title }}FINAL SURVEY SECTION D: PART 3{{ endblock }}
 {{ block content }}
 
-    <b><p>Can you give us a list of your 10 closest friends in your class at your current university?</p></b>
+    <b><p>Can you give us a list of your 5 closest friends in your class at your current university?</p></b>
 
     <table class="table">
         <tr>
             <th>No.</th>
-            <th>Roll Number (if known)</th>
             <th>Full name of the student (First name, Surname)</th>
             <th>Section/year</th>
             <th>Years since friends?</th>
@@ -38,36 +37,6 @@
         <tr>
             <td>5</td>
             {{ for field in friend5 }}
-            <td>{{ formfield field }}</td>
-            {{ endfor }}
-        </tr>
-        <tr>
-            <td>6</td>
-            {{ for field in friend6 }}
-            <td>{{ formfield field }}</td>
-            {{ endfor }}
-        </tr>
-        <tr>
-            <td>7</td>
-            {{ for field in friend7 }}
-            <td>{{ formfield field }}</td>
-            {{ endfor }}
-        </tr>
-        <tr>
-            <td>8</td>
-            {{ for field in friend8 }}
-            <td>{{ formfield field }}</td>
-            {{ endfor }}
-        </tr>
-        <tr>
-            <td>9</td>
-            {{ for field in friend9 }}
-            <td>{{ formfield field }}</td>
-            {{ endfor }}
-        </tr>
-        <tr>
-            <td>10</td>
-            {{ for field in friend10 }}
             <td>{{ formfield field }}</td>
             {{ endfor }}
         </tr>

@@ -112,25 +112,25 @@ def creating_session(subsession: Subsession):
             sub_round_number2 = list(range(6, 9))
             random.shuffle(sub_round_number2)
             round_number_1 = task_round['1']
-            p.participant.task_rounds1 = dict()
+            p.participant.task_roundsf = dict()
             if round_number_1 == 1:
-                p.participant.task_rounds1.update({'1': 1})
+                p.participant.task_roundsf.update({'1': 1})
                 task_rounds_1_1 = dict(zip(C.SUB1TASKS, sub_round_number1))
-                p.participant.task_rounds1.update(task_rounds_1_1)
+                p.participant.task_roundsf.update(task_rounds_1_1)
             elif round_number_1 == 2:
-                p.participant.task_rounds1.update({'1': 5})
+                p.participant.task_roundsf.update({'1': 5})
                 task_rounds_1_2 = dict(zip(C.SUB1TASKS, sub_round_number2))
-                p.participant.task_rounds1.update(task_rounds_1_2)
+                p.participant.task_roundsf.update(task_rounds_1_2)
 
             round_number_2 = task_round['2']
             if round_number_2 == 1:
-                p.participant.task_rounds1.update({'2': 1})
+                p.participant.task_roundsf.update({'2': 1})
                 task_rounds_2_1 = dict(zip(C.SUB2TASKS, sub_round_number1))
-                p.participant.task_rounds1.update(task_rounds_2_1)
+                p.participant.task_roundsf.update(task_rounds_2_1)
             elif round_number_2 == 2:
-                p.participant.task_rounds1.update({'2': 5})
+                p.participant.task_roundsf.update({'2': 5})
                 task_rounds_2_2 = dict(zip(C.SUB2TASKS, sub_round_number2))
-                p.participant.task_rounds1.update(task_rounds_2_2)
+                p.participant.task_roundsf.update(task_rounds_2_2)
 
 def set_helped(player: Player):
     g = player.group
@@ -648,7 +648,7 @@ class Results2(Page):
 
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
-    body_text = ""
+    body_text = "Please be patient with your fellow classmates. While you wait, you can play the game on the paper that's on your desk. PLEASE DO NOT TALK TO ANYONE."
 
     @staticmethod
     def is_displayed(player: Player):
@@ -779,7 +779,7 @@ class Economics1Hints(Page):
         participant = player.participant
         formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
         final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ1']) and (final["display"])
+        return (player.round_number == participant.task_roundsf['Econ1']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -814,7 +814,7 @@ class Cooking1Hints(Page):
         participant = player.participant
         formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
         final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook1']) and (final["display"])
+        return (player.round_number == participant.task_roundsf['Cook1']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -851,7 +851,7 @@ class Sports1Hints(Page):
         formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
                              'sporthints1_partner4']
         final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport1']) and (final["display"])
+        return (player.round_number == participant.task_roundsf['Sport1']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -887,7 +887,7 @@ class Economics2Hints(Page):
         participant = player.participant
         formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
         final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ2']) and (final["display"])
+        return (player.round_number == participant.task_roundsf['Econ2']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -922,7 +922,7 @@ class Cooking2Hints(Page):
         participant = player.participant
         formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
         final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook2']) and (final["display"])
+        return (player.round_number == participant.task_roundsf['Cook2']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):
@@ -961,7 +961,7 @@ class Sports2Hints(Page):
         formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
                              'sporthints2_partner4']
         final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport2']) and (final["display"])
+        return (player.round_number == participant.task_roundsf['Sport2']) and (final["display"])
 
     @staticmethod
     def get_form_fields(player: Player):

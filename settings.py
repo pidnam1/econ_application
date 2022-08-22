@@ -5,13 +5,13 @@ SESSION_CONFIGS = [
     dict(
         name='my_project',
         display_name = "Survey",
-        app_sequence = ['___Consent_','___Preferences_','___Practice_','___Round0_','___Round1_','___Round2_','___Round3b_','___Round2_1','___Final_','___Endline_'],
+        app_sequence = ['___Consent_','___Preferences_','___Practice_','___Round0_','___Round0b_','___Round1_','___Round2_','___Round3b_','___Round2_1','___Final_','___Endline_'],
         num_demo_participants=18
     ),
     # dict(
     #     name='Tester',
     #     display_name = "Tester",
-    #     app_sequence=['___Consent_','___Preferences_'],
+    #     app_sequence=['___Consent_','___Round0b_'],
     #     num_demo_participants=21
     # ),
     # dict(
@@ -39,6 +39,12 @@ SESSION_CONFIGS = [
     #     num_demo_participants=21
     # ),
     # dict(
+    #     name='___Round0b_',
+    #     display_name = "Round 0b",
+    #     app_sequence=['___Round0b_'],
+    #     num_demo_participants=21
+    # ),
+    # dict(
     #     name='___Round1_',
     #     display_name = "Round 1",
     #     app_sequence=['___Round1_'],
@@ -56,12 +62,12 @@ SESSION_CONFIGS = [
     #     app_sequence=['___Round3b_'],
     #     num_demo_participants=21
     # ),
-    dict(
-        name="___Final_",
-        display_name = "Final",
-        app_sequence=['___Final_'],
-        num_demo_participants=21
-    ),
+    # dict(
+    #     name="___Final_",
+    #     display_name = "Final",
+    #     app_sequence=['___Final_'],
+    #     num_demo_participants=21
+    # ),
     # dict(
     #     name="___Endline_",
     #     display_name = "Endline",
@@ -85,14 +91,22 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, count=0, use_browser_bots=True,  doc=""
 )
 
-PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rounds2',
-'task_rounds3b','expiry','MP1hints_given_econ','MP1hints_given_cook','MP1hints_given_sport',
+PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds0b','task_rounds1','task_rounds2',
+'task_rounds3b','task_roundsf','expiry','MP1hints_given_econ','MP1hints_given_cook','MP1hints_given_sport',
 'MR1hints_given_econ','MR1hints_given_cook','MR1hints_given_sport','WP1hints_given_econ',
 'WP1hints_given_cook','WP1hints_given_sport','WR1hints_given_econ','WR1hints_given_cook',
 'WR1hints_given_sport','MP2hints_given_econ','MP2hints_given_cook','MP2hints_given_sport',
 'MR2hints_given_econ','MR2hints_given_cook','MR2hints_given_sport','WP2hints_given_econ',
 'WP2hints_given_cook','WP2hints_given_sport','WR2hints_given_econ','WR2hints_given_cook',
 'WR2hints_given_sport','hints_given_econ','hints_given_cook','hints_given_sport',
+'comp_hints_given_econ','comp_hints_given_cook','comp_hints_given_sport','hints_guess_econ_m1',
+'hints_guess_econ_m2','hints_guess_econ_m3','hints_guess_econ_m4','hints_guess_econ_f1',
+'hints_guess_econ_f2','hints_guess_econ_f3','hints_guess_econ_f4','hints_guess_cook_m1',
+'hints_guess_cook_m2','hints_guess_cook_m3','hints_guess_cook_m4','hints_guess_cook_f1',
+'hints_guess_cook_f2','hints_guess_cook_f3','hints_guess_cook_f4','hints_guess_sport_m1',
+'hints_guess_sport_m2','hints_guess_sport_m3','hints_guess_sport_m4','hints_guess_sport_f1',
+'hints_guess_sport_f2','hints_guess_sport_f3','hints_guess_sport_f4','guess_bonus_payoff',
+'econ_hint_requests','cook_hint_requests','sport_hint_requests',
 'econ_hint_requests_partner1','econ_hint_requests_partner2','econ_hint_requests_partner3',
 'econ_hint_requests_partner4','econ_hint_requests_partner5','econ_hint_requests_partner6',
 'econ_hint_requests_partner7','econ_hint_requests_partner8','cook_hint_requests_partner1',
@@ -114,7 +128,9 @@ PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds1','task_rou
 'prev_hint','mismatch_econ','mismatch_cook','mismatch_sport','pref_tt','pref_tt_male',
 'pref_tt_female',"helpers_dict","pref_helpers","pref_female_helpers", "pref_male_helpers",
 "assigned_helpers", "tts", "female_tts", "male_tts",'payoff_tt','payoff_helped',
-'payoff_help','wtp_payment']
+'payoff_help','wtp_payment','responses_0','responses_0b','responses_2_MP','responses_2_MR',
+'responses_2_WP','responses_2_WR','responses_3b_MP','responses_3b_MR','responses_3b_WP',
+'responses_3b_WR','game_payoff','total_payment','players','name_list','name_list1']
 SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids']
 
 # ISO-6310 code

@@ -1,0 +1,21 @@
+{{ block title }}PAYMENT{{ endblock }}
+{{ block content }}
+
+    <style>
+        .card3 {
+          background-color: #ccffcc;
+        }
+    </style>
+    <div class="card3 rounded">
+      The following describes your payment for your participation in the survey.
+      <ul>
+        <li>Participation fee: 300 Rs.</li>
+        <li>In your role as test-taker: {{ testing_pay0 }} Rs.</li>
+        <li>In your role as helper: {{ helping_pay0 }} Rs.</li>
+        <li>For correctly predicting the supply of hints from your helpers: {{ guess_bonus_pay0 }} Rs.</li>
+        <li>Payment to hide hints from helpers: {{ wtp_pay0 }} Rs.</li>
+        <li>Returns from project investment: {{ amount_game_pay0 }} Rs.</li>
+    </div>
+    <b>Grand total: {{ total_payment0 }}</b>
+
+{{ endblock }}

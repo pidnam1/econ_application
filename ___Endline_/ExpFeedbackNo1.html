@@ -1,0 +1,23 @@
+{{ block title }}FINAL SURVEY SECTION A: PART 4{{ endblock }}
+{{ block content }}
+
+    <b><p>On the previous page, you selected 'no' for one of the following questions. Please clarify your response.</p></b>
+
+    {{ if player.certain_hints_always_helper == 2 }}
+      <p><b>You selected 'No'. Please specify. Consider the part of the study in which you were sure to get the hint from the helper, if you asked.
+        Please select the top two reasons that you did not ask for hints from helpers.</b></p>
+        {{ for field in labels1 }}
+        <label>
+            <input type="checkbox" name="{{ field.name }}" value="1">
+            {{ field.label }}
+            {{ formfield_errors field.name }}
+        </label><br>
+        {{ endfor }}
+      <p></p>
+    {{ endif }}
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

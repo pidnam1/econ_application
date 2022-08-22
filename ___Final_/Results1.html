@@ -3,7 +3,7 @@
 
     <p>Given the results of the random draws, your final price to pay will be {{ payment }} and the hints you took will not be communicated to the following helpers:</p>
     {{ for helper in helpers_exclude }}
-      {{ helper }}
+      <p>{{ helper }}</p>
     {{ endfor }}
 
     <p>

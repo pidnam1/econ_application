@@ -1,29 +1,51 @@
-{{ block title }}SECTION D{{ endblock }}
+{{ block title }}FINAL SURVEY SECTION C: PART 2{{ endblock }}
 {{ block content }}
 
+    <b><p>Now we will ask you some questions about your opinions and attitudes in life.
+      There is no wrong or right answer, we'd just like to know you better.</p></b>
+
     <p><b>Imagine that you lost your wallet close to your house. This had Rs. 500
-      and was found by someone who lives close to you and KNOWS YOU PERSONALLY.
+      and was found by a <u>WOMAN</u> who lives close to you and KNOWS YOU PERSONALLY.
       The wallet has a document that identifies you. How likely do you find that
       this person gives you the wallet back with the money in it?</b></p>
-    {{ form.lost_wallet_personal }}
-    {{ formfield_errors 'lost_wallet_personal' }}
+    {{ form.lost_wallet_personal_woman }}
+    {{ formfield_errors 'lost_wallet_personal_woman' }}
     <p></p>
 
     <p><b>Imagine that you lost your wallet close to your house. This had Rs. 500
-      and was found by someone who lives close to you but who DOESN’T KNOW YOU
-      PERSONALLY. The wallet has a document that identifies you. How likely do you
-      find that this person gives you the wallet back with the money in it?</b></p>
-    {{ form.lost_wallet_impersonal }}
-    {{ formfield_errors 'lost_wallet_impersonal' }}
+      and was found by a <u>MAN</u> who lives close to you and KNOWS YOU PERSONALLY.
+      The wallet has a document that identifies you. How likely do you find that
+      this person gives you the wallet back with the money in it?</b></p>
+    {{ form.lost_wallet_personal_man }}
+    {{ formfield_errors 'lost_wallet_personal_man' }}
     <p></p>
 
-    <p><b>Some people feel they have completely free choice and control over their
-      lives, while other people feel that what they do has no real effect on what
-      happens to them. Please use this scale where 1 means "no choice at all" and
-      10 means "a great deal of choice" to indicate how much freedom of choice and
-      control you feel you have over the way your life turns out.</b></p>
-    {{ form.free_choice }}
-    {{ formfield_errors 'free_choice' }}
+    <p><b>Imagine that you lost your wallet close to your house. This had Rs. 500
+      and was found by a <u>WOMAN</u> who lives close to you but who DOESN’T KNOW YOU
+      PERSONALLY. The wallet has a document that identifies you. How likely do you
+      find that this person gives you the wallet back with the money in it?</b></p>
+    {{ form.lost_wallet_impersonal_woman }}
+    {{ formfield_errors 'lost_wallet_impersonal_woman' }}
+    <p></p>
+
+    <p><b>Imagine that you lost your wallet close to your house. This had Rs. 500
+      and was found by a <u>MAN</u> who lives close to you but who DOESN’T KNOW YOU
+      PERSONALLY. The wallet has a document that identifies you. How likely do you
+      find that this person gives you the wallet back with the money in it?</b></p>
+    {{ form.lost_wallet_impersonal_man }}
+    {{ formfield_errors 'lost_wallet_impersonal_man' }}
+    <p></p>
+
+    <p><b>Please think about what you would do in the following situation. You are
+      in an area you are not familiar with, and you realize you lost your way. You
+      ask a stranger for directions. The stranger offers to take you to your destination.
+      Helping you costs the stranger about 20 Rs in total. However, the stranger says
+      he or she does not want any money from you. You have six presents with you.
+      The cheapest present costs 5 Rs, the most expensive one costs 30 Rs. Do you
+      give one of the presents to the stranger as a “thank-you”- gift? If so, which
+      present do you give to the stranger?</b></p>
+    {{ form.positive_reciprocity }}
+    {{ formfield_errors 'positive_reciprocity' }}
     <p></p>
 
     <p>

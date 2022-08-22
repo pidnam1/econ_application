@@ -1,0 +1,117 @@
+{{ block title }}
+PART 3: ROUND {{ round }} SPORTS
+<style>
+    .card2 {
+      background-color: #FFBFC8;
+    }
+</style>
+<p></p>
+<div class="card2 rounded">
+  <div class="card-body">
+    <h5>
+    In this round: &emsp; &emsp; Test-Taker = see below &emsp; &emsp; Helper = You
+    </h5>
+  </div>
+</div>
+{{ endblock }}
+{{ block content }}
+<style>
+    .card4 {
+      background-color: #FFF6BF;
+    }
+</style>
+<p></p>
+<div class="card4 rounded">
+  <div class="card-body">
+    <h4>Before we begin, can you please let us know the following?</h4>
+  </div>
+</div>
+<p></p>
+
+
+    <div class="row">
+      <div class="col-sm-7">
+        <p></p>
+        <p><b>
+          Consider the following players.
+          Each of them is replying to 4 questions in SPORTS.
+          Now each player can ask for a maximum of 3 hints.
+          How many hints do you think the following players will ask for in SPORTS?
+        </b></p>
+        {{ for field in formfields_random }}
+          {{ if field == 'sporthints01_partner1'}}
+            {{ formfield 'sporthints01_partner1' label=partner1_label}}
+          {{ endif }}
+          {{ if field == 'sporthints01_partner2'}}
+            {{ formfield 'sporthints01_partner2' label=partner2_label}}
+          {{ endif }}
+          {{ if field == 'sporthints01_partner3'}}
+            {{ formfield 'sporthints01_partner3' label=partner3_label}}
+          {{ endif }}
+          {{ if field == 'sporthints01_partner4'}}
+            {{ formfield 'sporthints01_partner4' label=partner4_label}}
+          {{ endif }}
+        {{ endfor }}
+        <p>
+            <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+        </p>
+      </div>
+      <div class="col-sm-5">
+        <style>
+            .card3 {
+              background-color: #ccffcc;
+            }
+        </style>
+        <div class="card3 rounded">
+          <div class="card-body">
+            <h5><u>Payment:</u></h5>
+            <b><p>If this round is implemented, you are paid Rs. 450 for participating as a helper.</p>
+            <p>Your partner answers 12 questions in total. No matter how many they get correct, your payment remains Rs. 450.</p></b>
+          </div>
+        </div>
+        <style>
+            .card1 {
+              background-color: #BFD7FF;
+            }
+        </style>
+        <div class="card1 rounded">
+          <label for="check" class="togButton"><h6><u>Click here to see rules</u></h6></label>
+          <input type="checkbox" class="togCheck" id="check"/>
+          <div class="togContent">
+            <br>
+            <h5>Rules for this part</h5>
+            <ul>
+              <li>In this round, you will make decisions as a helper and be matched with different test-takers.</li>
+              <ul>
+                <li><b>We will implement your decisions in the following parts should a certain
+                  match be realized during the experiment.</b></li>
+                <li>Decisions made here will affect the number of hints available
+                to the test-takers in later parts.</li>
+                <li>For instance, if test-taker X is matched with you in one of his/her parts,
+                  the hints s/he receives may be determined by the choices you are about to
+                  make in this round.</li>
+                <li><b>You will see the number of hints the test-taker took for each subject.</b></li>
+              </ul>
+            </ul>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+        .togCheck { display: none; }
+
+        .togContent {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 1s;
+        }
+        .togCheck:checked + .togContent {
+        max-height: 100vh; /* any insanely large number if a lot of contents */
+        opacity: 1;
+        visibility: visible;
+        }
+    </style>
+
+{{ endblock }}

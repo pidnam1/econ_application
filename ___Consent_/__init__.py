@@ -5,20 +5,24 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [1,1,0,0,1,0,0,1,1,0]
-    # 1,1,1,0,1,0,1,1,1,1,0,0,0,1,0,0,1,1,
-    LABELS = ['Muhammad_Kashif_Khan','Zain_U_Din','Shahar_Bano','Areesha_Zahra_Abbasi','Sami-ullah',
-    'Amna_Bibi','Tuba_Naeem','Moazzam_Asadullah','Muhammad_Musa_Sulehria','Noor_ul_Huda_Awan']
-    # 'Safi_Ullah_Khan','Muhammad_Yousaf_Khan','Abdul_Nasir_Khan','Arooj_Khalid',
-    # 'Zarak_Naseer_Baloch','Jannat_Rashid','Shahid_Ullah_Khan','Saif_Ur_Rehman_Kukuria',
-    # 'Ali_Hasnain','Muhammad_Talha_Wattoo','Shumaila_Javaid','Rumaiza_Mazhar','Gul_E_Zahra_Abbasi',
-    # 'Naveed_Khan','Mahjabeen_Sughra','Areesha_Sohail','Hassan_Umer','Ali_Waqas',
-    PLAYERS = ['Muhammad Kashif Khan','Zain U Din','Shahar Bano','Areesha Zahra Abbasi','Sami-ullah',
-    'Amna Bibi','Tuba Naeem','Moazzam Asadullah','Muhammad Musa Sulehria','Noor ul Huda Awan']
-    # 'Safi Ullah Khan','Muhammad Yousaf Khan','Abdul Nasir Khan','Arooj Khalid',
-    # 'Zarak Naseer Baloch','Jannat Rashid','Shahid Ullah Khan','Saif Ur Rehman Kukuria',
-    # 'Ali Hasnain','Muhammad Talha Wattoo','Shumaila Javaid','Rumaiza Mazhar','Gul E Zahra Abbasi',
-    # 'Naveed Khan','Mahjabeen Sughra','Areesha Sohail','Hassan Umer','Ali Waqas',
+    GENDERS_LIST = [1,1,1,0,1,0,1,1,1,1,0,1,0,0,1,0,0,1,1,1,0,1,1,1,1,1,0,0,1,1,1,0,0,1,1,0,1]
+    LABELS = ['Safi_Ullah_Khan','Muhammad_Yousaf_Khan','Abdul_Nasir_Khan','Arooj_Khalid',
+    'Zarak_Naseer_Baloch','Jannat_Rashid','Shahid_Ullah_Khan','Saif_Ur_Rehman_Kukuria',
+    'Ali_Hasnain','Muhammad_Talha_Wattoo','Shumaila_Javaid','Shoaib_Ullah','Rumaiza_Mazhar',
+    'Gul_E_Zahra_Abbasi','Naveed_Khan','Mahjabeen_Sughra','Areesha_Sohail','Sufyan_Ali',
+    'Hassan_Umer','Ali_Waqas','Sania_Ehsan','Wareesha_Ehsan','Muhammad_Kashif_Khan',
+    'Muhammad_Waqar','Umer_Farooq','Zain_U_Din','Shahar_Bano','Areesha_Zahra_Abbasi','Samiullah',
+    'Rai_Ahmad_Khan','Rana_Muhammad_Imran','Amna_Bibi','Tuba_Naeem','Moazzam_Asadullah',
+    'Muhammad_Musa_Sulehria','Noor_ul_Huda_Awan','Umme_Aqeel']
+    PLAYERS = ['Safi Ullah Khan','Muhammad Yousaf Khan','Abdul Nasir Khan','Arooj Khalid',
+    'Zarak Naseer Baloch','Jannat Rashid','Shahid Ullah Khan','Saif Ur Rehman Kukuria',
+    'Ali Hasnain','Muhammad Talha Wattoo','Shumaila Javaid','Shoaib Ullah','Rumaiza Mazhar',
+    'Gul E Zahra Abbasi','Naveed Khan','Mahjabeen Sughra','Areesha Sohail','Sufyan Ali',
+    'Hassan Umer','Ali Waqas','Sania Ehsan','Wareesha Ehsan','Muhammad Kashif Khan',
+    'Muhammad Waqar','Umer Farooq','Zain U Din','Shahar Bano','Areesha Zahra Abbasi','Samiullah',
+    'Rai Ahmad Khan','Rana Muhammad Imran','Amna Bibi','Tuba Naeem','Moazzam Asadullah',
+    'Muhammad Musa Sulehria','Noor ul Huda Awan','Umme Aqeel']
+
 
 class Subsession(BaseSubsession):
     pass
@@ -74,6 +78,6 @@ class Consent(Page):
 
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
-    body_text = "Please be patient with your fellow classmates. While you wait, you can play the game on the paper that's on your desk. PLEASE DO NOT TALK TO ANYONE."
+    body_text = "Please be patient with your fellow classmates. WHILE YOU WAIT, YOU CAN PLAY THE GAME ON THE PAPER THAT IS ON YOUR DESK. PLEASE DO NOT TALK TO ANYONE."
 
 page_sequence = [Consent, WaitPage1]

@@ -38,7 +38,6 @@ def make_field_one():
     return models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
         label='',
     )
 
@@ -2670,7 +2669,10 @@ class ExpectedSupplyEcon_MP(Page):
         return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints_you_MP','econhints_partner1_MP', 'econhints_partner2_MP', 'econhints_partner3_MP', 'econhints_partner4_MP']
+        formfields_random = ['econhints_partner1_MP', 'econhints_partner2_MP', 'econhints_partner3_MP', 'econhints_partner4_MP']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('econhints_you_MP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -2720,7 +2722,10 @@ class ExpectedSupplyCook_MP(Page):
         return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookhints_you_MP','cookhints_partner1_MP', 'cookhints_partner2_MP', 'cookhints_partner3_MP', 'cookhints_partner4_MP']
+        formfields_random = ['cookhints_partner1_MP', 'cookhints_partner2_MP', 'cookhints_partner3_MP', 'cookhints_partner4_MP']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('cookhints_you_MP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -2770,7 +2775,10 @@ class ExpectedSupplySport_MP(Page):
         return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sporthints_you_MP','sporthints_partner1_MP', 'sporthints_partner2_MP', 'sporthints_partner3_MP', 'sporthints_partner4_MP']
+        formfields_random = ['sporthints_partner1_MP', 'sporthints_partner2_MP', 'sporthints_partner3_MP', 'sporthints_partner4_MP']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('sporthints_you_MP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -2833,6 +2841,7 @@ class Economics1_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -2847,12 +2856,19 @@ class Economics1_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner3 += 1
-            if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner3 += 1
+                if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Increased in supply.")}
+                elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Increased in supply.")}
-            elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2865,6 +2881,7 @@ class Economics2_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -2879,12 +2896,19 @@ class Economics2_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner3 += 1
-            if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner3 += 1
+                if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: He shouted, \"Is this a normal one?\".")}
+                elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: He shouted, \"Is this a normal one?\".")}
-            elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2929,6 +2953,7 @@ class Economics4_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -2943,12 +2968,19 @@ class Economics4_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner3 += 1
-            if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner3 += 1
+                if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Factories have decided to pay workers higher incomes.")}
+                elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Factories have decided to pay workers higher incomes.")}
-            elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2993,6 +3025,7 @@ class Cooking2_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3007,12 +3040,19 @@ class Cooking2_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner3 += 1
-            if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner3 += 1
+                if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Maximum moisture.")}
+                elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Maximum moisture.")}
-            elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3025,6 +3065,7 @@ class Cooking3_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3039,12 +3080,19 @@ class Cooking3_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner3 += 1
-            if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner3 += 1
+                if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Everyone looked at the camera and said \"CHEEESE\".")}
+                elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Everyone looked at the camera and said \"CHEEESE\".")}
-            elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3057,6 +3105,7 @@ class Cooking4_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3071,12 +3120,19 @@ class Cooking4_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner3 += 1
-            if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner3 += 1
+                if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Less than 2.")}
+                elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Less than 2.")}
-            elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3089,6 +3145,7 @@ class Sports1_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3103,12 +3160,19 @@ class Sports1_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner3 += 1
-            if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner3 += 1
+                if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: London and neighbor of Australia.")}
+                elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: London and neighbor of Australia.")}
-            elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3153,6 +3217,7 @@ class Sports3_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3167,12 +3232,19 @@ class Sports3_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner3 += 1
-            if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner3 += 1
+                if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Ayub Khan.")}
+                elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Ayub Khan.")}
-            elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3185,6 +3257,7 @@ class Sports4_MP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3199,12 +3272,19 @@ class Sports4_MP(Page):
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner3 += 1
-            if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner3 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner3 += 1
+                if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner3 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Green ball.")}
+                elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Green ball.")}
-            elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3601,7 +3681,10 @@ class ExpectedSupplyEcon_MR(Page):
         return (player.round_number == participant.task_rounds3b['MR']) and (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints_you_MR','econhints_partner1_MR', 'econhints_partner2_MR', 'econhints_partner3_MR', 'econhints_partner4_MR']
+        formfields_random = ['econhints_partner1_MR', 'econhints_partner2_MR', 'econhints_partner3_MR', 'econhints_partner4_MR']
+        final = vars_for_template3(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('econhints_you_MR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -3651,7 +3734,10 @@ class ExpectedSupplyCook_MR(Page):
         return (player.round_number == participant.task_rounds3b['MR']) and (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookhints_you_MR','cookhints_partner1_MR', 'cookhints_partner2_MR', 'cookhints_partner3_MR', 'cookhints_partner4_MR']
+        formfields_random = ['cookhints_partner1_MR', 'cookhints_partner2_MR', 'cookhints_partner3_MR', 'cookhints_partner4_MR']
+        final = vars_for_template3(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('cookhints_you_MR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -3701,7 +3787,10 @@ class ExpectedSupplySport_MR(Page):
         return (player.round_number == participant.task_rounds3b['MR']) and (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sporthints_you_MR','sporthints_partner1_MR', 'sporthints_partner2_MR', 'sporthints_partner3_MR', 'sporthints_partner4_MR']
+        formfields_random = ['sporthints_partner1_MR', 'sporthints_partner2_MR', 'sporthints_partner3_MR', 'sporthints_partner4_MR']
+        final = vars_for_template3(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('sporthints_you_MR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -3764,6 +3853,7 @@ class Economics1_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3778,12 +3868,19 @@ class Economics1_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner8 += 1
-            if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner8 += 1
+                if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Demand and supply.")}
+                elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Demand and supply.")}
-            elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3796,6 +3893,7 @@ class Economics2_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3810,12 +3908,19 @@ class Economics2_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner8 += 1
-            if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner8 += 1
+                if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Demand and supply.")}
+                elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Demand and supply.")}
-            elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3860,6 +3965,7 @@ class Economics4_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3874,12 +3980,19 @@ class Economics4_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner8 += 1
-            if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner8 += 1
+                if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: A few.")}
+                elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: A few.")}
-            elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3924,6 +4037,7 @@ class Cooking2_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3938,12 +4052,19 @@ class Cooking2_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner8 += 1
-            if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner8 += 1
+                if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Maize related product.")}
+                elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Maize related product.")}
-            elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3956,6 +4077,7 @@ class Cooking3_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -3970,12 +4092,19 @@ class Cooking3_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner8 += 1
-            if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner8 += 1
+                if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Extracted with olives.")}
+                elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Extracted with olives.")}
-            elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3988,6 +4117,7 @@ class Cooking4_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4002,12 +4132,19 @@ class Cooking4_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner8 += 1
-            if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner8 += 1
+                if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Rhymes with pear.")}
+                elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Rhymes with pear.")}
-            elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4020,6 +4157,7 @@ class Sports1_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4034,12 +4172,19 @@ class Sports1_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner8 += 1
-            if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
-                return {player.id_in_group: dict(message = "Hint: It was Allama Iqbal\'s birth year.")}
-            elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner8 += 1
+                if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: It was Allama Iqbal's birth year.")}
+                elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
+                return {player.id_in_group: dict(message = "Hint: It was Allama Iqbal's birth year.")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4084,6 +4229,7 @@ class Sports3_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4098,12 +4244,19 @@ class Sports3_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner8 += 1
-            if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner8 += 1
+                if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Greater than 5.")}
+                elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Greater than 5.")}
-            elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4116,6 +4269,7 @@ class Sports4_MR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4130,12 +4284,19 @@ class Sports4_MR(Page):
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner8 += 1
-            if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner8 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner8 += 1
+                if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner8 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Christopher.")}
+                elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Christopher.")}
-            elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4532,7 +4693,10 @@ class ExpectedSupplyEcon_WP(Page):
         return (player.round_number == participant.task_rounds3b['WP']) and (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints_you_WP','econhints_partner1_WP', 'econhints_partner2_WP', 'econhints_partner3_WP', 'econhints_partner4_WP']
+        formfields_random = ['econhints_partner1_WP', 'econhints_partner2_WP', 'econhints_partner3_WP', 'econhints_partner4_WP']
+        final = vars_for_template4(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('econhints_you_WP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -4582,7 +4746,10 @@ class ExpectedSupplyCook_WP(Page):
         return (player.round_number == participant.task_rounds3b['WP']) and (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookhints_you_WP','cookhints_partner1_WP', 'cookhints_partner2_WP', 'cookhints_partner3_WP', 'cookhints_partner4_WP']
+        formfields_random = ['cookhints_partner1_WP', 'cookhints_partner2_WP', 'cookhints_partner3_WP', 'cookhints_partner4_WP']
+        final = vars_for_template4(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('cookhints_you_WP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -4632,7 +4799,10 @@ class ExpectedSupplySport_WP(Page):
         return (player.round_number == participant.task_rounds3b['WP']) and (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sporthints_you_WP','sporthints_partner1_WP', 'sporthints_partner2_WP', 'sporthints_partner3_WP', 'sporthints_partner4_WP']
+        formfields_random = ['sporthints_partner1_WP', 'sporthints_partner2_WP', 'sporthints_partner3_WP', 'sporthints_partner4_WP']
+        final = vars_for_template4(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('sporthints_you_WP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -4695,6 +4865,7 @@ class Economics1_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4709,12 +4880,19 @@ class Economics1_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner2 += 1
-            if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner2 += 1
+                if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Ratio of dog owners to cat owners.")}
+                elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Ratio of dog owners to cat owners.")}
-            elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4727,6 +4905,7 @@ class Economics2_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4741,12 +4920,19 @@ class Economics2_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner2 += 1
-            if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner2 += 1
+                if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Long-run > short-run.")}
+                elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Long-run > short-run.")}
-            elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4791,6 +4977,7 @@ class Economics4_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4805,12 +4992,19 @@ class Economics4_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner2 += 1
-            if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner2 += 1
+                if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Supply shifts left and demand shifts right.")}
+                elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Supply shifts left and demand shifts right.")}
-            elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4855,6 +5049,7 @@ class Cooking2_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4869,12 +5064,19 @@ class Cooking2_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner2 += 1
-            if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner2 += 1
+                if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: KFC fried chicken and french fries.")}
+                elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: KFC fried chicken and french fries.")}
-            elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4887,6 +5089,7 @@ class Cooking3_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4901,12 +5104,19 @@ class Cooking3_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner2 += 1
-            if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner2 += 1
+                if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Multiple of nine.")}
+                elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Multiple of nine.")}
-            elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4919,6 +5129,7 @@ class Cooking4_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4933,12 +5144,19 @@ class Cooking4_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner2 += 1
-            if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner2 += 1
+                if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Soak it.")}
+                elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Soak it.")}
-            elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4951,6 +5169,7 @@ class Sports1_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -4965,12 +5184,19 @@ class Sports1_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner2 += 1
-            if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner2 += 1
+                if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Sharara.")}
+                elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Sharara.")}
-            elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5015,6 +5241,7 @@ class Sports3_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5029,12 +5256,19 @@ class Sports3_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner2 += 1
-            if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner2 += 1
+                if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: During Great Depression.")}
+                elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: During Great Depression.")}
-            elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5047,6 +5281,7 @@ class Sports4_WP(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5061,12 +5296,19 @@ class Sports4_WP(Page):
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner2 += 1
-            if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner2 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner2 += 1
+                if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner2 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: There is no true lord.")}
+                elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: There is no true lord.")}
-            elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5465,7 +5707,10 @@ class ExpectedSupplyEcon_WR(Page):
         return (player.round_number == participant.task_rounds3b['WR']) and (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints_you_WR','econhints_partner1_WR', 'econhints_partner2_WR', 'econhints_partner3_WR', 'econhints_partner4_WR']
+        formfields_random = ['econhints_partner1_WR', 'econhints_partner2_WR', 'econhints_partner3_WR', 'econhints_partner4_WR']
+        final = vars_for_template5(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('econhints_you_WR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -5515,7 +5760,10 @@ class ExpectedSupplyCook_WR(Page):
         return (player.round_number == participant.task_rounds3b['WR']) and (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookhints_you_WR','cookhints_partner1_WR', 'cookhints_partner2_WR', 'cookhints_partner3_WR', 'cookhints_partner4_WR']
+        formfields_random = ['cookhints_partner1_WR', 'cookhints_partner2_WR', 'cookhints_partner3_WR', 'cookhints_partner4_WR']
+        final = vars_for_template5(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('cookhints_you_WR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -5565,7 +5813,10 @@ class ExpectedSupplySport_WR(Page):
         return (player.round_number == participant.task_rounds3b['WR']) and (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sporthints_you_WR','sporthints_partner1_WR', 'sporthints_partner2_WR', 'sporthints_partner3_WR', 'sporthints_partner4_WR']
+        formfields_random = ['sporthints_partner1_WR', 'sporthints_partner2_WR', 'sporthints_partner3_WR', 'sporthints_partner4_WR']
+        final = vars_for_template5(player, formfields_random)[0]
+        formfields = final["formfields_random"]
+        formfields.append('sporthints_you_WR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -5628,6 +5879,7 @@ class Economics1_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5642,12 +5894,19 @@ class Economics1_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner6 += 1
-            if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner6 += 1
+                if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Labor as a cost of production.")}
+                elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Labor as a cost of production.")}
-            elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5660,6 +5919,7 @@ class Economics2_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5674,12 +5934,19 @@ class Economics2_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner6 += 1
-            if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner6 += 1
+                if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Quantity demanded > quantity supplied.")}
+                elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Quantity demanded > quantity supplied.")}
-            elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5724,6 +5991,7 @@ class Economics4_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5738,12 +6006,19 @@ class Economics4_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner6 += 1
-            if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
-                player.participant.econ_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner6 += 1
+                if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    player.participant.econ_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Easy to join.")}
+                elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Easy to join.")}
-            elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5788,6 +6063,7 @@ class Cooking2_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5802,12 +6078,19 @@ class Cooking2_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner6 += 1
-            if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner6 += 1
+                if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: BRRRRRR.")}
+                elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: BRRRRRR.")}
-            elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5820,6 +6103,7 @@ class Cooking3_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5834,12 +6118,19 @@ class Cooking3_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner6 += 1
-            if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner6 += 1
+                if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Mist or fog.")}
+                elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Mist or fog.")}
-            elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5852,6 +6143,7 @@ class Cooking4_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5866,12 +6158,19 @@ class Cooking4_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner6 += 1
-            if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
-                player.participant.cook_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner6 += 1
+                if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    player.participant.cook_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Qeema.")}
+                elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Qeema.")}
-            elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5884,6 +6183,7 @@ class Sports1_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5898,12 +6198,19 @@ class Sports1_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner6 += 1
-            if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner6 += 1
+                if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Pakistan gained independence in 1947.")}
+                elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Pakistan gained independence in 1947.")}
-            elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5948,6 +6255,7 @@ class Sports3_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5962,12 +6270,19 @@ class Sports3_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner6 += 1
-            if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner6 += 1
+                if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Death year of Fatima Jinnah.")}
+                elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Death year of Fatima Jinnah.")}
-            elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -5980,6 +6295,7 @@ class Sports4_WR(Page):
     def vars_for_template(player: Player):
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
+        player.participant.already_clicked = False
         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), round=player.participant.round3b_completed)
     @staticmethod
     def is_displayed(player: Player):
@@ -5994,12 +6310,19 @@ class Sports4_WR(Page):
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_given(player,partner)
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner6 += 1
-            if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
-                player.participant.sport_hint_used_partner6 += 1
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner6 += 1
+                if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    player.participant.sport_hint_used_partner6 += 1
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Soon after WWI.")}
+                elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Soon after WWI.")}
-            elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):

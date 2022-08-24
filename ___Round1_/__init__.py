@@ -29,7 +29,6 @@ def make_field_one():
     return models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         widget=widgets.RadioSelectHorizontal,
-        blank=True
     )
 
 def make_field_two():
@@ -37,7 +36,6 @@ def make_field_two():
         choices=[[0, '0'], [1, '1'],
                  [2, '2'], [3, '3'], [4, '4']],
         widget=widgets.RadioSelectHorizontal,
-        blank=True
     )
 class Player(BasePlayer):
     econhints1_partner1 = make_field_one()
@@ -543,7 +541,7 @@ def set_partners(player: Player):
 
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
-    body_text = "Please be patient with your fellow classmates. While you wait, you can play the game on the paper that's on your desk. PLEASE DO NOT TALK TO ANYONE."
+    body_text = "Please be patient with your fellow classmates. WHILE YOU WAIT, YOU CAN PLAY THE GAME ON THE PAPER THAT IS ON YOUR DESK. PLEASE DO NOT TALK TO ANYONE."
 
     @staticmethod
     def is_displayed(player: Player):
@@ -799,21 +797,14 @@ class Payment1Transition(Page):
         final["hints"] = hints
         return final
 
-class Econ1Transition(Page):
+class RealTransition1(Page):
     form_model = 'player'
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
         formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
         final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ1H']) and (final["display"])
-    @staticmethod
-    def vars_for_template(player: Player):
-        formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
-        final["hints"] = hints
-        return final
+        return (player.round_number == 11) and (final["display"])
 
 class Economics1Hints(Page):
     form_model = 'player'
@@ -839,7 +830,9 @@ class Economics1Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -874,7 +867,9 @@ class Economics1Hints0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints01_partner1', 'econhints01_partner2', 'econhints01_partner3', 'econhints01_partner4']
+        formfields_random = ['econhints01_partner1', 'econhints01_partner2', 'econhints01_partner3', 'econhints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 class Economics1Results(Page):
@@ -899,8 +894,10 @@ class Economics1Results(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econresults1_partner1', 'econresults1_partner2', 'econresults1_partner3',
+        formfields_random = ['econresults1_partner1', 'econresults1_partner2', 'econresults1_partner3',
                       'econresults1_partner4']
+        final = vars_for_template1_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -927,25 +924,11 @@ class Economics1Results0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econresults01_partner1', 'econresults01_partner2', 'econresults01_partner3',
-                      'econresults01_partner4']
+        formfields_random = ['econresults01_partner1', 'econresults01_partner2', 'econresults01_partner3',
+                         'econresults01_partner4']
+        final = vars_for_template1_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
-
-class Cook1Transition(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook1H']) and (final["display"])
-    @staticmethod
-    def vars_for_template(player: Player):
-        formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
-        final["hints"] = hints
-        return final
 
 class Cooking1Hints(Page):
     form_model = 'player'
@@ -971,7 +954,9 @@ class Cooking1Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -1006,7 +991,9 @@ class Cooking1Hints0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookhints01_partner1', 'cookhints01_partner2', 'cookhints01_partner3', 'cookhints01_partner4']
+        formfields_random = ['cookhints01_partner1', 'cookhints01_partner2', 'cookhints01_partner3', 'cookhints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -1032,8 +1019,10 @@ class Cooking1Results(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookresults1_partner1', 'cookresults1_partner2', 'cookresults1_partner3',
+        formfields_random = ['cookresults1_partner1', 'cookresults1_partner2', 'cookresults1_partner3',
                       'cookresults1_partner4']
+        final = vars_for_template1_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -1059,27 +1048,11 @@ class Cooking1Results0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookresults01_partner1', 'cookresults01_partner2', 'cookresults01_partner3',
+        formfields_random = ['cookresults01_partner1', 'cookresults01_partner2', 'cookresults01_partner3',
                       'cookresults01_partner4']
+        final = vars_for_template1_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
-
-class Sport1Transition(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
-                             'sporthints1_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport1H']) and (final["display"])
-    @staticmethod
-    def vars_for_template(player: Player):
-        formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3',
-                             'sporthints1_partner4']
-        final = vars_for_template1(player, formfields_random)[0]
-        hints = vars_for_template1(player, formfields_random)[1]
-        final["hints"] = hints
-        return final
 
 class Sports1Hints(Page):
     form_model = 'player'
@@ -1107,7 +1080,9 @@ class Sports1Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3', 'sporthints1_partner4']
+        formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3', 'sporthints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -1145,7 +1120,9 @@ class Sports1Hints0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sporthints01_partner1', 'sporthints01_partner2', 'sporthints01_partner3', 'sporthints01_partner4']
+        formfields_random = ['sporthints01_partner1', 'sporthints01_partner2', 'sporthints01_partner3', 'sporthints01_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 class Sports1Results(Page):
@@ -1170,8 +1147,10 @@ class Sports1Results(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sportresults1_partner1', 'sportresults1_partner2', 'sportresults1_partner3',
+        formfields_random = ['sportresults1_partner1', 'sportresults1_partner2', 'sportresults1_partner3',
                       'sportresults1_partner4']
+        final = vars_for_template1_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -1197,8 +1176,10 @@ class Sports1Results0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sportresults01_partner1', 'sportresults01_partner2', 'sportresults01_partner3',
+        formfields_random = ['sportresults01_partner1', 'sportresults01_partner2', 'sportresults01_partner3',
                       'sportresults01_partner4']
+        final = vars_for_template1_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -1220,21 +1201,14 @@ class Payment2Transition(Page):
         final["hints"] = hints
         return final
 
-class Econ2Transition(Page):
+class RealTransition2(Page):
     form_model = 'player'
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
         formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
         final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Econ2H']) and (final["display"])
-    @staticmethod
-    def vars_for_template(player: Player):
-        formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
-        final["hints"] = hints
-        return final
+        return (player.round_number == 23) and (final["display"])
 
 class Economics2Hints(Page):
     form_model = 'player'
@@ -1260,7 +1234,9 @@ class Economics2Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -1295,7 +1271,9 @@ class Economics2Hints0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints02_partner1', 'econhints02_partner2', 'econhints02_partner3', 'econhints02_partner4']
+        formfields_random = ['econhints02_partner1', 'econhints02_partner2', 'econhints02_partner3', 'econhints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 class Economics2Results(Page):
@@ -1320,9 +1298,10 @@ class Economics2Results(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['econresults2_partner1', 'econresults2_partner2', 'econresults2_partner3',
+        formfields_random = ['econresults2_partner1', 'econresults2_partner2', 'econresults2_partner3',
                       'econresults2_partner4']
+        final = vars_for_template2_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -1348,26 +1327,11 @@ class Economics2Results0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['econresults02_partner1', 'econresults02_partner2', 'econresults02_partner3',
+        formfields_random = ['econresults02_partner1', 'econresults02_partner2', 'econresults02_partner3',
                       'econresults02_partner4']
+        final = vars_for_template2_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
-
-class Cook2Transition(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Cook2H']) and (final["display"])
-    @staticmethod
-    def vars_for_template(player: Player):
-        formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
-        final["hints"] = hints
-        return final
 
 class Cooking2Hints(Page):
     form_model = 'player'
@@ -1393,8 +1357,9 @@ class Cooking2Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
+        formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -1430,8 +1395,9 @@ class Cooking2Hints0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['cookhints02_partner1', 'cookhints02_partner2', 'cookhints02_partner3', 'cookhints02_partner4']
+        formfields_random = ['cookhints02_partner1', 'cookhints02_partner2', 'cookhints02_partner3', 'cookhints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 class Cooking2Results(Page):
@@ -1456,9 +1422,10 @@ class Cooking2Results(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['cookresults2_partner1', 'cookresults2_partner2', 'cookresults2_partner3',
+        formfields_random = ['cookresults2_partner1', 'cookresults2_partner2', 'cookresults2_partner3',
                       'cookresults2_partner4']
+        final = vars_for_template2_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -1484,28 +1451,11 @@ class Cooking2Results0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['cookresults02_partner1', 'cookresults02_partner2', 'cookresults02_partner3',
+        formfields_random = ['cookresults02_partner1', 'cookresults02_partner2', 'cookresults02_partner3',
                       'cookresults02_partner4']
+        final = vars_for_template2_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
-
-class Sport2Transition(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
-                             'sporthints2_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        return (player.round_number == participant.task_rounds1['Sport2H']) and (final["display"])
-    @staticmethod
-    def vars_for_template(player: Player):
-        formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3',
-                             'sporthints2_partner4']
-        final = vars_for_template2(player, formfields_random)[0]
-        hints = vars_for_template2(player, formfields_random)[1]
-        final["hints"] = hints
-        return final
 
 class Sports2Hints(Page):
     form_model = 'player'
@@ -1533,7 +1483,9 @@ class Sports2Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3', 'sporthints2_partner4']
+        formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3', 'sporthints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -1571,8 +1523,9 @@ class Sports2Hints0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['sporthints02_partner1', 'sporthints02_partner2', 'sporthints02_partner3', 'sporthints02_partner4']
+        formfields_random = ['sporthints02_partner1', 'sporthints02_partner2', 'sporthints02_partner3', 'sporthints02_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -1598,9 +1551,10 @@ class Sports2Results(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['sportresults2_partner1', 'sportresults2_partner2', 'sportresults2_partner3',
+        formfields_random = ['sportresults2_partner1', 'sportresults2_partner2', 'sportresults2_partner3',
                       'sportresults2_partner4']
+        final = vars_for_template2_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
@@ -1626,15 +1580,16 @@ class Sports2Results0(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['sportresults02_partner1', 'sportresults02_partner2', 'sportresults02_partner3',
+        formfields_random = ['sportresults02_partner1', 'sportresults02_partner2', 'sportresults02_partner3',
                       'sportresults02_partner4']
+        final = vars_for_template2_1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
 
 class WaitPage2(WaitPage):
     title_text = "Waiting for all players to finish"
-    body_text = "It may take time to load the next page, please do not do anything. Please be patient with your fellow classmates. While you wait, you can play the game on the paper that's on your desk. PLEASE DO NOT TALK TO ANYONE."
+    body_text = "It may take time to load the next page, please do not do anything. Please be patient with your fellow classmates. WHILE YOU WAIT, YOU CAN PLAY THE GAME ON THE PAPER THAT IS ON YOUR DESK. PLEASE DO NOT TALK TO ANYONE."
 
     @staticmethod
     def is_displayed(player: Player):
@@ -1668,10 +1623,9 @@ class Final(Page):
 
 
 
-page_sequence = [WaitPage1, Demographics, Payment1Transition, Economics1Results0,
-Economics1Hints0, Economics1Results, Econ1Transition, Economics1Hints, Cooking1Results0,
-Cooking1Hints0, Cooking1Results, Cook1Transition, Cooking1Hints, Sports1Results0,
-Sports1Hints0, Sports1Results, Sport1Transition, Sports1Hints, Payment2Transition,
-Economics2Results0, Economics2Hints0, Economics2Results, Econ2Transition, Economics2Hints,
-Cooking2Results0, Cooking2Hints0, Cooking2Results, Cook2Transition, Cooking2Hints,
-Sports2Results0, Sports2Hints0, Sports2Results, Sport2Transition, Sports2Hints, WaitPage2, Final]
+page_sequence = [WaitPage1, Demographics, Payment1Transition, RealTransition1, RealTransition2,
+Economics1Results0, Economics1Hints0, Economics1Results, Economics1Hints, Cooking1Results0,
+Cooking1Hints0, Cooking1Results, Cooking1Hints, Sports1Results0, Sports1Hints0, Sports1Results,
+Sports1Hints, Payment2Transition, Economics2Results0, Economics2Hints0, Economics2Results,
+Economics2Hints, Cooking2Results0, Cooking2Hints0, Cooking2Results, Cooking2Hints,
+Sports2Results0, Sports2Hints0, Sports2Results, Sports2Hints, WaitPage2, Final]

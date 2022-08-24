@@ -39,31 +39,7 @@ PART 3: ROUND {{ round }} COOKING
           {{ endif }}
         {{ endfor }}
         <p>
-          <button class="otree-btn-next btn btn-primary" style="float:right; visibility: visible;" id="Confirm" type="button" onclick="nextConfirm()">Next</button>
-        </p>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="sweetalert2.all.min.js"></script>
-        <script>
-          function nextConfirm() {
-            Swal.fire({
-              title: 'Should we consider this hint allocation final?',
-              text: "If you don’t want to give any hints, select 0 instead of leaving the row blank",
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Yes, move on!'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                const next = document.getElementById("Next");
-                next.style.visibility = "visible";
-                const confirm = document.getElementById("Confirm");
-                confirm.style.visibility = "hidden";
-              }
-            })
-          }
-        </script>
-        <p>
-          <button class="otree-btn-next btn btn-primary" style="float:right; visibility: hidden;" id= "Next">Next</button>
+          <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
         </p>
       </div>
       <div class="col-sm-5">
@@ -75,7 +51,7 @@ PART 3: ROUND {{ round }} COOKING
         <div class="card3 rounded">
           <div class="card-body">
             <h5><u>Payment:</u></h5>
-            <b><p>If this round is implemented, you are paid Rs. 450 for participating as a helper.</p>
+            <b><p>If any of the matches in this round are implemented, you are paid Rs. 450 for participating as a helper.</p>
             <p>Your partner answers 12 questions in total. No matter how many they get correct, your payment remains Rs. 450.</p></b>
           </div>
         </div>
@@ -97,9 +73,9 @@ PART 3: ROUND {{ round }} COOKING
                   match be realized during the experiment.</b></li>
                 <li>Decisions made here will affect the number of hints available
                 to the test-takers in later parts.</li>
-                <li>For instance, if test-taker X is matched with you in one of his/her parts,
-                  the hints s/he receives may be determined by the choices you are about to
-                  make in this round.</li>
+                <li>For instance, if test-taker X is matched with you, the hints s/he
+                  receives will be determined by the choices you are about to make in
+                  this round (in some of his/her parts)</li>
                 <li><b>You will see the number of hints the test-taker took for each subject.</b></li>
               </ul>
             </ul>

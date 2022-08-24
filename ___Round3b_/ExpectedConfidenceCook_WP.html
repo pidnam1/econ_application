@@ -26,7 +26,7 @@ PART {{ round }}
 
     <div class="row">
       <div class="col-sm-7">
-        <p>You think that {{ partner }} gave you {{ player.cookhints_you_WP }} hints in COOKING.<p>
+        <p>You think that {{ partner }} gave you {{ player.cookhints_you_WP }} hints in <b>COOKING</b>.<p>
         <p>How confident are you of this answer? [on a scale from 1-100]</p>
         Not confident at all &nbsp;
         <input type="range" name="confidence_cook_WP" min="0" max="{{ C.ENDOWMENT }}" oninput="updateDescription(this)">

@@ -130,7 +130,7 @@ PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds0b','task_ro
 "assigned_helpers", "tts", "female_tts", "male_tts",'payoff_tt','payoff_helped',
 'payoff_help','wtp_payment','responses_0','responses_0b','responses_2_MP','responses_2_MR',
 'responses_2_WP','responses_2_WR','responses_3b_MP','responses_3b_MR','responses_3b_WP',
-'responses_3b_WR','game_payoff','total_payment','players','name_list','name_list1']
+'responses_3b_WR','game_payoff','total_payment','players','name_list','name_list1','already_clicked']
 SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids']
 
 # ISO-6310 code

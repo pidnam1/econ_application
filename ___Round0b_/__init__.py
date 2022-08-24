@@ -398,6 +398,7 @@ class Demographics(Page):
         participant = player.participant
         import time
         participant.expiry = time.time() + 1200
+        player.participant.prev_hint = 0
 
 class Transition(Page):
     form_model = 'player'
@@ -447,11 +448,6 @@ class Economics1(Page):
     def get_form_fields(player):
         return ['crt_economics1','prob_econ1']
     @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.econ_hint_requests += 1
-            return {player.id_in_group: dict(message = "Hint is not available")}
-    @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
     get_timeout_seconds = get_timeout_seconds1
@@ -462,7 +458,7 @@ class Economics2(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Economics2']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -470,11 +466,18 @@ class Economics2(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests += 1
-            if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests += 1
+                if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Change price, change output.")}
+                elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Change price, change output.")}
-            elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -503,7 +506,7 @@ class Economics3(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Economics3']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -511,11 +514,18 @@ class Economics3(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests += 1
-            if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests += 1
+                if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Demand increases.")}
+                elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Demand increases.")}
-            elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -544,7 +554,7 @@ class Economics4(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Economics4']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -552,11 +562,18 @@ class Economics4(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests += 1
-            if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests += 1
+                if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Vertical straight line.")}
+                elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Vertical straight line.")}
-            elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -591,11 +608,6 @@ class Cooking1(Page):
     def get_form_fields(player):
         return ['crt_cooking1','prob_cook1']
     @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.cook_hint_requests += 1
-            return {player.id_in_group: dict(message = "Hint is not available")}
-    @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
     get_timeout_seconds = get_timeout_seconds1
@@ -606,7 +618,7 @@ class Cooking2(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Cooking2']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -614,11 +626,18 @@ class Cooking2(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests += 1
-            if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests += 1
+                if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Greasy.")}
+                elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Greasy.")}
-            elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -647,7 +666,7 @@ class Cooking3(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Cooking3']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -655,11 +674,18 @@ class Cooking3(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests += 1
-            if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests += 1
+                if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Yellow and white.")}
+                elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Yellow and white.")}
-            elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -688,7 +714,7 @@ class Cooking4(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Cooking4']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -696,11 +722,18 @@ class Cooking4(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests += 1
-            if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests += 1
+                if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Snap peas.")}
+                elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Snap peas.")}
-            elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -729,7 +762,7 @@ class Sports1(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Sports1']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -737,11 +770,18 @@ class Sports1(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests += 1
-            if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests += 1
+                if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Swiss player and surname rhymes with murderer.")}
+                elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Swiss player and surname rhymes with murderer.")}
-            elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -770,7 +810,7 @@ class Sports2(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Sports2']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -778,11 +818,18 @@ class Sports2(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests += 1
-            if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests += 1
+                if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Hyderabad.")}
+                elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Hyderabad.")}
-            elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -811,7 +858,7 @@ class Sports3(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds0b['Sports3']) & (get_timeout_seconds1(player) > 0)
     @staticmethod
     def get_form_fields(player):
@@ -819,11 +866,18 @@ class Sports3(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests += 1
-            if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
-                player.participant.prev_hint = 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests += 1
+                if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
+                    player.participant.already_clicked = True
+                    player.participant.prev_hint = 1
+                    return {player.id_in_group: dict(message = "Hint: Signs her name as MN.")}
+                elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+                    player.participant.already_clicked = True
+                    return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
+            elif player.participant.already_clicked and player.participant.prev_hint == 1:
                 return {player.id_in_group: dict(message = "Hint: Signs her name as MN.")}
-            elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+            elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
     def vars_for_template(player: Player):
@@ -857,11 +911,6 @@ class Sports4(Page):
     @staticmethod
     def get_form_fields(player):
         return ['crt_sports4','prob_sport4']
-    @staticmethod
-    def live_method(player: Player, data):
-        if data == 'clicked-button':
-            player.participant.sport_hint_requests += 1
-            return {player.id_in_group: dict(message = "Hint is not available")}
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)

@@ -70,7 +70,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MP = models.IntegerField(
-        choices=[[1, 'an opportunity'], [2, 'equal to the money price of a good'],
+        choices=[[1, 'an opportunity cost'], [2, 'equal to the money price of a good'],
         [3, 'equal to the price of that good divided by the quantity demanded of the good'],
         [4, 'what you get paid for babysitting your cousin']],
         label='''

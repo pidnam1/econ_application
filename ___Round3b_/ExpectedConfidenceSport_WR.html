@@ -26,7 +26,7 @@ PART {{ round }}
 
     <div class="row">
       <div class="col-sm-7">
-        <p>You think that {{ partner }} gave you {{ player.sporthints_you_WR }} hints in SPORTS.<p>
+        <p>You think that {{ partner }} gave you {{ player.sporthints_you_WR }} hints in <b>SPORTS</b>.<p>
         <p>How confident are you of this answer? [on a scale from 1-100]</p>
         Not confident at all &nbsp;
         <input type="range" name="confidence_sport_WR" min="0" max="{{ C.ENDOWMENT }}" oninput="updateDescription(this)">

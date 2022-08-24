@@ -239,7 +239,7 @@ class Demographics(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 600
 
 class Transition(Page):
     form_model = 'player'

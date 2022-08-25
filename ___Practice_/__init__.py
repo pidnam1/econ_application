@@ -31,20 +31,17 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'shifts to the left'], [2, 'shifts to the right'], [3, 'remains constant '],
-        [4, 'shifts to the right initially and then returns to its original position']],
+        choices=[[1, 'Population'], [2, 'Territory'], [3, 'Government'], [4, 'Sovereignty']],
         label='''
-        Assume that steak and potatoes are complements. When the price of steak goes
-        up, the demand curve for potatoes''',
+        Which of the following is the distinguishing characteristic of State, as
+        compared with other associations?''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'an increase; an increase'], [2, 'an increase; a decrease'],
-        [3, 'a decrease; an increase'], [4, 'a decrease; a decrease']],
+        choices=[[1, 'USA'], [2, 'Spain'], [3, 'Germany'], [4, 'UK']],
         label='''
-        When the price of a normal good falls, the substitution effect leads to
-        ______ in the quantity purchased and the income effect leads to ______ in
-        the quantity purchased''',
+        The parliament of which country sits in the palace of Westminster - probably
+        better known as the House of Parliament:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -141,7 +138,7 @@ class Player(BasePlayer):
     results_econ = models.IntegerField(
         choices=[[0,"0/4 hints"],[1,"1/4 hints"],[2,"2/4 hints"],[3,"3/4 hints"]],
         label='''
-        In Economics?''',
+        In Political Science?''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cook = models.IntegerField(
@@ -273,7 +270,7 @@ class Economics2(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Price of onions increase and increase!")}
+            return {player.id_in_group: dict(message = "Hint: United Kingdom.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 

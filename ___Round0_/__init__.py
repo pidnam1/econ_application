@@ -32,7 +32,7 @@ class Player(BasePlayer):
     )
     request_hints_economics = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Economics?''',
+        label='''In Political Science?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking = models.StringField(
@@ -48,7 +48,7 @@ class Player(BasePlayer):
     results_economics = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Economics?[Out of 4 questions]''',
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking = models.StringField(
@@ -64,42 +64,30 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'A decrease in the price of X'],
-        [2, 'An increase of the price of a good that is a complement to good X'],
-        [3, 'An increase in the price of a good that is a substitute for X'],
-        [4, 'All of the above']],
+        choices=[[1, 'Hobbes'], [2, 'Locke'], [3, 'Grotius'], [4, 'Rousseau']],
         label='''
-        You are analyzing the demand for good X. Which of the following will result
-        in a shift to the right of the demand curve for X?''',
+        Who believed that sovereignty vested in the 'general will'?''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'An increase in the price of the discs'],
-        [2, 'A decrease in consumers\' incomes'],
-        [3, 'An increase in the price of Phil Collins\' latest compact disc (a substitute)'],
-        [4, 'All of the above']],
+        choices=[[1, 'H.J. Laski'], [2, 'Ivor Jennings'], [3, 'A.V. Dicey'],
+        [4, 'Rousseau']],
         label='''
-        Which of the following will cause the demand curve for Beatles\' compact
-        discs to shift to the right?''',
+        Who of the following has written: "Introduction to the Law of the
+        Constitution"?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3 = models.IntegerField(
-        choices=[[1, 'the demand curve shifts rightward'],
-        [2, 'the demand curve shifts leftward'],
-        [3, 'there is a movement down along the demand curve to a larger quantity demanded'],
-        [4, 'there is a movement up along the demand curve to a smaller quantity demanded']],
+        choices=[[1, '5 Emirates'], [2, '6 Emirates'], [3, '7 Emirates'],
+        [4, 'None of these']],
         label='''
-        The \"law of demand\" refers to the fact that, all other things remaining
-        the same, when the price of a good rises''',
+        United Arab Emirates is a federation of:''',
         widget=widgets.RadioSelect,
     )
     crt_economics4 = models.IntegerField(
-        choices=[[1, 'decreased the magnitude of the short run own price elasticity of demand for raw meat'],
-        [2, 'did not affect the short run own price elasticity of demand for raw meat'],
-        [3, 'increased the magnitude of the short run own price elasticity of demand for raw meat'],
-        [4, 'decreased the magnitude of the short run own price elasticity of demand for smoked meats']],
+        choices=[[1, 'Hegel'], [2, 'Engles'], [3, 'Stalin'], [4, 'Karl Marx']],
         label='''
-        The introduction of refrigerators into American homes''',
+        'The Wages, Labour and Capital' was written by:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -431,7 +419,7 @@ class Economics1(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: I can substitute you")}
+            return {player.id_in_group: dict(message = "Hint: The musical composer")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics1':player.crt_economics1})
@@ -464,7 +452,7 @@ class Economics2(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Price of a related good")}
+            return {player.id_in_group: dict(message = "Hint: Cube with numbers")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics2':player.crt_economics2})
@@ -512,7 +500,7 @@ class Economics4(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Elasticity greater than 1")}
+            return {player.id_in_group: dict(message = "Hint: Marxism")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics4':player.crt_economics4})
@@ -772,8 +760,8 @@ class Final(Page):
         player.participant.payoff_helped = {}
         player.participant.payoff_help = {}
 
-        solutions = dict(crt_economics1=3, crt_economics2=3, crt_economics3=4,
-        crt_economics4=3, crt_cooking1=3, crt_cooking2=1, crt_cooking3=4, crt_cooking4=2,
+        solutions = dict(crt_economics1=4, crt_economics2=3, crt_economics3=3,
+        crt_economics4=4, crt_cooking1=3, crt_cooking2=1, crt_cooking3=4, crt_cooking4=2,
         crt_sports1=3, crt_sports2=3, crt_sports3=3, crt_sports4=2)
 
         payoff = 0

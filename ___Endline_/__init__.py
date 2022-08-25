@@ -167,19 +167,19 @@ class Player(BasePlayer):
 
     #Section B
     subjects_like = models.IntegerField(
-        choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
+        choices=[[1, 'Sports'], [2, 'Political Science'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
     subjects_dislike = models.IntegerField(
-        choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
+        choices=[[1, 'Sports'], [2, 'Political Science'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
     subjects_correct = models.IntegerField(
-        choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
+        choices=[[1, 'Sports'], [2, 'Political Science'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
     subjects_incorrect = models.IntegerField(
-        choices=[[1, 'Sports'], [2, 'Economics'], [3, 'Cooking']],
+        choices=[[1, 'Sports'], [2, 'Political Science'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
     certain_hints_always_helper = models.IntegerField(
@@ -262,7 +262,7 @@ class Player(BasePlayer):
     )
     gender_economics = models.IntegerField(
         choices=[[-1, 'Women know more'], [0, 'No gender difference'], [1, 'Men know more']],
-        label='Economics?',
+        label='Political Science?',
         widget=widgets.RadioSelect,
     )
     gender_cooking = models.IntegerField(

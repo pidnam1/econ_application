@@ -73,38 +73,34 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'the quantity of output consumers are willing to purchase at each possible market price'],
-        [2, 'the difference between quantity demanded and quantity supplied at each price'],
-        [3, 'the maximum level of output an industry can produce, regardless of price'],
-        [4, 'the quantity of output that producers are willing to produce and sell at each possible market price']],
+        choices=[[1, 'Venezuela'], [2, 'Canada'], [3, 'Italy'], [4, 'None of the above']],
         label='''
-        A supply curve reveals''',
+        According to many scholars, which of the following countries is affected by the resource curse?''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'magazines are usually purchased by people with higher than average incomes'],
-        [2, 'a decrease in the price of a substitute product like books will make magazine readers feel a little poorer than they were before'],
-        [3, 'an increase in the price of magazines will reduce the total purchasing power of magazine readers, making them able to afford fewer magazines'],
-        [4, 'an increase in the price of magazines will raise the relative price of magazines to books, causing magazine readers to read more books and fewer magazines']],
+        choices=[[1, 'The portion of seats held by women in national parliaments'],
+        [2, 'The mode of election of the president'],
+        [3, 'The distribution of ministries among parties within a coalition government'],
+        [4, 'None of the above']],
         label='''
-        In the market for magazines, the \"income effect\" means that''',
+        What is Gamson\'s law related to?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3 = models.IntegerField(
-        choices=[[1, 'results only in a movement along the demand curve'],
-        [2, 'shifts the supply curve leftward'],
-        [3, 'shifts the demand curve rightward'],
-        [4, 'Both answers B and C are correct']],
+        choices=[[1, 'France, Brazil, Italy'],
+        [2, 'Finland, Brazil, Indonesia'],
+        [3, 'France, Brazil, Indonesia'],
+        [4, 'Finland, Belgium, Indonesia']],
         label='''
-        An increase in the number of consumers''',
+        In which of the following countries is the president elected?''',
         widget=widgets.RadioSelect,
     )
     crt_economics4 = models.IntegerField(
-        choices=[[1, 'completely inelastic'], [2, 'inelastic, but not completely'],
-        [3, 'unit elastic'], [4, 'elastic, but not infinitely']],
+        choices=[[1, 'Dependence of the government on the legislature'], [2, 'Direct election of the president'],
+        [3, 'Presence of a monarch'], [4, 'None of the above']],
         label='''
-        Consider the demand curve of the form Q = a - bP. If a is a positive real
-        number, and b = 0, then demand is''',
+        Which of the following elements characterizes a parliamentary republic?''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -471,12 +467,12 @@ class Economics2(Page):
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Change price, change output.")}
+                    return {player.id_in_group: dict(message = "Hint: Government.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Change price, change output.")}
+                return {player.id_in_group: dict(message = "Hint: Government.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
@@ -519,12 +515,12 @@ class Economics3(Page):
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Demand increases.")}
+                    return {player.id_in_group: dict(message = "Hint: Paris, Brasilia, Jakarta.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Demand increases.")}
+                return {player.id_in_group: dict(message = "Hint: Paris, Brasilia, Jakarta.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
@@ -567,12 +563,12 @@ class Economics4(Page):
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Vertical straight line.")}
+                    return {player.id_in_group: dict(message = "Hint: Government needs confidence of the parliament.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Vertical straight line.")}
+                return {player.id_in_group: dict(message = "Hint: Government needs confidence of the parliament.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod

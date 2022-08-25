@@ -70,40 +70,28 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MP = models.IntegerField(
-        choices=[[1, 'an opportunity cost'], [2, 'equal to the money price of a good'],
-        [3, 'equal to the price of that good divided by the quantity demanded of the good'],
-        [4, 'what you get paid for babysitting your cousin']],
+        choices=[[1, 'Two times'], [2, 'Three times'], [3, 'Four times'], [4, 'None of the above']],
         label='''
-        The relative price of a good is''',
+        The former American President Franklin Delano Roosevelt was elected for:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MP = models.IntegerField(
-        choices=[[1, 'A change in the price of beer'],
-        [2, 'A health study indicating positive health benefits of moderate beer consumption'],
-        [3, 'An increase in the price of French wine (a substitute)'],
-        [4, 'A decrease in the price of potato chips (a complement)']],
+        choices=[[1, 'Ptolemy'], [2, 'Julius Casear'], [3, 'Socrates'], [4, 'Alexander the Great']],
         label='''
-        Which of the following will NOT cause a shift to the right in the demand
-        curve for beer?''',
+        What famous individual was taught by Aristotle?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MP = models.IntegerField(
-        choices=[[1, 'The taxes paid by the poor should be reduced in order to improve the income distribution in the U.S.'],
-        [2, 'State governments should not subsidize corporations by training welfare recipients'],
-        [3, 'Presidential candidates should not be given funds from the federal government to run campaigns'],
-        [4, 'All of the above']],
+        choices=[[1, 'Eratosthenes'], [2, 'Plato'], [3, 'Diophantus'], [4, 'Eppipides']],
         label='''
-        Which of the following is a normative statement?''',
+        Who was the ancient philosopher who wrote "The Republic"?''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MP = models.IntegerField(
-        choices=[[1, 'is higher than in the long run'],
-        [2, 'is lower than in the short run'],
-        [3, 'is the same as in the long run'],
-        [4, 'does not depend on the fact that ice cream can be frozen']],
+        choices=[[1, 'July 20, 1947'], [2, 'June 20, 1947'], [3, 'August 20, 1947'],
+        [4, 'August 25, 1947']],
         label='''
-        Ice cream can be frozen. In the short run, the magnitude of the own price
-        elasticity of demand for ice cream:''',
+        When was the Pakistan Constitution Assembly constituted?''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MP = models.IntegerField(
@@ -142,7 +130,7 @@ class Player(BasePlayer):
         label='''
         The Wisden Cricketers\' Almanack, first published in 1864, contains
         information and statistics about all aspects of cricket from any given
-        year. It also known as the bible of cricket.''',
+        year. It is also known as the bible of cricket.''',
         widget=widgets.RadioSelect,
     )
     crt_sports2_MP = models.IntegerField(
@@ -371,43 +359,32 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MR = models.IntegerField(
-        choices=[[1, 'good A is used to produce good B'],
-        [2, 'good B is used to produce good A'],
-        [3, 'goods A and B are substitutes'],
-        [4, 'goods A and B are complements']],
+        choices=[[1, '1787'], [2, '1789'], [3, '1798'], [4, 'None of the above']],
         label='''
-        The price of good A goes up. As a result, the demand for good B shifts to
-        the left. From this we can infer that:''',
+        The French Revolution occured in:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MR = models.IntegerField(
-        choices=[[1, 'absolute change in quantity demanded resulting from a one unit increase in income'],
-        [2, 'percent change in quantity demanded resulting from the absolute increase in income'],
-        [3, 'percent change in quantity demanded resulting from a one percent increase in income'],
-        [4, 'percent change in income resulting from a one percent increase in quantity demanded']],
+        choices=[[1, 'November 26, 1949'], [2, 'January 5, 1950'], [3, 'January 26, 1950'],
+        [4, 'March 23, 1951']],
         label='''
-        The income elasticity of demand is the''',
+        The Constitution of India promulgated on:''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MR = models.IntegerField(
-        choices=[[1, 'more than double'],
-        [2, 'exactly double'],
-        [3, 'less than double'],
-        [4, 'any of the above are possible']],
+        choices=[[1, 'Parliamentary republic'], [2, 'Semi-Presidential republic'],
+        [3, 'Parliamentary monarchy'], [4, 'None of the above']],
         label='''
-        Good A is a Giffen good. If the price of good A were to suddenly double,
-        the income effect would cause the purchases of good A to increase by''',
+        Which is Australia’s form of government?''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MR = models.IntegerField(
-        choices=[[1, 'becomes less elastic at every price'],
-        [2, 'becomes less elastic at the price that prevailed before the change in income'],
-        [3, 'becomes more elastic at every price'],
-        [4, 'becomes more elastic at the price that prevailed before the change in income']],
+        choices=[[1, 'Government, territory, population, association'],
+        [2, 'Association, sovereignty, territory, population'],
+        [3, 'Army, territory, population, sovereignty'],
+        [4, 'Population, territory, government sovereignty']],
         label='''
-        Suppose the demand for gourmet coffee can be represented by a linear demand
-        curve. At the prevailing market price, the income elasticity of demand for
-        gourmet coffee is 2. When income rises the demand curve for gourmet coffee:''',
+        Which of the following are the four characteristics of state?''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MR = models.IntegerField(
@@ -672,48 +649,31 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WP = models.IntegerField(
-        choices=[[1, 'There is a surplus equal to 30'],
-        [2, 'There is a shortage equal to 30'],
-        [3, 'There is a shortage, but it is impossible to determine how large'],
-        [4, 'There is a surplus, but it is impossible to determine how large']],
+        choices=[[1, 'A State can violate its international obligations if its interests so demand'],
+        [2, 'A State can terminate a treaty at its will'],
+        [3, 'A State must perform treaty obligations in good faith'],
+        [4, 'None of the above']],
         label='''
-        The demand for books is: Qd = 120 - P. The supply of books is Qs = 5P. If
-        P = $25, which of the following is true?''',
+        Pacta sunt servanda means:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WP = models.IntegerField(
-        choices=[[1, 'A shift to the right in the supply curve for eggs and a shift to the right in the demand curve for eggs'],
-        [2, 'A shift to the left in the supply curve for eggs and a shift to the right in the demand curve for eggs'],
-        [3, 'A shift to the left in the supply curve for eggs and a shift to the left in the demand curve for eggs'],
-        [4, 'None of the above']],
+        choices=[[1, 'State is the march of God on Earth'], [2, 'State is an instrument of exploitation'],
+        [3, 'State is a necessary evil'], [4, 'State is a coordinating agency']],
         label='''
-        From 1970 to 1993, the real price of eggs decreased and the total annual
-        consumption of eggs decreased. Which of the following would cause an unambiguous
-        decrease in the real price of eggs and an unambiguous decrease in the quantity
-        of eggs consumed?''',
+        Which one of the following statements can be attributed to the Marxists?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WP = models.IntegerField(
-        choices=[[1, 'Demand for office space fell due to quality-of-life concerns'],
-        [2, 'The economic slowdown caused demand for office space to fall'],
-        [3, 'Both (a) and (b)'],
-        [4, 'None of the above']],
+        choices=[[1, 'Britain'], [2, 'USA'], [3, 'France'], [4, 'India']],
         label='''
-        After the September 11, 2001 attacks on the World Trade Center, the supply
-        of downtown office space in Manhattan was dramatically reduced. Forecasters
-        predicted that the equilibrium price would rise, but in fact the price fell.
-        What are some factors that could explain the fall in the equilibrium price,
-        which the forecasters failed to take into account?''',
+        The lengthiest written constitution in the world is of:''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WP = models.IntegerField(
-        choices=[[1, 'A shift to the right in the supply curve for DVD players and a shift to the right in the demand curve for DVD players'],
-        [2, 'A shift to the right in the supply curve for DVD players and a shift to the left in the demand curve for DVD players'],
-        [3, 'A shift to the left in the supply curve for DVD players and a shift to the right in the demand curve for DVD players'],
-        [4, 'A shift to the left in the supply curve for DVD players and a shift to the left in the demand curve for DVD players']],
+        choices=[[1, 'Asabiyya'], [2, 'Liberty'], [3, 'Dictatorship'], [4, 'Algebra']],
         label='''
-        Which of the following would cause an unambiguous decrease in the real practice
-        of DVD players?''',
+        Ibn-e-Khaldun's name is associated with:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WP = models.IntegerField(
@@ -972,34 +932,32 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WR = models.IntegerField(
-        choices=[[1, 'Demand is infinitely elastic'], [2, 'Demand is completely inelastic'],
-        [3, 'Demand becomes more inelastic the lower the price'],
-        [4, 'Demand becomes more elastic the lower the price']],
+        choices=[[1, 'Might is right'], [2, 'Survival of the fittest'],
+        [3, 'From each according to his needs'], [4, 'None of the above']],
         label='''
-        Which of the following is true of a flat demand curve?''',
+        According to Marxists, the primitive society, which existed before the creation
+        of state, worked on the principle:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WR = models.IntegerField(
-        choices=[[1, '(ΔQ / P) / (ΔP / Q)'], [2, '(ΔQ / P) + (ΔP / Q)'],
-        [3, '(ΔQ / P) * (ΔP / Q)'], [4, '(ΔQ / P) - (ΔP / Q)']],
+        choices=[[1, 'Clientelism'], [2, 'Pandering'], [3, 'Gerrymandering'], [4, 'None of the above']],
         label='''
-        Which of the following represents the price elasticity of demand?''',
+        The political manipulation of electoral district boundaries to favour a party is called:''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WR = models.IntegerField(
-        choices=[[1, 'results only in a movement along the demand curve'],
-        [2, 'shifts the supply curve leftward'],
-        [3, 'shifts the demand curve rightward'],
-        [4, 'Both answers B and C are correct']],
+        choices=[[1, 'A State is subject to foreign court\'s jurisdiction'],
+        [2, 'A State is not subject to foreign court\'s jurisdiction'],
+        [3, 'A State cannot enter a foreign court'],
+        [4, 'None of the above']],
         label='''
-        An increase in the number of consumers''',
+        State immunity means:''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WR = models.IntegerField(
-        choices=[[1, 'universally elastic'], [2, 'inelastic, but not completely inelastic'],
-        [3, 'elastic, but not infinitely elastic'], [4, 'infinitely elastic']],
+        choices=[[1, 'Press'], [2, 'Judiciary branch'], [3, 'Universities'], [4, 'None of the above']],
         label='''
-        At a point on a demand curve on the y-axis (representing price), demand is:''',
+        What does the expression \"fourth estate\" refer to?''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WR = models.IntegerField(
@@ -1869,6 +1827,7 @@ def vars_for_template1(player: Player): #defining round number
         round_number = player.round_number - 40
     return round_number
 
+
 # PAGES
 class Demographics(Page):
     form_model = 'player'
@@ -1954,7 +1913,7 @@ class Economics1_MP(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: For the first time in her life, she got the opportunity to talk to a celebrity.")}
+            return {player.id_in_group: dict(message = "Hint: 2 + 2.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics1_MP':player.crt_economics1_MP})
@@ -1998,7 +1957,7 @@ class Economics2_MP(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Change is not always a good thing.")}
+            return {player.id_in_group: dict(message = "Hint: The greatest one.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics2_MP':player.crt_economics2_MP})
@@ -2086,7 +2045,7 @@ class Economics4_MP(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner4 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Short-run > long-run.")}
+            return {player.id_in_group: dict(message = "Hint: The heat of July.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics4_MP':player.crt_economics4_MP})
@@ -2530,7 +2489,7 @@ class Economics1_MR(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: She said \"You are so bright\".")}
+            return {player.id_in_group: dict(message = "Hint: Revolution of 1789.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics1_MR':player.crt_economics1_MR})
@@ -2574,7 +2533,7 @@ class Economics2_MR(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded.")}
+            return {player.id_in_group: dict(message = "Hint: Late January.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics2_MR':player.crt_economics2_MR})
@@ -2662,7 +2621,7 @@ class Economics4_MR(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner7 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Less.")}
+            return {player.id_in_group: dict(message = "Hint: PTGS.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics4_MR':player.crt_economics4_MR})
@@ -3107,7 +3066,7 @@ class Economics1_WP(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: This year he turned 30.")}
+            return {player.id_in_group: dict(message = "Hint: Agreements must be kept.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics1_WP':player.crt_economics1_WP})
@@ -3151,7 +3110,7 @@ class Economics2_WP(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Nothing is unambiguous.")}
+            return {player.id_in_group: dict(message = "Hint: Freedom isn\'t free for slaves.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics2_WP':player.crt_economics2_WP})
@@ -3239,7 +3198,7 @@ class Economics4_WP(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner1 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Increase in supply and decrease in demand.")}
+            return {player.id_in_group: dict(message = "Hint: Islamic.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics4_WP':player.crt_economics4_WP})
@@ -3684,7 +3643,7 @@ class Economics1_WR(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Infinite.")}
+            return {player.id_in_group: dict(message = "Hint: Darwinism.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics1_WR':player.crt_economics1_WR})
@@ -3728,7 +3687,7 @@ class Economics2_WR(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded divided by the percentage change in price.")}
+            return {player.id_in_group: dict(message = "Hint: Tom and Jerry.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics2_WR':player.crt_economics2_WR})
@@ -3816,7 +3775,7 @@ class Economics4_WR(Page):
         if data == 'clicked-button':
             player.participant.econ_hint_requests_partner5 += 1
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: In her infinite wisdom she said...")}
+            return {player.id_in_group: dict(message = "Hint: Mass media")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics4_WR':player.crt_economics4_WR})
@@ -4203,20 +4162,20 @@ class Final(Page):
         return dict(round=player.participant.round2_completed)
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=3, crt_economics3_MP=4,
+        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=4, crt_economics3_MP=2,
         crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=4,
         crt_cooking4_MP=1, crt_sports1_MP=1, crt_sports2_MP=3, crt_sports3_MP=4,
         crt_sports4_MP=2)
-        solutions_MR = dict(crt_economics1_MR=4, crt_economics2_MR=3, crt_economics3_MR=4,
-        crt_economics4_MR=1, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
+        solutions_MR = dict(crt_economics1_MR=1, crt_economics2_MR=3, crt_economics3_MR=3,
+        crt_economics4_MR=4, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
         crt_cooking4_MR=1, crt_sports1_MR=1, crt_sports2_MR=2, crt_sports3_MR=3,
         crt_sports4_MR=4)
-        solutions_WP = dict(crt_economics1_WP=1, crt_economics2_WP=4, crt_economics3_WP=3,
-        crt_economics4_WP=2, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
+        solutions_WP = dict(crt_economics1_WP=3, crt_economics2_WP=2, crt_economics3_WP=4,
+        crt_economics4_WP=1, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
         crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
         crt_sports4_WP=1)
-        solutions_WR = dict(crt_economics1_WR=1, crt_economics2_WR=1, crt_economics3_WR=3,
-        crt_economics4_WR=4, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
+        solutions_WR = dict(crt_economics1_WR=2, crt_economics2_WR=3, crt_economics3_WR=2,
+        crt_economics4_WR=1, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
         crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
         crt_sports4_WR=3)
 

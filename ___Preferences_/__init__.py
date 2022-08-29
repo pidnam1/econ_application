@@ -206,6 +206,13 @@ class Pref_Helper(Page):
         player.f30_1_1, player.f31_1_1, player.f32_1_1, player.f33_1_1, player.f34_1_1,
         player.f35_1_1, player.f36_1_1, player.f37_1_1]
         player.participant.name_list = []
+        """
+        ranking_order={}
+        for i in range(len(rank_list)):
+            if rank_list[i]!="No rank"":
+                ranking_order[rank_list[i]]=player.participant.players[i]
+        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
+        """
         ranking_order = dict(zip(rank_list, player.participant.players))
         sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
         sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}

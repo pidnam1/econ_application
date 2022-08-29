@@ -98,7 +98,6 @@ class Player(BasePlayer):
     f8_3_1 = make_field3('')
     f9_3_1 = make_field3('')
     f10_3_1 = make_field3('')
-
     f1_1_2 = make_field1('')
     f2_1_2 = make_field1('')
     f3_1_2 = make_field1('')
@@ -302,6 +301,7 @@ class Pref_TT(Page):
         'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
         'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
         'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2']
+        return form_fields
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group

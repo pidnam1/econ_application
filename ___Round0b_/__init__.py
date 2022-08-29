@@ -26,7 +26,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     request_hints_economics = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Economics?''',
+        label='''In Political Science?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking = models.StringField(
@@ -41,7 +41,7 @@ class Player(BasePlayer):
     )
     expect_hints_economics = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Economics?''',
+        label='''In Political Science?''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking = models.StringField(
@@ -57,7 +57,7 @@ class Player(BasePlayer):
     results_economics = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Economics?[Out of 4 questions]''',
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking = models.StringField(
@@ -395,6 +395,8 @@ class Demographics(Page):
         import time
         participant.expiry = time.time() + 1200
         player.participant.prev_hint = 0
+        player.participant.responses_0b = dict()
+
 
 class Transition(Page):
     form_model = 'player'
@@ -446,6 +448,9 @@ class Economics1(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_economics1':player.crt_economics1})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -478,6 +483,9 @@ class Economics2(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_economics2':player.crt_economics2})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -526,6 +534,9 @@ class Economics3(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_economics3':player.crt_economics3})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -574,6 +585,9 @@ class Economics4(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_economics4':player.crt_economics4})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -606,6 +620,9 @@ class Cooking1(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_cooking1':player.crt_cooking1})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -638,6 +655,9 @@ class Cooking2(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_cooking2':player.crt_cooking2})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -686,6 +706,9 @@ class Cooking3(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_cooking3':player.crt_cooking3})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -734,6 +757,9 @@ class Cooking4(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_cooking4':player.crt_cooking4})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -782,6 +808,9 @@ class Sports1(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_sports1':player.crt_sports1})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -830,6 +859,9 @@ class Sports2(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_sports2':player.crt_sports2})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -878,6 +910,9 @@ class Sports3(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_sports3':player.crt_sports3})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -910,6 +945,9 @@ class Sports4(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return dict(round_number = player.round_number - 1)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.responses_0b.update({'crt_sports4':player.crt_sports4})
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -919,7 +957,19 @@ class Final(Page):
     def is_displayed(player: Player):
         participant = player.participant
         return player.round_number == 14
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        solutions = dict(crt_economics1=1, crt_economics2=3, crt_economics3=3,
+        crt_economics4=1, crt_cooking1=2, crt_cooking2=1, crt_cooking3=3, crt_cooking4=4,
+        crt_sports1=4, crt_sports2=4, crt_sports3=2, crt_sports4=2)
 
+        payoff = 0
+        for key in solutions.keys():
+            if key in player.participant.responses_0b:
+                if player.participant.responses_0b[key] == solutions[key]:
+                    payoff += 75
+
+        player.participant.payoff_tt.update({"Round0b": payoff})
 
 page_sequence = [Demographics, Transition, Hints, Transition2, Economics1, Economics2,
 Economics2_Hint, Economics3, Economics3_Hint, Economics4, Economics4_Hint, Cooking1,

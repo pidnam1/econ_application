@@ -213,13 +213,25 @@ class Pref_Helper(Page):
                 ranking_order[rank_list[i]]=player.participant.players[i]
         sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
         """
-        ranking_order = dict(zip(rank_list, player.participant.players))
-        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
-        sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
-        for rank in sorted_ranking_order.keys():
-            if rank == 'No rank':
-                sorted_ranking_order1.pop(rank)
+        print('-------ranking list-------')
+        print(rank_list)
+        print('-------players list-------')
+        print(player.participant.players)
+        ranking_order={}
+        for i in range(len(rank_list)):
+            if rank_list[i]!="No rank":
+                ranking_order[rank_list[i]]=player.participant.players[i]
+        print('-------ranking order-------')
+        print(ranking_order)
+        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items())}
+        sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
+        print('------- sorted ranking order-------')
+        print(sorted_ranking_order)
+        print('------- sorted ranking order1-------')
+        print(sorted_ranking_order1)
         player.participant.name_list = list(sorted_ranking_order1.values())
+        print('------- name list-------')
+        print(player.participant.name_list)
 
         id_list = []
         id_list_female = []

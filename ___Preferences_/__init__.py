@@ -13,7 +13,7 @@ class C(BaseConstants):
     'Muhammad Waqar','Umer Farooq','Zain U Din','Shahar Bano','Areesha Zahra Abbasi','Samiullah',
     'Rai Ahmad Khan','Rana Muhammad Imran','Amna Bibi','Tuba Naeem','Moazzam Asadullah',
     'Muhammad Musa Sulehria','Noor ul Huda Awan','Umme Aqeel']
-    RANKINGS = [1,2,3,4,5,6,7,8,9,10,'No rank']
+    RANKINGS = [1,2,3,4,5,6]
 
 class Subsession(BaseSubsession):
     pass
@@ -160,21 +160,24 @@ class Pref_Helper(Page):
     form_model = 'player'
     @staticmethod
     def get_form_fields(player: Player):
-        form_fields = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1','f6_1_1','f7_1_1',
+        session = player.session
+        form_fields_all = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1','f6_1_1','f7_1_1',
         'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
         'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1','f21_1_1','f22_1_1','f23_1_1',
         'f24_1_1','f25_1_1','f26_1_1','f27_1_1','f28_1_1','f29_1_1','f30_1_1','f31_1_1',
         'f32_1_1','f33_1_1','f34_1_1','f35_1_1','f36_1_1','f37_1_1']
+        form_fields = form_fields_all[:session.count - 1]
         return form_fields
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
+        session = player.session
         form_fields = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1','f6_1_1','f7_1_1',
         'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
         'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1','f21_1_1','f22_1_1','f23_1_1',
         'f24_1_1','f25_1_1','f26_1_1','f27_1_1','f28_1_1','f29_1_1','f30_1_1','f31_1_1',
         'f32_1_1','f33_1_1','f34_1_1','f35_1_1','f36_1_1','f37_1_1']
-        player.participant.form_fields_pref = form_fields[:]
+        player.participant.form_fields_pref = form_fields[:session.count - 1]
         #randomizing list
         session = player.session
         random_players = session.active_players
@@ -190,7 +193,7 @@ class Pref_Helper(Page):
         choices = []
         for field in player.participant.form_fields_pref:
             choices += [values[field]]
-        if len(set(choices)) != 11:
+        if len(set(choices)) != len(choices):
             return "You must choose exactly 10 ranks. You cannot choose the same rank for two people."
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -206,32 +209,13 @@ class Pref_Helper(Page):
         player.f30_1_1, player.f31_1_1, player.f32_1_1, player.f33_1_1, player.f34_1_1,
         player.f35_1_1, player.f36_1_1, player.f37_1_1]
         player.participant.name_list = []
-        """
-        ranking_order={}
-        for i in range(len(rank_list)):
-            if rank_list[i]!="No rank"":
-                ranking_order[rank_list[i]]=player.participant.players[i]
-        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
-        """
-        print('-------ranking list-------')
-        print(rank_list)
-        print('-------players list-------')
-        print(player.participant.players)
         ranking_order={}
         for i in range(len(rank_list)):
             if rank_list[i]!="No rank":
                 ranking_order[rank_list[i]]=player.participant.players[i]
-        print('-------ranking order-------')
-        print(ranking_order)
         sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items())}
         sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
-        print('------- sorted ranking order-------')
-        print(sorted_ranking_order)
-        print('------- sorted ranking order1-------')
-        print(sorted_ranking_order1)
         player.participant.name_list = list(sorted_ranking_order1.values())
-        print('------- name list-------')
-        print(player.participant.name_list)
 
         id_list = []
         id_list_female = []
@@ -259,20 +243,16 @@ class Pref_Helper(Page):
 
 class Pref_Helper_Why(Page):
     form_model = 'player'
-    form_fields = ['f1_2_1','f2_2_1','f3_2_1','f4_2_1','f5_2_1','f6_2_1','f7_2_1',
-    'f8_2_1','f9_2_1','f10_2_1']
+    form_fields = ['f1_2_1','f2_2_1','f3_2_1','f4_2_1','f5_2_1','f6_2_1']
     @staticmethod
     def vars_for_template(player: Player):
         player_why = ["1. " + player.participant.name_list[0], "2. " + player.participant.name_list[1], "3. " + player.participant.name_list[2],
-        "4. " + player.participant.name_list[3], "5. " + player.participant.name_list[4], "6. " + player.participant.name_list[5],
-        "7. " + player.participant.name_list[6], "8. " + player.participant.name_list[7], "9. " + player.participant.name_list[8],
-        "10. " + player.participant.name_list[9]]
+        "4. " + player.participant.name_list[3], "5. " + player.participant.name_list[4], "6. " + player.participant.name_list[5]]
         return dict(player_why = player_why)
 
 class Pref_Helper_Other(Page):
     form_model = 'player'
-    form_fields = ['f1_3_1','f2_3_1','f3_3_1','f4_3_1','f5_3_1','f6_3_1','f7_3_1',
-    'f8_3_1','f9_3_1','f10_3_1']
+    form_fields = ['f1_3_1','f2_3_1','f3_3_1','f4_3_1','f5_3_1','f6_3_1']
     @staticmethod
     def vars_for_template(player: Player):
         players_other = []
@@ -294,49 +274,40 @@ class Pref_Helper_Other(Page):
         if player.f6_2_1 == "9. Other":
             player6 = [player.participant.name_list[5]]
             players_other = players_other + player6
-        if player.f7_2_1 == "9. Other":
-            player7 = [player.participant.name_list[6]]
-            players_other = players_other + player7
-        if player.f8_2_1 == "9. Other":
-            player8 = [player.participant.name_list[7]]
-            players_other = players_other + player8
-        if player.f9_2_1 == "9. Other":
-            player9 = [player.participant.name_list[8]]
-            players_other = players_other + player9
-        if player.f10_2_1 == "9. Other":
-            player10 = [player.participant.name_list[9]]
-            players_other = players_other + player10
         return dict(players_other = players_other)
     @staticmethod
     def is_displayed(player: Player):
-        return (player.f1_2_1 == "9. Other") or (player.f2_2_1 == "9. Other") or (player.f3_2_1 == "9. Other") or (player.f4_2_1 == "9. Other") or (player.f5_2_1 == "9. Other") or (player.f6_2_1 == "9. Other") or (player.f7_2_1 == "9. Other") or (player.f8_2_1 == "9. Other") or (player.f9_2_1 == "9. Other") or (player.f10_2_1 == "9. Other")
+        return (player.f1_2_1 == "9. Other") or (player.f2_2_1 == "9. Other") or (player.f3_2_1 == "9. Other") or (player.f4_2_1 == "9. Other") or (player.f5_2_1 == "9. Other") or (player.f6_2_1 == "9. Other")
 
 class Pref_TT(Page):
     form_model = 'player'
     @staticmethod
     def get_form_fields(player: Player):
-        form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
+        session = player.session
+        form_fields_all = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
         'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
         'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
         'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
         'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2']
+        form_fields = form_fields_all[:session.count - 1]
         return form_fields
     @staticmethod
     def vars_for_template(player: Player):
         g = player.group
+        session = player.session
         form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
         'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
         'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
         'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
         'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2']
-        player.participant.form_fields_pref2 = form_fields[:]
+        player.participant.form_fields_pref2 = form_fields[:session.count - 1]
         return dict(players=player.participant.players)
     @staticmethod
     def error_message(player: Player, values):
         choices = []
         for field in player.participant.form_fields_pref2:
             choices += [values[field]]
-        if len(set(choices)) != 11:
+        if len(set(choices)) != len(choices):
             return "You must choose exactly 10 ranks. You cannot choose the same rank for two people."
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -349,12 +320,12 @@ class Pref_TT(Page):
         player.f30_1_2, player.f31_1_2, player.f32_1_2, player.f33_1_2, player.f34_1_2,
         player.f35_1_2, player.f36_1_2, player.f37_1_2]
         player.participant.name_list1 = []
-        ranking_order = dict(zip(rank_list, player.participant.players))
-        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
-        sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(), key = lambda ele: ele[0])}
-        for rank in sorted_ranking_order.keys():
-            if rank == 'No rank':
-                sorted_ranking_order1.pop(rank)
+        ranking_order={}
+        for i in range(len(rank_list)):
+            if rank_list[i]!="No rank":
+                ranking_order[rank_list[i]]=player.participant.players[i]
+        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items())}
+        sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
         player.participant.name_list1 = list(sorted_ranking_order1.values())
 
         id_list = []
@@ -382,20 +353,16 @@ class Pref_TT(Page):
 
 class Pref_TT_Why(Page):
     form_model = 'player'
-    form_fields = ['f1_2_2','f2_2_2','f3_2_2','f4_2_2','f5_2_2','f6_2_2','f7_2_2',
-    'f8_2_2','f9_2_2','f10_2_2']
+    form_fields = ['f1_2_2','f2_2_2','f3_2_2','f4_2_2','f5_2_2','f6_2_2']
     @staticmethod
     def vars_for_template(player: Player):
         player_why = ["1. " + player.participant.name_list1[0], "2. " + player.participant.name_list1[1], "3. " + player.participant.name_list1[2],
-        "4. " + player.participant.name_list1[3], "5. " + player.participant.name_list1[4], "6. " + player.participant.name_list1[5],
-        "7. " + player.participant.name_list1[6], "8. " + player.participant.name_list1[7], "9. " + player.participant.name_list1[8],
-        "10. " + player.participant.name_list1[9]]
+        "4. " + player.participant.name_list1[3], "5. " + player.participant.name_list1[4], "6. " + player.participant.name_list1[5]]
         return dict(player_why = player_why)
 
 class Pref_TT_Other(Page):
     form_model = 'player'
-    form_fields = ['f1_3_2','f2_3_2','f3_3_2','f4_3_2','f5_3_2','f6_3_2','f7_3_2',
-    'f8_3_2','f9_3_2','f10_3_2']
+    form_fields = ['f1_3_2','f2_3_2','f3_3_2','f4_3_2','f5_3_2']
     @staticmethod
     def vars_for_template(player: Player):
         players_other = []
@@ -417,21 +384,9 @@ class Pref_TT_Other(Page):
         if player.f6_2_2 == "9. Other":
             player6 = [player.participant.name_list1[5]]
             players_other = players_other + player6
-        if player.f7_2_2 == "9. Other":
-            player7 = [player.participant.name_list1[6]]
-            players_other = players_other + player7
-        if player.f8_2_2 == "9. Other":
-            player8 = [player.participant.name_list1[7]]
-            players_other = players_other + player8
-        if player.f9_2_2 == "9. Other":
-            player9 = [player.participant.name_list1[8]]
-            players_other = players_other + player9
-        if player.f10_2_2 == "9. Other":
-            player10 = [player.participant.name_list1[9]]
-            players_other = players_other + player10
         return dict(players_other = players_other)
     @staticmethod
     def is_displayed(player: Player):
-        return (player.f1_2_2 == "9. Other") or (player.f2_2_2 == "9. Other") or (player.f3_2_2 == "9. Other") or (player.f4_2_2 == "9. Other") or (player.f5_2_2 == "9. Other") or (player.f6_2_2 == "9. Other") or (player.f7_2_2 == "9. Other") or (player.f8_2_2 == "9. Other") or (player.f9_2_2 == "9. Other") or (player.f10_2_2 == "9. Other")
+        return (player.f1_2_2 == "9. Other") or (player.f2_2_2 == "9. Other") or (player.f3_2_2 == "9. Other") or (player.f4_2_2 == "9. Other") or (player.f5_2_2 == "9. Other") or (player.f6_2_2 == "9. Other")
 
 page_sequence = [Pref_Helper, Pref_Helper_Why, Pref_Helper_Other, Pref_TT, Pref_TT_Why, Pref_TT_Other]

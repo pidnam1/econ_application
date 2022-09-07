@@ -178,15 +178,6 @@ class Pref_Helper(Page):
         'f24_1_1','f25_1_1','f26_1_1','f27_1_1','f28_1_1','f29_1_1','f30_1_1','f31_1_1',
         'f32_1_1','f33_1_1','f34_1_1','f35_1_1','f36_1_1','f37_1_1']
         player.participant.form_fields_pref = form_fields[:session.count - 1]
-        #randomizing list
-        session = player.session
-        random_players = session.active_players
-        random.shuffle(random_players)
-        player.participant.players = []
-        for current_player in random_players:
-            if current_player != player.id_in_group:
-                c = g.get_player_by_id(current_player)
-                player.participant.players.append(c.participant.label)
         return dict(players=player.participant.players)
     @staticmethod
     def error_message(player: Player, values):
@@ -213,9 +204,8 @@ class Pref_Helper(Page):
         for i in range(len(rank_list)):
             if rank_list[i]!="No rank":
                 ranking_order[rank_list[i]]=player.participant.players[i]
-        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items())}
-        sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
-        player.participant.name_list = list(sorted_ranking_order1.values())
+        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
+        player.participant.name_list = list(sorted_ranking_order.values())
 
         id_list = []
         id_list_female = []
@@ -243,11 +233,16 @@ class Pref_Helper(Page):
 
 class Pref_Helper_Why(Page):
     form_model = 'player'
-    form_fields = ['f1_2_1','f2_2_1','f3_2_1','f4_2_1','f5_2_1','f6_2_1']
+    @staticmethod
+    def get_form_fields(player: Player):
+        session = player.session
+        form_fields_all = ['f1_2_1','f2_2_1','f3_2_1','f4_2_1','f5_2_1','f6_2_1']
+        form_fields = form_fields_all[:session.count - 1]
+        return form_fields
     @staticmethod
     def vars_for_template(player: Player):
         player_why = ["1. " + player.participant.name_list[0], "2. " + player.participant.name_list[1], "3. " + player.participant.name_list[2],
-        "4. " + player.participant.name_list[3], "5. " + player.participant.name_list[4], "6. " + player.participant.name_list[5]]
+        "4. " + player.participant.name_list[3], "5. " + player.participant.name_list[4]]
         return dict(player_why = player_why)
 
 class Pref_Helper_Other(Page):
@@ -324,9 +319,8 @@ class Pref_TT(Page):
         for i in range(len(rank_list)):
             if rank_list[i]!="No rank":
                 ranking_order[rank_list[i]]=player.participant.players[i]
-        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items())}
-        sorted_ranking_order1 = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
-        player.participant.name_list1 = list(sorted_ranking_order1.values())
+        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
+        player.participant.name_list1 = list(sorted_ranking_order.values())
 
         id_list = []
         id_list_female = []
@@ -353,16 +347,21 @@ class Pref_TT(Page):
 
 class Pref_TT_Why(Page):
     form_model = 'player'
-    form_fields = ['f1_2_2','f2_2_2','f3_2_2','f4_2_2','f5_2_2','f6_2_2']
+    @staticmethod
+    def get_form_fields(player: Player):
+        session = player.session
+        form_fields_all = ['f1_2_2','f2_2_2','f3_2_2','f4_2_2','f5_2_2','f6_2_2']
+        form_fields = form_fields_all[:session.count - 1]
+        return form_fields
     @staticmethod
     def vars_for_template(player: Player):
         player_why = ["1. " + player.participant.name_list1[0], "2. " + player.participant.name_list1[1], "3. " + player.participant.name_list1[2],
-        "4. " + player.participant.name_list1[3], "5. " + player.participant.name_list1[4], "6. " + player.participant.name_list1[5]]
+        "4. " + player.participant.name_list1[3], "5. " + player.participant.name_list1[4]]
         return dict(player_why = player_why)
 
 class Pref_TT_Other(Page):
     form_model = 'player'
-    form_fields = ['f1_3_2','f2_3_2','f3_3_2','f4_3_2','f5_3_2']
+    form_fields = ['f1_3_2','f2_3_2','f3_3_2','f4_3_2','f5_3_2','f6_3_2']
     @staticmethod
     def vars_for_template(player: Player):
         players_other = []

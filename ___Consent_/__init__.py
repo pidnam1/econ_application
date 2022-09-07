@@ -79,5 +79,17 @@ class Consent(Page):
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
     body_text = "Please be patient with your fellow classmates. WHILE YOU WAIT, YOU CAN PLAY THE GAME ON THE PAPER THAT IS ON YOUR DESK. PLEASE DO NOT TALK TO ANYONE."
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        #randomizing list
+        session = player.session
+        g = player.group
+        random_players = session.active_players
+        random.shuffle(random_players)
+        player.participant.players = []
+        for current_player in random_players:
+            if current_player != player.id_in_group:
+                c = g.get_player_by_id(current_player)
+                player.participant.players.append(c.participant.label)
 
 page_sequence = [Consent, WaitPage1]

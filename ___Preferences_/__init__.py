@@ -159,6 +159,20 @@ class Player(BasePlayer):
 class Pref_Helper(Page):
     form_model = 'player'
     @staticmethod
+    def is_displayed(player: Player):
+        #randomizing list
+        session = player.session
+        g = player.group
+        random_players = session.active_players
+        random.shuffle(random_players)
+        player.participant.players = []
+        for current_player in random_players:
+            if current_player != player.id_in_group:
+                c = g.get_player_by_id(current_player)
+                player.participant.players.append(c.participant.label)
+        print(player.participant.players)
+        return True
+    @staticmethod
     def get_form_fields(player: Player):
         session = player.session
         form_fields_all = ['f1_1_1','f2_1_1','f3_1_1','f4_1_1','f5_1_1','f6_1_1','f7_1_1',

@@ -38,7 +38,7 @@ class Player(BasePlayer):
 #MALE PREFERRED
     request_hints_economics_MP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Economics?''',
+        label='''In Political Science?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MP = models.StringField(
@@ -51,10 +51,28 @@ class Player(BasePlayer):
         label='''In Sports?''',
         widget=widgets.RadioSelectHorizontal,
     )
+    expect_hints_economics_MP = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    expect_hints_cooking_MP = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    expect_hints_sports_MP = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
     results_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Economics?[Out of 4 questions]''',
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MP = models.StringField(
@@ -323,11 +341,47 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
 
 #MALE RANDOM
     request_hints_economics_MR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Economics?''',
+        label='''In Political Science?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MR = models.StringField(
@@ -340,10 +394,28 @@ class Player(BasePlayer):
         label='''In Sports?''',
         widget=widgets.RadioSelectHorizontal,
     )
+    expect_hints_economics_MR = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    expect_hints_cooking_MR = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    expect_hints_sports_MR = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
     results_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Economics?[Out of 4 questions]''',
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MR = models.StringField(
@@ -361,7 +433,7 @@ class Player(BasePlayer):
     crt_economics1_MR = models.IntegerField(
         choices=[[1, '1787'], [2, '1789'], [3, '1798'], [4, 'None of the above']],
         label='''
-        The French Revolution occured in:''',
+        The French Revolution started in:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MR = models.IntegerField(
@@ -382,7 +454,7 @@ class Player(BasePlayer):
         choices=[[1, 'Government, territory, population, association'],
         [2, 'Association, sovereignty, territory, population'],
         [3, 'Army, territory, population, sovereignty'],
-        [4, 'Population, territory, government sovereignty']],
+        [4, 'Population, territory, government, capacity to enter into relations']],
         label='''
         Which of the following are the four characteristics of state?''',
         widget=widgets.RadioSelect,
@@ -613,11 +685,47 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
 
 #WOMAN PREFERRED
     request_hints_economics_WP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Economics?''',
+        label='''In Political Science?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WP = models.StringField(
@@ -630,10 +738,28 @@ class Player(BasePlayer):
         label='''In Sports?''',
         widget=widgets.RadioSelectHorizontal,
     )
+    expect_hints_economics_WP = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    expect_hints_cooking_WP = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    expect_hints_sports_WP = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
     results_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Economics?[Out of 4 questions]''',
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WP = models.StringField(
@@ -896,11 +1022,47 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
 
 #WOMAN RANDOM
     request_hints_economics_WR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Economics?''',
+        label='''In Political Science?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WR = models.StringField(
@@ -913,10 +1075,28 @@ class Player(BasePlayer):
         label='''In Sports?''',
         widget=widgets.RadioSelectHorizontal,
     )
+    expect_hints_economics_WR = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    expect_hints_cooking_WR = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    expect_hints_sports_WR = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
     results_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Economics?[Out of 4 questions]''',
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WR = models.StringField(
@@ -1185,618 +1365,653 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
 
 
 
 # FUNCTIONS
-def random_rounds(subsession: Subsession):
+def random_rounds(subsession: Subsession,p:Player):
     if subsession.round_number == 1:
-        for p in subsession.get_players():
             #randomizes which order people will do the main C.TASKS in
-            tasks = ['MP','MR','WP','WR']
-            round_numbers = list(range(1, 5))
-            random.shuffle(tasks)
-            if p.participant.partner4 == 0:
-                tasks.insert(4, tasks.pop(tasks.index('MP')))
-            if p.participant.partner7 == 0:
-                tasks.insert(4, tasks.pop(tasks.index('MR')))
-            if p.participant.partner1 == 0:
-                tasks.insert(4, tasks.pop(tasks.index('WP')))
-            if p.participant.partner5 == 0:
-                tasks.insert(4, tasks.pop(tasks.index('WR')))
-            task_round = dict(zip(tasks, round_numbers))
+        tasks = ['MP','MR','WP','WR']
+        round_numbers = list(range(1, 5))
+        random.shuffle(tasks)
+        if p.participant.partner4 == 0:
+            tasks.insert(4, tasks.pop(tasks.index('MP')))
+        if p.participant.partner7 == 0:
+            tasks.insert(4, tasks.pop(tasks.index('MR')))
+        if p.participant.partner1 == 0:
+            tasks.insert(4, tasks.pop(tasks.index('WP')))
+        if p.participant.partner5 == 0:
+            tasks.insert(4, tasks.pop(tasks.index('WR')))
+        task_round = dict(zip(tasks, round_numbers))
 
-            #randomizes the order someone doing the MP tasks will do them in
-            sub_round_number1 = list(range(2, 5))
-            random.shuffle(sub_round_number1)
-            sub_round_number2 = list(range(6, 9))
-            random.shuffle(sub_round_number2)
-            sub_round_number3 = list(range(10, 13))
-            random.shuffle(sub_round_number3)
-            sub_round_number4 = list(range(14, 17))
-            random.shuffle(sub_round_number4)
+        #randomizes the order someone doing the MP tasks will do them in
+        sub_round_number1 = list(range(2, 5))
+        random.shuffle(sub_round_number1)
+        sub_round_number2 = list(range(6, 9))
+        random.shuffle(sub_round_number2)
+        sub_round_number3 = list(range(10, 13))
+        random.shuffle(sub_round_number3)
+        sub_round_number4 = list(range(14, 17))
+        random.shuffle(sub_round_number4)
 
-            #Sub 1
-            sub_round_number1_1 = list(range(2, 6))
-            random.shuffle(sub_round_number1_1)
-            sub_round_number1_2 = list(range(6, 10))
-            random.shuffle(sub_round_number1_2)
-            sub_round_number1_3 = list(range(10, 14))
-            random.shuffle(sub_round_number1_3)
+        #Sub 1
+        sub_round_number1_1 = list(range(2, 6))
+        random.shuffle(sub_round_number1_1)
+        sub_round_number1_2 = list(range(6, 10))
+        random.shuffle(sub_round_number1_2)
+        sub_round_number1_3 = list(range(10, 14))
+        random.shuffle(sub_round_number1_3)
 
-            #Sub 2
-            sub_round_number2_1 = list(range(15, 19))
-            random.shuffle(sub_round_number2_1)
-            sub_round_number2_2 = list(range(19, 23))
-            random.shuffle(sub_round_number2_2)
-            sub_round_number2_3 = list(range(23, 27))
-            random.shuffle(sub_round_number2_3)
+        #Sub 2
+        sub_round_number2_1 = list(range(15, 19))
+        random.shuffle(sub_round_number2_1)
+        sub_round_number2_2 = list(range(19, 23))
+        random.shuffle(sub_round_number2_2)
+        sub_round_number2_3 = list(range(23, 27))
+        random.shuffle(sub_round_number2_3)
 
-            #Sub 3
-            sub_round_number3_1 = list(range(28, 32))
-            random.shuffle(sub_round_number3_1)
-            sub_round_number3_2 = list(range(32, 36))
-            random.shuffle(sub_round_number3_2)
-            sub_round_number3_3 = list(range(36, 40))
-            random.shuffle(sub_round_number3_3)
+        #Sub 3
+        sub_round_number3_1 = list(range(28, 32))
+        random.shuffle(sub_round_number3_1)
+        sub_round_number3_2 = list(range(32, 36))
+        random.shuffle(sub_round_number3_2)
+        sub_round_number3_3 = list(range(36, 40))
+        random.shuffle(sub_round_number3_3)
 
-            #Sub 4
-            sub_round_number4_1 = list(range(41, 45))
-            random.shuffle(sub_round_number4_1)
-            sub_round_number4_2 = list(range(45, 49))
-            random.shuffle(sub_round_number4_2)
-            sub_round_number4_3 = list(range(49, 53))
-            random.shuffle(sub_round_number4_3)
+        #Sub 4
+        sub_round_number4_1 = list(range(41, 45))
+        random.shuffle(sub_round_number4_1)
+        sub_round_number4_2 = list(range(45, 49))
+        random.shuffle(sub_round_number4_2)
+        sub_round_number4_3 = list(range(49, 53))
+        random.shuffle(sub_round_number4_3)
 
-            #Keeps track of which tasks people have finished. Key = "MP, MR, WP...", Value = 1 if finished
-            p.participant.task_rounds2 = dict()
+        #Keeps track of which tasks people have finished. Key = "MP, MR, WP...", Value = 1 if finished
+        p.participant.task_rounds2 = dict()
 
-            #MALE PREFERRED
-            MP_round_number = task_round['MP']
-            if MP_round_number == 1:
-                #marks complete this MP task
-                p.participant.task_rounds2.update({'MP': 1})
+        #MALE PREFERRED
+        MP_round_number = task_round['MP']
+        if MP_round_number == 1:
+            #marks complete this MP task
+            p.participant.task_rounds2.update({'MP': 1})
 
-                #Determines the order in which the MP tasks will be done, by the random numbers generated earlier
-                task_rounds_MP1 = dict(zip(C.TASKS_MP, sub_round_number1))
-                econ_round_number = task_rounds_MP1['Economics_MP']
+            #Determines the order in which the MP tasks will be done, by the random numbers generated earlier
+            task_rounds_MP1 = dict(zip(C.TASKS_MP, sub_round_number1))
+            econ_round_number = task_rounds_MP1['Economics_MP']
 
-                #this section determines which order we will do the sub rounds: ie econ first, cooking second, sports third. Etc.
-                if econ_round_number == 2:
+            #this section determines which order we will do the sub rounds: ie econ first, cooking second, sports third. Etc.
+            if econ_round_number == 2:
 
-                    #assigns the order you do this specific task to a random order
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 3:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 4:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MP1['Cooking_MP']
-                if cook_round_number == 2:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 3:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 4:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MP1['Sports_MP']
-                if sport_round_number == 2:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 3:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 4:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif MP_round_number == 2:
-                task_rounds_MP2 = dict(zip(C.TASKS_MP, sub_round_number2))
-                p.participant.task_rounds2.update({'MP':14})
-                econ_round_number = task_rounds_MP2['Economics_MP']
-                if econ_round_number == 6:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 7:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 8:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MP2['Cooking_MP']
-                if cook_round_number == 6:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 7:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 8:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MP2['Sports_MP']
-                if sport_round_number == 6:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 7:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 8:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif MP_round_number == 3:
-                task_rounds_MP3 = dict(zip(C.TASKS_MP, sub_round_number3))
-                p.participant.task_rounds2.update({'MP':27})
-                econ_round_number = task_rounds_MP3['Economics_MP']
-                if econ_round_number == 10:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 11:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 12:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MP3['Cooking_MP']
-                if cook_round_number == 10:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 11:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 12:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MP3['Sports_MP']
-                if sport_round_number == 10:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 11:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 12:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif MP_round_number == 4:
-                task_rounds_MP4 = dict(zip(C.TASKS_MP, sub_round_number4))
-                p.participant.task_rounds2.update({'MP':40})
-                econ_round_number = task_rounds_MP4['Economics_MP']
-                if econ_round_number == 14:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 15:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 16:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MP4['Cooking_MP']
-                if cook_round_number == 14:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 15:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 16:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MP4['Sports_MP']
-                if sport_round_number == 14:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 15:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 16:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
+                #assigns the order you do this specific task to a random order
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 3:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 4:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MP1['Cooking_MP']
+            if cook_round_number == 2:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 3:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 4:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MP1['Sports_MP']
+            if sport_round_number == 2:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 3:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 4:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif MP_round_number == 2:
+            task_rounds_MP2 = dict(zip(C.TASKS_MP, sub_round_number2))
+            p.participant.task_rounds2.update({'MP':14})
+            econ_round_number = task_rounds_MP2['Economics_MP']
+            if econ_round_number == 6:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 7:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 8:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MP2['Cooking_MP']
+            if cook_round_number == 6:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 7:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 8:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MP2['Sports_MP']
+            if sport_round_number == 6:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 7:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 8:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif MP_round_number == 3:
+            task_rounds_MP3 = dict(zip(C.TASKS_MP, sub_round_number3))
+            p.participant.task_rounds2.update({'MP':27})
+            econ_round_number = task_rounds_MP3['Economics_MP']
+            if econ_round_number == 10:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 11:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 12:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MP3['Cooking_MP']
+            if cook_round_number == 10:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 11:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 12:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MP3['Sports_MP']
+            if sport_round_number == 10:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 11:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 12:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif MP_round_number == 4:
+            task_rounds_MP4 = dict(zip(C.TASKS_MP, sub_round_number4))
+            p.participant.task_rounds2.update({'MP':40})
+            econ_round_number = task_rounds_MP4['Economics_MP']
+            if econ_round_number == 14:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 15:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 16:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MP4['Cooking_MP']
+            if cook_round_number == 14:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 15:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 16:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MP4['Sports_MP']
+            if sport_round_number == 14:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 15:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 16:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
 
-            #MALE RANDOM
-            MR_round_number = task_round['MR']
-            if MR_round_number == 1:
-                task_rounds_MR1 = dict(zip(C.TASKS_MR, sub_round_number1))
-                p.participant.task_rounds2.update({'MR':1})
-                econ_round_number = task_rounds_MR1['Economics_MR']
-                if econ_round_number == 2:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 3:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 4:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MR1['Cooking_MR']
-                if cook_round_number == 2:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 3:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 4:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MR1['Sports_MR']
-                if sport_round_number == 2:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 3:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 4:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif MR_round_number == 2:
-                task_rounds_MR2 = dict(zip(C.TASKS_MR, sub_round_number2))
-                p.participant.task_rounds2.update({'MR':14})
-                econ_round_number = task_rounds_MR2['Economics_MR']
-                if econ_round_number == 6:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 7:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 8:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MR2['Cooking_MR']
-                if cook_round_number == 6:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 7:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 8:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MR2['Sports_MR']
-                if sport_round_number == 6:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 7:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 8:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif MR_round_number == 3:
-                task_rounds_MR3 = dict(zip(C.TASKS_MR, sub_round_number3))
-                p.participant.task_rounds2.update({'MR':27})
-                econ_round_number = task_rounds_MR3['Economics_MR']
-                if econ_round_number == 10:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 11:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 12:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MR3['Cooking_MR']
-                if cook_round_number == 10:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 11:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 12:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MR3['Sports_MR']
-                if sport_round_number == 10:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 11:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 12:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif MR_round_number == 4:
-                task_rounds_MR4 = dict(zip(C.TASKS_MR, sub_round_number4))
-                p.participant.task_rounds2.update({'MR':40})
-                econ_round_number = task_rounds_MR4['Economics_MR']
-                if econ_round_number == 14:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 15:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 16:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MR4['Cooking_MR']
-                if cook_round_number == 14:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 15:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 16:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MR4['Sports_MR']
-                if sport_round_number == 14:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 15:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 16:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
+        #MALE RANDOM
+        MR_round_number = task_round['MR']
+        if MR_round_number == 1:
+            task_rounds_MR1 = dict(zip(C.TASKS_MR, sub_round_number1))
+            p.participant.task_rounds2.update({'MR':1})
+            econ_round_number = task_rounds_MR1['Economics_MR']
+            if econ_round_number == 2:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 3:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 4:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MR1['Cooking_MR']
+            if cook_round_number == 2:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 3:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 4:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MR1['Sports_MR']
+            if sport_round_number == 2:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 3:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 4:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif MR_round_number == 2:
+            task_rounds_MR2 = dict(zip(C.TASKS_MR, sub_round_number2))
+            p.participant.task_rounds2.update({'MR':14})
+            econ_round_number = task_rounds_MR2['Economics_MR']
+            if econ_round_number == 6:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 7:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 8:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MR2['Cooking_MR']
+            if cook_round_number == 6:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 7:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 8:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MR2['Sports_MR']
+            if sport_round_number == 6:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 7:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 8:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif MR_round_number == 3:
+            task_rounds_MR3 = dict(zip(C.TASKS_MR, sub_round_number3))
+            p.participant.task_rounds2.update({'MR':27})
+            econ_round_number = task_rounds_MR3['Economics_MR']
+            if econ_round_number == 10:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 11:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 12:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MR3['Cooking_MR']
+            if cook_round_number == 10:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 11:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 12:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MR3['Sports_MR']
+            if sport_round_number == 10:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 11:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 12:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif MR_round_number == 4:
+            task_rounds_MR4 = dict(zip(C.TASKS_MR, sub_round_number4))
+            p.participant.task_rounds2.update({'MR':40})
+            econ_round_number = task_rounds_MR4['Economics_MR']
+            if econ_round_number == 14:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 15:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 16:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MR4['Cooking_MR']
+            if cook_round_number == 14:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 15:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 16:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MR4['Sports_MR']
+            if sport_round_number == 14:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 15:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 16:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
 
-            #WOMAN PREFERRED
-            WP_round_number = task_round['WP']
-            if WP_round_number == 1:
-                task_rounds_WP1 = dict(zip(C.TASKS_WP, sub_round_number1))
-                p.participant.task_rounds2.update({'WP':1})
-                econ_round_number = task_rounds_WP1['Economics_WP']
-                if econ_round_number == 2:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 3:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 4:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WP1['Cooking_WP']
-                if cook_round_number == 2:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 3:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 4:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WP1['Sports_WP']
-                if sport_round_number == 2:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 3:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 4:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif WP_round_number == 2:
-                task_rounds_WP2 = dict(zip(C.TASKS_WP, sub_round_number2))
-                p.participant.task_rounds2.update({'WP':14})
-                econ_round_number = task_rounds_WP2['Economics_WP']
-                if econ_round_number == 6:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 7:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 8:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WP2['Cooking_WP']
-                if cook_round_number == 6:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 7:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 8:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WP2['Sports_WP']
-                if sport_round_number == 6:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 7:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 8:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif WP_round_number == 3:
-                task_rounds_WP3 = dict(zip(C.TASKS_WP, sub_round_number3))
-                p.participant.task_rounds2.update({'WP':27})
-                econ_round_number = task_rounds_WP3['Economics_WP']
-                if econ_round_number == 10:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 11:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 12:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WP3['Cooking_WP']
-                if cook_round_number == 10:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 11:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 12:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WP3['Sports_WP']
-                if sport_round_number == 10:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 11:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 12:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif WP_round_number == 4:
-                task_rounds_WP4 = dict(zip(C.TASKS_WP, sub_round_number4))
-                p.participant.task_rounds2.update({'WP':40})
-                econ_round_number = task_rounds_WP4['Economics_WP']
-                if econ_round_number == 14:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 15:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 16:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WP4['Cooking_WP']
-                if cook_round_number == 14:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 15:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 16:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WP4['Sports_WP']
-                if sport_round_number == 14:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 15:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 16:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
+        #WOMAN PREFERRED
+        WP_round_number = task_round['WP']
+        if WP_round_number == 1:
+            task_rounds_WP1 = dict(zip(C.TASKS_WP, sub_round_number1))
+            p.participant.task_rounds2.update({'WP':1})
+            econ_round_number = task_rounds_WP1['Economics_WP']
+            if econ_round_number == 2:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 3:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 4:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WP1['Cooking_WP']
+            if cook_round_number == 2:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 3:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 4:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WP1['Sports_WP']
+            if sport_round_number == 2:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 3:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 4:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif WP_round_number == 2:
+            task_rounds_WP2 = dict(zip(C.TASKS_WP, sub_round_number2))
+            p.participant.task_rounds2.update({'WP':14})
+            econ_round_number = task_rounds_WP2['Economics_WP']
+            if econ_round_number == 6:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 7:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 8:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WP2['Cooking_WP']
+            if cook_round_number == 6:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 7:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 8:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WP2['Sports_WP']
+            if sport_round_number == 6:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 7:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 8:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif WP_round_number == 3:
+            task_rounds_WP3 = dict(zip(C.TASKS_WP, sub_round_number3))
+            p.participant.task_rounds2.update({'WP':27})
+            econ_round_number = task_rounds_WP3['Economics_WP']
+            if econ_round_number == 10:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 11:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 12:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WP3['Cooking_WP']
+            if cook_round_number == 10:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 11:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 12:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WP3['Sports_WP']
+            if sport_round_number == 10:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 11:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 12:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif WP_round_number == 4:
+            task_rounds_WP4 = dict(zip(C.TASKS_WP, sub_round_number4))
+            p.participant.task_rounds2.update({'WP':40})
+            econ_round_number = task_rounds_WP4['Economics_WP']
+            if econ_round_number == 14:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 15:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 16:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WP4['Cooking_WP']
+            if cook_round_number == 14:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 15:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 16:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WP4['Sports_WP']
+            if sport_round_number == 14:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 15:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 16:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
 
-            #WOMAN RANDOM
-            WR_round_number = task_round['WR']
-            if WR_round_number == 1:
-                task_rounds_WR1 = dict(zip(C.TASKS_WR, sub_round_number1))
-                p.participant.task_rounds2.update({'WR':1})
-                econ_round_number = task_rounds_WR1['Economics_WR']
-                if econ_round_number == 2:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 3:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 4:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WR1['Cooking_WR']
-                if cook_round_number == 2:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 3:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 4:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WR1['Sports_WR']
-                if sport_round_number == 2:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 3:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 4:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif WR_round_number == 2:
-                task_rounds_WR2 = dict(zip(C.TASKS_WR, sub_round_number2))
-                p.participant.task_rounds2.update({'WR':14})
-                econ_round_number = task_rounds_WR2['Economics_WR']
-                if econ_round_number == 6:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 7:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 8:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WR2['Cooking_WR']
-                if cook_round_number == 6:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 7:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 8:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WR2['Sports_WR']
-                if sport_round_number == 6:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 7:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 8:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif WR_round_number == 3:
-                task_rounds_WR3 = dict(zip(C.TASKS_WR, sub_round_number3))
-                p.participant.task_rounds2.update({'WR':27})
-                econ_round_number = task_rounds_WR3['Economics_WR']
-                if econ_round_number == 10:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 11:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 12:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WR3['Cooking_WR']
-                if cook_round_number == 10:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 11:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 12:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WR3['Sports_WR']
-                if sport_round_number == 10:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 11:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 12:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
-            elif WR_round_number == 4:
-                task_rounds_WR4 = dict(zip(C.TASKS_WR, sub_round_number4))
-                p.participant.task_rounds2.update({'WR':40})
-                econ_round_number = task_rounds_WR4['Economics_WR']
-                if econ_round_number == 14:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_econ1)
-                elif econ_round_number == 15:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_econ2)
-                elif econ_round_number == 16:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WR4['Cooking_WR']
-                if cook_round_number == 14:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_cook1)
-                elif cook_round_number == 15:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_cook2)
-                elif cook_round_number == 16:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WR4['Sports_WR']
-                if sport_round_number == 14:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_1))
-                    p.participant.task_rounds2.update(task_rounds_sport1)
-                elif sport_round_number == 15:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_2))
-                    p.participant.task_rounds2.update(task_rounds_sport2)
-                elif sport_round_number == 16:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_3))
-                    p.participant.task_rounds2.update(task_rounds_sport3)
+        #WOMAN RANDOM
+        WR_round_number = task_round['WR']
+        if WR_round_number == 1:
+            task_rounds_WR1 = dict(zip(C.TASKS_WR, sub_round_number1))
+            p.participant.task_rounds2.update({'WR':1})
+            econ_round_number = task_rounds_WR1['Economics_WR']
+            if econ_round_number == 2:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 3:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 4:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WR1['Cooking_WR']
+            if cook_round_number == 2:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 3:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 4:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WR1['Sports_WR']
+            if sport_round_number == 2:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 3:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 4:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif WR_round_number == 2:
+            task_rounds_WR2 = dict(zip(C.TASKS_WR, sub_round_number2))
+            p.participant.task_rounds2.update({'WR':14})
+            econ_round_number = task_rounds_WR2['Economics_WR']
+            if econ_round_number == 6:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 7:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 8:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WR2['Cooking_WR']
+            if cook_round_number == 6:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 7:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 8:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WR2['Sports_WR']
+            if sport_round_number == 6:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 7:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 8:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif WR_round_number == 3:
+            task_rounds_WR3 = dict(zip(C.TASKS_WR, sub_round_number3))
+            p.participant.task_rounds2.update({'WR':27})
+            econ_round_number = task_rounds_WR3['Economics_WR']
+            if econ_round_number == 10:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 11:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 12:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WR3['Cooking_WR']
+            if cook_round_number == 10:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 11:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 12:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WR3['Sports_WR']
+            if sport_round_number == 10:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 11:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 12:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
+        elif WR_round_number == 4:
+            task_rounds_WR4 = dict(zip(C.TASKS_WR, sub_round_number4))
+            p.participant.task_rounds2.update({'WR':40})
+            econ_round_number = task_rounds_WR4['Economics_WR']
+            if econ_round_number == 14:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_econ1)
+            elif econ_round_number == 15:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_econ2)
+            elif econ_round_number == 16:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WR4['Cooking_WR']
+            if cook_round_number == 14:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_cook1)
+            elif cook_round_number == 15:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_cook2)
+            elif cook_round_number == 16:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WR4['Sports_WR']
+            if sport_round_number == 14:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_1))
+                p.participant.task_rounds2.update(task_rounds_sport1)
+            elif sport_round_number == 15:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_2))
+                p.participant.task_rounds2.update(task_rounds_sport2)
+            elif sport_round_number == 16:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_3))
+                p.participant.task_rounds2.update(task_rounds_sport3)
     else:
         subsession.group_like_round(1)
 
@@ -1834,7 +2049,7 @@ class Demographics(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        random_rounds(player.subsession)
+        random_rounds(player.subsession,player)
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player:Player):
@@ -1867,16 +2082,18 @@ class Hints_MP(Page):
     @staticmethod
     def get_form_fields(player: Player):
         import random
-        formfields = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP', 'results_economics_MP', 'results_cooking_MP', 'results_sports_MP']
+        formfields = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP', 'results_economics_MP', 'results_cooking_MP', 'results_sports_MP', 'expect_hints_economics_MP', 'expect_hints_cooking_MP', 'expect_hints_sports_MP']
         return formfields
     def vars_for_template(player: Player):
         formfields_hints = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP']
         random.shuffle(formfields_hints)
         formfields_results = ['results_economics_MP', 'results_cooking_MP', 'results_sports_MP']
         random.shuffle(formfields_results)
+        formfields_expect = ['expect_hints_economics_MP', 'expect_hints_cooking_MP', 'expect_hints_sports_MP']
+        random.shuffle(formfields_expect)
         g = player.group
         partner = g.get_player_by_id(player.participant.partner4)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round2_completed)
+        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round2_completed)
 
 class Transition_MP0(Page):
     form_model = 'player'
@@ -1904,6 +2121,7 @@ class Economics1_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics1_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -1911,8 +2129,11 @@ class Economics1_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ1_MP = 1
             return {player.id_in_group: dict(message = "Hint: 2 + 2.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -1948,6 +2169,7 @@ class Economics2_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics2_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -1955,8 +2177,11 @@ class Economics2_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ2_MP = 1
             return {player.id_in_group: dict(message = "Hint: The greatest one.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2036,6 +2261,7 @@ class Economics4_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics4_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2043,8 +2269,11 @@ class Economics4_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ4_MP = 1
             return {player.id_in_group: dict(message = "Hint: The heat of July.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2124,6 +2353,7 @@ class Cooking2_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking2_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2131,8 +2361,11 @@ class Cooking2_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook2_MP = 1
             return {player.id_in_group: dict(message = "Hint: Bucket.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2168,6 +2401,7 @@ class Cooking3_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking3_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2175,8 +2409,11 @@ class Cooking3_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook3_MP = 1
             return {player.id_in_group: dict(message = "Hint: Yellow and white.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2212,6 +2449,7 @@ class Cooking4_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking4_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2219,8 +2457,11 @@ class Cooking4_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook4_MP = 1
             return {player.id_in_group: dict(message = "Hint: It has been snowing in London.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2256,6 +2497,7 @@ class Sports1_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports1_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2263,8 +2505,11 @@ class Sports1_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport1_MP = 1
             return {player.id_in_group: dict(message = "Hint: India is to the East of Pakistan.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2343,6 +2588,7 @@ class Sports3_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports3_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2350,8 +2596,11 @@ class Sports3_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport3_MP = 1
             return {player.id_in_group: dict(message = "Hint: Surname rhymes with Sabbath.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2387,6 +2636,7 @@ class Sports4_MP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports4_MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner4 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2394,8 +2644,11 @@ class Sports4_MP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner4 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner4 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport4_MP = 1
             return {player.id_in_group: dict(message = "Hint: An even number.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2443,16 +2696,18 @@ class Hints_MR(Page):
     @staticmethod
     def get_form_fields(player: Player):
         import random
-        formfields = ['request_hints_economics_MR', 'request_hints_cooking_MR', 'request_hints_sports_MR', 'results_economics_MR', 'results_cooking_MR', 'results_sports_MR']
+        formfields = ['request_hints_economics_MR', 'request_hints_cooking_MR', 'request_hints_sports_MR', 'results_economics_MR', 'results_cooking_MR', 'results_sports_MR', 'expect_hints_economics_MR', 'expect_hints_cooking_MR', 'expect_hints_sports_MR']
         return formfields
     def vars_for_template(player: Player):
         formfields_hints = ['request_hints_economics_MR', 'request_hints_cooking_MR', 'request_hints_sports_MR']
         random.shuffle(formfields_hints)
         formfields_results = ['results_economics_MR', 'results_cooking_MR', 'results_sports_MR']
         random.shuffle(formfields_results)
+        formfields_expect = ['expect_hints_economics_MR', 'expect_hints_cooking_MR', 'expect_hints_sports_MR']
+        random.shuffle(formfields_expect)
         g = player.group
         partner = g.get_player_by_id(player.participant.partner7)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round2_completed)
+        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round2_completed)
 
 class Transition_MR0(Page):
     form_model = 'player'
@@ -2480,6 +2735,7 @@ class Economics1_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics1_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2487,8 +2743,11 @@ class Economics1_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ1_MR = 1
             return {player.id_in_group: dict(message = "Hint: Revolution of 1789.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2524,6 +2783,7 @@ class Economics2_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics2_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2531,8 +2791,11 @@ class Economics2_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ2_MR = 1
             return {player.id_in_group: dict(message = "Hint: Late January.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2612,6 +2875,7 @@ class Economics4_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics4_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2619,9 +2883,12 @@ class Economics4_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: PTGS.")}
+            player.click_hint_econ4_MR = 1
+            return {player.id_in_group: dict(message = "Hint: PTGC.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics4_MR':player.crt_economics4_MR})
@@ -2700,6 +2967,7 @@ class Cooking2_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking2_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2707,8 +2975,11 @@ class Cooking2_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook2_MR = 1
             return {player.id_in_group: dict(message = "Hint: Transfer.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2744,6 +3015,7 @@ class Cooking3_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking3_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2751,8 +3023,11 @@ class Cooking3_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook3_MR = 1
             return {player.id_in_group: dict(message = "Hint: Pakistan separated from India in 1967.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2788,6 +3063,7 @@ class Cooking4_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking4_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2795,8 +3071,11 @@ class Cooking4_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook4_MR = 1
             return {player.id_in_group: dict(message = "Hint: Goes down.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2832,6 +3111,7 @@ class Sports1_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports1_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2839,8 +3119,11 @@ class Sports1_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport1_MR = 1
             return {player.id_in_group: dict(message = "Hint: Named after a saint.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2919,6 +3202,7 @@ class Sports3_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports3_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2926,8 +3210,11 @@ class Sports3_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport3_MR = 1
             return {player.id_in_group: dict(message = "Hint: Snow.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -2963,6 +3250,7 @@ class Sports4_MR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports4_MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner7 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -2970,8 +3258,11 @@ class Sports4_MR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner7 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner7 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport4_MR = 1
             return {player.id_in_group: dict(message = "Hint: Half century.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3019,7 +3310,7 @@ class Hints_WP(Page):
     @staticmethod
     def get_form_fields(player: Player):
         import random
-        formfields = ['request_hints_economics_WP', 'request_hints_cooking_WP', 'request_hints_sports_WP', 'results_economics_WP', 'results_cooking_WP', 'results_sports_WP']
+        formfields = ['request_hints_economics_WP', 'request_hints_cooking_WP', 'request_hints_sports_WP', 'results_economics_WP', 'results_cooking_WP', 'results_sports_WP', 'expect_hints_economics_WP', 'expect_hints_cooking_WP', 'expect_hints_sports_WP']
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
@@ -3027,9 +3318,11 @@ class Hints_WP(Page):
         random.shuffle(formfields_hints)
         formfields_results = ['results_economics_WP', 'results_cooking_WP', 'results_sports_WP']
         random.shuffle(formfields_results)
+        formfields_expect = ['expect_hints_economics_WP', 'expect_hints_cooking_WP', 'expect_hints_sports_WP']
+        random.shuffle(formfields_expect)
         g = player.group
         partner = g.get_player_by_id(player.participant.partner1)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round2_completed)
+        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round2_completed)
 
 class Transition_WP0(Page):
     form_model = 'player'
@@ -3057,6 +3350,7 @@ class Economics1_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics1_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3064,8 +3358,11 @@ class Economics1_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ1_WP = 1
             return {player.id_in_group: dict(message = "Hint: Agreements must be kept.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3101,6 +3398,7 @@ class Economics2_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics2_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3108,8 +3406,11 @@ class Economics2_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ2_WP = 1
             return {player.id_in_group: dict(message = "Hint: Freedom isn\'t free for slaves.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3189,6 +3490,7 @@ class Economics4_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics4_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3196,9 +3498,12 @@ class Economics4_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Islamic.")}
+            player.click_hint_econ4_WP = 1
+            return {player.id_in_group: dict(message = "Hint: Arab culture.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics4_WP':player.crt_economics4_WP})
@@ -3215,6 +3520,7 @@ class Economics4_WP_Hint(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics4_WP']) and (get_timeout_seconds1(player) > 0) and (player.participant.prev_hint == 1)
     @staticmethod
     def get_form_fields(player):
@@ -3233,6 +3539,7 @@ class Cooking1_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking1_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3277,6 +3584,7 @@ class Cooking2_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking2_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3284,8 +3592,11 @@ class Cooking2_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook2_WP = 1
             return {player.id_in_group: dict(message = "Hint: To expand.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3321,6 +3632,7 @@ class Cooking3_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking3_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3328,8 +3640,11 @@ class Cooking3_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook3_WP = 1
             return {player.id_in_group: dict(message = "Hint: Sun revolves around Earth.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3365,6 +3680,7 @@ class Cooking4_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking4_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3372,8 +3688,11 @@ class Cooking4_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook4_WP = 1
             return {player.id_in_group: dict(message = "Hint: Thick.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3409,6 +3728,7 @@ class Sports1_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports1_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3416,8 +3736,11 @@ class Sports1_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport1_WP = 1
             return {player.id_in_group: dict(message = "Hint: Allan Border (Pugsley), Mark Taylor (Tubby), Ricky Pointing (Punter).")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3496,6 +3819,7 @@ class Sports3_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports3_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3503,8 +3827,11 @@ class Sports3_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport3_WP = 1
             return {player.id_in_group: dict(message = "Hint: MY, MY, MY….")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3540,6 +3867,7 @@ class Sports4_WP(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports4_WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner1 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3547,8 +3875,11 @@ class Sports4_WP(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner1 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner1 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport4_WP = 1
             return {player.id_in_group: dict(message = "Hint: Berlin.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3597,16 +3928,18 @@ class Hints_WR(Page):
     @staticmethod
     def get_form_fields(player: Player):
         import random
-        formfields = ['request_hints_economics_WR', 'request_hints_cooking_WR', 'request_hints_sports_WR', 'results_economics_WR', 'results_cooking_WR', 'results_sports_WR']
+        formfields = ['request_hints_economics_WR', 'request_hints_cooking_WR', 'request_hints_sports_WR', 'results_economics_WR', 'results_cooking_WR', 'results_sports_WR', 'expect_hints_economics_WR', 'expect_hints_cooking_WR', 'expect_hints_sports_WR']
         return formfields
     def vars_for_template(player: Player):
         formfields_hints = ['request_hints_economics_WR', 'request_hints_cooking_WR', 'request_hints_sports_WR']
         random.shuffle(formfields_hints)
         formfields_results = ['results_economics_WR', 'results_cooking_WR', 'results_sports_WR']
         random.shuffle(formfields_results)
+        formfields_expect = ['expect_hints_economics_WR', 'expect_hints_cooking_WR', 'expect_hints_sports_WR']
+        random.shuffle(formfields_expect)
         g = player.group
         partner = g.get_player_by_id(player.participant.partner5)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round2_completed)
+        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round2_completed)
 
 class Transition_WR0(Page):
     form_model = 'player'
@@ -3634,6 +3967,7 @@ class Economics1_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics1_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3641,9 +3975,12 @@ class Economics1_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Darwinism.")}
+            player.click_hint_econ1_WR = 1
+            return {player.id_in_group: dict(message = "Hint: Egalitarian principles.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics1_WR':player.crt_economics1_WR})
@@ -3678,6 +4015,7 @@ class Economics2_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics2_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3685,8 +4023,11 @@ class Economics2_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ2_WR = 1
             return {player.id_in_group: dict(message = "Hint: Tom and Jerry.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3766,6 +4107,7 @@ class Economics4_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Economics4_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3773,8 +4115,11 @@ class Economics4_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.econ_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.econ_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_econ4_WR = 1
             return {player.id_in_group: dict(message = "Hint: Mass media")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3854,6 +4199,7 @@ class Cooking2_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking2_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3861,8 +4207,11 @@ class Cooking2_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook2_WR = 1
             return {player.id_in_group: dict(message = "Hint: Earth revolves around the sun.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3898,6 +4247,7 @@ class Cooking3_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking3_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3905,8 +4255,11 @@ class Cooking3_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook3_WR = 1
             return {player.id_in_group: dict(message = "Hint: Wait for a while.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3942,6 +4295,7 @@ class Cooking4_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Cooking4_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3949,8 +4303,11 @@ class Cooking4_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.cook_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.cook_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_cook4_WR = 1
             return {player.id_in_group: dict(message = "Hint: A by-product.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -3986,6 +4343,7 @@ class Sports1_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports1_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -3993,8 +4351,11 @@ class Sports1_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport1_WR = 1
             return {player.id_in_group: dict(message = "Hint: Never been to the Iberian Peninsula.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4073,6 +4434,7 @@ class Sports3_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports3_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -4080,8 +4442,11 @@ class Sports3_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport3_WR = 1
             return {player.id_in_group: dict(message = "Hint: American former player.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4117,6 +4482,7 @@ class Sports4_WR(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        player.participant.already_clicked = False
         return (player.round_number == participant.task_rounds2['Sports4_WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner5 != 0)
     @staticmethod
     def get_form_fields(player):
@@ -4124,8 +4490,11 @@ class Sports4_WR(Page):
     @staticmethod
     def live_method(player: Player, data):
         if data == 'clicked-button':
-            player.participant.sport_hint_requests_partner5 += 1
+            if not player.participant.already_clicked:
+                player.participant.sport_hint_requests_partner5 += 1
+                player.participant.already_clicked = True
             player.participant.prev_hint = 1
+            player.click_hint_sport4_WR = 1
             return {player.id_in_group: dict(message = "Hint: A number following six or preceding eight.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -4174,7 +4543,7 @@ class Final(Page):
         crt_economics4_WP=1, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
         crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
         crt_sports4_WP=1)
-        solutions_WR = dict(crt_economics1_WR=2, crt_economics2_WR=3, crt_economics3_WR=2,
+        solutions_WR = dict(crt_economics1_WR=3, crt_economics2_WR=3, crt_economics3_WR=2,
         crt_economics4_WR=1, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
         crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
         crt_sports4_WR=3)

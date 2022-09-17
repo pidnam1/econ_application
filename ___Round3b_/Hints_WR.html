@@ -28,7 +28,14 @@ PART {{ round }}
       <div class="col-sm-7">
         <p></p>
         <p><b>
-          How many hints do you expect to ASK from {{ partner }} in this part?
+          Suppose you had no hints available. How many correct answers do you think you would give in this round?
+        </b></p>
+        {{ for field in formfields_expect }}
+          {{ formfield field }}
+        {{ endfor }}
+        <p></p>
+        <p><b>
+          How many hints do you expect to ASK from {{ partner }} in this round?
         </b></p>
         {{ for field in formfields_hints }}
           {{ formfield field }}
@@ -36,7 +43,7 @@ PART {{ round }}
         <p></p>
         <p></p>
         <p><b>
-          How many correct answers do you think you will give?
+          How many correct answers do you think you will give overall, considering both questions with and without hints available in this round?
         </b></p>
         {{ for field in formfields_results }}
           {{ formfield field }}

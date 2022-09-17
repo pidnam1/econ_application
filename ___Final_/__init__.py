@@ -22,7 +22,6 @@ def make_field_one():
     return models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         widget=widgets.RadioSelectHorizontal,
-        blank=True
     )
 
 class Player(BasePlayer):
@@ -40,36 +39,36 @@ class Player(BasePlayer):
     partner7 = models.BooleanField(blank=True)
     partner8 = models.BooleanField(blank=True)
     wtp_howmuch1 = models.IntegerField(
-        label='', initial=0,
-        min=0, max=75,
+        label='',
+        min=1, max=75,
     )
     wtp_howmuch2 = models.IntegerField(
-        label='', initial=0,
-        min=0, max=75,
+        label='',
+        min=1, max=75,
     )
     wtp_howmuch3 = models.IntegerField(
-        label='', initial=0,
-        min=0, max=75,
+        label='',
+        min=1, max=75,
     )
     wtp_howmuch4 = models.IntegerField(
-        label='', initial=0,
-        min=0, max=75,
+        label='',
+        min=1, max=75,
     )
     wtp_howmuch5 = models.IntegerField(
-        label='', initial=0,
-        min=0, max=75,
+        label='',
+        min=1, max=75,
     )
     wtp_howmuch6 = models.IntegerField(
-        label='', initial=0,
-        min=0, max=75,
+        label='',
+        min=1, max=75,
     )
     wtp_howmuch7 = models.IntegerField(
-        label='', initial=0,
-        min=0, max=75,
+        label='',
+        min=1, max=75,
     )
     wtp_howmuch8 = models.IntegerField(
-        label='', initial=0,
-        min=0, max=75,
+        label='',
+        min=1, max=75,
     )
     econhints1_partner1 = make_field_one()
     econhints1_partner2 = make_field_one()
@@ -132,6 +131,14 @@ def creating_session(subsession: Subsession):
                 task_rounds_2_2 = dict(zip(C.SUB2TASKS, sub_round_number2))
                 p.participant.task_roundsf.update(task_rounds_2_2)
 
+def startup(player: Player):
+    player.participant.hints_given_econ = 0
+    player.participant.hints_given_cook = 0
+    player.participant.hints_given_sport = 0
+    player.participant.econ_hint_used = 0
+    player.participant.cook_hint_used = 0
+    player.participant.sport_hint_used = 0
+
 def set_helped(player: Player):
     g = player.group
     my_previous_helped = []
@@ -158,9 +165,6 @@ def set_helped(player: Player):
     return my_previous_helped
 
 def set_hints_given(player:Player,partner):
-    partner.participant.hints_given_econ = 0
-    partner.participant.hints_given_cook = 0
-    partner.participant.hints_given_sport = 0
     if partner.id_in_group == player.participant.partnerm1:
         partner.participant.hints_given_econ = player.participant.MP1hints_given_econ
         partner.participant.hints_given_cook = player.participant.MP1hints_given_cook
@@ -203,45 +207,42 @@ def set_hints_given(player:Player,partner):
         return [partner.participant.hints_given_econ,partner.participant.hints_given_cook,partner.participant.hints_given_sport]
 
 def set_hints_used(player:Player,partner):
-    partner.participant.econ_hint_used = 0
-    partner.participant.cook_hint_used = 0
-    partner.participant.sport_hint_used = 0
-    if partner.id_in_group == player.participant.partner1:
+    if player.id_in_group == partner.participant.partner1:
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner1
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner1
         partner.participant.sport_hint_used = partner.participant.sport_hint_requests_partner1
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
-    elif partner.id_in_group == player.participant.partner2:
+    elif player.id_in_group == partner.participant.partner2:
         partner.participant.econ_hint_used = partner.participant.econ_hint_used_partner2
         partner.participant.cook_hint_used = partner.participant.cook_hint_used_partner2
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner2
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
-    elif partner.id_in_group == player.participant.partner3:
+    elif player.id_in_group == partner.participant.partner3:
         partner.participant.econ_hint_used = partner.participant.econ_hint_used_partner3
         partner.participant.cook_hint_used = partner.participant.cook_hint_used_partner3
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner3
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
-    elif partner.id_in_group == player.participant.partner4:
+    elif player.id_in_group == partner.participant.partner4:
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner4
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner4
         partner.participant.sport_hint_used = partner.participant.sport_hint_requests_partner4
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
-    elif partner.id_in_group == player.participant.partner5:
+    elif player.id_in_group == partner.participant.partner5:
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner5
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner5
         partner.participant.sport_hint_used = partner.participant.sport_hint_requests_partner5
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
-    elif partner.id_in_group == player.participant.partner6:
+    elif player.id_in_group == partner.participant.partner6:
         partner.participant.econ_hint_used = partner.participant.econ_hint_used_partner6
         partner.participant.cook_hint_used = partner.participant.cook_hint_used_partner6
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner6
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
-    elif partner.id_in_group == player.participant.partner7:
+    elif player.id_in_group == partner.participant.partner7:
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner7
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner7
         partner.participant.sport_hint_used = partner.participant.sport_hint_requests_partner7
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
-    elif partner.id_in_group == player.participant.partner8:
+    elif player.id_in_group == partner.participant.partner8:
         partner.participant.econ_hint_used = partner.participant.econ_hint_used_partner8
         partner.participant.cook_hint_used = partner.participant.cook_hint_used_partner8
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner8
@@ -289,6 +290,7 @@ class WTP_YesNo(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        startup(player)
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player: Player):
@@ -318,6 +320,7 @@ class WTP_Who(Page):
         for i, j in zip(arr, string_arr):
             if i != 0:
                 labels.append(dict(name=j, label=g.get_player_by_id(i).participant.label))
+        player.participant.wtp_payment = 0
         return dict(labels=labels)
     @staticmethod
     def error_message(player: Player, values):
@@ -408,7 +411,6 @@ class WTP_HowMuch(Page):
         player.participant.random6 = random1[5]
         player.participant.random7 = random1[6]
         player.participant.random8 = random1[7]
-        player.participant.wtp_payment = 0
 
 class WTP_Results1_1(Page):
     form_model = 'player'
@@ -783,7 +785,9 @@ class Economics1Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        formfields_random = ['econhints1_partner1', 'econhints1_partner2', 'econhints1_partner3', 'econhints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -818,7 +822,9 @@ class Cooking1Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        formfields_random = ['cookhints1_partner1', 'cookhints1_partner2', 'cookhints1_partner3', 'cookhints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -855,7 +861,9 @@ class Sports1Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3', 'sporthints1_partner4']
+        formfields_random = ['sporthints1_partner1', 'sporthints1_partner2', 'sporthints1_partner3', 'sporthints1_partner4']
+        final = vars_for_template1(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -891,7 +899,9 @@ class Economics2Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        formfields_random = ['econhints2_partner1', 'econhints2_partner2', 'econhints2_partner3', 'econhints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -926,9 +936,9 @@ class Cooking2Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
-        random.shuffle(formfields)
+        formfields_random = ['cookhints2_partner1', 'cookhints2_partner2', 'cookhints2_partner3', 'cookhints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod
@@ -965,9 +975,9 @@ class Sports2Hints(Page):
 
     @staticmethod
     def get_form_fields(player: Player):
-        import random
-        formfields = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3', 'sporthints2_partner4']
-        random.shuffle(formfields)
+        formfields_random = ['sporthints2_partner1', 'sporthints2_partner2', 'sporthints2_partner3', 'sporthints2_partner4']
+        final = vars_for_template2(player, formfields_random)[0]
+        formfields = final["formfields_random"]
         return formfields
 
     @staticmethod

@@ -6,10 +6,6 @@ class C(BaseConstants):
     NAME_IN_URL = '___Endline_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    WTP = [dict(name='wtp_econ1'),dict(name='wtp_cook1'),dict(name='wtp_sport1'),
-    dict(name='wtp_econ2'),dict(name='wtp_cook2'),dict(name='wtp_sport2'),dict(name='wtp_econ3'),
-    dict(name='wtp_cook3'),dict(name='wtp_sport3'),dict(name='wtp_econ4'),dict(name='wtp_cook4'),
-    dict(name='wtp_sport4')]
     DECIDE_HINTS_CHOICES=[
         dict(name='decide_hints_1', label='I gave more to my friends'),
         dict(name='decide_hints_2', label='I gave more to people who I thought would know less in the given subject'),
@@ -75,7 +71,6 @@ def make_field_multiple_price():
 def make_field_wtp():
     return models.IntegerField(
         choices=[1,2,3],label='',
-        blank=True
     )
 
 def make_image_data(image_names):
@@ -120,17 +115,17 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     study_abroad_yes = models.StringField()
-    chores_time = make_field_time_spent('Household chores including cleaning, ironing, washing clothes')
-    care_time = make_field_time_spent('Caring for others (children, elderly)')
-    cook_time = make_field_time_spent('Cooking')
-    study_alone_time = make_field_time_spent('Studying alone')
-    study_friend_time = make_field_time_spent('Studying with friends')
-    sport_time = make_field_time_spent('Sports')
-    social_time = make_field_time_spent('Spending time with friends for fun (talking on phone, meeting up)')
-    sleep_time = make_field_time_spent('Sleeping')
-    news_time = make_field_time_spent('Reading newspapers or online news')
-    socialmedia_time = make_field_time_spent('On social media')
-    other_time = make_field_time_spent('Other')
+    # chores_time = make_field_time_spent('Household chores including cleaning, ironing, washing clothes')
+    # care_time = make_field_time_spent('Caring for others (children, elderly)')
+    # cook_time = make_field_time_spent('Cooking')
+    # study_alone_time = make_field_time_spent('Studying alone')
+    # study_friend_time = make_field_time_spent('Studying with friends')
+    # sport_time = make_field_time_spent('Sports')
+    # social_time = make_field_time_spent('Spending time with friends for fun (talking on phone, meeting up)')
+    # sleep_time = make_field_time_spent('Sleeping')
+    # news_time = make_field_time_spent('Reading newspapers or online news')
+    # socialmedia_time = make_field_time_spent('On social media')
+    # other_time = make_field_time_spent('Other')
     friend_count = models.IntegerField(
         choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7, '7'],  [99, 'Other (specify on the next page)']],
         widget=widgets.RadioSelect,
@@ -213,22 +208,22 @@ class Player(BasePlayer):
     hints_always_comp_5 = models.BooleanField(blank=True)
 
     #MAKE ANY FORMFIELDS NEEDED FOR HELPER TABLE
-    helper_ranking1 = models.IntegerField(label='',blank=True, min=0, max=5)
-    helper_ranking2 = models.IntegerField(label='',blank=True, min=0, max=5)
-    helper_ranking3 = models.IntegerField(label='',blank=True, min=0, max=5)
-    helper_ranking4 = models.IntegerField(label='',blank=True, min=0, max=5)
-    helper_ranking5 = models.IntegerField(label='',blank=True, min=0, max=5)
-    helper_ranking6 = models.IntegerField(label='',blank=True, min=0, max=5)
-    helper_ranking7 = models.IntegerField(label='',blank=True, min=0, max=5)
-    helper_ranking8 = models.IntegerField(label='',blank=True, min=0, max=5)
-    helper_reason1 = models.StringField(label='',blank=True)
-    helper_reason2 = models.StringField(label='',blank=True)
-    helper_reason3 = models.StringField(label='',blank=True)
-    helper_reason4 = models.StringField(label='',blank=True)
-    helper_reason5 = models.StringField(label='',blank=True)
-    helper_reason6 = models.StringField(label='',blank=True)
-    helper_reason7 = models.StringField(label='',blank=True)
-    helper_reason8 = models.StringField(label='',blank=True)
+    helper_ranking1 = models.IntegerField(label='', min=1, max=8)
+    helper_ranking2 = models.IntegerField(label='', min=1, max=8)
+    helper_ranking3 = models.IntegerField(label='', min=1, max=8)
+    helper_ranking4 = models.IntegerField(label='', min=1, max=8)
+    helper_ranking5 = models.IntegerField(label='', min=1, max=8)
+    helper_ranking6 = models.IntegerField(label='', min=1, max=8)
+    helper_ranking7 = models.IntegerField(label='', min=1, max=8)
+    helper_ranking8 = models.IntegerField(label='', min=1, max=8)
+    helper_reason1 = models.StringField(label='')
+    helper_reason2 = models.StringField(label='')
+    helper_reason3 = models.StringField(label='')
+    helper_reason4 = models.StringField(label='')
+    helper_reason5 = models.StringField(label='')
+    helper_reason6 = models.StringField(label='')
+    helper_reason7 = models.StringField(label='')
+    helper_reason8 = models.StringField(label='')
 
 
     #Section C
@@ -347,35 +342,35 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     scarcity = make_field_likert2()
-    women_money = make_field_likert2()
-    women_independence = make_field_likert2()
-    parental_pride = make_field_likert2()
-    children_suffer = make_field_likert2()
+    # women_money = make_field_likert2()
+    # women_independence = make_field_likert2()
+    # parental_pride = make_field_likert2()
+    # children_suffer = make_field_likert2()
     men_politicians = make_field_likert2()
     uni_gender = make_field_likert2()
     busi_gender = make_field_likert2()
-    house_fulfill = make_field_likert2()
-    family_customs = make_field_likert2()
-    justify_divorce = models.IntegerField(
-        choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    justify_lying = models.IntegerField(
-        choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    justify_beatwife = models.IntegerField(
-        choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    justify_beatchild = models.IntegerField(
-        choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        widget=widgets.RadioSelectHorizontal,
-    )
-    justify_violence = models.IntegerField(
-        choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
-        widget=widgets.RadioSelectHorizontal,
-    )
+    # house_fulfill = make_field_likert2()
+    # family_customs = make_field_likert2()
+    # justify_divorce = models.IntegerField(
+    #     choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # justify_lying = models.IntegerField(
+    #     choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # justify_beatwife = models.IntegerField(
+    #     choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # justify_beatchild = models.IntegerField(
+    #     choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # justify_violence = models.IntegerField(
+    #     choices=[[1, 'Can always be justified'], [2, 'Justified'], [3, 'Neutral'], [4, 'Not justified'], [5, 'Never be justified']],
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
 
     #Section E
     patience = models.IntegerField(
@@ -389,10 +384,10 @@ class Player(BasePlayer):
     altruism = models.IntegerField(
         min = 0, max = 1000,
     )
-    positive_reciprocity = models.IntegerField(
-        choices=[[0, 'No present'], [1, 'The present worth 5'], [2, 'The present worth 10'], [3, 'The present worth 15'], [4, 'The present worth 20'], [5, 'The present worth 25'], [6,'The present worth 30']],
-        widget=widgets.RadioSelect,
-    )
+    # positive_reciprocity = models.IntegerField(
+    #     choices=[[0, 'No present'], [1, 'The present worth 5'], [2, 'The present worth 10'], [3, 'The present worth 15'], [4, 'The present worth 20'], [5, 'The present worth 25'], [6,'The present worth 30']],
+    #     widget=widgets.RadioSelect,
+    # )
     negative_reciprocity_self = models.IntegerField(
         choices=[[1, '1   Completely Unwilling'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7,'7'], [8, '8'], [9,'9'], [10,'10   Very Willing']],
         widget=widgets.RadioSelectHorizontal,
@@ -452,21 +447,37 @@ class Player(BasePlayer):
     setbacks_challenge = make_field_likert1('I have overcome setbacks to conquer an important challenge.')
 
     #Section F
-    f_5_1 = make_field_multiple_price()
-    f_5_2 = make_field_multiple_price()
-    f_5_3 = make_field_multiple_price()
-    f_5_4 = make_field_multiple_price()
-    f_5_5 = make_field_multiple_price()
-    f_5_6 = make_field_multiple_price()
-    f_5_7 = make_field_multiple_price()
+    f_5_1_1 = make_field_multiple_price()
+    f_5_2_1 = make_field_multiple_price()
+    f_5_3_1 = make_field_multiple_price()
+    f_5_4_1 = make_field_multiple_price()
+    f_5_5_1 = make_field_multiple_price()
+    f_5_6_1 = make_field_multiple_price()
+    f_5_7_1 = make_field_multiple_price()
 
-    m_5_1 = make_field_multiple_price()
-    m_5_2 = make_field_multiple_price()
-    m_5_3 = make_field_multiple_price()
-    m_5_4 = make_field_multiple_price()
-    m_5_5 = make_field_multiple_price()
-    m_5_6 = make_field_multiple_price()
-    m_5_7 = make_field_multiple_price()
+    m_5_1_1 = make_field_multiple_price()
+    m_5_2_1 = make_field_multiple_price()
+    m_5_3_1 = make_field_multiple_price()
+    m_5_4_1 = make_field_multiple_price()
+    m_5_5_1 = make_field_multiple_price()
+    m_5_6_1 = make_field_multiple_price()
+    m_5_7_1 = make_field_multiple_price()
+
+    f_5_1_2 = make_field_multiple_price()
+    f_5_2_2 = make_field_multiple_price()
+    f_5_3_2 = make_field_multiple_price()
+    f_5_4_2 = make_field_multiple_price()
+    f_5_5_2 = make_field_multiple_price()
+    f_5_6_2 = make_field_multiple_price()
+    f_5_7_2 = make_field_multiple_price()
+
+    m_5_1_2 = make_field_multiple_price()
+    m_5_2_2 = make_field_multiple_price()
+    m_5_3_2 = make_field_multiple_price()
+    m_5_4_2 = make_field_multiple_price()
+    m_5_5_2 = make_field_multiple_price()
+    m_5_6_2 = make_field_multiple_price()
+    m_5_7_2 = make_field_multiple_price()
 
     wtp_econ1 = make_field_wtp()
     wtp_cook1 = make_field_wtp()
@@ -480,78 +491,138 @@ class Player(BasePlayer):
     wtp_econ4 = make_field_wtp()
     wtp_cook4 = make_field_wtp()
     wtp_sport4 = make_field_wtp()
+    wtp_econ5 = make_field_wtp()
+    wtp_cook5 = make_field_wtp()
+    wtp_sport5 = make_field_wtp()
+    wtp_econ6 = make_field_wtp()
+    wtp_cook6 = make_field_wtp()
+    wtp_sport6 = make_field_wtp()
+    wtp_econ7 = make_field_wtp()
+    wtp_cook7 = make_field_wtp()
+    wtp_sport7 = make_field_wtp()
+    wtp_econ8 = make_field_wtp()
+    wtp_cook8 = make_field_wtp()
+    wtp_sport8 = make_field_wtp()
 
 
 # PAGES
 #Section A
+def vars_for_template0(player: Player):
+    g = player.group
+    final = {}
+    formfields = []
+    helper1 = []
+    helper2 = []
+    helper3 = []
+    helper4 = []
+    helper5 = []
+    helper6 = []
+    helper7 = []
+    helper8 = []
+    count = 0
+    if player.participant.partner4 != 0:
+        partner4 = g.get_player_by_id(player.participant.partner4)
+        final.update(dict(partner1=partner4.participant.label))
+        helper1.append('helper_ranking1')
+        helper1.append('helper_reason1')
+        count += 1
+    if player.participant.partner7 != 0:
+        partner7 = g.get_player_by_id(player.participant.partner7)
+        final.update(dict(partner2=partner7.participant.label))
+        helper2.append('helper_ranking2')
+        helper2.append('helper_reason2')
+        count += 1
+    if player.participant.partner1 != 0:
+        partner1 = g.get_player_by_id(player.participant.partner1)
+        final.update(dict(partner3=partner1.participant.label))
+        helper3.append('helper_ranking3')
+        helper3.append('helper_reason3')
+        count += 1
+    if player.participant.partner5 != 0:
+        partner5 = g.get_player_by_id(player.participant.partner5)
+        final.update(dict(partner4=partner5.participant.label))
+        helper4.append('helper_ranking4')
+        helper4.append('helper_reason4')
+        count += 1
+    if player.participant.partner3 != 0:
+        partner3 = g.get_player_by_id(player.participant.partner3)
+        final.update(dict(partner5=partner3.participant.label))
+        helper5.append('helper_ranking5')
+        helper5.append('helper_reason5')
+        count += 1
+    if player.participant.partner8 != 0:
+        partner8 = g.get_player_by_id(player.participant.partner8)
+        final.update(dict(partner6=partner8.participant.label))
+        helper6.append('helper_ranking6')
+        helper6.append('helper_reason6')
+        count += 1
+    if player.participant.partner2 != 0:
+        partner2 = g.get_player_by_id(player.participant.partner2)
+        final.update(dict(partner7=partner2.participant.label))
+        helper7.append('helper_ranking7')
+        helper7.append('helper_reason7')
+        count += 1
+    if player.participant.partner6 != 0:
+        partner6 = g.get_player_by_id(player.participant.partner6)
+        final.update(dict(partner8=partner6.participant.label))
+        helper8.append('helper_ranking8')
+        helper8.append('helper_reason8')
+        count += 1
+    formfields = helper1 + helper2 + helper3 + helper4 + helper5 + helper6 + helper7 + helper8
+    final.update(dict(helper1=helper1))
+    final.update(dict(helper2=helper2))
+    final.update(dict(helper3=helper3))
+    final.update(dict(helper4=helper4))
+    final.update(dict(helper5=helper5))
+    final.update(dict(helper6=helper6))
+    final.update(dict(helper7=helper7))
+    final.update(dict(helper8=helper8))
+    final.update(dict(formfields=formfields))
+    final.update(dict(count=count))
+    return final
+
 class HelperTable(Page):
     form_model = 'player'
-    form_fields = ['helper_ranking1','helper_ranking2','helper_ranking3','helper_ranking4','helper_ranking5','helper_ranking6','helper_ranking7','helper_ranking8','helper_reason1','helper_reason2','helper_reason3','helper_reason4','helper_reason5','helper_reason6','helper_reason7','helper_reason8']
     @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        final = {}
-        helper1 = []
-        helper2 = []
-        helper3 = []
-        helper4 = []
-        helper5 = []
-        helper6 = []
-        helper7 = []
-        helper8 = []
-        if player.participant.partner4 != 0:
-            partner4 = g.get_player_by_id(player.participant.partner4)
-            final.update(dict(partner1=partner4.participant.label))
-            helper1.append('helper_ranking1')
-            helper1.append('helper_reason1')
-        if player.participant.partner7 != 0:
-            partner7 = g.get_player_by_id(player.participant.partner7)
-            final.update(dict(partner2=partner7.participant.label))
-            helper2.append('helper_ranking2')
-            helper2.append('helper_reason2')
-        if player.participant.partner1 != 0:
-            partner1 = g.get_player_by_id(player.participant.partner1)
-            final.update(dict(partner3=partner1.participant.label))
-            helper3.append('helper_ranking3')
-            helper3.append('helper_reason3')
-        if player.participant.partner5 != 0:
-            partner5 = g.get_player_by_id(player.participant.partner5)
-            final.update(dict(partner4=partner5.participant.label))
-            helper4.append('helper_ranking4')
-            helper4.append('helper_reason4')
-        if player.participant.partner3 != 0:
-            partner3 = g.get_player_by_id(player.participant.partner3)
-            final.update(dict(partner5=partner3.participant.label))
-            helper5.append('helper_ranking5')
-            helper5.append('helper_reason5')
-        if player.participant.partner8 != 0:
-            partner8 = g.get_player_by_id(player.participant.partner8)
-            final.update(dict(partner6=partner8.participant.label))
-            helper6.append('helper_ranking6')
-            helper6.append('helper_reason6')
-        if player.participant.partner2 != 0:
-            partner2 = g.get_player_by_id(player.participant.partner2)
-            final.update(dict(partner7=partner2.participant.label))
-            helper7.append('helper_ranking7')
-            helper7.append('helper_reason7')
-        if player.participant.partner6 != 0:
-            partner6 = g.get_player_by_id(player.participant.partner6)
-            final.update(dict(partner8=partner6.participant.label))
-            helper8.append('helper_ranking8')
-            helper8.append('helper_reason8')
-        final.update(dict(helper1=helper1))
-        final.update(dict(helper2=helper2))
-        final.update(dict(helper3=helper3))
-        final.update(dict(helper4=helper4))
-        final.update(dict(helper5=helper5))
-        final.update(dict(helper6=helper6))
-        final.update(dict(helper7=helper7))
-        final.update(dict(helper8=helper8))
+    def vars_for_template(player:Player):
+        final = vars_for_template0(player)
         return final
+    @staticmethod
+    def get_form_fields(player:Player):
+        final = vars_for_template0(player)
+        formfields = final["formfields"]
+        return formfields
+    @staticmethod
+    def error_message(player: Player, values):
+        ranking = [1,2,3,4,5,6,7,8]
+        final = vars_for_template0(player)
+        formfields = final["formfields"]
+        ranks = []
+        for field in formfields:
+            if "ranking" in field:
+                ranks.append(values[field])
+        print(ranks)
+        count = final["count"]
+        allvalues = sum(ranks)
+        print(allvalues)
+        rank_count = count
+        for number in ranking:
+            if number < count:
+                rank_count += number
+        print(rank_count)
+        if allvalues != (rank_count):
+            return "Please fill out ranks for each helper (no repeats)"
+    @staticmethod
+    def before_next_page(player:Player, timeout_happened):
+        player.participant.random_multiple_price = [1,2]
+        random.shuffle(player.participant.random_multiple_price)
 
-class MultiplePriceFemale(Page):
+class MultiplePriceFemale1(Page):
     form_model = 'player'
-    form_fields = ['f_5_1','f_5_2','f_5_3','f_5_4','f_5_5','f_5_6','f_5_7']
+    form_fields = ['f_5_1_1','f_5_2_1','f_5_3_1','f_5_4_1','f_5_5_1','f_5_6_1','f_5_7_1']
+    @staticmethod
+    def is_displayed(player:Player):
+        return player.participant.random_multiple_price[0] == 1
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -566,9 +637,52 @@ class MultiplePriceFemale(Page):
                 break
         return dict(wr=wr.participant.label.upper())
 
-class MultiplePriceMale(Page):
+class MultiplePriceFemale2(Page):
     form_model = 'player'
-    form_fields = ['m_5_1','m_5_2','m_5_3','m_5_4','m_5_5','m_5_6','m_5_7']
+    form_fields = ['f_5_1_2','f_5_2_2','f_5_3_2','f_5_4_2','f_5_5_2','f_5_6_2','f_5_7_2']
+    @staticmethod
+    def is_displayed(player:Player):
+        return player.participant.random_multiple_price[0] == 2
+    @staticmethod
+    def vars_for_template(player:Player):
+        g = player.group
+        wr = 0
+        length = len(g.get_players())
+        int = list(range(1, length))
+        random.shuffle(int)
+        for key in int:
+            curr_player = g.get_player_by_id(key)
+            if curr_player != player and curr_player.participant.gender == 0:
+                wr = curr_player
+                break
+        return dict(wr=wr.participant.label.upper())
+
+class MultiplePriceMale1(Page):
+    form_model = 'player'
+    form_fields = ['m_5_1_1','m_5_2_1','m_5_3_1','m_5_4_1','m_5_5_1','m_5_6_1','m_5_7_1']
+    @staticmethod
+    def is_displayed(player:Player):
+        return player.participant.random_multiple_price[0] == 1
+    @staticmethod
+    def vars_for_template(player:Player):
+        g = player.group
+        mr = 0
+        length = len(g.get_players())
+        int = list(range(1, length))
+        random.shuffle(int)
+        for key in int:
+            curr_player = g.get_player_by_id(key)
+            if curr_player != player and curr_player.participant.gender == 1:
+                mr = curr_player
+                break
+        return dict(mr=mr.participant.label.upper())
+
+class MultiplePriceMale2(Page):
+    form_model = 'player'
+    form_fields = ['m_5_1_2','m_5_2_2','m_5_3_2','m_5_4_2','m_5_5_2','m_5_6_2','m_5_7_2']
+    @staticmethod
+    def is_displayed(player:Player):
+        return player.participant.random_multiple_price[0] == 2
     @staticmethod
     def vars_for_template(player:Player):
         g = player.group
@@ -585,46 +699,85 @@ class MultiplePriceMale(Page):
 
 def vars_for_template1(player: Player):
     g = player.group
-    arr = [player.participant.partner4, player.participant.partner7, player.participant.partner1,
-           player.participant.partner5]
-    string_arr = ['partner4', 'partner7', 'partner1', 'partner5']
+    arr = [player.participant.partner1, player.participant.partner2, player.participant.partner3, player.participant.partner4,
+    player.participant.partner5, player.participant.partner6, player.participant.partner7, player.participant.partner8]
+    string_arr = ['partner1','partner2','partner3','partner4','partner5','partner6','partner7','partner8']
     final = {}
     input = []
+    formfields = []
     count = 0
     for i, j in zip(arr, string_arr):
         if i != 0:
             if j == string_arr[0]:
                 input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ1', 'wtp_cook1', 'wtp_sport1']))
+                formfields.append('wtp_econ1')
+                formfields.append('wtp_cook1')
+                formfields.append('wtp_sport1')
                 count+=1
             if j == string_arr[1]:
                 input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ2', 'wtp_cook2', 'wtp_sport2']))
+                formfields.append('wtp_econ2')
+                formfields.append('wtp_cook2')
+                formfields.append('wtp_sport2')
                 count+=1
             if j == string_arr[2]:
                 input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ3', 'wtp_cook3', 'wtp_sport3']))
+                formfields.append('wtp_econ3')
+                formfields.append('wtp_cook3')
+                formfields.append('wtp_sport3')
                 count+=1
             if j == string_arr[3]:
                 input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ4', 'wtp_cook4', 'wtp_sport4']))
+                formfields.append('wtp_econ4')
+                formfields.append('wtp_cook4')
+                formfields.append('wtp_sport4')
                 count+=1
-    final.update(input=input, count=count)
+            if j == string_arr[4]:
+                input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ5', 'wtp_cook5', 'wtp_sport5']))
+                formfields.append('wtp_econ5')
+                formfields.append('wtp_cook5')
+                formfields.append('wtp_sport5')
+                count+=1
+            if j == string_arr[5]:
+                input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ6', 'wtp_cook6', 'wtp_sport6']))
+                formfields.append('wtp_econ6')
+                formfields.append('wtp_cook6')
+                formfields.append('wtp_sport6')
+                count+=1
+            if j == string_arr[6]:
+                input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ7', 'wtp_cook7', 'wtp_sport7']))
+                formfields.append('wtp_econ7')
+                formfields.append('wtp_cook7')
+                formfields.append('wtp_sport7')
+                count+=1
+            if j == string_arr[7]:
+                input.append(dict(label=g.get_player_by_id(i).participant.label,fields = ['wtp_econ8', 'wtp_cook8', 'wtp_sport8']))
+                formfields.append('wtp_econ8')
+                formfields.append('wtp_cook8')
+                formfields.append('wtp_sport8')
+                count+=1
+    final.update(input=input, count=count, formfields=formfields)
     return final
 
 class WTP_Subject(Page):
     form_model = 'player'
-    form_fields = ['wtp_econ1','wtp_cook1','wtp_sport1','wtp_econ2','wtp_cook2','wtp_sport2','wtp_econ3','wtp_cook3','wtp_sport3','wtp_econ4','wtp_cook4','wtp_sport4']
     @staticmethod
     def vars_for_template(player: Player):
         final = vars_for_template1(player)
         return final
     @staticmethod
-    def error_message(player: Player, values):
-        num_selected = 0
-        for field in C.WTP:
-            if values[field['name']]:
-                num_selected += 1
+    def get_form_fields(player: Player):
         final = vars_for_template1(player)
+        formfields = final["formfields"]
+        return formfields
+    @staticmethod
+    def error_message(player: Player, values):
+        final = vars_for_template1(player)
+        formfields = final["formfields"]
         count = final["count"]
-        if num_selected < 2*count:
-            return "Please properly fill out rankings"
+        allvalues = sum(values.values())
+        if allvalues < (count*6):
+            return "Please fill out either a 1 or a 2 or a 3 for each helper"
 
 class ExpFeedback(Page):
     form_model = 'player'
@@ -806,10 +959,21 @@ class BasicInfoOther(Page):
         if player.origin == 99:
             formfields.append('origin_other')
         return formfields
+    @staticmethod
+    def error_message(player: Player, values):
+        children_yes = 0
+        if 'children_yes' in values.keys():
+            children_yes = values['children_yes']
+        if player.children == 1 and int(children_yes) > 20:
+            return "Ensure your number of children is accurate."
 
 class AcademicInfo(Page):
     form_model = 'player'
     form_fields = ['dob','high_edu','subject_prior','high_edu_school','rank_prior','extra_curric','degree_aspire','pref_occu','study_abroad','friend_count','friend_uni']
+    @staticmethod
+    def error_message(player: Player, values):
+        if (values['friend_uni'] > values['friend_count']) and (values['friend_uni'] != 99):
+            return "11. Ensure that you are only considering friend count from #10."
 
 class AcademicInfoOther(Page):
     form_model = 'player'
@@ -835,14 +999,14 @@ class AcademicInfoOther(Page):
             formfields.append('friend_count_other')
         return formfields
 
-class TimeSpent(Page):
-    form_model = 'player'
-    form_fields = ['chores_time','care_time','cook_time','study_alone_time','study_friend_time','sport_time','social_time','sleep_time','news_time','socialmedia_time','other_time']
-    @staticmethod
-    def error_message(player: Player, values):
-        allvalues = sum(values.values())
-        if allvalues != 24:
-            return "Ensure that all values add to 24 hours"
+# class TimeSpent(Page):
+#     form_model = 'player'
+#     form_fields = ['chores_time','care_time','cook_time','study_alone_time','study_friend_time','sport_time','social_time','sleep_time','news_time','socialmedia_time','other_time']
+#     @staticmethod
+#     def error_message(player: Player, values):
+#         allvalues = sum(values.values())
+#         if allvalues != 24:
+#             return "Ensure that all values add to 24 hours"
 
 class FriendsTable(Page):
     form_model = 'player'
@@ -855,6 +1019,10 @@ class FriendsTable(Page):
         friend4 = ['friend_name4','friend_section4','friend_years4']
         friend5 = ['friend_name5','friend_section5','friend_years5']
         return dict(friend1=friend1,friend2=friend2,friend3=friend3,friend4=friend4,friend5=friend5)
+    @staticmethod
+    def error_message(player: Player, values):
+        if values['friend_years1'] > 25 or values['friend_years2'] > 25 or values['friend_years3'] > 25 or values['friend_years4'] > 25 or values['friend_years5'] > 25:
+            return "Ensure that years are accurate."
 
 class ClassRelations1(Page):
     form_model = 'player'
@@ -864,13 +1032,13 @@ class ClassRelations1(Page):
         image_names1 = ['ClassRelations1_1.jpg','ClassRelations2_1.jpg','ClassRelations3_1.jpg','ClassRelations4_1.jpg','ClassRelations5_1.jpg','ClassRelations6_1.jpg','ClassRelations7_1.jpg']
         return dict(image_data1=make_image_data(image_names1))
 
-class ClassRelations2(Page):
-    form_model = 'player'
-    form_fields = ['school_relationship_image']
-    @staticmethod
-    def vars_for_template(player: Player):
-        image_names2 = ['ClassRelations1_2.jpg','ClassRelations2_2.jpg','ClassRelations3_2.jpg','ClassRelations4_2.jpg','ClassRelations5_2.jpg','ClassRelations6_2.jpg','ClassRelations7_2.jpg']
-        return dict(image_data2=make_image_data(image_names2))
+# class ClassRelations2(Page):
+#     form_model = 'player'
+#     form_fields = ['school_relationship_image']
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         image_names2 = ['ClassRelations1_2.jpg','ClassRelations2_2.jpg','ClassRelations3_2.jpg','ClassRelations4_2.jpg','ClassRelations5_2.jpg','ClassRelations6_2.jpg','ClassRelations7_2.jpg']
+#         return dict(image_data2=make_image_data(image_names2))
 
 class ClassRelations3(Page):
     form_model = 'player'
@@ -878,15 +1046,15 @@ class ClassRelations3(Page):
 
 class Ethics1(Page):
     form_model = 'player'
-    form_fields = ['lost_wallet_personal_woman','lost_wallet_personal_man','lost_wallet_impersonal_woman','lost_wallet_impersonal_man','positive_reciprocity']
+    form_fields = ['lost_wallet_personal_woman','lost_wallet_personal_man','lost_wallet_impersonal_woman','lost_wallet_impersonal_man']
 
 class Ethics2(Page):
     form_model = 'player'
-    form_fields = ['scarcity','women_money','women_independence','parental_pride','children_suffer','men_politicians','uni_gender','busi_gender','house_fulfill','family_customs']
+    form_fields = ['scarcity','men_politicians','uni_gender','busi_gender']
 
-class Ethics3(Page):
-    form_model = 'player'
-    form_fields = ['justify_divorce','justify_lying','justify_beatwife','justify_beatchild','justify_violence']
+# class Ethics3(Page):
+#     form_model = 'player'
+#     form_fields = ['justify_divorce','justify_lying','justify_beatwife','justify_beatchild','justify_violence']
 
 class Personality(Page):
     form_model = 'player'
@@ -927,9 +1095,9 @@ class Payment(Page):
         return dict(testing_pay0=testing_pay0, helping_pay0=helping_pay0, guess_bonus_pay0=player.participant.guess_bonus_payoff, wtp_pay0=0-player.participant.wtp_payment, amount_game_pay0=player.participant.game_payoff, total_payment0=player.participant.total_payment)
 
 
-page_sequence = [HelperTable, MultiplePriceFemale, MultiplePriceMale, WTP_Subject,
-ExpFeedback, ExpFeedbackNo1, ExpFeedbackNo2, ExpFeedbackNo3, ExpDecisions, ExpDecisionsNo,
-AmountGame, AmountGameResults, GenderTable, ClassRelations1, ClassRelations2, Ethics1,
-Ethics2, Ethics3, Personality, PersonalityTraitsTable, BasicInfo, BasicInfoOther,
-AcademicInfo, AcademicInfoOther, TimeSpent, FriendsTable, ClassRelations3, Congratulations,
+page_sequence = [HelperTable, MultiplePriceFemale1, MultiplePriceFemale2, MultiplePriceMale1,
+MultiplePriceMale2, WTP_Subject, ExpFeedback, ExpFeedbackNo1, ExpFeedbackNo2, ExpFeedbackNo3,
+ExpDecisions, ExpDecisionsNo, AmountGame, AmountGameResults, GenderTable, ClassRelations1,
+Ethics1, Ethics2, Personality, PersonalityTraitsTable, BasicInfo, BasicInfoOther,
+AcademicInfo, AcademicInfoOther, FriendsTable, ClassRelations3, Congratulations,
 Payment]

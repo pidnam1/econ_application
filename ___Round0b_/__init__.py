@@ -6,7 +6,7 @@ import random
 class C(BaseConstants):
     NAME_IN_URL = '___Round0b_'
     PLAYERS_PER_GROUP = None
-    PRETASKS = ['WR','MR']
+    # PRETASKS = ['WR','MR']
     TASKS = ['Economics', 'Cooking', 'Sports']
     ECONSUBTASKS = ['Economics1', 'Economics2', 'Economics3', 'Economics4']
     COOKSUBTASKS = ['Cooking1', 'Cooking2', 'Cooking3', 'Cooking4']
@@ -40,18 +40,21 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_economics = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_sports = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_economics = models.StringField(
@@ -310,6 +313,60 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ2 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ3 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook2 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_econ2 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ3 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_econ4 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook2 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook3 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook4 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport1 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport2 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport3 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
 
 
 # FUNCTIONS
@@ -330,10 +387,11 @@ def creating_session(subsession: Subsession):
             p.participant.cook_hint_requests = 0
             p.participant.sport_hint_requests = 0
 
-            pre_numbers = list(range(1,3))
-            random.shuffle(pre_numbers)
-            pre_round = dict(zip(C.PRETASKS, pre_numbers))
-            p.participant.task_rounds0b = pre_round
+            # pre_numbers = list(range(1,3))
+            # random.shuffle(pre_numbers)
+            # pre_round = dict(zip(C.PRETASKS, pre_numbers))
+            # p.participant.task_rounds0b = pre_round
+            p.participant.task_rounds0b = dict()
 
             round_numbers = list(range(2, 5))
             random.shuffle(round_numbers)
@@ -469,11 +527,13 @@ class Economics2(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests += 1
+                player.click_hint_econ2 = 1
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Government.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+                    player.reject_hint_econ2 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -520,11 +580,13 @@ class Economics3(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests += 1
+                player.click_hint_econ3 = 1
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Paris, Brasilia, Jakarta.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+                    player.reject_hint_econ3 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -571,11 +633,13 @@ class Economics4(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests += 1
+                player.click_hint_econ4 = 1
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Government needs confidence of the parliament.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
+                    player.reject_hint_econ4 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -641,11 +705,13 @@ class Cooking2(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests += 1
+                player.click_hint_cook2 = 1
                 if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Greasy.")}
                 elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+                    player.reject_hint_cook2 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -692,11 +758,13 @@ class Cooking3(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests += 1
+                player.click_hint_cook3 = 1
                 if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Yellow and white.")}
                 elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+                    player.reject_hint_cook3 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -743,11 +811,13 @@ class Cooking4(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests += 1
+                player.click_hint_cook4 = 1
                 if player.participant.cook_hint_requests <= player.participant.comp_hints_given_cook:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Snap peas.")}
                 elif player.participant.cook_hint_requests > player.participant.comp_hints_given_cook:
+                    player.reject_hint_cook4 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -794,11 +864,13 @@ class Sports1(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests += 1
+                player.click_hint_sport1 = 1
                 if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Swiss player and surname rhymes with murderer.")}
                 elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+                    player.reject_hint_sport1 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -845,11 +917,13 @@ class Sports2(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests += 1
+                player.click_hint_sport2 = 1
                 if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Hyderabad.")}
                 elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+                    player.reject_hint_sport2 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -896,11 +970,13 @@ class Sports3(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests += 1
+                player.click_hint_sport3 = 1
                 if player.participant.sport_hint_requests <= player.participant.comp_hints_given_sport:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Signs her name as MN.")}
                 elif player.participant.sport_hint_requests > player.participant.comp_hints_given_sport:
+                    player.reject_hint_sport3 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:

@@ -1,5 +1,5 @@
 {{ block title }}
-PART {{ round }}
+PART {{ round }}: Cooking
 <p></p>
 <div class="card2 rounded">
   <div class="card-body">
@@ -26,7 +26,7 @@ PART {{ round }}
 
     <div class="row">
       <div class="col-sm-7">
-      <p>Your helper {{ partner }} had to distribute a maximum of <u>{{ hints }}</u>
+      <p>Your helper <b>{{ partner }}</b> had to distribute a maximum of <u>{{ hints }}</u>
         possible hints to spread across the following test takers in <b>COOKING</b>. They could
         choose to use less than {{ hints }} hints.</p>
       {{ if count > 0 }}
@@ -36,7 +36,7 @@ PART {{ round }}
       {{ if count == 0 }}
         <p>This means that you could get a maximum of 2 hints in <b>COOKING</b>.</p>
       {{ endif }}
-      How do you think {{ partner }} distributed the hints across all of you?
+      How do you think <b>{{ partner }}</b> distributed the hints across all of you?
       <div class="card4 rounded">
         <div class="card-body">
           <b>You will get Rs. 50 for providing correct answers!</b>

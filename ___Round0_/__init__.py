@@ -45,19 +45,37 @@ class Player(BasePlayer):
         label='''In Sports?''',
         widget=widgets.RadioSelectHorizontal,
     )
-    results_economics = models.StringField(
+    results_economics1 = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
         label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
-    results_cooking = models.StringField(
+    results_cooking1 = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
         label='''In Cooking?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
-    results_sports = models.StringField(
+    results_sports1 = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    results_economics2 = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    results_cooking2 = models.StringField(
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
+        widget=widgets.RadioSelectHorizontal,
+    )
+    results_sports2 = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
         label='''In Sports?[Out of 4 questions]''',
@@ -87,7 +105,7 @@ class Player(BasePlayer):
     crt_economics4 = models.IntegerField(
         choices=[[1, 'Hegel'], [2, 'Engles'], [3, 'Stalin'], [4, 'Karl Marx']],
         label='''
-        'The Wages, Labour and Capital' was written by:''',
+        'Wage Labour and Capital' was written by:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -300,6 +318,33 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ1 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4 = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
 
 
 # FUNCTIONS
@@ -386,14 +431,16 @@ class Hints(Page):
     @staticmethod
     def get_form_fields(player: Player):
         import random
-        formfields = ['request_hints_economics', 'request_hints_cooking', 'request_hints_sports','results_economics', 'results_cooking', 'results_sports']
+        formfields = ['results_economics1', 'results_cooking1', 'results_sports1', 'request_hints_economics', 'request_hints_cooking', 'request_hints_sports','results_economics2', 'results_cooking2', 'results_sports2']
         return formfields
     def vars_for_template(player: Player):
+        formfields_results1 = ['results_economics1', 'results_cooking1', 'results_sports1']
+        random.shuffle(formfields_results1)
         formfields_hints = ['request_hints_economics', 'request_hints_cooking', 'request_hints_sports']
         random.shuffle(formfields_hints)
-        formfields_results = ['results_economics', 'results_cooking', 'results_sports']
-        random.shuffle(formfields_results)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results)
+        formfields_results2 = ['results_economics2', 'results_cooking2', 'results_sports2']
+        random.shuffle(formfields_results2)
+        return dict(formfields_results1=formfields_results1, formfields_hints=formfields_hints, formfields_results2=formfields_results2)
 
 class Transition2(Page):
     form_model = 'player'
@@ -419,7 +466,8 @@ class Economics1(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: The musical composer")}
+            player.click_hint_econ1 = 1
+            return {player.id_in_group: dict(message = "Hint: French speaking philosopher")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics1':player.crt_economics1})
@@ -452,6 +500,7 @@ class Economics2(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
+            player.click_hint_econ2 = 1
             return {player.id_in_group: dict(message = "Hint: Cube with numbers")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -500,6 +549,7 @@ class Economics4(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
+            player.click_hint_econ4 = 1
             return {player.id_in_group: dict(message = "Hint: Marxism")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -533,6 +583,7 @@ class Cooking1(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
+            player.click_hint_cook1 = 1
             return {player.id_in_group: dict(message = "Hint: To boil")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -581,6 +632,7 @@ class Cooking3(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
+            player.click_hint_cook3 = 1
             return {player.id_in_group: dict(message = "Hint: Empty")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -614,6 +666,7 @@ class Cooking4(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
+            player.click_hint_cook4 = 1
             return {player.id_in_group: dict(message = "Hint: Transparent")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -647,6 +700,7 @@ class Sports1(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
+            player.click_hint_sport1 = 1
             return {player.id_in_group: dict(message = "Hint: I bought a box of sweets")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -695,6 +749,7 @@ class Sports3(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
+            player.click_hint_sport3 = 1
             return {player.id_in_group: dict(message = "Hint: Church day")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -728,6 +783,7 @@ class Sports4(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
+            player.click_hint_sport4 = 1
             return {player.id_in_group: dict(message = "Hint: Out")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):

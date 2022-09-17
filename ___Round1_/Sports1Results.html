@@ -32,10 +32,10 @@ PART 3: ROUND {{ round }} SPORTS
     <div class="row">
       <div class="col-sm-7">
         <p></p>
-        <p><b>
-          Now consider the case in which these players have hints available.
-          How many correct answers do you think the following players will give in SPORTS?
-        </b></p>
+        <p>
+          How many correct answers do you think the following players will give in <b>SPORTS</b>?
+          Consider answers overall, in both questions with and without hints available.
+        </p>
         {{ for field in formfields_random }}
           {{ if field == 'sportresults1_partner1'}}
             {{ formfield 'sportresults1_partner1' label=partner1_label}}

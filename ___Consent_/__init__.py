@@ -79,5 +79,5 @@ class Consent(Page):
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
     body_text = "Please be patient with your fellow classmates. WHILE YOU WAIT, YOU CAN PLAY THE GAME ON THE PAPER THAT IS ON YOUR DESK. PLEASE DO NOT TALK TO ANYONE."
-    
+
 page_sequence = [Consent, WaitPage1]

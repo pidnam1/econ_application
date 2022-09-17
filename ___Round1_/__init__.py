@@ -616,6 +616,7 @@ def vars_for_template1(player: Player, formfields):
     elif count == 0:
         hints = 0
         display = False
+    player.participant.hints1 = hints
     final.update(dict(hints=hints, display=display, partnerm1=partnerm1, partnerm3=partnerm3, partnerf1=partnerf1, partnerf3=partnerf3))
     final.update(dict(formfields_random=formfields_random))
     print(final)
@@ -723,6 +724,7 @@ def vars_for_template2(player: Player, formfields):
     elif count == 0:
         hints = 0
         display = False
+    player.participant.hints2 = hints
     final.update(dict(hints=hints, display=display, partnerm2=partnerm2, partnerm4=partnerm4, partnerf2=partnerf2, partnerf4=partnerf4))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
@@ -1619,6 +1621,7 @@ class Final(Page):
             return '___Round3b_'
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
+        player.participant.payoff_help = {}
         player.participant.payoff_help.update({"partnerm1":450, "partnerm3":450, "partnerf1":450, "partnerf3":450})
 
 

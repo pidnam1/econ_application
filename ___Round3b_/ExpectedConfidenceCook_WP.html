@@ -1,5 +1,5 @@
 {{ block title }}
-PART {{ round }}
+PART {{ round }}: Cooking
 <p></p>
 <div class="card2 rounded">
   <div class="card-body">
@@ -26,8 +26,8 @@ PART {{ round }}
 
     <div class="row">
       <div class="col-sm-7">
-        <p>You think that {{ partner }} gave you {{ player.cookhints_you_WP }} hints in <b>COOKING</b>.<p>
-        <p>How confident are you of this answer? [on a scale from 1-100]</p>
+        <p>You think that <b>{{ partner }}</b> gave you {{ player.cookhints_you_WP }} hints in <b>COOKING</b>.<p>
+        <p>How confident are you of this answer? [on a scale from 0-100]</p>
         Not confident at all &nbsp;
         <input type="range" name="confidence_cook_WP" min="0" max="{{ C.ENDOWMENT }}" oninput="updateDescription(this)">
         &nbsp; Totally sure

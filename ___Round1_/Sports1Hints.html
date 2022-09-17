@@ -19,11 +19,11 @@ PART 3: ROUND {{ round }} SPORTS
     <div class="row">
       <div class="col-sm-7">
         <p></p>
-        <p><b>
-          You have a maximum of <u>{{ hints }}</u> possible hints to spread however you want among these players.
+        <p>
+          You have a <b>maximum of <u>{{ hints }}</u> possible hints</b> to spread however you want among these players.
           You can also choose to use less than {{ hints }} hints, if you want.
-          How many hints would you be willing to give the following players in SPORTS?
-        </b></p>
+          How many hints would you be willing to give the following players in <b>SPORTS</b>?
+        </p>
         {{ for field in formfields_random }}
           {{ if field == 'sporthints1_partner1'}}
             {{ formfield 'sporthints1_partner1' label=partner1_label}}

@@ -59,50 +59,53 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_economics_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_sports_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
-    expect_hints_economics1_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_cooking1_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_sports1_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_economics2_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_cooking2_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_sports2_MP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
+    # expect_hints_economics1_MP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Political Science?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_cooking1_MP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Cooking?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_sports1_MP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Sports?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_economics2_MP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Political Science?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_cooking2_MP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Cooking?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_sports2_MP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Sports?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
     results_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
@@ -131,7 +134,7 @@ class Player(BasePlayer):
     crt_economics2_MP = models.IntegerField(
         choices=[[1, 'Louis Philippe'], [2, 'Napoleon Bonaparte'], [3, 'Gaulle'], [4, 'Coty']],
         label='''
-        In 1804, a military adventurer who transferred the Republic into an Empire was:''',
+        In 1804, a military adventurer who transformed the French Republic into an Empire was:''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MP = models.IntegerField(
@@ -145,7 +148,7 @@ class Player(BasePlayer):
         choices=[[1, 'Is based on conventions'], [2, 'Is specifically enacted'],
         [3, 'Grows with the passage of time'], [4, 'Is given by the head of the state']],
         label='''
-        Conventional constitution is one which:''',
+        Constitutional convention is one which:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MP = models.IntegerField(
@@ -373,6 +376,78 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_cook2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_econ4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_cook2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport1_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport2_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport3_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport4_MP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
 
 #MALE RANDOM
     request_hints_economics_MR = models.StringField(
@@ -391,50 +466,53 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_economics_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_sports_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
-    expect_hints_economics1_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_cooking1_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_sports1_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_economics2_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_cooking2_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_sports2_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
+    # expect_hints_economics1_MR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Political Science?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_cooking1_MR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Cooking?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_sports1_MR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Sports?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_economics2_MR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Political Science?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_cooking2_MR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Cooking?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_sports2_MR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Sports?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
     results_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
@@ -472,7 +550,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     crt_economics3_MR = models.IntegerField(
-        choices=[[1, 'England'], [2, 'China'], [3, 'USSR'], [4, 'USA']],
+        choices=[[1, 'Italy'], [2, 'China'], [3, 'USSR'], [4, 'USA']],
         label='''
         Name the country in which there is the system of judicial review?''',
         widget=widgets.RadioSelect,
@@ -481,7 +559,7 @@ class Player(BasePlayer):
         choices=[[1, 'Economic liberty'], [2, 'Political liberty'], [3, 'National liberty'],
         [4, 'Natural liberty']],
         label='''
-        When nations enjoy both internal as well as external liberty it is called:''',
+        When nations enjoy both freedom from internal as well as external control it is called:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MR = models.IntegerField(
@@ -709,6 +787,79 @@ class Player(BasePlayer):
         ''', min=0, max=100
     )
 
+    click_hint_econ1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_cook2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_econ4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_cook2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport1_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport2_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport3_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport4_MR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+
 #WOMAN PREFERRED
     request_hints_economics_WP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
@@ -726,50 +877,53 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_economics_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_sports_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
-    expect_hints_economics1_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_cooking1_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_sports1_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_economics2_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_cooking2_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_sports2_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
+    # expect_hints_economics1_WP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Political Science?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_cooking1_WP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Cooking?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_sports1_WP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Sports?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_economics2_WP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Political Science?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_cooking2_WP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Cooking?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_sports2_WP = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Sports?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
     results_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
@@ -1044,6 +1198,78 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_cook2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_econ4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_cook2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport1_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport2_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport3_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport4_WP = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
 
 #WOMAN RANDOM
     request_hints_economics_WR = models.StringField(
@@ -1062,50 +1288,53 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_economics_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Political Science?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Cooking?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_sports_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
+        choices=[[0, '0'], [1, '1'],
+        [2, '2'], [3, '3'], [4, '4']],
+        label='''In Sports?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
-    expect_hints_economics1_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_cooking1_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_sports1_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_economics2_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_cooking2_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Cooking?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
-    expect_hints_sports2_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sports?''',
-        widget=widgets.RadioSelectHorizontal,
-    )
+    # expect_hints_economics1_WR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Political Science?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_cooking1_WR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Cooking?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_sports1_WR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Sports?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_economics2_WR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Political Science?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_cooking2_WR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Cooking?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
+    # expect_hints_sports2_WR = models.StringField(
+    #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+    #     label='''In Sports?''',
+    #     widget=widgets.RadioSelectHorizontal,
+    # )
     results_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
@@ -1147,12 +1376,12 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     crt_economics4_WR = models.IntegerField(
-        choices=[[1, 'Objectives on which the further constitutions were to be based'],
+        choices=[[1, 'Objectives on which the future constitutions was to be based'],
         [2, 'Objectives of constitutions'],
         [3, 'Objectives for Pakistan'],
         [4, 'None of the above']],
         label='''
-        What is the meaning of Objective Resolution?''',
+        What is the meaning of \'Objectives Resolution?\'''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WR = models.IntegerField(
@@ -1375,6 +1604,78 @@ class Player(BasePlayer):
         than that.
         ''', min=0, max=100
     )
+    click_hint_econ1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_econ3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_econ4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    click_hint_cook2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_cook4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    click_hint_sport4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_econ3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_econ4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
+    reject_hint_cook2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_cook4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport1_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport2_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport3_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']],
+    )
+    reject_hint_sport4_WR = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']]
+    )
     econ_hint_requests = models.IntegerField(initial=0)
     cook_hint_requests = models.IntegerField(initial=0)
     sport_hint_requests = models.IntegerField(initial=0)
@@ -1528,605 +1829,604 @@ class Player(BasePlayer):
 
 
 # FUNCTIONS
-def random_rounds(subsession: Subsession):
+def random_rounds(subsession: Subsession, p:Player):
 
     if subsession.round_number == 1:
-        for p in subsession.get_players():
-            p.participant.task_rounds3b = dict()
+        p.participant.task_rounds3b = dict()
 
-            tasks = ['MP','MR','WP','WR']
-            round_numbers = list(range(1, 5))
-            random.shuffle(tasks)
-            if p.participant.partner3 == 0:
-                tasks.insert(4, tasks.pop(tasks.index('MP')))
-            if p.participant.partner8 == 0:
-                tasks.insert(4, tasks.pop(tasks.index('MR')))
-            if p.participant.partner2 == 0:
-                tasks.insert(4, tasks.pop(tasks.index('WP')))
-            if p.participant.partner6 == 0:
-                tasks.insert(4, tasks.pop(tasks.index('WR')))
-            task_round = dict(zip(tasks, round_numbers))
+        tasks = ['MP','MR','WP','WR']
+        round_numbers = list(range(1, 5))
+        random.shuffle(tasks)
+        if p.participant.partner3 == 0:
+            tasks.insert(4, tasks.pop(tasks.index('MP')))
+        if p.participant.partner8 == 0:
+            tasks.insert(4, tasks.pop(tasks.index('MR')))
+        if p.participant.partner2 == 0:
+            tasks.insert(4, tasks.pop(tasks.index('WP')))
+        if p.participant.partner6 == 0:
+            tasks.insert(4, tasks.pop(tasks.index('WR')))
+        task_round = dict(zip(tasks, round_numbers))
 
-            sub_round_number1 = list(range(2, 5))
-            random.shuffle(sub_round_number1)
-            sub_round_number2 = list(range(6, 9))
-            random.shuffle(sub_round_number2)
-            sub_round_number3 = list(range(10, 13))
-            random.shuffle(sub_round_number3)
-            sub_round_number4 = list(range(14, 17))
-            random.shuffle(sub_round_number4)
+        sub_round_number1 = list(range(2, 5))
+        random.shuffle(sub_round_number1)
+        sub_round_number2 = list(range(6, 9))
+        random.shuffle(sub_round_number2)
+        sub_round_number3 = list(range(10, 13))
+        random.shuffle(sub_round_number3)
+        sub_round_number4 = list(range(14, 17))
+        random.shuffle(sub_round_number4)
 
-            #Sub 1
-            sub_round_number1_1 = list(range(2, 6))
-            random.shuffle(sub_round_number1_1)
-            sub_round_number1_2 = list(range(6, 10))
-            random.shuffle(sub_round_number1_2)
-            sub_round_number1_3 = list(range(10, 14))
-            random.shuffle(sub_round_number1_3)
+        #Sub 1
+        sub_round_number1_1 = list(range(2, 6))
+        random.shuffle(sub_round_number1_1)
+        sub_round_number1_2 = list(range(6, 10))
+        random.shuffle(sub_round_number1_2)
+        sub_round_number1_3 = list(range(10, 14))
+        random.shuffle(sub_round_number1_3)
 
-            #Sub 2
-            sub_round_number2_1 = list(range(15, 19))
-            random.shuffle(sub_round_number2_1)
-            sub_round_number2_2 = list(range(19, 23))
-            random.shuffle(sub_round_number2_2)
-            sub_round_number2_3 = list(range(23, 27))
-            random.shuffle(sub_round_number2_3)
+        #Sub 2
+        sub_round_number2_1 = list(range(15, 19))
+        random.shuffle(sub_round_number2_1)
+        sub_round_number2_2 = list(range(19, 23))
+        random.shuffle(sub_round_number2_2)
+        sub_round_number2_3 = list(range(23, 27))
+        random.shuffle(sub_round_number2_3)
 
-            #Sub 3
-            sub_round_number3_1 = list(range(28, 32))
-            random.shuffle(sub_round_number3_1)
-            sub_round_number3_2 = list(range(32, 36))
-            random.shuffle(sub_round_number3_2)
-            sub_round_number3_3 = list(range(36, 40))
-            random.shuffle(sub_round_number3_3)
+        #Sub 3
+        sub_round_number3_1 = list(range(28, 32))
+        random.shuffle(sub_round_number3_1)
+        sub_round_number3_2 = list(range(32, 36))
+        random.shuffle(sub_round_number3_2)
+        sub_round_number3_3 = list(range(36, 40))
+        random.shuffle(sub_round_number3_3)
 
-            #Sub 4
-            sub_round_number4_1 = list(range(41, 45))
-            random.shuffle(sub_round_number4_1)
-            sub_round_number4_2 = list(range(45, 49))
-            random.shuffle(sub_round_number4_2)
-            sub_round_number4_3 = list(range(49, 53))
-            random.shuffle(sub_round_number4_3)
+        #Sub 4
+        sub_round_number4_1 = list(range(41, 45))
+        random.shuffle(sub_round_number4_1)
+        sub_round_number4_2 = list(range(45, 49))
+        random.shuffle(sub_round_number4_2)
+        sub_round_number4_3 = list(range(49, 53))
+        random.shuffle(sub_round_number4_3)
 
-            #MALE PREFERRED
-            MP_round_number = task_round['MP']
-            if MP_round_number == 1:
-                task_rounds_MP1 = dict(zip(C.TASKS_MP, sub_round_number1))
-                p.participant.task_rounds3b.update({'MP':1})
-                econ_round_number = task_rounds_MP1['Economics_MP']
-                if econ_round_number == 2:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 3:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 4:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MP1['Cooking_MP']
-                if cook_round_number == 2:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 3:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 4:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MP1['Sports_MP']
-                if sport_round_number == 2:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 3:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 4:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif MP_round_number == 2:
-                task_rounds_MP2 = dict(zip(C.TASKS_MP, sub_round_number2))
-                p.participant.task_rounds3b.update({'MP':14})
-                econ_round_number = task_rounds_MP2['Economics_MP']
-                if econ_round_number == 6:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 7:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 8:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MP2['Cooking_MP']
-                if cook_round_number == 6:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 7:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 8:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MP2['Sports_MP']
-                if sport_round_number == 6:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 7:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 8:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif MP_round_number == 3:
-                task_rounds_MP3 = dict(zip(C.TASKS_MP, sub_round_number3))
-                p.participant.task_rounds3b.update({'MP':27})
-                econ_round_number = task_rounds_MP3['Economics_MP']
-                if econ_round_number == 10:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 11:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 12:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MP3['Cooking_MP']
-                if cook_round_number == 10:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 11:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 12:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MP3['Sports_MP']
-                if sport_round_number == 10:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 11:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 12:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif MP_round_number == 4:
-                task_rounds_MP4 = dict(zip(C.TASKS_MP, sub_round_number4))
-                p.participant.task_rounds3b.update({'MP':40})
-                econ_round_number = task_rounds_MP4['Economics_MP']
-                if econ_round_number == 14:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 15:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 16:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MP4['Cooking_MP']
-                if cook_round_number == 14:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 15:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 16:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MP4['Sports_MP']
-                if sport_round_number == 14:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 15:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 16:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
+        #MALE PREFERRED
+        MP_round_number = task_round['MP']
+        if MP_round_number == 1:
+            task_rounds_MP1 = dict(zip(C.TASKS_MP, sub_round_number1))
+            p.participant.task_rounds3b.update({'MP':1})
+            econ_round_number = task_rounds_MP1['Economics_MP']
+            if econ_round_number == 2:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 3:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 4:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MP1['Cooking_MP']
+            if cook_round_number == 2:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 3:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 4:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MP1['Sports_MP']
+            if sport_round_number == 2:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 3:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 4:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif MP_round_number == 2:
+            task_rounds_MP2 = dict(zip(C.TASKS_MP, sub_round_number2))
+            p.participant.task_rounds3b.update({'MP':14})
+            econ_round_number = task_rounds_MP2['Economics_MP']
+            if econ_round_number == 6:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 7:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 8:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MP2['Cooking_MP']
+            if cook_round_number == 6:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 7:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 8:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MP2['Sports_MP']
+            if sport_round_number == 6:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 7:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 8:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif MP_round_number == 3:
+            task_rounds_MP3 = dict(zip(C.TASKS_MP, sub_round_number3))
+            p.participant.task_rounds3b.update({'MP':27})
+            econ_round_number = task_rounds_MP3['Economics_MP']
+            if econ_round_number == 10:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 11:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 12:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MP3['Cooking_MP']
+            if cook_round_number == 10:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 11:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 12:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MP3['Sports_MP']
+            if sport_round_number == 10:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 11:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 12:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif MP_round_number == 4:
+            task_rounds_MP4 = dict(zip(C.TASKS_MP, sub_round_number4))
+            p.participant.task_rounds3b.update({'MP':40})
+            econ_round_number = task_rounds_MP4['Economics_MP']
+            if econ_round_number == 14:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 15:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 16:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MP, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MP4['Cooking_MP']
+            if cook_round_number == 14:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 15:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 16:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MP, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MP4['Sports_MP']
+            if sport_round_number == 14:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 15:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 16:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MP, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
 
-            #MALE RANDOM
-            MR_round_number = task_round['MR']
-            if MR_round_number == 1:
-                task_rounds_MR1 = dict(zip(C.TASKS_MR, sub_round_number1))
-                p.participant.task_rounds3b.update({'MR':1})
-                econ_round_number = task_rounds_MR1['Economics_MR']
-                if econ_round_number == 2:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 3:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 4:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MR1['Cooking_MR']
-                if cook_round_number == 2:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 3:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 4:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MR1['Sports_MR']
-                if sport_round_number == 2:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 3:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 4:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif MR_round_number == 2:
-                task_rounds_MR2 = dict(zip(C.TASKS_MR, sub_round_number2))
-                p.participant.task_rounds3b.update({'MR':14})
-                econ_round_number = task_rounds_MR2['Economics_MR']
-                if econ_round_number == 6:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 7:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 8:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MR2['Cooking_MR']
-                if cook_round_number == 6:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 7:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 8:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MR2['Sports_MR']
-                if sport_round_number == 6:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 7:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 8:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif MR_round_number == 3:
-                task_rounds_MR3 = dict(zip(C.TASKS_MR, sub_round_number3))
-                p.participant.task_rounds3b.update({'MR':27})
-                econ_round_number = task_rounds_MR3['Economics_MR']
-                if econ_round_number == 10:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 11:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 12:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MR3['Cooking_MR']
-                if cook_round_number == 10:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 11:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 12:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MR3['Sports_MR']
-                if sport_round_number == 10:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 11:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 12:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif MR_round_number == 4:
-                task_rounds_MR4 = dict(zip(C.TASKS_MR, sub_round_number4))
-                p.participant.task_rounds3b.update({'MR':40})
-                econ_round_number = task_rounds_MR4['Economics_MR']
-                if econ_round_number == 14:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 15:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 16:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_MR4['Cooking_MR']
-                if cook_round_number == 14:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 15:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 16:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_MR4['Sports_MR']
-                if sport_round_number == 14:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 15:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 16:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
+        #MALE RANDOM
+        MR_round_number = task_round['MR']
+        if MR_round_number == 1:
+            task_rounds_MR1 = dict(zip(C.TASKS_MR, sub_round_number1))
+            p.participant.task_rounds3b.update({'MR':1})
+            econ_round_number = task_rounds_MR1['Economics_MR']
+            if econ_round_number == 2:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 3:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 4:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MR1['Cooking_MR']
+            if cook_round_number == 2:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 3:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 4:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MR1['Sports_MR']
+            if sport_round_number == 2:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 3:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 4:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif MR_round_number == 2:
+            task_rounds_MR2 = dict(zip(C.TASKS_MR, sub_round_number2))
+            p.participant.task_rounds3b.update({'MR':14})
+            econ_round_number = task_rounds_MR2['Economics_MR']
+            if econ_round_number == 6:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 7:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 8:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MR2['Cooking_MR']
+            if cook_round_number == 6:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 7:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 8:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MR2['Sports_MR']
+            if sport_round_number == 6:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 7:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 8:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif MR_round_number == 3:
+            task_rounds_MR3 = dict(zip(C.TASKS_MR, sub_round_number3))
+            p.participant.task_rounds3b.update({'MR':27})
+            econ_round_number = task_rounds_MR3['Economics_MR']
+            if econ_round_number == 10:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 11:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 12:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MR3['Cooking_MR']
+            if cook_round_number == 10:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 11:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 12:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MR3['Sports_MR']
+            if sport_round_number == 10:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 11:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 12:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif MR_round_number == 4:
+            task_rounds_MR4 = dict(zip(C.TASKS_MR, sub_round_number4))
+            p.participant.task_rounds3b.update({'MR':40})
+            econ_round_number = task_rounds_MR4['Economics_MR']
+            if econ_round_number == 14:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 15:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 16:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_MR, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_MR4['Cooking_MR']
+            if cook_round_number == 14:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 15:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 16:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_MR, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_MR4['Sports_MR']
+            if sport_round_number == 14:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 15:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 16:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_MR, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
 
-            #WOMAN PREFERRED
-            WP_round_number = task_round['WP']
-            if WP_round_number == 1:
-                task_rounds_WP1 = dict(zip(C.TASKS_WP, sub_round_number1))
-                p.participant.task_rounds3b.update({'WP':1})
-                econ_round_number = task_rounds_WP1['Economics_WP']
-                if econ_round_number == 2:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 3:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 4:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WP1['Cooking_WP']
-                if cook_round_number == 2:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 3:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 4:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WP1['Sports_WP']
-                if sport_round_number == 2:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 3:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 4:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif WP_round_number == 2:
-                task_rounds_WP2 = dict(zip(C.TASKS_WP, sub_round_number2))
-                p.participant.task_rounds3b.update({'WP':14})
-                econ_round_number = task_rounds_WP2['Economics_WP']
-                if econ_round_number == 6:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 7:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 8:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WP2['Cooking_WP']
-                if cook_round_number == 6:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 7:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 8:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WP2['Sports_WP']
-                if sport_round_number == 6:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 7:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 8:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif WP_round_number == 3:
-                task_rounds_WP3 = dict(zip(C.TASKS_WP, sub_round_number3))
-                p.participant.task_rounds3b.update({'WP':27})
-                econ_round_number = task_rounds_WP3['Economics_WP']
-                if econ_round_number == 10:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 11:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 12:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WP3['Cooking_WP']
-                if cook_round_number == 10:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 11:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 12:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WP3['Sports_WP']
-                if sport_round_number == 10:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 11:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 12:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif WP_round_number == 4:
-                task_rounds_WP4 = dict(zip(C.TASKS_WP, sub_round_number4))
-                p.participant.task_rounds3b.update({'WP':40})
-                econ_round_number = task_rounds_WP4['Economics_WP']
-                if econ_round_number == 14:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 15:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 16:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WP4['Cooking_WP']
-                if cook_round_number == 14:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 15:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 16:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WP4['Sports_WP']
-                if sport_round_number == 14:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 15:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 16:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
+        #WOMAN PREFERRED
+        WP_round_number = task_round['WP']
+        if WP_round_number == 1:
+            task_rounds_WP1 = dict(zip(C.TASKS_WP, sub_round_number1))
+            p.participant.task_rounds3b.update({'WP':1})
+            econ_round_number = task_rounds_WP1['Economics_WP']
+            if econ_round_number == 2:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 3:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 4:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WP1['Cooking_WP']
+            if cook_round_number == 2:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 3:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 4:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WP1['Sports_WP']
+            if sport_round_number == 2:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 3:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 4:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif WP_round_number == 2:
+            task_rounds_WP2 = dict(zip(C.TASKS_WP, sub_round_number2))
+            p.participant.task_rounds3b.update({'WP':14})
+            econ_round_number = task_rounds_WP2['Economics_WP']
+            if econ_round_number == 6:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 7:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 8:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WP2['Cooking_WP']
+            if cook_round_number == 6:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 7:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 8:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WP2['Sports_WP']
+            if sport_round_number == 6:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 7:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 8:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif WP_round_number == 3:
+            task_rounds_WP3 = dict(zip(C.TASKS_WP, sub_round_number3))
+            p.participant.task_rounds3b.update({'WP':27})
+            econ_round_number = task_rounds_WP3['Economics_WP']
+            if econ_round_number == 10:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 11:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 12:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WP3['Cooking_WP']
+            if cook_round_number == 10:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 11:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 12:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WP3['Sports_WP']
+            if sport_round_number == 10:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 11:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 12:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif WP_round_number == 4:
+            task_rounds_WP4 = dict(zip(C.TASKS_WP, sub_round_number4))
+            p.participant.task_rounds3b.update({'WP':40})
+            econ_round_number = task_rounds_WP4['Economics_WP']
+            if econ_round_number == 14:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 15:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 16:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WP, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WP4['Cooking_WP']
+            if cook_round_number == 14:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 15:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 16:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WP, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WP4['Sports_WP']
+            if sport_round_number == 14:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 15:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 16:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WP, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
 
-            #WOMAN RANDOM
-            WR_round_number = task_round['WR']
-            if WR_round_number == 1:
-                task_rounds_WR1 = dict(zip(C.TASKS_WR, sub_round_number1))
-                p.participant.task_rounds3b.update({'WR':1})
-                econ_round_number = task_rounds_WR1['Economics_WR']
-                if econ_round_number == 2:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 3:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 4:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WR1['Cooking_WR']
-                if cook_round_number == 2:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 3:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 4:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WR1['Sports_WR']
-                if sport_round_number == 2:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 3:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 4:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif WR_round_number == 2:
-                task_rounds_WR2 = dict(zip(C.TASKS_WR, sub_round_number2))
-                p.participant.task_rounds3b.update({'WR':14})
-                econ_round_number = task_rounds_WR2['Economics_WR']
-                if econ_round_number == 6:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 7:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 8:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WR2['Cooking_WR']
-                if cook_round_number == 6:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 7:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 8:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WR2['Sports_WR']
-                if sport_round_number == 6:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 7:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 8:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif WR_round_number == 3:
-                task_rounds_WR3 = dict(zip(C.TASKS_WR, sub_round_number3))
-                p.participant.task_rounds3b.update({'WR':27})
-                econ_round_number = task_rounds_WR3['Economics_WR']
-                if econ_round_number == 10:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 11:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 12:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WR3['Cooking_WR']
-                if cook_round_number == 10:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 11:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 12:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WR3['Sports_WR']
-                if sport_round_number == 10:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 11:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 12:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
-            elif WR_round_number == 4:
-                task_rounds_WR4 = dict(zip(C.TASKS_WR, sub_round_number4))
-                p.participant.task_rounds3b.update({'WR':40})
-                econ_round_number = task_rounds_WR4['Economics_WR']
-                if econ_round_number == 14:
-                    task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_econ1)
-                elif econ_round_number == 15:
-                    task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_econ2)
-                elif econ_round_number == 16:
-                    task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_econ3)
-                cook_round_number = task_rounds_WR4['Cooking_WR']
-                if cook_round_number == 14:
-                    task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_cook1)
-                elif cook_round_number == 15:
-                    task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_cook2)
-                elif cook_round_number == 16:
-                    task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_cook3)
-                sport_round_number = task_rounds_WR4['Sports_WR']
-                if sport_round_number == 14:
-                    task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_1))
-                    p.participant.task_rounds3b.update(task_rounds_sport1)
-                elif sport_round_number == 15:
-                    task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_2))
-                    p.participant.task_rounds3b.update(task_rounds_sport2)
-                elif sport_round_number == 16:
-                    task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_3))
-                    p.participant.task_rounds3b.update(task_rounds_sport3)
+        #WOMAN RANDOM
+        WR_round_number = task_round['WR']
+        if WR_round_number == 1:
+            task_rounds_WR1 = dict(zip(C.TASKS_WR, sub_round_number1))
+            p.participant.task_rounds3b.update({'WR':1})
+            econ_round_number = task_rounds_WR1['Economics_WR']
+            if econ_round_number == 2:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 3:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 4:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WR1['Cooking_WR']
+            if cook_round_number == 2:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 3:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 4:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WR1['Sports_WR']
+            if sport_round_number == 2:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 3:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 4:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number1_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif WR_round_number == 2:
+            task_rounds_WR2 = dict(zip(C.TASKS_WR, sub_round_number2))
+            p.participant.task_rounds3b.update({'WR':14})
+            econ_round_number = task_rounds_WR2['Economics_WR']
+            if econ_round_number == 6:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 7:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 8:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WR2['Cooking_WR']
+            if cook_round_number == 6:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 7:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 8:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WR2['Sports_WR']
+            if sport_round_number == 6:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 7:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 8:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number2_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif WR_round_number == 3:
+            task_rounds_WR3 = dict(zip(C.TASKS_WR, sub_round_number3))
+            p.participant.task_rounds3b.update({'WR':27})
+            econ_round_number = task_rounds_WR3['Economics_WR']
+            if econ_round_number == 10:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 11:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 12:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WR3['Cooking_WR']
+            if cook_round_number == 10:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 11:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 12:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WR3['Sports_WR']
+            if sport_round_number == 10:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 11:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 12:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number3_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
+        elif WR_round_number == 4:
+            task_rounds_WR4 = dict(zip(C.TASKS_WR, sub_round_number4))
+            p.participant.task_rounds3b.update({'WR':40})
+            econ_round_number = task_rounds_WR4['Economics_WR']
+            if econ_round_number == 14:
+                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_econ1)
+            elif econ_round_number == 15:
+                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_econ2)
+            elif econ_round_number == 16:
+                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS_WR, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_econ3)
+            cook_round_number = task_rounds_WR4['Cooking_WR']
+            if cook_round_number == 14:
+                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_cook1)
+            elif cook_round_number == 15:
+                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_cook2)
+            elif cook_round_number == 16:
+                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS_WR, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_cook3)
+            sport_round_number = task_rounds_WR4['Sports_WR']
+            if sport_round_number == 14:
+                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_1))
+                p.participant.task_rounds3b.update(task_rounds_sport1)
+            elif sport_round_number == 15:
+                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_2))
+                p.participant.task_rounds3b.update(task_rounds_sport2)
+            elif sport_round_number == 16:
+                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS_WR, sub_round_number4_3))
+                p.participant.task_rounds3b.update(task_rounds_sport3)
     else:
         subsession.group_like_round(1)
 
@@ -2173,7 +2473,7 @@ def set_hints_guess_econ(player: Player, partner, formfields):
     partnerm4 = False
     partnerf2 = False
     partnerf4 = False
-    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
+    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
             player.participant.hints_guess_econ_m1 = formfields[1]
             partnerm1 = (player.participant.hints_guess_econ_m1 == partner.participant.MP1hints_given_econ)
@@ -2253,7 +2553,7 @@ def set_hints_guess_cook(player: Player, partner, formfields):
     partnerm4 = False
     partnerf2 = False
     partnerf4 = False
-    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
+    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
             player.participant.hints_guess_cook_m1 = formfields[1]
             partnerm1 = (player.participant.hints_guess_cook_m1 == partner.participant.MP1hints_given_cook)
@@ -2333,7 +2633,7 @@ def set_hints_guess_sport(player: Player, partner, formfields):
     partnerm4 = False
     partnerf2 = False
     partnerf4 = False
-    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
+    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
             player.participant.hints_guess_sport_m1 = formfields[1]
             partnerm1 = (player.participant.hints_guess_sport_m1 == partner.participant.MP1hints_given_sport)
@@ -2428,7 +2728,7 @@ class Demographics(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        random_rounds(player.subsession)
+        random_rounds(player.subsession,player)
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player:Player):
@@ -2462,78 +2762,78 @@ class Hints_MP(Page):
         return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP','results_economics_MP', 'results_cooking_MP', 'results_sports_MP']
+        formfields = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP','results_economics_MP', 'results_cooking_MP', 'results_sports_MP', 'expect_hints_economics_MP', 'expect_hints_cooking_MP', 'expect_hints_sports_MP']
         return formfields
     def vars_for_template(player: Player):
         formfields_hints = ['request_hints_economics_MP', 'request_hints_cooking_MP', 'request_hints_sports_MP']
         random.shuffle(formfields_hints)
         formfields_results = ['results_economics_MP', 'results_cooking_MP', 'results_sports_MP']
         random.shuffle(formfields_results)
-        # formfields_expect = ['expect_hints_economics_MP', 'expect_hints_cooking_MP', 'expect_hints_sports_MP']
-        # random.shuffle(formfields_expect)
+        formfields_expect = ['expect_hints_economics_MP', 'expect_hints_cooking_MP', 'expect_hints_sports_MP']
+        random.shuffle(formfields_expect)
         g = player.group
         partner = g.get_player_by_id(player.participant.partner3)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round3b_completed)
+        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
 
-class ExpectationWR_MP(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner3 != 0)
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        partner = g.get_player_by_id(player.participant.partner3)
-        wr = 0
-        length = len(g.get_players())
-        int = list(range(1, length+1))
-        random.shuffle(int)
-        for key in int:
-            curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
-                wr = curr_player
-                break
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
-    @staticmethod
-    def get_form_fields(player: Player):
-        import random
-
-        form_fields = ['expect_hints_economics1_MP', 'expect_hints_cooking1_MP', 'expect_hints_sports1_MP']
-        random.shuffle(form_fields)
-        return form_fields
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
-class ExpectationMR_MP(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner3 != 0)
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        partner = g.get_player_by_id(player.participant.partner3)
-        mr = 0
-        length = len(g.get_players())
-        int = list(range(1, length+1))
-        random.shuffle(int)
-        for key in int:
-            curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
-                mr = curr_player
-                break
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
-    @staticmethod
-    def get_form_fields(player: Player):
-        import random
-
-        form_fields = ['expect_hints_economics2_MP', 'expect_hints_cooking2_MP', 'expect_hints_sports2_MP']
-        random.shuffle(form_fields)
-        return form_fields
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class ExpectationWR_MP(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds3b['MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner3 != 0)
+#     @staticmethod
+#     def vars_for_template(player:Player):
+#         g = player.group
+#         partner = g.get_player_by_id(player.participant.partner3)
+#         wr = 0
+#         length = len(g.get_players())
+#         int = list(range(1, length+1))
+#         random.shuffle(int)
+#         for key in int:
+#             curr_player = g.get_player_by_id(key)
+#             if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
+#                 wr = curr_player
+#                 break
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
+#     @staticmethod
+#     def get_form_fields(player: Player):
+#         import random
+#
+#         form_fields = ['expect_hints_economics1_MP', 'expect_hints_cooking1_MP', 'expect_hints_sports1_MP']
+#         random.shuffle(form_fields)
+#         return form_fields
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
+#
+# class ExpectationMR_MP(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds3b['MP']) and (get_timeout_seconds1(player) > 0) and (participant.partner3 != 0)
+#     @staticmethod
+#     def vars_for_template(player:Player):
+#         g = player.group
+#         partner = g.get_player_by_id(player.participant.partner3)
+#         mr = 0
+#         length = len(g.get_players())
+#         int = list(range(1, length+1))
+#         random.shuffle(int)
+#         for key in int:
+#             curr_player = g.get_player_by_id(key)
+#             if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
+#                 mr = curr_player
+#                 break
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
+#     @staticmethod
+#     def get_form_fields(player: Player):
+#         import random
+#
+#         form_fields = ['expect_hints_economics2_MP', 'expect_hints_cooking2_MP', 'expect_hints_sports2_MP']
+#         random.shuffle(form_fields)
+#         return form_fields
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 def vars_for_template2(player: Player, formfields):
     final = {}
@@ -2541,7 +2841,6 @@ def vars_for_template2(player: Player, formfields):
     partners = []
     g = player.group
     partner = g.get_player_by_id(player.participant.partner3)
-    display = True
     count = 0
     hints = 0
     partner1 = 0
@@ -2549,7 +2848,7 @@ def vars_for_template2(player: Player, formfields):
     partner3 = 0
     partner4 = 0
     is2 = False
-    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
+    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
             partner1 = g.get_player_by_id(partner.participant.partnerm1)
             final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
@@ -2616,10 +2915,7 @@ def vars_for_template2(player: Player, formfields):
         hints = 7
     elif count == 3:
         hints = 10
-    elif count == 0:
-        hints = 0
-        display = False
-    final.update(dict(count=count, hints=hints, display=display, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed, is2=is2))
+    final.update(dict(count=count, hints=hints, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed, is2=is2))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -2820,12 +3116,14 @@ class Economics1_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner3 += 1
+                player.click_hint_econ1_MP = 1
                 if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Gifted debater.")}
                 elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ1_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -2860,12 +3158,14 @@ class Economics2_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner3 += 1
+                player.click_hint_econ2_MP = 1
                 if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: 5\'7\" overthrew French government.")}
                 elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ2_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -2932,12 +3232,14 @@ class Economics4_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner3 += 1
+                player.click_hint_econ4_MP = 1
                 if player.participant.econ_hint_requests_partner3 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Be specific.")}
                 elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ4_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3004,12 +3306,14 @@ class Cooking2_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner3 += 1
+                player.click_hint_cook2_MP = 1
                 if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Maximum moisture.")}
                 elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook2_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3044,12 +3348,14 @@ class Cooking3_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner3 += 1
+                player.click_hint_cook3_MP = 1
                 if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Everyone looked at the camera and said \"CHEEESE\".")}
                 elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook3_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3084,12 +3390,14 @@ class Cooking4_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner3 += 1
+                player.click_hint_cook4_MP = 1
                 if player.participant.cook_hint_requests_partner3 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Less than 2.")}
                 elif player.participant.cook_hint_requests_partner3 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook4_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3124,12 +3432,14 @@ class Sports1_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner3 += 1
+                player.click_hint_sport1_MP = 1
                 if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: London and neighbor of Australia.")}
                 elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport1_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3196,12 +3506,14 @@ class Sports3_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner3 += 1
+                player.click_hint_sport3_MP = 1
                 if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Ayub Khan.")}
                 elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport3_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3236,12 +3548,14 @@ class Sports4_MP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner3 += 1
+                player.click_hint_sport4_MP = 1
                 if player.participant.sport_hint_requests_partner3 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Green ball.")}
                 elif player.participant.sport_hint_requests_partner3 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport4_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3480,82 +3794,82 @@ class Hints_MR(Page):
     @staticmethod
     def get_form_fields(player: Player):
         import random
-        formfields = ['request_hints_economics_MR', 'request_hints_cooking_MR', 'request_hints_sports_MR','results_economics_MR', 'results_cooking_MR', 'results_sports_MR']
+        formfields = ['request_hints_economics_MR', 'request_hints_cooking_MR', 'request_hints_sports_MR','results_economics_MR', 'results_cooking_MR', 'results_sports_MR', 'expect_hints_economics_MR', 'expect_hints_cooking_MR', 'expect_hints_sports_MR']
         return formfields
     def vars_for_template(player: Player):
         formfields_hints = ['request_hints_economics_MR', 'request_hints_cooking_MR', 'request_hints_sports_MR']
         random.shuffle(formfields_hints)
         formfields_results = ['results_economics_MR', 'results_cooking_MR', 'results_sports_MR']
         random.shuffle(formfields_results)
-        # formfields_expect = ['expect_hints_economics_MR', 'expect_hints_cooking_MR', 'expect_hints_sports_MR']
-        # random.shuffle(formfields_expect)
+        formfields_expect = ['expect_hints_economics_MR', 'expect_hints_cooking_MR', 'expect_hints_sports_MR']
+        random.shuffle(formfields_expect)
         g = player.group
         partner = g.get_player_by_id(player.participant.partner8)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round3b_completed)
+        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
         participant.expiry = time.time() + 1200
 
-class ExpectationWR_MR(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner8 != 0)
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        partner = g.get_player_by_id(player.participant.partner8)
-        wr = 0
-        length = len(g.get_players())
-        int = list(range(1, length+1))
-        random.shuffle(int)
-        for key in int:
-            curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
-                wr = curr_player
-                break
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
-    @staticmethod
-    def get_form_fields(player: Player):
-        import random
-
-        form_fields = ['expect_hints_economics1_MR', 'expect_hints_cooking1_MR', 'expect_hints_sports1_MR']
-        random.shuffle(form_fields)
-        return form_fields
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
-class ExpectationMR_MR(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds3b['MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner8 != 0)
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        partner = g.get_player_by_id(player.participant.partner8)
-        mr = 0
-        length = len(g.get_players())
-        int = list(range(1, length+1))
-        random.shuffle(int)
-        for key in int:
-            curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
-                mr = curr_player
-                break
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
-    @staticmethod
-    def get_form_fields(player: Player):
-        import random
-
-        form_fields = ['expect_hints_economics2_MR', 'expect_hints_cooking2_MR', 'expect_hints_sports2_MR']
-        random.shuffle(form_fields)
-        return form_fields
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class ExpectationWR_MR(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds3b['MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner8 != 0)
+#     @staticmethod
+#     def vars_for_template(player:Player):
+#         g = player.group
+#         partner = g.get_player_by_id(player.participant.partner8)
+#         wr = 0
+#         length = len(g.get_players())
+#         int = list(range(1, length+1))
+#         random.shuffle(int)
+#         for key in int:
+#             curr_player = g.get_player_by_id(key)
+#             if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
+#                 wr = curr_player
+#                 break
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
+#     @staticmethod
+#     def get_form_fields(player: Player):
+#         import random
+#
+#         form_fields = ['expect_hints_economics1_MR', 'expect_hints_cooking1_MR', 'expect_hints_sports1_MR']
+#         random.shuffle(form_fields)
+#         return form_fields
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
+#
+# class ExpectationMR_MR(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds3b['MR']) and (get_timeout_seconds1(player) > 0) and (participant.partner8 != 0)
+#     @staticmethod
+#     def vars_for_template(player:Player):
+#         g = player.group
+#         partner = g.get_player_by_id(player.participant.partner8)
+#         mr = 0
+#         length = len(g.get_players())
+#         int = list(range(1, length+1))
+#         random.shuffle(int)
+#         for key in int:
+#             curr_player = g.get_player_by_id(key)
+#             if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
+#                 mr = curr_player
+#                 break
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
+#     @staticmethod
+#     def get_form_fields(player: Player):
+#         import random
+#
+#         form_fields = ['expect_hints_economics2_MR', 'expect_hints_cooking2_MR', 'expect_hints_sports2_MR']
+#         random.shuffle(form_fields)
+#         return form_fields
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 def vars_for_template3(player: Player, formfields):
     final = {}
@@ -3563,14 +3877,13 @@ def vars_for_template3(player: Player, formfields):
     partners = {}
     g = player.group
     partner = g.get_player_by_id(player.participant.partner8)
-    display = True
     count = 0
     hints = 0
     partner1 = 0
     partner2 = 0
     partner3 = 0
     partner4 = 0
-    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
+    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
             partner1 = g.get_player_by_id(partner.participant.partnerm1)
             final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
@@ -3628,10 +3941,7 @@ def vars_for_template3(player: Player, formfields):
         hints = 7
     elif count == 3:
         hints = 10
-    elif count == 0:
-        hints = 0
-        display = False
-    final.update(dict(count=count, hints=hints, display=display, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
+    final.update(dict(count=count, hints=hints, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -3832,12 +4142,14 @@ class Economics1_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner8 += 1
+                player.click_hint_econ1_MR = 1
                 if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Mozart, Beethoven, Bach.")}
                 elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ1_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3872,12 +4184,14 @@ class Economics2_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner8 += 1
+                player.click_hint_econ2_MR = 1
                 if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Fundamental change is required.")}
                 elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ2_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -3944,12 +4258,14 @@ class Economics4_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner8 += 1
+                player.click_hint_econ4_MR = 1
                 if player.participant.econ_hint_requests_partner8 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Nations freedom.")}
                 elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ4_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4016,12 +4332,14 @@ class Cooking2_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner8 += 1
+                player.click_hint_cook2_MR = 1
                 if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Maize related product.")}
                 elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook2_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4056,12 +4374,14 @@ class Cooking3_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner8 += 1
+                player.click_hint_cook3_MR = 1
                 if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Extracted with olives.")}
                 elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook3_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4096,12 +4416,14 @@ class Cooking4_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner8 += 1
+                player.click_hint_cook4_MR = 1
                 if player.participant.cook_hint_requests_partner8 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Rhymes with pear.")}
                 elif player.participant.cook_hint_requests_partner8 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook4_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4136,12 +4458,14 @@ class Sports1_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner8 += 1
+                player.click_hint_sport1_MR = 1
                 if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: It was Allama Iqbal's birth year.")}
                 elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport1_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4208,12 +4532,14 @@ class Sports3_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner8 += 1
+                player.click_hint_sport3_MR = 1
                 if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Greater than 5.")}
                 elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport3_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4248,12 +4574,14 @@ class Sports4_MR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner8 += 1
+                player.click_hint_sport4_MR = 1
                 if player.participant.sport_hint_requests_partner8 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Christopher.")}
                 elif player.participant.sport_hint_requests_partner8 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport4_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4492,82 +4820,82 @@ class Hints_WP(Page):
     @staticmethod
     def get_form_fields(player: Player):
         import random
-        formfields = ['request_hints_economics_WP', 'request_hints_cooking_WP', 'request_hints_sports_WP','results_economics_WP', 'results_cooking_WP', 'results_sports_WP']
+        formfields = ['request_hints_economics_WP', 'request_hints_cooking_WP', 'request_hints_sports_WP','results_economics_WP', 'results_cooking_WP', 'results_sports_WP', 'expect_hints_economics_WP', 'expect_hints_cooking_WP', 'expect_hints_sports_WP']
         return formfields
     def vars_for_template(player: Player):
         formfields_hints = ['request_hints_economics_WP', 'request_hints_cooking_WP', 'request_hints_sports_WP']
         random.shuffle(formfields_hints)
         formfields_results = ['results_economics_WP', 'results_cooking_WP', 'results_sports_WP']
         random.shuffle(formfields_results)
-        # formfields_expect = ['expect_hints_economics_WP', 'expect_hints_cooking_WP', 'expect_hints_sports_WP']
-        # random.shuffle(formfields_expect)
+        formfields_expect = ['expect_hints_economics_WP', 'expect_hints_cooking_WP', 'expect_hints_sports_WP']
+        random.shuffle(formfields_expect)
         g = player.group
         partner = g.get_player_by_id(player.participant.partner2)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round3b_completed)
+        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
         participant.expiry = time.time() + 1200
 
-class ExpectationWR_WP(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner2 != 0)
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        partner = g.get_player_by_id(player.participant.partner2)
-        wr = 0
-        length = len(g.get_players())
-        int = list(range(1, length+1))
-        random.shuffle(int)
-        for key in int:
-            curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
-                wr = curr_player
-                break
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
-    @staticmethod
-    def get_form_fields(player: Player):
-        import random
-
-        form_fields = ['expect_hints_economics1_WP', 'expect_hints_cooking1_WP', 'expect_hints_sports1_WP']
-        random.shuffle(form_fields)
-        return form_fields
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
-class ExpectationMR_WP(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner2 != 0)
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        partner = g.get_player_by_id(player.participant.partner2)
-        mr = 0
-        length = len(g.get_players())
-        int = list(range(1, length+1))
-        random.shuffle(int)
-        for key in int:
-            curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
-                mr = curr_player
-                break
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
-    @staticmethod
-    def get_form_fields(player: Player):
-        import random
-
-        form_fields = ['expect_hints_economics2_WP', 'expect_hints_cooking2_WP', 'expect_hints_sports2_WP']
-        random.shuffle(form_fields)
-        return form_fields
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class ExpectationWR_WP(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds3b['WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner2 != 0)
+#     @staticmethod
+#     def vars_for_template(player:Player):
+#         g = player.group
+#         partner = g.get_player_by_id(player.participant.partner2)
+#         wr = 0
+#         length = len(g.get_players())
+#         int = list(range(1, length+1))
+#         random.shuffle(int)
+#         for key in int:
+#             curr_player = g.get_player_by_id(key)
+#             if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
+#                 wr = curr_player
+#                 break
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
+#     @staticmethod
+#     def get_form_fields(player: Player):
+#         import random
+#
+#         form_fields = ['expect_hints_economics1_WP', 'expect_hints_cooking1_WP', 'expect_hints_sports1_WP']
+#         random.shuffle(form_fields)
+#         return form_fields
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
+#
+# class ExpectationMR_WP(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds3b['WP']) and (get_timeout_seconds1(player) > 0) and (participant.partner2 != 0)
+#     @staticmethod
+#     def vars_for_template(player:Player):
+#         g = player.group
+#         partner = g.get_player_by_id(player.participant.partner2)
+#         mr = 0
+#         length = len(g.get_players())
+#         int = list(range(1, length+1))
+#         random.shuffle(int)
+#         for key in int:
+#             curr_player = g.get_player_by_id(key)
+#             if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
+#                 mr = curr_player
+#                 break
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
+#     @staticmethod
+#     def get_form_fields(player: Player):
+#         import random
+#
+#         form_fields = ['expect_hints_economics2_WP', 'expect_hints_cooking2_WP', 'expect_hints_sports2_WP']
+#         random.shuffle(form_fields)
+#         return form_fields
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 def vars_for_template4(player: Player, formfields):
     final = {}
@@ -4575,14 +4903,13 @@ def vars_for_template4(player: Player, formfields):
     partners = {}
     g = player.group
     partner = g.get_player_by_id(player.participant.partner2)
-    display = True
     count = 0
     hints = 0
     partner1 = 0
     partner2 = 0
     partner3 = 0
     partner4 = 0
-    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
+    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
             partner1 = g.get_player_by_id(partner.participant.partnerm1)
             final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
@@ -4640,10 +4967,7 @@ def vars_for_template4(player: Player, formfields):
         hints = 7
     elif count == 3:
         hints = 10
-    elif count == 0:
-        hints = 0
-        display = False
-    final.update(dict(count=count, hints=hints, display=display, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
+    final.update(dict(count=count, hints=hints, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -4844,12 +5168,14 @@ class Economics1_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner2 += 1
+                player.click_hint_econ1_WP = 1
                 if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Number 2.")}
                 elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ1_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4884,12 +5210,14 @@ class Economics2_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner2 += 1
+                player.click_hint_econ2_WP = 1
                 if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Cheesesteaks.")}
                 elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ2_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -4956,12 +5284,14 @@ class Economics4_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner2 += 1
+                player.click_hint_econ4_WP = 1
                 if player.participant.econ_hint_requests_partner2 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: 1st Viscount.")}
                 elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ4_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5028,12 +5358,14 @@ class Cooking2_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner2 += 1
+                player.click_hint_cook2_WP = 1
                 if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: KFC fried chicken and french fries.")}
                 elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook2_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5068,12 +5400,14 @@ class Cooking3_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner2 += 1
+                player.click_hint_cook3_WP = 1
                 if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Multiple of nine.")}
                 elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook3_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5108,12 +5442,14 @@ class Cooking4_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner2 += 1
+                player.click_hint_cook4_WP = 1
                 if player.participant.cook_hint_requests_partner2 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Soak it.")}
                 elif player.participant.cook_hint_requests_partner2 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook4_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5148,12 +5484,14 @@ class Sports1_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner2 += 1
+                player.click_hint_sport1_WP = 1
                 if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Sharara.")}
                 elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport1_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5220,12 +5558,14 @@ class Sports3_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner2 += 1
+                player.click_hint_sport3_WP = 1
                 if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: During Great Depression.")}
                 elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport3_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5260,12 +5600,14 @@ class Sports4_WP(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner2 += 1
+                player.click_hint_sport4_WP = 1
                 if player.participant.sport_hint_requests_partner2 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: There is no true lord.")}
                 elif player.participant.sport_hint_requests_partner2 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport4_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5505,83 +5847,83 @@ class Hints_WR(Page):
     @staticmethod
     def get_form_fields(player: Player):
         import random
-        formfields = ['request_hints_economics_WR', 'request_hints_cooking_WR', 'request_hints_sports_WR','results_economics_WR', 'results_cooking_WR', 'results_sports_WR']
+        formfields = ['request_hints_economics_WR', 'request_hints_cooking_WR', 'request_hints_sports_WR','results_economics_WR', 'results_cooking_WR', 'results_sports_WR', 'expect_hints_economics_WR', 'expect_hints_cooking_WR', 'expect_hints_sports_WR']
         return formfields
     def vars_for_template(player: Player):
         formfields_hints = ['request_hints_economics_WR', 'request_hints_cooking_WR', 'request_hints_sports_WR']
         random.shuffle(formfields_hints)
         formfields_results = ['results_economics_WR', 'results_cooking_WR', 'results_sports_WR']
         random.shuffle(formfields_results)
-        # formfields_expect = ['expect_hints_economics_WR', 'expect_hints_cooking_WR', 'expect_hints_sports_WR']
-        # random.shuffle(formfields_expect)
+        formfields_expect = ['expect_hints_economics_WR', 'expect_hints_cooking_WR', 'expect_hints_sports_WR']
+        random.shuffle(formfields_expect)
         g = player.group
         partner = g.get_player_by_id(player.participant.partner6)
-        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, partner=partner.participant.label, round=player.participant.round3b_completed)
+        return dict(formfields_hints=formfields_hints, formfields_results=formfields_results, formfields_expect=formfields_expect, partner=partner.participant.label, round=player.participant.round3b_completed)
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
         participant.expiry = time.time() + 1200
 
-class ExpectationWR_WR(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner6 != 0)
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        partner = g.get_player_by_id(player.participant.partner6)
-        wr = 0
-        length = len(g.get_players())
-        int = list(range(1, length+1))
-        random.shuffle(int)
-        for key in int:
-            curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
-                wr = curr_player
-                break
-        partner = g.get_player_by_id(player.participant.partner6)
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
-    @staticmethod
-    def get_form_fields(player: Player):
-        import random
-
-        form_fields = ['expect_hints_economics1_WR', 'expect_hints_cooking1_WR', 'expect_hints_sports1_WR']
-        random.shuffle(form_fields)
-        return form_fields
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
-
-class ExpectationMR_WR(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return (player.round_number == participant.task_rounds3b['WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner6 != 0)
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        partner = g.get_player_by_id(player.participant.partner6)
-        mr = 0
-        length = len(g.get_players())
-        int = list(range(1, length+1))
-        random.shuffle(int)
-        for key in int:
-            curr_player = g.get_player_by_id(key)
-            if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
-                mr = curr_player
-                break
-        return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
-    @staticmethod
-    def get_form_fields(player: Player):
-        import random
-
-        form_fields = ['expect_hints_economics2_WR', 'expect_hints_cooking2_WR', 'expect_hints_sports2_WR']
-        random.shuffle(form_fields)
-        return form_fields
-    get_timeout_seconds = get_timeout_seconds1
-    timer_text = C.TIMER_TEXT
+# class ExpectationWR_WR(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds3b['WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner6 != 0)
+#     @staticmethod
+#     def vars_for_template(player:Player):
+#         g = player.group
+#         partner = g.get_player_by_id(player.participant.partner6)
+#         wr = 0
+#         length = len(g.get_players())
+#         int = list(range(1, length+1))
+#         random.shuffle(int)
+#         for key in int:
+#             curr_player = g.get_player_by_id(key)
+#             if curr_player != player and curr_player != partner and curr_player.participant.gender == 0:
+#                 wr = curr_player
+#                 break
+#         partner = g.get_player_by_id(player.participant.partner6)
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), wr=wr.participant.label, round=player.participant.round3b_completed)
+#     @staticmethod
+#     def get_form_fields(player: Player):
+#         import random
+#
+#         form_fields = ['expect_hints_economics1_WR', 'expect_hints_cooking1_WR', 'expect_hints_sports1_WR']
+#         random.shuffle(form_fields)
+#         return form_fields
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
+#
+# class ExpectationMR_WR(Page):
+#     form_model = 'player'
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         participant = player.participant
+#         return (player.round_number == participant.task_rounds3b['WR']) and (get_timeout_seconds1(player) > 0) and (participant.partner6 != 0)
+#     @staticmethod
+#     def vars_for_template(player:Player):
+#         g = player.group
+#         partner = g.get_player_by_id(player.participant.partner6)
+#         mr = 0
+#         length = len(g.get_players())
+#         int = list(range(1, length+1))
+#         random.shuffle(int)
+#         for key in int:
+#             curr_player = g.get_player_by_id(key)
+#             if curr_player != player and curr_player != partner and curr_player.participant.gender == 1:
+#                 mr = curr_player
+#                 break
+#         return dict(partner=partner.participant.label, round_number = vars_for_template1(player), mr=mr.participant.label, round=player.participant.round3b_completed)
+#     @staticmethod
+#     def get_form_fields(player: Player):
+#         import random
+#
+#         form_fields = ['expect_hints_economics2_WR', 'expect_hints_cooking2_WR', 'expect_hints_sports2_WR']
+#         random.shuffle(form_fields)
+#         return form_fields
+#     get_timeout_seconds = get_timeout_seconds1
+#     timer_text = C.TIMER_TEXT
 
 def vars_for_template5(player: Player, formfields):
     final = {}
@@ -5589,14 +5931,13 @@ def vars_for_template5(player: Player, formfields):
     partners = {}
     g = player.group
     partner = g.get_player_by_id(player.participant.partner6)
-    display = True
     count = 0
     hints = 0
     partner1 = 0
     partner2 = 0
     partner3 = 0
     partner4 = 0
-    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
+    if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
             partner1 = g.get_player_by_id(partner.participant.partnerm1)
             final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
@@ -5654,10 +5995,7 @@ def vars_for_template5(player: Player, formfields):
         hints = 7
     elif count == 3:
         hints = 10
-    elif count == 0:
-        hints = 0
-        display = False
-    final.update(dict(count=count, hints=hints, display=display, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
+    final.update(dict(count=count, hints=hints, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -5858,12 +6196,14 @@ class Economics1_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner6 += 1
+                player.click_hint_econ1_WR = 1
                 if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Middle Class contains most of the workers.")}
                 elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ1_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5898,12 +6238,14 @@ class Economics2_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner6 += 1
+                player.click_hint_econ2_WR = 1
                 if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: One person.")}
                 elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ2_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -5970,12 +6312,14 @@ class Economics4_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.econ_hint_requests_partner6 += 1
+                player.click_hint_econ3_WR = 1
                 if player.participant.econ_hint_requests_partner6 <= int(partner.participant.hints_given_econ):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Building blocks for further constitutions.")}
                 elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
+                    player.reject_hint_econ3_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -6042,12 +6386,14 @@ class Cooking2_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner6 += 1
+                player.click_hint_cook2_WR = 1
                 if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: BRRRRRR.")}
                 elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook2_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -6082,12 +6428,14 @@ class Cooking3_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner6 += 1
+                player.click_hint_cook3_WR = 1
                 if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Mist or fog.")}
                 elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook3_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -6122,12 +6470,14 @@ class Cooking4_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.cook_hint_requests_partner6 += 1
+                player.click_hint_cook4_WR = 1
                 if player.participant.cook_hint_requests_partner6 <= int(partner.participant.hints_given_cook):
                     player.participant.already_clicked = True
                     player.participant.cook_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Qeema.")}
                 elif player.participant.cook_hint_requests_partner6 > int(partner.participant.hints_given_cook):
+                    player.reject_hint_cook4_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -6162,12 +6512,14 @@ class Sports1_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner6 += 1
+                player.click_hint_sport1_WR = 1
                 if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Pakistan gained independence in 1947.")}
                 elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport1_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -6234,12 +6586,14 @@ class Sports3_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner6 += 1
+                player.click_hint_sport3_WR = 1
                 if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Death year of Fatima Jinnah.")}
                 elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport3_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -6274,12 +6628,14 @@ class Sports4_WR(Page):
         if data == 'clicked-button':
             if not player.participant.already_clicked:
                 player.participant.sport_hint_requests_partner6 += 1
+                player.click_hint_sport4_WR = 1
                 if player.participant.sport_hint_requests_partner6 <= int(partner.participant.hints_given_sport):
                     player.participant.already_clicked = True
                     player.participant.sport_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
                     return {player.id_in_group: dict(message = "Hint: Soon after WWI.")}
                 elif player.participant.sport_hint_requests_partner6 > int(partner.participant.hints_given_sport):
+                    player.reject_hint_sport4_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
@@ -6523,7 +6879,7 @@ class Final_Part4(Page):
         crt_economics4_WP=1, crt_cooking1_WP=3, crt_cooking2_WP=4, crt_cooking3_WP=3,
         crt_cooking4_WP=2, crt_sports1_WP=3, crt_sports2_WP=1, crt_sports3_WP=2,
         crt_sports4_WP=2)
-        solutions_WR = dict(crt_economics1_WR=2, crt_economics2_WR=2, crt_economics3_WR=1,
+        solutions_WR = dict(crt_economics1_WR=2, crt_economics2_WR=3, crt_economics3_WR=1,
         crt_economics4_WR=3, crt_cooking1_WR=3, crt_cooking2_WR=2, crt_cooking3_WR=4,
         crt_cooking4_WR=3, crt_sports1_WR=1, crt_sports2_WR=3, crt_sports3_WR=2,
         crt_sports4_WR=3)

@@ -32,10 +32,10 @@ PART 3: ROUND {{ round }} COOKING
     <div class="row">
       <div class="col-sm-7">
         <p></p>
-        <p><b>
-          Now consider the case in which these players have hints available.
-          How many correct answers do you think the following players will give in COOKING?
-        </b></p>
+        <p>
+          How many correct answers do you think the following players will give in <b>COOKING</b>?
+          Consider answers overall, in both questions with and without hints available.
+        </p>
         {{ for field in formfields_random }}
           {{ if field == 'cookresults2_partner1'}}
             {{ formfield 'cookresults2_partner1' label=partner1_label}}

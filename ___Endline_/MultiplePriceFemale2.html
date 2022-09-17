@@ -1,0 +1,151 @@
+{{ block title }}FINAL SURVEY SECTION A: PART 2{{ endblock }}
+{{ block content }}
+
+    <p>We will now ask you to choose repeatedly between two options, A and B.</p>
+    <p>Think back to your experience as a test-taker: you have to answer one question and <u>you have the option to get a hint at a cost.</u></p>
+    <style>
+        .card2 {
+          background-color: #BFD7FF;
+        }
+    </style>
+    <p></p>
+    <div class="card2 rounded">
+      <div class="card-body">
+        <ul>
+          <li>In option A, you take the hint privately. This means that nobody will see that you took a hint.</li>
+          <li>In option B, you take the hint in front of a helper. This means that the helper will know whether you took the hint or not.</li>
+        </ul>
+      </div>
+    </div>
+    <p>In either option, the <u>hint is exactly the same</u> and you decided to take the hint <u>(there is no option of NOT taking the hint)</u>.</p>
+    <b><p>For each of the questions below, choose repeatedly between Options A and B.</p></b>
+    <style>
+        .card3 {
+          background-color: #FFBFC8;
+        }
+    </style>
+    <p></p>
+    <div class="card3 rounded">
+      <div class="card-body">
+        <b>FOR THE FOLLOWING CHOICES, YOU ARE MATCHED WITH: {{ wr }}</b>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-2" style="line-height: 28px">
+        <br>
+        <b>No.</b>
+        <hr color="#FFFFFF">
+        1.
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        2.
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        3.
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        4.
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        5.
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        6.
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        7.
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+      </div>
+      <div class="col-sm-3" style="line-height: 20px">
+        <br>
+        <b>Option A</b>
+        <hr color="#FFFFFF">
+        Hint cost is 5 and will be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 5 and will be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 5 and will be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 5 and will be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 5 and will be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 5 and will be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 5 and will be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+      </div>
+      <div class="col-sm-4" style="line-height: 20px">
+        <br>
+        <b>Option B</b>
+        <hr color="#FFFFFF">
+        Hint cost is 3 and will not be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 4 and will not be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 5 and will not be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 6 and will not be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 7 and will not be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 8 and will not be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+        Hint cost is 9 and will not be seen by helper
+        <br>
+        <br>
+        <hr color="#FFFFFF">
+      </div>
+      <div class="col-sm-3" style="line-height: 22px">
+        <br>
+        <b>Choice</b>
+        {{ for field in form }}
+          <hr color="#FFFFFF">
+          {{ field }}
+          <br>
+        {{ endfor }}
+        <hr color="#FFFFFF">
+      </div>
+    </div>
+
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

@@ -19,8 +19,8 @@ class Player(BasePlayer):
     testing_pay0 = models.IntegerField()
     helping_pay0 = models.IntegerField()
     wtp_pay0 = models.IntegerField()
-    game_pay0 = model.IntegerField()
-    guess_bonus_pay0 = model.IntegerField()
+    game_pay0 = models.IntegerField()
+    guess_bonus_pay0 = models.IntegerField()
 
 # PAGES
 class Payment(Page):

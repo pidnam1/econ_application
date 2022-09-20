@@ -1066,37 +1066,8 @@ class PersonalityTraitsTable(Page):
 class Congratulations(Page):
     form_model = 'player'
 
-class Payment(Page):
-    @staticmethod
-    def vars_for_template(player: Player):
-        player.participant.total_payment = 300
-
-        testing_pay = list(player.participant.payoff_tt.values())
-        random.shuffle(testing_pay)
-        player.participant.total_payment += testing_pay[0]
-        testing_pay0 = testing_pay[0]
-
-        #add all helpers
-        helping_pay = list(player.participant.payoff_help.values())
-        random.shuffle(helping_pay)
-        player.participant.total_payment += helping_pay[0]
-        helping_pay0 = helping_pay[0]
-
-        #subtract wtp_payment
-        wtp_pay0 = 0-player.participant.wtp_payment
-        player.participant.total_payment += wtp_pay0
-
-        #add amount game
-        player.participant.total_payment += player.participant.game_payoff
-
-        #add bonus payoff
-        player.participant.total_payment += player.participant.guess_bonus_payoff
-        return dict(testing_pay0=testing_pay0, helping_pay0=helping_pay0, guess_bonus_pay0=player.participant.guess_bonus_payoff, wtp_pay0=0-player.participant.wtp_payment, amount_game_pay0=player.participant.game_payoff, total_payment0=player.participant.total_payment)
-
-
 page_sequence = [HelperTable, MultiplePriceFemale1, MultiplePriceFemale2, MultiplePriceMale1,
 MultiplePriceMale2, WTP_Subject, ExpFeedback, ExpFeedbackNo1, ExpFeedbackNo2, ExpFeedbackNo3,
 ExpDecisions, ExpDecisionsNo, AmountGame, AmountGameResults, GenderTable, ClassRelations1,
 Ethics1, Ethics2, Personality, PersonalityTraitsTable, BasicInfo, BasicInfoOther,
-AcademicInfo, AcademicInfoOther, FriendsTable, ClassRelations3, Congratulations,
-Payment]
+AcademicInfo, AcademicInfoOther, FriendsTable, ClassRelations3, Congratulations]

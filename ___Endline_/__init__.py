@@ -77,7 +77,10 @@ def make_image_data(image_names):
     return [dict(name=name, path='{}'.format(name)) for name in image_names]
 
 class Player(BasePlayer):
-    dob = models.StringField()
+    gender = models.IntegerField()
+    day_of_birth = models.IntegerField(min=1, max=31)
+    month_of_birth = models.IntegerField(min=1, max=12)
+    year_of_birth = models.IntegerField(min=1900, max=2022)
     high_edu = models.IntegerField(
         choices=[[0, 'Matric'], [1, 'FA/FSc'], [2, 'BA/BSc.'], [99, 'Other (specify on the next page)']],
         widget=widgets.RadioSelect,
@@ -138,11 +141,6 @@ class Player(BasePlayer):
     friend_name3 = models.StringField(label='', blank=True)
     friend_name4 = models.StringField(label='', blank=True)
     friend_name5 = models.StringField(label='', blank=True)
-    friend_section1 = models.StringField(label='')
-    friend_section2 = models.StringField(label='', blank=True)
-    friend_section3 = models.StringField(label='', blank=True)
-    friend_section4 = models.StringField(label='', blank=True)
-    friend_section5 = models.StringField(label='', blank=True)
     friend_years1 = models.IntegerField(label='')
     friend_years2 = models.IntegerField(label='', blank=True)
     friend_years3 = models.IntegerField(label='', blank=True)
@@ -616,6 +614,7 @@ class HelperTable(Page):
     def before_next_page(player:Player, timeout_happened):
         player.participant.random_multiple_price = [1,2]
         random.shuffle(player.participant.random_multiple_price)
+        player.gender = player.participant.gender
 
 class MultiplePriceFemale1(Page):
     form_model = 'player'
@@ -969,7 +968,7 @@ class BasicInfoOther(Page):
 
 class AcademicInfo(Page):
     form_model = 'player'
-    form_fields = ['dob','high_edu','subject_prior','high_edu_school','rank_prior','extra_curric','degree_aspire','pref_occu','study_abroad','friend_count','friend_uni']
+    form_fields = ['day_of_birth','month_of_birth','year_of_birth','high_edu','subject_prior','high_edu_school','rank_prior','extra_curric','degree_aspire','pref_occu','study_abroad','friend_count','friend_uni']
     @staticmethod
     def error_message(player: Player, values):
         if (values['friend_uni'] > values['friend_count']) and (values['friend_uni'] != 99):
@@ -1010,14 +1009,14 @@ class AcademicInfoOther(Page):
 
 class FriendsTable(Page):
     form_model = 'player'
-    form_fields = ['friend_name1','friend_name2','friend_name3','friend_name4','friend_name5','friend_section1','friend_section2','friend_section3','friend_section4','friend_section5','friend_years1','friend_years2','friend_years3','friend_years4','friend_years5']
+    form_fields = ['friend_name1','friend_name2','friend_name3','friend_name4','friend_name5','friend_years1','friend_years2','friend_years3','friend_years4','friend_years5']
     @staticmethod
     def vars_for_template(player: Player):
-        friend1 = ['friend_name1','friend_section1','friend_years1']
-        friend2 = ['friend_name2','friend_section2','friend_years2']
-        friend3 = ['friend_name3','friend_section3','friend_years3']
-        friend4 = ['friend_name4','friend_section4','friend_years4']
-        friend5 = ['friend_name5','friend_section5','friend_years5']
+        friend1 = ['friend_name1','friend_years1']
+        friend2 = ['friend_name2','friend_years2']
+        friend3 = ['friend_name3','friend_years3']
+        friend4 = ['friend_name4','friend_years4']
+        friend5 = ['friend_name5','friend_years5']
         return dict(friend1=friend1,friend2=friend2,friend3=friend3,friend4=friend4,friend5=friend5)
     @staticmethod
     def error_message(player: Player, values):

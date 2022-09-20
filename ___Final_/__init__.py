@@ -25,6 +25,7 @@ def make_field_one():
     )
 
 class Player(BasePlayer):
+    gender = models.IntegerField()
     wtp = models.IntegerField(
         choices=[[1, 'Yes'], [0, 'No']], initial = 0,
         label='Would you be willing to use part of your payment to do so?',
@@ -291,6 +292,7 @@ class WTP_YesNo(Page):
     def is_displayed(player: Player):
         participant = player.participant
         startup(player)
+        player.gender = player.participant.gender
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player: Player):

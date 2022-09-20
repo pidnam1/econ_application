@@ -23,13 +23,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    name = models.StringField(label='What is your name?')
-    age = models.IntegerField(label='What is your age?', min=13, max=125)
-    gender = models.StringField(
-        choices=[['Male', 'Male'], ['Female', 'Female']],
-        label='What is your gender?',
-        widget=widgets.RadioSelect,
-    )
+    gender = models.IntegerField()
     crt_economics1 = models.IntegerField(
         choices=[[1, 'Population'], [2, 'Territory'], [3, 'Government'], [4, 'Sovereignty']],
         label='''
@@ -237,6 +231,7 @@ class Demographics(Page):
         participant = player.participant
         import time
         participant.expiry = time.time() + 600
+        player.gender = player.participant.gender
 
 class Transition(Page):
     form_model = 'player'

@@ -24,6 +24,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    gender = models.IntegerField()
     request_hints_economics = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -454,6 +455,7 @@ class Demographics(Page):
         participant.expiry = time.time() + 1200
         player.participant.prev_hint = 0
         player.participant.responses_0b = dict()
+        player.gender = player.participant.gender
 
 
 class Transition(Page):

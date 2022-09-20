@@ -43,6 +43,8 @@ def make_field_one():
 
 class Player(BasePlayer):
 #MALE PREFERRED
+    gender = models.IntegerField()
+    id_mp = models.IntegerField()
     request_hints_economics_MP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -450,6 +452,7 @@ class Player(BasePlayer):
     )
 
 #MALE RANDOM
+    id_mr = models.IntegerField()
     request_hints_economics_MR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -861,6 +864,7 @@ class Player(BasePlayer):
     )
 
 #WOMAN PREFERRED
+    id_wp = models.IntegerField()
     request_hints_economics_WP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -1272,6 +1276,7 @@ class Player(BasePlayer):
     )
 
 #WOMAN RANDOM
+    id_wr = models.IntegerField()
     request_hints_economics_WR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -2740,6 +2745,11 @@ class Demographics(Page):
         player.participant.responses_3b_WP = dict()
         player.participant.responses_3b_WR = dict()
         player.participant.guess_bonus_payoff = 0
+        player.id_mp = player.participant.partner3
+        player.id_mr = player.participant.partner8
+        player.id_wp = player.participant.partner2
+        player.id_wr = player.participant.partner6
+        player.gender = player.participant.gender
 
 #MALE PREFERRED
 class Transition_MP(Page):

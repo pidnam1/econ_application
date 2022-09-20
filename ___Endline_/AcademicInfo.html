@@ -1,9 +1,13 @@
 {{ block title }}FINAL SURVEY SECTION D: PART 2{{ endblock }}
 {{ block content }}
 
-    <p><b>1. What is your date of birth? (Please list as YYYY/MM/DD)</b></p>
-    {{ form.dob }}
-    {{ formfield_errors 'dob' }}
+    <p><b>1. What is your date of birth? (Please list as DD/MM/YYYY)</b></p>
+    {{ form.day_of_birth }}
+    {{ formfield_errors 'day_of_birth' }}
+    {{ form.month_of_birth }}
+    {{ formfield_errors 'month_of_birth' }}
+    {{ form.year_of_birth }}
+    {{ formfield_errors 'year_of_birth' }}
     <p></p>
 
     <p><b>2. Before the current degree that you are studying, what was the highest qualification that you attained?</b></p>

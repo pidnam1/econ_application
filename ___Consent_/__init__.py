@@ -31,6 +31,7 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
+    gender = models.IntegerField()
     esig = models.StringField(label='Please type your name')
     agree = models.StringField(
         choices=[['I agree', 'I agree']],
@@ -75,6 +76,7 @@ class Consent(Page):
         change_labels(player)
         set_gender(player)
         set_players(player)
+        player.gender = player.participant.gender
 
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"

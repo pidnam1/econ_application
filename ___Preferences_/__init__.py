@@ -37,10 +37,11 @@ def make_field2(label):
 
 def make_field3(label):
     return models.StringField(
-        label=label, blank=True,
+        label=label,
     )
 
 class Player(BasePlayer):
+    gender = models.IntegerField()
     f1_1_1 = make_field1('')
     f2_1_1 = make_field1('')
     f3_1_1 = make_field1('')
@@ -171,6 +172,7 @@ class Transition(Page):
                 c = g.get_player_by_id(current_player)
                 player.participant.players.append(c.participant.label)
         print(player.participant.players)
+        player.gender = player.participant.gender
 
 class Pref_Helper(Page):
     form_model = 'player'
@@ -263,42 +265,61 @@ class Pref_Helper_Why(Page):
         "10. " + player.participant.name_list[9]]
         return dict(player_why = player_why)
 
+@staticmethod
+def vars_for_template1(player: Player):
+    players_other = []
+    form_fields = []
+    if player.f1_2_1 == "9. Other":
+        player1 = [player.participant.name_list[0]]
+        players_other = players_other + player1
+        formfields.append('f1_3_1')
+    if player.f2_2_1 == "9. Other":
+        player2 = [player.participant.name_list[1]]
+        players_other = players_other + player2
+        formfields.append('f2_3_1')
+    if player.f3_2_1 == "9. Other":
+        player3 = [player.participant.name_list[2]]
+        players_other = players_other + player3
+        formfields.append('f3_3_1')
+    if player.f4_2_1 == "9. Other":
+        player4 = [player.participant.name_list[3]]
+        players_other = players_other + player4
+        formfields.append('f4_3_1')
+    if player.f5_2_1 == "9. Other":
+        player5 = [player.participant.name_list[4]]
+        players_other = players_other + player5
+        formfields.append('f5_3_1')
+    if player.f6_2_1 == "9. Other":
+        player6 = [player.participant.name_list[5]]
+        players_other = players_other + player6
+        formfields.append('f6_3_1')
+    if player.f7_2_1 == "9. Other":
+        player7 = [player.participant.name_list[6]]
+        players_other = players_other + player7
+        formfields.append('f7_3_1')
+    if player.f8_2_1 == "9. Other":
+        player8 = [player.participant.name_list[7]]
+        players_other = players_other + player8
+        formfields.append('f8_3_1')
+    if player.f9_2_1 == "9. Other":
+        player9 = [player.participant.name_list[8]]
+        players_other = players_other + player9
+        formfields.append('f9_3_1')
+    if player.f10_2_1 == "9. Other":
+        player10 = [player.participant.name_list[9]]
+        players_other = players_other + player10
+        formfields.append('f10_3_1')
+    return [players_other, formfields]
+
 class Pref_Helper_Other(Page):
     form_model = 'player'
-    form_fields = ['f1_3_1','f2_3_1','f3_3_1','f4_3_1','f5_3_1','f6_3_1','f7_3_1','f8_3_1','f9_3_1','f10_3_1']
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = vars_for_template1(player)[1]
+        return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        players_other = []
-        if player.f1_2_1 == "9. Other":
-            player1 = [player.participant.name_list[0]]
-            players_other = players_other + player1
-        if player.f2_2_1 == "9. Other":
-            player2 = [player.participant.name_list[1]]
-            players_other = players_other + player2
-        if player.f3_2_1 == "9. Other":
-            player3 = [player.participant.name_list[2]]
-            players_other = players_other + player3
-        if player.f4_2_1 == "9. Other":
-            player4 = [player.participant.name_list[3]]
-            players_other = players_other + player4
-        if player.f5_2_1 == "9. Other":
-            player5 = [player.participant.name_list[4]]
-            players_other = players_other + player5
-        if player.f6_2_1 == "9. Other":
-            player6 = [player.participant.name_list[5]]
-            players_other = players_other + player6
-        if player.f7_2_1 == "9. Other":
-            player7 = [player.participant.name_list[6]]
-            players_other = players_other + player7
-        if player.f8_2_1 == "9. Other":
-            player8 = [player.participant.name_list[7]]
-            players_other = players_other + player8
-        if player.f9_2_1 == "9. Other":
-            player9 = [player.participant.name_list[8]]
-            players_other = players_other + player9
-        if player.f10_2_1 == "9. Other":
-            player10 = [player.participant.name_list[9]]
-            players_other = players_other + player10
+        players_other = vars_for_template1(player)[0]
         return dict(players_other = players_other)
     @staticmethod
     def is_displayed(player: Player):
@@ -391,42 +412,61 @@ class Pref_TT_Why(Page):
         "10. " + player.participant.name_list1[9]]
         return dict(player_why = player_why)
 
+@staticmethod
+def vars_for_template(player: Player):
+    players_other = []
+    formfields = []
+    if player.f1_2_2 == "9. Other":
+        player1 = [player.participant.name_list1[0]]
+        players_other = players_other + player1
+        formfields.append('f1_3_2')
+    if player.f2_2_2 == "9. Other":
+        player2 = [player.participant.name_list1[1]]
+        players_other = players_other + player2
+        formfields.append('f2_3_2')
+    if player.f3_2_2 == "9. Other":
+        player3 = [player.participant.name_list1[2]]
+        players_other = players_other + player3
+        formfields.append('f3_3_2')
+    if player.f4_2_2 == "9. Other":
+        player4 = [player.participant.name_list1[3]]
+        players_other = players_other + player4
+        formfields.append('f4_3_2')
+    if player.f5_2_2 == "9. Other":
+        player5 = [player.participant.name_list1[4]]
+        players_other = players_other + player5
+        formfields.append('f5_3_2')
+    if player.f6_2_2 == "9. Other":
+        player6 = [player.participant.name_list1[5]]
+        players_other = players_other + player6
+        formfields.append('f6_3_2')
+    if player.f7_2_2 == "9. Other":
+        player7 = [player.participant.name_list1[6]]
+        players_other = players_other + player7
+        formfields.append('f7_3_2')
+    if player.f8_2_2 == "9. Other":
+        player8 = [player.participant.name_list1[7]]
+        players_other = players_other + player8
+        formfields.append('f8_3_2')
+    if player.f9_2_2 == "9. Other":
+        player9 = [player.participant.name_list1[8]]
+        players_other = players_other + player9
+        formfields.append('f9_3_2')
+    if player.f10_2_2 == "9. Other":
+        player10 = [player.participant.name_list1[9]]
+        players_other = players_other + player10
+        formfields.append('f10_3_2')
+    return [players_other, formfields]
+
 class Pref_TT_Other(Page):
     form_model = 'player'
-    form_fields = ['f1_3_2','f2_3_2','f3_3_2','f4_3_2','f5_3_2','f6_3_2','f7_3_2','f8_3_2','f9_3_2','f10_3_2']
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = vars_for_template2(player)[1]
+        return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        players_other = []
-        if player.f1_2_2 == "9. Other":
-            player1 = [player.participant.name_list1[0]]
-            players_other = players_other + player1
-        if player.f2_2_2 == "9. Other":
-            player2 = [player.participant.name_list1[1]]
-            players_other = players_other + player2
-        if player.f3_2_2 == "9. Other":
-            player3 = [player.participant.name_list1[2]]
-            players_other = players_other + player3
-        if player.f4_2_2 == "9. Other":
-            player4 = [player.participant.name_list1[3]]
-            players_other = players_other + player4
-        if player.f5_2_2 == "9. Other":
-            player5 = [player.participant.name_list1[4]]
-            players_other = players_other + player5
-        if player.f6_2_2 == "9. Other":
-            player6 = [player.participant.name_list1[5]]
-            players_other = players_other + player6
-        if player.f7_2_2 == "9. Other":
-            player7 = [player.participant.name_list1[6]]
-            players_other = players_other + player7
-        if player.f8_2_2 == "9. Other":
-            player8 = [player.participant.name_list1[7]]
-            players_other = players_other + player8
-        if player.f9_2_2 == "9. Other":
-            player9 = [player.participant.name_list1[8]]
-            players_other = players_other + player9
-        if player.f10_2_2 == "9. Other":
-            player10 = [player.participant.name_list1[9]]
-            players_other = players_other + player10
+        players_other = vars_for_template2(player)[0]
         return dict(players_other = players_other)
     @staticmethod
     def is_displayed(player: Player):

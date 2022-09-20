@@ -23,13 +23,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    name = models.StringField(label='What is your name?')
-    age = models.IntegerField(label='What is your age?', min=13, max=125)
-    gender = models.StringField(
-        choices=[['Male', 'Male'], ['Female', 'Female']],
-        label='What is your gender?',
-        widget=widgets.RadioSelect,
-    )
+    gender = models.IntegerField()
     request_hints_economics = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -414,6 +408,7 @@ class Demographics(Page):
         participant.expiry = time.time() + 1200
         player.participant.prev_hint = 0
         player.participant.responses_0 = dict()
+        player.gender = player.participant.gender
 
 class Transition(Page):
     form_model = 'player'

@@ -36,6 +36,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 #MALE PREFERRED
+    gender = models.IntegerField()
+    id_mp = models.IntegerField()
     request_hints_economics_MP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -379,6 +381,7 @@ class Player(BasePlayer):
     )
 
 #MALE RANDOM
+    id_mr = models.IntegerField()
     request_hints_economics_MR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -723,6 +726,7 @@ class Player(BasePlayer):
     )
 
 #WOMAN PREFERRED
+    id_wp = models.IntegerField()
     request_hints_economics_WP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -1060,6 +1064,7 @@ class Player(BasePlayer):
     )
 
 #WOMAN RANDOM
+    id_wr = models.IntegerField()
     request_hints_economics_WR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
         label='''In Political Science?''',
@@ -2060,6 +2065,11 @@ class Demographics(Page):
         player.participant.responses_2_MR = dict()
         player.participant.responses_2_WP = dict()
         player.participant.responses_2_WR = dict()
+        player.id_mp = player.participant.partner4
+        player.id_mr = player.participant.partner7
+        player.id_wp = player.participant.partner1
+        player.id_wr = player.participant.partner5
+        player.gender = player.participant.gender
 
 class Transition_MP(Page):
     form_model = 'player'

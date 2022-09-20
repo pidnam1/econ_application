@@ -38,6 +38,7 @@ def make_field_two():
         widget=widgets.RadioSelectHorizontal,
     )
 class Player(BasePlayer):
+    gender = models.IntegerField()
     econhints1_partner1 = make_field_one()
     econhints1_partner2 = make_field_one()
     econhints1_partner3 = make_field_one()
@@ -565,6 +566,7 @@ class Demographics(Page):
     def vars_for_template(player: Player):
         ##set_helpers_new(player.subsession)
         set_partners(player)
+        player.gender = player.participant.gender
         return dict()
 
 def vars_for_template1(player: Player, formfields):

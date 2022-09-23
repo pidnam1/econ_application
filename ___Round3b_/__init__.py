@@ -1684,6 +1684,10 @@ class Player(BasePlayer):
     econ_hint_requests = models.IntegerField(initial=0)
     cook_hint_requests = models.IntegerField(initial=0)
     sport_hint_requests = models.IntegerField(initial=0)
+    id_partner_pm_MP = models.IntegerField()
+    id_partner_rm_MP = models.IntegerField()
+    id_partner_pf_MP = models.IntegerField()
+    id_partner_rf_MP = models.IntegerField()
     confidence_econ_MP = models.IntegerField(
         min=0, max=C.ENDOWMENT,
     )
@@ -1692,46 +1696,10 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
         label='YOU',
     )
-    econhints_partner1_MP = make_field_one()
-    econhints_partner2_MP = make_field_one()
-    econhints_partner3_MP = make_field_one()
-    econhints_partner4_MP = make_field_one()
-    confidence_econ_MR = models.IntegerField(
-        min=0, max=C.ENDOWMENT,
-    )
-    econhints_you_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-        label='YOU',
-    )
-    econhints_partner1_MR = make_field_one()
-    econhints_partner2_MR = make_field_one()
-    econhints_partner3_MR = make_field_one()
-    econhints_partner4_MR = make_field_one()
-    confidence_econ_WP = models.IntegerField(
-        min=0, max=C.ENDOWMENT,
-    )
-    econhints_you_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-        label='YOU',
-    )
-    econhints_partner1_WP = make_field_one()
-    econhints_partner2_WP = make_field_one()
-    econhints_partner3_WP = make_field_one()
-    econhints_partner4_WP = make_field_one()
-    confidence_econ_WR = models.IntegerField(
-        min=0, max=C.ENDOWMENT,
-    )
-    econhints_you_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-        label='YOU',
-    )
-    econhints_partner1_WR = make_field_one()
-    econhints_partner2_WR = make_field_one()
-    econhints_partner3_WR = make_field_one()
-    econhints_partner4_WR = make_field_one()
+    econhints_partner_pm_MP = make_field_one()
+    econhints_partner_rm_MP = make_field_one()
+    econhints_partner_pf_MP = make_field_one()
+    econhints_partner_rf_MP = make_field_one()
     confidence_cook_MP = models.IntegerField(
         min=0, max=C.ENDOWMENT,
     )
@@ -1740,46 +1708,10 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
         label='YOU',
     )
-    cookhints_partner1_MP = make_field_one()
-    cookhints_partner2_MP = make_field_one()
-    cookhints_partner3_MP = make_field_one()
-    cookhints_partner4_MP = make_field_one()
-    confidence_cook_MR = models.IntegerField(
-        min=0, max=C.ENDOWMENT,
-    )
-    cookhints_you_MR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-        label='YOU',
-    )
-    cookhints_partner1_MR = make_field_one()
-    cookhints_partner2_MR = make_field_one()
-    cookhints_partner3_MR = make_field_one()
-    cookhints_partner4_MR = make_field_one()
-    confidence_cook_WP = models.IntegerField(
-        min=0, max=C.ENDOWMENT,
-    )
-    cookhints_you_WP = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-        label='YOU',
-    )
-    cookhints_partner1_WP = make_field_one()
-    cookhints_partner2_WP = make_field_one()
-    cookhints_partner3_WP = make_field_one()
-    cookhints_partner4_WP = make_field_one()
-    confidence_cook_WR = models.IntegerField(
-        min=0, max=C.ENDOWMENT,
-    )
-    cookhints_you_WR = models.StringField(
-        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        widget=widgets.RadioSelectHorizontal,
-        label='YOU',
-    )
-    cookhints_partner1_WR = make_field_one()
-    cookhints_partner2_WR = make_field_one()
-    cookhints_partner3_WR = make_field_one()
-    cookhints_partner4_WR = make_field_one()
+    cookhints_partner_pm_MP = make_field_one()
+    cookhints_partner_rm_MP = make_field_one()
+    cookhints_partner_pf_MP = make_field_one()
+    cookhints_partner_rf_MP = make_field_one()
     confidence_sport_MP = models.IntegerField(
         min=0, max=C.ENDOWMENT,
     )
@@ -1788,10 +1720,38 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
         label='YOU',
     )
-    sporthints_partner1_MP = make_field_one()
-    sporthints_partner2_MP = make_field_one()
-    sporthints_partner3_MP = make_field_one()
-    sporthints_partner4_MP = make_field_one()
+    sporthints_partner_pm_MP = make_field_one()
+    sporthints_partner_rm_MP = make_field_one()
+    sporthints_partner_pf_MP = make_field_one()
+    sporthints_partner_rf_MP = make_field_one()
+    confidence_econ_MR = models.IntegerField(
+        min=0, max=C.ENDOWMENT,
+    )
+    id_partner_pm_MR = models.IntegerField()
+    id_partner_rm_MR = models.IntegerField()
+    id_partner_pf_MR = models.IntegerField()
+    id_partner_rf_MR = models.IntegerField()
+    econhints_you_MR = models.StringField(
+        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+        widget=widgets.RadioSelectHorizontal,
+        label='YOU',
+    )
+    econhints_partner_pm_MR = make_field_one()
+    econhints_partner_rm_MR = make_field_one()
+    econhints_partner_pf_MR = make_field_one()
+    econhints_partner_rf_MR = make_field_one()
+    confidence_cook_MR = models.IntegerField(
+        min=0, max=C.ENDOWMENT,
+    )
+    cookhints_you_MR = models.StringField(
+        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+        widget=widgets.RadioSelectHorizontal,
+        label='YOU',
+    )
+    cookhints_partner_pm_MR = make_field_one()
+    cookhints_partner_rm_MR = make_field_one()
+    cookhints_partner_pf_MR = make_field_one()
+    cookhints_partner_rf_MR = make_field_one()
     confidence_sport_MR = models.IntegerField(
         min=0, max=C.ENDOWMENT,
     )
@@ -1800,10 +1760,38 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
         label='YOU',
     )
-    sporthints_partner1_MR = make_field_one()
-    sporthints_partner2_MR = make_field_one()
-    sporthints_partner3_MR = make_field_one()
-    sporthints_partner4_MR = make_field_one()
+    sporthints_partner_pm_MR = make_field_one()
+    sporthints_partner_rm_MR = make_field_one()
+    sporthints_partner_pf_MR = make_field_one()
+    sporthints_partner_rf_MR = make_field_one()
+    confidence_econ_WP = models.IntegerField(
+        min=0, max=C.ENDOWMENT,
+    )
+    econhints_you_WP = models.StringField(
+        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+        widget=widgets.RadioSelectHorizontal,
+        label='YOU',
+    )
+    id_partner_pm_WP = models.IntegerField()
+    id_partner_rm_WP = models.IntegerField()
+    id_partner_pf_WP = models.IntegerField()
+    id_partner_rf_WP = models.IntegerField()
+    econhints_partner_pm_WP = make_field_one()
+    econhints_partner_rm_WP = make_field_one()
+    econhints_partner_pf_WP = make_field_one()
+    econhints_partner_rf_WP = make_field_one()
+    confidence_cook_WP = models.IntegerField(
+        min=0, max=C.ENDOWMENT,
+    )
+    cookhints_you_WP = models.StringField(
+        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+        widget=widgets.RadioSelectHorizontal,
+        label='YOU',
+    )
+    cookhints_partner_pm_WP = make_field_one()
+    cookhints_partner_rm_WP = make_field_one()
+    cookhints_partner_pf_WP = make_field_one()
+    cookhints_partner_rf_WP = make_field_one()
     confidence_sport_WP = models.IntegerField(
         min=0, max=C.ENDOWMENT,
     )
@@ -1812,10 +1800,38 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
         label='YOU',
     )
-    sporthints_partner1_WP = make_field_one()
-    sporthints_partner2_WP = make_field_one()
-    sporthints_partner3_WP = make_field_one()
-    sporthints_partner4_WP = make_field_one()
+    sporthints_partner_pm_WP = make_field_one()
+    sporthints_partner_rm_WP = make_field_one()
+    sporthints_partner_pf_WP = make_field_one()
+    sporthints_partner_rf_WP = make_field_one()
+    confidence_econ_WR = models.IntegerField(
+        min=0, max=C.ENDOWMENT,
+    )
+    econhints_you_WR = models.StringField(
+        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+        widget=widgets.RadioSelectHorizontal,
+        label='YOU',
+    )
+    id_partner_pm_WR = models.IntegerField()
+    id_partner_rm_WR = models.IntegerField()
+    id_partner_pf_WR = models.IntegerField()
+    id_partner_rf_WR = models.IntegerField()
+    econhints_partner_pm_WR = make_field_one()
+    econhints_partner_rm_WR = make_field_one()
+    econhints_partner_pf_WR = make_field_one()
+    econhints_partner_rf_WR = make_field_one()
+    confidence_cook_WR = models.IntegerField(
+        min=0, max=C.ENDOWMENT,
+    )
+    cookhints_you_WR = models.StringField(
+        choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
+        widget=widgets.RadioSelectHorizontal,
+        label='YOU',
+    )
+    cookhints_partner_pm_WR = make_field_one()
+    cookhints_partner_rm_WR = make_field_one()
+    cookhints_partner_pf_WR = make_field_one()
+    cookhints_partner_rf_WR = make_field_one()
     confidence_sport_WR = models.IntegerField(
         min=0, max=C.ENDOWMENT,
     )
@@ -1824,10 +1840,10 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
         label='YOU',
     )
-    sporthints_partner1_WR = make_field_one()
-    sporthints_partner2_WR = make_field_one()
-    sporthints_partner3_WR = make_field_one()
-    sporthints_partner4_WR = make_field_one()
+    sporthints_partner_pm_WR = make_field_one()
+    sporthints_partner_rm_WR = make_field_one()
+    sporthints_partner_pf_WR = make_field_one()
+    sporthints_partner_rf_WR = make_field_one()
 
 
 
@@ -2853,68 +2869,76 @@ def vars_for_template2(player: Player, formfields):
     partner = g.get_player_by_id(player.participant.partner3)
     count = 0
     hints = 0
-    partner1 = 0
-    partner2 = 0
-    partner3 = 0
-    partner4 = 0
+    partner_pm = 0
+    partner_rm = 0
+    partner_pf = 0
+    partner_rf = 0
     is2 = False
     if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
-            partner1 = g.get_player_by_id(partner.participant.partnerm1)
-            final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
-            partner1 = partner1.participant.label
-            partners.append(partner1)
+            partner_pm = g.get_player_by_id(partner.participant.partnerm1)
+            player.id_partner_pm_MP = partner.participant.partnerm1
+            final.update(dict(partner_pm_label='{}?'.format(partner_pm.participant.label)))
+            partner_pm = partner_pm.participant.label
+            partners.append(partner_pm)
             formfields_random.append(formfields[0])
             count+=1
         if (partner.participant.partnerm3 != player.id_in_group) and (partner.participant.partnerm3 != 0):
-            partner2 = g.get_player_by_id(partner.participant.partnerm3)
-            final.update(dict(partner2_label='{}?'.format(partner2.participant.label)))
-            partner2 = partner2.participant.label
-            partners.append(partner2)
+            partner_rm = g.get_player_by_id(partner.participant.partnerm3)
+            player.id_partner_rm_MP = partner.participant.partnerm3
+            final.update(dict(partner_rm_label='{}?'.format(partner_rm.participant.label)))
+            partner_rm = partner_rm.participant.label
+            partners.append(partner_rm)
             formfields_random.append(formfields[1])
             count+=1
         if (partner.participant.partnerf1 != player.id_in_group) and (partner.participant.partnerf1 != 0):
-            partner3 = g.get_player_by_id(partner.participant.partnerf1)
-            final.update(dict(partner3_label='{}?'.format(partner3.participant.label)))
-            partner3 = partner3.participant.label
-            partners.append(partner3)
+            partner_pf = g.get_player_by_id(partner.participant.partnerf1)
+            player.id_partner_pf_MP = partner.participant.partnerf1
+            final.update(dict(partner_pf_label='{}?'.format(partner_pf.participant.label)))
+            partner_pf = partner_pf.participant.label
+            partners.append(partner_pf)
             formfields_random.append(formfields[2])
             count+=1
         if (partner.participant.partnerf3 != player.id_in_group) and (partner.participant.partnerf3 != 0):
-            partner4 = g.get_player_by_id(partner.participant.partnerf3)
-            final.update(dict(partner4_label='{}?'.format(partner4.participant.label)))
-            partner4 = partner4.participant.label
-            partners.append(partner4)
+            partner_rf = g.get_player_by_id(partner.participant.partnerf3)
+            player.id_partner_rf_MP = partner.participant.partnerf3
+            final.update(dict(partner_rf_label='{}?'.format(partner_rf.participant.label)))
+            partner_rf = partner_rf.participant.label
+            partners.append(partner_rf)
             formfields_random.append(formfields[3])
             count+=1
     elif (partner.participant.partnerm2 == player.id_in_group) or (partner.participant.partnerm4 == player.id_in_group) or (partner.participant.partnerf2 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
         is2 = True
         if (partner.participant.partnerm2 != player.id_in_group) and (partner.participant.partnerm2 != 0):
-            partner1 = g.get_player_by_id(partner.participant.partnerm2)
-            final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
-            partner1 = partner1.participant.label
-            partners.append(partner1)
+            partner_pm = g.get_player_by_id(partner.participant.partnerm2)
+            player.id_partner_pm_MP = partner.participant.partnerm2
+            final.update(dict(partner_pm_label='{}?'.format(partner_pm.participant.label)))
+            partner_pm = partner_pm.participant.label
+            partners.append(partner_pm)
             formfields_random.append(formfields[0])
             count+=1
         if (partner.participant.partnerm4 != player.id_in_group) and (partner.participant.partnerm4 != 0):
-            partner2 = g.get_player_by_id(partner.participant.partnerm4)
-            final.update(dict(partner2_label='{}?'.format(partner2.participant.label)))
-            partner2 = partner2.participant.label
-            partners.append(partner2)
+            partner_rm = g.get_player_by_id(partner.participant.partnerm4)
+            player.id_partner_rm_MP = partner.participant.partnerm4
+            final.update(dict(partner_rm_label='{}?'.format(partner_rm.participant.label)))
+            partner_rm = partner_rm.participant.label
+            partners.append(partner_rm)
             formfields_random.append(formfields[1])
             count+=1
         if (partner.participant.partnerf2 != player.id_in_group) and (partner.participant.partnerf2 != 0):
-            partner3 = g.get_player_by_id(partner.participant.partnerf2)
-            final.update(dict(partner3_label='{}?'.format(partner3.participant.label)))
-            partner3 = partner3.participant.label
-            partners.append(partner3)
+            partner_pf = g.get_player_by_id(partner.participant.partnerf2)
+            player.id_partner_pf_MP = partner.participant.partnerf2
+            final.update(dict(partner_pf_label='{}?'.format(partner_pf.participant.label)))
+            partner_pf = partner_pf.participant.label
+            partners.append(partner_pf)
             formfields_random.append(formfields[2])
             count+=1
         if (partner.participant.partnerf4 != player.id_in_group) and (partner.participant.partnerf4 != 0):
-            partner4 = g.get_player_by_id(partner.participant.partnerf4)
-            final.update(dict(partner4_label='{}?'.format(partner4.participant.label)))
-            partner4 = partner4.participant.label
-            partners.append(partner4)
+            partner_rf = g.get_player_by_id(partner.participant.partnerf4)
+            player.id_partner_rf_MP = partner.participant.partnerf4
+            final.update(dict(partner_rf_label='{}?'.format(partner_rf.participant.label)))
+            partner_rf = partner_rf.participant.label
+            partners.append(partner_rf)
             formfields_random.append(formfields[3])
             count+=1
     if count == 0:
@@ -2925,7 +2949,7 @@ def vars_for_template2(player: Player, formfields):
         hints = 7
     elif count == 3:
         hints = 10
-    final.update(dict(count=count, hints=hints, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed, is2=is2))
+    final.update(dict(count=count, hints=hints, partners=partners, partner_pm=partner_pm, partner_rm=partner_rm, partner_pf=partner_pf, partner_rf=partner_rf, partner=partner.participant.label, round=player.participant.round3b_completed, is2=is2))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -2937,27 +2961,27 @@ class ExpectedSupplyEcon_MP(Page):
         return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['econhints_partner1_MP', 'econhints_partner2_MP', 'econhints_partner3_MP', 'econhints_partner4_MP']
+        formfields_random = ['econhints_partner_pm_MP', 'econhints_partner_rm_MP', 'econhints_partner_pf_MP', 'econhints_partner_rf_MP']
         final = vars_for_template2(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('econhints_you_MP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['econhints_partner1_MP', 'econhints_partner2_MP', 'econhints_partner3_MP', 'econhints_partner4_MP']
+        formfields_random = ['econhints_partner_pm_MP', 'econhints_partner_rm_MP', 'econhints_partner_pf_MP', 'econhints_partner_rf_MP']
         final = vars_for_template2(player, formfields_random)[0]
         hints = vars_for_template2(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('econhints_you_MP'),player.field_maybe_none('econhints_partner1_MP'), player.field_maybe_none('econhints_partner2_MP'), player.field_maybe_none('econhints_partner3_MP'), player.field_maybe_none('econhints_partner4_MP')]
+        formfields = [player.field_maybe_none('econhints_you_MP'),player.field_maybe_none('econhints_partner_pm_MP'), player.field_maybe_none('econhints_partner_rm_MP'), player.field_maybe_none('econhints_partner_pf_MP'), player.field_maybe_none('econhints_partner_rf_MP')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_guess_econ(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['econhints_partner1_MP', 'econhints_partner2_MP', 'econhints_partner3_MP', 'econhints_partner4_MP']
+        formfields = ['econhints_partner_pm_MP', 'econhints_partner_rm_MP', 'econhints_partner_pf_MP', 'econhints_partner_rf_MP']
         hints = vars_for_template2(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -2990,27 +3014,27 @@ class ExpectedSupplyCook_MP(Page):
         return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['cookhints_partner1_MP', 'cookhints_partner2_MP', 'cookhints_partner3_MP', 'cookhints_partner4_MP']
+        formfields_random = ['cookhints_partner_pm_MP', 'cookhints_partner_rm_MP', 'cookhints_partner_pf_MP', 'cookhints_partner_rf_MP']
         final = vars_for_template2(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('cookhints_you_MP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['cookhints_partner1_MP', 'cookhints_partner2_MP', 'cookhints_partner3_MP', 'cookhints_partner4_MP']
+        formfields_random = ['cookhints_partner_pm_MP', 'cookhints_partner_rm_MP', 'cookhints_partner_pf_MP', 'cookhints_partner_rf_MP']
         final = vars_for_template2(player, formfields_random)[0]
         hints = vars_for_template2(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('cookhints_you_MP'),player.field_maybe_none('cookhints_partner1_MP'), player.field_maybe_none('cookhints_partner2_MP'), player.field_maybe_none('cookhints_partner3_MP'), player.field_maybe_none('cookhints_partner4_MP')]
+        formfields = [player.field_maybe_none('cookhints_you_MP'),player.field_maybe_none('cookhints_partner_pm_MP'), player.field_maybe_none('cookhints_partner_rm_MP'), player.field_maybe_none('cookhints_partner_pf_MP'), player.field_maybe_none('cookhints_partner_rf_MP')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_guess_cook(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['cookhints_partner1_MP', 'cookhints_partner2_MP', 'cookhints_partner3_MP', 'cookhints_partner4_MP']
+        formfields = ['cookhints_partner_pm_MP', 'cookhints_partner_rm_MP', 'cookhints_partner_pf_MP', 'cookhints_partner_rf_MP']
         hints = vars_for_template2(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -3043,27 +3067,27 @@ class ExpectedSupplySport_MP(Page):
         return (player.round_number == participant.task_rounds3b['MP']) and (participant.partner3 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['sporthints_partner1_MP', 'sporthints_partner2_MP', 'sporthints_partner3_MP', 'sporthints_partner4_MP']
+        formfields_random = ['sporthints_partner_pm_MP', 'sporthints_partner_rm_MP', 'sporthints_partner_pf_MP', 'sporthints_partner_rf_MP']
         final = vars_for_template2(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('sporthints_you_MP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['sporthints_partner1_MP', 'sporthints_partner2_MP', 'sporthints_partner3_MP', 'sporthints_partner4_MP']
+        formfields_random = ['sporthints_partner_pm_MP', 'sporthints_partner_rm_MP', 'sporthints_partner_pf_MP', 'sporthints_partner_rf_MP']
         final = vars_for_template2(player, formfields_random)[0]
         hints = vars_for_template2(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('sporthints_you_MP'),player.field_maybe_none('sporthints_partner1_MP'), player.field_maybe_none('sporthints_partner2_MP'), player.field_maybe_none('sporthints_partner3_MP'), player.field_maybe_none('sporthints_partner4_MP')]
+        formfields = [player.field_maybe_none('sporthints_you_MP'),player.field_maybe_none('sporthints_partner_pm_MP'), player.field_maybe_none('sporthints_partner_rm_MP'), player.field_maybe_none('sporthints_partner_pf_MP'), player.field_maybe_none('sporthints_partner_rf_MP')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner3)
         set_hints_guess_sport(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['sporthints_partner1_MP', 'sporthints_partner2_MP', 'sporthints_partner3_MP', 'sporthints_partner4_MP']
+        formfields = ['sporthints_partner_pm_MP', 'sporthints_partner_rm_MP', 'sporthints_partner_pf_MP', 'sporthints_partner_rf_MP']
         hints = vars_for_template2(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -3889,58 +3913,66 @@ def vars_for_template3(player: Player, formfields):
     partner = g.get_player_by_id(player.participant.partner8)
     count = 0
     hints = 0
-    partner1 = 0
-    partner2 = 0
-    partner3 = 0
-    partner4 = 0
+    partner_pm = 0
+    partner_rm = 0
+    partner_pf = 0
+    partner_rf = 0
     if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
-            partner1 = g.get_player_by_id(partner.participant.partnerm1)
-            final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
-            partners.update(partner1=partner1.participant.label)
+            partner_pm = g.get_player_by_id(partner.participant.partnerm1)
+            player.id_partner_pm_MR = partner.participant.partnerm1
+            final.update(dict(partner_pm_label='{}?'.format(partner_pm.participant.label)))
+            partners.update(partner_pm=partner_pm.participant.label)
             formfields_random.append(formfields[0])
             count+=1
         if (partner.participant.partnerm3 != player.id_in_group) and (partner.participant.partnerm3 != 0):
-            partner2 = g.get_player_by_id(partner.participant.partnerm3)
-            final.update(dict(partner2_label='{}?'.format(partner2.participant.label)))
-            partners.update(partner2=partner2.participant.label)
+            partner_rm = g.get_player_by_id(partner.participant.partnerm3)
+            player.id_partner_rm_MR = partner.participant.partnerm3
+            final.update(dict(partner_rm_label='{}?'.format(partner_rm.participant.label)))
+            partners.update(partner_rm=partner_rm.participant.label)
             formfields_random.append(formfields[1])
             count+=1
         if (partner.participant.partnerf1 != player.id_in_group) and (partner.participant.partnerf1 != 0):
-            partner3 = g.get_player_by_id(partner.participant.partnerf1)
-            final.update(dict(partner3_label='{}?'.format(partner3.participant.label)))
-            partners.update(partner3=partner3.participant.label)
+            partner_pf = g.get_player_by_id(partner.participant.partnerf1)
+            player.id_partner_pf_MR = partner.participant.partnerf1
+            final.update(dict(partner_pf_label='{}?'.format(partner_pf.participant.label)))
+            partners.update(partner_pf=partner_pf.participant.label)
             formfields_random.append(formfields[2])
             count+=1
         if (partner.participant.partnerf3 != player.id_in_group) and (partner.participant.partnerf3 != 0):
-            partner4 = g.get_player_by_id(partner.participant.partnerf3)
-            final.update(dict(partner4_label='{}?'.format(partner4.participant.label)))
-            partners.update(partner4=partner4.participant.label)
+            partner_rf = g.get_player_by_id(partner.participant.partnerf3)
+            player.id_partner_rf_MR = partner.participant.partnerf3
+            final.update(dict(partner_rf_label='{}?'.format(partner_rf.participant.label)))
+            partners.update(partner_rf=partner_rf.participant.label)
             formfields_random.append(formfields[3])
             count+=1
     elif (partner.participant.partnerm2 == player.id_in_group) or (partner.participant.partnerm4 == player.id_in_group) or (partner.participant.partnerf2 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
         if (partner.participant.partnerm2 != player.id_in_group) and (partner.participant.partnerm2 != 0):
-            partner1 = g.get_player_by_id(partner.participant.partnerm2)
-            final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
-            partners.update(partner1=partner1.participant.label)
+            partner_pm = g.get_player_by_id(partner.participant.partnerm2)
+            player.id_partner_pm_MR = partner.participant.partnerm2
+            final.update(dict(partner_pm_label='{}?'.format(partner_pm.participant.label)))
+            partners.update(partner_pm=partner_pm.participant.label)
             formfields_random.append(formfields[0])
             count+=1
         if (partner.participant.partnerm4 != player.id_in_group) and (partner.participant.partnerm4 != 0):
-            partner2 = g.get_player_by_id(partner.participant.partnerm4)
-            final.update(dict(partner2_label='{}?'.format(partner2.participant.label)))
-            partners.update(partner2=partner2.participant.label)
+            partner_rm = g.get_player_by_id(partner.participant.partnerm4)
+            player.id_partner_rm_MR = partner.participant.partnerm4
+            final.update(dict(partner_rm_label='{}?'.format(partner_rm.participant.label)))
+            partners.update(partner_rm=partner_rm.participant.label)
             formfields_random.append(formfields[1])
             count+=1
         if (partner.participant.partnerf2 != player.id_in_group) and (partner.participant.partnerf2 != 0):
-            partner3 = g.get_player_by_id(partner.participant.partnerf2)
-            final.update(dict(partner3_label='{}?'.format(partner3.participant.label)))
-            partners.update(partner3=partner3.participant.label)
+            partner_pf = g.get_player_by_id(partner.participant.partnerf2)
+            player.id_partner_pf_MR = partner.participant.partnerf2
+            final.update(dict(partner_pf_label='{}?'.format(partner_pf.participant.label)))
+            partners.update(partner_pf=partner_pf.participant.label)
             formfields_random.append(formfields[2])
             count+=1
         if (partner.participant.partnerf4 != player.id_in_group) and (partner.participant.partnerf4 != 0):
-            partner4 = g.get_player_by_id(partner.participant.partnerf4)
-            final.update(dict(partner4_label='{}?'.format(partner4.participant.label)))
-            partners.update(partner4=partner4.participant.label)
+            partner_rf = g.get_player_by_id(partner.participant.partnerf4)
+            player.id_partner_rf_MR = partner.participant.partnerf4
+            final.update(dict(partner_rf_label='{}?'.format(partner_rf.participant.label)))
+            partners.update(partner_rf=partner_rf.participant.label)
             formfields_random.append(formfields[3])
             count+=1
     if count == 0:
@@ -3951,7 +3983,7 @@ def vars_for_template3(player: Player, formfields):
         hints = 7
     elif count == 3:
         hints = 10
-    final.update(dict(count=count, hints=hints, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
+    final.update(dict(count=count, hints=hints, partners=partners, partner_pm=partner_pm, partner_rm=partner_rm, partner_pf=partner_pf, partner_rf=partner_rf, partner=partner.participant.label, round=player.participant.round3b_completed))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -3963,27 +3995,27 @@ class ExpectedSupplyEcon_MR(Page):
         return (player.round_number == participant.task_rounds3b['MR']) and (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['econhints_partner1_MR', 'econhints_partner2_MR', 'econhints_partner3_MR', 'econhints_partner4_MR']
+        formfields_random = ['econhints_partner_pm_MR', 'econhints_partner_rm_MR', 'econhints_partner_pf_MR', 'econhints_partner_rf_MR']
         final = vars_for_template3(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('econhints_you_MR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['econhints_partner1_MR', 'econhints_partner2_MR', 'econhints_partner3_MR', 'econhints_partner4_MR']
+        formfields_random = ['econhints_partner_pm_MR', 'econhints_partner_rm_MR', 'econhints_partner_pf_MR', 'econhints_partner_rf_MR']
         final = vars_for_template3(player, formfields_random)[0]
         hints = vars_for_template3(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('econhints_you_MR'),player.field_maybe_none('econhints_partner1_MR'), player.field_maybe_none('econhints_partner2_MR'), player.field_maybe_none('econhints_partner3_MR'), player.field_maybe_none('econhints_partner4_MR')]
+        formfields = [player.field_maybe_none('econhints_you_MR'),player.field_maybe_none('econhints_partner_pm_MR'), player.field_maybe_none('econhints_partner_rm_MR'), player.field_maybe_none('econhints_partner_pf_MR'), player.field_maybe_none('econhints_partner_rf_MR')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_guess_econ(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['econhints_partner1_MR', 'econhints_partner2_MR', 'econhints_partner3_MR', 'econhints_partner4_MR']
+        formfields = ['econhints_partner_pm_MR', 'econhints_partner_rm_MR', 'econhints_partner_pf_MR', 'econhints_partner_rf_MR']
         hints = vars_for_template3(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -4016,27 +4048,27 @@ class ExpectedSupplyCook_MR(Page):
         return (player.round_number == participant.task_rounds3b['MR']) and (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['cookhints_partner1_MR', 'cookhints_partner2_MR', 'cookhints_partner3_MR', 'cookhints_partner4_MR']
+        formfields_random = ['cookhints_partner_pm_MR', 'cookhints_partner_rm_MR', 'cookhints_partner_pf_MR', 'cookhints_partner_rf_MR']
         final = vars_for_template3(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('cookhints_you_MR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['cookhints_partner1_MR', 'cookhints_partner2_MR', 'cookhints_partner3_MR', 'cookhints_partner4_MR']
+        formfields_random = ['cookhints_partner_pm_MR', 'cookhints_partner_rm_MR', 'cookhints_partner_pf_MR', 'cookhints_partner_rf_MR']
         final = vars_for_template3(player, formfields_random)[0]
         hints = vars_for_template3(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('cookhints_you_MR'),player.field_maybe_none('cookhints_partner1_MR'), player.field_maybe_none('cookhints_partner2_MR'), player.field_maybe_none('cookhints_partner3_MR'), player.field_maybe_none('cookhints_partner4_MR')]
+        formfields = [player.field_maybe_none('cookhints_you_MR'),player.field_maybe_none('cookhints_partner_pm_MR'), player.field_maybe_none('cookhints_partner_rm_MR'), player.field_maybe_none('cookhints_partner_pf_MR'), player.field_maybe_none('cookhints_partner_rf_MR')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_guess_cook(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['cookhints_partner1_MR', 'cookhints_partner2_MR', 'cookhints_partner3_MR', 'cookhints_partner4_MR']
+        formfields = ['cookhints_partner_pm_MR', 'cookhints_partner_rm_MR', 'cookhints_partner_pf_MR', 'cookhints_partner_rf_MR']
         hints = vars_for_template3(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -4069,27 +4101,27 @@ class ExpectedSupplySport_MR(Page):
         return (player.round_number == participant.task_rounds3b['MR']) and (participant.partner8 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['sporthints_partner1_MR', 'sporthints_partner2_MR', 'sporthints_partner3_MR', 'sporthints_partner4_MR']
+        formfields_random = ['sporthints_partner_pm_MR', 'sporthints_partner_rm_MR', 'sporthints_partner_pf_MR', 'sporthints_partner_rf_MR']
         final = vars_for_template3(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('sporthints_you_MR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['sporthints_partner1_MR', 'sporthints_partner2_MR', 'sporthints_partner3_MR', 'sporthints_partner4_MR']
+        formfields_random = ['sporthints_partner_pm_MR', 'sporthints_partner_rm_MR', 'sporthints_partner_pf_MR', 'sporthints_partner_rf_MR']
         final = vars_for_template3(player, formfields_random)[0]
         hints = vars_for_template3(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('sporthints_you_MR'),player.field_maybe_none('sporthints_partner1_MR'), player.field_maybe_none('sporthints_partner2_MR'), player.field_maybe_none('sporthints_partner3_MR'), player.field_maybe_none('sporthints_partner4_MR')]
+        formfields = [player.field_maybe_none('sporthints_you_MR'),player.field_maybe_none('sporthints_partner_pm_MR'), player.field_maybe_none('sporthints_partner_rm_MR'), player.field_maybe_none('sporthints_partner_pf_MR'), player.field_maybe_none('sporthints_partner_rf_MR')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner8)
         set_hints_guess_sport(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['sporthints_partner1_MR', 'sporthints_partner2_MR', 'sporthints_partner3_MR', 'sporthints_partner4_MR']
+        formfields = ['sporthints_partner_pm_MR', 'sporthints_partner_rm_MR', 'sporthints_partner_pf_MR', 'sporthints_partner_rf_MR']
         hints = vars_for_template3(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -4915,58 +4947,66 @@ def vars_for_template4(player: Player, formfields):
     partner = g.get_player_by_id(player.participant.partner2)
     count = 0
     hints = 0
-    partner1 = 0
-    partner2 = 0
-    partner3 = 0
-    partner4 = 0
+    partner_pm = 0
+    partner_rm = 0
+    partner_pf = 0
+    partner_rf = 0
     if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
-            partner1 = g.get_player_by_id(partner.participant.partnerm1)
-            final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
-            partners.update(partner1=partner1.participant.label)
+            partner_pm = g.get_player_by_id(partner.participant.partnerm1)
+            player.id_partner_pm_WP = partner.participant.partnerm1
+            final.update(dict(partner_pm_label='{}?'.format(partner_pm.participant.label)))
+            partners.update(partner_pm=partner_pm.participant.label)
             formfields_random.append(formfields[0])
             count+=1
         if (partner.participant.partnerm3 != player.id_in_group) and (partner.participant.partnerm3 != 0):
-            partner2 = g.get_player_by_id(partner.participant.partnerm3)
-            final.update(dict(partner2_label='{}?'.format(partner2.participant.label)))
-            partners.update(partner2=partner2.participant.label)
+            partner_rm = g.get_player_by_id(partner.participant.partnerm3)
+            player.id_partner_rm_WP = partner.participant.partnerm3
+            final.update(dict(partner_rm_label='{}?'.format(partner_rm.participant.label)))
+            partners.update(partner_rm=partner_rm.participant.label)
             formfields_random.append(formfields[1])
             count+=1
         if (partner.participant.partnerf1 != player.id_in_group) and (partner.participant.partnerf1 != 0):
-            partner3 = g.get_player_by_id(partner.participant.partnerf1)
-            final.update(dict(partner3_label='{}?'.format(partner3.participant.label)))
-            partners.update(partner3=partner3.participant.label)
+            partner_pf = g.get_player_by_id(partner.participant.partnerf1)
+            player.id_partner_pf_WP = partner.participant.partnerf1
+            final.update(dict(partner_pf_label='{}?'.format(partner_pf.participant.label)))
+            partners.update(partner_pf=partner_pf.participant.label)
             formfields_random.append(formfields[2])
             count+=1
         if (partner.participant.partnerf3 != player.id_in_group) and (partner.participant.partnerf3 != 0):
-            partner4 = g.get_player_by_id(partner.participant.partnerf3)
-            final.update(dict(partner4_label='{}?'.format(partner4.participant.label)))
-            partners.update(partner4=partner4.participant.label)
+            partner_rf = g.get_player_by_id(partner.participant.partnerf3)
+            player.id_partner_rf_WP = partner.participant.partnerf3
+            final.update(dict(partner_rf_label='{}?'.format(partner_rf.participant.label)))
+            partners.update(partner_rf=partner_rf.participant.label)
             formfields_random.append(formfields[3])
             count+=1
     elif (partner.participant.partnerm2 == player.id_in_group) or (partner.participant.partnerm4 == player.id_in_group) or (partner.participant.partnerf2 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
         if (partner.participant.partnerm2 != player.id_in_group) and (partner.participant.partnerm2 != 0):
-            partner1 = g.get_player_by_id(partner.participant.partnerm2)
-            final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
-            partners.update(partner1=partner1.participant.label)
+            partner_pm = g.get_player_by_id(partner.participant.partnerm2)
+            player.id_partner_pm_WP = partner.participant.partnerm2
+            final.update(dict(partner_pm_label='{}?'.format(partner_pm.participant.label)))
+            partners.update(partner_pm=partner_pm.participant.label)
             formfields_random.append(formfields[0])
             count+=1
         if (partner.participant.partnerm4 != player.id_in_group) and (partner.participant.partnerm4 != 0):
-            partner2 = g.get_player_by_id(partner.participant.partnerm4)
-            final.update(dict(partner2_label='{}?'.format(partner2.participant.label)))
-            partners.update(partner2=partner2.participant.label)
+            partner_rm = g.get_player_by_id(partner.participant.partnerm4)
+            player.id_partner_rm_WP = partner.participant.partnerm4
+            final.update(dict(partner_rm_label='{}?'.format(partner_rm.participant.label)))
+            partners.update(partner_rm=partner_rm.participant.label)
             formfields_random.append(formfields[1])
             count+=1
         if (partner.participant.partnerf2 != player.id_in_group) and (partner.participant.partnerf2 != 0):
-            partner3 = g.get_player_by_id(partner.participant.partnerf2)
-            final.update(dict(partner3_label='{}?'.format(partner3.participant.label)))
-            partners.update(partner3=partner3.participant.label)
+            partner_pf = g.get_player_by_id(partner.participant.partnerf2)
+            player.id_partner_pf_WP = partner.participant.partnerf2
+            final.update(dict(partner_pf_label='{}?'.format(partner_pf.participant.label)))
+            partners.update(partner_pf=partner_pf.participant.label)
             formfields_random.append(formfields[2])
             count+=1
         if (partner.participant.partnerf4 != player.id_in_group) and (partner.participant.partnerf4 != 0):
-            partner4 = g.get_player_by_id(partner.participant.partnerf4)
-            final.update(dict(partner4_label='{}?'.format(partner4.participant.label)))
-            partners.update(partner4=partner4.participant.label)
+            partner_rf = g.get_player_by_id(partner.participant.partnerf4)
+            player.id_partner_rf_WP = partner.participant.partnerf4
+            final.update(dict(partner_rf_label='{}?'.format(partner_rf.participant.label)))
+            partners.update(partner_rf=partner_rf.participant.label)
             formfields_random.append(formfields[3])
             count+=1
     if count == 0:
@@ -4977,7 +5017,7 @@ def vars_for_template4(player: Player, formfields):
         hints = 7
     elif count == 3:
         hints = 10
-    final.update(dict(count=count, hints=hints, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
+    final.update(dict(count=count, hints=hints, partners=partners, partner_pm=partner_pm, partner_rm=partner_rm, partner_pf=partner_pf, partner_rf=partner_rf, partner=partner.participant.label, round=player.participant.round3b_completed))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -4989,27 +5029,27 @@ class ExpectedSupplyEcon_WP(Page):
         return (player.round_number == participant.task_rounds3b['WP']) and (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['econhints_partner1_WP', 'econhints_partner2_WP', 'econhints_partner3_WP', 'econhints_partner4_WP']
+        formfields_random = ['econhints_partner_pm_WP', 'econhints_partner_rm_WP', 'econhints_partner_pf_WP', 'econhints_partner_rf_WP']
         final = vars_for_template4(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('econhints_you_WP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['econhints_partner1_WP', 'econhints_partner2_WP', 'econhints_partner3_WP', 'econhints_partner4_WP']
+        formfields_random = ['econhints_partner_pm_WP', 'econhints_partner_rm_WP', 'econhints_partner_pf_WP', 'econhints_partner_rf_WP']
         final = vars_for_template4(player, formfields_random)[0]
         hints = vars_for_template4(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('econhints_you_WP'),player.field_maybe_none('econhints_partner1_WP'), player.field_maybe_none('econhints_partner2_WP'), player.field_maybe_none('econhints_partner3_WP'), player.field_maybe_none('econhints_partner4_WP')]
+        formfields = [player.field_maybe_none('econhints_you_WP'),player.field_maybe_none('econhints_partner_pm_WP'), player.field_maybe_none('econhints_partner_rm_WP'), player.field_maybe_none('econhints_partner_pf_WP'), player.field_maybe_none('econhints_partner_rf_WP')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_guess_econ(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['econhints_partner1_WP', 'econhints_partner2_WP', 'econhints_partner3_WP', 'econhints_partner4_WP']
+        formfields = ['econhints_partner_pm_WP', 'econhints_partner_rm_WP', 'econhints_partner_pf_WP', 'econhints_partner_rf_WP']
         hints = vars_for_template4(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -5042,27 +5082,27 @@ class ExpectedSupplyCook_WP(Page):
         return (player.round_number == participant.task_rounds3b['WP']) and (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['cookhints_partner1_WP', 'cookhints_partner2_WP', 'cookhints_partner3_WP', 'cookhints_partner4_WP']
+        formfields_random = ['cookhints_partner_pm_WP', 'cookhints_partner_rm_WP', 'cookhints_partner_pf_WP', 'cookhints_partner_rf_WP']
         final = vars_for_template4(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('cookhints_you_WP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['cookhints_partner1_WP', 'cookhints_partner2_WP', 'cookhints_partner3_WP', 'cookhints_partner4_WP']
+        formfields_random = ['cookhints_partner_pm_WP', 'cookhints_partner_rm_WP', 'cookhints_partner_pf_WP', 'cookhints_partner_rf_WP']
         final = vars_for_template4(player, formfields_random)[0]
         hints = vars_for_template4(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('cookhints_you_WP'),player.field_maybe_none('cookhints_partner1_WP'), player.field_maybe_none('cookhints_partner2_WP'), player.field_maybe_none('cookhints_partner3_WP'), player.field_maybe_none('cookhints_partner4_WP')]
+        formfields = [player.field_maybe_none('cookhints_you_WP'),player.field_maybe_none('cookhints_partner_pm_WP'), player.field_maybe_none('cookhints_partner_rm_WP'), player.field_maybe_none('cookhints_partner_pf_WP'), player.field_maybe_none('cookhints_partner_rf_WP')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_guess_cook(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['cookhints_partner1_WP', 'cookhints_partner2_WP', 'cookhints_partner3_WP', 'cookhints_partner4_WP']
+        formfields = ['cookhints_partner_pm_WP', 'cookhints_partner_rm_WP', 'cookhints_partner_pf_WP', 'cookhints_partner_rf_WP']
         hints = vars_for_template4(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -5095,27 +5135,27 @@ class ExpectedSupplySport_WP(Page):
         return (player.round_number == participant.task_rounds3b['WP']) and (participant.partner2 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['sporthints_partner1_WP', 'sporthints_partner2_WP', 'sporthints_partner3_WP', 'sporthints_partner4_WP']
+        formfields_random = ['sporthints_partner_pm_WP', 'sporthints_partner_rm_WP', 'sporthints_partner_pf_WP', 'sporthints_partner_rf_WP']
         final = vars_for_template4(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('sporthints_you_WP')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['sporthints_partner1_WP', 'sporthints_partner2_WP', 'sporthints_partner3_WP', 'sporthints_partner4_WP']
+        formfields_random = ['sporthints_partner_pm_WP', 'sporthints_partner_rm_WP', 'sporthints_partner_pf_WP', 'sporthints_partner_rf_WP']
         final = vars_for_template4(player, formfields_random)[0]
         hints = vars_for_template4(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('sporthints_you_WP'),player.field_maybe_none('sporthints_partner1_WP'), player.field_maybe_none('sporthints_partner2_WP'), player.field_maybe_none('sporthints_partner3_WP'), player.field_maybe_none('sporthints_partner3_WP')]
+        formfields = [player.field_maybe_none('sporthints_you_WP'),player.field_maybe_none('sporthints_partner_pm_WP'), player.field_maybe_none('sporthints_partner_rm_WP'), player.field_maybe_none('sporthints_partner_pf_WP'), player.field_maybe_none('sporthints_partner_rf_WP')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner2)
         set_hints_guess_sport(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['sporthints_partner1_WP', 'sporthints_partner2_WP', 'sporthints_partner3_WP', 'sporthints_partner4_WP']
+        formfields = ['sporthints_partner_pm_WP', 'sporthints_partner_rm_WP', 'sporthints_partner_pf_WP', 'sporthints_partner_rf_WP']
         hints = vars_for_template4(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -5943,58 +5983,66 @@ def vars_for_template5(player: Player, formfields):
     partner = g.get_player_by_id(player.participant.partner6)
     count = 0
     hints = 0
-    partner1 = 0
-    partner2 = 0
-    partner3 = 0
-    partner4 = 0
+    partner_pm = 0
+    partner_rm = 0
+    partner_pf = 0
+    partner_rf = 0
     if (partner.participant.partnerm1 == player.id_in_group) or (partner.participant.partnerm3 == player.id_in_group) or (partner.participant.partnerf1 == player.id_in_group) or (partner.participant.partnerf3 == player.id_in_group):
         if (partner.participant.partnerm1 != player.id_in_group) and (partner.participant.partnerm1 != 0):
-            partner1 = g.get_player_by_id(partner.participant.partnerm1)
-            final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
-            partners.update(partner1=partner1.participant.label)
+            partner_pm = g.get_player_by_id(partner.participant.partnerm1)
+            player.id_partner_pm_WR = partner.participant.partnerm1
+            final.update(dict(partner_pm_label='{}?'.format(partner_pm.participant.label)))
+            partners.update(partner_pm=partner_pm.participant.label)
             formfields_random.append(formfields[0])
             count+=1
         if (partner.participant.partnerm3 != player.id_in_group) and (partner.participant.partnerm3 != 0):
-            partner2 = g.get_player_by_id(partner.participant.partnerm3)
-            final.update(dict(partner2_label='{}?'.format(partner2.participant.label)))
-            partners.update(partner2=partner2.participant.label)
+            partner_rm = g.get_player_by_id(partner.participant.partnerm3)
+            player.id_partner_rm_WR = partner.participant.partnerm3
+            final.update(dict(partner_rm_label='{}?'.format(partner_rm.participant.label)))
+            partners.update(partner_rm=partner_rm.participant.label)
             formfields_random.append(formfields[1])
             count+=1
         if (partner.participant.partnerf1 != player.id_in_group) and (partner.participant.partnerf1 != 0):
-            partner3 = g.get_player_by_id(partner.participant.partnerf1)
-            final.update(dict(partner3_label='{}?'.format(partner3.participant.label)))
-            partners.update(partner3=partner3.participant.label)
+            partner_pf = g.get_player_by_id(partner.participant.partnerf1)
+            player.id_partner_pf_WR = partner.participant.partnerf1
+            final.update(dict(partner_pf_label='{}?'.format(partner_pf.participant.label)))
+            partners.update(partner_pf=partner_pf.participant.label)
             formfields_random.append(formfields[2])
             count+=1
         if (partner.participant.partnerf3 != player.id_in_group) and (partner.participant.partnerf3 != 0):
-            partner4 = g.get_player_by_id(partner.participant.partnerf3)
-            final.update(dict(partner4_label='{}?'.format(partner4.participant.label)))
-            partners.update(partner4=partner4.participant.label)
+            partner_rf = g.get_player_by_id(partner.participant.partnerf3)
+            player.id_partner_rf_WR = partner.participant.partnerf3
+            final.update(dict(partner_rf_label='{}?'.format(partner_rf.participant.label)))
+            partners.update(partner_rf=partner_rf.participant.label)
             formfields_random.append(formfields[3])
             count+=1
     elif (partner.participant.partnerm2 == player.id_in_group) or (partner.participant.partnerm4 == player.id_in_group) or (partner.participant.partnerf2 == player.id_in_group) or (partner.participant.partnerf4 == player.id_in_group):
         if (partner.participant.partnerm2 != player.id_in_group) and (partner.participant.partnerm2 != 0):
-            partner1 = g.get_player_by_id(partner.participant.partnerm2)
-            final.update(dict(partner1_label='{}?'.format(partner1.participant.label)))
-            partners.update(partner1=partner1.participant.label)
+            partner_pm = g.get_player_by_id(partner.participant.partnerm2)
+            player.id_partner_pm_WR = partner.participant.partnerm2
+            final.update(dict(partner_pm_label='{}?'.format(partner_pm.participant.label)))
+            partners.update(partner_pm=partner_pm.participant.label)
             formfields_random.append(formfields[0])
             count+=1
         if (partner.participant.partnerm4 != player.id_in_group) and (partner.participant.partnerm4 != 0):
-            partner2 = g.get_player_by_id(partner.participant.partnerm4)
-            final.update(dict(partner2_label='{}?'.format(partner2.participant.label)))
-            partners.update(partner2=partner2.participant.label)
+            partner_rm = g.get_player_by_id(partner.participant.partnerm4)
+            player.id_partner_rm_WR = partner.participant.partnerm4
+            final.update(dict(partner_rm_label='{}?'.format(partner_rm.participant.label)))
+            partners.update(partner_rm=partner_rm.participant.label)
             formfields_random.append(formfields[1])
             count+=1
         if (partner.participant.partnerf2 != player.id_in_group) and (partner.participant.partnerf2 != 0):
-            partner3 = g.get_player_by_id(partner.participant.partnerf2)
-            final.update(dict(partner3_label='{}?'.format(partner3.participant.label)))
-            partners.update(partner3=partner3.participant.label)
+            partner_pf = g.get_player_by_id(partner.participant.partnerf2)
+            player.id_partner_pf_WR = partner.participant.partnerf2
+            final.update(dict(partner_pf_label='{}?'.format(partner_pf.participant.label)))
+            partners.update(partner_pf=partner_pf.participant.label)
             formfields_random.append(formfields[2])
             count+=1
         if (partner.participant.partnerf4 != player.id_in_group) and (partner.participant.partnerf4 != 0):
-            partner4 = g.get_player_by_id(partner.participant.partnerf4)
-            final.update(dict(partner4_label='{}?'.format(partner4.participant.label)))
-            partners.update(partner4=partner4.participant.label)
+            partner_rf = g.get_player_by_id(partner.participant.partnerf4)
+            player.id_partner_rf_WR = partner.participant.partnerf4
+            final.update(dict(partner_rf_label='{}?'.format(partner_rf.participant.label)))
+            partners.update(partner_rf=partner_rf.participant.label)
             formfields_random.append(formfields[3])
             count+=1
     if count == 0:
@@ -6005,7 +6053,7 @@ def vars_for_template5(player: Player, formfields):
         hints = 7
     elif count == 3:
         hints = 10
-    final.update(dict(count=count, hints=hints, partners=partners, partner1=partner1, partner2=partner2, partner3=partner3, partner4=partner4, partner=partner.participant.label, round=player.participant.round3b_completed))
+    final.update(dict(count=count, hints=hints, partners=partners, partner_pm=partner_pm, partner_rm=partner_rm, partner_pf=partner_pf, partner_rf=partner_rf, partner=partner.participant.label, round=player.participant.round3b_completed))
     final.update(dict(formfields_random=formfields_random))
     return [final, hints]
 
@@ -6017,27 +6065,27 @@ class ExpectedSupplyEcon_WR(Page):
         return (player.round_number == participant.task_rounds3b['WR']) and (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['econhints_partner1_WR', 'econhints_partner2_WR', 'econhints_partner3_WR', 'econhints_partner4_WR']
+        formfields_random = ['econhints_partner_pm_WR', 'econhints_partner_rm_WR', 'econhints_partner_pf_WR', 'econhints_partner_rf_WR']
         final = vars_for_template5(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('econhints_you_WR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['econhints_partner1_WR', 'econhints_partner2_WR', 'econhints_partner3_WR', 'econhints_partner4_WR']
+        formfields_random = ['econhints_partner_pm_WR', 'econhints_partner_rm_WR', 'econhints_partner_pf_WR', 'econhints_partner_rf_WR']
         final = vars_for_template5(player, formfields_random)[0]
         hints = vars_for_template5(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('econhints_you_WR'),player.field_maybe_none('econhints_partner1_WR'), player.field_maybe_none('econhints_partner2_WR'), player.field_maybe_none('econhints_partner3_WR'), player.field_maybe_none('econhints_partner4_WR')]
+        formfields = [player.field_maybe_none('econhints_you_WR'),player.field_maybe_none('econhints_partner_pm_WR'), player.field_maybe_none('econhints_partner_rm_WR'), player.field_maybe_none('econhints_partner_pf_WR'), player.field_maybe_none('econhints_partner_rf_WR')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_guess_econ(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['econhints_partner1_WR', 'econhints_partner2_WR', 'econhints_partner3_WR', 'econhints_partner4_WR']
+        formfields = ['econhints_partner_pm_WR', 'econhints_partner_rm_WR', 'econhints_partner_pf_WR', 'econhints_partner_rf_WR']
         hints = vars_for_template5(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -6070,27 +6118,27 @@ class ExpectedSupplyCook_WR(Page):
         return (player.round_number == participant.task_rounds3b['WR']) and (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['cookhints_partner1_WR', 'cookhints_partner2_WR', 'cookhints_partner3_WR', 'cookhints_partner4_WR']
+        formfields_random = ['cookhints_partner_pm_WR', 'cookhints_partner_rm_WR', 'cookhints_partner_pf_WR', 'cookhints_partner_rf_WR']
         final = vars_for_template5(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('cookhints_you_WR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['cookhints_partner1_WR', 'cookhints_partner2_WR', 'cookhints_partner3_WR', 'cookhints_partner4_WR']
+        formfields_random = ['cookhints_partner_pm_WR', 'cookhints_partner_rm_WR', 'cookhints_partner_pf_WR', 'cookhints_partner_rf_WR']
         final = vars_for_template5(player, formfields_random)[0]
         hints = vars_for_template5(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('cookhints_you_WR'),player.field_maybe_none('cookhints_partner1_WR'), player.field_maybe_none('cookhints_partner2_WR'), player.field_maybe_none('cookhints_partner3_WR'), player.field_maybe_none('cookhints_partner4_WR')]
+        formfields = [player.field_maybe_none('cookhints_you_WR'),player.field_maybe_none('cookhints_partner_pm_WR'), player.field_maybe_none('cookhints_partner_rm_WR'), player.field_maybe_none('cookhints_partner_pf_WR'), player.field_maybe_none('cookhints_partner_rf_WR')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_guess_cook(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['cookhints_partner1_WR', 'cookhints_partner2_WR', 'cookhints_partner3_WR', 'cookhints_partner4_WR']
+        formfields = ['cookhints_partner_pm_WR', 'cookhints_partner_rm_WR', 'cookhints_partner_pf_WR', 'cookhints_partner_rf_WR']
         hints = vars_for_template5(player, formfields)[1]
         desired_array = []
         for i in values.values():
@@ -6123,27 +6171,27 @@ class ExpectedSupplySport_WR(Page):
         return (player.round_number == participant.task_rounds3b['WR']) and (participant.partner6 != 0)
     @staticmethod
     def get_form_fields(player: Player):
-        formfields_random = ['sporthints_partner1_WR', 'sporthints_partner2_WR', 'sporthints_partner3_WR', 'sporthints_partner4_WR']
+        formfields_random = ['sporthints_partner_pm_WR', 'sporthints_partner_rm_WR', 'sporthints_partner_pf_WR', 'sporthints_partner_rf_WR']
         final = vars_for_template5(player, formfields_random)[0]
         formfields = final["formfields_random"]
         formfields.append('sporthints_you_WR')
         return formfields
     @staticmethod
     def vars_for_template(player: Player):
-        formfields_random = ['sporthints_partner1_WR', 'sporthints_partner2_WR', 'sporthints_partner3_WR', 'sporthints_partner4_WR']
+        formfields_random = ['sporthints_partner_pm_WR', 'sporthints_partner_rm_WR', 'sporthints_partner_pf_WR', 'sporthints_partner_rf_WR']
         final = vars_for_template5(player, formfields_random)[0]
         hints = vars_for_template5(player, formfields_random)[1]
         final["hints"] = hints
         return final
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        formfields = [player.field_maybe_none('sporthints_you_WR'),player.field_maybe_none('sporthints_partner1_WR'), player.field_maybe_none('sporthints_partner2_WR'), player.field_maybe_none('sporthints_partner3_WR'), player.field_maybe_none('sporthints_partner4_WR')]
+        formfields = [player.field_maybe_none('sporthints_you_WR'),player.field_maybe_none('sporthints_partner_pm_WR'), player.field_maybe_none('sporthints_partner_rm_WR'), player.field_maybe_none('sporthints_partner_pf_WR'), player.field_maybe_none('sporthints_partner_rf_WR')]
         group = player.group
         partner = group.get_player_by_id(player.participant.partner6)
         set_hints_guess_sport(player, partner, formfields)
     @staticmethod
     def error_message(player: Player, values):
-        formfields = ['sporthints_partner1_WR', 'sporthints_partner2_WR', 'sporthints_partner3_WR', 'sporthints_partner4_WR']
+        formfields = ['sporthints_partner_pm_WR', 'sporthints_partner_rm_WR', 'sporthints_partner_pf_WR', 'sporthints_partner_rf_WR']
         hints = vars_for_template5(player, formfields)[1]
         desired_array = []
         for i in values.values():

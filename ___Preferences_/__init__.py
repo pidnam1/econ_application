@@ -5,15 +5,14 @@ class C(BaseConstants):
     NAME_IN_URL = '___Preferences_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    PLAYERS = ['Safi Ullah Khan','Muhammad Yousaf Khan','Abdul Nasir Khan','Arooj Khalid',
-    'Zarak Naseer Baloch','Jannat Rashid','Shahid Ullah Khan','Saif Ur Rehman Kukuria',
-    'Ali Hasnain','Muhammad Talha Wattoo','Shumaila Javaid','Shoaib Ullah','Rumaiza Mazhar',
-    'Gul E Zahra Abbasi','Naveed Khan','Mahjabeen Sughra','Areesha Sohail','Sufyan Ali',
-    'Hassan Umer','Ali Waqas','Sania Ehsan','Wareesha Ehsan','Muhammad Kashif Khan',
-    'Muhammad Waqar','Umer Farooq','Zain U Din','Shahar Bano','Areesha Zahra Abbasi','Samiullah',
-    'Rai Ahmad Khan','Rana Muhammad Imran','Amna Bibi','Tuba Naeem','Moazzam Asadullah',
-    'Muhammad Musa Sulehria','Noor ul Huda Awan','Umme Aqeel']
-    RANKINGS = [1,2,3,4,5,6,7,8,9,10]
+    PLAYERS = ['Areej Ajmal','Ayesha Imtiaz','Ali Ahmad','Yaqoot Azam','Oroba Naveed',
+    'Ayesha Shamas','Nazar Fareed','Sharjeel Ahmed','Ameer Hamza','Kamran Khan',
+    'Muhammad Mukarram Babar','Maryam Ali','Din Muhammad','Mudassir Hassan','Arslan Mehndi',
+    'Zaheer Ul Hassan Shah','Mehwish','Fakhir Jibran','Nadia Saifullah','Waqar Dastagir',
+    'Fatima Saif Khan','Saad Ijaz','Nasim Khan','Iqra Usman','Muhammad Farhan','Zainab Saif',
+    'Javeria Naeem','Tehniyat Ali','Muhammad Ajmal','Muhammad Imran Bashir','Sara Aziz',
+    'Ayesha Shabbir','Sumaira Akram']
+    RANKINGS = [1,2,3,4,5,6,7,8,9,10,'No rank']
 
 class Subsession(BaseSubsession):
     pass
@@ -183,7 +182,7 @@ class Pref_Helper(Page):
         'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
         'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1','f21_1_1','f22_1_1','f23_1_1',
         'f24_1_1','f25_1_1','f26_1_1','f27_1_1','f28_1_1','f29_1_1','f30_1_1','f31_1_1',
-        'f32_1_1','f33_1_1','f34_1_1','f35_1_1','f36_1_1','f37_1_1']
+        'f32_1_1']
         form_fields = form_fields_all[:session.count - 1]
         return form_fields
     @staticmethod
@@ -194,7 +193,7 @@ class Pref_Helper(Page):
         'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
         'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1','f21_1_1','f22_1_1','f23_1_1',
         'f24_1_1','f25_1_1','f26_1_1','f27_1_1','f28_1_1','f29_1_1','f30_1_1','f31_1_1',
-        'f32_1_1','f33_1_1','f34_1_1','f35_1_1','f36_1_1','f37_1_1']
+        'f32_1_1']
         player.participant.form_fields_pref = form_fields[:session.count - 1]
         return dict(players=player.participant.players)
     @staticmethod
@@ -215,8 +214,7 @@ class Pref_Helper(Page):
         player.f15_1_1, player.f16_1_1, player.f17_1_1, player.f18_1_1, player.f19_1_1,
         player.f20_1_1, player.f21_1_1, player.f22_1_1, player.f23_1_1, player.f24_1_1,
         player.f25_1_1, player.f26_1_1, player.f27_1_1, player.f28_1_1, player.f29_1_1,
-        player.f30_1_1, player.f31_1_1, player.f32_1_1, player.f33_1_1, player.f34_1_1,
-        player.f35_1_1, player.f36_1_1, player.f37_1_1]
+        player.f30_1_1, player.f31_1_1, player.f32_1_1, player.f33_1_1]
         player.participant.name_list = []
         ranking_order={}
         for i in range(len(rank_list)):
@@ -265,10 +263,9 @@ class Pref_Helper_Why(Page):
         "10. " + player.participant.name_list[9]]
         return dict(player_why = player_why)
 
-@staticmethod
 def vars_for_template1(player: Player):
     players_other = []
-    form_fields = []
+    formfields = []
     if player.f1_2_1 == "9. Other":
         player1 = [player.participant.name_list[0]]
         players_other = players_other + player1
@@ -334,7 +331,7 @@ class Pref_TT(Page):
         'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
         'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
         'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
-        'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2']
+        'f32_1_2']
         form_fields = form_fields_all[:session.count - 1]
         return form_fields
     @staticmethod
@@ -345,7 +342,7 @@ class Pref_TT(Page):
         'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
         'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
         'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
-        'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2']
+        'f32_1_2']
         player.participant.form_fields_pref2 = form_fields[:session.count - 1]
         return dict(players=player.participant.players)
     @staticmethod
@@ -363,8 +360,7 @@ class Pref_TT(Page):
         player.f15_1_2, player.f16_1_2, player.f17_1_2, player.f18_1_2, player.f19_1_2,
         player.f20_1_2, player.f21_1_2, player.f22_1_2, player.f23_1_2, player.f24_1_2,
         player.f25_1_2, player.f26_1_2, player.f27_1_2, player.f28_1_2, player.f29_1_2,
-        player.f30_1_2, player.f31_1_2, player.f32_1_2, player.f33_1_2, player.f34_1_2,
-        player.f35_1_2, player.f36_1_2, player.f37_1_2]
+        player.f30_1_2, player.f31_1_2, player.f32_1_2]
         player.participant.name_list1 = []
         ranking_order={}
         for i in range(len(rank_list)):
@@ -412,8 +408,7 @@ class Pref_TT_Why(Page):
         "10. " + player.participant.name_list1[9]]
         return dict(player_why = player_why)
 
-@staticmethod
-def vars_for_template(player: Player):
+def vars_for_template2(player: Player):
     players_other = []
     formfields = []
     if player.f1_2_2 == "9. Other":

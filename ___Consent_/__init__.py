@@ -5,23 +5,21 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [1,1,1,0,1,0,1,1,1,1,0,1,0,0,1,0,0,1,1,1,0,1,1,1,1,1,0,0,1,1,1,0,0,1,1,0,1]
-    LABELS = ['Safi_Ullah_Khan','Muhammad_Yousaf_Khan','Abdul_Nasir_Khan','Arooj_Khalid',
-    'Zarak_Naseer_Baloch','Jannat_Rashid','Shahid_Ullah_Khan','Saif_Ur_Rehman_Kukuria',
-    'Ali_Hasnain','Muhammad_Talha_Wattoo','Shumaila_Javaid','Shoaib_Ullah','Rumaiza_Mazhar',
-    'Gul_E_Zahra_Abbasi','Naveed_Khan','Mahjabeen_Sughra','Areesha_Sohail','Sufyan_Ali',
-    'Hassan_Umer','Ali_Waqas','Sania_Ehsan','Wareesha_Ehsan','Muhammad_Kashif_Khan',
-    'Muhammad_Waqar','Umer_Farooq','Zain_U_Din','Shahar_Bano','Areesha_Zahra_Abbasi','Samiullah',
-    'Rai_Ahmad_Khan','Rana_Muhammad_Imran','Amna_Bibi','Tuba_Naeem','Moazzam_Asadullah',
-    'Muhammad_Musa_Sulehria','Noor_ul_Huda_Awan','Umme_Aqeel']
-    PLAYERS = ['Safi Ullah Khan','Muhammad Yousaf Khan','Abdul Nasir Khan','Arooj Khalid',
-    'Zarak Naseer Baloch','Jannat Rashid','Shahid Ullah Khan','Saif Ur Rehman Kukuria',
-    'Ali Hasnain','Muhammad Talha Wattoo','Shumaila Javaid','Shoaib Ullah','Rumaiza Mazhar',
-    'Gul E Zahra Abbasi','Naveed Khan','Mahjabeen Sughra','Areesha Sohail','Sufyan Ali',
-    'Hassan Umer','Ali Waqas','Sania Ehsan','Wareesha Ehsan','Muhammad Kashif Khan',
-    'Muhammad Waqar','Umer Farooq','Zain U Din','Shahar Bano','Areesha Zahra Abbasi','Samiullah',
-    'Rai Ahmad Khan','Rana Muhammad Imran','Amna Bibi','Tuba Naeem','Moazzam Asadullah',
-    'Muhammad Musa Sulehria','Noor ul Huda Awan','Umme Aqeel']
+    GENDERS_LIST = [0,0,1,1,0,0,1,1,1,1,1,0,1,1,1,1,0,1,0,1,0,1,1,0,1,0,0,0,1,1,0,0,0]
+    LABELS = ['Areej_Ajmal','Ayesha_Imtiaz','Ali_Ahmad','Yaqoot_Azam','Oroba_Naveed',
+    'Ayesha_Shamas','Nazar_Fareed','Sharjeel_Ahmed','Ameer_Hamza','Kamran_Khan',
+    'Muhammad_Mukarram_Babar','Maryam_Ali','Din_Muhammad','Mudassir_Hassan','Arslan_Mehndi',
+    'Zaheer_Ul_Hassan_Shah','Mehwish','Fakhir_Jibran','Nadia_Saifullah','Waqar_Dastagir',
+    'Fatima_Saif_Khan','Saad_Ijaz','Nasim_Khan','Iqra_Usman','Muhammad_Farhan','Zainab_Saif',
+    'Javeria_Naeem','Tehniyat_Ali','Muhammad_Ajmal','Muhammad_Imran_Bashir','Sara_Aziz',
+    'Ayesha_Shabbir','Sumaira_Akram']
+    PLAYERS = ['Areej Ajmal','Ayesha Imtiaz','Ali Ahmad','Yaqoot Azam','Oroba Naveed',
+    'Ayesha Shamas','Nazar Fareed','Sharjeel Ahmed','Ameer Hamza','Kamran Khan',
+    'Muhammad Mukarram Babar','Maryam Ali','Din Muhammad','Mudassir Hassan','Arslan Mehndi',
+    'Zaheer Ul Hassan Shah','Mehwish','Fakhir Jibran','Nadia Saifullah','Waqar Dastagir',
+    'Fatima Saif Khan','Saad Ijaz','Nasim Khan','Iqra Usman','Muhammad Farhan','Zainab Saif',
+    'Javeria Naeem','Tehniyat Ali','Muhammad Ajmal','Muhammad Imran Bashir','Sara Aziz',
+    'Ayesha Shabbir','Sumaira Akram']
 
 
 class Subsession(BaseSubsession):

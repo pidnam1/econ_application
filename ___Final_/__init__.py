@@ -293,6 +293,7 @@ class WTP_YesNo(Page):
         participant = player.participant
         startup(player)
         player.gender = player.participant.gender
+        player.participant.wtp_payment = 0
         return player.round_number == 1
     @staticmethod
     def vars_for_template(player: Player):
@@ -322,7 +323,6 @@ class WTP_Who(Page):
         for i, j in zip(arr, string_arr):
             if i != 0:
                 labels.append(dict(name=j, label=g.get_player_by_id(i).participant.label))
-        player.participant.wtp_payment = 0
         return dict(labels=labels)
     @staticmethod
     def error_message(player: Player, values):

@@ -1,0 +1,18 @@
+{{ block title }}FINAL SURVEY SECTION A: PART 4{{ endblock }}
+{{ block content }}
+
+    <b><p>On the previous page, you selected 'other' for the following question. Please clarify your response.</p></b>
+
+    {{ if player.certain_hints_always_helper_5 }}
+      <p><b>You selected 'Other'. Please specify. Consider the part of the study in which you were sure to get the hint from the helper, if you asked.
+        Why did you not ask for hints from helpers?</b></p>
+        {{ form.certain_hints_always_helper_other }}
+        {{ formfield_errors 'certain_hints_always_helper_other' }}
+      <p></p>
+    {{ endif }}
+
+    <p>
+        <button class="otree-btn-next btn btn-primary" style="float:right">Next</button>
+    </p>
+
+{{ endblock }}

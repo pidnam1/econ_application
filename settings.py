@@ -8,12 +8,12 @@ SESSION_CONFIGS = [
         app_sequence = ['___Consent_','___Preferences_','___Practice_','___Round0_','___Round0b_','___Round1_','___Round2_','___Round3b_','___Round2_1','___Final_','___Endline_','___Payment_'],
         num_demo_participants=18
     ),
-    dict(
-        name='Tester',
-        display_name = "Tester",
-        app_sequence=['___Consent_','___Preferences_','___Round1_','___Endline_'],
-        num_demo_participants=21
-    ),
+    # dict(
+    #     name='Tester',
+    #     display_name = "Tester",
+    #     app_sequence=['___Consent_','___Preferences_','___Round1_','___Endline_'],
+    #     num_demo_participants=21
+    # ),
     # dict(
     #     name="___Consent_",
     #     display_name = "Consent",
@@ -150,13 +150,13 @@ ROOMS = [
 #    ),
 #    dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
     dict(
-        name='Pilot_1',
-        display_name="Pilot Room 1",
+        name='Room_1',
+        display_name="Room 1",
         participant_label_file='_rooms/labels.txt',
     ),
     dict(
-        name='Pilot_2',
-        display_name="Pilot Room 2",
+        name='Room_2',
+        display_name="Room 2",
         participant_label_file='_rooms/labels.txt',
     )
 ]

@@ -44,17 +44,17 @@ PART {{ round }}: Cooking
       </div>
         {{ formfield 'cookhints_you_WR' }}
          {{ for field in formfields_random }}
-          {{ if field == 'cookhints_partner1_WR'}}
-            {{ formfield 'cookhints_partner1_WR' label=partner1_label}}
+          {{ if field == 'cookhints_partner_pm_WR'}}
+            {{ formfield 'cookhints_partner_pm_WR' label=partner_pm_label}}
           {{ endif }}
-          {{ if field == 'cookhints_partner2_WR'}}
-            {{ formfield 'cookhints_partner2_WR' label=partner2_label}}
+          {{ if field == 'cookhints_partner_rm_WR'}}
+            {{ formfield 'cookhints_partner_rm_WR' label=partner_rm_label}}
           {{ endif }}
-          {{ if field == 'cookhints_partner3_WR' }}
-            {{ formfield 'cookhints_partner3_WR' label=partner3_label}}
+          {{ if field == 'cookhints_partner_pf_WR' }}
+            {{ formfield 'cookhints_partner_pf_WR' label=partner_pf_label}}
           {{ endif }}
-          {{ if field == 'cookhints_partner4_WR' }}
-            {{ formfield 'cookhints_partner4_WR' label=partner4_label}}
+          {{ if field == 'cookhints_partner_rf_WR' }}
+            {{ formfield 'cookhints_partner_rf_WR' label=partner_rf_label}}
           {{ endif }}
         {{ endfor }}
         <p>

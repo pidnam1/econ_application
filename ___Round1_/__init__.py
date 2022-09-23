@@ -39,6 +39,14 @@ def make_field_two():
     )
 class Player(BasePlayer):
     gender = models.IntegerField()
+    id_partnerf1 = models.IntegerField()
+    id_partnerf2 = models.IntegerField()
+    id_partnerf3 = models.IntegerField()
+    id_partnerf4 = models.IntegerField()
+    id_partnerm1 = models.IntegerField()
+    id_partnerm2 = models.IntegerField()
+    id_partnerm3 = models.IntegerField()
+    id_partnerm4 = models.IntegerField()
     econhints1_partner1 = make_field_one()
     econhints1_partner2 = make_field_one()
     econhints1_partner3 = make_field_one()
@@ -567,6 +575,14 @@ class Demographics(Page):
         ##set_helpers_new(player.subsession)
         set_partners(player)
         player.gender = player.participant.gender
+        player.id_partnerf1 = player.participant.partnerf1
+        player.id_partnerf2 = player.participant.partnerf2
+        player.id_partnerf3 = player.participant.partnerf3
+        player.id_partnerf4 = player.participant.partnerf4
+        player.id_partnerm1 = player.participant.partnerm1
+        player.id_partnerm2 = player.participant.partnerm2
+        player.id_partnerm3 = player.participant.partnerm3
+        player.id_partnerm4 = player.participant.partnerm4
         return dict()
 
 def vars_for_template1(player: Player, formfields):

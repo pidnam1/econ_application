@@ -42,7 +42,7 @@ class Payment(Page):
 
         #subtract wtp_payment
         player.wtp_pay0 = 0-player.participant.wtp_payment
-        player.participant.total_payment += wtp_pay0
+        player.participant.total_payment += player.wtp_pay0
 
         #add amount game
         player.participant.total_payment += player.participant.game_payoff
@@ -52,7 +52,7 @@ class Payment(Page):
         player.participant.total_payment += player.participant.guess_bonus_payoff
         player.guess_bonus_pay0 = player.participant.guess_bonus_payoff
 
-        return dict(testing_pay0=testing_pay0, helping_pay0=helping_pay0, guess_bonus_pay0=player.participant.guess_bonus_payoff, wtp_pay0=0-player.participant.wtp_payment, amount_game_pay0=player.participant.game_payoff, total_payment0=player.participant.total_payment)
+        return dict(testing_pay0=player.testing_pay0, helping_pay0=player.helping_pay0, guess_bonus_pay0=player.participant.guess_bonus_payoff, wtp_pay0=player.wtp_pay0, amount_game_pay0=player.participant.game_payoff, total_payment0=player.participant.total_payment)
 
 
 page_sequence = [Payment]

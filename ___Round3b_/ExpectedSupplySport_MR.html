@@ -44,17 +44,17 @@ PART {{ round }}: Sports
       </div>
         {{ formfield 'sporthints_you_MR' }}
          {{ for field in formfields_random }}
-          {{ if field == 'sporthints_partner1_MR'}}
-            {{ formfield 'sporthints_partner1_MR' label=partner1_label}}
+          {{ if field == 'sporthints_partner_pm_MR'}}
+            {{ formfield 'sporthints_partner_pm_MR' label=partner_pm_label}}
           {{ endif }}
-          {{ if field == 'sporthints_partner2_MR'}}
-            {{ formfield 'sporthints_partner2_MR' label=partner2_label}}
+          {{ if field == 'sporthints_partner_rm_MR'}}
+            {{ formfield 'sporthints_partner_rm_MR' label=partner_rm_label}}
           {{ endif }}
-          {{ if field == 'sporthints_partner3_MR' }}
-            {{ formfield 'sporthints_partner3_MR' label=partner3_label}}
+          {{ if field == 'sporthints_partner_pf_MR' }}
+            {{ formfield 'sporthints_partner_pf_MR' label=partner_pf_label}}
           {{ endif }}
-          {{ if field == 'sporthints_partner4_MR' }}
-            {{ formfield 'sporthints_partner4_MR' label=partner4_label}}
+          {{ if field == 'sporthints_partner_rf_MR' }}
+            {{ formfield 'sporthints_partner_rf_MR' label=partner_rf_label}}
           {{ endif }}
         {{ endfor }}
         <p>

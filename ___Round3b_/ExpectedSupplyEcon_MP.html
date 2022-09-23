@@ -44,17 +44,17 @@ PART {{ round }}: Political Science
       </div>
         {{ formfield 'econhints_you_MP' }}
          {{ for field in formfields_random }}
-          {{ if field == 'econhints_partner1_MP'}}
-            {{ formfield 'econhints_partner1_MP' label=partner1_label}}
+          {{ if field == 'econhints_partner_pm_MP'}}
+            {{ formfield 'econhints_partner_pm_MP' label=partner_pm_label}}
           {{ endif }}
-          {{ if field == 'econhints_partner2_MP'}}
-            {{ formfield 'econhints_partner2_MP' label=partner2_label}}
+          {{ if field == 'econhints_partner_rm_MP'}}
+            {{ formfield 'econhints_partner_rm_MP' label=partner_rm_label}}
           {{ endif }}
-          {{ if field == 'econhints_partner3_MP' }}
-            {{ formfield 'econhints_partner3_MP' label=partner3_label}}
+          {{ if field == 'econhints_partner_pf_MP' }}
+            {{ formfield 'econhints_partner_pf_MP' label=partner_pf_label}}
           {{ endif }}
-          {{ if field == 'econhints_partner4_MP' }}
-            {{ formfield 'econhints_partner4_MP' label=partner4_label}}
+          {{ if field == 'econhints_partner_rf_MP' }}
+            {{ formfield 'econhints_partner_rf_MP' label=partner_rf_label}}
           {{ endif }}
         {{ endfor }}
         <p>

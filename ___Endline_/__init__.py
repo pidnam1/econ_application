@@ -184,6 +184,7 @@ class Player(BasePlayer):
     certain_hints_always_helper_3 = models.BooleanField(blank=True)
     certain_hints_always_helper_4 = models.BooleanField(blank=True)
     certain_hints_always_helper_5 = models.BooleanField(blank=True)
+    certain_hints_always_helper_other = models.StringField()
     uncertain_hints_always_helper = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
         widget=widgets.RadioSelect,
@@ -195,6 +196,7 @@ class Player(BasePlayer):
     uncertain_hints_always_helper_5 = models.BooleanField(blank=True)
     uncertain_hints_always_helper_6 = models.BooleanField(blank=True)
     uncertain_hints_always_helper_7 = models.BooleanField(blank=True)
+    uncertain_hints_always_helper_other = models.StringField()
     hints_always_comp = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
         widget=widgets.RadioSelect,
@@ -204,6 +206,7 @@ class Player(BasePlayer):
     hints_always_comp_3 = models.BooleanField(blank=True)
     hints_always_comp_4 = models.BooleanField(blank=True)
     hints_always_comp_5 = models.BooleanField(blank=True)
+    hints_always_comp_other = models.StringField()
 
     #MAKE ANY FORMFIELDS NEEDED FOR HELPER TABLE
     helper_ranking1 = models.IntegerField(label='', min=1, max=8)
@@ -240,6 +243,7 @@ class Player(BasePlayer):
     decide_hints_3 = models.BooleanField(blank=True)
     decide_hints_4 = models.BooleanField(blank=True)
     decide_hints_5 = models.BooleanField(blank=True)
+    decide_hints_other = models.StringField()
     diff_choice = models.IntegerField(
         choices=[[1, 'Yes'], [2, 'No']],
         widget=widgets.RadioSelect,
@@ -270,7 +274,7 @@ class Player(BasePlayer):
     amount_game = models.IntegerField(
         label='Out of Rs.100, amount to be used in the game', min=0, max=100,
     )
-    gender = models.StringField(
+    gender0 = models.StringField(
         choices=[['Male', 'Male'], ['Female', 'Female']],
         widget=widgets.RadioSelect,
     )
@@ -290,7 +294,7 @@ class Player(BasePlayer):
         choices=[[1, 'Yes'], [2, 'No']],
         widget=widgets.RadioSelect,
     )
-    children_yes = models.StringField()
+    children_yes = models.IntegerField()
     lang = models.IntegerField(
         choices=[[0, 'English'], [1, 'Urdu'], [2, 'Punjabi'], [3,'Pushto'], [4, 'Sindhi'], [99, 'Other/Multiple (specify on the next page)']],
         widget=widgets.RadioSelect,
@@ -812,6 +816,13 @@ class ExpFeedbackNo1(Page):
             elif num_selected1 > 2:
                 return "You may not select more than 2"
 
+class ExpFeedbackNo1Other(Page):
+    form_model = 'player'
+    form_fields = ['certain_hints_always_helper_other']
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.field_maybe_none('certain_hints_always_helper_5'))
+
 class ExpFeedbackNo2(Page):
     form_model = 'player'
     @staticmethod
@@ -844,6 +855,13 @@ class ExpFeedbackNo2(Page):
             elif num_selected2 > 2:
                 return "You may not select more than 2"
 
+class ExpFeedbackNo2Other(Page):
+    form_model = 'player'
+    form_fields = ['uncertain_hints_always_helper_other']
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.field_maybe_none('uncertain_hints_always_helper_7'))
+
 class ExpFeedbackNo3(Page):
     form_model = 'player'
     @staticmethod
@@ -874,6 +892,13 @@ class ExpFeedbackNo3(Page):
             elif num_selected3 > 2:
                 return "You may not select more than 2"
 
+class ExpFeedbackNo3Other(Page):
+    form_model = 'player'
+    form_fields = ['hints_always_comp_other']
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.field_maybe_none('hints_always_comp_5'))
+
 class ExpDecisions(Page):
     form_model = 'player'
     form_fields = ['tt_perception','decide_hints_1','decide_hints_2','decide_hints_3','decide_hints_4','decide_hints_5','diff_choice','diff_why']
@@ -890,6 +915,13 @@ class ExpDecisions(Page):
             return "Please select 2"
         elif num_selected > 2:
             return "You may not select more than 2"
+
+class ExpDecisionsOther(Page):
+    form_model = 'player'
+    form_fields = ['decide_hints_other']
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.field_maybe_none('decide_hints_5'))
 
 class ExpDecisionsNo(Page):
     form_model = 'player'
@@ -933,7 +965,7 @@ class AmountGameResults(Page):
 
 class BasicInfo(Page):
     form_model = 'player'
-    form_fields = ['gender','caste','religion','marital_status','children','lang','father_occu','mother_occu','origin','monthly_income']
+    form_fields = ['gender0','caste','religion','marital_status','children','lang','father_occu','mother_occu','origin','monthly_income']
 
 class BasicInfoOther(Page):
     form_model = 'player'
@@ -1067,7 +1099,8 @@ class Congratulations(Page):
     form_model = 'player'
 
 page_sequence = [HelperTable, MultiplePriceFemale1, MultiplePriceFemale2, MultiplePriceMale1,
-MultiplePriceMale2, WTP_Subject, ExpFeedback, ExpFeedbackNo1, ExpFeedbackNo2, ExpFeedbackNo3,
-ExpDecisions, ExpDecisionsNo, AmountGame, AmountGameResults, GenderTable, ClassRelations1,
+MultiplePriceMale2, WTP_Subject, ExpFeedback, ExpFeedbackNo1, ExpFeedbackNo1Other,
+ExpFeedbackNo2, ExpFeedbackNo2Other, ExpFeedbackNo3, ExpFeedbackNo3Other, ExpDecisions,
+ExpDecisionsOther, ExpDecisionsNo, AmountGame, AmountGameResults, GenderTable, ClassRelations1,
 Ethics1, Ethics2, Personality, PersonalityTraitsTable, BasicInfo, BasicInfoOther,
 AcademicInfo, AcademicInfoOther, FriendsTable, ClassRelations3, Congratulations]

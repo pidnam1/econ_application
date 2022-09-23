@@ -2,11 +2,11 @@
 {{ block content }}
 
     <p><b>1. What is your date of birth? (Please list as DD/MM/YYYY)</b></p>
-    {{ form.day_of_birth }}
+    <p>Day: <input name="day_of_birth" type="number" />
+    Month: <input name="month_of_birth" type="number" />
+    Year: <input name="year_of_birth" type="number" /></p>
     {{ formfield_errors 'day_of_birth' }}
-    {{ form.month_of_birth }}
     {{ formfield_errors 'month_of_birth' }}
-    {{ form.year_of_birth }}
     {{ formfield_errors 'year_of_birth' }}
     <p></p>
 

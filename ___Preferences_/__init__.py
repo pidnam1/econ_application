@@ -13,6 +13,7 @@ class C(BaseConstants):
     'Javeria Naeem','Tehniyat Ali','Muhammad Ajmal','Muhammad Imran Bashir','Sara Aziz',
     'Ayesha Shabbir','Sumaira Akram']
     RANKINGS = [1,2,3,4,5,6,7,8,9,10,'No rank']
+    RANKINGS1 = [1,2,3,4,5,'No rank']
 
 class Subsession(BaseSubsession):
     pass
@@ -37,6 +38,12 @@ def make_field2(label):
 def make_field3(label):
     return models.StringField(
         label=label,
+    )
+
+def make_field4(label):
+    return models.StringField(
+        choices=C.RANKINGS1,
+        label=label, initial = "No rank",
     )
 
 class Player(BasePlayer):
@@ -98,63 +105,43 @@ class Player(BasePlayer):
     f8_3_1 = make_field3('')
     f9_3_1 = make_field3('')
     f10_3_1 = make_field3('')
-    f1_1_2 = make_field1('')
-    f2_1_2 = make_field1('')
-    f3_1_2 = make_field1('')
-    f4_1_2 = make_field1('')
-    f5_1_2 = make_field1('')
-    f6_1_2 = make_field1('')
-    f7_1_2 = make_field1('')
-    f8_1_2 = make_field1('')
-    f9_1_2 = make_field1('')
-    f10_1_2 = make_field1('')
-    f11_1_2 = make_field1('')
-    f12_1_2 = make_field1('')
-    f13_1_2 = make_field1('')
-    f14_1_2 = make_field1('')
-    f15_1_2 = make_field1('')
-    f16_1_2 = make_field1('')
-    f17_1_2 = make_field1('')
-    f18_1_2 = make_field1('')
-    f19_1_2 = make_field1('')
-    f20_1_2 = make_field1('')
-    f21_1_2 = make_field1('')
-    f22_1_2 = make_field1('')
-    f23_1_2 = make_field1('')
-    f24_1_2 = make_field1('')
-    f25_1_2 = make_field1('')
-    f26_1_2 = make_field1('')
-    f27_1_2 = make_field1('')
-    f28_1_2 = make_field1('')
-    f29_1_2 = make_field1('')
-    f30_1_2 = make_field1('')
-    f31_1_2 = make_field1('')
-    f32_1_2 = make_field1('')
-    f33_1_2 = make_field1('')
-    f34_1_2 = make_field1('')
-    f35_1_2 = make_field1('')
-    f36_1_2 = make_field1('')
-    f37_1_2 = make_field1('')
-    f1_2_2 = make_field2('')
-    f2_2_2 = make_field2('')
-    f3_2_2 = make_field2('')
-    f4_2_2 = make_field2('')
-    f5_2_2 = make_field2('')
-    f6_2_2 = make_field2('')
-    f7_2_2 = make_field2('')
-    f8_2_2 = make_field2('')
-    f9_2_2 = make_field2('')
-    f10_2_2 = make_field2('')
-    f1_3_2 = make_field3('')
-    f2_3_2 = make_field3('')
-    f3_3_2 = make_field3('')
-    f4_3_2 = make_field3('')
-    f5_3_2 = make_field3('')
-    f6_3_2 = make_field3('')
-    f7_3_2 = make_field3('')
-    f8_3_2 = make_field3('')
-    f9_3_2 = make_field3('')
-    f10_3_2 = make_field3('')
+    f1_1_2 = make_field4('')
+    f2_1_2 = make_field4('')
+    f3_1_2 = make_field4('')
+    f4_1_2 = make_field4('')
+    f5_1_2 = make_field4('')
+    f6_1_2 = make_field4('')
+    f7_1_2 = make_field4('')
+    f8_1_2 = make_field4('')
+    f9_1_2 = make_field4('')
+    f10_1_2 = make_field4('')
+    f11_1_2 = make_field4('')
+    f12_1_2 = make_field4('')
+    f13_1_2 = make_field4('')
+    f14_1_2 = make_field4('')
+    f15_1_2 = make_field4('')
+    f16_1_2 = make_field4('')
+    f17_1_2 = make_field4('')
+    f18_1_2 = make_field4('')
+    f19_1_2 = make_field4('')
+    f20_1_2 = make_field4('')
+    f21_1_2 = make_field4('')
+    f22_1_2 = make_field4('')
+    f23_1_2 = make_field4('')
+    f24_1_2 = make_field4('')
+    f25_1_2 = make_field4('')
+    f26_1_2 = make_field4('')
+    f27_1_2 = make_field4('')
+    f28_1_2 = make_field4('')
+    f29_1_2 = make_field4('')
+    f30_1_2 = make_field4('')
+    f31_1_2 = make_field4('')
+    f32_1_2 = make_field4('')
+    f33_1_2 = make_field4('')
+    f34_1_2 = make_field4('')
+    f35_1_2 = make_field4('')
+    f36_1_2 = make_field4('')
+    f37_1_2 = make_field4('')
 
 class Transition(Page):
     form_model = 'player'
@@ -350,8 +337,8 @@ class Pref_TT(Page):
         choices = []
         for field in player.participant.form_fields_pref2:
             choices += [values[field]]
-        if len(set(choices)) != 11:
-            return "You must choose exactly 10 ranks. You cannot choose the same rank for two people."
+        if len(set(choices)) != 6:
+            return "You must choose exactly 5 ranks. You cannot choose the same rank for two people."
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         rank_list = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2,
@@ -392,79 +379,4 @@ class Pref_TT(Page):
             elif value in id_list_male:
                 player.participant.pref_tt_male.update({key:value})
 
-class Pref_TT_Why(Page):
-    form_model = 'player'
-    @staticmethod
-    def get_form_fields(player: Player):
-        session = player.session
-        form_fields_all = ['f1_2_2','f2_2_2','f3_2_2','f4_2_2','f5_2_2','f6_2_2','f7_2_2','f8_2_2','f9_2_2','f10_2_2']
-        form_fields = form_fields_all[:session.count - 1]
-        return form_fields
-    @staticmethod
-    def vars_for_template(player: Player):
-        player_why = ["1. " + player.participant.name_list1[0], "2. " + player.participant.name_list1[1], "3. " + player.participant.name_list1[2],
-        "4. " + player.participant.name_list1[3], "5. " + player.participant.name_list1[4], "6. " + player.participant.name_list1[5],
-        "7. " + player.participant.name_list1[6], "8. " + player.participant.name_list1[7], "9. " + player.participant.name_list1[8],
-        "10. " + player.participant.name_list1[9]]
-        return dict(player_why = player_why)
-
-def vars_for_template2(player: Player):
-    players_other = []
-    formfields = []
-    if player.f1_2_2 == "9. Other":
-        player1 = [player.participant.name_list1[0]]
-        players_other = players_other + player1
-        formfields.append('f1_3_2')
-    if player.f2_2_2 == "9. Other":
-        player2 = [player.participant.name_list1[1]]
-        players_other = players_other + player2
-        formfields.append('f2_3_2')
-    if player.f3_2_2 == "9. Other":
-        player3 = [player.participant.name_list1[2]]
-        players_other = players_other + player3
-        formfields.append('f3_3_2')
-    if player.f4_2_2 == "9. Other":
-        player4 = [player.participant.name_list1[3]]
-        players_other = players_other + player4
-        formfields.append('f4_3_2')
-    if player.f5_2_2 == "9. Other":
-        player5 = [player.participant.name_list1[4]]
-        players_other = players_other + player5
-        formfields.append('f5_3_2')
-    if player.f6_2_2 == "9. Other":
-        player6 = [player.participant.name_list1[5]]
-        players_other = players_other + player6
-        formfields.append('f6_3_2')
-    if player.f7_2_2 == "9. Other":
-        player7 = [player.participant.name_list1[6]]
-        players_other = players_other + player7
-        formfields.append('f7_3_2')
-    if player.f8_2_2 == "9. Other":
-        player8 = [player.participant.name_list1[7]]
-        players_other = players_other + player8
-        formfields.append('f8_3_2')
-    if player.f9_2_2 == "9. Other":
-        player9 = [player.participant.name_list1[8]]
-        players_other = players_other + player9
-        formfields.append('f9_3_2')
-    if player.f10_2_2 == "9. Other":
-        player10 = [player.participant.name_list1[9]]
-        players_other = players_other + player10
-        formfields.append('f10_3_2')
-    return [players_other, formfields]
-
-class Pref_TT_Other(Page):
-    form_model = 'player'
-    @staticmethod
-    def get_form_fields(player: Player):
-        formfields = vars_for_template2(player)[1]
-        return formfields
-    @staticmethod
-    def vars_for_template(player: Player):
-        players_other = vars_for_template2(player)[0]
-        return dict(players_other = players_other)
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.f1_2_2 == "9. Other") or (player.f2_2_2 == "9. Other") or (player.f3_2_2 == "9. Other") or (player.f4_2_2 == "9. Other") or (player.f5_2_2 == "9. Other") or (player.f6_2_2 == "9. Other") or (player.f7_2_2 == "9. Other") or (player.f8_2_2 == "9. Other") or (player.f9_2_2 == "9. Other") or (player.f10_2_2 == "9. Other")
-
-page_sequence = [Transition, Pref_Helper, Pref_Helper_Why, Pref_Helper_Other, Pref_TT, Pref_TT_Why, Pref_TT_Other]
+page_sequence = [Transition, Pref_Helper, Pref_Helper_Why, Pref_Helper_Other, Pref_TT]

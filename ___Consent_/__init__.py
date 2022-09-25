@@ -14,7 +14,7 @@ class C(BaseConstants):
     'Muhammad_Bilal','Muhammad_Ishfaq','Amir_Mushtaq_Saifi','Khawar_Faiz','Iram_Naz',
     'Ayesha_Fatima','Laiba_Maryam','Kamal_Kumar','Fahad_Ali','Irfan_Haider','Nouman_Riasat',
     'Farhan_Ahmed','Masooma_Sadaqat','Muhammad_Aizaz_Musharaf','Faizan_Bashir','Umer_Farooq',
-    'Nimra_Ibrar','Aima_Alam','Salman_Ahmed_Ch._Rajpoot','Hayaa_Mariam','Muhammad_Abdullah_Hasnat',
+    'Nimra_Ibrar','Aima_Alam','Salman_Ahmed_Ch_Rajpoot','Hayaa_Mariam','Muhammad_Abdullah_Hasnat',
     'Um_Ul_Hassnaat','Ihtasham_Irshad','Kainat_Bibi','Maryam','Faiza_Jabeen','Asmat_Ullah',
     'Hadia_Masoom','Monibah_Arif','Ayesha_Bibi','Mahnoor_Chand','Muhammad_Kamran',
     'Hassan_Raza']

@@ -5,13 +5,18 @@ class C(BaseConstants):
     NAME_IN_URL = '___Preferences_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    PLAYERS = ['Areej Ajmal','Ayesha Imtiaz','Ali Ahmad','Yaqoot Azam','Oroba Naveed',
-    'Ayesha Shamas','Nazar Fareed','Sharjeel Ahmed','Ameer Hamza','Kamran Khan',
-    'Muhammad Mukarram Babar','Maryam Ali','Din Muhammad','Mudassir Hassan','Arslan Mehndi',
-    'Zaheer Ul Hassan Shah','Mehwish','Fakhir Jibran','Nadia Saifullah','Waqar Dastagir',
-    'Fatima Saif Khan','Saad Ijaz','Nasim Khan','Iqra Usman','Muhammad Farhan','Zainab Saif',
-    'Javeria Naeem','Tehniyat Ali','Muhammad Ajmal','Muhammad Imran Bashir','Sara Aziz',
-    'Ayesha Shabbir','Sumaira Akram']
+    PLAYERS = ['Haleema Ali Khawaja','Muhammad Yousaf','Nisar Ahmad','Muhammad Rizwan',
+    'Hassan Sagheer','Adan Irshad','Sehar','Laiba Sattar','Saqib Ali','Eman Tariq',
+    'Hafiz Muhammad Ali','Waqas Ahmad','Saif Ullah','Sami Ullah Cheema','Muhammad Mubasir Khan',
+    'Noman Zulfiqar','Muhammad Shazil Mumtaz','Saqlain Abbas','Muhammad Aryan','Ume Hani',
+    'Menahil Nadeem','Muhammad Zahid Shafi','Muhammad Abdullah','Faeza Ashraf','Muhammad Shahzaib',
+    'Muhammad Bilal','Muhammad Ishfaq','Amir Mushtaq Saifi','Khawar Faiz','Iram Naz',
+    'Ayesha Fatima','Laiba Maryam','Kamal Kumar','Fahad Ali','Irfan Haider','Nouman Riasat',
+    'Farhan Ahmed','Masooma Sadaqat','Muhammad Aizaz Musharaf','Faizan Bashir','Umer Farooq',
+    'Nimra Ibrar','Aima Alam','Salman Ahmed Ch. Rajpoot','Hayaa Mariam','Muhammad Abdullah Hasnat',
+    'Um Ul Hassnaat','Ihtasham Irshad','Kainat Bibi','Maryam','Faiza Jabeen','Asmat Ullah',
+    'Hadia Masoom','Monibah Arif','Ayesha Bibi','Mahnoor Chand','Muhammad Kamran',
+    'Hassan Raza']
     RANKINGS = [1,2,3,4,5,6,7,8,9,10,'No rank']
     RANKINGS1 = [1,2,3,4,5,'No rank']
 
@@ -85,6 +90,9 @@ class Player(BasePlayer):
     f35_1_1 = make_field1('')
     f36_1_1 = make_field1('')
     f37_1_1 = make_field1('')
+    f38_1_1 = make_field1('')
+    f39_1_1 = make_field1('')
+    f40_1_1 = make_field1('')
     f1_2_1 = make_field2('')
     f2_2_1 = make_field2('')
     f3_2_1 = make_field2('')
@@ -142,6 +150,9 @@ class Player(BasePlayer):
     f35_1_2 = make_field4('')
     f36_1_2 = make_field4('')
     f37_1_2 = make_field4('')
+    f38_1_2 = make_field4('')
+    f39_1_2 = make_field4('')
+    f40_1_2 = make_field4('')
 
 class Transition(Page):
     form_model = 'player'
@@ -169,7 +180,8 @@ class Pref_Helper(Page):
         'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
         'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1','f21_1_1','f22_1_1','f23_1_1',
         'f24_1_1','f25_1_1','f26_1_1','f27_1_1','f28_1_1','f29_1_1','f30_1_1','f31_1_1',
-        'f32_1_1']
+        'f32_1_1','f33_1_1','f34_1_1','f35_1_1','f36_1_1','f37_1_1','f38_1_1','f39_1_1',
+        'f40_1_1']
         form_fields = form_fields_all[:session.count - 1]
         return form_fields
     @staticmethod
@@ -180,7 +192,8 @@ class Pref_Helper(Page):
         'f8_1_1','f9_1_1','f10_1_1','f11_1_1','f12_1_1','f13_1_1','f14_1_1','f15_1_1',
         'f16_1_1','f17_1_1','f18_1_1','f19_1_1','f20_1_1','f21_1_1','f22_1_1','f23_1_1',
         'f24_1_1','f25_1_1','f26_1_1','f27_1_1','f28_1_1','f29_1_1','f30_1_1','f31_1_1',
-        'f32_1_1']
+        'f32_1_1','f33_1_1','f34_1_1','f35_1_1','f36_1_1','f37_1_1','f38_1_1','f39_1_1',
+        'f40_1_1']
         player.participant.form_fields_pref = form_fields[:session.count - 1]
         return dict(players=player.participant.players)
     @staticmethod
@@ -201,7 +214,9 @@ class Pref_Helper(Page):
         player.f15_1_1, player.f16_1_1, player.f17_1_1, player.f18_1_1, player.f19_1_1,
         player.f20_1_1, player.f21_1_1, player.f22_1_1, player.f23_1_1, player.f24_1_1,
         player.f25_1_1, player.f26_1_1, player.f27_1_1, player.f28_1_1, player.f29_1_1,
-        player.f30_1_1, player.f31_1_1, player.f32_1_1, player.f33_1_1]
+        player.f30_1_1, player.f31_1_1, player.f32_1_1, player.f33_1_1, player.f34_1_1,
+        player.f35_1_1, player.f36_1_1, player.f37_1_1, player.f38_1_1, player.f39_1_1,
+        player.f40_1_1]
         player.participant.name_list = []
         ranking_order={}
         for i in range(len(rank_list)):
@@ -318,7 +333,8 @@ class Pref_TT(Page):
         'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
         'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
         'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
-        'f32_1_2']
+        'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2','f38_1_2','f39_1_2',
+        'f40_1_2']
         form_fields = form_fields_all[:session.count - 1]
         return form_fields
     @staticmethod
@@ -329,7 +345,8 @@ class Pref_TT(Page):
         'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
         'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
         'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
-        'f32_1_2']
+        'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2','f38_1_2','f39_1_2',
+        'f40_1_2']
         player.participant.form_fields_pref2 = form_fields[:session.count - 1]
         return dict(players=player.participant.players)
     @staticmethod
@@ -347,7 +364,9 @@ class Pref_TT(Page):
         player.f15_1_2, player.f16_1_2, player.f17_1_2, player.f18_1_2, player.f19_1_2,
         player.f20_1_2, player.f21_1_2, player.f22_1_2, player.f23_1_2, player.f24_1_2,
         player.f25_1_2, player.f26_1_2, player.f27_1_2, player.f28_1_2, player.f29_1_2,
-        player.f30_1_2, player.f31_1_2, player.f32_1_2]
+        player.f30_1_2, player.f31_1_2, player.f32_1_2, player.f33_1_2, player.f34_1_2,
+        player.f35_1_2, player.f36_1_2, player.f37_1_2, player.f38_1_2, player.f39_1_2,
+        player.f40_1_2]
         player.participant.name_list1 = []
         ranking_order={}
         for i in range(len(rank_list)):

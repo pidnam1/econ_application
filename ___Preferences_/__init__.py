@@ -5,18 +5,14 @@ class C(BaseConstants):
     NAME_IN_URL = '___Preferences_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    PLAYERS = ['Haleema Ali Khawaja','Muhammad Yousaf','Nisar Ahmad','Muhammad Rizwan',
-    'Hassan Sagheer','Adan Irshad','Sehar','Laiba Sattar','Saqib Ali','Eman Tariq',
-    'Hafiz Muhammad Ali','Waqas Ahmad','Saif Ullah','Sami Ullah Cheema','Muhammad Mubasir Khan',
-    'Noman Zulfiqar','Muhammad Shazil Mumtaz','Saqlain Abbas','Muhammad Aryan','Ume Hani',
-    'Menahil Nadeem','Muhammad Zahid Shafi','Muhammad Abdullah','Faeza Ashraf','Muhammad Shahzaib',
-    'Muhammad Bilal','Muhammad Ishfaq','Amir Mushtaq Saifi','Khawar Faiz','Iram Naz',
-    'Ayesha Fatima','Laiba Maryam','Kamal Kumar','Fahad Ali','Irfan Haider','Nouman Riasat',
-    'Farhan Ahmed','Masooma Sadaqat','Muhammad Aizaz Musharaf','Faizan Bashir','Umer Farooq',
-    'Nimra Ibrar','Aima Alam','Salman Ahmed Ch. Rajpoot','Hayaa Mariam','Muhammad Abdullah Hasnat',
-    'Um Ul Hassnaat','Ihtasham Irshad','Kainat Bibi','Maryam','Faiza Jabeen','Asmat Ullah',
-    'Hadia Masoom','Monibah Arif','Ayesha Bibi','Mahnoor Chand','Muhammad Kamran',
-    'Hassan Raza']
+    PLAYERS = ['Maira Ashraf','Ajmal Hussain Kashif','Muhammad Idrees','Muhammad Farhan',
+    'Meraj Khan','Hasnain Ali','Khizar Hayat','Ali Hamza','Nayab Qamar','Rizwan Ullah',
+    'Waqar Younas','Muhammad Hamza Khalid','Muhammad Ilyas','Ahmar Khan','Fatima Akram',
+    'Mohsin Riaz','Aniba Zafar','Khalid Ur Rehman','Hafiz Muhammad Rizwan','Muhammad Afzaal Azam',
+    'Shahar Yar','Massab Umair','Qandeel Shahid','Zohaib Zulfiqar','Iftikhar Mehmood',
+    'Umair Hassan','Zoha Imtiaz','Maida Iqbal','Ubaid Khan','Zain Abbas','Fatima Muhammad Yaseen',
+    'Sania Riaz','Muhammad Tassawar','Hamnah Shafique','Bareeha Ali','Muhammad Ahmad',
+    'Farwa Hussain','Tehmina Fareed']
     RANKINGS = [1,2,3,4,5,6,7,8,9,10,'No rank']
     RANKINGS1 = [1,2,3,4,5,'No rank']
 

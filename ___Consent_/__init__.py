@@ -5,31 +5,23 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [0,1,1,1,1,0,0,0,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,0,0,0,1,1,1,1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,1,1]
-    LABELS = ['Haleema_Ali_Khawaja','Muhammad_Yousaf','Nisar_Ahmad','Muhammad_Rizwan',
-    'Hassan_Sagheer','Adan_Irshad','Sehar','Laiba_Sattar','Saqib_Ali','Eman_Tariq',
-    'Hafiz_Muhammad_Ali','Waqas_Ahmad','Saif_Ullah','Sami_Ullah_Cheema','Muhammad_Mubasir_Khan',
-    'Noman_Zulfiqar','Muhammad_Shazil_Mumtaz','Saqlain_Abbas','Muhammad_Aryan','Ume_Hani',
-    'Menahil_Nadeem','Muhammad_Zahid_Shafi','Muhammad_Abdullah','Faeza_Ashraf','Muhammad_Shahzaib',
-    'Muhammad_Bilal','Muhammad_Ishfaq','Amir_Mushtaq_Saifi','Khawar_Faiz','Iram_Naz',
-    'Ayesha_Fatima','Laiba_Maryam','Kamal_Kumar','Fahad_Ali','Irfan_Haider','Nouman_Riasat',
-    'Farhan_Ahmed','Masooma_Sadaqat','Muhammad_Aizaz_Musharaf','Faizan_Bashir','Umer_Farooq',
-    'Nimra_Ibrar','Aima_Alam','Salman_Ahmed_Ch_Rajpoot','Hayaa_Mariam','Muhammad_Abdullah_Hasnat',
-    'Um_Ul_Hassnaat','Ihtasham_Irshad','Kainat_Bibi','Maryam','Faiza_Jabeen','Asmat_Ullah',
-    'Hadia_Masoom','Monibah_Arif','Ayesha_Bibi','Mahnoor_Chand','Muhammad_Kamran',
-    'Hassan_Raza']
-    PLAYERS = ['Haleema Ali Khawaja','Muhammad Yousaf','Nisar Ahmad','Muhammad Rizwan',
-    'Hassan Sagheer','Adan Irshad','Sehar','Laiba Sattar','Saqib Ali','Eman Tariq',
-    'Hafiz Muhammad Ali','Waqas Ahmad','Saif Ullah','Sami Ullah Cheema','Muhammad Mubasir Khan',
-    'Noman Zulfiqar','Muhammad Shazil Mumtaz','Saqlain Abbas','Muhammad Aryan','Ume Hani',
-    'Menahil Nadeem','Muhammad Zahid Shafi','Muhammad Abdullah','Faeza Ashraf','Muhammad Shahzaib',
-    'Muhammad Bilal','Muhammad Ishfaq','Amir Mushtaq Saifi','Khawar Faiz','Iram Naz',
-    'Ayesha Fatima','Laiba Maryam','Kamal Kumar','Fahad Ali','Irfan Haider','Nouman Riasat',
-    'Farhan Ahmed','Masooma Sadaqat','Muhammad Aizaz Musharaf','Faizan Bashir','Umer Farooq',
-    'Nimra Ibrar','Aima Alam','Salman Ahmed Ch. Rajpoot','Hayaa Mariam','Muhammad Abdullah Hasnat',
-    'Um Ul Hassnaat','Ihtasham Irshad','Kainat Bibi','Maryam','Faiza Jabeen','Asmat Ullah',
-    'Hadia Masoom','Monibah Arif','Ayesha Bibi','Mahnoor Chand','Muhammad Kamran',
-    'Hassan Raza']
+    GENDERS_LIST = [0,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,0,0,1,0,0,1,0,0]
+    LABELS = ['Maira_Ashraf','Ajmal_Hussain_Kashif','Muhammad_Idrees','Muhammad_Farhan',
+    'Meraj_Khan','Hasnain_Ali','Khizar_Hayat','Ali_Hamza','Nayab_Qamar','Rizwan_Ullah',
+    'Waqar_Younas','Muhammad_Hamza_Khalid','Muhammad_Ilyas','Ahmar_Khan','Fatima_Akram',
+    'Mohsin_Riaz','Aniba_Zafar','Khalid_Ur_Rehman','Hafiz_Muhammad_Rizwan','Muhammad_Afzaal_Azam',
+    'Shahar_Yar','Massab_Umair','Qandeel_Shahid','Zohaib_Zulfiqar','Iftikhar_Mehmood',
+    'Umair_Hassan','Zoha_Imtiaz','Maida_Iqbal','Ubaid_Khan','Zain_Abbas','Fatima_Muhammad_Yaseen',
+    'Sania_Riaz','Muhammad_Tassawar','Hamnah_Shafique','Bareeha_Ali','Muhammad_Ahmad',
+    'Farwa_Hussain','Tehmina_Fareed']
+    PLAYERS = ['Maira Ashraf','Ajmal Hussain Kashif','Muhammad Idrees','Muhammad Farhan',
+    'Meraj Khan','Hasnain Ali','Khizar Hayat','Ali Hamza','Nayab Qamar','Rizwan Ullah',
+    'Waqar Younas','Muhammad Hamza Khalid','Muhammad Ilyas','Ahmar Khan','Fatima Akram',
+    'Mohsin Riaz','Aniba Zafar','Khalid Ur Rehman','Hafiz Muhammad Rizwan','Muhammad Afzaal Azam',
+    'Shahar Yar','Massab Umair','Qandeel Shahid','Zohaib Zulfiqar','Iftikhar Mehmood',
+    'Umair Hassan','Zoha Imtiaz','Maida Iqbal','Ubaid Khan','Zain Abbas','Fatima Muhammad Yaseen',
+    'Sania Riaz','Muhammad Tassawar','Hamnah Shafique','Bareeha Ali','Muhammad Ahmad',
+    'Farwa Hussain','Tehmina Fareed']
 
 
 class Subsession(BaseSubsession):
@@ -73,6 +65,9 @@ def creating_session(subsession: Subsession):
     for player, label in zip(subsession.get_players(), C.LABELS):
         player.participant.label = label
 
+class WaitPage2(WaitPage):
+    title_text = "Waiting for all players to join"
+
 class Consent(Page):
     form_model = 'player'
     form_fields = ['roll', 'esig', 'agree']
@@ -90,4 +85,4 @@ class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
     body_text = "Please be patient with your fellow classmates. WHILE YOU WAIT, YOU CAN PLAY THE GAME ON THE PAPER THAT IS ON YOUR DESK. PLEASE DO NOT TALK TO ANYONE."
 
-page_sequence = [Consent, WaitPage1]
+page_sequence = [WaitPage2, Consent, WaitPage1]

@@ -1632,15 +1632,24 @@ class Final(Page):
         random.shuffle(arr)
         # print(upcoming_apps[arr[0]])
         if arr[0] == 0:
-            player.participant.round2_completed = 4
+            player.participant.round2_completed = 3
             return '___Round2_'
         if arr[0] == 1:
-            player.participant.round3b_completed = 4
+            player.participant.round3b_completed = 3
             return '___Round3b_'
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.payoff_help = {}
         player.participant.payoff_help.update({"partnerm1":450, "partnerm3":450, "partnerf1":450, "partnerf3":450})
+        player.participant.responses_2_MP = dict()
+        player.participant.responses_2_MR = dict()
+        player.participant.responses_2_WP = dict()
+        player.participant.responses_2_WR = dict()
+        player.participant.responses_3b_MP = dict()
+        player.participant.responses_3b_MR = dict()
+        player.participant.responses_3b_WP = dict()
+        player.participant.responses_3b_WR = dict()
+        player.participant.wtp_payment = 0
 
 
 

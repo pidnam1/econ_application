@@ -47,7 +47,7 @@ class Player(BasePlayer):
     id_mp = models.IntegerField()
     request_hints_economics_MP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MP = models.StringField(
@@ -63,7 +63,7 @@ class Player(BasePlayer):
     expect_hints_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MP = models.StringField(
@@ -80,7 +80,7 @@ class Player(BasePlayer):
     )
     # expect_hints_economics1_MP = models.StringField(
     #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-    #     label='''In Political Science?''',
+    #     label='''In Sociology?''',
     #     widget=widgets.RadioSelectHorizontal,
     # )
     # expect_hints_cooking1_MP = models.StringField(
@@ -95,7 +95,7 @@ class Player(BasePlayer):
     # )
     # expect_hints_economics2_MP = models.StringField(
     #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-    #     label='''In Political Science?''',
+    #     label='''In Sociology?''',
     #     widget=widgets.RadioSelectHorizontal,
     # )
     # expect_hints_cooking2_MP = models.StringField(
@@ -111,7 +111,7 @@ class Player(BasePlayer):
     results_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MP = models.StringField(
@@ -127,30 +127,30 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MP = models.IntegerField(
-        choices=[[1, 'A rich Sophist'], [2, 'A corrupt politician'], [3, 'A gifted priest'],
-        [4, 'A man of true knowledge']],
+        choices=[[1, 'Television'], [2, 'Peers'], [3, 'Media'], [4, 'Religion']],
         label='''
-        Protagoras is used as an example of:''',
+        _____ plays a key role in defining our cultural tastes and establishing our national identity.''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MP = models.IntegerField(
-        choices=[[1, 'Louis Philippe'], [2, 'Napoleon Bonaparte'], [3, 'Gaulle'], [4, 'Coty']],
+        choices=[[1, 'Distorted and misleading'], [2, 'Clear and true'], [3, 'Comprehensible and misleading'],
+        [4, 'Confusing and valid']],
         label='''
-        In 1804, a military adventurer who transformed the French Republic into an Empire was:''',
+        The news media provides meager coverage of poor people and poverty is often ____ & ____''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MP = models.IntegerField(
-        choices=[[1, 'Kitab-al-lbar'], [2, 'Al-Tarif'], [3, 'History of the Berbers'],
-        [4, 'Siyasat Namah']],
+        choices=[[1, 'Social change'], [2, 'Revolution'], [3, 'Social transformation'],
+        [4, 'Coup d’etat']],
         label='''
-        Which of the following is not the work of Ibn-e-Khaldun?''',
+        Attempts at rapidly and dramatically changing a society’s previously existing structure''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MP = models.IntegerField(
-        choices=[[1, 'Is based on conventions'], [2, 'Is specifically enacted'],
-        [3, 'Grows with the passage of time'], [4, 'Is given by the head of the state']],
+        choices=[[1, 'Civilian rule'], [2, 'Democracy'], [3, 'Participatory governance'],
+        [4, 'Communion']],
         label='''
-        Constitutional convention is one which:''',
+        Every qualified citizen has the legal right to run for and hold an office of government''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MP = models.IntegerField(
@@ -455,7 +455,7 @@ class Player(BasePlayer):
     id_mr = models.IntegerField()
     request_hints_economics_MR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MR = models.StringField(
@@ -471,7 +471,7 @@ class Player(BasePlayer):
     expect_hints_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MR = models.StringField(
@@ -488,7 +488,7 @@ class Player(BasePlayer):
     )
     # expect_hints_economics1_MR = models.StringField(
     #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-    #     label='''In Political Science?''',
+    #     label='''In Sociology?''',
     #     widget=widgets.RadioSelectHorizontal,
     # )
     # expect_hints_cooking1_MR = models.StringField(
@@ -503,7 +503,7 @@ class Player(BasePlayer):
     # )
     # expect_hints_economics2_MR = models.StringField(
     #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-    #     label='''In Political Science?''',
+    #     label='''In Sociology?''',
     #     widget=widgets.RadioSelectHorizontal,
     # )
     # expect_hints_cooking2_MR = models.StringField(
@@ -519,7 +519,7 @@ class Player(BasePlayer):
     results_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MR = models.StringField(
@@ -535,34 +535,31 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MR = models.IntegerField(
-        choices=[[1, 'Classical theory of development'],
-        [2, 'Neo-classical theory of development'],
-        [3, 'Theory of entrepreneur'],
-        [4, 'Theory of economic maturity']],
+        choices=[[1, 'Henry H. Don'], [2, 'Stephen J. Gould'], [3, 'Herbert Spencer'],
+        [4, 'Charles Darwin']],
         label='''
-        Liberal theory of development is also known as:''',
+        Biologist who criticized sociobiology, offering instead explanations based
+        on culture rather than on genetics and evolution''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MR = models.IntegerField(
-        choices=[[1, 'A State may terminate a treaty because of a material breach'],
-        [2, 'A State may invoke fundamental change of circumstances to terminate/suspend a treaty'],
-        [3, 'A treaty stands terminated because of the eruption of hostilities'],
-        [4, 'None of the above']],
+        choices=[[1, 'Science'], [2, 'Positivism'], [3, 'General law'], [4, 'Scientific method']],
         label='''
-        The principle of rebus sic stantibus means:''',
+        A process by which a body of scientific knowledge is built through observation,
+        experimentation, generalization, and verification''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MR = models.IntegerField(
-        choices=[[1, 'Italy'], [2, 'China'], [3, 'USSR'], [4, 'USA']],
+        choices=[[1, 'Cultural system'], [2, 'Formal group'], [3, 'Social system'], [4, 'Bureaucratized']],
         label='''
-        Name the country in which there is the system of judicial review?''',
+        Organizations are essentially a''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MR = models.IntegerField(
-        choices=[[1, 'Economic liberty'], [2, 'Political liberty'], [3, 'National liberty'],
-        [4, 'Natural liberty']],
+        choices=[[1, 'Sect'], [2, 'Denomination'], [3, 'Cult'], [4, 'Ecclesia']],
         label='''
-        When nations enjoy both freedom from internal as well as external control it is called:''',
+        It tends to limit its membership to a particular class, ethnic group, or religious
+        group or, at least, to have its leadership positions dominated by members of such a group''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MR = models.IntegerField(
@@ -867,7 +864,7 @@ class Player(BasePlayer):
     id_wp = models.IntegerField()
     request_hints_economics_WP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WP = models.StringField(
@@ -883,7 +880,7 @@ class Player(BasePlayer):
     expect_hints_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WP = models.StringField(
@@ -900,7 +897,7 @@ class Player(BasePlayer):
     )
     # expect_hints_economics1_WP = models.StringField(
     #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-    #     label='''In Political Science?''',
+    #     label='''In Sociology?''',
     #     widget=widgets.RadioSelectHorizontal,
     # )
     # expect_hints_cooking1_WP = models.StringField(
@@ -915,7 +912,7 @@ class Player(BasePlayer):
     # )
     # expect_hints_economics2_WP = models.StringField(
     #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-    #     label='''In Political Science?''',
+    #     label='''In Sociology?''',
     #     widget=widgets.RadioSelectHorizontal,
     # )
     # expect_hints_cooking2_WP = models.StringField(
@@ -931,7 +928,7 @@ class Player(BasePlayer):
     results_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WP = models.StringField(
@@ -947,39 +944,29 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WP = models.IntegerField(
-        choices=[[1, 'The Philosopher'],
-        [2, 'The Second Teacher'],
-        [3, 'The First Arab Philosopher'], [4, 'The Father of Islamic Political Thought']],
+        choices=[[1, 'Fertility'], [2, 'Fecundity'], [3, 'Total fertility rate'],
+        [4, 'Crude birth rate']],
         label='''
-        Al-Farabi is known as:''',
+        Average number of children that would be born to a woman over her lifetime''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WP = models.IntegerField(
-        choices=[[1, 'Philadelphia'], [2, 'Washington'], [3, 'Chicago'], [4, 'New York']],
+        choices=[[1, 'Diversion'], [2, 'Probation'], [3, 'Parole'], [4, 'Rehabilitation']],
         label='''
-        In 1787, the original constitution was drafted by a convention held at _____.''',
+        Steering youthful offenders away from the juvenile justice system to nonofficial social agencies''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WP = models.IntegerField(
-        choices=[[1, 'Euclid'], [2, 'Ptolemy'], [3, 'Both (a) and (b)'], [4, 'None of the above']],
+        choices=[[1, 'Pragmatism'], [2, 'Praxis'], [3, 'Instrumental'], [4, 'Practical']],
         label='''
-        Eudoxus was a great influence on:''',
+        Focused on accomplishing concrete tasks''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WP = models.IntegerField(
-        choices=[[1, 'Dicey'], [2, 'Bryce'], [3, 'Leacock'], [4, 'Woodrow Wilson']],
+        choices=[[1, 'Cultural capital'], [2, 'Capital culture'], [3, 'Symbolic capital'],
+        [4, 'Social capital']],
         label='''
-        Who defined democracy saying that 'democracy is a form of Government in which
-        will of the majority of the qualified persons rules'?''',
-        widget=widgets.RadioSelect,
-    )
-    crt_cooking1_WP = models.IntegerField(
-        choices=[[1, 'To test the tenderness of the meat being cooked'],
-        [2, 'Used to check the temperature of the grill'],
-        [3, 'Used to see how long you can keep your hand by a hot grill'],
-        [4, 'It\'s a test to determine the metal strengths of a grill']],
-        label='''
-        What does the term \'hand test\' mean in relation to grilling?''',
+        Bourdieu attributed the reproduction of class to''',
         widget=widgets.RadioSelect,
     )
     crt_cooking2_WP = models.IntegerField(
@@ -1279,7 +1266,7 @@ class Player(BasePlayer):
     id_wr = models.IntegerField()
     request_hints_economics_WR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WR = models.StringField(
@@ -1295,7 +1282,7 @@ class Player(BasePlayer):
     expect_hints_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WR = models.StringField(
@@ -1312,7 +1299,7 @@ class Player(BasePlayer):
     )
     # expect_hints_economics1_WR = models.StringField(
     #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-    #     label='''In Political Science?''',
+    #     label='''In Sociology?''',
     #     widget=widgets.RadioSelectHorizontal,
     # )
     # expect_hints_cooking1_WR = models.StringField(
@@ -1327,7 +1314,7 @@ class Player(BasePlayer):
     # )
     # expect_hints_economics2_WR = models.StringField(
     #     choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-    #     label='''In Political Science?''',
+    #     label='''In Sociology?''',
     #     widget=widgets.RadioSelectHorizontal,
     # )
     # expect_hints_cooking2_WR = models.StringField(
@@ -1343,7 +1330,7 @@ class Player(BasePlayer):
     results_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WR = models.StringField(
@@ -1359,34 +1346,30 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WR = models.IntegerField(
-        choices=[[1, 'The number of workers will come down'], [2, 'Middle class will become powerful'],
-        [3, 'Ranks of middle class will swallow'], [4, 'Middle class will form the rank of the workers']],
+        choices=[[1, 'Cultural shock'], [2, 'Cultural conflict'], [3, 'Cultural lag'],
+        [4, 'Social conflict']],
         label='''
-        Marx believed that in the present capitalist system of society:''',
+        A situation that develops when new patterns of behavior conflict with traditional values.''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WR = models.IntegerField(
-        choices=[[1, 'States of the world themselves'], [2, 'Parliamentary and Presidential system'],
-        [3, 'Individual and Society'],
-        [4, 'Unitary and Federal system']],
+        choices=[[1, 'Morality'], [2, 'Antisocial act'], [3, 'Misdemeanor'], [4, 'Victimless crimes']],
         label='''
-        Modern liberalism has tried to struck a balance between the interests of:''',
+        Acts that violate the laws meant to enforce the moral code''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WR = models.IntegerField(
-        choices=[[1, 'A principal judicial organ of the UN'], [2, 'A Court established by States outside the UN system'],
-        [3, 'A Court established by the European Community'], [4, 'None of the above']],
+        choices=[[1, 'Anomie'], [2, 'Verstehen'], [3, 'The sociological imagination'],
+        [4, 'Sociological perspective']],
         label='''
-        The International Court of Justice is:''',
+        C. Wright Mills taught his students that they should employ what in their intellectual work?''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WR = models.IntegerField(
-        choices=[[1, 'Objectives on which the future constitutions was to be based'],
-        [2, 'Objectives of constitutions'],
-        [3, 'Objectives for Pakistan'],
-        [4, 'None of the above']],
+        choices=[[1, 'Dramaturgy'], [2, 'Interaction perspective'], [3, 'Bracketing'],
+        [4, 'Ethnography']],
         label='''
-        What is the meaning of \'Objectives Resolution?\'''',
+        The paradigm that focuses on how people interpret and attempt to influence the social world''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WR = models.IntegerField(
@@ -3126,7 +3109,7 @@ class Transition_MP0(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1_MP(Page):
     form_model = 'player'
@@ -3155,13 +3138,13 @@ class Economics1_MP(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Gifted debater.")}
+                    return {player.id_in_group: dict(message = "Hint: Islam, Hinduism, Christianity.")}
                 elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ1_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Gifted debater.")}
+                return {player.id_in_group: dict(message = "Hint: Islam, Hinduism, Christianity.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -3197,13 +3180,13 @@ class Economics2_MP(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: 5\'7\" overthrew French government.")}
+                    return {player.id_in_group: dict(message = "Hint: Not clear and delusive.")}
                 elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ2_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: 5\'7\" overthrew French government.")}
+                return {player.id_in_group: dict(message = "Hint: Not clear and delusive.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -3271,13 +3254,13 @@ class Economics4_MP(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner3 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Be specific.")}
+                    return {player.id_in_group: dict(message = "Hint: Be civil.")}
                 elif player.participant.econ_hint_requests_partner3 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ4_MP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Be specific.")}
+                return {player.id_in_group: dict(message = "Hint: Be civil.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -3843,7 +3826,7 @@ class Hints_MR(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 # class ExpectationWR_MR(Page):
 #     form_model = 'player'
@@ -4160,7 +4143,7 @@ class Transition_MR0(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1_MR(Page):
     form_model = 'player'
@@ -4189,13 +4172,13 @@ class Economics1_MR(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Mozart, Beethoven, Bach.")}
+                    return {player.id_in_group: dict(message = "Hint: GOLD.")}
                 elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ1_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Mozart, Beethoven, Bach.")}
+                return {player.id_in_group: dict(message = "Hint: GOLD.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -4231,13 +4214,13 @@ class Economics2_MR(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Fundamental change is required.")}
+                    return {player.id_in_group: dict(message = "Hint: Remember the importance of methodologies.")}
                 elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ2_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Fundamental change is required.")}
+                return {player.id_in_group: dict(message = "Hint: Remember the importance of methodologies.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -4305,13 +4288,13 @@ class Economics4_MR(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner8 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Nations freedom.")}
+                    return {player.id_in_group: dict(message = "Hint: I nominate you.")}
                 elif player.participant.econ_hint_requests_partner8 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ4_MR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Nations freedom.")}
+                return {player.id_in_group: dict(message = "Hint: I nominate you.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -4877,7 +4860,7 @@ class Hints_WP(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 # class ExpectationWR_WP(Page):
 #     form_model = 'player'
@@ -5194,7 +5177,7 @@ class Transition_WP0(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1_WP(Page):
     form_model = 'player'
@@ -5223,13 +5206,13 @@ class Economics1_WP(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Number 2.")}
+                    return {player.id_in_group: dict(message = "Hint: Rate... not oil.")}
                 elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ1_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Number 2.")}
+                return {player.id_in_group: dict(message = "Hint: Rate... not oil.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -5265,13 +5248,13 @@ class Economics2_WP(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Cheesesteaks.")}
+                    return {player.id_in_group: dict(message = "Hint: Approbation.")}
                 elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ2_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Cheesesteaks.")}
+                return {player.id_in_group: dict(message = "Hint: Approbation.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -5339,13 +5322,13 @@ class Economics4_WP(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner2 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: 1st Viscount.")}
+                    return {player.id_in_group: dict(message = "Hint: Culture comes first.")}
                 elif player.participant.econ_hint_requests_partner2 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ4_WP = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: 1st Viscount.")}
+                return {player.id_in_group: dict(message = "Hint: Culture comes first.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -5912,7 +5895,7 @@ class Hints_WR(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 # class ExpectationWR_WR(Page):
 #     form_model = 'player'
@@ -6230,7 +6213,7 @@ class Transition_WR0(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1_WR(Page):
     form_model = 'player'
@@ -6259,13 +6242,13 @@ class Economics1_WR(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Middle Class contains most of the workers.")}
+                    return {player.id_in_group: dict(message = "Hint: Time to catch up.")}
                 elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ1_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Middle Class contains most of the workers.")}
+                return {player.id_in_group: dict(message = "Hint: Time to catch up.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -6301,13 +6284,13 @@ class Economics2_WR(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: One person.")}
+                    return {player.id_in_group: dict(message = "Hint: Crime.")}
                 elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ2_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: One person.")}
+                return {player.id_in_group: dict(message = "Hint: Crime.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -6375,13 +6358,13 @@ class Economics4_WR(Page):
                     player.participant.already_clicked = True
                     player.participant.econ_hint_used_partner6 += 1
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Building blocks for further constitutions.")}
+                    return {player.id_in_group: dict(message = "Hint: Action and inter.")}
                 elif player.participant.econ_hint_requests_partner6 > int(partner.participant.hints_given_econ):
                     player.reject_hint_econ3_WR = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Building blocks for further constitutions.")}
+                return {player.id_in_group: dict(message = "Hint: Action and inter.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the helper has not released it")}
     @staticmethod
@@ -6921,24 +6904,24 @@ class Final_Part4(Page):
         return dict(round=player.participant.round3b_completed)
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
-        player.participant.round2_completed = 5
+        player.participant.round2_completed = 4
         return '___Round2_1'
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=4, crt_economics3_MP=4,
+        solutions_MP = dict(crt_economics1_MP=4, crt_economics2_MP=1, crt_economics3_MP=2,
         crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=3,
         crt_cooking4_MP=4, crt_sports1_MP=4, crt_sports2_MP=1, crt_sports3_MP=3,
         crt_sports4_MP=2)
-        solutions_MR = dict(crt_economics1_MR=2, crt_economics2_MR=3, crt_economics3_MR=3,
-        crt_economics4_MR=4, crt_cooking1_MR=2, crt_cooking2_MR=1, crt_cooking3_MR=2,
+        solutions_MR = dict(crt_economics1_MR=2, crt_economics2_MR=4, crt_economics3_MR=3,
+        crt_economics4_MR=2, crt_cooking1_MR=2, crt_cooking2_MR=1, crt_cooking3_MR=2,
         crt_cooking4_MR=3, crt_sports1_MR=2, crt_sports2_MR=3, crt_sports3_MR=4,
         crt_sports4_MR=1)
-        solutions_WP = dict(crt_economics1_WP=4, crt_economics2_WP=1, crt_economics3_WP=2,
+        solutions_WP = dict(crt_economics1_WP=3, crt_economics2_WP=2, crt_economics3_WP=3,
         crt_economics4_WP=1, crt_cooking1_WP=3, crt_cooking2_WP=4, crt_cooking3_WP=3,
         crt_cooking4_WP=2, crt_sports1_WP=3, crt_sports2_WP=1, crt_sports3_WP=2,
         crt_sports4_WP=2)
-        solutions_WR = dict(crt_economics1_WR=2, crt_economics2_WR=3, crt_economics3_WR=1,
-        crt_economics4_WR=3, crt_cooking1_WR=3, crt_cooking2_WR=2, crt_cooking3_WR=4,
+        solutions_WR = dict(crt_economics1_WR=3, crt_economics2_WR=4, crt_economics3_WR=3,
+        crt_economics4_WR=2, crt_cooking1_WR=3, crt_cooking2_WR=2, crt_cooking3_WR=4,
         crt_cooking4_WR=3, crt_sports1_WR=1, crt_sports2_WR=3, crt_sports3_WR=2,
         crt_sports4_WR=3)
 
@@ -6980,23 +6963,23 @@ class Final_Part5(Page):
         return dict(round=player.participant.round3b_completed)
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
-        return '___Final_'
+        return '___Endline_'
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        solutions_MP = dict(crt_economics1_MP=1, crt_economics2_MP=2, crt_economics3_MP=4,
-        crt_economics4_MP=2, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=3,
+        solutions_MP = dict(crt_economics1_MP=4, crt_economics2_MP=1, crt_economics3_MP=2,
+        crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=3,
         crt_cooking4_MP=4, crt_sports1_MP=4, crt_sports2_MP=1, crt_sports3_MP=3,
         crt_sports4_MP=2)
-        solutions_MR = dict(crt_economics1_MR=1, crt_economics2_MR=2, crt_economics3_MR=4,
-        crt_economics4_MR=3, crt_cooking1_MR=2, crt_cooking2_MR=1, crt_cooking3_MR=2,
+        solutions_MR = dict(crt_economics1_MR=2, crt_economics2_MR=4, crt_economics3_MR=3,
+        crt_economics4_MR=2, crt_cooking1_MR=2, crt_cooking2_MR=1, crt_cooking3_MR=2,
         crt_cooking4_MR=3, crt_sports1_MR=2, crt_sports2_MR=3, crt_sports3_MR=4,
         crt_sports4_MR=1)
-        solutions_WP = dict(crt_economics1_WP=2, crt_economics2_WP=1, crt_economics3_WP=3,
-        crt_economics4_WP=2, crt_cooking1_WP=3, crt_cooking2_WP=4, crt_cooking3_WP=3,
+        solutions_WP = dict(crt_economics1_WP=3, crt_economics2_WP=2, crt_economics3_WP=3,
+        crt_economics4_WP=1, crt_cooking1_WP=3, crt_cooking2_WP=4, crt_cooking3_WP=3,
         crt_cooking4_WP=2, crt_sports1_WP=3, crt_sports2_WP=1, crt_sports3_WP=2,
         crt_sports4_WP=2)
-        solutions_WR = dict(crt_economics1_WR=4, crt_economics2_WR=4, crt_economics3_WR=1,
-        crt_economics4_WR=1, crt_cooking1_WR=3, crt_cooking2_WR=2, crt_cooking3_WR=4,
+        solutions_WR = dict(crt_economics1_WR=3, crt_economics2_WR=4, crt_economics3_WR=3,
+        crt_economics4_WR=2, crt_cooking1_WR=3, crt_cooking2_WR=2, crt_cooking3_WR=4,
         crt_cooking4_WR=3, crt_sports1_WR=1, crt_sports2_WR=3, crt_sports3_WR=2,
         crt_sports4_WR=3)
 

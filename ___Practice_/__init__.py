@@ -25,17 +25,15 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     gender = models.IntegerField()
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'Population'], [2, 'Territory'], [3, 'Government'], [4, 'Sovereignty']],
+        choices=[[1, 'Sociological perspective'], [2, 'Social aspect'], [3, 'The sociological imagination'], [4, 'Social thought']],
         label='''
-        Which of the following is the distinguishing characteristic of State, as
-        compared with other associations?''',
+        The ability to see the link between personal experiences and social forces''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'USA'], [2, 'Spain'], [3, 'Germany'], [4, 'UK']],
+        choices=[[1, 'Corporate crime'], [2, 'White-collar crime'], [3, 'Victimless crime'], [4, 'Organized crime']],
         label='''
-        The parliament of which country sits in the palace of Westminster - probably
-        better known as the House of Parliament:''',
+        What is the failure of companies to adhere to legal regulations? ''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -132,7 +130,7 @@ class Player(BasePlayer):
     results_econ = models.IntegerField(
         choices=[[0,"0/4 hints"],[1,"1/4 hints"],[2,"2/4 hints"],[3,"3/4 hints"]],
         label='''
-        In Political Science?''',
+        In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cook = models.IntegerField(
@@ -265,7 +263,7 @@ class Economics2(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: United Kingdom.")}
+            return {player.id_in_group: dict(message = "Hint: It is all white.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
@@ -401,5 +399,5 @@ class Results(Page):
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 
-page_sequence = [Demographics, Transition, Economics1, Economics2, Economics2_Hint,
-Cooking1, Cooking1_Hint, Cooking2, Sports1, Sports2, Sports2_Hint, Belief, Belief_Q, Results]
+page_sequence = [Demographics, Transition, Economics2, Economics2_Hint,
+Cooking1, Cooking1_Hint, Sports2, Sports2_Hint, Belief, Belief_Q, Results]

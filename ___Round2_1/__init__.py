@@ -40,7 +40,7 @@ class Player(BasePlayer):
     id_mp = models.IntegerField()
     request_hints_economics_MP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MP = models.StringField(
@@ -56,7 +56,7 @@ class Player(BasePlayer):
     expect_hints_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MP = models.StringField(
@@ -74,7 +74,7 @@ class Player(BasePlayer):
     results_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MP = models.StringField(
@@ -90,28 +90,33 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MP = models.IntegerField(
-        choices=[[1, 'Two times'], [2, 'Three times'], [3, 'Four times'], [4, 'None of the above']],
+        choices=[[1, 'Fact'], [2, 'Data'], [3, 'Profane'], [4, 'Information']],
         label='''
-        The former American President Franklin Delano Roosevelt was elected for:''',
+        It consists of all empirically observable things— that is, things that are
+        knowable through common, everyday experiences''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MP = models.IntegerField(
-        choices=[[1, 'Ptolemy'], [2, 'Julius Casear'], [3, 'Socrates'], [4, 'Alexander the Great']],
+        choices=[[1, 'Open mobility'], [2, 'Lateral mobility'], [3, 'Intragenerational mobility'],
+        [4, 'Intergenerational mobility']],
         label='''
-        What famous individual was taught by Aristotle?''',
+        What term is used to describe the movement of individuals up or down the
+        social scale during the course of their working lives?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MP = models.IntegerField(
-        choices=[[1, 'Eratosthenes'], [2, 'Plato'], [3, 'Diophantus'], [4, 'Eppipides']],
+        choices=[[1, 'Social Darwinism'], [2, 'Evolution'], [3, 'Conflict'], [4, 'Naturalization']],
         label='''
-        Who was the ancient philosopher who wrote "The Republic"?''',
+        The belief that inequality in society is the result of a natural selection
+        based on individual capacities and abilities''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MP = models.IntegerField(
-        choices=[[1, 'July 20, 1947'], [2, 'June 20, 1947'], [3, 'August 20, 1947'],
-        [4, 'August 25, 1947']],
+        choices=[[1, 'Gentrification'], [2, 'Urbanization'], [3, 'Pauperization'],
+        [4, 'Deurbanization']],
         label='''
-        When was the Pakistan Constitution Assembly constituted?''',
+        This process has produced an upgrading of previously marginal urban areas
+        and the replacement of some poor residents with middle-class ones''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MP = models.IntegerField(
@@ -384,7 +389,7 @@ class Player(BasePlayer):
     id_mr = models.IntegerField()
     request_hints_economics_MR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MR = models.StringField(
@@ -400,7 +405,7 @@ class Player(BasePlayer):
     expect_hints_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MR = models.StringField(
@@ -418,7 +423,7 @@ class Player(BasePlayer):
     results_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MR = models.StringField(
@@ -434,32 +439,33 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MR = models.IntegerField(
-        choices=[[1, '1787'], [2, '1789'], [3, '1798'], [4, 'None of the above']],
+        choices=[[1, 'Operational definition'], [2, 'Conceptualization'], [3, 'Formulation'],
+        [4, 'Measurement']],
         label='''
-        The French Revolution started in:''',
+        The conversion of abstract ideas into specific, observable circumstances or events''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MR = models.IntegerField(
-        choices=[[1, 'November 26, 1949'], [2, 'January 5, 1950'], [3, 'January 26, 1950'],
-        [4, 'March 23, 1951']],
+        choices=[[1, 'Upper-middle class'], [2, 'Middle class'], [3, 'Lower class'],
+        [4, 'Untouchables']],
         label='''
-        The Constitution of India promulgated on:''',
+        When media covers the poor, they are presented through the eyes of_____:''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MR = models.IntegerField(
-        choices=[[1, 'Parliamentary republic'], [2, 'Semi-Presidential republic'],
-        [3, 'Parliamentary monarchy'], [4, 'None of the above']],
+        choices=[[1, 'It creates unrealistic expectations of what is required to be happy'],
+        [2, 'It creates new consumer needs'], [3, 'Advertisers are able to influence media content'],
+        [4, 'All of the above']],
         label='''
-        Which is Australia’s form of government?''',
+        Media advertising has several clear functions, but it also has dysfunctions.
+        Sociologists are concerned that''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MR = models.IntegerField(
-        choices=[[1, 'Government, territory, population, association'],
-        [2, 'Association, sovereignty, territory, population'],
-        [3, 'Army, territory, population, sovereignty'],
-        [4, 'Population, territory, government, capacity to enter into relations']],
+        choices=[[1, 'Prejudice'], [2, 'Discrimination'], [3, 'Stereotype'], [4, 'Beliefs']],
         label='''
-        Which of the following are the four characteristics of state?''',
+        An irrationally based negative, or occasionally positive, attitude toward
+        certain groups and their members?''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MR = models.IntegerField(
@@ -729,7 +735,7 @@ class Player(BasePlayer):
     id_wp = models.IntegerField()
     request_hints_economics_WP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WP = models.StringField(
@@ -745,7 +751,7 @@ class Player(BasePlayer):
     expect_hints_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WP = models.StringField(
@@ -763,7 +769,7 @@ class Player(BasePlayer):
     results_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WP = models.StringField(
@@ -779,31 +785,31 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WP = models.IntegerField(
-        choices=[[1, 'A State can violate its international obligations if its interests so demand'],
-        [2, 'A State can terminate a treaty at its will'],
-        [3, 'A State must perform treaty obligations in good faith'],
-        [4, 'None of the above']],
+        choices=[[1, 'Looking down upon others’ cultures'], [2, 'Creating a culture of hatred and xenophobia'],
+        [3, 'Preferring a foreign culture to one’s own'], [4, 'All of the above']],
         label='''
-        Pacta sunt servanda means:''',
+        Ethnocentrism implies''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WP = models.IntegerField(
-        choices=[[1, 'State is the march of God on Earth'], [2, 'State is an instrument of exploitation'],
-        [3, 'State is a necessary evil'], [4, 'State is a coordinating agency']],
+        choices=[[1, 'There seemed to be higher rates of suicide in times of peace than in times of war, revolution and poverty.'],
+        [2, 'Catholics had much higher suicide rates than Protestants'],
+        [3, 'Civilians were more likely to take their lives than soldiers'],
+        [4, 'Suicide is an individual act, unrelated to group life']],
         label='''
-        Which one of the following statements can be attributed to the Marxists?''',
+        Durkheim’s research suggested that''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WP = models.IntegerField(
-        choices=[[1, 'Britain'], [2, 'USA'], [3, 'France'], [4, 'India']],
+        choices=[[1, 'Norms'], [2, 'Laws'], [3, 'Mores'], [4, 'Behavior']],
         label='''
-        The lengthiest written constitution in the world is of:''',
+        Specific rules of behavior that are agreed upon and shared and that prescribe limits of acceptable behavior''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WP = models.IntegerField(
-        choices=[[1, 'Asabiyya'], [2, 'Liberty'], [3, 'Dictatorship'], [4, 'Algebra']],
+        choices=[[1, 'Government'], [2, 'Legal authority'], [3, 'State'], [4, 'Empire']],
         label='''
-        Ibn-e-Khaldun's name is associated with:''',
+        Institutionalized way of organizing power within territorial limits.''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WP = models.IntegerField(
@@ -1067,7 +1073,7 @@ class Player(BasePlayer):
     id_wr = models.IntegerField()
     request_hints_economics_WR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WR = models.StringField(
@@ -1083,7 +1089,7 @@ class Player(BasePlayer):
     expect_hints_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WR = models.StringField(
@@ -1101,7 +1107,7 @@ class Player(BasePlayer):
     results_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WR = models.StringField(
@@ -1117,32 +1123,32 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WR = models.IntegerField(
-        choices=[[1, 'Might is right'], [2, 'Survival of the fittest'],
-        [3, 'From each according to his needs'], [4, 'None of the above']],
+        choices=[[1, 'Peri-suburbs'], [2, 'Suburbs'], [3, 'Outskirt'], [4, 'Exurbs']],
         label='''
-        According to Marxists, the primitive society, which existed before the creation
-        of state, worked on the principle:''',
+        Middle- and upper-middle class communities in outlying, semirural suburbia''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WR = models.IntegerField(
-        choices=[[1, 'Clientelism'], [2, 'Pandering'], [3, 'Gerrymandering'], [4, 'None of the above']],
+        choices=[[1, 'Mass hysteria'], [2, 'Rumour'], [3, 'Panic'], [4, 'Moral panic']],
         label='''
-        The political manipulation of electoral district boundaries to favour a party is called:''',
+        An uncoordinated group flight from a perceived danger''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WR = models.IntegerField(
-        choices=[[1, 'A State is subject to foreign court\'s jurisdiction'],
-        [2, 'A State is not subject to foreign court\'s jurisdiction'],
-        [3, 'A State cannot enter a foreign court'],
-        [4, 'None of the above']],
+        choices=[[1, 'People share characteristics without necessarily identifying with each other'],
+        [2, 'People\'s life-chances and experiences depend heavily on their social ranking'],
+        [3, 'The ranks of different social categories tend to change very slowly over time'],
+        [4, 'Stratification occurs because of inequalities in assets or property']],
         label='''
-        State immunity means:''',
+        Which of the following is NOT a feature of all socially stratified systems?''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WR = models.IntegerField(
-        choices=[[1, 'Press'], [2, 'Judiciary branch'], [3, 'Universities'], [4, 'None of the above']],
+        choices=[[1, 'Presentation of self'], [2, 'Impression management'],
+        [3, 'Looking glass self'], [4, 'Dramaturgy']],
         label='''
-        What does the expression \"fourth estate\" refer to?''',
+        The viewpoints, attitudes, and expectations of society as a whole or of a
+        community of people of whom we are aware and who are important to us''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WR = models.IntegerField(
@@ -1412,6 +1418,7 @@ class Player(BasePlayer):
 # FUNCTIONS
 def random_rounds(subsession: Subsession,p:Player):
     if subsession.round_number == 1:
+
             #randomizes which order people will do the main C.TASKS in
         tasks = ['MP','MR','WP','WR']
         round_numbers = list(range(1, 5))
@@ -2119,7 +2126,7 @@ class Transition_MP0(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1_MP(Page):
     form_model = 'player'
@@ -2144,7 +2151,7 @@ class Economics1_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_MP = 1
-            return {player.id_in_group: dict(message = "Hint: 2 + 2.")}
+            return {player.id_in_group: dict(message = "Hint: Fan.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics1_MP':player.crt_economics1_MP})
@@ -2192,7 +2199,7 @@ class Economics2_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_MP = 1
-            return {player.id_in_group: dict(message = "Hint: The greatest one.")}
+            return {player.id_in_group: dict(message = "Hint: Movement in one generation.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics2_MP':player.crt_economics2_MP})
@@ -2284,7 +2291,7 @@ class Economics4_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_MP = 1
-            return {player.id_in_group: dict(message = "Hint: The heat of July.")}
+            return {player.id_in_group: dict(message = "Hint: Give me a G.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics4_MP':player.crt_economics4_MP})
@@ -2733,7 +2740,7 @@ class Transition_MR0(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1_MR(Page):
     form_model = 'player'
@@ -2758,7 +2765,7 @@ class Economics1_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_MR = 1
-            return {player.id_in_group: dict(message = "Hint: Revolution of 1789.")}
+            return {player.id_in_group: dict(message = "Hint: He needs an operation.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics1_MR':player.crt_economics1_MR})
@@ -2806,7 +2813,7 @@ class Economics2_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_MR = 1
-            return {player.id_in_group: dict(message = "Hint: Late January.")}
+            return {player.id_in_group: dict(message = "Hint: Top middle.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics2_MR':player.crt_economics2_MR})
@@ -2898,7 +2905,7 @@ class Economics4_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_MR = 1
-            return {player.id_in_group: dict(message = "Hint: PTGC.")}
+            return {player.id_in_group: dict(message = "Hint: Before judgment.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics4_MR':player.crt_economics4_MR})
@@ -3348,7 +3355,7 @@ class Transition_WP0(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1_WP(Page):
     form_model = 'player'
@@ -3373,7 +3380,7 @@ class Economics1_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_WP = 1
-            return {player.id_in_group: dict(message = "Hint: Agreements must be kept.")}
+            return {player.id_in_group: dict(message = "Hint: At the top you have to look down.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics1_WP':player.crt_economics1_WP})
@@ -3421,7 +3428,7 @@ class Economics2_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_WP = 1
-            return {player.id_in_group: dict(message = "Hint: Freedom isn\'t free for slaves.")}
+            return {player.id_in_group: dict(message = "Hint: Religion.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics2_WP':player.crt_economics2_WP})
@@ -3513,7 +3520,7 @@ class Economics4_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_WP = 1
-            return {player.id_in_group: dict(message = "Hint: Arab culture.")}
+            return {player.id_in_group: dict(message = "Hint: The U.S. has 50.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics4_WP':player.crt_economics4_WP})
@@ -3965,7 +3972,7 @@ class Transition_WR0(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1_WR(Page):
     form_model = 'player'
@@ -3990,7 +3997,7 @@ class Economics1_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_WR = 1
-            return {player.id_in_group: dict(message = "Hint: Egalitarian principles.")}
+            return {player.id_in_group: dict(message = "Hint: Exit.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics1_WR':player.crt_economics1_WR})
@@ -4038,7 +4045,7 @@ class Economics2_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_WR = 1
-            return {player.id_in_group: dict(message = "Hint: Tom and Jerry.")}
+            return {player.id_in_group: dict(message = "Hint: ____ attack.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics2_WR':player.crt_economics2_WR})
@@ -4130,7 +4137,7 @@ class Economics4_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_WR = 1
-            return {player.id_in_group: dict(message = "Hint: Mass media")}
+            return {player.id_in_group: dict(message = "Hint: Mirror.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics4_WR':player.crt_economics4_WR})
@@ -4541,20 +4548,20 @@ class Final(Page):
         return dict(round=player.participant.round2_completed)
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=4, crt_economics3_MP=2,
+        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=3, crt_economics3_MP=1,
         crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=4,
         crt_cooking4_MP=1, crt_sports1_MP=1, crt_sports2_MP=3, crt_sports3_MP=4,
         crt_sports4_MP=2)
-        solutions_MR = dict(crt_economics1_MR=1, crt_economics2_MR=3, crt_economics3_MR=3,
-        crt_economics4_MR=4, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
+        solutions_MR = dict(crt_economics1_MR=1, crt_economics2_MR=1, crt_economics3_MR=1,
+        crt_economics4_MR=1, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
         crt_cooking4_MR=1, crt_sports1_MR=1, crt_sports2_MR=2, crt_sports3_MR=3,
         crt_sports4_MR=4)
-        solutions_WP = dict(crt_economics1_WP=3, crt_economics2_WP=2, crt_economics3_WP=4,
-        crt_economics4_WP=1, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
+        solutions_WP = dict(crt_economics1_WP=1, crt_economics2_WP=2, crt_economics3_WP=1,
+        crt_economics4_WP=3, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
         crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
         crt_sports4_WP=1)
-        solutions_WR = dict(crt_economics1_WR=3, crt_economics2_WR=3, crt_economics3_WR=2,
-        crt_economics4_WR=1, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
+        solutions_WR = dict(crt_economics1_WR=4, crt_economics2_WR=3, crt_economics3_WR=2,
+        crt_economics4_WR=3, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
         crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
         crt_sports4_WR=3)
 

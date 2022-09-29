@@ -26,7 +26,7 @@ class Player(BasePlayer):
     gender = models.IntegerField()
     request_hints_economics = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking = models.StringField(
@@ -42,7 +42,7 @@ class Player(BasePlayer):
     results_economics1 = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking1 = models.StringField(
@@ -60,7 +60,7 @@ class Player(BasePlayer):
     results_economics2 = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking2 = models.StringField(
@@ -76,30 +76,28 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'Hobbes'], [2, 'Locke'], [3, 'Grotius'], [4, 'Rousseau']],
+        choices=[[1, 'Coalescence'], [2, 'Storming'], [3, 'Institutionalization'], [4, 'Norming']],
         label='''
-        Who believed that sovereignty vested in the 'general will'?''',
+        During this stage groups form around leaders to promote policies and to promulgate programs''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'H.J. Laski'], [2, 'Ivor Jennings'], [3, 'A.V. Dicey'],
-        [4, 'Rousseau']],
+        choices=[[1, 'Social class'], [2, 'Caste'], [3, 'Estates'], [4, 'Slavery']],
         label='''
-        Who of the following has written: "Introduction to the Law of the
-        Constitution"?''',
+        ‘A social system in which social position is fixed for a lifetime’. What type of social stratification does this describe?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3 = models.IntegerField(
-        choices=[[1, '5 Emirates'], [2, '6 Emirates'], [3, '7 Emirates'],
-        [4, 'None of these']],
+        choices=[[1, 'Cultural ideal'], [2, 'Real norms'], [3, 'Norms'], [4, 'Cultural norms']],
         label='''
-        United Arab Emirates is a federation of:''',
+        Norms that specify how people actually behave, not how they should behave under ideal circumstances''',
         widget=widgets.RadioSelect,
     )
     crt_economics4 = models.IntegerField(
-        choices=[[1, 'Hegel'], [2, 'Engles'], [3, 'Stalin'], [4, 'Karl Marx']],
+        choices=[[1, 'Cultural relativism'], [2, 'Cultural similarity'], [3, 'Cultural uniformity'],
+        [4, 'Cultural universals']],
         label='''
-        'Wage Labour and Capital' was written by:''',
+        Patterns or models that all cultures have developed in all cultures to resolve common problem''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -405,7 +403,7 @@ class Demographics(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
         player.participant.prev_hint = 0
         player.participant.responses_0 = dict()
         player.gender = player.participant.gender
@@ -446,7 +444,7 @@ class Transition2(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1(Page):
     form_model = 'player'
@@ -462,7 +460,7 @@ class Economics1(Page):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
             player.click_hint_econ1 = 1
-            return {player.id_in_group: dict(message = "Hint: French speaking philosopher")}
+            return {player.id_in_group: dict(message = "Hint: Coal is used for fuel.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics1':player.crt_economics1})
@@ -496,7 +494,7 @@ class Economics2(Page):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
             player.click_hint_econ2 = 1
-            return {player.id_in_group: dict(message = "Hint: Cube with numbers")}
+            return {player.id_in_group: dict(message = "Hint: Chains.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics2':player.crt_economics2})
@@ -545,7 +543,7 @@ class Economics4(Page):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
             player.click_hint_econ4 = 1
-            return {player.id_in_group: dict(message = "Hint: Marxism")}
+            return {player.id_in_group: dict(message = "Hint: Planets.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics4':player.crt_economics4})
@@ -811,7 +809,7 @@ class Final(Page):
         player.participant.payoff_helped = {}
         player.participant.payoff_help = {}
 
-        solutions = dict(crt_economics1=4, crt_economics2=3, crt_economics3=3,
+        solutions = dict(crt_economics1=1, crt_economics2=4, crt_economics3=2,
         crt_economics4=4, crt_cooking1=3, crt_cooking2=1, crt_cooking3=4, crt_cooking4=2,
         crt_sports1=3, crt_sports2=3, crt_sports3=3, crt_sports4=2)
 

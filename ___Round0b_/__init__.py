@@ -27,7 +27,7 @@ class Player(BasePlayer):
     gender = models.IntegerField()
     request_hints_economics = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Political Science?''',
+        label='''In Sociology?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking = models.StringField(
@@ -43,7 +43,7 @@ class Player(BasePlayer):
     expect_hints_economics = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking = models.StringField(
@@ -61,7 +61,7 @@ class Player(BasePlayer):
     results_economics = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Political Science?[Out of 4 questions]''',
+        label='''In Sociology?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking = models.StringField(
@@ -77,34 +77,31 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'Venezuela'], [2, 'Canada'], [3, 'Italy'], [4, 'None of the above']],
+        choices=[[1, 'Symbol'], [2, 'Sacred'], [3, 'Idol'], [4, 'Totem']],
         label='''
-        According to many scholars, which of the following countries is affected by the resource curse?''',
+        An ordinary object such as a plant or animal that has become a sacred symbol
+        to and of a particular group or clan who not only revere but also identify with it.''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'The portion of seats held by women in national parliaments'],
-        [2, 'The mode of election of the president'],
-        [3, 'The distribution of ministries among parties within a coalition government'],
-        [4, 'None of the above']],
+        choices=[[1, 'Veblen'], [2, 'Taylor'], [3, 'Castells'], [4, 'Luthans']],
         label='''
-        What is Gamson\'s law related to?''',
+        The term \'collective consumption\' was coined by''',
         widget=widgets.RadioSelect,
     )
     crt_economics3 = models.IntegerField(
-        choices=[[1, 'France, Brazil, Italy'],
-        [2, 'Finland, Brazil, Indonesia'],
-        [3, 'France, Brazil, Indonesia'],
-        [4, 'Finland, Belgium, Indonesia']],
+        choices=[[1, 'Social system'], [2, 'Social relationship'], [3, 'Social stability'],
+        [4, 'Social structure']],
         label='''
-        In which of the following countries is the president elected?''',
+        The stable, patterned relationships that exist among social institutions within a society''',
         widget=widgets.RadioSelect,
     )
     crt_economics4 = models.IntegerField(
-        choices=[[1, 'Dependence of the government on the legislature'], [2, 'Direct election of the president'],
-        [3, 'Presence of a monarch'], [4, 'None of the above']],
+        choices=[[1, 'Conflict Perspective'], [2, 'Interactionist Perspective'],
+        [3, 'Neo-Marxist Perspective'], [4, 'Functionalist Perspective']],
         label='''
-        Which of the following elements characterizes a parliamentary republic?''',
+        Which sociological perspective assumes that social behaviour is best understood
+        in terms of tension between competing groups?''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -452,7 +449,7 @@ class Demographics(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
         player.participant.prev_hint = 0
         player.participant.responses_0b = dict()
         player.gender = player.participant.gender
@@ -494,7 +491,7 @@ class Transition2(Page):
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         import time
-        participant.expiry = time.time() + 1200
+        participant.expiry = time.time() + 900
 
 class Economics1(Page):
     form_model = 'player'
@@ -533,13 +530,13 @@ class Economics2(Page):
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Government.")}
+                    return {player.id_in_group: dict(message = "Hint: Castle.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
                     player.reject_hint_econ2 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Government.")}
+                return {player.id_in_group: dict(message = "Hint: Castle.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
@@ -586,13 +583,13 @@ class Economics3(Page):
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Paris, Brasilia, Jakarta.")}
+                    return {player.id_in_group: dict(message = "Hint: Hierarchical organization of status.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
                     player.reject_hint_econ3 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Paris, Brasilia, Jakarta.")}
+                return {player.id_in_group: dict(message = "Hint: Hierarchical organization of status.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
@@ -639,13 +636,13 @@ class Economics4(Page):
                 if player.participant.econ_hint_requests <= player.participant.comp_hints_given_econ:
                     player.participant.already_clicked = True
                     player.participant.prev_hint = 1
-                    return {player.id_in_group: dict(message = "Hint: Government needs confidence of the parliament.")}
+                    return {player.id_in_group: dict(message = "Hint: In conflict.")}
                 elif player.participant.econ_hint_requests > player.participant.comp_hints_given_econ:
                     player.reject_hint_econ4 = 1
                     player.participant.already_clicked = True
                     return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
             elif player.participant.already_clicked and player.participant.prev_hint == 1:
-                return {player.id_in_group: dict(message = "Hint: Government needs confidence of the parliament.")}
+                return {player.id_in_group: dict(message = "Hint: In conflict.")}
             elif player.participant.already_clicked and player.participant.prev_hint == 0:
                 return {player.id_in_group: dict(message = "Hint is available, but the computer has not released it")}
     @staticmethod
@@ -1037,7 +1034,7 @@ class Final(Page):
         return player.round_number == 14
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        solutions = dict(crt_economics1=1, crt_economics2=3, crt_economics3=3,
+        solutions = dict(crt_economics1=4, crt_economics2=3, crt_economics3=4,
         crt_economics4=1, crt_cooking1=2, crt_cooking2=1, crt_cooking3=3, crt_cooking4=4,
         crt_sports1=4, crt_sports2=4, crt_sports3=2, crt_sports4=2)
 

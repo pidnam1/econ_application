@@ -36,6 +36,10 @@ class C(BaseConstants):
         dict(name='hints_always_comp_4', label='I didn’t want to waste time'),
         dict(name='hints_always_comp_5', label='Other'),
     ]
+    RANKINGS1 = [1,2,3,4,5,'No rank']
+    PARTNERS = [dict(name='partner1'),dict(name='partner2'),dict(name='partner3'),
+        dict(name='partner4'),dict(name='partner5'),dict(name='partner6'),dict(name='partner7'),
+        dict(name='partner8')]
 
 class Subsession(BaseSubsession):
     pass
@@ -76,8 +80,99 @@ def make_field_wtp():
 def make_image_data(image_names):
     return [dict(name=name, path='{}'.format(name)) for name in image_names]
 
+def make_field4(label):
+    return models.StringField(
+        choices=C.RANKINGS1,
+        label=label, initial = "No rank",
+    )
+
 class Player(BasePlayer):
     gender = models.IntegerField()
+    wtp = models.IntegerField(
+        choices=[[1, 'Yes'], [0, 'No']], initial = 0,
+        label='Would you be willing to use part of your payment to do so?',
+        widget=widgets.RadioSelect,
+    )
+    partner1 = models.BooleanField(blank=True)
+    partner2 = models.BooleanField(blank=True)
+    partner3 = models.BooleanField(blank=True)
+    partner4 = models.BooleanField(blank=True)
+    partner5 = models.BooleanField(blank=True)
+    partner6 = models.BooleanField(blank=True)
+    partner7 = models.BooleanField(blank=True)
+    partner8 = models.BooleanField(blank=True)
+    wtp_howmuch1 = models.IntegerField(
+        label='',
+        min=1, max=75,
+    )
+    wtp_howmuch2 = models.IntegerField(
+        label='',
+        min=1, max=75,
+    )
+    wtp_howmuch3 = models.IntegerField(
+        label='',
+        min=1, max=75,
+    )
+    wtp_howmuch4 = models.IntegerField(
+        label='',
+        min=1, max=75,
+    )
+    wtp_howmuch5 = models.IntegerField(
+        label='',
+        min=1, max=75,
+    )
+    wtp_howmuch6 = models.IntegerField(
+        label='',
+        min=1, max=75,
+    )
+    wtp_howmuch7 = models.IntegerField(
+        label='',
+        min=1, max=75,
+    )
+    wtp_howmuch8 = models.IntegerField(
+        label='',
+        min=1, max=75,
+    )
+    f1_1_2 = make_field4('')
+    f2_1_2 = make_field4('')
+    f3_1_2 = make_field4('')
+    f4_1_2 = make_field4('')
+    f5_1_2 = make_field4('')
+    f6_1_2 = make_field4('')
+    f7_1_2 = make_field4('')
+    f8_1_2 = make_field4('')
+    f9_1_2 = make_field4('')
+    f10_1_2 = make_field4('')
+    f11_1_2 = make_field4('')
+    f12_1_2 = make_field4('')
+    f13_1_2 = make_field4('')
+    f14_1_2 = make_field4('')
+    f15_1_2 = make_field4('')
+    f16_1_2 = make_field4('')
+    f17_1_2 = make_field4('')
+    f18_1_2 = make_field4('')
+    f19_1_2 = make_field4('')
+    f20_1_2 = make_field4('')
+    f21_1_2 = make_field4('')
+    f22_1_2 = make_field4('')
+    f23_1_2 = make_field4('')
+    f24_1_2 = make_field4('')
+    f25_1_2 = make_field4('')
+    f26_1_2 = make_field4('')
+    f27_1_2 = make_field4('')
+    f28_1_2 = make_field4('')
+    f29_1_2 = make_field4('')
+    f30_1_2 = make_field4('')
+    f31_1_2 = make_field4('')
+    f32_1_2 = make_field4('')
+    f33_1_2 = make_field4('')
+    f34_1_2 = make_field4('')
+    f35_1_2 = make_field4('')
+    f36_1_2 = make_field4('')
+    f37_1_2 = make_field4('')
+    f38_1_2 = make_field4('')
+    f39_1_2 = make_field4('')
+    f40_1_2 = make_field4('')
     day_of_birth = models.IntegerField(min=1, max=31)
     month_of_birth = models.IntegerField(min=1, max=12)
     year_of_birth = models.IntegerField(min=1900, max=2022)
@@ -160,19 +255,19 @@ class Player(BasePlayer):
 
     #Section B
     subjects_like = models.IntegerField(
-        choices=[[1, 'Sports'], [2, 'Political Science'], [3, 'Cooking']],
+        choices=[[1, 'Sports'], [2, 'Sociology'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
     subjects_dislike = models.IntegerField(
-        choices=[[1, 'Sports'], [2, 'Political Science'], [3, 'Cooking']],
+        choices=[[1, 'Sports'], [2, 'Sociology'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
     subjects_correct = models.IntegerField(
-        choices=[[1, 'Sports'], [2, 'Political Science'], [3, 'Cooking']],
+        choices=[[1, 'Sports'], [2, 'Sociology'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
     subjects_incorrect = models.IntegerField(
-        choices=[[1, 'Sports'], [2, 'Political Science'], [3, 'Cooking']],
+        choices=[[1, 'Sports'], [2, 'Sociology'], [3, 'Cooking']],
         widget=widgets.RadioSelect,
     )
     certain_hints_always_helper = models.IntegerField(
@@ -259,7 +354,7 @@ class Player(BasePlayer):
     )
     gender_economics = models.IntegerField(
         choices=[[-1, 'Women know more'], [0, 'No gender difference'], [1, 'Men know more']],
-        label='Political Science?',
+        label='Sociology?',
         widget=widgets.RadioSelect,
     )
     gender_cooking = models.IntegerField(
@@ -506,9 +601,381 @@ class Player(BasePlayer):
     wtp_cook8 = make_field_wtp()
     wtp_sport8 = make_field_wtp()
 
+def startup(player: Player):
+    player.participant.hints_given_econ = 0
+    player.participant.hints_given_cook = 0
+    player.participant.hints_given_sport = 0
+    player.participant.econ_hint_used = 0
+    player.participant.cook_hint_used = 0
+    player.participant.sport_hint_used = 0
 
 # PAGES
 #Section A
+class WTP_YesNo(Page):
+    form_model = 'player'
+    form_fields = ['wtp']
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+        startup(player)
+        player.gender = player.participant.gender
+        player.participant.wtp_payment = 0
+        return player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        arr = [player.participant.partner1, player.participant.partner2, player.participant.partner3, player.participant.partner4, player.participant.partner5, player.participant.partner6, player.participant.partner7, player.participant.partner8]
+        string_arr = ['partner1', 'partner2', 'partner3', 'partner4', 'partner5', 'partner6', 'partner7', 'partner8']
+        final = {}
+        input = []
+        for i, j in zip(arr, string_arr):
+            if i != 0:
+                input.append(g.get_player_by_id(i).participant.label)
+        final = dict(input=input)
+        return final
+
+class WTP_Who(Page):
+    form_model = 'player'
+    form_fields = ['partner1', 'partner2', 'partner3', 'partner4', 'partner5', 'partner6', 'partner7', 'partner8']
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.wtp == 1 and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        arr = [player.participant.partner1, player.participant.partner2, player.participant.partner3, player.participant.partner4, player.participant.partner5, player.participant.partner6, player.participant.partner7, player.participant.partner8]
+        string_arr = ['partner1', 'partner2', 'partner3', 'partner4', 'partner5', 'partner6', 'partner7', 'partner8']
+        labels = []
+        for i, j in zip(arr, string_arr):
+            if i != 0:
+                labels.append(dict(name=j, label=g.get_player_by_id(i).participant.label))
+        return dict(labels=labels)
+    @staticmethod
+    def error_message(player: Player, values):
+        num_selected = 0
+        for partner in C.PARTNERS:
+            if values[partner['name']]:
+                num_selected += 1
+        if num_selected < 1:
+            return "Please select at least one"
+        elif num_selected > 4:
+            return "You may not select more than 4"
+
+
+class WTP_HowMuch(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.wtp == 1 and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        labels = []
+        master = {}
+        g = player.group
+        if player.field_maybe_none('partner1') != None:
+            partner1 = g.get_player_by_id(player.participant.partner1)
+            master.update(dict(partner1=partner1))
+            labels.append(dict(name='wtp_howmuch1', label=partner1.participant.label))
+        if player.field_maybe_none('partner2') != None:
+            partner2 = g.get_player_by_id(player.participant.partner2)
+            master.update(dict(partner2=partner2))
+            labels.append(dict(name='wtp_howmuch2', label=partner2.participant.label))
+        if player.field_maybe_none('partner3') != None:
+            partner3 = g.get_player_by_id(player.participant.partner3)
+            master.update(dict(partner3=partner3))
+            labels.append(dict(name='wtp_howmuch3', label=partner3.participant.label))
+        if player.field_maybe_none('partner4') != None:
+            partner4 = g.get_player_by_id(player.participant.partner4)
+            master.update(dict(partner4=partner4))
+            labels.append(dict(name='wtp_howmuch4', label=partner4.participant.label))
+        if player.field_maybe_none('partner5') != None:
+            partner5 = g.get_player_by_id(player.participant.partner5)
+            master.update(dict(partner5=partner5))
+            labels.append(dict(name='wtp_howmuch5', label=partner5.participant.label))
+        if player.field_maybe_none('partner6') != None:
+            partner6 = g.get_player_by_id(player.participant.partner6)
+            master.update(dict(partner6=partner6))
+            labels.append(dict(name='wtp_howmuch6', label=partner6.participant.label))
+        if player.field_maybe_none('partner7') != None:
+            partner7 = g.get_player_by_id(player.participant.partner7)
+            master.update(dict(partner7=partner7))
+            labels.append(dict(name='wtp_howmuch7', label=partner7.participant.label))
+        if player.field_maybe_none('partner8') != None:
+            partner8 = g.get_player_by_id(player.participant.partner8)
+            master.update(dict(partner8=partner8))
+            labels.append(dict(name='wtp_howmuch8', label=partner8.participant.label))
+        master.update(dict(labels=labels))
+        return master
+    @staticmethod
+    def get_form_fields(player: Player):
+        formfields = []
+        if player.field_maybe_none('partner1') != None:
+            formfields.append('wtp_howmuch1')
+        if player.field_maybe_none('partner2') != None:
+            formfields.append('wtp_howmuch2')
+        if player.field_maybe_none('partner3') != None:
+            formfields.append('wtp_howmuch3')
+        if player.field_maybe_none('partner4') != None:
+            formfields.append('wtp_howmuch4')
+        if player.field_maybe_none('partner5') != None:
+            formfields.append('wtp_howmuch5')
+        if player.field_maybe_none('partner6') != None:
+            formfields.append('wtp_howmuch6')
+        if player.field_maybe_none('partner7') != None:
+            formfields.append('wtp_howmuch7')
+        if player.field_maybe_none('partner8') != None:
+            formfields.append('wtp_howmuch8')
+        return formfields
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        num = list(range(1,76))
+        random.shuffle(num)
+        random1 = num.copy()
+        player.participant.random1 = random1[0]
+        player.participant.random2 = random1[1]
+        player.participant.random3 = random1[2]
+        player.participant.random4 = random1[3]
+        player.participant.random5 = random1[4]
+        player.participant.random6 = random1[5]
+        player.participant.random7 = random1[6]
+        player.participant.random8 = random1[7]
+
+class WTP_Results1_1(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner1') != None) and (player.participant.random1 < player.wtp_howmuch1) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner1 = g.get_player_by_id(player.participant.partner1)
+        return dict(partner1=partner1.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner1)
+        player.participant.wtp_payment += player.wtp_howmuch1
+
+class WTP_Results2_1(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner1') != None) and (player.participant.random1 >= player.wtp_howmuch1) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner1 = g.get_player_by_id(player.participant.partner1)
+        return dict(partner1=partner1.participant.label)
+
+class WTP_Results1_2(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner2') != None) and (player.participant.random2 < player.wtp_howmuch2) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner2 = g.get_player_by_id(player.participant.partner2)
+        return dict(partner2=partner2.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner2)
+        player.participant.wtp_payment += player.wtp_howmuch2
+
+class WTP_Results2_2(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner2') != None) and (player.participant.random2 >= player.wtp_howmuch2) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner2 = g.get_player_by_id(player.participant.partner2)
+        return dict(partner2=partner2.participant.label)
+
+class WTP_Results1_3(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner3') != None) and (player.participant.random3 < player.wtp_howmuch3) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner3 = g.get_player_by_id(player.participant.partner3)
+        return dict(partner3=partner3.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner3)
+        player.participant.wtp_payment += player.wtp_howmuch3
+
+class WTP_Results2_3(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner3') != None) and (player.participant.random3 >= player.wtp_howmuch3) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner3 = g.get_player_by_id(player.participant.partner3)
+        return dict(partner3=partner3.participant.label)
+
+class WTP_Results1_4(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner4') != None) and (player.participant.random4 < player.wtp_howmuch4) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner4 = g.get_player_by_id(player.participant.partner4)
+        return dict(partner4=partner4.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner4)
+        player.participant.wtp_payment += player.wtp_howmuch4
+
+class WTP_Results2_4(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner4') != None) and (player.participant.random4 >= player.wtp_howmuch4) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner4 = g.get_player_by_id(player.participant.partner4)
+        return dict(partner4=partner4.participant.label)
+
+class WTP_Results1_5(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner5') != None) and (player.participant.random5 < player.wtp_howmuch5) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner5 = g.get_player_by_id(player.participant.partner5)
+        return dict(partner5=partner5.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner5)
+        player.participant.wtp_payment += player.wtp_howmuch5
+
+class WTP_Results2_5(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner5') != None) and (player.participant.random5 >= player.wtp_howmuch5) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner5 = g.get_player_by_id(player.participant.partner5)
+        return dict(partner5=partner5.participant.label)
+
+class WTP_Results1_6(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner6') != None) and (player.participant.random6 < player.wtp_howmuch6) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner6 = g.get_player_by_id(player.participant.partner6)
+        return dict(partner6=partner6.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner6)
+        player.participant.wtp_payment += player.wtp_howmuch6
+
+class WTP_Results2_6(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner6') != None) and (player.participant.random6 >= player.wtp_howmuch6) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner6 = g.get_player_by_id(player.participant.partner6)
+        return dict(partner6=partner6.participant.label)
+
+class WTP_Results1_7(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner7') != None) and (player.participant.random7 < player.wtp_howmuch7) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner7 = g.get_player_by_id(player.participant.partner7)
+        return dict(partner7=partner7.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner7)
+        player.participant.wtp_payment += player.wtp_howmuch7
+
+class WTP_Results2_7(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner7') != None) and (player.participant.random7 >= player.wtp_howmuch7) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner7 = g.get_player_by_id(player.participant.partner7)
+        return dict(partner7=partner7.participant.label)
+
+class WTP_Results1_8(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner8') != None) and (player.participant.random8 < player.wtp_howmuch8) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner8 = g.get_player_by_id(player.participant.partner8)
+        return dict(partner8=partner8.participant.label)
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.exclude = True
+        player.participant.partner_exclude.append(player.participant.partner8)
+        player.participant.wtp_payment += player.wtp_howmuch8
+
+class WTP_Results2_8(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.field_maybe_none('partner8') != None) and (player.participant.random8 >= player.wtp_howmuch8) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        partner8 = g.get_player_by_id(player.participant.partner8)
+        return dict(partner8=partner8.participant.label)
+
+class Results1(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.participant.wtp_payment != 0) and player.round_number == 1
+    @staticmethod
+    def vars_for_template(player:Player):
+        g = player.group
+        helpers_exclude = []
+        for partner in player.participant.partner_exclude:
+            p = g.get_player_by_id(partner)
+            helpers_exclude.append(p.participant.label)
+        return dict(payment=player.participant.wtp_payment, helpers_exclude=helpers_exclude)
+
+class Results2(Page):
+    form_model = 'player'
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.wtp == 1) and (player.participant.wtp_payment == 0) and player.round_number == 1
+
 def vars_for_template0(player: Player):
     g = player.group
     final = {}
@@ -699,6 +1166,80 @@ class MultiplePriceMale2(Page):
                 mr = curr_player
                 break
         return dict(mr=mr.participant.label.upper())
+
+class Pref_TT(Page):
+    form_model = 'player'
+    @staticmethod
+    def get_form_fields(player: Player):
+        session = player.session
+        form_fields_all = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
+        'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
+        'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
+        'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
+        'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2','f38_1_2','f39_1_2',
+        'f40_1_2']
+        form_fields = form_fields_all[:session.count - 1]
+        return form_fields
+    @staticmethod
+    def vars_for_template(player: Player):
+        g = player.group
+        session = player.session
+        form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
+        'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
+        'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
+        'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
+        'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2','f38_1_2','f39_1_2',
+        'f40_1_2']
+        player.participant.form_fields_pref2 = form_fields[:session.count - 1]
+        return dict(players=player.participant.players)
+    @staticmethod
+    def error_message(player: Player, values):
+        choices = []
+        for field in player.participant.form_fields_pref2:
+            choices += [values[field]]
+        if len(set(choices)) != 6:
+            return "You must choose exactly 5 ranks. You cannot choose the same rank for two people."
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        rank_list = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2,
+        player.f5_1_2, player.f6_1_2, player.f7_1_2, player.f8_1_2, player.f9_1_2,
+        player.f10_1_2, player.f11_1_2, player.f12_1_2, player.f13_1_2, player.f14_1_2,
+        player.f15_1_2, player.f16_1_2, player.f17_1_2, player.f18_1_2, player.f19_1_2,
+        player.f20_1_2, player.f21_1_2, player.f22_1_2, player.f23_1_2, player.f24_1_2,
+        player.f25_1_2, player.f26_1_2, player.f27_1_2, player.f28_1_2, player.f29_1_2,
+        player.f30_1_2, player.f31_1_2, player.f32_1_2, player.f33_1_2, player.f34_1_2,
+        player.f35_1_2, player.f36_1_2, player.f37_1_2, player.f38_1_2, player.f39_1_2,
+        player.f40_1_2]
+        player.participant.name_list1 = []
+        ranking_order={}
+        for i in range(len(rank_list)):
+            if rank_list[i]!="No rank":
+                ranking_order[rank_list[i]]=player.participant.players[i]
+        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
+        player.participant.name_list1 = list(sorted_ranking_order.values())
+
+        id_list = []
+        id_list_female = []
+        id_list_male = []
+        group = player.group
+        for name in player.participant.name_list1:
+            for p in group.get_players():
+
+                ##subtly eliminates ones who did not show up from matching algorithm
+                if p.participant.label == name:
+                    id_list.append(p.id_in_group)
+                    if p.participant.gender == 0: #female
+                        id_list_female.append(p.id_in_group)
+                    else: #male
+                        id_list_male.append(p.id_in_group)
+        player.participant.pref_tt = dict(zip(C.RANKINGS1,id_list))
+        player.participant.pref_tt_female = dict()
+        player.participant.pref_tt_male = dict()
+        for key, value in player.participant.pref_tt.items():
+            if value in id_list_female:
+                player.participant.pref_tt_female.update({key:value})
+            elif value in id_list_male:
+                player.participant.pref_tt_male.update({key:value})
 
 def vars_for_template1(player: Player):
     g = player.group
@@ -1095,12 +1636,13 @@ class PersonalityTraitsTable(Page):
     form_model = 'player'
     form_fields = ['reserved','trust','lazy','relaxed','artistic','outgoing','fault_others','thorough','nervous','imagination']
 
-class Congratulations(Page):
-    form_model = 'player'
-
-page_sequence = [HelperTable, MultiplePriceFemale1, MultiplePriceFemale2, MultiplePriceMale1,
-MultiplePriceMale2, WTP_Subject, ExpFeedback, ExpFeedbackNo1, ExpFeedbackNo1Other,
+page_sequence = [WTP_YesNo, WTP_Who, WTP_HowMuch, WTP_Results1_1, WTP_Results2_1,
+WTP_Results1_2, WTP_Results2_2, WTP_Results1_3, WTP_Results2_3, WTP_Results1_4,
+WTP_Results2_4, WTP_Results1_5, WTP_Results2_5, WTP_Results1_6, WTP_Results2_6,
+WTP_Results1_7, WTP_Results2_7, WTP_Results1_8, WTP_Results2_8, Results1, Results2,
+HelperTable, MultiplePriceFemale1, MultiplePriceFemale2, MultiplePriceMale1,
+MultiplePriceMale2, Pref_TT, WTP_Subject, ExpFeedback, ExpFeedbackNo1, ExpFeedbackNo1Other,
 ExpFeedbackNo2, ExpFeedbackNo2Other, ExpFeedbackNo3, ExpFeedbackNo3Other, ExpDecisions,
 ExpDecisionsOther, ExpDecisionsNo, AmountGame, AmountGameResults, GenderTable, ClassRelations1,
 Ethics1, Ethics2, Personality, PersonalityTraitsTable, BasicInfo, BasicInfoOther,
-AcademicInfo, AcademicInfoOther, FriendsTable, ClassRelations3, Congratulations]
+AcademicInfo, AcademicInfoOther, FriendsTable, ClassRelations3]

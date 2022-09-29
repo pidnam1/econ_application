@@ -8,9 +8,6 @@ class C(BaseConstants):
     TASKS = ['1', '2']
     SUB1TASKS = ['Econ1', 'Cook1', 'Sport1']
     SUB2TASKS = ['Econ2', 'Cook2', 'Sport2']
-    PARTNERS = [dict(name='partner1'),dict(name='partner2'),dict(name='partner3'),
-    dict(name='partner4'),dict(name='partner5'),dict(name='partner6'),dict(name='partner7'),
-    dict(name='partner8')]
 
 class Subsession(BaseSubsession):
     pass
@@ -26,51 +23,46 @@ def make_field_one():
 
 class Player(BasePlayer):
     gender = models.IntegerField()
-    wtp = models.IntegerField(
-        choices=[[1, 'Yes'], [0, 'No']], initial = 0,
-        label='Would you be willing to use part of your payment to do so?',
-        widget=widgets.RadioSelect,
-    )
-    partner1 = models.BooleanField(blank=True)
-    partner2 = models.BooleanField(blank=True)
-    partner3 = models.BooleanField(blank=True)
-    partner4 = models.BooleanField(blank=True)
-    partner5 = models.BooleanField(blank=True)
-    partner6 = models.BooleanField(blank=True)
-    partner7 = models.BooleanField(blank=True)
-    partner8 = models.BooleanField(blank=True)
-    wtp_howmuch1 = models.IntegerField(
-        label='',
-        min=1, max=75,
-    )
-    wtp_howmuch2 = models.IntegerField(
-        label='',
-        min=1, max=75,
-    )
-    wtp_howmuch3 = models.IntegerField(
-        label='',
-        min=1, max=75,
-    )
-    wtp_howmuch4 = models.IntegerField(
-        label='',
-        min=1, max=75,
-    )
-    wtp_howmuch5 = models.IntegerField(
-        label='',
-        min=1, max=75,
-    )
-    wtp_howmuch6 = models.IntegerField(
-        label='',
-        min=1, max=75,
-    )
-    wtp_howmuch7 = models.IntegerField(
-        label='',
-        min=1, max=75,
-    )
-    wtp_howmuch8 = models.IntegerField(
-        label='',
-        min=1, max=75,
-    )
+    id_partnerf1 = models.IntegerField()
+    id_partnerf2 = models.IntegerField()
+    id_partnerf3 = models.IntegerField()
+    id_partnerf4 = models.IntegerField()
+    id_partnerm1 = models.IntegerField()
+    id_partnerm2 = models.IntegerField()
+    id_partnerm3 = models.IntegerField()
+    id_partnerm4 = models.IntegerField()
+    name_partnerf1 = models.StringField()
+    name_partnerf2 = models.StringField()
+    name_partnerf3 = models.StringField()
+    name_partnerf4 = models.StringField()
+    name_partnerm1 = models.StringField()
+    name_partnerm2 = models.StringField()
+    name_partnerm3 = models.StringField()
+    name_partnerm4 = models.StringField()
+    hintsecon_partnerf1 = models.IntegerField()
+    hintsecon_partnerf2 = models.IntegerField()
+    hintsecon_partnerf3 = models.IntegerField()
+    hintsecon_partnerf4 = models.IntegerField()
+    hintsecon_partnerm1 = models.IntegerField()
+    hintsecon_partnerm2 = models.IntegerField()
+    hintsecon_partnerm3 = models.IntegerField()
+    hintsecon_partnerm4 = models.IntegerField()
+    hintscook_partnerf1 = models.IntegerField()
+    hintscook_partnerf2 = models.IntegerField()
+    hintscook_partnerf3 = models.IntegerField()
+    hintscook_partnerf4 = models.IntegerField()
+    hintscook_partnerm1 = models.IntegerField()
+    hintscook_partnerm2 = models.IntegerField()
+    hintscook_partnerm3 = models.IntegerField()
+    hintscook_partnerm4 = models.IntegerField()
+    hintssport_partnerf1 = models.IntegerField()
+    hintssport_partnerf2 = models.IntegerField()
+    hintssport_partnerf3 = models.IntegerField()
+    hintssport_partnerf4 = models.IntegerField()
+    hintssport_partnerm1 = models.IntegerField()
+    hintssport_partnerm2 = models.IntegerField()
+    hintssport_partnerm3 = models.IntegerField()
+    hintssport_partnerm4 = models.IntegerField()
     econhints1_partner1 = make_field_one()
     econhints1_partner2 = make_field_one()
     econhints1_partner3 = make_field_one()
@@ -132,33 +124,49 @@ def creating_session(subsession: Subsession):
                 task_rounds_2_2 = dict(zip(C.SUB2TASKS, sub_round_number2))
                 p.participant.task_roundsf.update(task_rounds_2_2)
 
-def startup(player: Player):
-    player.participant.hints_given_econ = 0
-    player.participant.hints_given_cook = 0
-    player.participant.hints_given_sport = 0
-    player.participant.econ_hint_used = 0
-    player.participant.cook_hint_used = 0
-    player.participant.sport_hint_used = 0
-
 def set_helped(player: Player):
     g = player.group
     my_previous_helped = []
     if player.participant.partnerm1 != 0:
-        my_previous_helped.append(g.get_player_by_id(player.participant.partnerm1))
+        player.id_partnerm1 = player.participant.partnerm1
+        partnerm1 = g.get_player_by_id(player.id_partnerm1)
+        player.name_partnerm1 = partnerm1.participant.label
+        my_previous_helped.append(partnerm1)
     if player.participant.partnerm2 != 0:
-        my_previous_helped.append(g.get_player_by_id(player.participant.partnerm2))
+        player.id_partnerm2 = player.participant.partnerm2
+        partnerm2 = g.get_player_by_id(player.id_partnerm2)
+        player.name_partnerm2 = partnerm2.participant.label
+        my_previous_helped.append(partnerm2)
     if player.participant.partnerm3 != 0:
-        my_previous_helped.append(g.get_player_by_id(player.participant.partnerm3))
+        player.id_partnerm3 = player.participant.partnerm3
+        partnerm3 = g.get_player_by_id(player.id_partnerm3)
+        player.name_partnerm3 = partnerm3.participant.label
+        my_previous_helped.append(partnerm3)
     if player.participant.partnerm4 != 0:
-        my_previous_helped.append(g.get_player_by_id(player.participant.partnerm4))
+        player.id_partnerm4 = player.participant.partnerm4
+        partnerm4 = g.get_player_by_id(player.id_partnerm4)
+        player.name_partnerm4 = partnerm4.participant.label
+        my_previous_helped.append(partnerm4)
     if player.participant.partnerf1 != 0:
-        my_previous_helped.append(g.get_player_by_id(player.participant.partnerf1))
+        player.id_partnerf1 = player.participant.partnerf1
+        partnerf1 = g.get_player_by_id(player.id_partnerf1)
+        player.name_partnerf1 = partnerf1.participant.label
+        my_previous_helped.append(partnerf1)
     if player.participant.partnerf2 != 0:
-        my_previous_helped.append(g.get_player_by_id(player.participant.partnerf2))
+        player.id_partnerf2 = player.participant.partnerf2
+        partnerf2 = g.get_player_by_id(player.id_partnerf2)
+        player.name_partnerf2 = partnerf2.participant.label
+        my_previous_helped.append(partnerf2)
     if player.participant.partnerf3 != 0:
-        my_previous_helped.append(g.get_player_by_id(player.participant.partnerf3))
+        player.id_partnerf3 = player.participant.partnerf3
+        partnerf3 = g.get_player_by_id(player.id_partnerf3)
+        player.name_partnerf3 = partnerf3.participant.label
+        my_previous_helped.append(partnerf3)
     if player.participant.partnerf4 != 0:
-        my_previous_helped.append(g.get_player_by_id(player.participant.partnerf4))
+        player.id_partnerf4 = player.participant.partnerf4
+        partnerf4 = g.get_player_by_id(player.id_partnerf4)
+        player.name_partnerf4 = partnerf4.participant.label
+        my_previous_helped.append(partnerf4)
     for partner in my_previous_helped:
         if partner.participant.exclude == True:
             if player.id_in_group in partner.participant.partner_exclude:
@@ -209,41 +217,297 @@ def set_hints_given(player:Player,partner):
 
 def set_hints_used(player:Player,partner):
     if player.id_in_group == partner.participant.partner1:
+        if partner.id_in_group == player.participant.partnerm1:
+            player.hintsecon_partnerm1 = partner.participant.econ_hint_requests_partner1
+            player.hintscook_partnerm1 = partner.participant.cook_hint_requests_partner1
+            player.hintssport_partnerm1 = partner.participant.sport_hint_requests_partner1
+        elif partner.id_in_group == player.participant.partnerm2:
+            player.hintsecon_partnerm2 = partner.participant.econ_hint_requests_partner1
+            player.hintscook_partnerm2 = partner.participant.cook_hint_requests_partner1
+            player.hintssport_partnerm2 = partner.participant.sport_hint_requests_partner1
+        elif partner.id_in_group == player.participant.partnerm3:
+            player.hintsecon_partnerm3 = partner.participant.econ_hint_requests_partner1
+            player.hintscook_partnerm3 = partner.participant.cook_hint_requests_partner1
+            player.hintssport_partnerm3 = partner.participant.sport_hint_requests_partner1
+        elif partner.id_in_group == player.participant.partnerm4:
+            player.hintsecon_partnerm4 = partner.participant.econ_hint_requests_partner1
+            player.hintscook_partnerm4 = partner.participant.cook_hint_requests_partner1
+            player.hintssport_partnerm4 = partner.participant.sport_hint_requests_partner1
+        elif partner.id_in_group == player.participant.partnerf1:
+            player.hintsecon_partnerf1 = partner.participant.econ_hint_requests_partner1
+            player.hintscook_partnerf1 = partner.participant.cook_hint_requests_partner1
+            player.hintssport_partnerf1 = partner.participant.sport_hint_requests_partner1
+        elif partner.id_in_group == player.participant.partnerf2:
+            player.hintsecon_partnerf2 = partner.participant.econ_hint_requests_partner1
+            player.hintscook_partnerf2 = partner.participant.cook_hint_requests_partner1
+            player.hintssport_partnerf2 = partner.participant.sport_hint_requests_partner1
+        elif partner.id_in_group == player.participant.partnerf3:
+            player.hintsecon_partnerf3 = partner.participant.econ_hint_requests_partner1
+            player.hintscook_partnerf3 = partner.participant.cook_hint_requests_partner1
+            player.hintssport_partnerf3 = partner.participant.sport_hint_requests_partner1
+        elif partner.id_in_group == player.participant.partnerf4:
+            player.hintsecon_partnerf4 = partner.participant.econ_hint_requests_partner1
+            player.hintscook_partnerf4 = partner.participant.cook_hint_requests_partner1
+            player.hintssport_partnerf4 = partner.participant.sport_hint_requests_partner1
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner1
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner1
         partner.participant.sport_hint_used = partner.participant.sport_hint_requests_partner1
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
     elif player.id_in_group == partner.participant.partner2:
+        if partner.id_in_group == player.participant.partnerm1:
+            player.hintsecon_partnerm1 = partner.participant.econ_hint_requests_partner2
+            player.hintscook_partnerm1 = partner.participant.cook_hint_requests_partner2
+            player.hintssport_partnerm1 = partner.participant.sport_hint_requests_partner2
+        elif partner.id_in_group == player.participant.partnerm2:
+            player.hintsecon_partnerm2 = partner.participant.econ_hint_requests_partner2
+            player.hintscook_partnerm2 = partner.participant.cook_hint_requests_partner2
+            player.hintssport_partnerm2 = partner.participant.sport_hint_requests_partner2
+        elif partner.id_in_group == player.participant.partnerm3:
+            player.hintsecon_partnerm3 = partner.participant.econ_hint_requests_partner2
+            player.hintscook_partnerm3 = partner.participant.cook_hint_requests_partner2
+            player.hintssport_partnerm3 = partner.participant.sport_hint_requests_partner2
+        elif partner.id_in_group == player.participant.partnerm4:
+            player.hintsecon_partnerm4 = partner.participant.econ_hint_requests_partner2
+            player.hintscook_partnerm4 = partner.participant.cook_hint_requests_partner2
+            player.hintssport_partnerm4 = partner.participant.sport_hint_requests_partner2
+        elif partner.id_in_group == player.participant.partnerf1:
+            player.hintsecon_partnerf1 = partner.participant.econ_hint_requests_partner2
+            player.hintscook_partnerf1 = partner.participant.cook_hint_requests_partner2
+            player.hintssport_partnerf1 = partner.participant.sport_hint_requests_partner2
+        elif partner.id_in_group == player.participant.partnerf2:
+            player.hintsecon_partnerf2 = partner.participant.econ_hint_requests_partner2
+            player.hintscook_partnerf2 = partner.participant.cook_hint_requests_partner2
+            player.hintssport_partnerf2 = partner.participant.sport_hint_requests_partner2
+        elif partner.id_in_group == player.participant.partnerf3:
+            player.hintsecon_partnerf3 = partner.participant.econ_hint_requests_partner2
+            player.hintscook_partnerf3 = partner.participant.cook_hint_requests_partner2
+            player.hintssport_partnerf3 = partner.participant.sport_hint_requests_partner2
+        elif partner.id_in_group == player.participant.partnerf4:
+            player.hintsecon_partnerf4 = partner.participant.econ_hint_requests_partner2
+            player.hintscook_partnerf4 = partner.participant.cook_hint_requests_partner2
+            player.hintssport_partnerf4 = partner.participant.sport_hint_requests_partner2
         partner.participant.econ_hint_used = partner.participant.econ_hint_used_partner2
         partner.participant.cook_hint_used = partner.participant.cook_hint_used_partner2
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner2
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
     elif player.id_in_group == partner.participant.partner3:
+        if partner.id_in_group == player.participant.partnerm1:
+            player.hintsecon_partnerm1 = partner.participant.econ_hint_requests_partner3
+            player.hintscook_partnerm1 = partner.participant.cook_hint_requests_partner3
+            player.hintssport_partnerm1 = partner.participant.sport_hint_requests_partner3
+        elif partner.id_in_group == player.participant.partnerm2:
+            player.hintsecon_partnerm2 = partner.participant.econ_hint_requests_partner3
+            player.hintscook_partnerm2 = partner.participant.cook_hint_requests_partner3
+            player.hintssport_partnerm2 = partner.participant.sport_hint_requests_partner3
+        elif partner.id_in_group == player.participant.partnerm3:
+            player.hintsecon_partnerm3 = partner.participant.econ_hint_requests_partner3
+            player.hintscook_partnerm3 = partner.participant.cook_hint_requests_partner3
+            player.hintssport_partnerm3 = partner.participant.sport_hint_requests_partner3
+        elif partner.id_in_group == player.participant.partnerm4:
+            player.hintsecon_partnerm4 = partner.participant.econ_hint_requests_partner3
+            player.hintscook_partnerm4 = partner.participant.cook_hint_requests_partner3
+            player.hintssport_partnerm4 = partner.participant.sport_hint_requests_partner3
+        elif partner.id_in_group == player.participant.partnerf1:
+            player.hintsecon_partnerf1 = partner.participant.econ_hint_requests_partner3
+            player.hintscook_partnerf1 = partner.participant.cook_hint_requests_partner3
+            player.hintssport_partnerf1 = partner.participant.sport_hint_requests_partner3
+        elif partner.id_in_group == player.participant.partnerf2:
+            player.hintsecon_partnerf2 = partner.participant.econ_hint_requests_partner3
+            player.hintscook_partnerf2 = partner.participant.cook_hint_requests_partner3
+            player.hintssport_partnerf2 = partner.participant.sport_hint_requests_partner3
+        elif partner.id_in_group == player.participant.partnerf3:
+            player.hintsecon_partnerf3 = partner.participant.econ_hint_requests_partner3
+            player.hintscook_partnerf3 = partner.participant.cook_hint_requests_partner3
+            player.hintssport_partnerf3 = partner.participant.sport_hint_requests_partner3
+        elif partner.id_in_group == player.participant.partnerf4:
+            player.hintsecon_partnerf4 = partner.participant.econ_hint_requests_partner3
+            player.hintscook_partnerf4 = partner.participant.cook_hint_requests_partner3
+            player.hintssport_partnerf4 = partner.participant.sport_hint_requests_partner3
         partner.participant.econ_hint_used = partner.participant.econ_hint_used_partner3
         partner.participant.cook_hint_used = partner.participant.cook_hint_used_partner3
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner3
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
     elif player.id_in_group == partner.participant.partner4:
+        if partner.id_in_group == player.participant.partnerm1:
+            player.hintsecon_partnerm1 = partner.participant.econ_hint_requests_partner4
+            player.hintscook_partnerm1 = partner.participant.cook_hint_requests_partner4
+            player.hintssport_partnerm1 = partner.participant.sport_hint_requests_partner4
+        elif partner.id_in_group == player.participant.partnerm2:
+            player.hintsecon_partnerm2 = partner.participant.econ_hint_requests_partner4
+            player.hintscook_partnerm2 = partner.participant.cook_hint_requests_partner4
+            player.hintssport_partnerm2 = partner.participant.sport_hint_requests_partner4
+        elif partner.id_in_group == player.participant.partnerm3:
+            player.hintsecon_partnerm3 = partner.participant.econ_hint_requests_partner4
+            player.hintscook_partnerm3 = partner.participant.cook_hint_requests_partner4
+            player.hintssport_partnerm3 = partner.participant.sport_hint_requests_partner4
+        elif partner.id_in_group == player.participant.partnerm4:
+            player.hintsecon_partnerm4 = partner.participant.econ_hint_requests_partner4
+            player.hintscook_partnerm4 = partner.participant.cook_hint_requests_partner4
+            player.hintssport_partnerm4 = partner.participant.sport_hint_requests_partner4
+        elif partner.id_in_group == player.participant.partnerf1:
+            player.hintsecon_partnerf1 = partner.participant.econ_hint_requests_partner4
+            player.hintscook_partnerf1 = partner.participant.cook_hint_requests_partner4
+            player.hintssport_partnerf1 = partner.participant.sport_hint_requests_partner4
+        elif partner.id_in_group == player.participant.partnerf2:
+            player.hintsecon_partnerf2 = partner.participant.econ_hint_requests_partner4
+            player.hintscook_partnerf2 = partner.participant.cook_hint_requests_partner4
+            player.hintssport_partnerf2 = partner.participant.sport_hint_requests_partner4
+        elif partner.id_in_group == player.participant.partnerf3:
+            player.hintsecon_partnerf3 = partner.participant.econ_hint_requests_partner4
+            player.hintscook_partnerf3 = partner.participant.cook_hint_requests_partner4
+            player.hintssport_partnerf3 = partner.participant.sport_hint_requests_partner4
+        elif partner.id_in_group == player.participant.partnerf4:
+            player.hintsecon_partnerf4 = partner.participant.econ_hint_requests_partner4
+            player.hintscook_partnerf4 = partner.participant.cook_hint_requests_partner4
+            player.hintssport_partnerf4 = partner.participant.sport_hint_requests_partner4
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner4
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner4
         partner.participant.sport_hint_used = partner.participant.sport_hint_requests_partner4
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
     elif player.id_in_group == partner.participant.partner5:
+        if partner.id_in_group == player.participant.partnerm1:
+            player.hintsecon_partnerm1 = partner.participant.econ_hint_requests_partner5
+            player.hintscook_partnerm1 = partner.participant.cook_hint_requests_partner5
+            player.hintssport_partnerm1 = partner.participant.sport_hint_requests_partner5
+        elif partner.id_in_group == player.participant.partnerm2:
+            player.hintsecon_partnerm2 = partner.participant.econ_hint_requests_partner5
+            player.hintscook_partnerm2 = partner.participant.cook_hint_requests_partner5
+            player.hintssport_partnerm2 = partner.participant.sport_hint_requests_partner5
+        elif partner.id_in_group == player.participant.partnerm3:
+            player.hintsecon_partnerm3 = partner.participant.econ_hint_requests_partner5
+            player.hintscook_partnerm3 = partner.participant.cook_hint_requests_partner5
+            player.hintssport_partnerm3 = partner.participant.sport_hint_requests_partner5
+        elif partner.id_in_group == player.participant.partnerm4:
+            player.hintsecon_partnerm4 = partner.participant.econ_hint_requests_partner5
+            player.hintscook_partnerm4 = partner.participant.cook_hint_requests_partner5
+            player.hintssport_partnerm4 = partner.participant.sport_hint_requests_partner5
+        elif partner.id_in_group == player.participant.partnerf1:
+            player.hintsecon_partnerf1 = partner.participant.econ_hint_requests_partner5
+            player.hintscook_partnerf1 = partner.participant.cook_hint_requests_partner5
+            player.hintssport_partnerf1 = partner.participant.sport_hint_requests_partner5
+        elif partner.id_in_group == player.participant.partnerf2:
+            player.hintsecon_partnerf2 = partner.participant.econ_hint_requests_partner5
+            player.hintscook_partnerf2 = partner.participant.cook_hint_requests_partner5
+            player.hintssport_partnerf2 = partner.participant.sport_hint_requests_partner5
+        elif partner.id_in_group == player.participant.partnerf3:
+            player.hintsecon_partnerf3 = partner.participant.econ_hint_requests_partner5
+            player.hintscook_partnerf3 = partner.participant.cook_hint_requests_partner5
+            player.hintssport_partnerf3 = partner.participant.sport_hint_requests_partner5
+        elif partner.id_in_group == player.participant.partnerf4:
+            player.hintsecon_partnerf4 = partner.participant.econ_hint_requests_partner5
+            player.hintscook_partnerf4 = partner.participant.cook_hint_requests_partner5
+            player.hintssport_partnerf4 = partner.participant.sport_hint_requests_partner5
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner5
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner5
         partner.participant.sport_hint_used = partner.participant.sport_hint_requests_partner5
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
     elif player.id_in_group == partner.participant.partner6:
+        if partner.id_in_group == player.participant.partnerm1:
+            player.hintsecon_partnerm1 = partner.participant.econ_hint_requests_partner6
+            player.hintscook_partnerm1 = partner.participant.cook_hint_requests_partner6
+            player.hintssport_partnerm1 = partner.participant.sport_hint_requests_partner6
+        elif partner.id_in_group == player.participant.partnerm2:
+            player.hintsecon_partnerm2 = partner.participant.econ_hint_requests_partner6
+            player.hintscook_partnerm2 = partner.participant.cook_hint_requests_partner6
+            player.hintssport_partnerm2 = partner.participant.sport_hint_requests_partner6
+        elif partner.id_in_group == player.participant.partnerm3:
+            player.hintsecon_partnerm3 = partner.participant.econ_hint_requests_partner6
+            player.hintscook_partnerm3 = partner.participant.cook_hint_requests_partner6
+            player.hintssport_partnerm3 = partner.participant.sport_hint_requests_partner6
+        elif partner.id_in_group == player.participant.partnerm4:
+            player.hintsecon_partnerm4 = partner.participant.econ_hint_requests_partner6
+            player.hintscook_partnerm4 = partner.participant.cook_hint_requests_partner6
+            player.hintssport_partnerm4 = partner.participant.sport_hint_requests_partner6
+        elif partner.id_in_group == player.participant.partnerf1:
+            player.hintsecon_partnerf1 = partner.participant.econ_hint_requests_partner6
+            player.hintscook_partnerf1 = partner.participant.cook_hint_requests_partner6
+            player.hintssport_partnerf1 = partner.participant.sport_hint_requests_partner6
+        elif partner.id_in_group == player.participant.partnerf2:
+            player.hintsecon_partnerf2 = partner.participant.econ_hint_requests_partner6
+            player.hintscook_partnerf2 = partner.participant.cook_hint_requests_partner6
+            player.hintssport_partnerf2 = partner.participant.sport_hint_requests_partner6
+        elif partner.id_in_group == player.participant.partnerf3:
+            player.hintsecon_partnerf3 = partner.participant.econ_hint_requests_partner6
+            player.hintscook_partnerf3 = partner.participant.cook_hint_requests_partner6
+            player.hintssport_partnerf3 = partner.participant.sport_hint_requests_partner6
+        elif partner.id_in_group == player.participant.partnerf4:
+            player.hintsecon_partnerf4 = partner.participant.econ_hint_requests_partner6
+            player.hintscook_partnerf4 = partner.participant.cook_hint_requests_partner6
+            player.hintssport_partnerf4 = partner.participant.sport_hint_requests_partner6
         partner.participant.econ_hint_used = partner.participant.econ_hint_used_partner6
         partner.participant.cook_hint_used = partner.participant.cook_hint_used_partner6
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner6
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
     elif player.id_in_group == partner.participant.partner7:
+        if partner.id_in_group == player.participant.partnerm1:
+            player.hintsecon_partnerm1 = partner.participant.econ_hint_requests_partner7
+            player.hintscook_partnerm1 = partner.participant.cook_hint_requests_partner7
+            player.hintssport_partnerm1 = partner.participant.sport_hint_requests_partner7
+        elif partner.id_in_group == player.participant.partnerm2:
+            player.hintsecon_partnerm2 = partner.participant.econ_hint_requests_partner7
+            player.hintscook_partnerm2 = partner.participant.cook_hint_requests_partner7
+            player.hintssport_partnerm2 = partner.participant.sport_hint_requests_partner7
+        elif partner.id_in_group == player.participant.partnerm3:
+            player.hintsecon_partnerm3 = partner.participant.econ_hint_requests_partner7
+            player.hintscook_partnerm3 = partner.participant.cook_hint_requests_partner7
+            player.hintssport_partnerm3 = partner.participant.sport_hint_requests_partner7
+        elif partner.id_in_group == player.participant.partnerm4:
+            player.hintsecon_partnerm4 = partner.participant.econ_hint_requests_partner7
+            player.hintscook_partnerm4 = partner.participant.cook_hint_requests_partner7
+            player.hintssport_partnerm4 = partner.participant.sport_hint_requests_partner7
+        elif partner.id_in_group == player.participant.partnerf1:
+            player.hintsecon_partnerf1 = partner.participant.econ_hint_requests_partner7
+            player.hintscook_partnerf1 = partner.participant.cook_hint_requests_partner7
+            player.hintssport_partnerf1 = partner.participant.sport_hint_requests_partner7
+        elif partner.id_in_group == player.participant.partnerf2:
+            player.hintsecon_partnerf2 = partner.participant.econ_hint_requests_partner7
+            player.hintscook_partnerf2 = partner.participant.cook_hint_requests_partner7
+            player.hintssport_partnerf2 = partner.participant.sport_hint_requests_partner7
+        elif partner.id_in_group == player.participant.partnerf3:
+            player.hintsecon_partnerf3 = partner.participant.econ_hint_requests_partner7
+            player.hintscook_partnerf3 = partner.participant.cook_hint_requests_partner7
+            player.hintssport_partnerf3 = partner.participant.sport_hint_requests_partner7
+        elif partner.id_in_group == player.participant.partnerf4:
+            player.hintsecon_partnerf4 = partner.participant.econ_hint_requests_partner7
+            player.hintscook_partnerf4 = partner.participant.cook_hint_requests_partner7
+            player.hintssport_partnerf4 = partner.participant.sport_hint_requests_partner7
         partner.participant.econ_hint_used = partner.participant.econ_hint_requests_partner7
         partner.participant.cook_hint_used = partner.participant.cook_hint_requests_partner7
         partner.participant.sport_hint_used = partner.participant.sport_hint_requests_partner7
         return [partner.participant.econ_hint_used,partner.participant.cook_hint_used,partner.participant.sport_hint_used]
     elif player.id_in_group == partner.participant.partner8:
+        if partner.id_in_group == player.participant.partnerm1:
+            player.hintsecon_partnerm1 = partner.participant.econ_hint_requests_partner8
+            player.hintscook_partnerm1 = partner.participant.cook_hint_requests_partner8
+            player.hintssport_partnerm1 = partner.participant.sport_hint_requests_partner8
+        elif partner.id_in_group == player.participant.partnerm2:
+            player.hintsecon_partnerm2 = partner.participant.econ_hint_requests_partner8
+            player.hintscook_partnerm2 = partner.participant.cook_hint_requests_partner8
+            player.hintssport_partnerm2 = partner.participant.sport_hint_requests_partner8
+        elif partner.id_in_group == player.participant.partnerm3:
+            player.hintsecon_partnerm3 = partner.participant.econ_hint_requests_partner8
+            player.hintscook_partnerm3 = partner.participant.cook_hint_requests_partner8
+            player.hintssport_partnerm3 = partner.participant.sport_hint_requests_partner8
+        elif partner.id_in_group == player.participant.partnerm4:
+            player.hintsecon_partnerm4 = partner.participant.econ_hint_requests_partner8
+            player.hintscook_partnerm4 = partner.participant.cook_hint_requests_partner8
+            player.hintssport_partnerm4 = partner.participant.sport_hint_requests_partner8
+        elif partner.id_in_group == player.participant.partnerf1:
+            player.hintsecon_partnerf1 = partner.participant.econ_hint_requests_partner8
+            player.hintscook_partnerf1 = partner.participant.cook_hint_requests_partner8
+            player.hintssport_partnerf1 = partner.participant.sport_hint_requests_partner8
+        elif partner.id_in_group == player.participant.partnerf2:
+            player.hintsecon_partnerf2 = partner.participant.econ_hint_requests_partner8
+            player.hintscook_partnerf2 = partner.participant.cook_hint_requests_partner8
+            player.hintssport_partnerf2 = partner.participant.sport_hint_requests_partner8
+        elif partner.id_in_group == player.participant.partnerf3:
+            player.hintsecon_partnerf3 = partner.participant.econ_hint_requests_partner8
+            player.hintscook_partnerf3 = partner.participant.cook_hint_requests_partner8
+            player.hintssport_partnerf3 = partner.participant.sport_hint_requests_partner8
+        elif partner.id_in_group == player.participant.partnerf4:
+            player.hintsecon_partnerf4 = partner.participant.econ_hint_requests_partner8
+            player.hintscook_partnerf4 = partner.participant.cook_hint_requests_partner8
+            player.hintssport_partnerf4 = partner.participant.sport_hint_requests_partner8
         partner.participant.econ_hint_used = partner.participant.econ_hint_used_partner8
         partner.participant.cook_hint_used = partner.participant.cook_hint_used_partner8
         partner.participant.sport_hint_used = partner.participant.sport_hint_used_partner8
@@ -285,371 +549,6 @@ def set_mismatch(player:Player,partner):
 
 
 # PAGES
-class WTP_YesNo(Page):
-    form_model = 'player'
-    form_fields = ['wtp']
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        startup(player)
-        player.gender = player.participant.gender
-        player.participant.wtp_payment = 0
-        return player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        arr = [player.participant.partner1, player.participant.partner2, player.participant.partner3, player.participant.partner4, player.participant.partner5, player.participant.partner6, player.participant.partner7, player.participant.partner8]
-        string_arr = ['partner1', 'partner2', 'partner3', 'partner4', 'partner5', 'partner6', 'partner7', 'partner8']
-        final = {}
-        input = []
-        for i, j in zip(arr, string_arr):
-            if i != 0:
-                input.append(g.get_player_by_id(i).participant.label)
-        final = dict(input=input)
-        return final
-
-class WTP_Who(Page):
-    form_model = 'player'
-    form_fields = ['partner1', 'partner2', 'partner3', 'partner4', 'partner5', 'partner6', 'partner7', 'partner8']
-    @staticmethod
-    def is_displayed(player: Player):
-        return player.wtp == 1 and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        arr = [player.participant.partner1, player.participant.partner2, player.participant.partner3, player.participant.partner4, player.participant.partner5, player.participant.partner6, player.participant.partner7, player.participant.partner8]
-        string_arr = ['partner1', 'partner2', 'partner3', 'partner4', 'partner5', 'partner6', 'partner7', 'partner8']
-        labels = []
-        for i, j in zip(arr, string_arr):
-            if i != 0:
-                labels.append(dict(name=j, label=g.get_player_by_id(i).participant.label))
-        return dict(labels=labels)
-    @staticmethod
-    def error_message(player: Player, values):
-        num_selected = 0
-        for partner in C.PARTNERS:
-            if values[partner['name']]:
-                num_selected += 1
-        if num_selected < 1:
-            return "Please select at least one"
-        elif num_selected > 4:
-            return "You may not select more than 4"
-
-
-class WTP_HowMuch(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return player.wtp == 1 and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        labels = []
-        master = {}
-        g = player.group
-        if player.field_maybe_none('partner1') != None:
-            partner1 = g.get_player_by_id(player.participant.partner1)
-            master.update(dict(partner1=partner1))
-            labels.append(dict(name='wtp_howmuch1', label=partner1.participant.label))
-        if player.field_maybe_none('partner2') != None:
-            partner2 = g.get_player_by_id(player.participant.partner2)
-            master.update(dict(partner2=partner2))
-            labels.append(dict(name='wtp_howmuch2', label=partner2.participant.label))
-        if player.field_maybe_none('partner3') != None:
-            partner3 = g.get_player_by_id(player.participant.partner3)
-            master.update(dict(partner3=partner3))
-            labels.append(dict(name='wtp_howmuch3', label=partner3.participant.label))
-        if player.field_maybe_none('partner4') != None:
-            partner4 = g.get_player_by_id(player.participant.partner4)
-            master.update(dict(partner4=partner4))
-            labels.append(dict(name='wtp_howmuch4', label=partner4.participant.label))
-        if player.field_maybe_none('partner5') != None:
-            partner5 = g.get_player_by_id(player.participant.partner5)
-            master.update(dict(partner5=partner5))
-            labels.append(dict(name='wtp_howmuch5', label=partner5.participant.label))
-        if player.field_maybe_none('partner6') != None:
-            partner6 = g.get_player_by_id(player.participant.partner6)
-            master.update(dict(partner6=partner6))
-            labels.append(dict(name='wtp_howmuch6', label=partner6.participant.label))
-        if player.field_maybe_none('partner7') != None:
-            partner7 = g.get_player_by_id(player.participant.partner7)
-            master.update(dict(partner7=partner7))
-            labels.append(dict(name='wtp_howmuch7', label=partner7.participant.label))
-        if player.field_maybe_none('partner8') != None:
-            partner8 = g.get_player_by_id(player.participant.partner8)
-            master.update(dict(partner8=partner8))
-            labels.append(dict(name='wtp_howmuch8', label=partner8.participant.label))
-        master.update(dict(labels=labels))
-        return master
-    @staticmethod
-    def get_form_fields(player: Player):
-        formfields = []
-        if player.field_maybe_none('partner1') != None:
-            formfields.append('wtp_howmuch1')
-        if player.field_maybe_none('partner2') != None:
-            formfields.append('wtp_howmuch2')
-        if player.field_maybe_none('partner3') != None:
-            formfields.append('wtp_howmuch3')
-        if player.field_maybe_none('partner4') != None:
-            formfields.append('wtp_howmuch4')
-        if player.field_maybe_none('partner5') != None:
-            formfields.append('wtp_howmuch5')
-        if player.field_maybe_none('partner6') != None:
-            formfields.append('wtp_howmuch6')
-        if player.field_maybe_none('partner7') != None:
-            formfields.append('wtp_howmuch7')
-        if player.field_maybe_none('partner8') != None:
-            formfields.append('wtp_howmuch8')
-        return formfields
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        num = list(range(1,76))
-        random.shuffle(num)
-        random1 = num.copy()
-        player.participant.random1 = random1[0]
-        player.participant.random2 = random1[1]
-        player.participant.random3 = random1[2]
-        player.participant.random4 = random1[3]
-        player.participant.random5 = random1[4]
-        player.participant.random6 = random1[5]
-        player.participant.random7 = random1[6]
-        player.participant.random8 = random1[7]
-
-class WTP_Results1_1(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner1') != None) and (player.participant.random1 < player.wtp_howmuch1) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner1 = g.get_player_by_id(player.participant.partner1)
-        return dict(partner1=partner1.participant.label)
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.exclude = True
-        player.participant.partner_exclude.append(player.participant.partner1)
-        player.participant.wtp_payment += player.wtp_howmuch1
-
-class WTP_Results2_1(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner1') != None) and (player.participant.random1 >= player.wtp_howmuch1) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner1 = g.get_player_by_id(player.participant.partner1)
-        return dict(partner1=partner1.participant.label)
-
-class WTP_Results1_2(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner2') != None) and (player.participant.random2 < player.wtp_howmuch2) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner2 = g.get_player_by_id(player.participant.partner2)
-        return dict(partner2=partner2.participant.label)
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.exclude = True
-        player.participant.partner_exclude.append(player.participant.partner2)
-        player.participant.wtp_payment += player.wtp_howmuch2
-
-class WTP_Results2_2(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner2') != None) and (player.participant.random2 >= player.wtp_howmuch2) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner2 = g.get_player_by_id(player.participant.partner2)
-        return dict(partner2=partner2.participant.label)
-
-class WTP_Results1_3(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner3') != None) and (player.participant.random3 < player.wtp_howmuch3) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner3 = g.get_player_by_id(player.participant.partner3)
-        return dict(partner3=partner3.participant.label)
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.exclude = True
-        player.participant.partner_exclude.append(player.participant.partner3)
-        player.participant.wtp_payment += player.wtp_howmuch3
-
-class WTP_Results2_3(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner3') != None) and (player.participant.random3 >= player.wtp_howmuch3) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner3 = g.get_player_by_id(player.participant.partner3)
-        return dict(partner3=partner3.participant.label)
-
-class WTP_Results1_4(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner4') != None) and (player.participant.random4 < player.wtp_howmuch4) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner4 = g.get_player_by_id(player.participant.partner4)
-        return dict(partner4=partner4.participant.label)
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.exclude = True
-        player.participant.partner_exclude.append(player.participant.partner4)
-        player.participant.wtp_payment += player.wtp_howmuch4
-
-class WTP_Results2_4(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner4') != None) and (player.participant.random4 >= player.wtp_howmuch4) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner4 = g.get_player_by_id(player.participant.partner4)
-        return dict(partner4=partner4.participant.label)
-
-class WTP_Results1_5(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner5') != None) and (player.participant.random5 < player.wtp_howmuch5) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner5 = g.get_player_by_id(player.participant.partner5)
-        return dict(partner5=partner5.participant.label)
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.exclude = True
-        player.participant.partner_exclude.append(player.participant.partner5)
-        player.participant.wtp_payment += player.wtp_howmuch5
-
-class WTP_Results2_5(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner5') != None) and (player.participant.random5 >= player.wtp_howmuch5) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner5 = g.get_player_by_id(player.participant.partner5)
-        return dict(partner5=partner5.participant.label)
-
-class WTP_Results1_6(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner6') != None) and (player.participant.random6 < player.wtp_howmuch6) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner6 = g.get_player_by_id(player.participant.partner6)
-        return dict(partner6=partner6.participant.label)
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.exclude = True
-        player.participant.partner_exclude.append(player.participant.partner6)
-        player.participant.wtp_payment += player.wtp_howmuch6
-
-class WTP_Results2_6(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner6') != None) and (player.participant.random6 >= player.wtp_howmuch6) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner6 = g.get_player_by_id(player.participant.partner6)
-        return dict(partner6=partner6.participant.label)
-
-class WTP_Results1_7(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner7') != None) and (player.participant.random7 < player.wtp_howmuch7) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner7 = g.get_player_by_id(player.participant.partner7)
-        return dict(partner7=partner7.participant.label)
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.exclude = True
-        player.participant.partner_exclude.append(player.participant.partner7)
-        player.participant.wtp_payment += player.wtp_howmuch7
-
-class WTP_Results2_7(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner7') != None) and (player.participant.random7 >= player.wtp_howmuch7) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner7 = g.get_player_by_id(player.participant.partner7)
-        return dict(partner7=partner7.participant.label)
-
-class WTP_Results1_8(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner8') != None) and (player.participant.random8 < player.wtp_howmuch8) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner8 = g.get_player_by_id(player.participant.partner8)
-        return dict(partner8=partner8.participant.label)
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        player.participant.exclude = True
-        player.participant.partner_exclude.append(player.participant.partner8)
-        player.participant.wtp_payment += player.wtp_howmuch8
-
-class WTP_Results2_8(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.field_maybe_none('partner8') != None) and (player.participant.random8 >= player.wtp_howmuch8) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        partner8 = g.get_player_by_id(player.participant.partner8)
-        return dict(partner8=partner8.participant.label)
-
-class Results1(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.participant.wtp_payment != 0) and player.round_number == 1
-    @staticmethod
-    def vars_for_template(player:Player):
-        g = player.group
-        helpers_exclude = []
-        for partner in player.participant.partner_exclude:
-            p = g.get_player_by_id(partner)
-            helpers_exclude.append(p.participant.label)
-        return dict(payment=player.participant.wtp_payment, helpers_exclude=helpers_exclude)
-
-class Results2(Page):
-    form_model = 'player'
-    @staticmethod
-    def is_displayed(player: Player):
-        return (player.wtp == 1) and (player.participant.wtp_payment == 0) and player.round_number == 1
-
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
     body_text = "Please be patient with your fellow classmates. WHILE YOU WAIT, YOU CAN PLAY THE GAME ON THE PAPER THAT IS ON YOUR DESK. PLEASE DO NOT TALK TO ANYONE."
@@ -996,9 +895,5 @@ class Sports2Hints(Page):
             return "Ensure that values add to the allowed number of hints"
 
 
-page_sequence = [WTP_YesNo, WTP_Who, WTP_HowMuch, WTP_Results1_1, WTP_Results2_1,
-WTP_Results1_2, WTP_Results2_2, WTP_Results1_3, WTP_Results2_3, WTP_Results1_4,
-WTP_Results2_4, WTP_Results1_5, WTP_Results2_5, WTP_Results1_6, WTP_Results2_6,
-WTP_Results1_7, WTP_Results2_7, WTP_Results1_8, WTP_Results2_8, Results1, Results2,
-WaitPage1, FinalTable, Economics1Hints, Economics2Hints, Cooking1Hints, Cooking2Hints,
-Sports1Hints, Sports2Hints]
+page_sequence = [WaitPage1, FinalTable, Economics1Hints, Economics2Hints, Cooking1Hints,
+Cooking2Hints, Sports1Hints, Sports2Hints]

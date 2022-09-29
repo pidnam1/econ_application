@@ -5,16 +5,7 @@ class C(BaseConstants):
     NAME_IN_URL = '___Preferences_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    PLAYERS = ['Maira Ashraf','Ajmal Hussain Kashif','Muhammad Idrees','Muhammad Farhan',
-    'Meraj Khan','Hasnain Ali','Khizar Hayat','Ali Hamza','Nayab Qamar','Rizwan Ullah',
-    'Waqar Younas','Muhammad Hamza Khalid','Muhammad Ilyas','Ahmar Khan','Fatima Akram',
-    'Mohsin Riaz','Aniba Zafar','Khalid Ur Rehman','Hafiz Muhammad Rizwan','Muhammad Afzaal Azam',
-    'Shahar Yar','Massab Umair','Qandeel Shahid','Zohaib Zulfiqar','Iftikhar Mehmood',
-    'Umair Hassan','Zoha Imtiaz','Maida Iqbal','Ubaid Khan','Zain Abbas','Fatima Muhammad Yaseen',
-    'Sania Riaz','Muhammad Tassawar','Hamnah Shafique','Bareeha Ali','Muhammad Ahmad',
-    'Farwa Hussain','Tehmina Fareed']
     RANKINGS = [1,2,3,4,5,6,7,8,9,10,'No rank']
-    RANKINGS1 = [1,2,3,4,5,'No rank']
 
 class Subsession(BaseSubsession):
     pass
@@ -41,11 +32,6 @@ def make_field3(label):
         label=label,
     )
 
-def make_field4(label):
-    return models.StringField(
-        choices=C.RANKINGS1,
-        label=label, initial = "No rank",
-    )
 
 class Player(BasePlayer):
     gender = models.IntegerField()
@@ -109,46 +95,6 @@ class Player(BasePlayer):
     f8_3_1 = make_field3('')
     f9_3_1 = make_field3('')
     f10_3_1 = make_field3('')
-    f1_1_2 = make_field4('')
-    f2_1_2 = make_field4('')
-    f3_1_2 = make_field4('')
-    f4_1_2 = make_field4('')
-    f5_1_2 = make_field4('')
-    f6_1_2 = make_field4('')
-    f7_1_2 = make_field4('')
-    f8_1_2 = make_field4('')
-    f9_1_2 = make_field4('')
-    f10_1_2 = make_field4('')
-    f11_1_2 = make_field4('')
-    f12_1_2 = make_field4('')
-    f13_1_2 = make_field4('')
-    f14_1_2 = make_field4('')
-    f15_1_2 = make_field4('')
-    f16_1_2 = make_field4('')
-    f17_1_2 = make_field4('')
-    f18_1_2 = make_field4('')
-    f19_1_2 = make_field4('')
-    f20_1_2 = make_field4('')
-    f21_1_2 = make_field4('')
-    f22_1_2 = make_field4('')
-    f23_1_2 = make_field4('')
-    f24_1_2 = make_field4('')
-    f25_1_2 = make_field4('')
-    f26_1_2 = make_field4('')
-    f27_1_2 = make_field4('')
-    f28_1_2 = make_field4('')
-    f29_1_2 = make_field4('')
-    f30_1_2 = make_field4('')
-    f31_1_2 = make_field4('')
-    f32_1_2 = make_field4('')
-    f33_1_2 = make_field4('')
-    f34_1_2 = make_field4('')
-    f35_1_2 = make_field4('')
-    f36_1_2 = make_field4('')
-    f37_1_2 = make_field4('')
-    f38_1_2 = make_field4('')
-    f39_1_2 = make_field4('')
-    f40_1_2 = make_field4('')
 
 class Transition(Page):
     form_model = 'player'
@@ -320,78 +266,4 @@ class Pref_Helper_Other(Page):
     def is_displayed(player: Player):
         return (player.f1_2_1 == "9. Other") or (player.f2_2_1 == "9. Other") or (player.f3_2_1 == "9. Other") or (player.f4_2_1 == "9. Other") or (player.f5_2_1 == "9. Other") or (player.f6_2_1 == "9. Other") or (player.f7_2_1 == "9. Other") or (player.f8_2_1 == "9. Other") or (player.f9_2_1 == "9. Other") or (player.f10_2_1 == "9. Other")
 
-class Pref_TT(Page):
-    form_model = 'player'
-    @staticmethod
-    def get_form_fields(player: Player):
-        session = player.session
-        form_fields_all = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
-        'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
-        'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
-        'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
-        'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2','f38_1_2','f39_1_2',
-        'f40_1_2']
-        form_fields = form_fields_all[:session.count - 1]
-        return form_fields
-    @staticmethod
-    def vars_for_template(player: Player):
-        g = player.group
-        session = player.session
-        form_fields = ['f1_1_2','f2_1_2','f3_1_2','f4_1_2','f5_1_2','f6_1_2','f7_1_2',
-        'f8_1_2','f9_1_2','f10_1_2','f11_1_2','f12_1_2','f13_1_2','f14_1_2','f15_1_2',
-        'f16_1_2','f17_1_2','f18_1_2','f19_1_2','f20_1_2','f21_1_2','f22_1_2','f23_1_2',
-        'f24_1_2','f25_1_2','f26_1_2','f27_1_2','f28_1_2','f29_1_2','f30_1_2','f31_1_2',
-        'f32_1_2','f33_1_2','f34_1_2','f35_1_2','f36_1_2','f37_1_2','f38_1_2','f39_1_2',
-        'f40_1_2']
-        player.participant.form_fields_pref2 = form_fields[:session.count - 1]
-        return dict(players=player.participant.players)
-    @staticmethod
-    def error_message(player: Player, values):
-        choices = []
-        for field in player.participant.form_fields_pref2:
-            choices += [values[field]]
-        if len(set(choices)) != 6:
-            return "You must choose exactly 5 ranks. You cannot choose the same rank for two people."
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        rank_list = [player.f1_1_2, player.f2_1_2, player.f3_1_2, player.f4_1_2,
-        player.f5_1_2, player.f6_1_2, player.f7_1_2, player.f8_1_2, player.f9_1_2,
-        player.f10_1_2, player.f11_1_2, player.f12_1_2, player.f13_1_2, player.f14_1_2,
-        player.f15_1_2, player.f16_1_2, player.f17_1_2, player.f18_1_2, player.f19_1_2,
-        player.f20_1_2, player.f21_1_2, player.f22_1_2, player.f23_1_2, player.f24_1_2,
-        player.f25_1_2, player.f26_1_2, player.f27_1_2, player.f28_1_2, player.f29_1_2,
-        player.f30_1_2, player.f31_1_2, player.f32_1_2, player.f33_1_2, player.f34_1_2,
-        player.f35_1_2, player.f36_1_2, player.f37_1_2, player.f38_1_2, player.f39_1_2,
-        player.f40_1_2]
-        player.participant.name_list1 = []
-        ranking_order={}
-        for i in range(len(rank_list)):
-            if rank_list[i]!="No rank":
-                ranking_order[rank_list[i]]=player.participant.players[i]
-        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
-        player.participant.name_list1 = list(sorted_ranking_order.values())
-
-        id_list = []
-        id_list_female = []
-        id_list_male = []
-        group = player.group
-        for name in player.participant.name_list1:
-            for p in group.get_players():
-
-                ##subtly eliminates ones who did not show up from matching algorithm
-                if p.participant.label == name:
-                    id_list.append(p.id_in_group)
-                    if p.participant.gender == 0: #female
-                        id_list_female.append(p.id_in_group)
-                    else: #male
-                        id_list_male.append(p.id_in_group)
-        player.participant.pref_tt = dict(zip(C.RANKINGS,id_list))
-        player.participant.pref_tt_female = dict()
-        player.participant.pref_tt_male = dict()
-        for key, value in player.participant.pref_tt.items():
-            if value in id_list_female:
-                player.participant.pref_tt_female.update({key:value})
-            elif value in id_list_male:
-                player.participant.pref_tt_male.update({key:value})
-
-page_sequence = [Transition, Pref_Helper, Pref_Helper_Why, Pref_Helper_Other, Pref_TT]
+page_sequence = [Transition, Pref_Helper, Pref_Helper_Why, Pref_Helper_Other]

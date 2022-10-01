@@ -1053,6 +1053,11 @@ def vars_for_template0(player: Player):
 class HelperTable(Page):
     form_model = 'player'
     @staticmethod
+    def is_displayed(player:Player):
+        session = player.session
+        session.wtp_finished += 1
+        return True
+    @staticmethod
     def vars_for_template(player:Player):
         final = vars_for_template0(player)
         return final
@@ -1215,31 +1220,33 @@ class Pref_TT(Page):
         for i in range(len(rank_list)):
             if rank_list[i]!="No rank":
                 ranking_order[rank_list[i]]=player.participant.players[i]
-        sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
-        player.participant.name_list1 = list(sorted_ranking_order.values())
+        print(ranking_order)
+        if len(ranking_order) != 1:
+            sorted_ranking_order = {key: val for key, val in sorted(ranking_order.items(),key=lambda ele: int(ele[0]))}
+            player.participant.name_list1 = list(sorted_ranking_order.values())
 
-        id_list = []
-        id_list_female = []
-        id_list_male = []
-        group = player.group
-        for name in player.participant.name_list1:
-            for p in group.get_players():
+            id_list = []
+            id_list_female = []
+            id_list_male = []
+            group = player.group
+            for name in player.participant.name_list1:
+                for p in group.get_players():
 
-                ##subtly eliminates ones who did not show up from matching algorithm
-                if p.participant.label == name:
-                    id_list.append(p.id_in_group)
-                    if p.participant.gender == 0: #female
-                        id_list_female.append(p.id_in_group)
-                    else: #male
-                        id_list_male.append(p.id_in_group)
-        player.participant.pref_tt = dict(zip(C.RANKINGS1,id_list))
-        player.participant.pref_tt_female = dict()
-        player.participant.pref_tt_male = dict()
-        for key, value in player.participant.pref_tt.items():
-            if value in id_list_female:
-                player.participant.pref_tt_female.update({key:value})
-            elif value in id_list_male:
-                player.participant.pref_tt_male.update({key:value})
+                    ##subtly eliminates ones who did not show up from matching algorithm
+                    if p.participant.label == name:
+                        id_list.append(p.id_in_group)
+                        if p.participant.gender == 0: #female
+                            id_list_female.append(p.id_in_group)
+                        else: #male
+                            id_list_male.append(p.id_in_group)
+            player.participant.pref_tt = dict(zip(C.RANKINGS1,id_list))
+            player.participant.pref_tt_female = dict()
+            player.participant.pref_tt_male = dict()
+            for key, value in player.participant.pref_tt.items():
+                if value in id_list_female:
+                    player.participant.pref_tt_female.update({key:value})
+                elif value in id_list_male:
+                    player.participant.pref_tt_male.update({key:value})
 
 def vars_for_template1(player: Player):
     g = player.group

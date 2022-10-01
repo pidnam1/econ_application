@@ -132,7 +132,7 @@ PARTICIPANT_FIELDS = ['task_rounds_prac','task_rounds0','task_rounds0b','task_ro
 'responses_2_WP','responses_2_WR','responses_3b_MP','responses_3b_MR','responses_3b_WP',
 'responses_3b_WR','game_payoff','total_payment','players','name_list','name_list1','already_clicked',
 'random_multiple_price', 'hints1', 'hints2']
-SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids']
+SESSION_FIELDS = ['count','active_players','arrived_ids','wait_for_ids','wtp_finished']
 
 # ISO-6310 code
 # for example: de, fr, ja, ko, zh-hans

@@ -969,6 +969,15 @@ class Player(BasePlayer):
         Bourdieu attributed the reproduction of class to''',
         widget=widgets.RadioSelect,
     )
+    crt_cooking1_WP = models.IntegerField(
+        choices=[[1, 'To test the tenderness of the meat being cooked'],
+        [2, 'Used to check the temperature of the grill'],
+        [3, 'Used to see how long you can keep your hand by a hot grill'],
+        [4, 'It\'s a test to determine the metal strengths of a grill']],
+        label='''
+        What does the term \'hand test\' mean in relation to grilling?''',
+        widget=widgets.RadioSelect,
+    )
     crt_cooking2_WP = models.IntegerField(
         choices=[[1, 'Frying'], [2, 'Dry heat cooking'], [3, 'Stir-frying'],
         [4, 'Deep fat-frying']],
@@ -7010,6 +7019,27 @@ class Final_Part5(Page):
         player.participant.payoff_tt.update({"Round3_MP": payoff_MP, "Round3_MR": payoff_MR, "Round3_WP": payoff_WP, "Round3_WR": payoff_WR})
         player.participant.payoff_helped.update({player.participant.partner3: payoff_MP, player.participant.partner8: payoff_MR, player.participant.partner2: payoff_WP, player.participant.partner6: payoff_WR})
 
+        g = player.group
+        partner3 = g.get_player_by_id(player.participant.partner3)
+        partner8 = g.get_player_by_id(player.participant.partner8)
+        partner2 = g.get_player_by_id(player.participant.partner2)
+        partner6 = g.get_player_by_id(player.participant.partner6)
+        if player.id_in_group == partner3.participant.partnerm2:
+            partner3.participant.payoff_help.update({"partnerm2":payoff_MP})
+        if player.id_in_group == partner3.participant.partnerm4:
+            partner3.participant.payoff_help.update({"partnerm4":payoff_MP})
+        if player.id_in_group == partner8.participant.partnerm2:
+            partner8.participant.payoff_help.update({"partnerm2":payoff_MR})
+        if player.id_in_group == partner8.participant.partnerm4:
+            partner8.participant.payoff_help.update({"partnerm4":payoff_MR})
+        if player.id_in_group == partner2.participant.partnerm2:
+            partner2.participant.payoff_help.update({"partnerm2":payoff_WP})
+        if player.id_in_group == partner2.participant.partnerm4:
+            partner2.participant.payoff_help.update({"partnerm4":payoff_WP})
+        if player.id_in_group == partner6.participant.partnerm2:
+            partner6.participant.payoff_help.update({"partnerm2":payoff_WR})
+        if player.id_in_group == partner6.participant.partnerm4:
+            partner6.participant.payoff_help.update({"partnerm4":payoff_WR})
 
 page_sequence = [Demographics, Transition_MP, Hints_MP, ExpectedSupplyEcon_MP, ExpectedConfidenceEcon_MP,
 ExpectedSupplyCook_MP, ExpectedConfidenceCook_MP, ExpectedSupplySport_MP, ExpectedConfidenceSport_MP,

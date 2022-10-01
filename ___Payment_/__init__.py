@@ -30,7 +30,6 @@ class Payment(Page):
     @staticmethod
     def vars_for_template(player: Player):
         player.participant.total_payment = 300
-        player.total_pay0 = player.participant.total_payment
 
         testing_pay = list(player.participant.payoff_tt.values())
         random.shuffle(testing_pay)
@@ -38,9 +37,6 @@ class Payment(Page):
         player.testing_pay0 = testing_pay[0]
 
         #add all helpers
-        #for all players
-        #if your id is in the players payoff_helped and they are your 2 or 4 partner
-        #add that value to your payoff_help with key of which partner
         helping_pay = list(player.participant.payoff_help.values())
         random.shuffle(helping_pay)
         player.participant.total_payment += helping_pay[0]
@@ -57,6 +53,8 @@ class Payment(Page):
         #add bonus payoff
         player.participant.total_payment += player.participant.guess_bonus_payoff
         player.guess_bonus_pay0 = player.participant.guess_bonus_payoff
+
+        player.total_pay0 = player.participant.total_payment
 
         return dict(testing_pay0=player.testing_pay0, helping_pay0=player.helping_pay0, guess_bonus_pay0=player.participant.guess_bonus_payoff, wtp_pay0=player.wtp_pay0, amount_game_pay0=player.participant.game_payoff, total_payment0=player.participant.total_payment)
 

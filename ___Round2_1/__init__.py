@@ -4592,7 +4592,28 @@ class Final(Page):
         player.participant.payoff_tt.update({"Round2_MP": payoff_MP, "Round2_MR": payoff_MR, "Round2_WP": payoff_WP, "Round2_WR": payoff_WR})
         player.participant.payoff_helped.update({player.participant.partner4: payoff_MP, player.participant.partner7: payoff_MR, player.participant.partner1: payoff_WP, player.participant.partner5: payoff_WR})
 
-
+        g = player.group
+        partner4 = g.get_player_by_id(player.participant.partner4)
+        partner7 = g.get_player_by_id(player.participant.partner7)
+        partner1 = g.get_player_by_id(player.participant.partner1)
+        partner5 = g.get_player_by_id(player.participant.partner5)
+        if player.id_in_group == partner4.participant.partnerm2:
+            partner4.participant.payoff_help.update({"partnerm2":payoff_MP})
+        if player.id_in_group == partner4.participant.partnerm4:
+            partner4.participant.payoff_help.update({"partnerm4":payoff_MP})
+        if player.id_in_group == partner7.participant.partnerm2:
+            partner7.participant.payoff_help.update({"partnerm2":payoff_MR})
+        if player.id_in_group == partner7.participant.partnerm4:
+            partner7.participant.payoff_help.update({"partnerm4":payoff_MR})
+        if player.id_in_group == partner1.participant.partnerm2:
+            partner1.participant.payoff_help.update({"partnerm2":payoff_WP})
+        if player.id_in_group == partner1.participant.partnerm4:
+            partner1.participant.payoff_help.update({"partnerm4":payoff_WP})
+        if player.id_in_group == partner5.participant.partnerm2:
+            partner5.participant.payoff_help.update({"partnerm2":payoff_WR})
+        if player.id_in_group == partner5.participant.partnerm4:
+            partner5.participant.payoff_help.update({"partnerm4":payoff_WR})
+            
 page_sequence = [Demographics, Transition_MP, Hints_MP, Transition_MP0, Economics1_MP,
 Economics1_MP_Hint, Economics2_MP, Economics2_MP_Hint, Economics3_MP, Economics4_MP,
 Economics4_MP_Hint, Cooking1_MP, Cooking2_MP, Cooking2_MP_Hint,Cooking3_MP, Cooking3_MP_Hint,

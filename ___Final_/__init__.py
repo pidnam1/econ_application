@@ -547,16 +547,24 @@ def set_mismatch(player:Player,partner):
 
     return [partner.participant.mismatch_econ,partner.participant.mismatch_cook,partner.participant.mismatch_sport]
 
+def group_by_arrival_time_method(subsession, waiting_players):
+    for player in waiting_players:
+        if wtp_finished(player):
+            return [player]
+
+def wtp_finished(player: Player):
+    session = player.session
+    return session.wtp_finished == session.count
 
 # PAGES
 class WaitPage1(WaitPage):
     title_text = "Waiting for all players to finish"
     body_text = "Please be patient with your fellow classmates. WHILE YOU WAIT, YOU CAN PLAY THE GAME ON THE PAPER THAT IS ON YOUR DESK. PLEASE DO NOT TALK TO ANYONE."
-
+    group_by_arrival_time = True
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == 1
+        return (player.round_number == 1) and (session.wtp_finished != session.count)
 
 class FinalTable(Page):
     form_model = 'player'

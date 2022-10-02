@@ -7020,26 +7020,30 @@ class Final_Part5(Page):
         player.participant.payoff_helped.update({player.participant.partner3: payoff_MP, player.participant.partner8: payoff_MR, player.participant.partner2: payoff_WP, player.participant.partner6: payoff_WR})
 
         g = player.group
-        partner3 = g.get_player_by_id(player.participant.partner3)
-        partner8 = g.get_player_by_id(player.participant.partner8)
-        partner2 = g.get_player_by_id(player.participant.partner2)
-        partner6 = g.get_player_by_id(player.participant.partner6)
-        if player.id_in_group == partner3.participant.partnerm2:
-            partner3.participant.payoff_help.update({"partnerm2":payoff_MP})
-        if player.id_in_group == partner3.participant.partnerm4:
-            partner3.participant.payoff_help.update({"partnerm4":payoff_MP})
-        if player.id_in_group == partner8.participant.partnerm2:
-            partner8.participant.payoff_help.update({"partnerm2":payoff_MR})
-        if player.id_in_group == partner8.participant.partnerm4:
-            partner8.participant.payoff_help.update({"partnerm4":payoff_MR})
-        if player.id_in_group == partner2.participant.partnerm2:
-            partner2.participant.payoff_help.update({"partnerm2":payoff_WP})
-        if player.id_in_group == partner2.participant.partnerm4:
-            partner2.participant.payoff_help.update({"partnerm4":payoff_WP})
-        if player.id_in_group == partner6.participant.partnerm2:
-            partner6.participant.payoff_help.update({"partnerm2":payoff_WR})
-        if player.id_in_group == partner6.participant.partnerm4:
-            partner6.participant.payoff_help.update({"partnerm4":payoff_WR})
+        if player.participant.partner3 != 0:
+            partner3 = g.get_player_by_id(player.participant.partner3)
+            if player.id_in_group == partner3.participant.partnerm2:
+                partner3.participant.payoff_help.update({"partnerm2":payoff_MP})
+            if player.id_in_group == partner3.participant.partnerm4:
+                partner3.participant.payoff_help.update({"partnerm4":payoff_MP})
+        if player.participant.partner8 != 0:
+            partner8 = g.get_player_by_id(player.participant.partner8)
+            if player.id_in_group == partner8.participant.partnerm2:
+                partner8.participant.payoff_help.update({"partnerm2":payoff_MR})
+            if player.id_in_group == partner8.participant.partnerm4:
+                partner8.participant.payoff_help.update({"partnerm4":payoff_MR})
+        if player.participant.partner2 != 0:
+            partner2 = g.get_player_by_id(player.participant.partner2)
+            if player.id_in_group == partner2.participant.partnerm2:
+                partner2.participant.payoff_help.update({"partnerm2":payoff_WP})
+            if player.id_in_group == partner2.participant.partnerm4:
+                partner2.participant.payoff_help.update({"partnerm4":payoff_WP})
+        if player.participant.partner6 != 0:
+            partner6 = g.get_player_by_id(player.participant.partner6)
+            if player.id_in_group == partner6.participant.partnerm2:
+                partner6.participant.payoff_help.update({"partnerm2":payoff_WR})
+            if player.id_in_group == partner6.participant.partnerm4:
+                partner6.participant.payoff_help.update({"partnerm4":payoff_WR})
 
 page_sequence = [Demographics, Transition_MP, Hints_MP, ExpectedSupplyEcon_MP, ExpectedConfidenceEcon_MP,
 ExpectedSupplyCook_MP, ExpectedConfidenceCook_MP, ExpectedSupplySport_MP, ExpectedConfidenceSport_MP,

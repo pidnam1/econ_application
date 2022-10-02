@@ -1053,11 +1053,6 @@ def vars_for_template0(player: Player):
 class HelperTable(Page):
     form_model = 'player'
     @staticmethod
-    def is_displayed(player:Player):
-        session = player.session
-        session.wtp_finished += 1
-        return True
-    @staticmethod
     def vars_for_template(player:Player):
         final = vars_for_template0(player)
         return final
@@ -1091,6 +1086,8 @@ class HelperTable(Page):
         player.participant.random_multiple_price = [1,2]
         random.shuffle(player.participant.random_multiple_price)
         player.gender = player.participant.gender
+        session = player.session
+        session.wtp_finished += 1
 
 class MultiplePriceFemale1(Page):
     form_model = 'player'

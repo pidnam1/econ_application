@@ -6,11 +6,11 @@ import random
 class C(BaseConstants):
     NAME_IN_URL = '___Practice_'
     PLAYERS_PER_GROUP = None
-    TASKS = ['Economics', 'Cooking', 'Sports']
-    ECONSUBTASKS = ['Economics1','Economics2']
-    COOKSUBTASKS = ['Cooking1','Cooking2']
-    SPORTSUBTASKS = ['Sports1','Sports2']
-    NUM_ROUNDS = len(TASKS)*2
+    TASKS = ['Economics2', 'Cooking1', 'Sports2']
+    # ECONSUBTASKS = ['Economics1','Economics2']
+    # COOKSUBTASKS = ['Cooking1','Cooking2']
+    # SPORTSUBTASKS = ['Sports1','Sports2']
+    NUM_ROUNDS = len(TASKS)
     TIMER_TEXT = "Time to complete this section:"
 
 
@@ -168,47 +168,47 @@ def creating_session(subsession: Subsession):
             random.shuffle(round_numbers)
             task_round = dict(zip(C.TASKS, round_numbers))
 
-            sub_round_number1 = list(range(1, 3))
-            random.shuffle(sub_round_number1)
-            sub_round_number2 = list(range(3, 5))
-            random.shuffle(sub_round_number2)
-            sub_round_number3 = list(range(5, 7))
-            random.shuffle(sub_round_number3)
+            p.participant.task_rounds_prac = task_round
 
-            p.participant.task_rounds_prac = dict()
-
-            econ_round_number = task_round['Economics']
-            if econ_round_number == 1:
-                task_rounds_econ1 = dict(zip(C.ECONSUBTASKS, sub_round_number1))
-                p.participant.task_rounds_prac.update(task_rounds_econ1)
-            elif econ_round_number == 2:
-                task_rounds_econ2 = dict(zip(C.ECONSUBTASKS, sub_round_number2))
-                p.participant.task_rounds_prac.update(task_rounds_econ2)
-            elif econ_round_number == 3:
-                task_rounds_econ3 = dict(zip(C.ECONSUBTASKS, sub_round_number3))
-                p.participant.task_rounds_prac.update(task_rounds_econ3)
-
-            cook_round_number = task_round['Cooking']
-            if cook_round_number == 1:
-                task_rounds_cook1 = dict(zip(C.COOKSUBTASKS, sub_round_number1))
-                p.participant.task_rounds_prac.update(task_rounds_cook1)
-            elif cook_round_number == 2:
-                task_rounds_cook2 = dict(zip(C.COOKSUBTASKS, sub_round_number2))
-                p.participant.task_rounds_prac.update(task_rounds_cook2)
-            elif cook_round_number == 3:
-                task_rounds_cook3 = dict(zip(C.COOKSUBTASKS, sub_round_number3))
-                p.participant.task_rounds_prac.update(task_rounds_cook3)
-
-            sport_round_number = task_round['Sports']
-            if sport_round_number == 1:
-                task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS, sub_round_number1))
-                p.participant.task_rounds_prac.update(task_rounds_sport1)
-            elif sport_round_number == 2:
-                task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS, sub_round_number2))
-                p.participant.task_rounds_prac.update(task_rounds_sport2)
-            elif sport_round_number == 3:
-                task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS, sub_round_number3))
-                p.participant.task_rounds_prac.update(task_rounds_sport3)
+            # sub_round_number1 = list(range(1, 3))
+            # random.shuffle(sub_round_number1)
+            # sub_round_number2 = list(range(3, 5))
+            # random.shuffle(sub_round_number2)
+            # sub_round_number3 = list(range(5, 7))
+            # random.shuffle(sub_round_number3)
+            #
+            # econ_round_number = task_round['Economics']
+            # if econ_round_number == 1:
+            #     task_rounds_econ1 = dict(zip(C.ECONSUBTASKS, sub_round_number1))
+            #     p.participant.task_rounds_prac.update(task_rounds_econ1)
+            # elif econ_round_number == 2:
+            #     task_rounds_econ2 = dict(zip(C.ECONSUBTASKS, sub_round_number2))
+            #     p.participant.task_rounds_prac.update(task_rounds_econ2)
+            # elif econ_round_number == 3:
+            #     task_rounds_econ3 = dict(zip(C.ECONSUBTASKS, sub_round_number3))
+            #     p.participant.task_rounds_prac.update(task_rounds_econ3)
+            #
+            # cook_round_number = task_round['Cooking']
+            # if cook_round_number == 1:
+            #     task_rounds_cook1 = dict(zip(C.COOKSUBTASKS, sub_round_number1))
+            #     p.participant.task_rounds_prac.update(task_rounds_cook1)
+            # elif cook_round_number == 2:
+            #     task_rounds_cook2 = dict(zip(C.COOKSUBTASKS, sub_round_number2))
+            #     p.participant.task_rounds_prac.update(task_rounds_cook2)
+            # elif cook_round_number == 3:
+            #     task_rounds_cook3 = dict(zip(C.COOKSUBTASKS, sub_round_number3))
+            #     p.participant.task_rounds_prac.update(task_rounds_cook3)
+            #
+            # sport_round_number = task_round['Sports']
+            # if sport_round_number == 1:
+            #     task_rounds_sport1 = dict(zip(C.SPORTSUBTASKS, sub_round_number1))
+            #     p.participant.task_rounds_prac.update(task_rounds_sport1)
+            # elif sport_round_number == 2:
+            #     task_rounds_sport2 = dict(zip(C.SPORTSUBTASKS, sub_round_number2))
+            #     p.participant.task_rounds_prac.update(task_rounds_sport2)
+            # elif sport_round_number == 3:
+            #     task_rounds_sport3 = dict(zip(C.SPORTSUBTASKS, sub_round_number3))
+            #     p.participant.task_rounds_prac.update(task_rounds_sport3)
 
 
 def get_timeout_seconds1(player: Player):

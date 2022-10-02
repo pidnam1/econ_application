@@ -564,6 +564,7 @@ class WaitPage1(WaitPage):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
+        session = player.session
         return (player.round_number == 1) and (session.wtp_finished != session.count)
 
 class FinalTable(Page):

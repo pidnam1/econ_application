@@ -1640,7 +1640,14 @@ class Final(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.payoff_help = {}
-        player.participant.payoff_help.update({"partnerm1":450, "partnerm3":450, "partnerf1":450, "partnerf3":450})
+        if player.participant.partnerm1 != 0:
+            player.participant.payoff_help.update({"partnerm1":450})
+        if player.participant.partnerm3 != 0:
+            player.participant.payoff_help.update({"partnerm3":450})
+        if player.participant.partnerf1 != 0:
+            player.participant.payoff_help.update({"partnerf1":450})
+        if player.participant.partnerf3 != 0:
+            player.participant.payoff_help.update({"partnerf3":450})
         player.participant.responses_2_MP = dict()
         player.participant.responses_2_MR = dict()
         player.participant.responses_2_WP = dict()

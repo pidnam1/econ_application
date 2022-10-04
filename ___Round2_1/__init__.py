@@ -4594,24 +4594,32 @@ class Final(Page):
 
         g = player.group
         if player.participant.partner4 != 0:
+            player.participant.payoff_tt.update({"Round2_MP": payoff_MP})
+            player.participant.payoff_helped.update({player.participant.partner4: payoff_MP})
             partner4 = g.get_player_by_id(player.participant.partner4)
             if player.id_in_group == partner4.participant.partnerm2:
                 partner4.participant.payoff_help.update({"partnerm2":payoff_MP})
             if player.id_in_group == partner4.participant.partnerm4:
                 partner4.participant.payoff_help.update({"partnerm4":payoff_MP})
         if player.participant.partner7 != 0:
+            player.participant.payoff_tt.update({"Round2_MR": payoff_MR})
+            player.participant.payoff_helped.update({player.participant.partner7: payoff_MR})
             partner7 = g.get_player_by_id(player.participant.partner7)
             if player.id_in_group == partner7.participant.partnerm2:
                 partner7.participant.payoff_help.update({"partnerm2":payoff_MR})
             if player.id_in_group == partner7.participant.partnerm4:
                 partner7.participant.payoff_help.update({"partnerm4":payoff_MR})
         if player.participant.partner1 != 0:
+            player.participant.payoff_tt.update({"Round2_WP": payoff_WP})
+            player.participant.payoff_helped.update({player.participant.partner1: payoff_WP})
             partner1 = g.get_player_by_id(player.participant.partner1)
             if player.id_in_group == partner1.participant.partnerm2:
                 partner1.participant.payoff_help.update({"partnerm2":payoff_WP})
             if player.id_in_group == partner1.participant.partnerm4:
                 partner1.participant.payoff_help.update({"partnerm4":payoff_WP})
         if player.participant.partner5 != 0:
+            player.participant.payoff_tt.update({"Round2_WR": payoff_WR})
+            player.participant.payoff_helped.update({player.participant.partner5: payoff_WR})
             partner5 = g.get_player_by_id(player.participant.partner5)
             if player.id_in_group == partner5.participant.partnerm2:
                 partner5.participant.payoff_help.update({"partnerm2":payoff_WR})

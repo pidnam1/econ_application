@@ -5,42 +5,50 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [0,1,0,1,0,0,1,0,1,1,1,0,0,0,0,0,1,0,1,1,0,1,0,1,0,1,0,0,1,1,1,1,1,1,0,1,1,0,1,1,0,1,0,1,1,0,0,1,0,0,1,1,1,0,1,1]
-    LABELS = ['Arshee','Ali_Hassan','Fehmeeda_Zulafqar','Shahid_Ali','Fatima_Bibi',
-    'Khadija_Akram','Zaigham_Abbas','Faiza_Iqbal','Waqar_Hussain','Nawab_Khan','Mansoor_Nazir',
-    'Nimra_Arshad','Nimra','Maryam_Abdul_Rasheed','Alishba_Mohsin','Laiba_Gul','Faisal_Aziz',
-    'Irfa_Iqbal','Muqadas_Yasin','Muhammad_Haider','Shanzay_Saleem','Muhammad_Awais',
-    'Farah_Anwar','Subhan_Ullah','Asia_Boota','Rehmat_Alam','Arooj_Fatima','Shab_Noor',
-    'Muhammad_Shahroze_Iqbal','Wajid_Ali','Usama_Shamaoon','Afham_Javed','Rehan_Ahmad',
-    'Anis_Yousuf','Maryam_Akram','Muhammad_Shaheryar','Muhammad_Qasim_Khan','Waiqa',
-    'Muhammad_Uzair_Khan','Ali_Raza','Samia_Saleem','Taimoor_Khan','Nabish_Azhar',
-    'Zulfiqar_Ahmad','Tauseef_Zulfiqar','Ume_Ramla','Zainab_Zulfiqar','Jahangir_Kakar',
-    'Isma_Rasool','Shazeena_Fatima','Muhammad_Aslam','Akbar_Ali','Shujjat_Hussain',
-    'Hajira','Khatim_Tayyab','Mudassir_Ali_Watto']
-    PLAYERS = ['Arshee','Ali Hassan','Fehmeeda Zulafqar','Shahid Ali','Fatima Bibi',
-    'Khadija Akram','Zaigham Abbas','Faiza Iqbal','Waqar Hussain','Nawab Khan','Mansoor Nazir',
-    'Nimra Arshad','Nimra','Maryam Abdul Rasheed','Alishba Mohsin','Laiba Gul','Faisal Aziz',
-    'Irfa Iqbal','Muqadas Yasin','Muhammad Haider','Shanzay Saleem','Muhammad Awais',
-    'Farah Anwar','Subhan Ullah','Asia Boota','Rehmat Alam','Arooj Fatima','Shab Noor',
-    'Muhammad Shahroze Iqbal','Wajid Ali','Usama Shamaoon','Afham Javed','Rehan Ahmad',
-    'Anis Yousuf','Maryam Akram','Muhammad Shaheryar','Muhammad Qasim Khan','Waiqa',
-    'Muhammad Uzair Khan','Ali Raza','Samia Saleem','Taimoor Khan','Nabish Azhar',
-    'Zulfiqar Ahmad','Tauseef Zulfiqar','Ume Ramla','Zainab Zulfiqar','Jahangir Kakar',
-    'Isma Rasool','Shazeena Fatima','Muhammad Aslam','Akbar Ali','Shujjat Hussain',
-    'Hajira','Khatim Tayyab','Mudassir Ali Watto']
-    GENDERS_LIST = [0,1,0,1,0,1,1,0,0,0,1,1,0,1,1,1,1,0,1,0,0,0,0,1,1,1,0,0,0]
-    LABELS = ['Shamsa_Kanwal','Muzaffar_Ali','Anosha_Saher','Muhammad_Saleem_Saha',
-    'Irfa_Iqbal','Mir_Aqib_Ul_Azam','Shahzad_Munawar','Amna_Ijaz','Kanwal_Fatima',
-    'Fadia_Sumreen_Hayat','Ali_Raza','Amram_Samuel','Maryam_Khan','Fahad_Ali_Khan',
-    'Ali_Haris_Naeem','Shoaib_Naseer','Malik_Danish_Naeem','Sama_E_Noor','Ghulam_Murtaza',
-    'Maliha_Shahid','Syeda_Mehreen_Akmal','Sitara_Mehwish','Ayesha','Anood_Akram',
-    'Ghulam_Mujtaba','Mubashir_Shafi_Khan','Um_E_Farwa','Lyba_Saleem','Sumaira_Saleem']
-    PLAYERS = ['Shamsa Kanwal','Muzaffar Ali','Anosha Saher','Muhammad Saleem Saha',
-    'Irfa Iqbal','Mir Aqib Ul Azam','Shahzad Munawar','Amna Ijaz','Kanwal Fatima',
-    'Fadia Sumreen Hayat','Ali Raza','Amram Samuel','Maryam Khan','Fahad Ali Khan',
-    'Ali Haris Naeem','Shoaib Naseer','Malik Danish Naeem','Sama E Noor','Ghulam Murtaza',
-    'Maliha Shahid','Syeda Mehreen Akmal','Sitara Mehwish','Ayesha','Anood Akram',
-    'Ghulam Mujtaba','Mubashir Shafi Khan','Um E Farwa','Lyba Saleem','Sumaira Saleem']
+    GENDERS_LIST = [0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,1,0,0,1,0,1,0,1]
+    LABELS = ['Tooba_Javed','Ali_Mohsin','Hafsa_Mumtaz','S_M_Saqlain_Fareed','Zainab',
+    'Maheen_Nisar_Khan','Rameen_Sahar','Bushra_Maqsood','Afshan_Tahira','Fatima_Zohra',
+    'Mirha_Shehzad','Sadaf_Manzoor','Aiman_Ijaz','Maria_Miraj_Khalid','Gul_E_Zahra',
+    'Asma_Sajjad','Fiza_Ijaz','Fatima_Ijaz','Sana','Fida_Ahmad','Laiba_Yaqoob','Fazilat_Bibi',
+    'Zahra_Aftab','H_Ume_Hamama','Naveed_Hussain','Saleha_Maqbool','Hadia_Rizwan',
+    'Omama_Zar_Khan','Ayesha_Munir','Muzammil_Hussain','Myra_Javeed','Fatima','H_M_Abdullah_Khan_Kiani',
+    'Ayesha_Khan','Hoorya_Faisal','Jannat_Naveed','Hira_Younas','Misha_Shahbaz',
+    'Eshwa_Khan','Aqib_Javed','Rimsha','Muneeb','Eisha_Zaheer','Aliza_Ali','Bint_E_Javed_Arfa',
+    'Iqra_Arshad','Warda_Faisal','Samahir_Jamshed','Noor_Shahid','Almas_Asghar',
+    'Asma','Zeeshan_Saddiq','Muskan_Fatima','Saif_Ur_Rehman','Rida_Batool','M_Shoaib_Akmal']
+    PLAYERS = ['Tooba Javed','Ali Mohsin','Hafsa Mumtaz','S. M. Saqlain Fareed','Zainab',
+    'Maheen Nisar Khan','Rameen Sahar','Bushra Maqsood','Afshan Tahira','Fatima Zohra',
+    'Mirha Shehzad','Sadaf Manzoor','Aiman Ijaz','Maria Miraj Khalid','Gul E Zahra',
+    'Asma Sajjad','Fiza Ijaz','Fatima Ijaz','Sana','Fida Ahmad','Laiba Yaqoob','Fazilat Bibi',
+    'Zahra Aftab','H. Ume Hamama','Naveed Hussain','Saleha Maqbool','Hadia Rizwan',
+    'Omama Zar Khan','Ayesha Munir','Muzammil Hussain','Myra Javeed','Fatima','H. M. Abdullah Khan Kiani',
+    'Ayesha Khan','Hoorya Faisal','Jannat Naveed','Hira Younas','Misha Shahbaz',
+    'Eshwa Khan','Aqib Javed','Rimsha','M_Muneeb_Ur_Rehman','Eisha Zaheer','Aliza Ali','Bint-E-Javed Arfa',
+    'Iqra Arshad','Warda Faisal','Samahir Jamshed','Noor Shahid','Almas Asghar',
+    'Asma','Zeeshan Saddiq','Muskan Fatima','Saif Ur Rehman','Rida Batool','M. Shoaib Akmal']
+    GENDERS_LIST = [1,1,0,0,1,0,0,1,1,1,0,1,1,1,0,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,1,0,1,1,1,1,1,0,0,1,0,1,0,1,0,1,0,0,1,1,1,0,1,0,1,1,0,1]
+    LABELS = ['Azwaar_Ahmad','Muhammad_Anas','Fatima_Anwar','Sadia_Rehman','Noor_Shahid',
+    'Sana_Ahmed','Nosheen_Akram','Raffay_Ejaz','Yasir_Yaseen','Sunir_Ashnai','Beenish_Sarfraz',
+    'M_Adnan_Aslam','Mansoor_Ali','M_Zohaib_Amin','Fatima','S_Faseeha_Fatima','Faheem_Manzoor',
+    'Maha_Farhad','Anna_Qasim','Maryam_Tariq','Zahra','Abu_Hurara','Jaweria_Khalid',
+    'Areej_Zulfiqar','Jannat_Naveed','M_Asad_Ullah','Zain_Subhani','Mouzma_Ameen',
+    'Mahnoor','Marwa_Ashraf','Sahar_Khalil','Shahzal_Eman','Iqra','Ashab_Shakeel',
+    'Daniyal_Ahmad','Shafiq_Ur_Rehman','Raja_M_Azeem','Faisal_Hayat','Fakiha_Afzal',
+    'Aiza','Ismail_Anees','Rubab_Asghar','Ashiq_Khan','Saba_Ilyas','M_Usama','Adisa',
+    'Abdul_Rehman','Sidra_Rasheed','Noor_Fatima','M_Pervaiz','M_Talha_Nadeem','Sheraz_Ashraf',
+    'Inshal_Zulfiqar','Jazib_Iqbal','Kiran_Khalid','S_Fatima_Gillani','Hooria_Murtaza',
+    'Nimra_Shahzadi','S_Kaleem_Ullah']
+    PLAYERS = ['Azwaar Ahmad','Muhammad Anas','Fatima Anwar','Sadia Rehman','Noor Shahid',
+    'Sana Ahmed','Nosheen Akram','Raffay Ejaz','Yasir Yaseen','Sunir Ashnai','Beenish Sarfraz',
+    'M. Adnan Aslam','Mansoor Ali','M. Zohaib Amin','Fatima','S. Faseeha Fatima','Faheem Manzoor',
+    'Maha Farhad','Anna Qasim','Maryam Tariq','Zahra','Abu Hurara','Jaweria Khalid',
+    'Areej Zulfiqar','Jannat Naveed','M. Asad Ullah','Zain Subhani','Mouzma Ameen',
+    'Mahnoor','Marwa Ashraf','Sahar Khalil','Shahzal Eman','Iqra','Ashab Shakeel',
+    'Daniyal Ahmad','Shafiq Ur Rehman','Raja M. Azeem','Faisal Hayat','Fakiha Afzal',
+    'Aiza','Ismail Anees','Rubab Asghar','Ashiq Khan','Saba Ilyas','M. Usama','Adisa',
+    'Abdul Rehman','Sidra Rasheed','Noor Fatima','M. Pervaiz','M. Talha Nadeem','Sheraz Ashraf',
+    'Inshal Zulfiqar','Jazib Iqbal','Kiran Khalid','S. Fatima Gillani','Hooria Murtaza',
+    'Nimra Shahzadi','S. Kaleem Ullah']
 
 class Subsession(BaseSubsession):
     pass

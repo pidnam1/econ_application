@@ -30,29 +30,29 @@ class C(BaseConstants):
     'Fida Hussain','Nimra Zahoor','Umme Rubab','Aleeha Adnan','Sayeda Khadija Shoaib',
     'Palwasha Aman','Bisma Iqbal','Saqlain Haider','Rukhsar Gill','Malaika Zahra',
     'Laiba','M. Umar Natiq','Saher Talib']
-    GENDERS_LIST = [0,1,0,1,0,0,1,0,1,1,1,0,0,0,0,0,1,0,1,1,0,1,0,1,0,1,0,0,1,1,1,1,1,1,0,1,1,0,1,1,0,1,0,1,1,0,0,1,0,0,1,1,1,0,1,1,1]
-    LABELS = ['Arshee','Ali_Hassan','Fehmeeda_Zulafqar','Shahid_Ali','Fatima_Bibi',
-    'Khadija_Akram','Zaigham_Abbas','Faiza_Iqbal','Waqar_Hussain','Nawab_Khan','Mansoor_Nazir',
-    'Nimra_Arshad','Nimra','Maryam_Abdul_Rasheed','Alishba_Mohsin','Laiba_Gul','Faisal_Aziz',
-    'Irfa_Iqbal','Muqadas_Yasin','Muhammad_Haider','Shanzay_Saleem','Muhammad_Awais',
-    'Farah_Anwar','Subhan_Ullah','Asia_Boota','Rehmat_Alam','Arooj_Fatima','Shab_Noor',
-    'Muhammad_Shahroze_Iqbal','Wajid_Ali','Usama_Shamaoon','Afham_Javed','Rehan_Ahmad',
-    'Anis_Yousuf','Maryam_Akram','Muhammad_Shaheryar','Muhammad_Qasim_Khan','Waiqa',
-    'Muhammad_Uzair_Khan','Ali_Raza','Samia_Saleem','Taimoor_Khan','Nabish_Azhar',
-    'Zulfiqar_Ahmad','Tauseef_Zulfiqar','Ume_Ramla','Zainab_Zulfiqar','Jahangir_Kakar',
-    'Isma_Rasool','Shazeena_Fatima','Muhammad_Aslam','Akbar_Ali','Shujjat_Hussain',
-    'Hajira_Noor','Khatim_Tayyab','Mudassir_Ali_Watto','Shehroz_Iqbal']
-    PLAYERS = ['Arshee','Ali Hassan','Fehmeeda Zulafqar','Shahid Ali','Fatima Bibi',
-    'Khadija Akram','Zaigham Abbas','Faiza Iqbal','Waqar Hussain','Nawab Khan','Mansoor Nazir',
-    'Nimra Arshad','Nimra','Maryam Abdul Rasheed','Alishba Mohsin','Laiba Gul','Faisal Aziz',
-    'Irfa Iqbal','Muqadas Yasin','Muhammad Haider','Shanzay Saleem','Muhammad Awais',
-    'Farah Anwar','Subhan Ullah','Asia Boota','Rehmat Alam','Arooj Fatima','Shab Noor',
-    'Muhammad Shahroze Iqbal','Wajid Ali','Usama Shamaoon','Afham Javed','Rehan Ahmad',
-    'Anis Yousuf','Maryam Akram','Muhammad Shaheryar','Muhammad Qasim Khan','Waiqa',
-    'Muhammad Uzair Khan','Ali Raza','Samia Saleem','Taimoor Khan','Nabish Azhar',
-    'Zulfiqar Ahmad','Tauseef Zulfiqar','Ume Ramla','Zainab Zulfiqar','Jahangir Kakar',
-    'Isma Rasool','Shazeena Fatima','Muhammad Aslam','Akbar Ali','Shujjat Hussain',
-    'Hajira_Noor','Khatim Tayyab','Mudassir Ali Watto','Shehroz Iqbal']
+    GENDERS_LIST = [0,1,1,0,0,1,1,0,1,0,1,0,1,1,0,1,0,0,1,0,1,0,1,1,0,0,0,0,1,1,0,1,0,1,0,1,0,0,1,1,1,0,1,1,0,1,0,0,1,1,1,0,0,1,0,0,0,0]
+    LABELS = ['Ayesha_Akhtar','Qammar_Shehzad','Faique_Ali','Zahra_Wazir','Shaheen_Bibi',
+    'Muhammad_Luqman','Ali_Raza_Jafar','Tehzeeb_Zahra','Ansar_Saeed','Zahra_Shafi',
+    'Danial_Ali_Abbas','Tahira_Aslam','M_Asim_Iqbal','Ali_Hassnain','Nigar_Tufail',
+    'Usman_Altaf','Munazza_Ashfaq','Mahnoor_Imran','M_Umair_Basharat','Laiba_Bukhari',
+    'Muhmmad_Osama','Rabbia_Nuzhat_Khat','Ali_Shahbaz','Uzair_Hassan','Amina_Mahmood',
+    'Yumna_Waseem','Bisma_Hira','Shumaila','M_Ilyas_Raza','Ali_Hamza','Meerab_Imran',
+    'M_Umer_Munawar','Kinza_Noor','Abdullah_Ramzan','Nida_Eman','Ali_Raza_Sarwar',
+    'Shakila_Ajmal','Sana_Muqqaddas','Rai_Adeel_Ahmad','Aqeel_Shahzad','Rafaqat_Ullah',
+    'Hadiqa_Fatima','Asghar_Ali','Muhammad_Asim','Hubba_Fatima','M_Qamarulhaq','Aqsa_Amir',
+    'Hafsa_Noor','Ibrar_Ahmad','Qasim_Ali','Osama_Sadiq','Saba_Gul','Aswad_Liaqat',
+    'M_Shakeel','Ambreen_Anwar','Neelam_Shahzadi','Umda_Sharwani','Mafia_Javed']
+    PLAYERS = ['Ayesha Akhtar','Qammar Shehzad','Faique Ali','Zahra Wazir','Shaheen Bibi',
+    'Muhammad Luqman','Ali Raza Jafar','Tehzeeb Zahra','Ansar Saeed','Zahra Shafi',
+    'Danial Ali Abbas','Tahira Aslam','M. Asim Iqbal','Ali Hassnain','Nigar Tufail',
+    'Usman Altaf','Munazza Ashfaq','Mahnoor Imran','M. Umair Basharat','Laiba Bukhari',
+    'Muhmmad Osama','Rabbia Nuzhat Khat','Ali Shahbaz','Uzair Hassan','Amina Mahmood',
+    'Yumna Waseem','Bisma Hira','Shumaila','M. Ilyas Raza','Ali Hamza','Meerab Imran',
+    'M. Umer Munawar','Kinza Noor','Abdullah Ramzan','Nida Eman','Ali Raza Sarwar',
+    'Shakila Ajmal','Sana Muqqaddas','Rai Adeel Ahmad','Aqeel Shahzad','Rafaqat Ullah',
+    'Hadiqa Fatima','Asghar Ali','Muhammad Asim','Hubba Fatima','M. Qamarulhaq','Aqsa Amir',
+    'Hafsa Noor','Ibrar Ahmad','Qasim Ali','Osama Sadiq','Saba Gul','Aswad Liaqat',
+    'M. Shakeel','Ambreen Anwar','Neelam Shahzadi','Umda Sharwani','Mafia Javed']
 
 class Subsession(BaseSubsession):
     pass

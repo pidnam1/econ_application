@@ -30,27 +30,13 @@ class C(BaseConstants):
     'Muhammad Haris Hussain','Alishba Khurram','Faiza Saeed','Aqsa','Maryam Saeed',
     'Sohail Tahir','Sheraz Ali','Kamran Zaheer','Muhammad Faisal Khirat Ali','Muhammad Umar',
     'Muhammad Bilal M Hayat','Ali Hamza Shahbaz','Bisma Imran','Zuha Shahbaz Ahmed']
-    GENDERS_LIST = [0,0,1,1,1,1,0,1,1,0,0,1,1,0,0,1,0,1,1,0,0,1,0,1,1,0,1,1,0,1,1,1,0,0,0,0,1,1,1,0,1,0,1,1,1,0,0,0]
-    LABELS = ['Ayesha_Tariq','Riffat_Hidyat','Muhammad_Pervaiz_Aslam','Muhammad_Ahmad',
-    'Hassaan_Ahmed','Manzoor_Ahmed','Amina_Arif','Sadaam_Hakeem','Muhammad_Sohaib_Tahir',
-    'Farah_Manzoor','Minahil_Mansoor','Nadeem_Hassan','Fahad_Ameer_Shah','Armeen_Jan',
-    'Fahima_Farah_Hassan','Mati_Ullah','Gull_E_Ameer','Muhammad_Haroon','Muhammad_Waleed_Sarwar',
-    'Zahra_Sharif','Namud_Hijab','Muhammad_Azam','Tehniyat_Alam_Baig','Muhammad_Hassaan_Hayee',
-    'Saleem_Shahid','Hooriya_Shahid','S_Khawar_Ali_Asad_Hamdani','Muhammad_Hussain',
-    'Gul_Nisa','Adnan_Iqbal','Khalil_Ur_Rehman','Nazim_Ali','Fizza','Isha_Azam',
-    'Samra_Akhtar','Warda_Elahi','Umair_Raza','Muhammad_Saqib','Jamal_Nasir','Izza_Younis',
-    'Muhammad_Usman','Shumaila','Mirza_Usman_Abid','Hamid_Sohail','Muhammad_Rehan_Jaffar',
-    'Hadia_Zubair','Aliha_Aziz','Rawish_Rubab']
-    PLAYERS = ['Ayesha Tariq','Riffat Hidyat','Muhammad Pervaiz Aslam','Muhammad Ahmad',
-    'Hassaan Ahmed','Manzoor Ahmed','Amina Arif','Sadaam Hakeem','Muhammad Sohaib Tahir',
-    'Farah Manzoor','Minahil Mansoor','Nadeem Hassan','Fahad Ameer Shah','Armeen Jan',
-    'Fahima Farah Hassan','Mati Ullah','Gull E Ameer','Muhammad Haroon','Muhammad Waleed Sarwar',
-    'Zahra Sharif','Namud Hijab','Muhammad Azam','Tehniyat Alam Baig','Muhammad Hassaan Hayee',
-    'Saleem Shahid','Hooriya Shahid','S Khawar Ali Asad Hamdani','Muhammad Hussain',
-    'Gul Nisa','Adnan Iqbal','Khalil Ur Rehman','Nazim Ali','Fizza','Isha Azam',
-    'Samra Akhtar','Warda Elahi','Umair Raza','Muhammad Saqib','Jamal Nasir','Izza Younis',
-    'Muhammad Usman','Shumaila','Mirza Usman Abid','Hamid Sohail','Muhammad Rehan Jaffar',
-    'Hadia Zubair','Aliha Aziz','Rawish Rubab']
+    GENDERS_LIST = [1,0,1,1,0,0,0,1,0,0,1,1,1,0,1,0]
+    LABELS = ['Haris_Ahmad_Khan','Kalsoom_Nisar','Farhan','Hammad_Raza','Ayesha_Nayyar',
+    'Eman','Maniha_Aslam','Khalid_Ur_Rehman','Anusha','Tayyaba_Barkat','Shoukat_All',
+    'Abdul_Rauf','Muhammad_Awais_Raza','Ayesha_Siddiqa','Jalees_Ul_Hassan','Hadiqa_Ahmad']
+    PLAYERS = ['Haris Ahmad Khan','Kalsoom Nisar','Farhan','Hammad Raza','Ayesha Nayyar',
+    'Eman','Maniha Aslam','Khalid Ur Rehman','Anusha','Tayyaba Barkat','Shoukat All',
+    'Abdul Rauf','Muhammad Awais Raza','Ayesha Siddiqa','Jalees Ul Hassan','Hadiqa Ahmad']
 
 class Subsession(BaseSubsession):
     pass

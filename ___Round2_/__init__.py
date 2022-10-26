@@ -40,7 +40,7 @@ class Player(BasePlayer):
     id_mp = models.IntegerField()
     request_hints_economics_MP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sociology?''',
+        label='''In Anatomy?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MP = models.StringField(
@@ -56,7 +56,7 @@ class Player(BasePlayer):
     expect_hints_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Sociology?[Out of 4 questions]''',
+        label='''In Anatomy?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MP = models.StringField(
@@ -74,7 +74,7 @@ class Player(BasePlayer):
     results_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Sociology?[Out of 4 questions]''',
+        label='''In Anatomy?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MP = models.StringField(
@@ -90,33 +90,31 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MP = models.IntegerField(
-        choices=[[1, 'Fact'], [2, 'Data'], [3, 'Profane'], [4, 'Information']],
+        choices=[[1, 'Vascular compartment of retroinguinal space'], [2, 'Muscular compartment of retroinguinal space'],
+        [3, 'Femoral sheath'], [4, 'Femoral canal']],
         label='''
-        It consists of all empirically observable things— that is, things that are
-        knowable through common, everyday experiences''',
+        Femoral nerve passes from greater pelvis to anterior thigh through:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MP = models.IntegerField(
-        choices=[[1, 'Open mobility'], [2, 'Lateral mobility'], [3, 'Intragenerational mobility'],
-        [4, 'Intergenerational mobility']],
+        choices=[[1, 'Small saphenous vein'], [2, 'Great saphenous vein'], [3, 'Posterior tibial vein'],
+        [4, 'Dorsal venous arch']],
         label='''
-        What term is used to describe the movement of individuals up or down the
-        social scale during the course of their working lives?''',
+        Superficial vein that runs anterior to medial malleolus is:''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MP = models.IntegerField(
-        choices=[[1, 'Social Darwinism'], [2, 'Evolution'], [3, 'Conflict'], [4, 'Naturalization']],
+        choices=[[1, 'Z disc'], [2, 'Desmin'], [3, 'Vitmentin'], [4, 'Dense bodies']],
         label='''
-        The belief that inequality in society is the result of a natural selection
-        based on individual capacities and abilities''',
+        Cytoplasm of smooth muscle cell contain an important structure that serve
+        as an actin binding site for acting filaments is:''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MP = models.IntegerField(
-        choices=[[1, 'Gentrification'], [2, 'Urbanization'], [3, 'Pauperization'],
-        [4, 'Deurbanization']],
+        choices=[[1, 'Femoral vein'], [2, 'Profunda femoris vein'], [3, 'Common iliac vein'],
+        [4, 'External iliac vein']],
         label='''
-        This process has produced an upgrading of previously marginal urban areas
-        and the replacement of some poor residents with middle-class ones''',
+        Great saphenous vein passing through saphenous opening drains into:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MP = models.IntegerField(
@@ -389,7 +387,7 @@ class Player(BasePlayer):
     id_mr = models.IntegerField()
     request_hints_economics_MR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sociology?''',
+        label='''In Anatomy?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MR = models.StringField(
@@ -405,7 +403,7 @@ class Player(BasePlayer):
     expect_hints_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Sociology?[Out of 4 questions]''',
+        label='''In Anatomy?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MR = models.StringField(
@@ -423,7 +421,7 @@ class Player(BasePlayer):
     results_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Sociology?[Out of 4 questions]''',
+        label='''In Anatomy?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MR = models.StringField(
@@ -439,33 +437,30 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MR = models.IntegerField(
-        choices=[[1, 'Operational definition'], [2, 'Conceptualization'], [3, 'Formulation'],
-        [4, 'Measurement']],
+        choices=[[1, 'Medial border of sartorius'], [2, 'Lateral border of sartorius'],
+        [3, 'Lateral border of adductor longus'], [4, 'Medial border of adductor longus']],
         label='''
-        The conversion of abstract ideas into specific, observable circumstances or events''',
+        Lateral boundary of femoral triangle is formed by:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MR = models.IntegerField(
-        choices=[[1, 'Upper-middle class'], [2, 'Middle class'], [3, 'Lower class'],
-        [4, 'Untouchables']],
+        choices=[[1, 'Adductor longus'], [2, 'Adductor brevis'], [3, 'Tensor fascial lata'],
+        [4, 'Sartorius']],
         label='''
-        When media covers the poor, they are presented through the eyes of_____:''',
+        Iliotibial tract (thickened lateral fascia lata) is attached to:''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MR = models.IntegerField(
-        choices=[[1, 'It creates unrealistic expectations of what is required to be happy'],
-        [2, 'It creates new consumer needs'], [3, 'Advertisers are able to influence media content'],
-        [4, 'All of the above']],
+        choices=[[1, 'Gracilis'], [2, 'Rectus femoris'], [3, 'Vastus medialis'],
+        [4, 'Vastus lateralis']],
         label='''
-        Media advertising has several clear functions, but it also has dysfunctions.
-        Sociologists are concerned that''',
+        Which muscle belongs to pes anserinus group?''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MR = models.IntegerField(
-        choices=[[1, 'Prejudice'], [2, 'Discrimination'], [3, 'Stereotype'], [4, 'Beliefs']],
+        choices=[[1, 'M band'], [2, 'Z band'], [3, 'H band'], [4, 'A band']],
         label='''
-        An irrationally based negative, or occasionally positive, attitude toward
-        certain groups and their members?''',
+        Running across the middle of each I-band there is a thin dark line called:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MR = models.IntegerField(
@@ -735,7 +730,7 @@ class Player(BasePlayer):
     id_wp = models.IntegerField()
     request_hints_economics_WP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sociology?''',
+        label='''In Anatomy?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WP = models.StringField(
@@ -751,7 +746,7 @@ class Player(BasePlayer):
     expect_hints_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Sociology?[Out of 4 questions]''',
+        label='''In Anatomy?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WP = models.StringField(
@@ -769,7 +764,7 @@ class Player(BasePlayer):
     results_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Sociology?[Out of 4 questions]''',
+        label='''In Anatomy?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WP = models.StringField(
@@ -785,31 +780,27 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WP = models.IntegerField(
-        choices=[[1, 'Looking down upon others’ cultures'], [2, 'Creating a culture of hatred and xenophobia'],
-        [3, 'Preferring a foreign culture to one’s own'], [4, 'All of the above']],
+        choices=[[1, 'Gracilis'], [2, 'Sartorius'], [3, 'Semitendinosus'], [4, 'Adductor magnus']],
         label='''
-        Ethnocentrism implies''',
+        Pes anserinas does not include:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WP = models.IntegerField(
-        choices=[[1, 'There seemed to be higher rates of suicide in times of peace than in times of war, revolution and poverty.'],
-        [2, 'Catholics had much higher suicide rates than Protestants'],
-        [3, 'Civilians were more likely to take their lives than soldiers'],
-        [4, 'Suicide is an individual act, unrelated to group life']],
+        choices=[[1, 'Endothelium'], [2, 'Urothelium'], [3, 'Neurothelium'], [4, 'Connective tissue']],
         label='''
-        Durkheim’s research suggested that''',
+        Venous valves are cusp of:''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WP = models.IntegerField(
-        choices=[[1, 'Norms'], [2, 'Laws'], [3, 'Mores'], [4, 'Behavior']],
+        choices=[[1, 'Blunt trauma'], [2, 'Burns'], [3, 'Sustained intense muscle use'], [4, 'Fasciotomy']],
         label='''
-        Specific rules of behavior that are agreed upon and shared and that prescribe limits of acceptable behavior''',
+        Increased intracompartmental pressure does not result from:''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WP = models.IntegerField(
-        choices=[[1, 'Government'], [2, 'Legal authority'], [3, 'State'], [4, 'Empire']],
+        choices=[[1, 'Adductor longus'], [2, 'Adductor brevis'], [3, 'Obturator externus'], [4, 'Adductor magnus']],
         label='''
-        Institutionalized way of organizing power within territorial limits.''',
+        Which of adductors has hamstring part?''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WP = models.IntegerField(
@@ -1073,7 +1064,7 @@ class Player(BasePlayer):
     id_wr = models.IntegerField()
     request_hints_economics_WR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Sociology?''',
+        label='''In Anatomy?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WR = models.StringField(
@@ -1089,7 +1080,7 @@ class Player(BasePlayer):
     expect_hints_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Sociology?[Out of 4 questions]''',
+        label='''In Anatomy?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WR = models.StringField(
@@ -1107,7 +1098,7 @@ class Player(BasePlayer):
     results_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Sociology?[Out of 4 questions]''',
+        label='''In Anatomy?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WR = models.StringField(
@@ -1123,32 +1114,29 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WR = models.IntegerField(
-        choices=[[1, 'Peri-suburbs'], [2, 'Suburbs'], [3, 'Outskirt'], [4, 'Exurbs']],
+        choices=[[1, 'Contain zonulae occludens'], [2, 'Gap junction provide strong mechanical attachment'],
+        [3, 'Are dark staining longitudinal bands'], [4, 'Are found at level of Z-line']],
         label='''
-        Middle- and upper-middle class communities in outlying, semirural suburbia''',
+        Regarding Intercalated disks:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WR = models.IntegerField(
-        choices=[[1, 'Mass hysteria'], [2, 'Rumour'], [3, 'Panic'], [4, 'Moral panic']],
+        choices=[[1, 'Sarcomere'], [2, 'Z disc'], [3, 'H zone'], [4, 'I band']],
         label='''
-        An uncoordinated group flight from a perceived danger''',
+        The central area of A band which is free of thin filaments is known as:''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WR = models.IntegerField(
-        choices=[[1, 'People share characteristics without necessarily identifying with each other'],
-        [2, 'People\'s life-chances and experiences depend heavily on their social ranking'],
-        [3, 'The ranks of different social categories tend to change very slowly over time'],
-        [4, 'Stratification occurs because of inequalities in assets or property']],
+        choices=[[1, 'Femoral artery'], [2, 'Femoral vein'], [3, 'Femoral nerve'],
+        [4, 'Pubic Crest']],
         label='''
-        Which of the following is NOT a feature of all socially stratified systems?''',
+        Contents of femoral sheath do not include:''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WR = models.IntegerField(
-        choices=[[1, 'Presentation of self'], [2, 'Impression management'],
-        [3, 'Looking glass self'], [4, 'Dramaturgy']],
+        choices=[[1, 'Sarcolemma'], [2, 'Endomysium'], [3, 'Epimysium'], [4, 'Permysium']],
         label='''
-        The viewpoints, attitudes, and expectations of society as a whole or of a
-        community of people of whom we are aware and who are important to us''',
+        The structure that surrounds individual muscle fiber is called:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WR = models.IntegerField(
@@ -2151,7 +2139,7 @@ class Economics1_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_MP = 1
-            return {player.id_in_group: dict(message = "Hint: Fan.")}
+            return {player.id_in_group: dict(message = "Hint: Compartment for the passage of the iliopsoas muscle and femoral nerve.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics1_MP':player.crt_economics1_MP})
@@ -2199,7 +2187,7 @@ class Economics2_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_MP = 1
-            return {player.id_in_group: dict(message = "Hint: Movement in one generation.")}
+            return {player.id_in_group: dict(message = "Hint: Largest vein in the human.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics2_MP':player.crt_economics2_MP})
@@ -2291,7 +2279,7 @@ class Economics4_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_MP = 1
-            return {player.id_in_group: dict(message = "Hint: Give me a G.")}
+            return {player.id_in_group: dict(message = "Hint: Vein in femoral sheath.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics4_MP':player.crt_economics4_MP})
@@ -2765,7 +2753,7 @@ class Economics1_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_MR = 1
-            return {player.id_in_group: dict(message = "Hint: He needs an operation.")}
+            return {player.id_in_group: dict(message = "Hint: Forms the lateral border of the femoral triangle.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics1_MR':player.crt_economics1_MR})
@@ -2813,7 +2801,7 @@ class Economics2_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_MR = 1
-            return {player.id_in_group: dict(message = "Hint: Top middle.")}
+            return {player.id_in_group: dict(message = "Hint: TFL.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics2_MR':player.crt_economics2_MR})
@@ -2905,7 +2893,7 @@ class Economics4_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_MR = 1
-            return {player.id_in_group: dict(message = "Hint: Before judgment.")}
+            return {player.id_in_group: dict(message = "Hint: ZZZZZZZ.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics4_MR':player.crt_economics4_MR})
@@ -3380,7 +3368,7 @@ class Economics1_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_WP = 1
-            return {player.id_in_group: dict(message = "Hint: At the top you have to look down.")}
+            return {player.id_in_group: dict(message = "Hint: Longest, strongest muscle of the medial compartment of the thigh.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics1_WP':player.crt_economics1_WP})
@@ -3428,7 +3416,7 @@ class Economics2_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_WP = 1
-            return {player.id_in_group: dict(message = "Hint: Religion.")}
+            return {player.id_in_group: dict(message = "Hint: Made of endothelial cells.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics2_WP':player.crt_economics2_WP})
@@ -3520,7 +3508,7 @@ class Economics4_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_WP = 1
-            return {player.id_in_group: dict(message = "Hint: The U.S. has 50.")}
+            return {player.id_in_group: dict(message = "Hint: Longest, strongest muscle of the medial compartment of the thigh.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics4_WP':player.crt_economics4_WP})
@@ -3997,7 +3985,7 @@ class Economics1_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_WR = 1
-            return {player.id_in_group: dict(message = "Hint: Exit.")}
+            return {player.id_in_group: dict(message = "Hint: ZZZZZZZ.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics1_WR':player.crt_economics1_WR})
@@ -4045,7 +4033,7 @@ class Economics2_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_WR = 1
-            return {player.id_in_group: dict(message = "Hint: ____ attack.")}
+            return {player.id_in_group: dict(message = "Hint: The central area of A zone.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics2_WR':player.crt_economics2_WR})
@@ -4137,7 +4125,7 @@ class Economics4_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_WR = 1
-            return {player.id_in_group: dict(message = "Hint: Mirror.")}
+            return {player.id_in_group: dict(message = "Hint: Areolar tissue between the fibers of the fasciculi of muscles.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics4_WR':player.crt_economics4_WR})
@@ -4549,20 +4537,20 @@ class Final(Page):
         return dict(round=player.participant.round2_completed)
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=3, crt_economics3_MP=1,
+        solutions_MP = dict(crt_economics1_MP=2, crt_economics2_MP=2, crt_economics3_MP=4,
         crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=4,
         crt_cooking4_MP=1, crt_sports1_MP=1, crt_sports2_MP=3, crt_sports3_MP=4,
         crt_sports4_MP=2)
-        solutions_MR = dict(crt_economics1_MR=1, crt_economics2_MR=1, crt_economics3_MR=1,
-        crt_economics4_MR=1, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
+        solutions_MR = dict(crt_economics1_MR=1, crt_economics2_MR=3, crt_economics3_MR=1,
+        crt_economics4_MR=2, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
         crt_cooking4_MR=1, crt_sports1_MR=1, crt_sports2_MR=2, crt_sports3_MR=3,
         crt_sports4_MR=4)
-        solutions_WP = dict(crt_economics1_WP=1, crt_economics2_WP=2, crt_economics3_WP=1,
-        crt_economics4_WP=3, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
+        solutions_WP = dict(crt_economics1_WP=4, crt_economics2_WP=1, crt_economics3_WP=4,
+        crt_economics4_WP=4, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
         crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
         crt_sports4_WP=1)
-        solutions_WR = dict(crt_economics1_WR=4, crt_economics2_WR=3, crt_economics3_WR=2,
-        crt_economics4_WR=3, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
+        solutions_WR = dict(crt_economics1_WR=4, crt_economics2_WR=3, crt_economics3_WR=3,
+        crt_economics4_WR=2, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
         crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
         crt_sports4_WR=3)
 

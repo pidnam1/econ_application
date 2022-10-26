@@ -25,15 +25,15 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     gender = models.IntegerField()
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'Sociological perspective'], [2, 'Social aspect'], [3, 'The sociological imagination'], [4, 'Social thought']],
+        choices=[[1, 'Femoral canal'], [2, 'Femoral vein'], [3, 'Femoral artery'], [4, 'Femoral nerve']],
         label='''
-        The ability to see the link between personal experiences and social forces''',
+        Regarding contents of femoral sheath most medial structure is:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'Corporate crime'], [2, 'White-collar crime'], [3, 'Victimless crime'], [4, 'Organized crime']],
+        choices=[[1, 'Tropomyosin'], [2, 'Titin'], [3, 'Alpha actinin'], [4, 'Spectrin']],
         label='''
-        What is the failure of companies to adhere to legal regulations? ''',
+        Each actin filament has a head end that extends into the A band and a tail end that is anchored to the Z line through a protein called:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -130,7 +130,7 @@ class Player(BasePlayer):
     results_econ = models.IntegerField(
         choices=[[0,"0/4 hints"],[1,"1/4 hints"],[2,"2/4 hints"],[3,"3/4 hints"]],
         label='''
-        In Sociology?''',
+        In Anatomy?''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cook = models.IntegerField(
@@ -263,7 +263,7 @@ class Economics2(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: It is all white.")}
+            return {player.id_in_group: dict(message = "Hint: Alpha.")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 

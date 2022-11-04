@@ -14,10 +14,10 @@ class C(BaseConstants):
     'M. Safdar','Mohsin Ali','Ashna Gohar','Arman','Saadullah Nazar','Arisha Aziz']
     GENDERS_LIST = [0,0,0,1,0,0,1,1,0,1,1,1,1,1,0,0]
     LABELS = ['Afra_Mirza','Kashmala_Afzal','Ifrah_Ali','Hassan_Chaudhary','Maryam_Qasim',
-    'Nashrah_Shahzadi','Amais_Amais','John_Raza','Fauq_Un_Nisa','Moiz','Konain_Ahmad',
+    'Nashrah_Shahzadi','Amais','John_Raza','Fauq_Un_Nisa','Moiz','Konain_Ahmad',
     'Saqib_Malik','Hassan_Sarwar','Ahmad_Saeed_Asghar','Nida_Irfan','Laiba_Rasheed']
     PLAYERS = ['Afra Mirza','Kashmala Afzal','Ifrah Ali','Hassan Chaudhary','Maryam Qasim',
-    'Nashrah Shahzadi','Amais Amais','John Raza','Fauq Un Nisa','Moiz','Konain Ahmad',
+    'Nashrah Shahzadi','Amais','John Raza','Fauq Un Nisa','Moiz','Konain Ahmad',
     'Saqib Malik','Hassan Sarwar','Ahmad Saeed Asghar','Nida Irfan','Laiba Rasheed']
     GENDERS_LIST = [0,0,1,1,1,1,1,0,1,1,0,0,1,0,0,0]
     LABELS = ['Tuba_Aslam','Adeena','M_Zaid','Yaqoob_Hassan','M_Shehroz_Khan','M_Umair_Haider',

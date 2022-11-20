@@ -40,7 +40,7 @@ class Player(BasePlayer):
     id_mp = models.IntegerField()
     request_hints_economics_MP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Anatomy?''',
+        label='''In Economics?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MP = models.StringField(
@@ -56,7 +56,7 @@ class Player(BasePlayer):
     expect_hints_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MP = models.StringField(
@@ -74,7 +74,7 @@ class Player(BasePlayer):
     results_economics_MP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MP = models.StringField(
@@ -90,31 +90,40 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MP = models.IntegerField(
-        choices=[[1, 'Vascular compartment of retroinguinal space'], [2, 'Muscular compartment of retroinguinal space'],
-        [3, 'Femoral sheath'], [4, 'Femoral canal']],
+        choices=[[1, 'an opportunity cost'], [2, 'equal to the money price of a good'],
+        [3, 'equal to the price of that good divided by the quantity demanded of the good'],
+        [4, 'what you get paid for babysitting your cousin']],
         label='''
-        Femoral nerve passes from greater pelvis to anterior thigh through:''',
+        The relative price of a good is''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MP = models.IntegerField(
-        choices=[[1, 'Small saphenous vein'], [2, 'Great saphenous vein'], [3, 'Posterior tibial vein'],
-        [4, 'Dorsal venous arch']],
+        choices=[[1, 'A change in the price of beer'],
+        [2, 'A health study indicating positive health benefits of moderate beer consumption'],
+        [3, 'An increase in the price of French wine (a substitute)'],
+        [4, 'A decrease in the price of potato chips (a complement)']],
         label='''
-        Superficial vein that runs anterior to medial malleolus is:''',
+        Which of the following will NOT cause a shift to the right in the demand
+        curve for beer?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MP = models.IntegerField(
-        choices=[[1, 'Z disc'], [2, 'Desmin'], [3, 'Vitmentin'], [4, 'Dense bodies']],
+        choices=[[1, 'The taxes paid by the poor should be reduced in order to improve the income distribution in the U.S.'],
+        [2, 'State governments should not subsidize corporations by training welfare recipients'],
+        [3, 'Presidential candidates should not be given funds from the federal government to run campaigns'],
+        [4, 'All of the above']],
         label='''
-        Cytoplasm of smooth muscle cell contain an important structure that serve
-        as an actin binding site for acting filaments is:''',
+        Which of the following is a normative statement?''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MP = models.IntegerField(
-        choices=[[1, 'Femoral vein'], [2, 'Profunda femoris vein'], [3, 'Common iliac vein'],
-        [4, 'External iliac vein']],
+        choices=[[1, 'is higher than in the long run'],
+        [2, 'is lower than in the short run'],
+        [3, 'is the same as in the long run'],
+        [4, 'does not depend on the fact that ice cream can be frozen']],
         label='''
-        Great saphenous vein passing through saphenous opening drains into:''',
+        Ice cream can be frozen. In the short run, the magnitude of the own price
+        elasticity of demand for ice cream:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MP = models.IntegerField(
@@ -387,7 +396,7 @@ class Player(BasePlayer):
     id_mr = models.IntegerField()
     request_hints_economics_MR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Anatomy?''',
+        label='''In Economics?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_MR = models.StringField(
@@ -403,7 +412,7 @@ class Player(BasePlayer):
     expect_hints_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_MR = models.StringField(
@@ -421,7 +430,7 @@ class Player(BasePlayer):
     results_economics_MR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_MR = models.StringField(
@@ -437,30 +446,43 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_MR = models.IntegerField(
-        choices=[[1, 'Medial border of sartorius'], [2, 'Lateral border of sartorius'],
-        [3, 'Lateral border of adductor longus'], [4, 'Medial border of adductor longus']],
+        choices=[[1, 'good A is used to produce good B'],
+        [2, 'good B is used to produce good A'],
+        [3, 'goods A and B are substitutes'],
+        [4, 'goods A and B are complements']],
         label='''
-        Lateral boundary of femoral triangle is formed by:''',
+        The price of good A goes up. As a result, the demand for good B shifts to
+        the left. From this we can infer that:''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_MR = models.IntegerField(
-        choices=[[1, 'Adductor longus'], [2, 'Adductor brevis'], [3, 'Tensor fascial lata'],
-        [4, 'Sartorius']],
+        choices=[[1, 'absolute change in quantity demanded resulting from a one unit increase in income'],
+        [2, 'percent change in quantity demanded resulting from the absolute increase in income'],
+        [3, 'percent change in quantity demanded resulting from a one percent increase in income'],
+        [4, 'percent change in income resulting from a one percent increase in quantity demanded']],
         label='''
-        Iliotibial tract (thickened lateral fascia lata) is attached to:''',
+        The income elasticity of demand is the''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_MR = models.IntegerField(
-        choices=[[1, 'Gracilis'], [2, 'Rectus femoris'], [3, 'Vastus medialis'],
-        [4, 'Vastus lateralis']],
+        choices=[[1, 'more than double'],
+        [2, 'exactly double'],
+        [3, 'less than double'],
+        [4, 'any of the above are possible']],
         label='''
-        Which muscle belongs to pes anserinus group?''',
+        Good A is a Giffen good. If the price of good A were to suddenly double,
+        the income effect would cause the purchases of good A to increase by''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_MR = models.IntegerField(
-        choices=[[1, 'M band'], [2, 'Z band'], [3, 'H band'], [4, 'A band']],
+        choices=[[1, 'becomes less elastic at every price'],
+        [2, 'becomes less elastic at the price that prevailed before the change in income'],
+        [3, 'becomes more elastic at every price'],
+        [4, 'becomes more elastic at the price that prevailed before the change in income']],
         label='''
-        Running across the middle of each I-band there is a thin dark line called:''',
+        Suppose the demand for gourmet coffee can be represented by a linear demand
+        curve. At the prevailing market price, the income elasticity of demand for
+        gourmet coffee is 2. When income rises the demand curve for gourmet coffee:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_MR = models.IntegerField(
@@ -730,7 +752,7 @@ class Player(BasePlayer):
     id_wp = models.IntegerField()
     request_hints_economics_WP = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Anatomy?''',
+        label='''In Economics?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WP = models.StringField(
@@ -746,7 +768,7 @@ class Player(BasePlayer):
     expect_hints_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WP = models.StringField(
@@ -764,7 +786,7 @@ class Player(BasePlayer):
     results_economics_WP = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WP = models.StringField(
@@ -780,27 +802,48 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WP = models.IntegerField(
-        choices=[[1, 'Gracilis'], [2, 'Sartorius'], [3, 'Semitendinosus'], [4, 'Adductor magnus']],
+        choices=[[1, 'There is a surplus equal to 30'],
+        [2, 'There is a shortage equal to 30'],
+        [3, 'There is a shortage, but it is impossible to determine how large'],
+        [4, 'There is a surplus, but it is impossible to determine how large']],
         label='''
-        Pes anserinas does not include:''',
+        The demand for books is: Qd = 120 - P. The supply of books is Qs = 5P. If
+        P = $25, which of the following is true?''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WP = models.IntegerField(
-        choices=[[1, 'Endothelium'], [2, 'Urothelium'], [3, 'Neurothelium'], [4, 'Connective tissue']],
+        choices=[[1, 'A shift to the right in the supply curve for eggs and a shift to the right in the demand curve for eggs'],
+        [2, 'A shift to the left in the supply curve for eggs and a shift to the right in the demand curve for eggs'],
+        [3, 'A shift to the left in the supply curve for eggs and a shift to the left in the demand curve for eggs'],
+        [4, 'None of the above']],
         label='''
-        Venous valves are cusp of:''',
+        From 1970 to 1993, the real price of eggs decreased and the total annual
+        consumption of eggs decreased. Which of the following would cause an unambiguous
+        decrease in the real price of eggs and an unambiguous decrease in the quantity
+        of eggs consumed?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WP = models.IntegerField(
-        choices=[[1, 'Blunt trauma'], [2, 'Burns'], [3, 'Sustained intense muscle use'], [4, 'Fasciotomy']],
+        choices=[[1, 'Demand for office space fell due to quality-of-life concerns'],
+        [2, 'The economic slowdown caused demand for office space to fall'],
+        [3, 'Both (a) and (b)'],
+        [4, 'None of the above']],
         label='''
-        Increased intracompartmental pressure does not result from:''',
+        After the September 11, 2001 attacks on the World Trade Center, the supply
+        of downtown office space in Manhattan was dramatically reduced. Forecasters
+        predicted that the equilibrium price would rise, but in fact the price fell.
+        What are some factors that could explain the fall in the equilibrium price,
+        which the forecasters failed to take into account?''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WP = models.IntegerField(
-        choices=[[1, 'Adductor longus'], [2, 'Adductor brevis'], [3, 'Obturator externus'], [4, 'Adductor magnus']],
+        choices=[[1, 'A shift to the right in the supply curve for DVD players and a shift to the right in the demand curve for DVD players'],
+        [2, 'A shift to the right in the supply curve for DVD players and a shift to the left in the demand curve for DVD players'],
+        [3, 'A shift to the left in the supply curve for DVD players and a shift to the right in the demand curve for DVD players'],
+        [4, 'A shift to the left in the supply curve for DVD players and a shift to the left in the demand curve for DVD players']],
         label='''
-        Which of adductors has hamstring part?''',
+        Which of the following would cause an unambiguous decrease in the real practice
+        of DVD players?''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WP = models.IntegerField(
@@ -1064,7 +1107,7 @@ class Player(BasePlayer):
     id_wr = models.IntegerField()
     request_hints_economics_WR = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Anatomy?''',
+        label='''In Economics?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking_WR = models.StringField(
@@ -1080,7 +1123,7 @@ class Player(BasePlayer):
     expect_hints_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     expect_hints_cooking_WR = models.StringField(
@@ -1098,7 +1141,7 @@ class Player(BasePlayer):
     results_economics_WR = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking_WR = models.StringField(
@@ -1114,29 +1157,34 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1_WR = models.IntegerField(
-        choices=[[1, 'Contain zonulae occludens'], [2, 'Gap junction provide strong mechanical attachment'],
-        [3, 'Are dark staining longitudinal bands'], [4, 'Are found at level of Z-line']],
+        choices=[[1, 'Demand is infinitely elastic'], [2, 'Demand is completely inelastic'],
+        [3, 'Demand becomes more inelastic the lower the price'],
+        [4, 'Demand becomes more elastic the lower the price']],
         label='''
-        Regarding Intercalated disks:''',
+        Which of the following is true of a flat demand curve?''',
         widget=widgets.RadioSelect,
     )
     crt_economics2_WR = models.IntegerField(
-        choices=[[1, 'Sarcomere'], [2, 'Z disc'], [3, 'H zone'], [4, 'I band']],
+        choices=[[1, '(ΔQ / P) / (ΔP / Q)'], [2, '(ΔQ / P) + (ΔP / Q)'],
+        [3, '(ΔQ / P) * (ΔP / Q)'], [4, '(ΔQ / P) - (ΔP / Q)']],
         label='''
-        The central area of A band which is free of thin filaments is known as:''',
+        Which of the following represents the price elasticity of demand?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3_WR = models.IntegerField(
-        choices=[[1, 'Femoral artery'], [2, 'Femoral vein'], [3, 'Femoral nerve'],
-        [4, 'Pubic Crest']],
+        choices=[[1, 'results only in a movement along the demand curve'],
+        [2, 'shifts the supply curve leftward'],
+        [3, 'shifts the demand curve rightward'],
+        [4, 'Both answers B and C are correct']],
         label='''
-        Contents of femoral sheath do not include:''',
+        An increase in the number of consumers''',
         widget=widgets.RadioSelect,
     )
     crt_economics4_WR = models.IntegerField(
-        choices=[[1, 'Sarcolemma'], [2, 'Endomysium'], [3, 'Epimysium'], [4, 'Permysium']],
+        choices=[[1, 'universally elastic'], [2, 'inelastic, but not completely inelastic'],
+        [3, 'elastic, but not infinitely elastic'], [4, 'infinitely elastic']],
         label='''
-        The structure that surrounds individual muscle fiber is called:''',
+        At a point on a demand curve on the y-axis (representing price), demand is:''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1_WR = models.IntegerField(
@@ -2139,7 +2187,7 @@ class Economics1_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_MP = 1
-            return {player.id_in_group: dict(message = "Hint: Compartment for the passage of the iliopsoas muscle and femoral nerve.")}
+            return {player.id_in_group: dict(message = "Hint: For the first time in her life, she got the opportunity to talk to a celebrity.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics1_MP':player.crt_economics1_MP})
@@ -2187,7 +2235,7 @@ class Economics2_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_MP = 1
-            return {player.id_in_group: dict(message = "Hint: Largest vein in the human.")}
+            return {player.id_in_group: dict(message = "Hint: Change is not always a good thing.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics2_MP':player.crt_economics2_MP})
@@ -2279,7 +2327,7 @@ class Economics4_MP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_MP = 1
-            return {player.id_in_group: dict(message = "Hint: Vein in femoral sheath.")}
+            return {player.id_in_group: dict(message = "Hint: Short-run > long-run.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MP.update({'crt_economics4_MP':player.crt_economics4_MP})
@@ -2753,7 +2801,7 @@ class Economics1_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_MR = 1
-            return {player.id_in_group: dict(message = "Hint: Forms the lateral border of the femoral triangle.")}
+            return {player.id_in_group: dict(message = "Hint: She said \"You are so bright\".")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics1_MR':player.crt_economics1_MR})
@@ -2801,7 +2849,7 @@ class Economics2_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_MR = 1
-            return {player.id_in_group: dict(message = "Hint: TFL.")}
+            return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics2_MR':player.crt_economics2_MR})
@@ -2893,7 +2941,7 @@ class Economics4_MR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_MR = 1
-            return {player.id_in_group: dict(message = "Hint: ZZZZZZZ.")}
+            return {player.id_in_group: dict(message = "Hint: Less.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_MR.update({'crt_economics4_MR':player.crt_economics4_MR})
@@ -3368,7 +3416,7 @@ class Economics1_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_WP = 1
-            return {player.id_in_group: dict(message = "Hint: Longest, strongest muscle of the medial compartment of the thigh.")}
+            return {player.id_in_group: dict(message = "Hint: This year he turned 30.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics1_WP':player.crt_economics1_WP})
@@ -3416,7 +3464,7 @@ class Economics2_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_WP = 1
-            return {player.id_in_group: dict(message = "Hint: Made of endothelial cells.")}
+            return {player.id_in_group: dict(message = "Hint: Nothing is unambiguous.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics2_WP':player.crt_economics2_WP})
@@ -3508,7 +3556,7 @@ class Economics4_WP(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_WP = 1
-            return {player.id_in_group: dict(message = "Hint: Longest, strongest muscle of the medial compartment of the thigh.")}
+            return {player.id_in_group: dict(message = "Hint: Increase in supply and decrease in demand.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WP.update({'crt_economics4_WP':player.crt_economics4_WP})
@@ -3985,7 +4033,7 @@ class Economics1_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ1_WR = 1
-            return {player.id_in_group: dict(message = "Hint: ZZZZZZZ.")}
+            return {player.id_in_group: dict(message = "Hint: Infinite.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics1_WR':player.crt_economics1_WR})
@@ -4033,7 +4081,7 @@ class Economics2_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ2_WR = 1
-            return {player.id_in_group: dict(message = "Hint: The central area of A zone.")}
+            return {player.id_in_group: dict(message = "Hint: Percentage change in quantity demanded divided by the percentage change in price.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics2_WR':player.crt_economics2_WR})
@@ -4125,7 +4173,7 @@ class Economics4_WR(Page):
                 player.participant.already_clicked = True
             player.participant.prev_hint = 1
             player.click_hint_econ4_WR = 1
-            return {player.id_in_group: dict(message = "Hint: Areolar tissue between the fibers of the fasciculi of muscles.")}
+            return {player.id_in_group: dict(message = "Hint: In her infinite wisdom she said...")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_2_WR.update({'crt_economics4_WR':player.crt_economics4_WR})
@@ -4536,20 +4584,20 @@ class Final(Page):
         return dict(round=player.participant.round2_completed)
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        solutions_MP = dict(crt_economics1_MP=2, crt_economics2_MP=2, crt_economics3_MP=4,
+        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=3, crt_economics3_MP=4,
         crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=4,
         crt_cooking4_MP=1, crt_sports1_MP=1, crt_sports2_MP=3, crt_sports3_MP=4,
         crt_sports4_MP=2)
-        solutions_MR = dict(crt_economics1_MR=1, crt_economics2_MR=3, crt_economics3_MR=1,
-        crt_economics4_MR=2, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
+        solutions_MR = dict(crt_economics1_MR=4, crt_economics2_MR=3, crt_economics3_MR=4,
+        crt_economics4_MR=1, crt_cooking1_MR=2, crt_cooking2_MR=3, crt_cooking3_MR=2,
         crt_cooking4_MR=1, crt_sports1_MR=1, crt_sports2_MR=2, crt_sports3_MR=3,
         crt_sports4_MR=4)
-        solutions_WP = dict(crt_economics1_WP=4, crt_economics2_WP=1, crt_economics3_WP=4,
-        crt_economics4_WP=4, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
+        solutions_WP = dict(crt_economics1_WP=1, crt_economics2_WP=4, crt_economics3_WP=3,
+        crt_economics4_WP=2, crt_cooking1_WP=2, crt_cooking2_WP=3, crt_cooking3_WP=2,
         crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
         crt_sports4_WP=1)
-        solutions_WR = dict(crt_economics1_WR=4, crt_economics2_WR=3, crt_economics3_WR=3,
-        crt_economics4_WR=2, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
+        solutions_WR = dict(crt_economics1_WR=1, crt_economics2_WR=1, crt_economics3_WR=3,
+        crt_economics4_WR=4, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
         crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
         crt_sports4_WR=3)
 

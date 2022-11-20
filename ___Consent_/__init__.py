@@ -5,27 +5,17 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [1,0,1,0,1,0,0,0,1,0,1,1,0,1,1,0]
-    LABELS = ['Hafiz_Jamal','Laveeza_Asif','Gohar_Javed','Iqra_Basharat','M_Hassan_Irfan',
-    'Amna_Choudhary','Fatima_Javed','Nadia_Riaz','Abdullah_Zarar','Ezza_Zulfiqaur',
-    'M_Safdar','Mohsin_Ali','Ashna_Gohar','Arman','Saadullah_Nazar','Arisha_Aziz']
-    PLAYERS = ['Hafiz Jamal','Laveeza Asif','Gohar Javed','Iqra Basharat','M. Hassan Irfan',
-    'Amna Choudhary','Fatima Javed','Nadia Riaz','Abdullah Zarar','Ezza Zulfiqaur',
-    'M. Safdar','Mohsin Ali','Ashna Gohar','Arman','Saadullah Nazar','Arisha Aziz']
-    GENDERS_LIST = [0,0,0,1,0,0,1,1,0,1,1,1,1,1,0,0]
-    LABELS = ['Afra_Mirza','Kashmala_Afzal','Ifrah_Ali','Hassan_Chaudhary','Maryam_Qasim',
-    'Nashrah_Shahzadi','Amais','John_Raza','Fauq_Un_Nisa','Moiz','Konain_Ahmad',
-    'Saqib_Malik','Hassan_Sarwar','Ahmad_Saeed_Asghar','Nida_Irfan','Laiba_Rasheed']
-    PLAYERS = ['Afra Mirza','Kashmala Afzal','Ifrah Ali','Hassan Chaudhary','Maryam Qasim',
-    'Nashrah Shahzadi','Amais','John Raza','Fauq Un Nisa','Moiz','Konain Ahmad',
-    'Saqib Malik','Hassan Sarwar','Ahmad Saeed Asghar','Nida Irfan','Laiba Rasheed']
-    GENDERS_LIST = [0,0,1,1,1,1,1,0,1,1,0,0,1,0,0,0]
-    LABELS = ['Tuba_Aslam','Adeena','M_Zaid','Yaqoob_Hassan','M_Shehroz_Khan','M_Umair_Haider',
-    'Salman_Chaudhry','Ayesha_Tehreem','M_Asadullah','Anjum','Ariba','Bushra_Iqbal',
-    'Moeed_Asif','Kashaf','Areej_Karim','Aqsa']
-    PLAYERS = ['Tuba Aslam','Adeena','M. Zaid','Yaqoob Hassan','M. Shehroz Khan','M. Umair Haider',
-    'Salman Chaudhry','Ayesha Tehreem','M. Asadullah','Anjum','Ariba','Bushra Iqbal',
-    'Moeed Asif','Kashaf','Areej Karim','Aqsa']
+    GENDERS_LIST = [0,1,0,1,1,0,0,0,1,1]
+    LABELS = ['Tehreem','Ahsan_Aziz','Farwa_Nayab','Muhammad_Asif','Syed_Muhammad_Hasnain',
+    'Bakhtawar','Areeba','Abiha','Abdul_Hanan','Farhan']
+    PLAYERS = ['Tehreem','Ahsan Aziz','Farwa Nayab','Muhammad Asif','Syed Muhammad Hasnain',
+    'Bakhtawar','Areeba','Abiha','Abdul Hanan','Farhan']
+    GENDERS_LIST = [0,0,1,0,0,1,0,1,0,1,0,1]
+    LABELS = ['Tehreem','Mukarma_Ijaz','Hanan_Sadaqat','Rubab','Farbah','Zeeshan_Mushtaq',
+    'Fatima_Tariq','Mir_Wais','Tazeen','Muhammad_Akbar','Maryam_Rana','Raziq']
+    PLAYERS = ['Tehreem','Mukarma Ijaz','Hanan Sadaqat','Rubab','Farbah','Zeeshan Mushtaq',
+    'Fatima Tariq','Mir Wais','Tazeen','Muhammad Akbar','Maryam Rana','Raziq']
+
 
 class Subsession(BaseSubsession):
     pass

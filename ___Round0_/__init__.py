@@ -26,7 +26,7 @@ class Player(BasePlayer):
     gender = models.IntegerField()
     request_hints_economics = models.StringField(
         choices=[[0, '0 hints'], [1, '1 hint'], [2, '2 hints'], [3, '3 hints']],
-        label='''In Anatomy?''',
+        label='''In Economics?''',
         widget=widgets.RadioSelectHorizontal,
     )
     request_hints_cooking = models.StringField(
@@ -42,7 +42,7 @@ class Player(BasePlayer):
     results_economics1 = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking1 = models.StringField(
@@ -60,7 +60,7 @@ class Player(BasePlayer):
     results_economics2 = models.StringField(
         choices=[[0, '0'], [1, '1'],
         [2, '2'], [3, '3'], [4, '4']],
-        label='''In Anatomy?[Out of 4 questions]''',
+        label='''In Economics?[Out of 4 questions]''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cooking2 = models.StringField(
@@ -76,28 +76,42 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'Femoral sheath'], [2, 'Femoral canal'], [3, 'Adductor canal'], [4, 'Medial retro-inguinal space']],
+        choices=[[1, 'A decrease in the price of X'],
+        [2, 'An increase of the price of a good that is a complement to good X'],
+        [3, 'An increase in the price of a good that is a substitute for X'],
+        [4, 'All of the above']],
         label='''
-        Femoral ring is the upper end of:''',
+        You are analyzing the demand for good X. Which of the following will result
+        in a shift to the right of the demand curve for X?''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'Adductor magnus'], [2, 'Adductor brevis'], [3, 'Adductor longus'], [4, 'Pectineus']],
+        choices=[[1, 'An increase in the price of the discs'],
+        [2, 'A decrease in consumers\' incomes'],
+        [3, 'An increase in the price of Phil Collins\' latest compact disc (a substitute)'],
+        [4, 'All of the above']],
         label='''
-        Apex of femoral triangle is formed where sartorius crosses the:''',
+        Which of the following will cause the demand curve for Beatles\' compact
+        discs to shift to the right?''',
         widget=widgets.RadioSelect,
     )
     crt_economics3 = models.IntegerField(
-        choices=[[1, 'Actin'], [2, 'Myosin'], [3, 'Troponin'], [4, 'Tropomyosin']],
+        choices=[[1, 'the demand curve shifts rightward'],
+        [2, 'the demand curve shifts leftward'],
+        [3, 'there is a movement down along the demand curve to a larger quantity demanded'],
+        [4, 'there is a movement up along the demand curve to a smaller quantity demanded']],
         label='''
-        Which of the following act as calcium-binging protein in skeletal muscles:''',
+        The \"law of demand\" refers to the fact that, all other things remaining
+        the same, when the price of a good rises''',
         widget=widgets.RadioSelect,
     )
     crt_economics4 = models.IntegerField(
-        choices=[[1, 'Obturator foramen'], [2, 'Pubic tubercle'], [3, 'Pubic symphysis'],
-        [4, 'Inferior ramus of pubis']],
+        choices=[[1, 'decreased the magnitude of the short run own price elasticity of demand for raw meat'],
+        [2, 'did not affect the short run own price elasticity of demand for raw meat'],
+        [3, 'increased the magnitude of the short run own price elasticity of demand for raw meat'],
+        [4, 'decreased the magnitude of the short run own price elasticity of demand for smoked meats']],
         label='''
-        Obturator externus is attached to the margin of:''',
+        The introduction of refrigerators into American homes''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -809,8 +823,8 @@ class Final(Page):
         player.participant.payoff_helped = {}
         player.participant.payoff_help = {}
 
-        solutions = dict(crt_economics1=2, crt_economics2=3, crt_economics3=3,
-        crt_economics4=1, crt_cooking1=3, crt_cooking2=1, crt_cooking3=4, crt_cooking4=2,
+        solutions = dict(crt_economics1=3, crt_economics2=3, crt_economics3=4,
+        crt_economics4=3, crt_cooking1=3, crt_cooking2=1, crt_cooking3=4, crt_cooking4=2,
         crt_sports1=3, crt_sports2=3, crt_sports3=3, crt_sports4=2)
 
         payoff = 0

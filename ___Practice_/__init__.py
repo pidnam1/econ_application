@@ -25,15 +25,20 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     gender = models.IntegerField()
     crt_economics1 = models.IntegerField(
-        choices=[[1, 'Femoral canal'], [2, 'Femoral vein'], [3, 'Femoral artery'], [4, 'Femoral nerve']],
+        choices=[[1, 'shifts to the left'], [2, 'shifts to the right'], [3, 'remains constant '],
+        [4, 'shifts to the right initially and then returns to its original position']],
         label='''
-        Regarding contents of femoral sheath most medial structure is:''',
+        Assume that steak and potatoes are complements. When the price of steak goes
+        up, the demand curve for potatoes''',
         widget=widgets.RadioSelect,
     )
     crt_economics2 = models.IntegerField(
-        choices=[[1, 'Tropomyosin'], [2, 'Titin'], [3, 'Alpha actinin'], [4, 'Spectrin']],
+        choices=[[1, 'an increase; an increase'], [2, 'an increase; a decrease'],
+        [3, 'a decrease; an increase'], [4, 'a decrease; a decrease']],
         label='''
-        Each actin filament has a head end that extends into the A band and a tail end that is anchored to the Z line through a protein called:''',
+        When the price of a normal good falls, the substitution effect leads to
+        ______ in the quantity purchased and the income effect leads to ______ in
+        the quantity purchased''',
         widget=widgets.RadioSelect,
     )
     crt_cooking1 = models.IntegerField(
@@ -130,7 +135,7 @@ class Player(BasePlayer):
     results_econ = models.IntegerField(
         choices=[[0,"0/4 hints"],[1,"1/4 hints"],[2,"2/4 hints"],[3,"3/4 hints"]],
         label='''
-        In Anatomy?''',
+        In Economics?''',
         widget=widgets.RadioSelectHorizontal,
     )
     results_cook = models.IntegerField(

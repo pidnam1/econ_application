@@ -5,16 +5,16 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [0,1,0,1,1,0,0,0,1,1]
-    LABELS = ['Tehreem','Ahsan_Aziz','Farwa_Nayab','Muhammad_Asif','Syed_Muhammad_Hasnain',
-    'Bakhtawar','Areeba','Abiha','Abdul_Hanan','Farhan']
-    PLAYERS = ['Tehreem','Ahsan Aziz','Farwa Nayab','Muhammad Asif','Syed Muhammad Hasnain',
-    'Bakhtawar','Areeba','Abiha','Abdul Hanan','Farhan']
     GENDERS_LIST = [0,0,1,0,0,1,0,1,0,1,0,1]
     LABELS = ['Tehreem','Mukarma_Ijaz','Hanan_Sadaqat','Rubab','Farbah','Zeeshan_Mushtaq',
-    'Fatima_Tariq','Mir_Wais','Tazeen','Muhammad_Akbar','Maryam_Rana','Raziq']
+    'Fatima_Tariq','Mir_Wais','Tazeen','Farhan','Maryam_Rana','Raziq']
     PLAYERS = ['Tehreem','Mukarma Ijaz','Hanan Sadaqat','Rubab','Farbah','Zeeshan Mushtaq',
-    'Fatima Tariq','Mir Wais','Tazeen','Muhammad Akbar','Maryam Rana','Raziq']
+    'Fatima Tariq','Mir Wais','Tazeen','Farhan','Maryam Rana','Raziq']
+    GENDERS_LIST = [0,0,0,1,1,1,0,1,0,1]
+    LABELS = ['Areeba','Abiha','Farwa_Nayab','Abdul_Hanan','Ahsan_Aziz','Muhammad_Akbar',
+    'Tehreem','Muhammad_Asif','Bakhtawar','Syed_Muhammad_Hasnain']
+    PLAYERS = ['Areeba','Abiha','Farwa Nayab','Abdul Hanan','Ahsan Aziz','Muhammad Akbar',
+    'Tehreem','Muhammad Asif','Bakhtawar','Syed Muhammad Hasnain']
 
 
 class Subsession(BaseSubsession):

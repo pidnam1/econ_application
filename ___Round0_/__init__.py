@@ -474,7 +474,7 @@ class Economics1(Page):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
             player.click_hint_econ1 = 1
-            return {player.id_in_group: dict(message = "Hint: Conical in shape and is about 2 cm long.")}
+            return {player.id_in_group: dict(message = "Hint: I can substitute you.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics1':player.crt_economics1})
@@ -508,7 +508,7 @@ class Economics2(Page):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
             player.click_hint_econ2 = 1
-            return {player.id_in_group: dict(message = "Hint: Most Medial fan-shaped muscle.")}
+            return {player.id_in_group: dict(message = "Hint: Price of a related good.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics2':player.crt_economics2})
@@ -557,7 +557,7 @@ class Economics4(Page):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
             player.click_hint_econ4 = 1
-            return {player.id_in_group: dict(message = "Hint: The large opening created by the ischium and pubis bones.")}
+            return {player.id_in_group: dict(message = "Hint: Elasticity greater than 1.")}
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.responses_0.update({'crt_economics4':player.crt_economics4})

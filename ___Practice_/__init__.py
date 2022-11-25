@@ -268,7 +268,7 @@ class Economics2(Page):
     def live_method(player: Player, data):
         if data == 'clicked-button':
             player.participant.prev_hint = 1
-            return {player.id_in_group: dict(message = "Hint: Alpha.")}
+            return {player.id_in_group: dict(message = "Hint: Price of onions increase and increase!")}
     get_timeout_seconds = get_timeout_seconds1
     timer_text = C.TIMER_TEXT
 

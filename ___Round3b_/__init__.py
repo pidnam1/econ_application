@@ -6967,7 +6967,7 @@ class Final_Part4(Page):
         crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=3,
         crt_cooking4_MP=4, crt_sports1_MP=4, crt_sports2_MP=1, crt_sports3_MP=3,
         crt_sports4_MP=2)
-        solutions_MR = dict(crt_economics1_MR=2, crt_economics2_MR=3, crt_economics3_MR=3,
+        solutions_MR = dict(crt_economics1_MR=4, crt_economics2_MR=3, crt_economics3_MR=3,
         crt_economics4_MR=4, crt_cooking1_MR=2, crt_cooking2_MR=1, crt_cooking3_MR=2,
         crt_cooking4_MR=3, crt_sports1_MR=2, crt_sports2_MR=3, crt_sports3_MR=4,
         crt_sports4_MR=1)
@@ -7025,7 +7025,7 @@ class Final_Part5(Page):
         crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=3,
         crt_cooking4_MP=4, crt_sports1_MP=4, crt_sports2_MP=1, crt_sports3_MP=3,
         crt_sports4_MP=2)
-        solutions_MR = dict(crt_economics1_MR=2, crt_economics2_MR=3, crt_economics3_MR=3,
+        solutions_MR = dict(crt_economics1_MR=4, crt_economics2_MR=3, crt_economics3_MR=3,
         crt_economics4_MR=4, crt_cooking1_MR=2, crt_cooking2_MR=1, crt_cooking3_MR=2,
         crt_cooking4_MR=3, crt_sports1_MR=2, crt_sports2_MR=3, crt_sports3_MR=4,
         crt_sports4_MR=1)

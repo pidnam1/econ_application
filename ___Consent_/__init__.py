@@ -5,13 +5,13 @@ class C(BaseConstants):
     NAME_IN_URL = '___Consent_'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    GENDERS_LIST = [1,1,0,1,0,1,1,0,0,0,1,1,1,0,1,1]
-    LABELS = ['Ahsan_Aziz','Muhammad_Kamran_Altaf','Farwa_Nayab','Syed_Muhammad_Hasnain',
-    'Mahnoor_Awan','Abdul_Hanan','Syed_Saqib_Ali_Rizvi','Tehreem','Bakhtawar','Areeba',
-    'Ghulam_Raza','Muhammad_Asif','Sarmad_Sultan','Abiha','Muhammad_Akbar','Asfandyar']
-    PLAYERS = ['Ahsan Aziz','Muhammad Kamran Altaf','Farwa Nayab','Syed Muhammad Hasnain',
-    'Mahnoor Awan','Abdul Hanan','Syed Saqib Ali Rizvi','Tehreem','Bakhtawar','Areeba',
-    'Ghulam Raza','Muhammad Asif','Sarmad Sultan','Abiha','Muhammad Akbar','Asfandyar']
+    GENDERS_LIST = [0,0,1,1,1,0,1,0,1,0,1,0,0,1,0,0,1]
+    LABELS = ['Sania_Islam','Ayesha_Amir','M_Hassan','Sadam_Hussein','Imran_Tariq',
+    'Muqadas_Zafar','Danish_Riaz','Tabinda_Zahid','Aitazaz','Zara_Gulzar','Hafiz_Junaid',
+    'Thmina_Ajmal','Saira_Yaseen','Hamza_Nawaz','Saira_Nazar','Minahil_Waseem','Zeeshan_Ali']
+    PLAYERS = ['Sania Islam','Ayesha Amir','M. Hassan','Sadam Hussein','Imran Tariq',
+    'Muqadas Zafar','Danish Riaz','Tabinda Zahid','Aitazaz','Zara Gulzar','Hafiz Junaid',
+    'Thmina Ajmal','Saira Yaseen','Hamza Nawaz','Saira Nazar','Minahil Waseem','Zeeshan Ali']
 
 
 class Subsession(BaseSubsession):

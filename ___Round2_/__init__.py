@@ -4585,7 +4585,7 @@ class Final(Page):
         return dict(round=player.participant.round2_completed)
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        solutions_MP = dict(crt_economics1_MP=3, crt_economics2_MP=3, crt_economics3_MP=4,
+        solutions_MP = dict(crt_economics1_MP=1, crt_economics2_MP=1, crt_economics3_MP=4,
         crt_economics4_MP=1, crt_cooking1_MP=2, crt_cooking2_MP=1, crt_cooking3_MP=4,
         crt_cooking4_MP=1, crt_sports1_MP=1, crt_sports2_MP=3, crt_sports3_MP=4,
         crt_sports4_MP=2)
@@ -4598,7 +4598,7 @@ class Final(Page):
         crt_cooking4_WP=3, crt_sports1_WP=1, crt_sports2_WP=3, crt_sports3_WP=1,
         crt_sports4_WP=1)
         solutions_WR = dict(crt_economics1_WR=1, crt_economics2_WR=1, crt_economics3_WR=3,
-        crt_economics4_WR=4, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=4,
+        crt_economics4_WR=4, crt_cooking1_WR=1, crt_cooking2_WR=1, crt_cooking3_WR=2,
         crt_cooking4_WR=1, crt_sports1_WR=4, crt_sports2_WR=1, crt_sports3_WR=1,
         crt_sports4_WR=3)
 

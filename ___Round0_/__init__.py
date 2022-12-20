@@ -825,7 +825,7 @@ class Final(Page):
 
         solutions = dict(crt_economics1=3, crt_economics2=3, crt_economics3=4,
         crt_economics4=3, crt_cooking1=3, crt_cooking2=1, crt_cooking3=4, crt_cooking4=2,
-        crt_sports1=3, crt_sports2=3, crt_sports3=3, crt_sports4=2)
+        crt_sports1=3, crt_sports2=4, crt_sports3=3, crt_sports4=2)
 
         payoff = 0
         for key in solutions.keys():
